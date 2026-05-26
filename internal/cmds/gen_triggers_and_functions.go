@@ -2,336 +2,241 @@
 
 package cmds
 
-import "strconv"
-
 type Tfcall Incomplete
 
-func (b Builder) Tfcall() (c Tfcall) {
-	c = Tfcall{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "TFCALL")
-	return c
-}
+func (b Builder) Tfcall() (c Tfcall) { _ = "STUB: not implemented"; return *new(Tfcall) }
 
 func (c Tfcall) LibraryFunction(libraryFunction string) TfcallLibraryFunction {
-	c.cs.s = append(c.cs.s, libraryFunction)
-	return (TfcallLibraryFunction)(c)
+	_ = "STUB: not implemented"
+	return *new(TfcallLibraryFunction)
 }
 
 type TfcallArg Incomplete
 
-func (c TfcallArg) Arg(arg ...string) TfcallArg {
-	c.cs.s = append(c.cs.s, arg...)
-	return c
-}
+func (c TfcallArg) Arg(arg ...string) TfcallArg { _ = "STUB: not implemented"; return *new(TfcallArg) }
 
-func (c TfcallArg) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c TfcallArg) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type TfcallKey Incomplete
 
-func (c TfcallKey) Key(key ...string) TfcallKey {
-	if c.ks&NoSlot == NoSlot {
-		for _, k := range key {
-			c.ks = NoSlot | slot(k)
-			break
-		}
-	} else {
-		for _, k := range key {
-			c.ks = check(c.ks, slot(k))
-		}
-	}
-	c.cs.s = append(c.cs.s, key...)
-	return c
-}
+func (c TfcallKey) Key(key ...string) TfcallKey { _ = "STUB: not implemented"; return *new(TfcallKey) }
 
-func (c TfcallKey) Arg(arg ...string) TfcallArg {
-	c.cs.s = append(c.cs.s, arg...)
-	return (TfcallArg)(c)
-}
+func (c TfcallKey) Arg(arg ...string) TfcallArg { _ = "STUB: not implemented"; return *new(TfcallArg) }
 
-func (c TfcallKey) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c TfcallKey) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type TfcallLibraryFunction Incomplete
 
 func (c TfcallLibraryFunction) Numkeys(numkeys int64) TfcallNumkeys {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(numkeys, 10))
-	return (TfcallNumkeys)(c)
+	_ = "STUB: not implemented"
+	return *new(TfcallNumkeys)
 }
 
 type TfcallNumkeys Incomplete
 
 func (c TfcallNumkeys) Key(key ...string) TfcallKey {
-	if c.ks&NoSlot == NoSlot {
-		for _, k := range key {
-			c.ks = NoSlot | slot(k)
-			break
-		}
-	} else {
-		for _, k := range key {
-			c.ks = check(c.ks, slot(k))
-		}
-	}
-	c.cs.s = append(c.cs.s, key...)
-	return (TfcallKey)(c)
+	_ = "STUB: not implemented"
+	return *new(TfcallKey)
 }
 
 func (c TfcallNumkeys) Arg(arg ...string) TfcallArg {
-	c.cs.s = append(c.cs.s, arg...)
-	return (TfcallArg)(c)
+	_ = "STUB: not implemented"
+	return *new(TfcallArg)
 }
 
-func (c TfcallNumkeys) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c TfcallNumkeys) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type Tfcallasync Incomplete
 
-func (b Builder) Tfcallasync() (c Tfcallasync) {
-	c = Tfcallasync{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "TFCALLASYNC")
-	return c
-}
+func (b Builder) Tfcallasync() (c Tfcallasync) { _ = "STUB: not implemented"; return *new(Tfcallasync) }
 
 func (c Tfcallasync) LibraryFunction(libraryFunction string) TfcallasyncLibraryFunction {
-	c.cs.s = append(c.cs.s, libraryFunction)
-	return (TfcallasyncLibraryFunction)(c)
+	_ = "STUB: not implemented"
+	return *new(TfcallasyncLibraryFunction)
 }
 
 type TfcallasyncArg Incomplete
 
 func (c TfcallasyncArg) Arg(arg ...string) TfcallasyncArg {
-	c.cs.s = append(c.cs.s, arg...)
-	return c
+	_ = "STUB: not implemented"
+	return *new(TfcallasyncArg)
 }
 
-func (c TfcallasyncArg) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c TfcallasyncArg) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type TfcallasyncKey Incomplete
 
 func (c TfcallasyncKey) Key(key ...string) TfcallasyncKey {
-	if c.ks&NoSlot == NoSlot {
-		for _, k := range key {
-			c.ks = NoSlot | slot(k)
-			break
-		}
-	} else {
-		for _, k := range key {
-			c.ks = check(c.ks, slot(k))
-		}
-	}
-	c.cs.s = append(c.cs.s, key...)
-	return c
+	_ = "STUB: not implemented"
+	return *new(TfcallasyncKey)
 }
 
 func (c TfcallasyncKey) Arg(arg ...string) TfcallasyncArg {
-	c.cs.s = append(c.cs.s, arg...)
-	return (TfcallasyncArg)(c)
+	_ = "STUB: not implemented"
+	return *new(TfcallasyncArg)
 }
 
-func (c TfcallasyncKey) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c TfcallasyncKey) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type TfcallasyncLibraryFunction Incomplete
 
 func (c TfcallasyncLibraryFunction) Numkeys(numkeys int64) TfcallasyncNumkeys {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(numkeys, 10))
-	return (TfcallasyncNumkeys)(c)
+	_ = "STUB: not implemented"
+	return *new(TfcallasyncNumkeys)
 }
 
 type TfcallasyncNumkeys Incomplete
 
 func (c TfcallasyncNumkeys) Key(key ...string) TfcallasyncKey {
-	if c.ks&NoSlot == NoSlot {
-		for _, k := range key {
-			c.ks = NoSlot | slot(k)
-			break
-		}
-	} else {
-		for _, k := range key {
-			c.ks = check(c.ks, slot(k))
-		}
-	}
-	c.cs.s = append(c.cs.s, key...)
-	return (TfcallasyncKey)(c)
+	_ = "STUB: not implemented"
+	return *new(TfcallasyncKey)
 }
 
 func (c TfcallasyncNumkeys) Arg(arg ...string) TfcallasyncArg {
-	c.cs.s = append(c.cs.s, arg...)
-	return (TfcallasyncArg)(c)
+	_ = "STUB: not implemented"
+	return *new(TfcallasyncArg)
 }
 
-func (c TfcallasyncNumkeys) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c TfcallasyncNumkeys) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type TfunctionDelete Incomplete
 
 func (b Builder) TfunctionDelete() (c TfunctionDelete) {
-	c = TfunctionDelete{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "TFUNCTION", "DELETE")
-	return c
+	_ = "STUB: not implemented"
+	return *new(TfunctionDelete)
 }
 
 func (c TfunctionDelete) LibraryName(libraryName string) TfunctionDeleteLibraryName {
-	c.cs.s = append(c.cs.s, libraryName)
-	return (TfunctionDeleteLibraryName)(c)
+	_ = "STUB: not implemented"
+	return *new(TfunctionDeleteLibraryName)
 }
 
 type TfunctionDeleteLibraryName Incomplete
 
 func (c TfunctionDeleteLibraryName) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type TfunctionList Incomplete
 
 func (b Builder) TfunctionList() (c TfunctionList) {
-	c = TfunctionList{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "TFUNCTION", "LIST")
-	return c
+	_ = "STUB: not implemented"
+	return *new(TfunctionList)
 }
 
 func (c TfunctionList) LibraryName(libraryName string) TfunctionListLibraryName {
-	c.cs.s = append(c.cs.s, libraryName)
-	return (TfunctionListLibraryName)(c)
+	_ = "STUB: not implemented"
+	return *new(TfunctionListLibraryName)
 }
 
 func (c TfunctionList) Withcode() TfunctionListWithcode {
-	c.cs.s = append(c.cs.s, "WITHCODE")
-	return (TfunctionListWithcode)(c)
+	_ = "STUB: not implemented"
+	return *new(TfunctionListWithcode)
 }
 
 func (c TfunctionList) Verbose() TfunctionListVerbose {
-	c.cs.s = append(c.cs.s, "VERBOSE")
-	return (TfunctionListVerbose)(c)
+	_ = "STUB: not implemented"
+	return *new(TfunctionListVerbose)
 }
 
-func (c TfunctionList) V() TfunctionListV {
-	c.cs.s = append(c.cs.s, "V")
-	return (TfunctionListV)(c)
-}
+func (c TfunctionList) V() TfunctionListV { _ = "STUB: not implemented"; return *new(TfunctionListV) }
 
-func (c TfunctionList) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c TfunctionList) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type TfunctionListLibraryName Incomplete
 
 func (c TfunctionListLibraryName) Withcode() TfunctionListWithcode {
-	c.cs.s = append(c.cs.s, "WITHCODE")
-	return (TfunctionListWithcode)(c)
+	_ = "STUB: not implemented"
+	return *new(TfunctionListWithcode)
 }
 
 func (c TfunctionListLibraryName) Verbose() TfunctionListVerbose {
-	c.cs.s = append(c.cs.s, "VERBOSE")
-	return (TfunctionListVerbose)(c)
+	_ = "STUB: not implemented"
+	return *new(TfunctionListVerbose)
 }
 
 func (c TfunctionListLibraryName) V() TfunctionListV {
-	c.cs.s = append(c.cs.s, "V")
-	return (TfunctionListV)(c)
+	_ = "STUB: not implemented"
+	return *new(TfunctionListV)
 }
 
 func (c TfunctionListLibraryName) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type TfunctionListV Incomplete
 
-func (c TfunctionListV) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c TfunctionListV) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type TfunctionListVerbose Incomplete
 
 func (c TfunctionListVerbose) V() TfunctionListV {
-	c.cs.s = append(c.cs.s, "V")
-	return (TfunctionListV)(c)
+	_ = "STUB: not implemented"
+	return *new(TfunctionListV)
 }
 
-func (c TfunctionListVerbose) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c TfunctionListVerbose) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type TfunctionListWithcode Incomplete
 
 func (c TfunctionListWithcode) Verbose() TfunctionListVerbose {
-	c.cs.s = append(c.cs.s, "VERBOSE")
-	return (TfunctionListVerbose)(c)
+	_ = "STUB: not implemented"
+	return *new(TfunctionListVerbose)
 }
 
 func (c TfunctionListWithcode) V() TfunctionListV {
-	c.cs.s = append(c.cs.s, "V")
-	return (TfunctionListV)(c)
+	_ = "STUB: not implemented"
+	return *new(TfunctionListV)
 }
 
-func (c TfunctionListWithcode) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c TfunctionListWithcode) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type TfunctionLoad Incomplete
 
 func (b Builder) TfunctionLoad() (c TfunctionLoad) {
-	c = TfunctionLoad{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "TFUNCTION", "LOAD")
-	return c
+	_ = "STUB: not implemented"
+	return *new(TfunctionLoad)
 }
 
 func (c TfunctionLoad) Replace() TfunctionLoadReplace {
-	c.cs.s = append(c.cs.s, "REPLACE")
-	return (TfunctionLoadReplace)(c)
+	_ = "STUB: not implemented"
+	return *new(TfunctionLoadReplace)
 }
 
 func (c TfunctionLoad) Config(config string) TfunctionLoadConfig {
-	c.cs.s = append(c.cs.s, "CONFIG", config)
-	return (TfunctionLoadConfig)(c)
+	_ = "STUB: not implemented"
+	return *new(TfunctionLoadConfig)
 }
 
 func (c TfunctionLoad) LibraryCode(libraryCode string) TfunctionLoadLibraryCode {
-	c.cs.s = append(c.cs.s, libraryCode)
-	return (TfunctionLoadLibraryCode)(c)
+	_ = "STUB: not implemented"
+	return *new(TfunctionLoadLibraryCode)
 }
 
 type TfunctionLoadConfig Incomplete
 
 func (c TfunctionLoadConfig) LibraryCode(libraryCode string) TfunctionLoadLibraryCode {
-	c.cs.s = append(c.cs.s, libraryCode)
-	return (TfunctionLoadLibraryCode)(c)
+	_ = "STUB: not implemented"
+	return *new(TfunctionLoadLibraryCode)
 }
 
 type TfunctionLoadLibraryCode Incomplete
 
 func (c TfunctionLoadLibraryCode) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type TfunctionLoadReplace Incomplete
 
 func (c TfunctionLoadReplace) Config(config string) TfunctionLoadConfig {
-	c.cs.s = append(c.cs.s, "CONFIG", config)
-	return (TfunctionLoadConfig)(c)
+	_ = "STUB: not implemented"
+	return *new(TfunctionLoadConfig)
 }
 
 func (c TfunctionLoadReplace) LibraryCode(libraryCode string) TfunctionLoadLibraryCode {
-	c.cs.s = append(c.cs.s, libraryCode)
-	return (TfunctionLoadLibraryCode)(c)
+	_ = "STUB: not implemented"
+	return *new(TfunctionLoadLibraryCode)
 }

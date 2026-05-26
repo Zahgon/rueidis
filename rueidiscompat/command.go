@@ -27,16 +27,9 @@
 package rueidiscompat
 
 import (
-	"encoding/json"
-	"errors"
-	"fmt"
-	"net"
-	"strconv"
-	"strings"
 	"time"
 
 	"github.com/redis/rueidis"
-	"github.com/redis/rueidis/internal/util"
 )
 
 type Cmder interface {
@@ -52,461 +45,136 @@ type baseCmd[T any] struct {
 	isCacheHit bool
 }
 
-func (cmd *baseCmd[T]) setIsCacheHit(val bool) {
-	cmd.isCacheHit = val
-}
+func (cmd *baseCmd[T]) setIsCacheHit(val bool) { _ = "STUB: not implemented"; return }
 
-func (cmd *baseCmd[T]) IsCacheHit() bool {
-	return cmd.isCacheHit
-}
+func (cmd *baseCmd[T]) IsCacheHit() bool { _ = "STUB: not implemented"; return false }
 
-func (cmd *baseCmd[T]) SetVal(val T) {
-	cmd.val = val
-}
+func (cmd *baseCmd[T]) SetVal(val T) { _ = "STUB: not implemented"; return }
 
-func (cmd *baseCmd[T]) Val() T {
-	return cmd.val
-}
+func (cmd *baseCmd[T]) Val() T { _ = "STUB: not implemented"; return *new(T) }
 
-func (cmd *baseCmd[T]) SetRawVal(rawVal any) {
-	cmd.rawVal = rawVal
-}
+func (cmd *baseCmd[T]) SetRawVal(rawVal any) { _ = "STUB: not implemented"; return }
 
-func (cmd *baseCmd[T]) RawVal() any {
-	return cmd.rawVal
-}
+func (cmd *baseCmd[T]) RawVal() any { _ = "STUB: not implemented"; return *new(any) }
 
-func (cmd *baseCmd[T]) SetErr(err error) {
-	cmd.err = err
-}
+func (cmd *baseCmd[T]) SetErr(err error) { _ = "STUB: not implemented"; return }
 
-func (cmd *baseCmd[T]) Err() error {
-	return cmd.err
-}
+func (cmd *baseCmd[T]) Err() error { _ = "STUB: not implemented"; return nil }
 
-func (cmd *baseCmd[T]) Result() (T, error) {
-	return cmd.Val(), cmd.Err()
-}
+func (cmd *baseCmd[T]) Result() (T, error) { _ = "STUB: not implemented"; return *new(T), nil }
 
-func (cmd *baseCmd[T]) RawResult() (any, error) {
-	return cmd.RawVal(), cmd.Err()
-}
+func (cmd *baseCmd[T]) RawResult() (any, error) { _ = "STUB: not implemented"; return *new(any), nil }
 
 type Cmd struct {
 	baseCmd[any]
 }
 
-func (cmd *Cmd) from(res rueidis.RedisResult) {
-	val, err := res.ToAny()
-	if err != nil {
-		cmd.err = err
-		return
-	}
-	cmd.SetVal(val)
-	cmd.setIsCacheHit(res.IsCacheHit())
-}
+func (cmd *Cmd) from(res rueidis.RedisResult) { _ = "STUB: not implemented"; return }
 
-func newCmd(res rueidis.RedisResult) *Cmd {
-	cmd := &Cmd{}
-	cmd.from(res)
-	return cmd
-}
+func newCmd(res rueidis.RedisResult) *Cmd { _ = "STUB: not implemented"; return nil }
 
-func (cmd *Cmd) Text() (string, error) {
-	if cmd.err != nil {
-		return "", cmd.err
-	}
-	return toString(cmd.val)
-}
+func (cmd *Cmd) Text() (string, error) { _ = "STUB: not implemented"; return "", nil }
 
-func toString(val any) (string, error) {
-	switch val := val.(type) {
-	case string:
-		return val, nil
-	default:
-		err := fmt.Errorf("redis: unexpected type=%T for String", val)
-		return "", err
-	}
-}
+func toString(val any) (string, error) { _ = "STUB: not implemented"; return "", nil }
 
-func (cmd *Cmd) Int() (int, error) {
-	if cmd.err != nil {
-		return 0, cmd.err
-	}
-	switch val := cmd.val.(type) {
-	case int64:
-		return int(val), nil
-	case string:
-		return strconv.Atoi(val)
-	default:
-		err := fmt.Errorf("redis: unexpected type=%T for Int", val)
-		return 0, err
-	}
-}
+func (cmd *Cmd) Int() (int, error) { _ = "STUB: not implemented"; return 0, nil }
 
-func (cmd *Cmd) Int64() (int64, error) {
-	if cmd.err != nil {
-		return 0, cmd.err
-	}
-	return toInt64(cmd.val)
-}
+func (cmd *Cmd) Int64() (int64, error) { _ = "STUB: not implemented"; return 0, nil }
 
-func toInt64(val any) (int64, error) {
-	switch val := val.(type) {
-	case int64:
-		return val, nil
-	case string:
-		return strconv.ParseInt(val, 10, 64)
-	default:
-		err := fmt.Errorf("redis: unexpected type=%T for Int64", val)
-		return 0, err
-	}
-}
+func toInt64(val any) (int64, error) { _ = "STUB: not implemented"; return 0, nil }
 
-func (cmd *Cmd) Uint64() (uint64, error) {
-	if cmd.err != nil {
-		return 0, cmd.err
-	}
-	return toUint64(cmd.val)
-}
+func (cmd *Cmd) Uint64() (uint64, error) { _ = "STUB: not implemented"; return 0, nil }
 
-func toUint64(val any) (uint64, error) {
-	switch val := val.(type) {
-	case int64:
-		return uint64(val), nil
-	case string:
-		return strconv.ParseUint(val, 10, 64)
-	default:
-		err := fmt.Errorf("redis: unexpected type=%T for Uint64", val)
-		return 0, err
-	}
-}
+func toUint64(val any) (uint64, error) { _ = "STUB: not implemented"; return 0, nil }
 
-func (cmd *Cmd) Float32() (float32, error) {
-	if cmd.err != nil {
-		return 0, cmd.err
-	}
-	return toFloat32(cmd.val)
-}
+func (cmd *Cmd) Float32() (float32, error) { _ = "STUB: not implemented"; return 0, nil }
 
-func toFloat32(val any) (float32, error) {
-	switch val := val.(type) {
-	case int64:
-		return float32(val), nil
-	case string:
-		f, err := util.ToFloat32(val)
-		if err != nil {
-			return 0, err
-		}
-		return f, nil
-	default:
-		err := fmt.Errorf("redis: unexpected type=%T for Float32", val)
-		return 0, err
-	}
-}
+func toFloat32(val any) (float32, error) { _ = "STUB: not implemented"; return 0, nil }
 
-func (cmd *Cmd) Float64() (float64, error) {
-	if cmd.err != nil {
-		return 0, cmd.err
-	}
-	return toFloat64(cmd.val)
-}
+func (cmd *Cmd) Float64() (float64, error) { _ = "STUB: not implemented"; return 0, nil }
 
-func toFloat64(val any) (float64, error) {
-	switch val := val.(type) {
-	case int64:
-		return float64(val), nil
-	case string:
-		return util.ToFloat64(val)
-	default:
-		err := fmt.Errorf("redis: unexpected type=%T for Float64", val)
-		return 0, err
-	}
-}
+func toFloat64(val any) (float64, error) { _ = "STUB: not implemented"; return 0, nil }
 
-func (cmd *Cmd) Bool() (bool, error) {
-	if cmd.err != nil {
-		return false, cmd.err
-	}
-	return toBool(cmd.val)
-}
+func (cmd *Cmd) Bool() (bool, error) { _ = "STUB: not implemented"; return false, nil }
 
-func toBool(val any) (bool, error) {
-	switch val := val.(type) {
-	case int64:
-		return val != 0, nil
-	case string:
-		return strconv.ParseBool(val)
-	default:
-		err := fmt.Errorf("redis: unexpected type=%T for Bool", val)
-		return false, err
-	}
-}
+func toBool(val any) (bool, error) { _ = "STUB: not implemented"; return false, nil }
 
-func (cmd *Cmd) Slice() ([]any, error) {
-	if cmd.err != nil {
-		return nil, cmd.err
-	}
-	switch val := cmd.val.(type) {
-	case []any:
-		return val, nil
-	default:
-		return nil, fmt.Errorf("redis: unexpected type=%T for Slice", val)
-	}
-}
+func (cmd *Cmd) Slice() ([]any, error) { _ = "STUB: not implemented"; return nil, nil }
 
-func (cmd *Cmd) StringSlice() ([]string, error) {
-	slice, err := cmd.Slice()
-	if err != nil {
-		return nil, err
-	}
+func (cmd *Cmd) StringSlice() ([]string, error) { _ = "STUB: not implemented"; return nil, nil }
 
-	ss := make([]string, len(slice))
-	for i, iface := range slice {
-		val, err := toString(iface)
-		if err != nil {
-			return nil, err
-		}
-		ss[i] = val
-	}
-	return ss, nil
-}
+func (cmd *Cmd) Int64Slice() ([]int64, error) { _ = "STUB: not implemented"; return nil, nil }
 
-func (cmd *Cmd) Int64Slice() ([]int64, error) {
-	slice, err := cmd.Slice()
-	if err != nil {
-		return nil, err
-	}
+func (cmd *Cmd) Uint64Slice() ([]uint64, error) { _ = "STUB: not implemented"; return nil, nil }
 
-	nums := make([]int64, len(slice))
-	for i, iface := range slice {
-		val, err := toInt64(iface)
-		if err != nil {
-			return nil, err
-		}
-		nums[i] = val
-	}
-	return nums, nil
-}
+func (cmd *Cmd) Float32Slice() ([]float32, error) { _ = "STUB: not implemented"; return nil, nil }
 
-func (cmd *Cmd) Uint64Slice() ([]uint64, error) {
-	slice, err := cmd.Slice()
-	if err != nil {
-		return nil, err
-	}
+func (cmd *Cmd) Float64Slice() ([]float64, error) { _ = "STUB: not implemented"; return nil, nil }
 
-	nums := make([]uint64, len(slice))
-	for i, iface := range slice {
-		val, err := toUint64(iface)
-		if err != nil {
-			return nil, err
-		}
-		nums[i] = val
-	}
-	return nums, nil
-}
-
-func (cmd *Cmd) Float32Slice() ([]float32, error) {
-	slice, err := cmd.Slice()
-	if err != nil {
-		return nil, err
-	}
-
-	floats := make([]float32, len(slice))
-	for i, iface := range slice {
-		val, err := toFloat32(iface)
-		if err != nil {
-			return nil, err
-		}
-		floats[i] = val
-	}
-	return floats, nil
-}
-
-func (cmd *Cmd) Float64Slice() ([]float64, error) {
-	slice, err := cmd.Slice()
-	if err != nil {
-		return nil, err
-	}
-
-	floats := make([]float64, len(slice))
-	for i, iface := range slice {
-		val, err := toFloat64(iface)
-		if err != nil {
-			return nil, err
-		}
-		floats[i] = val
-	}
-	return floats, nil
-}
-
-func (cmd *Cmd) BoolSlice() ([]bool, error) {
-	slice, err := cmd.Slice()
-	if err != nil {
-		return nil, err
-	}
-
-	bools := make([]bool, len(slice))
-	for i, iface := range slice {
-		val, err := toBool(iface)
-		if err != nil {
-			return nil, err
-		}
-		bools[i] = val
-	}
-	return bools, nil
-}
+func (cmd *Cmd) BoolSlice() ([]bool, error) { _ = "STUB: not implemented"; return nil, nil }
 
 type StringCmd struct {
 	baseCmd[string]
 }
 
-func (cmd *StringCmd) from(res rueidis.RedisResult) {
-	val, err := res.ToString()
-	cmd.SetErr(err)
-	cmd.SetVal(val)
-	cmd.setIsCacheHit(res.IsCacheHit())
-}
+func (cmd *StringCmd) from(res rueidis.RedisResult) { _ = "STUB: not implemented"; return }
 
-func newStringCmd(res rueidis.RedisResult) *StringCmd {
-	cmd := &StringCmd{}
-	cmd.from(res)
-	return cmd
-}
+func newStringCmd(res rueidis.RedisResult) *StringCmd { _ = "STUB: not implemented"; return nil }
 
-func (cmd *StringCmd) Bytes() ([]byte, error) {
-	return []byte(cmd.val), cmd.err
-}
+func (cmd *StringCmd) Bytes() ([]byte, error) { _ = "STUB: not implemented"; return nil, nil }
 
-func (cmd *StringCmd) Bool() (bool, error) {
-	if cmd.err != nil {
-		return false, cmd.err
-	}
-	return strconv.ParseBool(cmd.Val())
-}
+func (cmd *StringCmd) Bool() (bool, error) { _ = "STUB: not implemented"; return false, nil }
 
-func (cmd *StringCmd) Int() (int, error) {
-	if cmd.err != nil {
-		return 0, cmd.err
-	}
-	return strconv.Atoi(cmd.Val())
-}
+func (cmd *StringCmd) Int() (int, error) { _ = "STUB: not implemented"; return 0, nil }
 
-func (cmd *StringCmd) Int64() (int64, error) {
-	if cmd.err != nil {
-		return 0, cmd.err
-	}
-	return strconv.ParseInt(cmd.Val(), 10, 64)
-}
+func (cmd *StringCmd) Int64() (int64, error) { _ = "STUB: not implemented"; return 0, nil }
 
-func (cmd *StringCmd) Uint64() (uint64, error) {
-	if cmd.err != nil {
-		return 0, cmd.err
-	}
-	return strconv.ParseUint(cmd.Val(), 10, 64)
-}
+func (cmd *StringCmd) Uint64() (uint64, error) { _ = "STUB: not implemented"; return 0, nil }
 
-func (cmd *StringCmd) Float32() (float32, error) {
-	if cmd.err != nil {
-		return 0, cmd.err
-	}
-	v, err := util.ToFloat32(cmd.Val())
-	if err != nil {
-		return 0, err
-	}
-	return v, nil
-}
+func (cmd *StringCmd) Float32() (float32, error) { _ = "STUB: not implemented"; return 0, nil }
 
-func (cmd *StringCmd) Float64() (float64, error) {
-	if cmd.err != nil {
-		return 0, cmd.err
-	}
-	return util.ToFloat64(cmd.Val())
-}
+func (cmd *StringCmd) Float64() (float64, error) { _ = "STUB: not implemented"; return 0, nil }
 
 func (cmd *StringCmd) Time() (time.Time, error) {
-	if cmd.err != nil {
-		return time.Time{}, cmd.err
-	}
-	return time.Parse(time.RFC3339Nano, cmd.Val())
+	_ = "STUB: not implemented"
+	return *new(time.Time), nil
 }
 
-func (cmd *StringCmd) String() string {
-	return cmd.val
-}
+func (cmd *StringCmd) String() string { _ = "STUB: not implemented"; return "" }
 
 type BoolCmd struct {
 	baseCmd[bool]
 }
 
-func (cmd *BoolCmd) from(res rueidis.RedisResult) {
-	val, err := res.AsBool()
-	if rueidis.IsRedisNil(err) {
-		val = false
-		err = nil
-	}
-	cmd.SetVal(val)
-	cmd.SetErr(err)
-	cmd.setIsCacheHit(res.IsCacheHit())
-}
+func (cmd *BoolCmd) from(res rueidis.RedisResult) { _ = "STUB: not implemented"; return }
 
-func newBoolCmd(res rueidis.RedisResult) *BoolCmd {
-	cmd := &BoolCmd{}
-	cmd.from(res)
-	return cmd
-}
+func newBoolCmd(res rueidis.RedisResult) *BoolCmd { _ = "STUB: not implemented"; return nil }
 
 type IntCmd struct {
 	baseCmd[int64]
 }
 
-func (cmd *IntCmd) from(res rueidis.RedisResult) {
-	val, err := res.AsInt64()
-	cmd.SetErr(err)
-	cmd.SetVal(val)
-}
+func (cmd *IntCmd) from(res rueidis.RedisResult) { _ = "STUB: not implemented"; return }
 
-func newIntCmd(res rueidis.RedisResult) *IntCmd {
-	cmd := &IntCmd{}
-	cmd.from(res)
-	return cmd
-}
+func newIntCmd(res rueidis.RedisResult) *IntCmd { _ = "STUB: not implemented"; return nil }
 
-func (cmd *IntCmd) Uint64() (uint64, error) {
-	return uint64(cmd.val), cmd.err
-}
+func (cmd *IntCmd) Uint64() (uint64, error) { _ = "STUB: not implemented"; return 0, nil }
 
 type DurationCmd struct {
 	baseCmd[time.Duration]
 	precision time.Duration
 }
 
-func (cmd *DurationCmd) from(res rueidis.RedisResult) {
-	val, err := res.AsInt64()
-	cmd.SetErr(err)
-	if val > 0 {
-		cmd.SetVal(time.Duration(val) * cmd.precision)
-		return
-	}
-	cmd.SetVal(time.Duration(val))
-	cmd.setIsCacheHit(res.IsCacheHit())
-}
+func (cmd *DurationCmd) from(res rueidis.RedisResult) { _ = "STUB: not implemented"; return }
 
 func newDurationCmd(res rueidis.RedisResult, precision time.Duration) *DurationCmd {
-	cmd := &DurationCmd{precision: precision}
-	cmd.from(res)
-	return cmd
+	_ = "STUB: not implemented"
+	return nil
 }
 
 type StatusCmd = StringCmd
 
-func newStatusCmd(res rueidis.RedisResult) *StatusCmd {
-	cmd := &StatusCmd{}
-	val, err := res.ToString()
-	cmd.SetErr(err)
-	cmd.SetVal(val)
-	return cmd
-}
+func newStatusCmd(res rueidis.RedisResult) *StatusCmd { _ = "STUB: not implemented"; return nil }
 
 type SliceCmd struct {
 	baseCmd[[]any]
@@ -514,73 +182,35 @@ type SliceCmd struct {
 	json bool
 }
 
-func (cmd *SliceCmd) from(res rueidis.RedisResult) {
-	arr, err := res.ToArray()
-	if err != nil {
-		cmd.SetErr(err)
-		return
-	}
-	vals := make([]any, len(arr))
-	if cmd.json {
-		for i, v := range arr {
-			// for JSON.OBJKEYS
-			if v.IsNil() {
-				continue
-			}
-			// convert to any which underlying type is []any
-			arr, err := v.ToAny()
-			if err != nil {
-				cmd.SetErr(err)
-				return
-			}
-			vals[i] = arr
-		}
-		cmd.SetVal(vals)
-		return
-	}
-	for i, v := range arr {
-		// keep the old behavior the same as before (don't handle error while parsing v as string)
-		if s, err := v.ToString(); err == nil {
-			vals[i] = s
-		}
-	}
-	cmd.SetVal(vals)
-	cmd.setIsCacheHit(res.IsCacheHit())
-}
+func (cmd *SliceCmd) from(res rueidis.RedisResult) { _ = "STUB: not implemented"; return }
+
+// for JSON.OBJKEYS
+
+// convert to any which underlying type is []any
+
+// keep the old behavior the same as before (don't handle error while parsing v as string)
 
 // newSliceCmd returns SliceCmd according to input arguments, if the caller is JSONObjKeys,
 // set isJSONObjKeys to true.
 func newSliceCmd(res rueidis.RedisResult, isJSONObjKeys bool, keys ...string) *SliceCmd {
-	cmd := &SliceCmd{keys: keys, json: isJSONObjKeys}
-	cmd.from(res)
-	return cmd
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Scan scans the results from the map into a destination struct. The map keys
 // are matched in the Redis struct fields by the `redis:"field"` tag.
 // NOTE: result from JSON.ObjKeys should not call this.
-func (cmd *SliceCmd) Scan(dst any) error {
-	if cmd.err != nil {
-		return cmd.err
-	}
-	return Scan(dst, cmd.keys, cmd.val)
-}
+func (cmd *SliceCmd) Scan(dst any) error { _ = "STUB: not implemented"; return nil }
 
 type StringSliceCmd struct {
 	baseCmd[[]string]
 }
 
-func (cmd *StringSliceCmd) from(res rueidis.RedisResult) {
-	val, err := res.AsStrSlice()
-	cmd.SetVal(val)
-	cmd.SetErr(err)
-	cmd.setIsCacheHit(res.IsCacheHit())
-}
+func (cmd *StringSliceCmd) from(res rueidis.RedisResult) { _ = "STUB: not implemented"; return }
 
 func newStringSliceCmd(res rueidis.RedisResult) *StringSliceCmd {
-	cmd := &StringSliceCmd{}
-	cmd.from(res)
-	return cmd
+	_ = "STUB: not implemented"
+	return nil
 }
 
 type IntSliceCmd struct {
@@ -589,84 +219,41 @@ type IntSliceCmd struct {
 	isCacheHit bool
 }
 
-func (cmd *IntSliceCmd) from(res rueidis.RedisResult) {
-	cmd.val, cmd.err = res.AsIntSlice()
-	cmd.setIsCacheHit(res.IsCacheHit())
-}
+func (cmd *IntSliceCmd) from(res rueidis.RedisResult) { _ = "STUB: not implemented"; return }
 
-func newIntSliceCmd(res rueidis.RedisResult) *IntSliceCmd {
-	cmd := &IntSliceCmd{}
-	cmd.from(res)
-	return cmd
-}
+func newIntSliceCmd(res rueidis.RedisResult) *IntSliceCmd { _ = "STUB: not implemented"; return nil }
 
-func (cmd *IntSliceCmd) setIsCacheHit(isCacheHit bool) {
-	cmd.isCacheHit = isCacheHit
-}
+func (cmd *IntSliceCmd) setIsCacheHit(isCacheHit bool) { _ = "STUB: not implemented"; return }
 
-func (cmd *IntSliceCmd) SetVal(val []int64) {
-	cmd.val = val
-}
+func (cmd *IntSliceCmd) SetVal(val []int64) { _ = "STUB: not implemented"; return }
 
-func (cmd *IntSliceCmd) SetErr(err error) {
-	cmd.err = err
-}
+func (cmd *IntSliceCmd) SetErr(err error) { _ = "STUB: not implemented"; return }
 
-func (cmd *IntSliceCmd) Val() []int64 {
-	return cmd.val
-}
+func (cmd *IntSliceCmd) Val() []int64 { _ = "STUB: not implemented"; return nil }
 
-func (cmd *IntSliceCmd) Err() error {
-	return cmd.err
-}
+func (cmd *IntSliceCmd) Err() error { _ = "STUB: not implemented"; return nil }
 
-func (cmd *IntSliceCmd) Result() ([]int64, error) {
-	return cmd.val, cmd.err
-}
+func (cmd *IntSliceCmd) Result() ([]int64, error) { _ = "STUB: not implemented"; return nil, nil }
 
-func (cmd *IntSliceCmd) IsCacheHit() bool {
-	return cmd.isCacheHit
-}
+func (cmd *IntSliceCmd) IsCacheHit() bool { _ = "STUB: not implemented"; return false }
 
 type BoolSliceCmd struct {
 	baseCmd[[]bool]
 }
 
-func (cmd *BoolSliceCmd) from(res rueidis.RedisResult) {
-	ints, err := res.AsIntSlice()
-	if err != nil {
-		cmd.SetErr(err)
-		return
-	}
-	val := make([]bool, 0, len(ints))
-	for _, i := range ints {
-		val = append(val, i == 1)
-	}
-	cmd.SetVal(val)
-	cmd.setIsCacheHit(res.IsCacheHit())
-}
+func (cmd *BoolSliceCmd) from(res rueidis.RedisResult) { _ = "STUB: not implemented"; return }
 
-func newBoolSliceCmd(res rueidis.RedisResult) *BoolSliceCmd {
-	cmd := &BoolSliceCmd{}
-	cmd.from(res)
-	return cmd
-}
+func newBoolSliceCmd(res rueidis.RedisResult) *BoolSliceCmd { _ = "STUB: not implemented"; return nil }
 
 type FloatSliceCmd struct {
 	baseCmd[[]float64]
 }
 
-func (cmd *FloatSliceCmd) from(res rueidis.RedisResult) {
-	val, err := res.AsFloatSlice()
-	cmd.SetErr(err)
-	cmd.SetVal(val)
-	cmd.setIsCacheHit(res.IsCacheHit())
-}
+func (cmd *FloatSliceCmd) from(res rueidis.RedisResult) { _ = "STUB: not implemented"; return }
 
 func newFloatSliceCmd(res rueidis.RedisResult) *FloatSliceCmd {
-	cmd := &FloatSliceCmd{}
-	cmd.from(res)
-	return cmd
+	_ = "STUB: not implemented"
+	return nil
 }
 
 type ZSliceCmd struct {
@@ -674,58 +261,19 @@ type ZSliceCmd struct {
 	single bool
 }
 
-func (cmd *ZSliceCmd) from(res rueidis.RedisResult) {
-	if cmd.single {
-		s, err := res.AsZScore()
-		if err != nil {
-			cmd.SetErr(err)
-			return
-		}
-		cmd.SetVal([]Z{{Member: s.Member, Score: s.Score}})
-		cmd.setIsCacheHit(res.IsCacheHit())
-	} else {
-		scores, err := res.AsZScores()
-		if err != nil {
-			cmd.SetErr(err)
-			return
-		}
-		val := make([]Z, 0, len(scores))
-		for _, s := range scores {
-			val = append(val, Z{Member: s.Member, Score: s.Score})
-		}
-		cmd.SetVal(val)
-		cmd.setIsCacheHit(res.IsCacheHit())
-	}
-}
+func (cmd *ZSliceCmd) from(res rueidis.RedisResult) { _ = "STUB: not implemented"; return }
 
-func newZSliceCmd(res rueidis.RedisResult) *ZSliceCmd {
-	cmd := &ZSliceCmd{}
-	cmd.from(res)
-	return cmd
-}
+func newZSliceCmd(res rueidis.RedisResult) *ZSliceCmd { _ = "STUB: not implemented"; return nil }
 
-func newZSliceSingleCmd(res rueidis.RedisResult) *ZSliceCmd {
-	cmd := &ZSliceCmd{single: true}
-	cmd.from(res)
-	return cmd
-}
+func newZSliceSingleCmd(res rueidis.RedisResult) *ZSliceCmd { _ = "STUB: not implemented"; return nil }
 
 type FloatCmd struct {
 	baseCmd[float64]
 }
 
-func (cmd *FloatCmd) from(res rueidis.RedisResult) {
-	val, err := res.AsFloat64()
-	cmd.SetErr(err)
-	cmd.SetVal(val)
-	cmd.setIsCacheHit(res.IsCacheHit())
-}
+func (cmd *FloatCmd) from(res rueidis.RedisResult) { _ = "STUB: not implemented"; return }
 
-func newFloatCmd(res rueidis.RedisResult) *FloatCmd {
-	cmd := &FloatCmd{}
-	cmd.from(res)
-	return cmd
-}
+func newFloatCmd(res rueidis.RedisResult) *FloatCmd { _ = "STUB: not implemented"; return nil }
 
 type ScanCmd struct {
 	err    error
@@ -733,40 +281,21 @@ type ScanCmd struct {
 	cursor uint64
 }
 
-func (cmd *ScanCmd) from(res rueidis.RedisResult) {
-	e, err := res.AsScanEntry()
-	if err != nil {
-		cmd.err = err
-		return
-	}
-	cmd.cursor, cmd.keys = e.Cursor, e.Elements
-}
+func (cmd *ScanCmd) from(res rueidis.RedisResult) { _ = "STUB: not implemented"; return }
 
-func newScanCmd(res rueidis.RedisResult) *ScanCmd {
-	cmd := &ScanCmd{}
-	cmd.from(res)
-	return cmd
-}
+func newScanCmd(res rueidis.RedisResult) *ScanCmd { _ = "STUB: not implemented"; return nil }
 
-func (cmd *ScanCmd) SetVal(keys []string, cursor uint64) {
-	cmd.keys = keys
-	cmd.cursor = cursor
-}
+func (cmd *ScanCmd) SetVal(keys []string, cursor uint64) { _ = "STUB: not implemented"; return }
 
-func (cmd *ScanCmd) Val() (keys []string, cursor uint64) {
-	return cmd.keys, cmd.cursor
-}
+func (cmd *ScanCmd) Val() (keys []string, cursor uint64) { _ = "STUB: not implemented"; return nil, 0 }
 
-func (cmd *ScanCmd) SetErr(err error) {
-	cmd.err = err
-}
+func (cmd *ScanCmd) SetErr(err error) { _ = "STUB: not implemented"; return }
 
-func (cmd *ScanCmd) Err() error {
-	return cmd.err
-}
+func (cmd *ScanCmd) Err() error { _ = "STUB: not implemented"; return nil }
 
 func (cmd *ScanCmd) Result() (keys []string, cursor uint64, err error) {
-	return cmd.keys, cmd.cursor, cmd.err
+	_ = "STUB: not implemented"
+	return nil, 0, nil
 }
 
 type KeyValue struct {
@@ -778,21 +307,11 @@ type KeyValueSliceCmd struct {
 	baseCmd[[]KeyValue]
 }
 
-func (cmd *KeyValueSliceCmd) from(res rueidis.RedisResult) {
-	arr, err := res.ToArray()
-	for _, a := range arr {
-		kv, _ := a.AsStrSlice()
-		for i := 0; i < len(kv); i += 2 {
-			cmd.val = append(cmd.val, KeyValue{Key: kv[i], Value: kv[i+1]})
-		}
-	}
-	cmd.SetErr(err)
-}
+func (cmd *KeyValueSliceCmd) from(res rueidis.RedisResult) { _ = "STUB: not implemented"; return }
 
 func newKeyValueSliceCmd(res rueidis.RedisResult) *KeyValueSliceCmd {
-	cmd := &KeyValueSliceCmd{}
-	cmd.from(res)
-	return cmd
+	_ = "STUB: not implemented"
+	return nil
 }
 
 type KeyValuesCmd struct {
@@ -800,35 +319,21 @@ type KeyValuesCmd struct {
 	val rueidis.KeyValues
 }
 
-func (cmd *KeyValuesCmd) from(res rueidis.RedisResult) {
-	cmd.val, cmd.err = res.AsLMPop()
-}
+func (cmd *KeyValuesCmd) from(res rueidis.RedisResult) { _ = "STUB: not implemented"; return }
 
-func newKeyValuesCmd(res rueidis.RedisResult) *KeyValuesCmd {
-	cmd := &KeyValuesCmd{}
-	cmd.from(res)
-	return cmd
-}
+func newKeyValuesCmd(res rueidis.RedisResult) *KeyValuesCmd { _ = "STUB: not implemented"; return nil }
 
-func (cmd *KeyValuesCmd) SetVal(key string, val []string) {
-	cmd.val.Key = key
-	cmd.val.Values = val
-}
+func (cmd *KeyValuesCmd) SetVal(key string, val []string) { _ = "STUB: not implemented"; return }
 
-func (cmd *KeyValuesCmd) SetErr(err error) {
-	cmd.err = err
-}
+func (cmd *KeyValuesCmd) SetErr(err error) { _ = "STUB: not implemented"; return }
 
-func (cmd *KeyValuesCmd) Val() (string, []string) {
-	return cmd.val.Key, cmd.val.Values
-}
+func (cmd *KeyValuesCmd) Val() (string, []string) { _ = "STUB: not implemented"; return "", nil }
 
-func (cmd *KeyValuesCmd) Err() error {
-	return cmd.err
-}
+func (cmd *KeyValuesCmd) Err() error { _ = "STUB: not implemented"; return nil }
 
 func (cmd *KeyValuesCmd) Result() (string, []string, error) {
-	return cmd.val.Key, cmd.val.Values, cmd.err
+	_ = "STUB: not implemented"
+	return "", nil, nil
 }
 
 type KeyFlags struct {
@@ -840,24 +345,9 @@ type KeyFlagsCmd struct {
 	baseCmd[[]KeyFlags]
 }
 
-func (cmd *KeyFlagsCmd) from(res rueidis.RedisResult) {
-	if cmd.err = res.Error(); cmd.err == nil {
-		kfs, _ := res.ToArray()
-		cmd.val = make([]KeyFlags, len(kfs))
-		for i := 0; i < len(kfs); i++ {
-			if kf, _ := kfs[i].ToArray(); len(kf) >= 2 {
-				cmd.val[i].Key, _ = kf[0].ToString()
-				cmd.val[i].Flags, _ = kf[1].AsStrSlice()
-			}
-		}
-	}
-}
+func (cmd *KeyFlagsCmd) from(res rueidis.RedisResult) { _ = "STUB: not implemented"; return }
 
-func newKeyFlagsCmd(res rueidis.RedisResult) *KeyFlagsCmd {
-	cmd := &KeyFlagsCmd{}
-	cmd.from(res)
-	return cmd
-}
+func newKeyFlagsCmd(res rueidis.RedisResult) *KeyFlagsCmd { _ = "STUB: not implemented"; return nil }
 
 type ZSliceWithKeyCmd struct {
 	err error
@@ -865,152 +355,75 @@ type ZSliceWithKeyCmd struct {
 	val []Z
 }
 
-func (cmd *ZSliceWithKeyCmd) from(res rueidis.RedisResult) {
-	v, err := res.AsZMPop()
-	if err != nil {
-		cmd.err = err
-		return
-	}
-	val := make([]Z, 0, len(v.Values))
-	for _, s := range v.Values {
-		val = append(val, Z{Member: s.Member, Score: s.Score})
-	}
-	cmd.key, cmd.val = v.Key, val
-}
+func (cmd *ZSliceWithKeyCmd) from(res rueidis.RedisResult) { _ = "STUB: not implemented"; return }
 
 func newZSliceWithKeyCmd(res rueidis.RedisResult) *ZSliceWithKeyCmd {
-	cmd := &ZSliceWithKeyCmd{}
-	cmd.from(res)
-	return cmd
+	_ = "STUB: not implemented"
+	return nil
 }
 
-func (cmd *ZSliceWithKeyCmd) SetVal(key string, val []Z) {
-	cmd.key = key
-	cmd.val = val
-}
+func (cmd *ZSliceWithKeyCmd) SetVal(key string, val []Z) { _ = "STUB: not implemented"; return }
 
-func (cmd *ZSliceWithKeyCmd) SetErr(err error) {
-	cmd.err = err
-}
+func (cmd *ZSliceWithKeyCmd) SetErr(err error) { _ = "STUB: not implemented"; return }
 
-func (cmd *ZSliceWithKeyCmd) Val() (string, []Z) {
-	return cmd.key, cmd.val
-}
+func (cmd *ZSliceWithKeyCmd) Val() (string, []Z) { _ = "STUB: not implemented"; return "", nil }
 
-func (cmd *ZSliceWithKeyCmd) Err() error {
-	return cmd.err
-}
+func (cmd *ZSliceWithKeyCmd) Err() error { _ = "STUB: not implemented"; return nil }
 
 func (cmd *ZSliceWithKeyCmd) Result() (string, []Z, error) {
-	return cmd.key, cmd.val, cmd.err
+	_ = "STUB: not implemented"
+	return "", nil, nil
 }
 
 type StringStringMapCmd struct {
 	baseCmd[map[string]string]
 }
 
-func (cmd *StringStringMapCmd) from(res rueidis.RedisResult) {
-	val, err := res.AsStrMap()
-	cmd.SetErr(err)
-	cmd.SetVal(val)
-	cmd.setIsCacheHit(res.IsCacheHit())
-}
+func (cmd *StringStringMapCmd) from(res rueidis.RedisResult) { _ = "STUB: not implemented"; return }
 
 func newStringStringMapCmd(res rueidis.RedisResult) *StringStringMapCmd {
-	cmd := &StringStringMapCmd{}
-	cmd.from(res)
-	return cmd
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Scan scans the results from the map into a destination struct. The map keys
 // are matched in the Redis struct fields by the `redis:"field"` tag.
-func (cmd *StringStringMapCmd) Scan(dest interface{}) error {
-	if cmd.Err() != nil {
-		return cmd.Err()
-	}
-
-	strct, err := Struct(dest)
-	if err != nil {
-		return err
-	}
-
-	for k, v := range cmd.val {
-		if err := strct.Scan(k, v); err != nil {
-			return err
-		}
-	}
-
-	return nil
-}
+func (cmd *StringStringMapCmd) Scan(dest interface{}) error { _ = "STUB: not implemented"; return nil }
 
 type StringIntMapCmd struct {
 	baseCmd[map[string]int64]
 }
 
-func (cmd *StringIntMapCmd) from(res rueidis.RedisResult) {
-	val, err := res.AsIntMap()
-	cmd.SetErr(err)
-	cmd.SetVal(val)
-}
+func (cmd *StringIntMapCmd) from(res rueidis.RedisResult) { _ = "STUB: not implemented"; return }
 
 func newStringIntMapCmd(res rueidis.RedisResult) *StringIntMapCmd {
-	cmd := &StringIntMapCmd{}
-	cmd.from(res)
-	return cmd
+	_ = "STUB: not implemented"
+	return nil
 }
 
 type StringStructMapCmd struct {
 	baseCmd[map[string]struct{}]
 }
 
-func (cmd *StringStructMapCmd) from(res rueidis.RedisResult) {
-	strSlice, err := res.AsStrSlice()
-	if err != nil {
-		cmd.SetErr(err)
-		return
-	}
-	val := make(map[string]struct{}, len(strSlice))
-	for _, v := range strSlice {
-		val[v] = struct{}{}
-	}
-	cmd.SetVal(val)
-}
+func (cmd *StringStructMapCmd) from(res rueidis.RedisResult) { _ = "STUB: not implemented"; return }
 
 func newStringStructMapCmd(res rueidis.RedisResult) *StringStructMapCmd {
-	cmd := &StringStructMapCmd{}
-	cmd.from(res)
-	return cmd
+	_ = "STUB: not implemented"
+	return nil
 }
 
 type XMessageSliceCmd struct {
 	baseCmd[[]XMessage]
 }
 
-func (cmd *XMessageSliceCmd) from(res rueidis.RedisResult) {
-	val, err := res.AsXRange()
-	cmd.SetErr(err)
-	cmd.val = make([]XMessage, len(val))
-	for i, r := range val {
-		cmd.val[i] = newXMessage(r)
-	}
-}
+func (cmd *XMessageSliceCmd) from(res rueidis.RedisResult) { _ = "STUB: not implemented"; return }
 
 func newXMessageSliceCmd(res rueidis.RedisResult) *XMessageSliceCmd {
-	cmd := &XMessageSliceCmd{}
-	cmd.from(res)
-	return cmd
+	_ = "STUB: not implemented"
+	return nil
 }
 
-func newXMessage(r rueidis.XRangeEntry) XMessage {
-	if r.FieldValues == nil {
-		return XMessage{ID: r.ID, Values: nil}
-	}
-	m := XMessage{ID: r.ID, Values: make(map[string]any, len(r.FieldValues))}
-	for k, v := range r.FieldValues {
-		m.Values[k] = v
-	}
-	return m
-}
+func newXMessage(r rueidis.XRangeEntry) XMessage { _ = "STUB: not implemented"; return *new(XMessage) }
 
 type XStream struct {
 	Stream   string
@@ -1021,27 +434,11 @@ type XStreamSliceCmd struct {
 	baseCmd[[]XStream]
 }
 
-func (cmd *XStreamSliceCmd) from(res rueidis.RedisResult) {
-	streams, err := res.AsXRead()
-	if err != nil {
-		cmd.SetErr(err)
-		return
-	}
-	val := make([]XStream, 0, len(streams))
-	for name, messages := range streams {
-		msgs := make([]XMessage, 0, len(messages))
-		for _, r := range messages {
-			msgs = append(msgs, newXMessage(r))
-		}
-		val = append(val, XStream{Stream: name, Messages: msgs})
-	}
-	cmd.SetVal(val)
-}
+func (cmd *XStreamSliceCmd) from(res rueidis.RedisResult) { _ = "STUB: not implemented"; return }
 
 func newXStreamSliceCmd(res rueidis.RedisResult) *XStreamSliceCmd {
-	cmd := &XStreamSliceCmd{}
-	cmd.from(res)
-	return cmd
+	_ = "STUB: not implemented"
+	return nil
 }
 
 type XPending struct {
@@ -1055,74 +452,9 @@ type XPendingCmd struct {
 	baseCmd[XPending]
 }
 
-func (cmd *XPendingCmd) from(res rueidis.RedisResult) {
-	arr, err := res.ToArray()
-	if err != nil {
-		cmd.SetErr(err)
-		return
-	}
-	if len(arr) < 4 {
-		cmd.SetErr(fmt.Errorf("got %d, wanted 4", len(arr)))
-		return
-	}
-	count, err := arr[0].AsInt64()
-	if err != nil {
-		cmd.SetErr(err)
-		return
-	}
-	lower, err := arr[1].ToString()
-	if err != nil {
-		cmd.SetErr(err)
-		return
-	}
-	higher, err := arr[2].ToString()
-	if err != nil {
-		cmd.SetErr(err)
-		return
-	}
-	val := XPending{
-		Count:  count,
-		Lower:  lower,
-		Higher: higher,
-	}
-	consumerArr, err := arr[3].ToArray()
-	if err != nil {
-		cmd.SetErr(err)
-		return
-	}
-	for _, v := range consumerArr {
-		consumer, err := v.ToArray()
-		if err != nil {
-			cmd.SetErr(err)
-			return
-		}
-		if len(consumer) < 2 {
-			cmd.SetErr(fmt.Errorf("got %d, wanted 2", len(arr)))
-			return
-		}
-		consumerName, err := consumer[0].ToString()
-		if err != nil {
-			cmd.SetErr(err)
-			return
-		}
-		consumerPending, err := consumer[1].AsInt64()
-		if err != nil {
-			cmd.SetErr(err)
-			return
-		}
-		if val.Consumers == nil {
-			val.Consumers = make(map[string]int64)
-		}
-		val.Consumers[consumerName] = consumerPending
-	}
-	cmd.SetVal(val)
-}
+func (cmd *XPendingCmd) from(res rueidis.RedisResult) { _ = "STUB: not implemented"; return }
 
-func newXPendingCmd(res rueidis.RedisResult) *XPendingCmd {
-	cmd := &XPendingCmd{}
-	cmd.from(res)
-	return cmd
-}
+func newXPendingCmd(res rueidis.RedisResult) *XPendingCmd { _ = "STUB: not implemented"; return nil }
 
 type XPendingExt struct {
 	ID         string
@@ -1135,57 +467,11 @@ type XPendingExtCmd struct {
 	baseCmd[[]XPendingExt]
 }
 
-func (cmd *XPendingExtCmd) from(res rueidis.RedisResult) {
-	arrs, err := res.ToArray()
-	if err != nil {
-		cmd.SetErr(err)
-		return
-	}
-	val := make([]XPendingExt, 0, len(arrs))
-	for _, v := range arrs {
-		arr, err := v.ToArray()
-		if err != nil {
-			cmd.SetErr(err)
-			return
-		}
-		if len(arr) < 4 {
-			cmd.SetErr(fmt.Errorf("got %d, wanted 4", len(arr)))
-			return
-		}
-		id, err := arr[0].ToString()
-		if err != nil {
-			cmd.SetErr(err)
-			return
-		}
-		consumer, err := arr[1].ToString()
-		if err != nil {
-			cmd.SetErr(err)
-			return
-		}
-		idle, err := arr[2].AsInt64()
-		if err != nil {
-			cmd.SetErr(err)
-			return
-		}
-		retryCount, err := arr[3].AsInt64()
-		if err != nil {
-			cmd.SetErr(err)
-			return
-		}
-		val = append(val, XPendingExt{
-			ID:         id,
-			Consumer:   consumer,
-			Idle:       time.Duration(idle) * time.Millisecond,
-			RetryCount: retryCount,
-		})
-	}
-	cmd.SetVal(val)
-}
+func (cmd *XPendingExtCmd) from(res rueidis.RedisResult) { _ = "STUB: not implemented"; return }
 
 func newXPendingExtCmd(res rueidis.RedisResult) *XPendingExtCmd {
-	cmd := &XPendingExtCmd{}
-	cmd.from(res)
-	return cmd
+	_ = "STUB: not implemented"
+	return nil
 }
 
 type XAutoClaimCmd struct {
@@ -1194,58 +480,27 @@ type XAutoClaimCmd struct {
 	val   []XMessage
 }
 
-func (cmd *XAutoClaimCmd) from(res rueidis.RedisResult) {
-	arr, err := res.ToArray()
-	if err != nil {
-		cmd.SetErr(err)
-		return
-	}
-	if len(arr) < 2 {
-		cmd.SetErr(fmt.Errorf("got %d, wanted 2", len(arr)))
-		return
-	}
-	start, err := arr[0].ToString()
-	if err != nil {
-		cmd.SetErr(err)
-		return
-	}
-	ranges, err := arr[1].AsXRange()
-	if err != nil {
-		cmd.SetErr(err)
-		return
-	}
-	val := make([]XMessage, 0, len(ranges))
-	for _, r := range ranges {
-		val = append(val, newXMessage(r))
-	}
-	cmd.val, cmd.start = val, start
-}
+func (cmd *XAutoClaimCmd) from(res rueidis.RedisResult) { _ = "STUB: not implemented"; return }
 
 func newXAutoClaimCmd(res rueidis.RedisResult) *XAutoClaimCmd {
-	cmd := &XAutoClaimCmd{}
-	cmd.from(res)
-	return cmd
+	_ = "STUB: not implemented"
+	return nil
 }
 
-func (cmd *XAutoClaimCmd) SetVal(val []XMessage, start string) {
-	cmd.val = val
-	cmd.start = start
-}
+func (cmd *XAutoClaimCmd) SetVal(val []XMessage, start string) { _ = "STUB: not implemented"; return }
 
-func (cmd *XAutoClaimCmd) SetErr(err error) {
-	cmd.err = err
-}
+func (cmd *XAutoClaimCmd) SetErr(err error) { _ = "STUB: not implemented"; return }
 
 func (cmd *XAutoClaimCmd) Val() (messages []XMessage, start string) {
-	return cmd.val, cmd.start
+	_ = "STUB: not implemented"
+	return nil, ""
 }
 
-func (cmd *XAutoClaimCmd) Err() error {
-	return cmd.err
-}
+func (cmd *XAutoClaimCmd) Err() error { _ = "STUB: not implemented"; return nil }
 
 func (cmd *XAutoClaimCmd) Result() (messages []XMessage, start string, err error) {
-	return cmd.val, cmd.start, cmd.err
+	_ = "STUB: not implemented"
+	return nil, "", nil
 }
 
 type XAutoClaimJustIDCmd struct {
@@ -1254,54 +509,30 @@ type XAutoClaimJustIDCmd struct {
 	val   []string
 }
 
-func (cmd *XAutoClaimJustIDCmd) from(res rueidis.RedisResult) {
-	arr, err := res.ToArray()
-	if err != nil {
-		cmd.SetErr(err)
-		return
-	}
-	if len(arr) < 2 {
-		cmd.SetErr(fmt.Errorf("got %d, wanted 2", len(arr)))
-		return
-	}
-	start, err := arr[0].ToString()
-	if err != nil {
-		cmd.SetErr(err)
-		return
-	}
-	val, err := arr[1].AsStrSlice()
-	if err != nil {
-		cmd.SetErr(err)
-		return
-	}
-	cmd.val, cmd.start = val, start
-}
+func (cmd *XAutoClaimJustIDCmd) from(res rueidis.RedisResult) { _ = "STUB: not implemented"; return }
 
 func newXAutoClaimJustIDCmd(res rueidis.RedisResult) *XAutoClaimJustIDCmd {
-	cmd := &XAutoClaimJustIDCmd{}
-	cmd.from(res)
-	return cmd
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func (cmd *XAutoClaimJustIDCmd) SetVal(val []string, start string) {
-	cmd.val = val
-	cmd.start = start
+	_ = "STUB: not implemented"
+	return
 }
 
-func (cmd *XAutoClaimJustIDCmd) SetErr(err error) {
-	cmd.err = err
-}
+func (cmd *XAutoClaimJustIDCmd) SetErr(err error) { _ = "STUB: not implemented"; return }
 
 func (cmd *XAutoClaimJustIDCmd) Val() (ids []string, start string) {
-	return cmd.val, cmd.start
+	_ = "STUB: not implemented"
+	return nil, ""
 }
 
-func (cmd *XAutoClaimJustIDCmd) Err() error {
-	return cmd.err
-}
+func (cmd *XAutoClaimJustIDCmd) Err() error { _ = "STUB: not implemented"; return nil }
 
 func (cmd *XAutoClaimJustIDCmd) Result() (ids []string, start string, err error) {
-	return cmd.val, cmd.start, cmd.err
+	_ = "STUB: not implemented"
+	return nil, "", nil
 }
 
 type XInfoGroup struct {
@@ -1317,47 +548,11 @@ type XInfoGroupsCmd struct {
 	baseCmd[[]XInfoGroup]
 }
 
-func (cmd *XInfoGroupsCmd) from(res rueidis.RedisResult) {
-	arr, err := res.ToArray()
-	if err != nil {
-		cmd.SetErr(err)
-		return
-	}
-	groupInfos := make([]XInfoGroup, 0, len(arr))
-	for _, v := range arr {
-		info, err := v.AsMap()
-		if err != nil {
-			cmd.SetErr(err)
-			return
-		}
-		var group XInfoGroup
-		if attr, ok := info["name"]; ok {
-			group.Name, _ = attr.ToString()
-		}
-		if attr, ok := info["consumers"]; ok {
-			group.Consumers, _ = attr.AsInt64()
-		}
-		if attr, ok := info["pending"]; ok {
-			group.Pending, _ = attr.AsInt64()
-		}
-		if attr, ok := info["entries-read"]; ok {
-			group.EntriesRead, _ = attr.AsInt64()
-		}
-		if attr, ok := info["lag"]; ok {
-			group.Lag, _ = attr.AsInt64()
-		}
-		if attr, ok := info["last-delivered-id"]; ok {
-			group.LastDeliveredID, _ = attr.ToString()
-		}
-		groupInfos = append(groupInfos, group)
-	}
-	cmd.SetVal(groupInfos)
-}
+func (cmd *XInfoGroupsCmd) from(res rueidis.RedisResult) { _ = "STUB: not implemented"; return }
 
 func newXInfoGroupsCmd(res rueidis.RedisResult) *XInfoGroupsCmd {
-	cmd := &XInfoGroupsCmd{}
-	cmd.from(res)
-	return cmd
+	_ = "STUB: not implemented"
+	return nil
 }
 
 type XInfoStream struct {
@@ -1382,72 +577,11 @@ type XInfoStreamCmd struct {
 	baseCmd[XInfoStream]
 }
 
-func (cmd *XInfoStreamCmd) from(res rueidis.RedisResult) {
-	kv, err := res.AsMap()
-	if err != nil {
-		cmd.SetErr(err)
-		return
-	}
-	var val XInfoStream
-	if v, ok := kv["length"]; ok {
-		val.Length, _ = v.AsInt64()
-	}
-	if v, ok := kv["radix-tree-keys"]; ok {
-		val.RadixTreeKeys, _ = v.AsInt64()
-	}
-	if v, ok := kv["radix-tree-nodes"]; ok {
-		val.RadixTreeNodes, _ = v.AsInt64()
-	}
-	if v, ok := kv["groups"]; ok {
-		val.Groups, _ = v.AsInt64()
-	}
-	if v, ok := kv["entries-added"]; ok {
-		val.EntriesAdded, _ = v.AsInt64()
-	}
-	if v, ok := kv["idmp-duration"]; ok {
-		val.IDMPDuration, _ = v.AsInt64()
-	}
-	if v, ok := kv["idmp-maxsize"]; ok {
-		val.IDMPMaxSize, _ = v.AsInt64()
-	}
-	if v, ok := kv["pids-tracked"]; ok {
-		val.PIDsTracked, _ = v.AsInt64()
-	}
-	if v, ok := kv["iids-tracked"]; ok {
-		val.IIDsTracked, _ = v.AsInt64()
-	}
-	if v, ok := kv["iids-added"]; ok {
-		val.IIDsAdded, _ = v.AsInt64()
-	}
-	if v, ok := kv["iids-duplicates"]; ok {
-		val.IIDsDuplicates, _ = v.AsInt64()
-	}
-	if v, ok := kv["last-generated-id"]; ok {
-		val.LastGeneratedID, _ = v.ToString()
-	}
-	if v, ok := kv["max-deleted-entry-id"]; ok {
-		val.MaxDeletedEntryID, _ = v.ToString()
-	}
-	if v, ok := kv["recorded-first-entry-id"]; ok {
-		val.RecordedFirstEntryID, _ = v.ToString()
-	}
-	if v, ok := kv["first-entry"]; ok {
-		if r, err := v.AsXRangeEntry(); err == nil {
-			val.FirstEntry = newXMessage(r)
-		}
-	}
-	if v, ok := kv["last-entry"]; ok {
-		if r, err := v.AsXRangeEntry(); err == nil {
-			val.LastEntry = newXMessage(r)
-		}
-	}
-	cmd.SetVal(val)
-}
+func (cmd *XInfoStreamCmd) from(res rueidis.RedisResult) { _ = "STUB: not implemented"; return }
 
 func newXInfoStreamCmd(res rueidis.RedisResult) *XInfoStreamCmd {
-	cmd := &XInfoStreamCmd{}
-	cmd.from(res)
-	return cmd
+	_ = "STUB: not implemented"
+	return nil
 }
 
 type XInfoStreamConsumerPending struct {
@@ -1502,216 +636,26 @@ type XInfoStreamFullCmd struct {
 	baseCmd[XInfoStreamFull]
 }
 
-func (cmd *XInfoStreamFullCmd) from(res rueidis.RedisResult) {
-	kv, err := res.AsMap()
-	if err != nil {
-		cmd.SetErr(err)
-		return
-	}
-	var val XInfoStreamFull
-	if v, ok := kv["length"]; ok {
-		val.Length, _ = v.AsInt64()
-	}
-	if v, ok := kv["radix-tree-keys"]; ok {
-		val.RadixTreeKeys, _ = v.AsInt64()
-	}
-	if v, ok := kv["radix-tree-nodes"]; ok {
-		val.RadixTreeNodes, _ = v.AsInt64()
-	}
-	if v, ok := kv["entries-added"]; ok {
-		val.EntriesAdded, _ = v.AsInt64()
-	}
-	if v, ok := kv["idmp-duration"]; ok {
-		val.IDMPDuration, _ = v.AsInt64()
-	}
-	if v, ok := kv["idmp-maxsize"]; ok {
-		val.IDMPMaxSize, _ = v.AsInt64()
-	}
-	if v, ok := kv["pids-tracked"]; ok {
-		val.PIDsTracked, _ = v.AsInt64()
-	}
-	if v, ok := kv["iids-tracked"]; ok {
-		val.IIDsTracked, _ = v.AsInt64()
-	}
-	if v, ok := kv["iids-added"]; ok {
-		val.IIDsAdded, _ = v.AsInt64()
-	}
-	if v, ok := kv["iids-duplicates"]; ok {
-		val.IIDsDuplicates, _ = v.AsInt64()
-	}
-	if v, ok := kv["last-generated-id"]; ok {
-		val.LastGeneratedID, _ = v.ToString()
-	}
-	if v, ok := kv["max-deleted-entry-id"]; ok {
-		val.MaxDeletedEntryID, _ = v.ToString()
-	}
-	if v, ok := kv["recorded-first-entry-id"]; ok {
-		val.RecordedFirstEntryID, _ = v.ToString()
-	}
-	if v, ok := kv["groups"]; ok {
-		val.Groups, err = readStreamGroups(v)
-		if err != nil {
-			cmd.SetErr(err)
-			return
-		}
-	}
-	if v, ok := kv["entries"]; ok {
-		ranges, err := v.AsXRange()
-		if err != nil {
-			cmd.SetErr(err)
-			return
-		}
-		val.Entries = make([]XMessage, 0, len(ranges))
-		for _, r := range ranges {
-			val.Entries = append(val.Entries, newXMessage(r))
-		}
-	}
-	cmd.SetVal(val)
-}
+func (cmd *XInfoStreamFullCmd) from(res rueidis.RedisResult) { _ = "STUB: not implemented"; return }
 
 func newXInfoStreamFullCmd(res rueidis.RedisResult) *XInfoStreamFullCmd {
-	cmd := &XInfoStreamFullCmd{}
-	cmd.from(res)
-	return cmd
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func readStreamGroups(res rueidis.RedisMessage) ([]XInfoStreamGroup, error) {
-	arr, err := res.ToArray()
-	if err != nil {
-		return nil, err
-	}
-	groups := make([]XInfoStreamGroup, 0, len(arr))
-	for _, v := range arr {
-		info, err := v.AsMap()
-		if err != nil {
-			return nil, err
-		}
-		var group XInfoStreamGroup
-		if attr, ok := info["name"]; ok {
-			group.Name, _ = attr.ToString()
-		}
-		if attr, ok := info["last-delivered-id"]; ok {
-			group.LastDeliveredID, _ = attr.ToString()
-		}
-		if attr, ok := info["entries-read"]; ok {
-			group.EntriesRead, _ = attr.AsInt64()
-		}
-		if attr, ok := info["lag"]; ok {
-			group.Lag, _ = attr.AsInt64()
-		}
-		if attr, ok := info["pel-count"]; ok {
-			group.PelCount, _ = attr.AsInt64()
-		}
-		if attr, ok := info["pending"]; ok {
-			group.Pending, err = readXInfoStreamGroupPending(attr)
-			if err != nil {
-				return nil, err
-			}
-		}
-		if attr, ok := info["consumers"]; ok {
-			group.Consumers, err = readXInfoStreamConsumers(attr)
-			if err != nil {
-				return nil, err
-			}
-		}
-		groups = append(groups, group)
-	}
-	return groups, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func readXInfoStreamGroupPending(res rueidis.RedisMessage) ([]XInfoStreamGroupPending, error) {
-	arr, err := res.ToArray()
-	if err != nil {
-		return nil, err
-	}
-	pending := make([]XInfoStreamGroupPending, 0, len(arr))
-	for _, v := range arr {
-		info, err := v.ToArray()
-		if err != nil {
-			return nil, err
-		}
-		if len(info) < 4 {
-			return nil, fmt.Errorf("got %d, wanted 4", len(arr))
-		}
-		var p XInfoStreamGroupPending
-		p.ID, err = info[0].ToString()
-		if err != nil {
-			return nil, err
-		}
-		p.Consumer, err = info[1].ToString()
-		if err != nil {
-			return nil, err
-		}
-		delivery, err := info[2].AsInt64()
-		if err != nil {
-			return nil, err
-		}
-		p.DeliveryTime = time.Unix(delivery/1000, delivery%1000*int64(time.Millisecond))
-		p.DeliveryCount, err = info[3].AsInt64()
-		if err != nil {
-			return nil, err
-		}
-		pending = append(pending, p)
-	}
-	return pending, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func readXInfoStreamConsumers(res rueidis.RedisMessage) ([]XInfoStreamConsumer, error) {
-	arr, err := res.ToArray()
-	if err != nil {
-		return nil, err
-	}
-	consumer := make([]XInfoStreamConsumer, 0, len(arr))
-	for _, v := range arr {
-		info, err := v.AsMap()
-		if err != nil {
-			return nil, err
-		}
-		var c XInfoStreamConsumer
-		if attr, ok := info["name"]; ok {
-			c.Name, _ = attr.ToString()
-		}
-		if attr, ok := info["seen-time"]; ok {
-			seen, _ := attr.AsInt64()
-			c.SeenTime = time.Unix(seen/1000, seen%1000*int64(time.Millisecond))
-		}
-		if attr, ok := info["pel-count"]; ok {
-			c.PelCount, _ = attr.AsInt64()
-		}
-		if attr, ok := info["pending"]; ok {
-			pending, err := attr.ToArray()
-			if err != nil {
-				return nil, err
-			}
-			c.Pending = make([]XInfoStreamConsumerPending, 0, len(pending))
-			for _, v := range pending {
-				pendingInfo, err := v.ToArray()
-				if err != nil {
-					return nil, err
-				}
-				if len(pendingInfo) < 3 {
-					return nil, fmt.Errorf("got %d, wanted 3", len(arr))
-				}
-				var p XInfoStreamConsumerPending
-				p.ID, err = pendingInfo[0].ToString()
-				if err != nil {
-					return nil, err
-				}
-				delivery, err := pendingInfo[1].AsInt64()
-				if err != nil {
-					return nil, err
-				}
-				p.DeliveryTime = time.Unix(delivery/1000, delivery%1000*int64(time.Millisecond))
-				p.DeliveryCount, err = pendingInfo[2].AsInt64()
-				if err != nil {
-					return nil, err
-				}
-				c.Pending = append(c.Pending, p)
-			}
-		}
-		consumer = append(consumer, c)
-	}
-	return consumer, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 type XInfoConsumer struct {
@@ -1723,39 +667,11 @@ type XInfoConsumersCmd struct {
 	baseCmd[[]XInfoConsumer]
 }
 
-func (cmd *XInfoConsumersCmd) from(res rueidis.RedisResult) {
-	arr, err := res.ToArray()
-	if err != nil {
-		cmd.SetErr(err)
-		return
-	}
-	val := make([]XInfoConsumer, 0, len(arr))
-	for _, v := range arr {
-		info, err := v.AsMap()
-		if err != nil {
-			cmd.SetErr(err)
-			return
-		}
-		var consumer XInfoConsumer
-		if attr, ok := info["name"]; ok {
-			consumer.Name, _ = attr.ToString()
-		}
-		if attr, ok := info["pending"]; ok {
-			consumer.Pending, _ = attr.AsInt64()
-		}
-		if attr, ok := info["idle"]; ok {
-			idle, _ := attr.AsInt64()
-			consumer.Idle = time.Duration(idle) * time.Millisecond
-		}
-		val = append(val, consumer)
-	}
-	cmd.SetVal(val)
-}
+func (cmd *XInfoConsumersCmd) from(res rueidis.RedisResult) { _ = "STUB: not implemented"; return }
 
 func newXInfoConsumersCmd(res rueidis.RedisResult) *XInfoConsumersCmd {
-	cmd := &XInfoConsumersCmd{}
-	cmd.from(res)
-	return cmd
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Z represents sorted set member.
@@ -1781,40 +697,9 @@ type ZWithKeyCmd struct {
 	baseCmd[ZWithKey]
 }
 
-func (cmd *ZWithKeyCmd) from(res rueidis.RedisResult) {
-	arr, err := res.ToArray()
-	if err != nil {
-		cmd.SetErr(err)
-		return
-	}
-	if len(arr) < 3 {
-		cmd.SetErr(fmt.Errorf("got %d, wanted 3", len(arr)))
-		return
-	}
-	val := ZWithKey{}
-	val.Key, err = arr[0].ToString()
-	if err != nil {
-		cmd.SetErr(err)
-		return
-	}
-	val.Member, err = arr[1].ToString()
-	if err != nil {
-		cmd.SetErr(err)
-		return
-	}
-	val.Score, err = arr[2].AsFloat64()
-	if err != nil {
-		cmd.SetErr(err)
-		return
-	}
-	cmd.SetVal(val)
-}
+func (cmd *ZWithKeyCmd) from(res rueidis.RedisResult) { _ = "STUB: not implemented"; return }
 
-func newZWithKeyCmd(res rueidis.RedisResult) *ZWithKeyCmd {
-	cmd := &ZWithKeyCmd{}
-	cmd.from(res)
-	return cmd
-}
+func newZWithKeyCmd(res rueidis.RedisResult) *ZWithKeyCmd { _ = "STUB: not implemented"; return nil }
 
 type RankScore struct {
 	Rank  int64
@@ -1825,55 +710,20 @@ type RankWithScoreCmd struct {
 	baseCmd[RankScore]
 }
 
-func (cmd *RankWithScoreCmd) from(res rueidis.RedisResult) {
-	if cmd.err = res.Error(); cmd.err == nil {
-		vs, _ := res.ToArray()
-		if len(vs) >= 2 {
-			cmd.val.Rank, _ = vs[0].AsInt64()
-			cmd.val.Score, _ = vs[1].AsFloat64()
-		}
-	}
-	cmd.setIsCacheHit(res.IsCacheHit())
-}
+func (cmd *RankWithScoreCmd) from(res rueidis.RedisResult) { _ = "STUB: not implemented"; return }
 
 func newRankWithScoreCmd(res rueidis.RedisResult) *RankWithScoreCmd {
-	cmd := &RankWithScoreCmd{}
-	cmd.from(res)
-	return cmd
+	_ = "STUB: not implemented"
+	return nil
 }
 
 type TimeCmd struct {
 	baseCmd[time.Time]
 }
 
-func (cmd *TimeCmd) from(res rueidis.RedisResult) {
-	arr, err := res.ToArray()
-	if err != nil {
-		cmd.SetErr(err)
-		return
-	}
-	if len(arr) < 2 {
-		cmd.SetErr(fmt.Errorf("got %d, wanted 2", len(arr)))
-		return
-	}
-	sec, err := arr[0].AsInt64()
-	if err != nil {
-		cmd.SetErr(err)
-		return
-	}
-	microSec, err := arr[1].AsInt64()
-	if err != nil {
-		cmd.SetErr(err)
-		return
-	}
-	cmd.SetVal(time.Unix(sec, microSec*1000))
-}
+func (cmd *TimeCmd) from(res rueidis.RedisResult) { _ = "STUB: not implemented"; return }
 
-func newTimeCmd(res rueidis.RedisResult) *TimeCmd {
-	cmd := &TimeCmd{}
-	cmd.from(res)
-	return cmd
-}
+func newTimeCmd(res rueidis.RedisResult) *TimeCmd { _ = "STUB: not implemented"; return nil }
 
 type ClusterNode struct {
 	ID   string
@@ -1890,153 +740,18 @@ type ClusterSlotsCmd struct {
 	baseCmd[[]ClusterSlot]
 }
 
-func (cmd *ClusterSlotsCmd) from(res rueidis.RedisResult) {
-	arr, err := res.ToArray()
-	if err != nil {
-		cmd.SetErr(err)
-		return
-	}
-	val := make([]ClusterSlot, 0, len(arr))
-	for _, v := range arr {
-		slot, err := v.ToArray()
-		if err != nil {
-			cmd.SetErr(err)
-			return
-		}
-		if len(slot) < 2 {
-			cmd.SetErr(fmt.Errorf("got %d, expected at least 2", len(slot)))
-			return
-		}
-		start, err := slot[0].AsInt64()
-		if err != nil {
-			cmd.SetErr(err)
-			return
-		}
-		end, err := slot[1].AsInt64()
-		if err != nil {
-			cmd.SetErr(err)
-			return
-		}
-		nodes := make([]ClusterNode, len(slot)-2)
-		for i, j := 2, 0; i < len(slot); i, j = i+1, j+1 {
-			node, err := slot[i].ToArray()
-			if err != nil {
-				cmd.SetErr(err)
-				return
-			}
-			if len(node) < 2 {
-				cmd.SetErr(fmt.Errorf("got %d, expected 2 or 3", len(node)))
-				return
-			}
-			ip, err := node[0].ToString()
-			if err != nil {
-				cmd.SetErr(err)
-				return
-			}
-			port, err := node[1].AsInt64()
-			if err != nil {
-				cmd.SetErr(err)
-				return
-			}
-			nodes[j].Addr = net.JoinHostPort(ip, strconv.FormatInt(port, 10))
-			if len(node) > 2 {
-				id, err := node[2].ToString()
-				if err != nil {
-					cmd.SetErr(err)
-					return
-				}
-				nodes[j].ID = id
-			}
-		}
-		val = append(val, ClusterSlot{
-			Start: start,
-			End:   end,
-			Nodes: nodes,
-		})
-	}
-	cmd.SetVal(val)
-}
+func (cmd *ClusterSlotsCmd) from(res rueidis.RedisResult) { _ = "STUB: not implemented"; return }
 
 func newClusterSlotsCmd(res rueidis.RedisResult) *ClusterSlotsCmd {
-	cmd := &ClusterSlotsCmd{}
-	cmd.from(res)
-	return cmd
+	_ = "STUB: not implemented"
+	return nil
 }
 
-func (cmd *ClusterShardsCmd) from(res rueidis.RedisResult) {
-	arr, err := res.ToArray()
-	if err != nil {
-		cmd.SetErr(err)
-		return
-	}
-	val := make([]ClusterShard, 0, len(arr))
-	for _, v := range arr {
-		dict, err := v.ToMap()
-		if err != nil {
-			cmd.SetErr(err)
-			return
-		}
-		shard := ClusterShard{}
-		{
-			slots := dict["slots"]
-			arr, _ := slots.ToArray()
-			for i := 0; i+1 < len(arr); i += 2 {
-				start, _ := arr[i].AsInt64()
-				end, _ := arr[i+1].AsInt64()
-				shard.Slots = append(shard.Slots, SlotRange{Start: start, End: end})
-			}
-		}
-		{
-			nodes, ok := dict["nodes"]
-			if !ok {
-				cmd.SetErr(errors.New("nodes not found"))
-				return
-			}
-			arr, err := nodes.ToArray()
-			if err != nil {
-				cmd.SetErr(err)
-				return
-			}
-			shard.Nodes = make([]Node, len(arr))
-			for i := 0; i < len(arr); i++ {
-				nodeMap, err := arr[i].ToMap()
-				if err != nil {
-					cmd.SetErr(err)
-					return
-				}
-				for k, v := range nodeMap {
-					switch k {
-					case "id":
-						shard.Nodes[i].ID, _ = v.ToString()
-					case "endpoint":
-						shard.Nodes[i].Endpoint, _ = v.ToString()
-					case "ip":
-						shard.Nodes[i].IP, _ = v.ToString()
-					case "hostname":
-						shard.Nodes[i].Hostname, _ = v.ToString()
-					case "port":
-						shard.Nodes[i].Port, _ = v.ToInt64()
-					case "tls-port":
-						shard.Nodes[i].TLSPort, _ = v.ToInt64()
-					case "role":
-						shard.Nodes[i].Role, _ = v.ToString()
-					case "replication-offset":
-						shard.Nodes[i].ReplicationOffset, _ = v.ToInt64()
-					case "health":
-						shard.Nodes[i].Health, _ = v.ToString()
-					}
-				}
-			}
-		}
-		val = append(val, shard)
-	}
-	cmd.SetVal(val)
-}
+func (cmd *ClusterShardsCmd) from(res rueidis.RedisResult) { _ = "STUB: not implemented"; return }
 
 func newClusterShardsCmd(res rueidis.RedisResult) *ClusterShardsCmd {
-	cmd := &ClusterShardsCmd{}
-	cmd.from(res)
-	return cmd
+	_ = "STUB: not implemented"
+	return nil
 }
 
 type SlotRange struct {
@@ -2071,65 +786,19 @@ type GeoPosCmd struct {
 	baseCmd[[]*GeoPos]
 }
 
-func (cmd *GeoPosCmd) from(res rueidis.RedisResult) {
-	arr, err := res.ToArray()
-	if err != nil {
-		cmd.SetErr(err)
-		return
-	}
-	val := make([]*GeoPos, 0, len(arr))
-	for _, v := range arr {
-		loc, err := v.ToArray()
-		if err != nil {
-			if rueidis.IsRedisNil(err) {
-				val = append(val, nil)
-				continue
-			}
-			cmd.SetErr(err)
-			return
-		}
-		if len(loc) != 2 {
-			cmd.SetErr(fmt.Errorf("got %d, expected 2", len(loc)))
-			return
-		}
-		long, err := loc[0].AsFloat64()
-		if err != nil {
-			cmd.SetErr(err)
-			return
-		}
-		lat, err := loc[1].AsFloat64()
-		if err != nil {
-			cmd.SetErr(err)
-			return
-		}
-		val = append(val, &GeoPos{
-			Longitude: long,
-			Latitude:  lat,
-		})
-	}
-	cmd.SetVal(val)
-	cmd.setIsCacheHit(res.IsCacheHit())
-}
+func (cmd *GeoPosCmd) from(res rueidis.RedisResult) { _ = "STUB: not implemented"; return }
 
-func newGeoPosCmd(res rueidis.RedisResult) *GeoPosCmd {
-	cmd := &GeoPosCmd{}
-	cmd.from(res)
-	return cmd
-}
+func newGeoPosCmd(res rueidis.RedisResult) *GeoPosCmd { _ = "STUB: not implemented"; return nil }
 
 type GeoLocationCmd struct {
 	baseCmd[[]rueidis.GeoLocation]
 }
 
-func (cmd *GeoLocationCmd) from(res rueidis.RedisResult) {
-	cmd.val, cmd.err = res.AsGeosearch()
-	cmd.setIsCacheHit(res.IsCacheHit())
-}
+func (cmd *GeoLocationCmd) from(res rueidis.RedisResult) { _ = "STUB: not implemented"; return }
 
 func newGeoLocationCmd(res rueidis.RedisResult) *GeoLocationCmd {
-	cmd := &GeoLocationCmd{}
-	cmd.from(res)
-	return cmd
+	_ = "STUB: not implemented"
+	return nil
 }
 
 type CommandInfo struct {
@@ -2147,86 +816,11 @@ type CommandsInfoCmd struct {
 	baseCmd[map[string]CommandInfo]
 }
 
-func (cmd *CommandsInfoCmd) from(res rueidis.RedisResult) {
-	arr, err := res.ToArray()
-	if err != nil {
-		cmd.SetErr(err)
-		return
-	}
-	val := make(map[string]CommandInfo, len(arr))
-	for _, v := range arr {
-		info, err := v.ToArray()
-		if err != nil {
-			cmd.SetErr(err)
-			return
-		}
-		if len(info) < 6 {
-			cmd.SetErr(fmt.Errorf("got %d, wanted at least 6", len(info)))
-			return
-		}
-		var _cmd CommandInfo
-		_cmd.Name, err = info[0].ToString()
-		if err != nil {
-			cmd.SetErr(err)
-			return
-		}
-		_cmd.Arity, err = info[1].AsInt64()
-		if err != nil {
-			cmd.SetErr(err)
-			return
-		}
-		_cmd.Flags, err = info[2].AsStrSlice()
-		if err != nil {
-			if rueidis.IsRedisNil(err) {
-				_cmd.Flags = []string{}
-			} else {
-				cmd.SetErr(err)
-				return
-			}
-		}
-		_cmd.FirstKeyPos, err = info[3].AsInt64()
-		if err != nil {
-			cmd.SetErr(err)
-			return
-		}
-		_cmd.LastKeyPos, err = info[4].AsInt64()
-		if err != nil {
-			cmd.SetErr(err)
-			return
-		}
-		_cmd.StepCount, err = info[5].AsInt64()
-		if err != nil {
-			cmd.SetErr(err)
-			return
-		}
-		for _, flag := range _cmd.Flags {
-			if flag == "readonly" {
-				_cmd.ReadOnly = true
-				break
-			}
-		}
-		if len(info) == 6 {
-			val[_cmd.Name] = _cmd
-			continue
-		}
-		_cmd.ACLFlags, err = info[6].AsStrSlice()
-		if err != nil {
-			if rueidis.IsRedisNil(err) {
-				_cmd.ACLFlags = []string{}
-			} else {
-				cmd.SetErr(err)
-				return
-			}
-		}
-		val[_cmd.Name] = _cmd
-	}
-	cmd.SetVal(val)
-}
+func (cmd *CommandsInfoCmd) from(res rueidis.RedisResult) { _ = "STUB: not implemented"; return }
 
 func newCommandsInfoCmd(res rueidis.RedisResult) *CommandsInfoCmd {
-	cmd := &CommandsInfoCmd{}
-	cmd.from(res)
-	return cmd
+	_ = "STUB: not implemented"
+	return nil
 }
 
 type HExpireArgs struct {
@@ -2473,83 +1067,11 @@ type GeoSearchStoreQuery struct {
 	StoreDist bool
 }
 
-func (q *GeoRadiusQuery) args() []string {
-	args := make([]string, 0, 2)
-	args = append(args, strconv.FormatFloat(q.Radius, 'f', -1, 64))
-	if q.Unit != "" {
-		args = append(args, q.Unit)
-	} else {
-		args = append(args, "km")
-	}
-	if q.WithCoord {
-		args = append(args, "WITHCOORD")
-	}
-	if q.WithDist {
-		args = append(args, "WITHDIST")
-	}
-	if q.WithGeoHash {
-		args = append(args, "WITHHASH")
-	}
-	if q.Count > 0 {
-		args = append(args, "COUNT", strconv.FormatInt(q.Count, 10))
-	}
-	if q.Sort != "" {
-		args = append(args, q.Sort)
-	}
-	if q.Store != "" {
-		args = append(args, "STORE")
-		args = append(args, q.Store)
-	}
-	if q.StoreDist != "" {
-		args = append(args, "STOREDIST")
-		args = append(args, q.StoreDist)
-	}
-	return args
-}
+func (q *GeoRadiusQuery) args() []string { _ = "STUB: not implemented"; return nil }
 
-func (q *GeoSearchQuery) args() []string {
-	args := make([]string, 0, 2)
-	if q.Member != "" {
-		args = append(args, "FROMMEMBER", q.Member)
-	} else {
-		args = append(args, "FROMLONLAT", strconv.FormatFloat(q.Longitude, 'f', -1, 64), strconv.FormatFloat(q.Latitude, 'f', -1, 64))
-	}
-	if q.Radius > 0 {
-		if q.RadiusUnit == "" {
-			q.RadiusUnit = "KM"
-		}
-		args = append(args, "BYRADIUS", strconv.FormatFloat(q.Radius, 'f', -1, 64), q.RadiusUnit)
-	} else {
-		if q.BoxUnit == "" {
-			q.BoxUnit = "KM"
-		}
-		args = append(args, "BYBOX", strconv.FormatFloat(q.BoxWidth, 'f', -1, 64), strconv.FormatFloat(q.BoxHeight, 'f', -1, 64), q.BoxUnit)
-	}
-	if q.Sort != "" {
-		args = append(args, q.Sort)
-	}
-	if q.Count > 0 {
-		args = append(args, "COUNT", strconv.FormatInt(q.Count, 10))
-		if q.CountAny {
-			args = append(args, "ANY")
-		}
-	}
-	return args
-}
+func (q *GeoSearchQuery) args() []string { _ = "STUB: not implemented"; return nil }
 
-func (q *GeoSearchLocationQuery) args() []string {
-	args := q.GeoSearchQuery.args()
-	if q.WithCoord {
-		args = append(args, "WITHCOORD")
-	}
-	if q.WithDist {
-		args = append(args, "WITHDIST")
-	}
-	if q.WithHash {
-		args = append(args, "WITHHASH")
-	}
-	return args
-}
+func (q *GeoSearchLocationQuery) args() []string { _ = "STUB: not implemented"; return nil }
 
 type Function struct {
 	Name        string
@@ -2573,80 +1095,24 @@ type FunctionListCmd struct {
 	baseCmd[[]Library]
 }
 
-func (cmd *FunctionListCmd) from(res rueidis.RedisResult) {
-	arr, err := res.ToArray()
-	if err != nil {
-		cmd.SetErr(err)
-		return
-	}
-	val := make([]Library, len(arr))
-	for i := 0; i < len(arr); i++ {
-		kv, _ := arr[i].AsMap()
-		for k, v := range kv {
-			switch k {
-			case "library_name":
-				val[i].Name, _ = v.ToString()
-			case "engine":
-				val[i].Engine, _ = v.ToString()
-			case "library_code":
-				val[i].Code, _ = v.ToString()
-			case "functions":
-				fns, _ := v.ToArray()
-				val[i].Functions = make([]Function, len(fns))
-				for j := 0; j < len(fns); j++ {
-					fkv, _ := fns[j].AsMap()
-					for k, v := range fkv {
-						switch k {
-						case "name":
-							val[i].Functions[j].Name, _ = v.ToString()
-						case "description":
-							val[i].Functions[j].Description, _ = v.ToString()
-						case "flags":
-							val[i].Functions[j].Flags, _ = v.AsStrSlice()
-						}
-					}
-				}
-			}
-		}
-	}
-	cmd.SetVal(val)
-}
+func (cmd *FunctionListCmd) from(res rueidis.RedisResult) { _ = "STUB: not implemented"; return }
 
 func newFunctionListCmd(res rueidis.RedisResult) *FunctionListCmd {
-	cmd := &FunctionListCmd{}
-	cmd.from(res)
-	return cmd
+	_ = "STUB: not implemented"
+	return nil
 }
 
-func (cmd *FunctionListCmd) First() (*Library, error) {
-	if cmd.err != nil {
-		return nil, cmd.err
-	}
-	if len(cmd.val) > 0 {
-		return &cmd.val[0], nil
-	}
-	return nil, rueidis.Nil
-}
+func (cmd *FunctionListCmd) First() (*Library, error) { _ = "STUB: not implemented"; return nil, nil }
 
-func usePrecise(dur time.Duration) bool {
-	return dur < time.Second || dur%time.Second != 0
-}
+func usePrecise(dur time.Duration) bool { _ = "STUB: not implemented"; return false }
 
-func formatMs(dur time.Duration) int64 {
-	if dur > 0 && dur < time.Millisecond {
-		// too small, truncate too 1ms
-		return 1
-	}
-	return int64(dur / time.Millisecond)
-}
+func formatMs(dur time.Duration) int64 { _ = "STUB: not implemented"; return 0 }
 
-func formatSec(dur time.Duration) int64 {
-	if dur > 0 && dur < time.Second {
-		// too small, truncate too 1s
-		return 1
-	}
-	return int64(dur / time.Second)
-}
+// too small, truncate too 1ms
+
+func formatSec(dur time.Duration) int64 { _ = "STUB: not implemented"; return 0 }
+
+// too small, truncate too 1s
 
 // https://github.com/redis/go-redis/blob/f994ff1cd96299a5c8029ae3403af7b17ef06e8a/gears_commands.go#L21C1-L35C2
 type TFunctionLoadOptions struct {
@@ -2670,39 +1136,13 @@ type MapStringInterfaceSliceCmd struct {
 }
 
 func (cmd *MapStringInterfaceSliceCmd) from(res rueidis.RedisResult) {
-	arr, err := res.ToArray()
-	if err != nil {
-		cmd.SetErr(err)
-		return
-	}
-	cmd.val = make([]map[string]any, 0, len(arr))
-	for _, ele := range arr {
-		m, err := ele.AsMap()
-		eleMap := make(map[string]any, len(m))
-		if err != nil {
-			cmd.SetErr(err)
-			return
-		}
-		for k, v := range m {
-			var val any
-			if !v.IsNil() {
-				var err error
-				val, err = v.ToAny()
-				if err != nil {
-					cmd.SetErr(err)
-					return
-				}
-			}
-			eleMap[k] = val
-		}
-		cmd.val = append(cmd.val, eleMap)
-	}
+	_ = "STUB: not implemented"
+	return
 }
 
 func newMapStringInterfaceSliceCmd(res rueidis.RedisResult) *MapStringInterfaceSliceCmd {
-	cmd := &MapStringInterfaceSliceCmd{}
-	cmd.from(res)
-	return cmd
+	_ = "STUB: not implemented"
+	return nil
 }
 
 type BFInsertOptions struct {
@@ -2744,36 +1184,9 @@ type BFInfoCmd struct {
 	baseCmd[BFInfo]
 }
 
-func (cmd *BFInfoCmd) from(res rueidis.RedisResult) {
-	info := BFInfo{}
-	if err := res.Error(); err != nil {
-		cmd.err = err
-		return
-	}
-	m, err := res.AsIntMap()
-	if err != nil {
-		cmd.err = err
-		return
-	}
-	keys := make([]string, 0, len(m))
-	values := make([]any, 0, len(m))
-	for k, v := range m {
-		keys = append(keys, k)
-		values = append(values, strconv.FormatInt(v, 10))
-	}
-	if err := Scan(&info, keys, values); err != nil {
-		cmd.err = err
-		return
-	}
-	cmd.SetVal(info)
-	cmd.setIsCacheHit(res.IsCacheHit())
-}
+func (cmd *BFInfoCmd) from(res rueidis.RedisResult) { _ = "STUB: not implemented"; return }
 
-func newBFInfoCmd(res rueidis.RedisResult) *BFInfoCmd {
-	cmd := &BFInfoCmd{}
-	cmd.from(res)
-	return cmd
-}
+func newBFInfoCmd(res rueidis.RedisResult) *BFInfoCmd { _ = "STUB: not implemented"; return nil }
 
 type ScanDump struct {
 	Data string
@@ -2784,40 +1197,9 @@ type ScanDumpCmd struct {
 	baseCmd[ScanDump]
 }
 
-func (cmd *ScanDumpCmd) from(res rueidis.RedisResult) {
-	scanDump := ScanDump{}
-	if err := res.Error(); err != nil {
-		cmd.err = err
-		return
-	}
-	arr, err := res.ToArray()
-	if err != nil {
-		cmd.err = err
-		return
-	}
-	if len(arr) != 2 {
-		panic(fmt.Sprintf("wrong length of redis message, got %v, want %v", len(arr), 2))
-	}
-	iter, err := arr[0].AsInt64()
-	if err != nil {
-		cmd.err = err
-		return
-	}
-	data, err := arr[1].ToString()
-	if err != nil {
-		cmd.err = err
-		return
-	}
-	scanDump.Iter = iter
-	scanDump.Data = data
-	cmd.SetVal(scanDump)
-}
+func (cmd *ScanDumpCmd) from(res rueidis.RedisResult) { _ = "STUB: not implemented"; return }
 
-func newScanDumpCmd(res rueidis.RedisResult) *ScanDumpCmd {
-	cmd := &ScanDumpCmd{}
-	cmd.from(res)
-	return cmd
-}
+func newScanDumpCmd(res rueidis.RedisResult) *ScanDumpCmd { _ = "STUB: not implemented"; return nil }
 
 type CFInfo struct {
 	Size             int64 `redis:"Size"`
@@ -2834,37 +1216,9 @@ type CFInfoCmd struct {
 	baseCmd[CFInfo]
 }
 
-func (cmd *CFInfoCmd) from(res rueidis.RedisResult) {
-	info := CFInfo{}
-	m, err := res.AsMap()
-	if err != nil {
-		cmd.err = err
-		return
-	}
-	keys := make([]string, 0, len(m))
-	values := make([]any, 0, len(m))
-	for k, v := range m {
-		keys = append(keys, k)
-		val, err := v.AsInt64()
-		if err != nil {
-			cmd.err = err
-			return
-		}
-		values = append(values, strconv.FormatInt(val, 10))
-	}
-	if err := Scan(&info, keys, values); err != nil {
-		cmd.err = err
-		return
-	}
-	cmd.SetVal(info)
-	cmd.setIsCacheHit(res.IsCacheHit())
-}
+func (cmd *CFInfoCmd) from(res rueidis.RedisResult) { _ = "STUB: not implemented"; return }
 
-func newCFInfoCmd(res rueidis.RedisResult) *CFInfoCmd {
-	cmd := &CFInfoCmd{}
-	cmd.from(res)
-	return cmd
-}
+func newCFInfoCmd(res rueidis.RedisResult) *CFInfoCmd { _ = "STUB: not implemented"; return nil }
 
 type CMSInfo struct {
 	Width int64 `redis:"width"`
@@ -2876,32 +1230,9 @@ type CMSInfoCmd struct {
 	baseCmd[CMSInfo]
 }
 
-func (cmd *CMSInfoCmd) from(res rueidis.RedisResult) {
-	info := CMSInfo{}
-	m, err := res.AsIntMap()
-	if err != nil {
-		cmd.err = err
-		return
-	}
-	keys := make([]string, 0, len(m))
-	values := make([]any, 0, len(m))
-	for k, v := range m {
-		keys = append(keys, k)
-		values = append(values, strconv.FormatInt(v, 10))
-	}
-	if err := Scan(&info, keys, values); err != nil {
-		cmd.err = err
-		return
-	}
-	cmd.SetVal(info)
-	cmd.setIsCacheHit(res.IsCacheHit())
-}
+func (cmd *CMSInfoCmd) from(res rueidis.RedisResult) { _ = "STUB: not implemented"; return }
 
-func newCMSInfoCmd(res rueidis.RedisResult) *CMSInfoCmd {
-	cmd := &CMSInfoCmd{}
-	cmd.from(res)
-	return cmd
-}
+func newCMSInfoCmd(res rueidis.RedisResult) *CMSInfoCmd { _ = "STUB: not implemented"; return nil }
 
 type TopKInfo struct {
 	K     int64   `redis:"k"`
@@ -2914,69 +1245,21 @@ type TopKInfoCmd struct {
 	baseCmd[TopKInfo]
 }
 
-func (cmd *TopKInfoCmd) from(res rueidis.RedisResult) {
-	info := TopKInfo{}
-	m, err := res.ToMap()
-	if err != nil {
-		cmd.err = err
-		return
-	}
-	keys := make([]string, 0, len(m))
-	values := make([]any, 0, len(m))
-	for k, v := range m {
-		keys = append(keys, k)
-		switch k {
-		case "k", "width", "depth":
-			intVal, err := v.AsInt64()
-			if err != nil {
-				cmd.err = err
-				return
-			}
-			values = append(values, strconv.FormatInt(intVal, 10))
-		case "decay":
-			decay, err := v.AsFloat64()
-			if err != nil {
-				cmd.err = err
-				return
-			}
-			// args of strconv.FormatFloat is copied from cmds.TopkReserveParamsDepth.Decay
-			values = append(values, strconv.FormatFloat(decay, 'f', -1, 64))
-		default:
-			panic("unexpected key")
-		}
-	}
-	if err := Scan(&info, keys, values); err != nil {
-		cmd.err = err
-		return
-	}
-	cmd.SetVal(info)
-	cmd.setIsCacheHit(res.IsCacheHit())
-}
+func (cmd *TopKInfoCmd) from(res rueidis.RedisResult) { _ = "STUB: not implemented"; return }
 
-func newTopKInfoCmd(res rueidis.RedisResult) *TopKInfoCmd {
-	cmd := &TopKInfoCmd{}
-	cmd.from(res)
-	return cmd
-}
+// args of strconv.FormatFloat is copied from cmds.TopkReserveParamsDepth.Decay
+
+func newTopKInfoCmd(res rueidis.RedisResult) *TopKInfoCmd { _ = "STUB: not implemented"; return nil }
 
 type MapStringIntCmd struct {
 	baseCmd[map[string]int64]
 }
 
-func (cmd *MapStringIntCmd) from(res rueidis.RedisResult) {
-	m, err := res.AsIntMap()
-	if err != nil {
-		cmd.err = err
-		return
-	}
-	cmd.SetVal(m)
-	cmd.setIsCacheHit(res.IsCacheHit())
-}
+func (cmd *MapStringIntCmd) from(res rueidis.RedisResult) { _ = "STUB: not implemented"; return }
 
 func newMapStringIntCmd(res rueidis.RedisResult) *MapStringIntCmd {
-	cmd := &MapStringIntCmd{}
-	cmd.from(res)
-	return cmd
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Ref: https://redis.io/commands/tdigest.info/
@@ -2996,30 +1279,11 @@ type TDigestInfoCmd struct {
 	baseCmd[TDigestInfo]
 }
 
-func (cmd *TDigestInfoCmd) from(res rueidis.RedisResult) {
-	info := TDigestInfo{}
-	m, err := res.AsIntMap()
-	if err != nil {
-		cmd.err = err
-		return
-	}
-	keys := make([]string, 0, len(m))
-	values := make([]any, 0, len(m))
-	for k, v := range m {
-		keys = append(keys, k)
-		values = append(values, strconv.FormatInt(v, 10))
-	}
-	if err := Scan(&info, keys, values); err != nil {
-		cmd.err = err
-		return
-	}
-	cmd.SetVal(info)
-}
+func (cmd *TDigestInfoCmd) from(res rueidis.RedisResult) { _ = "STUB: not implemented"; return }
 
 func newTDigestInfoCmd(res rueidis.RedisResult) *TDigestInfoCmd {
-	cmd := &TDigestInfoCmd{}
-	cmd.from(res)
-	return cmd
+	_ = "STUB: not implemented"
+	return nil
 }
 
 type TDigestMergeOptions struct {
@@ -3079,40 +1343,7 @@ const (
 	Twa
 )
 
-func (a Aggregator) String() string {
-	switch a {
-	case Invalid:
-		return ""
-	case Avg:
-		return "AVG"
-	case Sum:
-		return "SUM"
-	case Min:
-		return "MIN"
-	case Max:
-		return "MAX"
-	case Range:
-		return "RANGE"
-	case Count:
-		return "COUNT"
-	case First:
-		return "FIRST"
-	case Last:
-		return "LAST"
-	case StdP:
-		return "STD.P"
-	case StdS:
-		return "STD.S"
-	case VarP:
-		return "VAR.P"
-	case VarS:
-		return "VAR.S"
-	case Twa:
-		return "TWA"
-	default:
-		return ""
-	}
-}
+func (a Aggregator) String() string { _ = "STUB: not implemented"; return "" }
 
 type TSTimestampValue struct {
 	Timestamp int64
@@ -3122,69 +1353,22 @@ type TSTimestampValueCmd struct {
 	baseCmd[TSTimestampValue]
 }
 
-func (cmd *TSTimestampValueCmd) from(res rueidis.RedisResult) {
-	val := TSTimestampValue{}
-	if err := res.Error(); err != nil {
-		cmd.err = err
-		return
-	}
-	arr, err := res.ToArray()
-	if err != nil {
-		cmd.err = err
-		return
-	}
-	if len(arr) != 2 {
-		panic(fmt.Sprintf("wrong len of array reply, should be 2, got %v", len(arr)))
-	}
-	val.Timestamp, err = arr[0].AsInt64()
-	if err != nil {
-		cmd.err = err
-		return
-	}
-	val.Value, err = arr[1].AsFloat64()
-	if err != nil {
-		cmd.err = err
-		return
-	}
-	cmd.SetVal(val)
-}
+func (cmd *TSTimestampValueCmd) from(res rueidis.RedisResult) { _ = "STUB: not implemented"; return }
 
 func newTSTimestampValueCmd(res rueidis.RedisResult) *TSTimestampValueCmd {
-	cmd := &TSTimestampValueCmd{}
-	cmd.from(res)
-	return cmd
+	_ = "STUB: not implemented"
+	return nil
 }
 
 type MapStringInterfaceCmd struct {
 	baseCmd[map[string]any]
 }
 
-func (cmd *MapStringInterfaceCmd) from(res rueidis.RedisResult) {
-	m, err := res.AsMap()
-	if err != nil {
-		cmd.err = err
-		return
-	}
-	strIntMap := make(map[string]any, len(m))
-	for k, ele := range m {
-		var v any
-		var err error
-		if !ele.IsNil() {
-			v, err = ele.ToAny()
-			if err != nil {
-				cmd.err = err
-				return
-			}
-		}
-		strIntMap[k] = v
-	}
-	cmd.SetVal(strIntMap)
-}
+func (cmd *MapStringInterfaceCmd) from(res rueidis.RedisResult) { _ = "STUB: not implemented"; return }
 
 func newMapStringInterfaceCmd(res rueidis.RedisResult) *MapStringInterfaceCmd {
-	cmd := &MapStringInterfaceCmd{}
-	cmd.from(res)
-	return cmd
+	_ = "STUB: not implemented"
+	return nil
 }
 
 type TSTimestampValueSliceCmd struct {
@@ -3192,37 +1376,13 @@ type TSTimestampValueSliceCmd struct {
 }
 
 func (cmd *TSTimestampValueSliceCmd) from(res rueidis.RedisResult) {
-	msgSlice, err := res.ToArray()
-	if err != nil {
-		cmd.err = err
-		return
-	}
-	tsValSlice := make([]TSTimestampValue, 0, len(msgSlice))
-	for i := 0; i < len(msgSlice); i++ {
-		msgArray, err := msgSlice[i].ToArray()
-		if err != nil {
-			cmd.err = err
-			return
-		}
-		tstmp, err := msgArray[0].AsInt64()
-		if err != nil {
-			cmd.err = err
-			return
-		}
-		val, err := msgArray[1].AsFloat64()
-		if err != nil {
-			cmd.err = err
-			return
-		}
-		tsValSlice = append(tsValSlice, TSTimestampValue{Timestamp: tstmp, Value: val})
-	}
-	cmd.SetVal(tsValSlice)
+	_ = "STUB: not implemented"
+	return
 }
 
 func newTSTimestampValueSliceCmd(res rueidis.RedisResult) *TSTimestampValueSliceCmd {
-	cmd := &TSTimestampValueSliceCmd{}
-	cmd.from(res)
-	return cmd
+	_ = "STUB: not implemented"
+	return nil
 }
 
 type MapStringSliceInterfaceCmd struct {
@@ -3230,37 +1390,13 @@ type MapStringSliceInterfaceCmd struct {
 }
 
 func (cmd *MapStringSliceInterfaceCmd) from(res rueidis.RedisResult) {
-	m, err := res.ToMap()
-	if err != nil {
-		cmd.err = err
-		return
-	}
-	mapStrSliceInt := make(map[string][]any, len(m))
-	for k, entry := range m {
-		vals, err := entry.ToArray()
-		if err != nil {
-			cmd.err = err
-			return
-		}
-		anySlice := make([]any, 0, len(vals))
-		for _, v := range vals {
-			var err error
-			ele, err := v.ToAny()
-			if err != nil {
-				cmd.err = err
-				return
-			}
-			anySlice = append(anySlice, ele)
-		}
-		mapStrSliceInt[k] = anySlice
-	}
-	cmd.SetVal(mapStrSliceInt)
+	_ = "STUB: not implemented"
+	return
 }
 
 func newMapStringSliceInterfaceCmd(res rueidis.RedisResult) *MapStringSliceInterfaceCmd {
-	cmd := &MapStringSliceInterfaceCmd{}
-	cmd.from(res)
-	return cmd
+	_ = "STUB: not implemented"
+	return nil
 }
 
 type TSRangeOptions struct {
@@ -3356,80 +1492,30 @@ const (
 
 // https://github.com/redis/go-redis/blob/v9.3.0/json.go#L86
 func (cmd *JSONCmd) Val() string {
-	return cmd.val
+	_ = "STUB: not implemented"
+
+	// https://github.com/redis/go-redis/blob/v9.3.0/json.go#L105
+	return ""
 }
 
-// https://github.com/redis/go-redis/blob/v9.3.0/json.go#L105
-func (cmd *JSONCmd) Expanded() (any, error) {
-	if cmd.typ == TYP_STRING {
-		return cmd.Val(), cmd.Err()
-	}
-	// TYP_ARRAY
-	return cmd.expanded, cmd.Err()
-}
+func (cmd *JSONCmd) Expanded() (any, error) { _ = "STUB: not implemented"; return *new(any), nil }
 
-func (cmd *JSONCmd) Result() (string, error) {
-	return cmd.Val(), cmd.Err()
-}
+// TYP_ARRAY
 
-func (cmd *JSONCmd) from(res rueidis.RedisResult) {
-	msg, err := res.ToMessage()
-	if err != nil {
-		cmd.SetErr(err)
-		return
-	}
-	cmd.setIsCacheHit(res.IsCacheHit())
-	switch {
-	// JSON.GET
-	case msg.IsString():
-		cmd.typ = TYP_STRING
-		str, err := res.ToString()
-		if err != nil {
-			cmd.SetErr(err)
-			return
-		}
-		cmd.SetVal(str)
-	// JSON.NUMINCRBY
-	case msg.IsArray():
-		// we set the marshaled string to cmd.val
-		// which will be used at cmd.Val()
-		// and also stored parsed result to cmd.expanded,
-		// which will be used at cmd.Expanded()
-		cmd.typ = TYP_ARRAY
-		arr, err := res.ToArray()
-		if err != nil {
-			cmd.SetErr(err)
-			return
-		}
-		expanded := make([]any, len(arr))
-		for i, e := range arr {
-			anyE, err := e.ToAny()
-			if err != nil {
-				if err == rueidis.Nil {
-					continue
-				}
-				cmd.SetErr(err)
-				return
-			}
-			expanded[i] = anyE
-		}
-		cmd.expanded = expanded
-		val, err := json.Marshal(cmd.expanded)
-		if err != nil {
-			cmd.SetErr(err)
-			return
-		}
-		cmd.SetVal(string(val))
-	default:
-		panic("invalid type, expect array or string")
-	}
-}
+func (cmd *JSONCmd) Result() (string, error) { _ = "STUB: not implemented"; return "", nil }
 
-func newJSONCmd(res rueidis.RedisResult) *JSONCmd {
-	cmd := &JSONCmd{}
-	cmd.from(res)
-	return cmd
-}
+func (cmd *JSONCmd) from(res rueidis.RedisResult) { _ = "STUB: not implemented"; return }
+
+// JSON.GET
+
+// JSON.NUMINCRBY
+
+// we set the marshaled string to cmd.val
+// which will be used at cmd.Val()
+// and also stored parsed result to cmd.expanded,
+// which will be used at cmd.Expanded()
+
+func newJSONCmd(res rueidis.RedisResult) *JSONCmd { _ = "STUB: not implemented"; return nil }
 
 type JSONGetArgs struct {
 	Indent  string
@@ -3441,109 +1527,34 @@ type IntPointerSliceCmd struct {
 	baseCmd[[]*int64]
 }
 
-func (cmd *IntPointerSliceCmd) from(res rueidis.RedisResult) {
-	arr, err := res.ToArray()
-	if err != nil {
-		cmd.SetErr(err)
-		return
-	}
-	intPtrSlice := make([]*int64, len(arr))
-	for i, e := range arr {
-		if e.IsNil() {
-			continue
-		}
-		length, err := e.ToInt64()
-		if err != nil {
-			cmd.SetErr(err)
-			return
-		}
-		intPtrSlice[i] = &length
-	}
-	cmd.SetVal(intPtrSlice)
-	cmd.setIsCacheHit(res.IsCacheHit())
-}
+func (cmd *IntPointerSliceCmd) from(res rueidis.RedisResult) { _ = "STUB: not implemented"; return }
 
 // newIntPointerSliceCmd initialises an IntPointerSliceCmd
 func newIntPointerSliceCmd(res rueidis.RedisResult) *IntPointerSliceCmd {
-	cmd := &IntPointerSliceCmd{}
-	cmd.from(res)
-	return cmd
+	_ = "STUB: not implemented"
+	return nil
 }
 
 type JSONSliceCmd struct {
 	baseCmd[[]any]
 }
 
-func (cmd *JSONSliceCmd) from(res rueidis.RedisResult) {
-	arr, err := res.ToArray()
-	if err != nil {
-		cmd.SetErr(err)
-		return
-	}
-	anySlice := make([]any, len(arr))
-	for i, e := range arr {
-		if e.IsNil() {
-			continue
-		}
-		anyE, err := e.ToAny()
-		if err != nil {
-			cmd.SetErr(err)
-			return
-		}
-		anySlice[i] = anyE
-	}
-	cmd.SetVal(anySlice)
-	cmd.setIsCacheHit(res.IsCacheHit())
-}
+func (cmd *JSONSliceCmd) from(res rueidis.RedisResult) { _ = "STUB: not implemented"; return }
 
-func newJSONSliceCmd(res rueidis.RedisResult) *JSONSliceCmd {
-	cmd := &JSONSliceCmd{}
-	cmd.from(res)
-	return cmd
-}
+func newJSONSliceCmd(res rueidis.RedisResult) *JSONSliceCmd { _ = "STUB: not implemented"; return nil }
 
 type MapMapStringInterfaceCmd struct {
 	baseCmd[map[string]any]
 }
 
 func (cmd *MapMapStringInterfaceCmd) from(res rueidis.RedisResult) {
-	arr, err := res.ToArray()
-	if err != nil {
-		cmd.SetErr(err)
-		return
-	}
-	data := make(map[string]any, len(arr)/2)
-	for i := 0; i < len(arr); i++ {
-		arr1, err := arr[i].ToArray()
-		if err != nil {
-			cmd.SetErr(err)
-			return
-		}
-		for _i := 0; _i < len(arr1); _i += 2 {
-			key, err := arr1[_i].ToString()
-			if err != nil {
-				cmd.SetErr(err)
-				return
-			}
-			if !arr1[_i+1].IsNil() {
-				value, err := arr1[_i+1].ToAny()
-				if err != nil {
-					cmd.SetErr(err)
-					return
-				}
-				data[key] = value
-			} else {
-				data[key] = nil
-			}
-		}
-	}
-	cmd.SetVal(data)
+	_ = "STUB: not implemented"
+	return
 }
 
 func newMapMapStringInterfaceCmd(res rueidis.RedisResult) *MapMapStringInterfaceCmd {
-	cmd := &MapMapStringInterfaceCmd{}
-	cmd.from(res)
-	return cmd
+	_ = "STUB: not implemented"
+	return nil
 }
 
 type FTAggregateResult struct {
@@ -3613,107 +1624,17 @@ type AggregateCmd struct {
 	baseCmd[*FTAggregateResult]
 }
 
-func (cmd *AggregateCmd) from(res rueidis.RedisResult) {
-	if err := res.Error(); err != nil {
-		cmd.SetErr(err)
-		return
-	}
-	anyRes, err := res.ToAny()
-	if err != nil {
-		cmd.SetErr(err)
-		return
-	}
-	cmd.SetRawVal(anyRes)
-	msg, err := res.ToMessage()
-	if err != nil {
-		cmd.SetErr(err)
-		return
-	}
-	if !(msg.IsMap() || msg.IsArray()) {
-		panic("res should be either map(RESP3) or array(RESP2)")
-	}
-	if msg.IsMap() {
-		total, docs, err := msg.AsFtAggregate()
-		if err != nil {
-			cmd.SetErr(err)
-			return
-		}
-		aggResult := &FTAggregateResult{Total: int(total)}
-		for _, doc := range docs {
-			anyMap := make(map[string]any, len(doc))
-			for k, v := range doc {
-				anyMap[k] = v
-			}
-			aggResult.Rows = append(aggResult.Rows, AggregateRow{anyMap})
-		}
-		cmd.SetVal(aggResult)
-		return
-	}
-	// is RESP2 array
-	rows, err := msg.ToArray()
-	if err != nil {
-		cmd.SetErr(err)
-		return
-	}
-	anyArr := make([]any, 0, len(rows))
-	for _, e := range rows {
-		anyE, err := e.ToAny()
-		if err != nil {
-			cmd.SetErr(err)
-			return
-		}
-		anyArr = append(anyArr, anyE)
-	}
-	result, err := processAggregateResult(anyArr)
-	if err != nil {
-		cmd.SetErr(err)
-		return
-	}
-	cmd.SetVal(result)
-}
+func (cmd *AggregateCmd) from(res rueidis.RedisResult) { _ = "STUB: not implemented"; return }
+
+// is RESP2 array
 
 // Ref: https://github.com/redis/go-redis/blob/v9.7.0/search_commands.go#L584
 func processAggregateResult(data []interface{}) (*FTAggregateResult, error) {
-	if len(data) == 0 {
-		return nil, fmt.Errorf("no data returned")
-	}
-
-	total, ok := data[0].(int64)
-	if !ok {
-		return nil, fmt.Errorf("invalid total format")
-	}
-
-	rows := make([]AggregateRow, 0, len(data)-1)
-	for _, row := range data[1:] {
-		fields, ok := row.([]interface{})
-		if !ok {
-			return nil, fmt.Errorf("invalid row format")
-		}
-
-		rowMap := make(map[string]interface{})
-		for i := 0; i < len(fields); i += 2 {
-			key, ok := fields[i].(string)
-			if !ok {
-				return nil, fmt.Errorf("invalid field key format")
-			}
-			value := fields[i+1]
-			rowMap[key] = value
-		}
-		rows = append(rows, AggregateRow{Fields: rowMap})
-	}
-
-	result := &FTAggregateResult{
-		Total: int(total),
-		Rows:  rows,
-	}
-	return result, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func newAggregateCmd(res rueidis.RedisResult) *AggregateCmd {
-	cmd := &AggregateCmd{}
-	cmd.from(res)
-	return cmd
-}
+func newAggregateCmd(res rueidis.RedisResult) *AggregateCmd { _ = "STUB: not implemented"; return nil }
 
 type FTCreateOptions struct {
 	Filter          string
@@ -3753,38 +1674,7 @@ const (
 	SearchRandomSample
 )
 
-func (a SearchAggregator) String() string {
-	switch a {
-	case SearchInvalid:
-		return ""
-	case SearchAvg:
-		return "AVG"
-	case SearchSum:
-		return "SUM"
-	case SearchMin:
-		return "MIN"
-	case SearchMax:
-		return "MAX"
-	case SearchCount:
-		return "COUNT"
-	case SearchCountDistinct:
-		return "COUNT_DISTINCT"
-	case SearchCountDistinctish:
-		return "COUNT_DISTINCTISH"
-	case SearchStdDev:
-		return "STDDEV"
-	case SearchQuantile:
-		return "QUANTILE"
-	case SearchToList:
-		return "TOLIST"
-	case SearchFirstValue:
-		return "FIRST_VALUE"
-	case SearchRandomSample:
-		return "RANDOM_SAMPLE"
-	default:
-		return ""
-	}
-}
+func (a SearchAggregator) String() string { _ = "STUB: not implemented"; return "" }
 
 type SearchFieldType int
 
@@ -3798,26 +1688,7 @@ const (
 	SearchFieldTypeGeoShape
 )
 
-func (t SearchFieldType) String() string {
-	switch t {
-	case SearchFieldTypeInvalid:
-		return ""
-	case SearchFieldTypeNumeric:
-		return "NUMERIC"
-	case SearchFieldTypeTag:
-		return "TAG"
-	case SearchFieldTypeText:
-		return "TEXT"
-	case SearchFieldTypeGeo:
-		return "GEO"
-	case SearchFieldTypeVector:
-		return "VECTOR"
-	case SearchFieldTypeGeoShape:
-		return "GEOSHAPE"
-	default:
-		return "TEXT"
-	}
-}
+func (t SearchFieldType) String() string { _ = "STUB: not implemented"; return "" }
 
 type FieldSchema struct {
 	VectorArgs        *FTVectorArgs
@@ -3993,217 +1864,16 @@ type FTInfoCmd struct {
 
 // Ref: https://github.com/redis/go-redis/blob/v9.7.0/search_commands.go#L1143
 func parseFTInfo(data map[string]interface{}) (FTInfoResult, error) {
-	var ftInfo FTInfoResult
+	_ = "STUB: not implemented"
+	return *
+
 	// Manually parse each field from the map
-	if indexErrors, ok := data["Index Errors"].([]interface{}); ok {
-		ftInfo.IndexErrors = IndexErrors{
-			IndexingFailures:     ToInteger(indexErrors[1]),
-			LastIndexingError:    ToString(indexErrors[3]),
-			LastIndexingErrorKey: ToString(indexErrors[5]),
-		}
-	}
-
-	if attributes, ok := data["attributes"].([]interface{}); ok {
-		for _, attr := range attributes {
-			if attrMap, ok := attr.([]interface{}); ok {
-				att := FTAttribute{}
-				for i := 0; i < len(attrMap); i++ {
-					if ToLower(ToString(attrMap[i])) == "attribute" {
-						att.Attribute = ToString(attrMap[i+1])
-						continue
-					}
-					if ToLower(ToString(attrMap[i])) == "identifier" {
-						att.Identifier = ToString(attrMap[i+1])
-						continue
-					}
-					if ToLower(ToString(attrMap[i])) == "type" {
-						att.Type = ToString(attrMap[i+1])
-						continue
-					}
-					if ToLower(ToString(attrMap[i])) == "weight" {
-						att.Weight = ToFloat(attrMap[i+1])
-						continue
-					}
-					if ToLower(ToString(attrMap[i])) == "nostem" {
-						att.NoStem = true
-						continue
-					}
-					if ToLower(ToString(attrMap[i])) == "sortable" {
-						att.Sortable = true
-						continue
-					}
-					if ToLower(ToString(attrMap[i])) == "noindex" {
-						att.NoIndex = true
-						continue
-					}
-					if ToLower(ToString(attrMap[i])) == "unf" {
-						att.UNF = true
-						continue
-					}
-					if ToLower(ToString(attrMap[i])) == "phonetic" {
-						att.PhoneticMatcher = ToString(attrMap[i+1])
-						continue
-					}
-					if ToLower(ToString(attrMap[i])) == "case_sensitive" {
-						att.CaseSensitive = true
-						continue
-					}
-					if ToLower(ToString(attrMap[i])) == "withsuffixtrie" {
-						att.WithSuffixtrie = true
-						continue
-					}
-
-				}
-				ftInfo.Attributes = append(ftInfo.Attributes, att)
-			}
-		}
-	}
-
-	ftInfo.BytesPerRecordAvg = ToString(data["bytes_per_record_avg"])
-	ftInfo.Cleaning = ToInteger(data["cleaning"])
-
-	if cursorStats, ok := data["cursor_stats"].([]interface{}); ok {
-		ftInfo.CursorStats = CursorStats{
-			GlobalIdle:    ToInteger(cursorStats[1]),
-			GlobalTotal:   ToInteger(cursorStats[3]),
-			IndexCapacity: ToInteger(cursorStats[5]),
-			IndexTotal:    ToInteger(cursorStats[7]),
-		}
-	}
-
-	if dialectStats, ok := data["dialect_stats"].([]interface{}); ok {
-		ftInfo.DialectStats = make(map[string]int)
-		for i := 0; i < len(dialectStats); i += 2 {
-			ftInfo.DialectStats[ToString(dialectStats[i])] = ToInteger(dialectStats[i+1])
-		}
-	}
-
-	ftInfo.DocTableSizeMB = ToFloat(data["doc_table_size_mb"])
-
-	if fieldStats, ok := data["field statistics"].([]interface{}); ok {
-		for _, stat := range fieldStats {
-			if statMap, ok := stat.([]interface{}); ok {
-				ftInfo.FieldStatistics = append(ftInfo.FieldStatistics, FieldStatistic{
-					Identifier: ToString(statMap[1]),
-					Attribute:  ToString(statMap[3]),
-					IndexErrors: IndexErrors{
-						IndexingFailures:     ToInteger(statMap[5].([]interface{})[1]),
-						LastIndexingError:    ToString(statMap[5].([]interface{})[3]),
-						LastIndexingErrorKey: ToString(statMap[5].([]interface{})[5]),
-					},
-				})
-			}
-		}
-	}
-
-	if gcStats, ok := data["gc_stats"].([]interface{}); ok {
-		ftInfo.GCStats = GCStats{}
-		for i := 0; i < len(gcStats); i += 2 {
-			if ToLower(ToString(gcStats[i])) == "bytes_collected" {
-				ftInfo.GCStats.BytesCollected = ToInteger(gcStats[i+1])
-				continue
-			}
-			if ToLower(ToString(gcStats[i])) == "total_ms_run" {
-				ftInfo.GCStats.TotalMsRun = ToInteger(gcStats[i+1])
-				continue
-			}
-			if ToLower(ToString(gcStats[i])) == "total_cycles" {
-				ftInfo.GCStats.TotalCycles = ToInteger(gcStats[i+1])
-				continue
-			}
-			if ToLower(ToString(gcStats[i])) == "average_cycle_time_ms" {
-				ftInfo.GCStats.AverageCycleTimeMs = ToString(gcStats[i+1])
-				continue
-			}
-			if ToLower(ToString(gcStats[i])) == "last_run_time_ms" {
-				ftInfo.GCStats.LastRunTimeMs = ToInteger(gcStats[i+1])
-				continue
-			}
-			if ToLower(ToString(gcStats[i])) == "gc_numeric_trees_missed" {
-				ftInfo.GCStats.GCNumericTreesMissed = ToInteger(gcStats[i+1])
-				continue
-			}
-			if ToLower(ToString(gcStats[i])) == "gc_blocks_denied" {
-				ftInfo.GCStats.GCBlocksDenied = ToInteger(gcStats[i+1])
-				continue
-			}
-		}
-	}
-
-	ftInfo.GeoshapesSzMB = ToFloat(data["geoshapes_sz_mb"])
-	ftInfo.HashIndexingFailures = ToInteger(data["hash_indexing_failures"])
-
-	if indexDef, ok := data["index_definition"].([]interface{}); ok {
-		ftInfo.IndexDefinition = IndexDefinition{
-			KeyType:      ToString(indexDef[1]),
-			Prefixes:     ToStringSlice(indexDef[3]),
-			DefaultScore: ToFloat(indexDef[5]),
-		}
-	}
-
-	ftInfo.IndexName = ToString(data["index_name"])
-	ftInfo.IndexOptions = ToStringSlice(data["index_options"].([]interface{}))
-	ftInfo.Indexing = ToInteger(data["indexing"])
-	ftInfo.InvertedSzMB = ToFloat(data["inverted_sz_mb"])
-	ftInfo.KeyTableSizeMB = ToFloat(data["key_table_size_mb"])
-	ftInfo.MaxDocID = ToInteger(data["max_doc_id"])
-	ftInfo.NumDocs = ToInteger(data["num_docs"])
-	ftInfo.NumRecords = ToInteger(data["num_records"])
-	ftInfo.NumTerms = ToInteger(data["num_terms"])
-	ftInfo.NumberOfUses = ToInteger(data["number_of_uses"])
-	ftInfo.OffsetBitsPerRecordAvg = ToString(data["offset_bits_per_record_avg"])
-	ftInfo.OffsetVectorsSzMB = ToFloat(data["offset_vectors_sz_mb"])
-	ftInfo.OffsetsPerTermAvg = ToString(data["offsets_per_term_avg"])
-	ftInfo.PercentIndexed = ToFloat(data["percent_indexed"])
-	ftInfo.RecordsPerDocAvg = ToString(data["records_per_doc_avg"])
-	ftInfo.SortableValuesSizeMB = ToFloat(data["sortable_values_size_mb"])
-	ftInfo.TagOverheadSzMB = ToFloat(data["tag_overhead_sz_mb"])
-	ftInfo.TextOverheadSzMB = ToFloat(data["text_overhead_sz_mb"])
-	ftInfo.TotalIndexMemorySzMB = ToFloat(data["total_index_memory_sz_mb"])
-	ftInfo.TotalIndexingTime = ToInteger(data["total_indexing_time"])
-	ftInfo.TotalInvertedIndexBlocks = ToInteger(data["total_inverted_index_blocks"])
-	ftInfo.VectorIndexSzMB = ToFloat(data["vector_index_sz_mb"])
-
-	return ftInfo, nil
+	new(FTInfoResult), nil
 }
 
-func (cmd *FTInfoCmd) from(res rueidis.RedisResult) {
-	if err := res.Error(); err != nil {
-		cmd.SetErr(err)
-		return
-	}
-	m, err := res.AsMap()
-	if err != nil {
-		cmd.SetErr(err)
-		return
-	}
-	anyM, err := res.ToAny()
-	if err != nil {
-		cmd.SetErr(err)
-		return
-	}
-	cmd.SetRawVal(anyM)
-	anyMap := make(map[string]any, len(m))
-	for k, v := range m {
-		anyMap[k], err = v.ToAny()
-		if err != nil {
-			cmd.SetErr(err)
-			return
-		}
-	}
-	ftInfoResult, err := parseFTInfo(anyMap)
-	if err != nil {
-		cmd.SetErr(err)
-		return
-	}
-	cmd.SetVal(ftInfoResult)
-}
+func (cmd *FTInfoCmd) from(res rueidis.RedisResult) { _ = "STUB: not implemented"; return }
 
-func newFTInfoCmd(res rueidis.RedisResult) *FTInfoCmd {
-	cmd := &FTInfoCmd{}
-	cmd.from(res)
-	return cmd
-}
+func newFTInfoCmd(res rueidis.RedisResult) *FTInfoCmd { _ = "STUB: not implemented"; return nil }
 
 type FTSpellCheckOptions struct {
 	Terms    *FTSpellCheckTerms
@@ -4229,164 +1899,29 @@ type SpellCheckSuggestion struct {
 
 type FTSpellCheckCmd struct{ baseCmd[[]SpellCheckResult] }
 
-func (cmd *FTSpellCheckCmd) Val() []SpellCheckResult {
-	return cmd.val
-}
+func (cmd *FTSpellCheckCmd) Val() []SpellCheckResult { _ = "STUB: not implemented"; return nil }
 
 func (cmd *FTSpellCheckCmd) Result() ([]SpellCheckResult, error) {
-	return cmd.Val(), cmd.Err()
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (cmd *FTSpellCheckCmd) from(res rueidis.RedisResult) {
-	if err := res.Error(); err != nil {
-		cmd.SetErr(err)
-		return
-	}
-	msg, err := res.ToMessage()
-	if err != nil {
-		cmd.SetErr(err)
-		return
-	}
-	if !(msg.IsMap() || msg.IsArray()) {
-		panic("res should be either map(RESP3) or array(RESP2)")
-	}
-	if msg.IsMap() {
-		// is RESP3 map
-		m, err := msg.ToMap()
-		if err != nil {
-			cmd.SetErr(err)
-			return
-		}
-		anyM, err := msg.ToAny()
-		if err != nil {
-			cmd.SetErr(err)
-			return
-		}
-		cmd.SetRawVal(anyM)
-		spellCheckResults := []SpellCheckResult{}
-		result := m["results"]
-		resultMap, err := result.ToMap()
-		if err != nil {
-			cmd.SetErr(err)
-			return
-		}
-		for k, v := range resultMap {
-			result := SpellCheckResult{}
-			result.Term = k
-			suggestions, err := v.ToArray()
-			if err != nil {
-				cmd.SetErr(err)
-				return
-			}
-			for _, suggestion := range suggestions {
-				// map key: suggestion, score
-				sugMap, err := suggestion.ToMap()
-				if err != nil {
-					cmd.SetErr(err)
-					return
-				}
-				for _k, _v := range sugMap {
-					score, err := _v.ToFloat64()
-					if err != nil {
-						cmd.SetErr(err)
-						return
-					}
-					result.Suggestions = append(result.Suggestions, SpellCheckSuggestion{Suggestion: _k, Score: score})
-				}
-			}
-			spellCheckResults = append(spellCheckResults, result)
-		}
-		cmd.SetVal(spellCheckResults)
-		return
-	}
-	// is RESP2 array
-	arr, err := msg.ToArray()
-	if err != nil {
-		cmd.SetErr(err)
-		return
-	}
-	anyRes, err := msg.ToAny()
-	if err != nil {
-		cmd.SetErr(err)
-		return
-	}
-	cmd.SetRawVal(anyRes)
-	AnyArr := make([]any, 0, len(arr))
-	for _, e := range arr {
-		anyE, err := e.ToAny()
-		if err != nil {
-			cmd.SetErr(err)
-			return
-		}
-		AnyArr = append(AnyArr, anyE)
-	}
-	result, err := parseFTSpellCheck(AnyArr)
-	if err != nil {
-		cmd.SetErr(err)
-		return
-	}
-	cmd.SetVal(result)
-}
+func (cmd *FTSpellCheckCmd) from(res rueidis.RedisResult) { _ = "STUB: not implemented"; return }
+
+// is RESP3 map
+
+// map key: suggestion, score
+
+// is RESP2 array
 
 func newFTSpellCheckCmd(res rueidis.RedisResult) *FTSpellCheckCmd {
-	cmd := &FTSpellCheckCmd{}
-	cmd.from(res)
-	return cmd
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func parseFTSpellCheck(data []interface{}) ([]SpellCheckResult, error) {
-	results := make([]SpellCheckResult, 0, len(data))
-
-	for _, termData := range data {
-		termInfo, ok := termData.([]interface{})
-		if !ok || len(termInfo) != 3 {
-			return nil, fmt.Errorf("invalid term format")
-		}
-
-		term, ok := termInfo[1].(string)
-		if !ok {
-			return nil, fmt.Errorf("invalid term format")
-		}
-
-		suggestionsData, ok := termInfo[2].([]interface{})
-		if !ok {
-			return nil, fmt.Errorf("invalid suggestions format")
-		}
-
-		suggestions := make([]SpellCheckSuggestion, 0, len(suggestionsData))
-		for _, suggestionData := range suggestionsData {
-			suggestionInfo, ok := suggestionData.([]interface{})
-			if !ok || len(suggestionInfo) != 2 {
-				return nil, fmt.Errorf("invalid suggestion format")
-			}
-
-			scoreStr, ok := suggestionInfo[0].(string)
-			if !ok {
-				return nil, fmt.Errorf("invalid suggestion score format")
-			}
-			score, err := strconv.ParseFloat(scoreStr, 64)
-			if err != nil {
-				return nil, fmt.Errorf("invalid suggestion score value")
-			}
-
-			suggestion, ok := suggestionInfo[1].(string)
-			if !ok {
-				return nil, fmt.Errorf("invalid suggestion format")
-			}
-
-			suggestions = append(suggestions, SpellCheckSuggestion{
-				Score:      score,
-				Suggestion: suggestion,
-			})
-		}
-
-		results = append(results, SpellCheckResult{
-			Term:        term,
-			Suggestions: suggestions,
-		})
-	}
-
-	return results, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 type Document struct {
@@ -4436,206 +1971,17 @@ type FTSearchCmd struct {
 }
 
 // Ref: https://github.com/redis/go-redis/blob/v9.7.0/search_commands.go#L1541
-func (cmd *FTSearchCmd) from(res rueidis.RedisResult) {
-	if err := res.Error(); err != nil {
-		cmd.SetErr(err)
-		return
-	}
-	anyRes, err := res.ToAny()
-	if err != nil {
-		cmd.SetErr(err)
-		return
-	}
-	cmd.SetRawVal(anyRes)
-	msg, err := res.ToMessage()
-	if err != nil {
-		cmd.SetErr(err)
-		return
-	}
-	if !(msg.IsMap() || msg.IsArray()) {
-		panic("res should be either map(RESP3) or array(RESP2)")
-	}
-	if msg.IsMap() {
-		// is RESP3 map
-		m, err := msg.ToMap()
-		if err != nil {
-			cmd.SetErr(err)
-			return
-		}
-		totalResultsMsg, ok := m["total_results"]
-		if !ok {
-			cmd.SetErr(fmt.Errorf(`result map should contain key "total_results"`))
-		}
-		totalResults, err := totalResultsMsg.AsInt64()
-		if err != nil {
-			cmd.SetErr(err)
-			return
-		}
-		resultsMsg, ok := m["results"]
-		if !ok {
-			cmd.SetErr(fmt.Errorf(`result map should contain key "results"`))
-		}
-		resultsArr, err := resultsMsg.ToArray()
-		if err != nil {
-			cmd.SetErr(err)
-			return
-		}
-		ftSearchResult := FTSearchResult{Total: totalResults, Docs: make([]Document, 0, len(resultsArr))}
-		for _, result := range resultsArr {
-			resultMap, err := result.ToMap()
-			if err != nil {
-				cmd.SetErr(err)
-				return
-			}
-			doc := Document{}
-			for k, v := range resultMap {
-				switch k {
-				case "id":
-					idStr, err := v.ToString()
-					if err != nil {
-						cmd.SetErr(err)
-						return
-					}
-					doc.ID = idStr
-				case "extra_attributes":
-					// doc.ID = resultArr[i+1].String()
-					strMap, err := v.AsStrMap()
-					if err != nil {
-						cmd.SetErr(err)
-						return
-					}
-					doc.Fields = strMap
-				case "score":
-					score, err := v.AsFloat64()
-					if err != nil {
-						cmd.SetErr(err)
-						return
-					}
-					doc.Score = &score
-				case "payload":
-					if !v.IsNil() {
-						payload, err := v.ToString()
-						if err != nil {
-							cmd.SetErr(err)
-							return
-						}
-						doc.Payload = &payload
-					}
-				case "sortkey":
-					if !v.IsNil() {
-						sortKey, err := v.ToString()
-						if err != nil {
-							cmd.SetErr(err)
-							return
-						}
-						doc.SortKey = &sortKey
-					}
-				}
-			}
+func (cmd *FTSearchCmd) from(res rueidis.RedisResult) { _ = "STUB: not implemented"; return }
 
-			ftSearchResult.Docs = append(ftSearchResult.Docs, doc)
-		}
-		cmd.SetVal(ftSearchResult)
-		return
-	}
-	// is RESP2 array
-	data, err := msg.ToArray()
-	if err != nil {
-		cmd.SetErr(err)
-		return
-	}
-	if len(data) < 1 {
-		cmd.SetErr(fmt.Errorf("unexpected search result format"))
-		return
-	}
-	total, err := data[0].AsInt64()
-	if err != nil {
-		cmd.SetErr(err)
-		return
-	}
-	var results []Document
-	for i := 1; i < len(data); {
-		docID, err := data[i].ToString()
-		if err != nil {
-			cmd.SetErr(fmt.Errorf("invalid total results format: %w", err))
-			return
-		}
-		doc := Document{
-			ID:     docID,
-			Fields: make(map[string]string),
-		}
-		i++
-		if cmd.options != nil {
-			if cmd.options.NoContent {
-				results = append(results, doc)
-				continue
-			}
-			if cmd.options.WithScores && i < len(data) {
-				scoreStr, err := data[i].ToString()
-				if err != nil {
-					cmd.SetErr(fmt.Errorf("invalid score format: %w", err))
-					return
-				}
-				score, err := strconv.ParseFloat(scoreStr, 64)
-				if err != nil {
-					cmd.SetErr(fmt.Errorf("invalid score format: %w", err))
-					return
-				}
-				doc.Score = &score
-				i++
-			}
-			if cmd.options.WithPayloads && i < len(data) {
-				payload, err := data[i].ToString()
-				if err != nil {
-					cmd.SetErr(fmt.Errorf("invalid payload format: %w", err))
-					return
-				}
-				doc.Payload = &payload
-				i++
-			}
-			if cmd.options.WithSortKeys && i < len(data) {
-				sortKey, err := data[i].ToString()
-				if err != nil {
-					cmd.SetErr(fmt.Errorf("invalid payload format: %w", err))
-					return
-				}
-				doc.SortKey = &sortKey
-				i++
-			}
-		}
-		if i < len(data) {
-			fields, err := data[i].ToArray()
-			if err != nil {
-				cmd.SetErr(fmt.Errorf("invalid document fields format: %w", err))
-				return
-			}
-			for j := 0; j < len(fields); j += 2 {
-				key, err := fields[j].ToString()
-				if err != nil {
-					cmd.SetErr(fmt.Errorf("invalid field key format: %w", err))
-					return
-				}
-				value, err := fields[j+1].ToString()
-				if err != nil {
-					cmd.SetErr(fmt.Errorf("invalid field value format: %w", err))
-					return
-				}
-				doc.Fields[key] = value
-			}
-			i++
-		}
-		results = append(results, doc)
-	}
-	cmd.SetVal(FTSearchResult{
-		Total: total,
-		Docs:  results,
-	})
-}
+// is RESP3 map
+
+// doc.ID = resultArr[i+1].String()
+
+// is RESP2 array
 
 func newFTSearchCmd(res rueidis.RedisResult, options *FTSearchOptions) *FTSearchCmd {
-	cmd := &FTSearchCmd{options: options}
-	cmd.from(res)
-	return cmd
+	_ = "STUB: not implemented"
+	return nil
 }
 
 type FTSynUpdateOptions struct {
@@ -4646,75 +1992,13 @@ type FTSynDumpCmd struct {
 	baseCmd[[]FTSynDumpResult]
 }
 
-func (cmd *FTSynDumpCmd) from(res rueidis.RedisResult) {
-	if err := res.Error(); err != nil {
-		cmd.SetErr(err)
-		return
-	}
-	anyRes, err := res.ToAny()
-	if err != nil {
-		cmd.SetErr(err)
-		return
-	}
-	cmd.SetRawVal(anyRes)
-	msg, err := res.ToMessage()
-	if err != nil {
-		cmd.SetErr(err)
-		return
-	}
-	if !(msg.IsMap() || msg.IsArray()) {
-		panic("res should be either map(RESP3) or array(RESP2)")
-	}
-	if msg.IsMap() {
-		// is RESP3 map
-		m, err := msg.ToMap()
-		if err != nil {
-			cmd.SetErr(err)
-			return
-		}
-		results := make([]FTSynDumpResult, 0, len(m))
-		for term, synMsg := range m {
-			synonyms, err := synMsg.AsStrSlice()
-			if err != nil {
-				cmd.SetErr(err)
-				return
-			}
-			results = append(results, FTSynDumpResult{Term: term, Synonyms: synonyms})
-		}
-		cmd.SetVal(results)
-		return
-	}
-	// is RESP2 array
-	arr, err := msg.ToArray()
-	if err != nil {
-		cmd.SetErr(err)
-		return
-	}
-	results := make([]FTSynDumpResult, 0, len(arr)/2)
-	for i := 0; i < len(arr); i += 2 {
-		term, err := arr[i].ToString()
-		if err != nil {
-			cmd.SetErr(err)
-			return
-		}
-		synonyms, err := arr[i+1].AsStrSlice()
-		if err != nil {
-			cmd.SetErr(err)
-			return
-		}
-		results = append(results, FTSynDumpResult{
-			Term:     term,
-			Synonyms: synonyms,
-		})
-	}
-	cmd.SetVal(results)
-}
+func (cmd *FTSynDumpCmd) from(res rueidis.RedisResult) { _ = "STUB: not implemented"; return }
 
-func newFTSynDumpCmd(res rueidis.RedisResult) *FTSynDumpCmd {
-	cmd := &FTSynDumpCmd{}
-	cmd.from(res)
-	return cmd
-}
+// is RESP3 map
+
+// is RESP2 array
+
+func newFTSynDumpCmd(res rueidis.RedisResult) *FTSynDumpCmd { _ = "STUB: not implemented"; return nil }
 
 type FTSynDumpResult struct {
 	Term     string
@@ -4821,175 +2105,23 @@ type ClientInfoCmd struct {
 }
 
 func newClientInfoCmd(res rueidis.RedisResult) *ClientInfoCmd {
-	cmd := &ClientInfoCmd{}
-	cmd.from(res)
-	return cmd
+	_ = "STUB: not implemented"
+	return nil
 }
 
-func (cmd *ClientInfoCmd) SetVal(val *ClientInfo) {
-	cmd.val = val
-}
+func (cmd *ClientInfoCmd) SetVal(val *ClientInfo) { _ = "STUB: not implemented"; return }
 
-func (cmd *ClientInfoCmd) Val() *ClientInfo {
-	return cmd.val
-}
+func (cmd *ClientInfoCmd) Val() *ClientInfo { _ = "STUB: not implemented"; return nil }
 
-func (cmd *ClientInfoCmd) Result() (*ClientInfo, error) {
-	return cmd.val, cmd.err
-}
+func (cmd *ClientInfoCmd) Result() (*ClientInfo, error) { _ = "STUB: not implemented"; return nil, nil }
 
 func stringToClientInfo(txt string) (*ClientInfo, error) {
-	info := &ClientInfo{}
-	var err error
-	for _, s := range strings.Split(strings.TrimPrefix(strings.TrimSpace(txt), "txt:"), " ") {
-		kv := strings.Split(s, "=")
-		if len(kv) != 2 {
-			return nil, fmt.Errorf("redis: unexpected client info data (%s)", s)
-		}
-		key, val := kv[0], kv[1]
-
-		switch key {
-		case "id":
-			info.ID, err = strconv.ParseInt(val, 10, 64)
-		case "addr":
-			info.Addr = val
-		case "laddr":
-			info.LAddr = val
-		case "fd":
-			info.FD, err = strconv.ParseInt(val, 10, 64)
-		case "name":
-			info.Name = val
-		case "age":
-			var age int
-			if age, err = strconv.Atoi(val); err == nil {
-				info.Age = time.Duration(age) * time.Second
-			}
-		case "idle":
-			var idle int
-			if idle, err = strconv.Atoi(val); err == nil {
-				info.Idle = time.Duration(idle) * time.Second
-			}
-		case "flags":
-			if val == "N" {
-				break
-			}
-
-			for i := 0; i < len(val); i++ {
-				switch val[i] {
-				case 'S':
-					info.Flags |= ClientSlave
-				case 'O':
-					info.Flags |= ClientSlave | ClientMonitor
-				case 'M':
-					info.Flags |= ClientMaster
-				case 'P':
-					info.Flags |= ClientPubSub
-				case 'x':
-					info.Flags |= ClientMulti
-				case 'b':
-					info.Flags |= ClientBlocked
-				case 't':
-					info.Flags |= ClientTracking
-				case 'R':
-					info.Flags |= ClientTrackingBrokenRedir
-				case 'B':
-					info.Flags |= ClientTrackingBCAST
-				case 'd':
-					info.Flags |= ClientDirtyCAS
-				case 'c':
-					info.Flags |= ClientCloseAfterCommand
-				case 'u':
-					info.Flags |= ClientUnBlocked
-				case 'A':
-					info.Flags |= ClientCloseASAP
-				case 'U':
-					info.Flags |= ClientUnixSocket
-				case 'r':
-					info.Flags |= ClientReadOnly
-				case 'e':
-					info.Flags |= ClientNoEvict
-				case 'T':
-					info.Flags |= ClientNoTouch
-				default:
-					return nil, fmt.Errorf("redis: unexpected client info flags(%s)", string(val[i]))
-				}
-			}
-		case "db":
-			info.DB, err = strconv.Atoi(val)
-		case "sub":
-			info.Sub, err = strconv.Atoi(val)
-		case "psub":
-			info.PSub, err = strconv.Atoi(val)
-		case "ssub":
-			info.SSub, err = strconv.Atoi(val)
-		case "multi":
-			info.Multi, err = strconv.Atoi(val)
-		case "watch":
-			info.Watch, err = strconv.Atoi(val)
-		case "qbuf":
-			info.QueryBuf, err = strconv.Atoi(val)
-		case "qbuf-free":
-			info.QueryBufFree, err = strconv.Atoi(val)
-		case "argv-mem":
-			info.ArgvMem, err = strconv.Atoi(val)
-		case "multi-mem":
-			info.MultiMem, err = strconv.Atoi(val)
-		case "rbs":
-			info.BufferSize, err = strconv.Atoi(val)
-		case "rbp":
-			info.BufferPeak, err = strconv.Atoi(val)
-		case "obl":
-			info.OutputBufferLength, err = strconv.Atoi(val)
-		case "oll":
-			info.OutputListLength, err = strconv.Atoi(val)
-		case "omem":
-			info.OutputMemory, err = strconv.Atoi(val)
-		case "tot-mem":
-			info.TotalMemory, err = strconv.Atoi(val)
-		case "events":
-			info.Events = val
-		case "cmd":
-			info.LastCmd = val
-		case "user":
-			info.User = val
-		case "redir":
-			info.Redir, err = strconv.ParseInt(val, 10, 64)
-		case "resp":
-			info.Resp, err = strconv.Atoi(val)
-		case "lib-name":
-			info.LibName = val
-		case "lib-ver":
-			info.LibVer = val
-		case "tot-net-in":
-			info.TotalNetIn, err = strconv.ParseInt(val, 10, 64)
-		case "tot-net-out":
-			info.TotalNetOut, err = strconv.ParseInt(val, 10, 64)
-		case "tot-cmds":
-			info.TotalCmds, err = strconv.ParseInt(val, 10, 64)
-		}
-
-		if err != nil {
-			return nil, err
-		}
-	}
-	return info, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // fmt.Sscanf() cannot handle null values
-func (cmd *ClientInfoCmd) from(res rueidis.RedisResult) {
-	txt, err := res.ToString()
-	if err != nil {
-		cmd.SetErr(err)
-		return
-	}
-	info, err := stringToClientInfo(txt)
-	if err != nil {
-		cmd.SetErr(err)
-		return
-	}
-
-	cmd.SetVal(info)
-}
+func (cmd *ClientInfoCmd) from(res rueidis.RedisResult) { _ = "STUB: not implemented"; return }
 
 type ACLLogEntry struct {
 	Count                int64
@@ -5008,66 +2140,9 @@ type ACLLogCmd struct {
 	baseCmd[[]*ACLLogEntry]
 }
 
-func (cmd *ACLLogCmd) from(res rueidis.RedisResult) {
-	arr, err := res.ToArray()
-	if err != nil {
-		cmd.SetErr(err)
-		return
-	}
+func (cmd *ACLLogCmd) from(res rueidis.RedisResult) { _ = "STUB: not implemented"; return }
 
-	logEntries := make([]*ACLLogEntry, 0, len(arr))
-	for _, msg := range arr {
-		log, err := msg.AsMap()
-		if err != nil {
-			cmd.SetErr(err)
-			return
-		}
-		entry := ACLLogEntry{}
-
-		for key, attr := range log {
-			switch key {
-			case "count":
-				entry.Count, err = attr.AsInt64()
-			case "reason":
-				entry.Reason, err = attr.ToString()
-			case "context":
-				entry.Context, err = attr.ToString()
-			case "object":
-				entry.Object, err = attr.ToString()
-			case "username":
-				entry.Username, err = attr.ToString()
-			case "age-seconds":
-				entry.AgeSeconds, err = attr.AsFloat64()
-			case "client-info":
-				txt, txtErr := attr.ToString()
-				if txtErr == nil {
-					entry.ClientInfo, err = stringToClientInfo(txt)
-				} else {
-					err = txtErr
-				}
-			case "entry-id":
-				entry.EntryID, err = attr.AsInt64()
-			case "timestamp-created":
-				entry.TimestampCreated, err = attr.AsInt64()
-			case "timestamp-last-updated":
-				entry.TimestampLastUpdated, err = attr.AsInt64()
-			}
-		}
-
-		if err != nil {
-			cmd.SetErr(err)
-			return
-		}
-		logEntries = append(logEntries, &entry)
-	}
-	cmd.SetVal(logEntries)
-}
-
-func newACLLogCmd(res rueidis.RedisResult) *ACLLogCmd {
-	cmd := &ACLLogCmd{}
-	cmd.from(res)
-	return cmd
-}
+func newACLLogCmd(res rueidis.RedisResult) *ACLLogCmd { _ = "STUB: not implemented"; return nil }
 
 // ModuleLoadexConfig struct is used to specify the arguments for the MODULE LOADEX command of redis.
 // `MODULE LOADEX path [CONFIG name value [CONFIG name value ...]] [ARGS args [args ...]]`
@@ -5092,71 +2167,24 @@ type ClusterLinksCmd struct {
 	err error
 }
 
-func (c *ClusterLinksCmd) SetErr(err error) {
-	c.err = err
-}
+func (c *ClusterLinksCmd) SetErr(err error) { _ = "STUB: not implemented"; return }
 
-func (c *ClusterLinksCmd) Err() error {
-	return c.err
-}
+func (c *ClusterLinksCmd) Err() error { _ = "STUB: not implemented"; return nil }
 
-func (cmd *ClusterLinksCmd) from(res rueidis.RedisResult) {
-	arr, err := res.ToArray()
-	if err != nil {
-		cmd.SetErr(err)
-		return
-	}
-
-	val := make([]ClusterLink, 0, len(arr))
-	for _, v := range arr {
-		dict, err := v.AsMap()
-		if err != nil {
-			cmd.SetErr(err)
-			return
-		}
-		link := ClusterLink{}
-
-		for k, v := range dict {
-			switch k {
-			case "direction":
-				link.Direction, _ = v.ToString()
-			case "node":
-				link.Node, _ = v.ToString()
-			case "create-time":
-				link.CreateTime, _ = v.ToInt64()
-			case "events":
-				link.Events, _ = v.ToString()
-			case "send-buffer-allocated":
-				link.SendBufferAllocated, _ = v.ToInt64()
-			case "send-buffer-used":
-				link.SendBufferUsed, _ = v.ToInt64()
-			default:
-				cmd.SetErr(fmt.Errorf("unexpected key %q in CLUSTER LINKS reply", k))
-				return
-			}
-		}
-		val = append(val, link)
-	}
-
-	cmd.val = val
-}
+func (cmd *ClusterLinksCmd) from(res rueidis.RedisResult) { _ = "STUB: not implemented"; return }
 
 func newClusterLinksCmd(resp rueidis.RedisResult) *ClusterLinksCmd {
-	cmd := &ClusterLinksCmd{}
-	cmd.from(resp)
-	return cmd
+	_ = "STUB: not implemented"
+	return nil
 }
 
-func (cmd *ClusterLinksCmd) SetVal(val []ClusterLink) {
-	cmd.val = val
-}
+func (cmd *ClusterLinksCmd) SetVal(val []ClusterLink) { _ = "STUB: not implemented"; return }
 
-func (cmd *ClusterLinksCmd) Val() []ClusterLink {
-	return cmd.val
-}
+func (cmd *ClusterLinksCmd) Val() []ClusterLink { _ = "STUB: not implemented"; return nil }
 
 func (cmd *ClusterLinksCmd) Result() ([]ClusterLink, error) {
-	return cmd.Val(), cmd.Err()
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 type SlowLog struct {
@@ -5172,90 +2200,9 @@ type SlowLogCmd struct {
 	baseCmd[[]*SlowLog]
 }
 
-func (cmd *SlowLogCmd) from(res rueidis.RedisResult) {
-	arr, err := res.ToArray()
-	if err != nil {
-		cmd.SetErr(err)
-		return
-	}
+func (cmd *SlowLogCmd) from(res rueidis.RedisResult) { _ = "STUB: not implemented"; return }
 
-	logEntries := make([]*SlowLog, 0, len(arr))
-	for _, msg := range arr {
-		log, err := msg.ToArray()
-		if err != nil {
-			cmd.SetErr(err)
-			return
-		}
-
-		if len(log) < 4 {
-			cmd.SetErr(fmt.Errorf("redis: got %d elements in slowlog get, expected at least 4", len(log)))
-			return
-		}
-
-		entry := SlowLog{}
-
-		entry.ID, err = log[0].AsInt64()
-		if err != nil {
-			cmd.SetErr(err)
-			return
-		}
-
-		createdAt, err := log[1].AsInt64()
-		if err != nil {
-			cmd.SetErr(err)
-			return
-		}
-		entry.Time = time.Unix(createdAt, 0)
-
-		duration, err := log[2].AsInt64()
-		if err != nil {
-			cmd.SetErr(err)
-			return
-		}
-		entry.Duration = time.Duration(duration) * time.Microsecond
-
-		argsArr, err := log[3].ToArray()
-		if err != nil {
-			cmd.SetErr(err)
-			return
-		}
-
-		entry.Args = make([]string, len(argsArr))
-
-		for i, arg := range argsArr {
-			entry.Args[i], err = arg.ToString()
-			if err != nil {
-				cmd.SetErr(err)
-				return
-			}
-		}
-
-		if len(log) >= 5 {
-			entry.ClientAddr, err = log[4].ToString()
-			if err != nil {
-				cmd.SetErr(err)
-				return
-			}
-		}
-
-		if len(log) >= 6 {
-			entry.ClientName, err = log[5].ToString()
-			if err != nil {
-				cmd.SetErr(err)
-				return
-			}
-		}
-
-		logEntries = append(logEntries, &entry)
-	}
-	cmd.SetVal(logEntries)
-}
-
-func newSlowLogCmd(res rueidis.RedisResult) *SlowLogCmd {
-	cmd := &SlowLogCmd{}
-	cmd.from(res)
-	return cmd
-}
+func newSlowLogCmd(res rueidis.RedisResult) *SlowLogCmd { _ = "STUB: not implemented"; return nil }
 
 // LCSQuery is a parameter used for the LCS command
 type LCSQuery struct {
@@ -5297,155 +2244,46 @@ type LCSCmd struct {
 }
 
 func newLCSCmd(res rueidis.RedisResult, readType uint8) *LCSCmd {
-	cmd := &LCSCmd{readType: readType}
-	cmd.from(res)
-	return cmd
+	_ = "STUB: not implemented"
+	return nil
 }
 
-func (cmd *LCSCmd) SetVal(val *LCSMatch) {
-	cmd.val = val
-}
+func (cmd *LCSCmd) SetVal(val *LCSMatch) { _ = "STUB: not implemented"; return }
 
-func (cmd *LCSCmd) SetErr(err error) {
-	cmd.err = err
-}
+func (cmd *LCSCmd) SetErr(err error) { _ = "STUB: not implemented"; return }
 
-func (cmd *LCSCmd) Val() *LCSMatch {
-	return cmd.val
-}
+func (cmd *LCSCmd) Val() *LCSMatch { _ = "STUB: not implemented"; return nil }
 
-func (cmd *LCSCmd) Err() error {
-	return cmd.err
-}
+func (cmd *LCSCmd) Err() error { _ = "STUB: not implemented"; return nil }
 
-func (cmd *LCSCmd) Result() (*LCSMatch, error) {
-	return cmd.val, cmd.err
-}
+func (cmd *LCSCmd) Result() (*LCSMatch, error) { _ = "STUB: not implemented"; return nil, nil }
 
-func (cmd *LCSCmd) from(res rueidis.RedisResult) {
-	lcs := &LCSMatch{}
-	var err error
+func (cmd *LCSCmd) from(res rueidis.RedisResult) { _ = "STUB: not implemented"; return }
 
-	switch cmd.readType {
-	case 1:
-		// match string
-		if lcs.MatchString, err = res.ToString(); err != nil {
-			cmd.SetErr(err)
-			return
-		}
-	case 2:
-		// match len
-		if lcs.Len, err = res.AsInt64(); err != nil {
-			cmd.SetErr(err)
-			return
-		}
-	case 3:
-		// read LCSMatch
-		if msgMap, err := res.AsMap(); err != nil {
-			cmd.SetErr(err)
-			return
-		} else {
-			// Validate length (should have exactly 2 keys: "matches" and "len")
-			if len(msgMap) != 2 {
-				cmd.SetErr(fmt.Errorf("redis: got %d elements in the map, wanted %d", len(msgMap), 2))
-				return
-			}
+// match string
 
-			// read matches or len field
-			for key, value := range msgMap {
-				switch key {
-				case "matches":
-					// read an array of matched positions
-					matches, err := cmd.readMatchedPositions(value)
-					if err != nil {
-						cmd.SetErr(err)
-						return
-					}
-					lcs.Matches = matches
+// match len
 
-				case "len":
-					// read match length
-					matchLen, err := value.AsInt64()
-					if err != nil {
-						cmd.SetErr(err)
-						return
-					}
-					lcs.Len = matchLen
-				}
-			}
-		}
-	}
+// read LCSMatch
 
-	cmd.val = lcs
-}
+// Validate length (should have exactly 2 keys: "matches" and "len")
+
+// read matches or len field
+
+// read an array of matched positions
+
+// read match length
 
 func (cmd *LCSCmd) readMatchedPositions(res rueidis.RedisMessage) ([]LCSMatchedPosition, error) {
-	val, err := res.ToArray()
-	if err != nil {
-		return nil, err
-	}
-
-	n := len(val)
-	positions := make([]LCSMatchedPosition, n)
-
-	for i := 0; i < n; i++ {
-		pn, err := val[i].ToArray()
-		if err != nil {
-			return nil, err
-		}
-
-		if len(pn) < 2 {
-			return nil, fmt.Errorf("invalid position format")
-		}
-
-		key1, err := cmd.readPosition(pn[0])
-		if err != nil {
-			return nil, err
-		}
-
-		key2, err := cmd.readPosition(pn[1])
-		if err != nil {
-			return nil, err
-		}
-
-		pos := LCSMatchedPosition{
-			Key1: key1,
-			Key2: key2,
-		}
-
-		// Read match length if WithMatchLen is true
-		if len(pn) > 2 {
-			if pos.MatchLen, err = pn[2].AsInt64(); err != nil {
-				return nil, err
-			}
-		}
-
-		positions[i] = pos
-	}
-
-	return positions, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
+// Read match length if WithMatchLen is true
+
 func (cmd *LCSCmd) readPosition(res rueidis.RedisMessage) (LCSPosition, error) {
-	posArray, err := res.ToArray()
-	if err != nil {
-		return LCSPosition{}, err
-	}
-	if len(posArray) != 2 {
-		return LCSPosition{}, fmt.Errorf("redis: got %d elements in the array, wanted %d", len(posArray), 2)
-	}
-
-	start, err := posArray[0].AsInt64()
-	if err != nil {
-		return LCSPosition{}, err
-	}
-
-	end, err := posArray[1].AsInt64()
-	if err != nil {
-		return LCSPosition{}, err
-	}
-
-	return LCSPosition{Start: start, End: end}, nil
+	_ = "STUB: not implemented"
+	return *new(LCSPosition), nil
 }
 
 type FunctionStats struct {
@@ -5455,59 +2293,25 @@ type FunctionStats struct {
 	allrs     []RunningScript
 }
 
-func (fs *FunctionStats) Running() bool {
-	return fs.isRunning
-}
+func (fs *FunctionStats) Running() bool { _ = "STUB: not implemented"; return false }
 
 func (fs *FunctionStats) RunningScript() (RunningScript, bool) {
-	return fs.rs, fs.isRunning
+	_ = "STUB: not implemented"
+	return *new(RunningScript), false
 }
 
-func (fs *FunctionStats) AllRunningScripts() []RunningScript {
-	return fs.allrs
-}
+func (fs *FunctionStats) AllRunningScripts() []RunningScript { _ = "STUB: not implemented"; return nil }
 
 type FunctionStatsCmd struct {
 	baseCmd[FunctionStats]
 }
 
 func newFunctionStatsCmd(res rueidis.RedisResult) *FunctionStatsCmd {
-	cmd := &FunctionStatsCmd{}
-	cmd.from(res)
-	return cmd
+	_ = "STUB: not implemented"
+	return nil
 }
 
-func (cmd *FunctionStatsCmd) from(res rueidis.RedisResult) {
-	var fstats FunctionStats
-	mp, err := res.AsMap()
-	if err != nil {
-		cmd.SetErr(err)
-		return
-	}
-	for key, val := range mp {
-		switch key {
-		case "running_script":
-			fstats.rs, fstats.isRunning, err = cmd.parseRunningScript(val)
-			if err != nil {
-				cmd.SetErr(err)
-				return
-			}
-		case "engines":
-			fstats.Engines, err = cmd.parseEngines(val)
-			if err != nil {
-				cmd.SetErr(err)
-				return
-			}
-		case "all_running_scripts":
-			fstats.allrs, err = cmd.parseRunningScripts(val)
-			if err != nil {
-				cmd.SetErr(err)
-				return
-			}
-		}
-	}
-	cmd.SetVal(fstats)
-}
+func (cmd *FunctionStatsCmd) from(res rueidis.RedisResult) { _ = "STUB: not implemented"; return }
 
 type RunningScript struct {
 	Name     string
@@ -5516,37 +2320,8 @@ type RunningScript struct {
 }
 
 func (cmd *FunctionStatsCmd) parseRunningScript(msg rueidis.RedisMessage) (RunningScript, bool, error) {
-	rsMap, err := msg.AsMap()
-	if err != nil {
-		if rueidis.IsRedisNil(err) {
-			return RunningScript{}, false, nil
-		}
-		return RunningScript{}, false, err
-	}
-
-	if len(rsMap) == 0 {
-		return RunningScript{}, false, nil
-	}
-
-	val := RunningScript{}
-	for key, attr := range rsMap {
-		switch key {
-		case "name":
-			val.Name, err = attr.ToString()
-		case "command":
-			val.Command, err = attr.AsStrSlice()
-		case "duration_ms":
-			ms, err := attr.AsInt64()
-			if err != nil {
-				return RunningScript{}, false, err
-			}
-			val.Duration = time.Duration(ms) * time.Millisecond
-		}
-		if err != nil {
-			return RunningScript{}, false, err
-		}
-	}
-	return val, true, nil
+	_ = "STUB: not implemented"
+	return *new(RunningScript), false, nil
 }
 
 type Engine struct {
@@ -5556,68 +2331,11 @@ type Engine struct {
 }
 
 func (cmd *FunctionStatsCmd) parseEngines(msg rueidis.RedisMessage) ([]Engine, error) {
-	engineMap, err := msg.AsMap()
-	if err != nil {
-		if rueidis.IsRedisNil(err) {
-			return []Engine{}, nil
-		}
-		return []Engine{}, err
-	}
-	vals := make([]Engine, 0, len(engineMap))
-	for key, attr := range engineMap {
-		engine := Engine{}
-		engine.Language = key
-		emap, err := attr.AsMap()
-		if err != nil {
-			return []Engine{}, err
-		}
-		for k, v := range emap {
-			switch k {
-			case "libraries_count":
-				engine.LibrariesCount, err = v.AsInt64()
-			case "functions_count":
-				engine.FunctionsCount, err = v.AsInt64()
-			}
-			if err != nil {
-				return []Engine{}, err
-			}
-		}
-		vals = append(vals, engine)
-	}
-	return vals, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (cmd *FunctionStatsCmd) parseRunningScripts(msg rueidis.RedisMessage) ([]RunningScript, error) {
-	rScriptMap, err := msg.AsMap()
-	if err != nil {
-		if rueidis.IsRedisNil(err) {
-			return []RunningScript{}, nil
-		}
-		return []RunningScript{}, err
-	}
-	vals := make([]RunningScript, 0, len(rScriptMap))
-	for _, attr := range rScriptMap {
-		var val RunningScript
-		attrMap, err := attr.AsMap()
-		for k, v := range attrMap {
-			switch k {
-			case "name":
-				val.Name, err = v.ToString()
-			case "duration_ms":
-				ms, err := v.AsInt64()
-				if err != nil {
-					return []RunningScript{}, err
-				}
-				val.Duration = time.Duration(ms) * time.Millisecond
-			case "command":
-				val.Command, err = v.AsStrSlice()
-			}
-			if err != nil {
-				return []RunningScript{}, err
-			}
-		}
-		vals = append(vals, val)
-
-	}
-	return vals, err
+	_ = "STUB: not implemented"
+	return nil, nil
 }

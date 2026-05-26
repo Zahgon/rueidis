@@ -2,7644 +2,7365 @@
 
 package cmds
 
-import "strconv"
-
 type FtAggregate Incomplete
 
-func (b Builder) FtAggregate() (c FtAggregate) {
-	c = FtAggregate{cs: get(), ks: b.ks, cf: int16(readonly)}
-	c.cs.s = append(c.cs.s, "FT.AGGREGATE")
-	return c
-}
+func (b Builder) FtAggregate() (c FtAggregate) { _ = "STUB: not implemented"; return *new(FtAggregate) }
 
 func (c FtAggregate) Index(index string) FtAggregateIndex {
-	c.cs.s = append(c.cs.s, index)
-	return (FtAggregateIndex)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateIndex)
 }
 
 type FtAggregateAddscores Incomplete
 
 func (c FtAggregateAddscores) Dialect(dialect int64) FtAggregateDialect {
-	c.cs.s = append(c.cs.s, "DIALECT", strconv.FormatInt(dialect, 10))
-	return (FtAggregateDialect)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateDialect)
 }
 
-func (c FtAggregateAddscores) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c FtAggregateAddscores) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type FtAggregateCursorCount Incomplete
 
 func (c FtAggregateCursorCount) Maxidle(idleTime int64) FtAggregateCursorMaxidle {
-	c.cs.s = append(c.cs.s, "MAXIDLE", strconv.FormatInt(idleTime, 10))
-	return (FtAggregateCursorMaxidle)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateCursorMaxidle)
 }
 
 func (c FtAggregateCursorCount) Params() FtAggregateParamsParams {
-	c.cs.s = append(c.cs.s, "PARAMS")
-	return (FtAggregateParamsParams)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateParamsParams)
 }
 
 func (c FtAggregateCursorCount) Addscores() FtAggregateAddscores {
-	c.cs.s = append(c.cs.s, "ADDSCORES")
-	return (FtAggregateAddscores)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateAddscores)
 }
 
 func (c FtAggregateCursorCount) Dialect(dialect int64) FtAggregateDialect {
-	c.cs.s = append(c.cs.s, "DIALECT", strconv.FormatInt(dialect, 10))
-	return (FtAggregateDialect)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateDialect)
 }
 
 func (c FtAggregateCursorCount) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type FtAggregateCursorMaxidle Incomplete
 
 func (c FtAggregateCursorMaxidle) Params() FtAggregateParamsParams {
-	c.cs.s = append(c.cs.s, "PARAMS")
-	return (FtAggregateParamsParams)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateParamsParams)
 }
 
 func (c FtAggregateCursorMaxidle) Addscores() FtAggregateAddscores {
-	c.cs.s = append(c.cs.s, "ADDSCORES")
-	return (FtAggregateAddscores)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateAddscores)
 }
 
 func (c FtAggregateCursorMaxidle) Dialect(dialect int64) FtAggregateDialect {
-	c.cs.s = append(c.cs.s, "DIALECT", strconv.FormatInt(dialect, 10))
-	return (FtAggregateDialect)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateDialect)
 }
 
 func (c FtAggregateCursorMaxidle) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type FtAggregateCursorWithcursor Incomplete
 
 func (c FtAggregateCursorWithcursor) Count(readSize int64) FtAggregateCursorCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(readSize, 10))
-	return (FtAggregateCursorCount)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateCursorCount)
 }
 
 func (c FtAggregateCursorWithcursor) Maxidle(idleTime int64) FtAggregateCursorMaxidle {
-	c.cs.s = append(c.cs.s, "MAXIDLE", strconv.FormatInt(idleTime, 10))
-	return (FtAggregateCursorMaxidle)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateCursorMaxidle)
 }
 
 func (c FtAggregateCursorWithcursor) Params() FtAggregateParamsParams {
-	c.cs.s = append(c.cs.s, "PARAMS")
-	return (FtAggregateParamsParams)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateParamsParams)
 }
 
 func (c FtAggregateCursorWithcursor) Addscores() FtAggregateAddscores {
-	c.cs.s = append(c.cs.s, "ADDSCORES")
-	return (FtAggregateAddscores)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateAddscores)
 }
 
 func (c FtAggregateCursorWithcursor) Dialect(dialect int64) FtAggregateDialect {
-	c.cs.s = append(c.cs.s, "DIALECT", strconv.FormatInt(dialect, 10))
-	return (FtAggregateDialect)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateDialect)
 }
 
 func (c FtAggregateCursorWithcursor) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type FtAggregateDialect Incomplete
 
-func (c FtAggregateDialect) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c FtAggregateDialect) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type FtAggregateIndex Incomplete
 
 func (c FtAggregateIndex) Query(query string) FtAggregateQuery {
-	c.cs.s = append(c.cs.s, query)
-	return (FtAggregateQuery)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateQuery)
 }
 
 type FtAggregateOpApplyApply Incomplete
 
 func (c FtAggregateOpApplyApply) As(name string) FtAggregateOpApplyAs {
-	c.cs.s = append(c.cs.s, "AS", name)
-	return (FtAggregateOpApplyAs)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpApplyAs)
 }
 
 type FtAggregateOpApplyAs Incomplete
 
 func (c FtAggregateOpApplyAs) Apply(expression string) FtAggregateOpApplyApply {
-	c.cs.s = append(c.cs.s, "APPLY", expression)
-	return (FtAggregateOpApplyApply)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpApplyApply)
 }
 
 func (c FtAggregateOpApplyAs) Groupby(nargs int64) FtAggregateOpGroupbyGroupby {
-	c.cs.s = append(c.cs.s, "GROUPBY", strconv.FormatInt(nargs, 10))
-	return (FtAggregateOpGroupbyGroupby)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpGroupbyGroupby)
 }
 
 func (c FtAggregateOpApplyAs) Sortby(nargs int64) FtAggregateOpSortbySortby {
-	c.cs.s = append(c.cs.s, "SORTBY", strconv.FormatInt(nargs, 10))
-	return (FtAggregateOpSortbySortby)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpSortbySortby)
 }
 
 func (c FtAggregateOpApplyAs) Limit() FtAggregateOpLimitLimit {
-	c.cs.s = append(c.cs.s, "LIMIT")
-	return (FtAggregateOpLimitLimit)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpLimitLimit)
 }
 
 func (c FtAggregateOpApplyAs) Filter(filter string) FtAggregateOpFilter {
-	c.cs.s = append(c.cs.s, "FILTER", filter)
-	return (FtAggregateOpFilter)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpFilter)
 }
 
 func (c FtAggregateOpApplyAs) LoadAll() FtAggregateOpLoadallLoadAll {
-	c.cs.s = append(c.cs.s, "LOAD", "*")
-	return (FtAggregateOpLoadallLoadAll)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpLoadallLoadAll)
 }
 
 func (c FtAggregateOpApplyAs) Load(count int64) FtAggregateOpLoadLoad {
-	c.cs.s = append(c.cs.s, "LOAD", strconv.FormatInt(count, 10))
-	return (FtAggregateOpLoadLoad)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpLoadLoad)
 }
 
 func (c FtAggregateOpApplyAs) Withcursor() FtAggregateCursorWithcursor {
-	c.cs.s = append(c.cs.s, "WITHCURSOR")
-	return (FtAggregateCursorWithcursor)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateCursorWithcursor)
 }
 
 func (c FtAggregateOpApplyAs) Params() FtAggregateParamsParams {
-	c.cs.s = append(c.cs.s, "PARAMS")
-	return (FtAggregateParamsParams)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateParamsParams)
 }
 
 func (c FtAggregateOpApplyAs) Addscores() FtAggregateAddscores {
-	c.cs.s = append(c.cs.s, "ADDSCORES")
-	return (FtAggregateAddscores)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateAddscores)
 }
 
 func (c FtAggregateOpApplyAs) Dialect(dialect int64) FtAggregateDialect {
-	c.cs.s = append(c.cs.s, "DIALECT", strconv.FormatInt(dialect, 10))
-	return (FtAggregateDialect)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateDialect)
 }
 
-func (c FtAggregateOpApplyAs) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c FtAggregateOpApplyAs) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type FtAggregateOpFilter Incomplete
 
 func (c FtAggregateOpFilter) LoadAll() FtAggregateOpLoadallLoadAll {
-	c.cs.s = append(c.cs.s, "LOAD", "*")
-	return (FtAggregateOpLoadallLoadAll)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpLoadallLoadAll)
 }
 
 func (c FtAggregateOpFilter) Load(count int64) FtAggregateOpLoadLoad {
-	c.cs.s = append(c.cs.s, "LOAD", strconv.FormatInt(count, 10))
-	return (FtAggregateOpLoadLoad)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpLoadLoad)
 }
 
 func (c FtAggregateOpFilter) Apply(expression string) FtAggregateOpApplyApply {
-	c.cs.s = append(c.cs.s, "APPLY", expression)
-	return (FtAggregateOpApplyApply)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpApplyApply)
 }
 
 func (c FtAggregateOpFilter) Groupby(nargs int64) FtAggregateOpGroupbyGroupby {
-	c.cs.s = append(c.cs.s, "GROUPBY", strconv.FormatInt(nargs, 10))
-	return (FtAggregateOpGroupbyGroupby)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpGroupbyGroupby)
 }
 
 func (c FtAggregateOpFilter) Sortby(nargs int64) FtAggregateOpSortbySortby {
-	c.cs.s = append(c.cs.s, "SORTBY", strconv.FormatInt(nargs, 10))
-	return (FtAggregateOpSortbySortby)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpSortbySortby)
 }
 
 func (c FtAggregateOpFilter) Limit() FtAggregateOpLimitLimit {
-	c.cs.s = append(c.cs.s, "LIMIT")
-	return (FtAggregateOpLimitLimit)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpLimitLimit)
 }
 
 func (c FtAggregateOpFilter) Filter(filter string) FtAggregateOpFilter {
-	c.cs.s = append(c.cs.s, "FILTER", filter)
-	return c
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpFilter)
 }
 
 func (c FtAggregateOpFilter) Withcursor() FtAggregateCursorWithcursor {
-	c.cs.s = append(c.cs.s, "WITHCURSOR")
-	return (FtAggregateCursorWithcursor)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateCursorWithcursor)
 }
 
 func (c FtAggregateOpFilter) Params() FtAggregateParamsParams {
-	c.cs.s = append(c.cs.s, "PARAMS")
-	return (FtAggregateParamsParams)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateParamsParams)
 }
 
 func (c FtAggregateOpFilter) Addscores() FtAggregateAddscores {
-	c.cs.s = append(c.cs.s, "ADDSCORES")
-	return (FtAggregateAddscores)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateAddscores)
 }
 
 func (c FtAggregateOpFilter) Dialect(dialect int64) FtAggregateDialect {
-	c.cs.s = append(c.cs.s, "DIALECT", strconv.FormatInt(dialect, 10))
-	return (FtAggregateDialect)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateDialect)
 }
 
-func (c FtAggregateOpFilter) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c FtAggregateOpFilter) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type FtAggregateOpGroupbyGroupby Incomplete
 
 func (c FtAggregateOpGroupbyGroupby) Property(property ...string) FtAggregateOpGroupbyProperty {
-	c.cs.s = append(c.cs.s, property...)
-	return (FtAggregateOpGroupbyProperty)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpGroupbyProperty)
 }
 
 func (c FtAggregateOpGroupbyGroupby) Reduce(function string) FtAggregateOpGroupbyReduceReduce {
-	c.cs.s = append(c.cs.s, "REDUCE", function)
-	return (FtAggregateOpGroupbyReduceReduce)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpGroupbyReduceReduce)
 }
 
 func (c FtAggregateOpGroupbyGroupby) Groupby(nargs int64) FtAggregateOpGroupbyGroupby {
-	c.cs.s = append(c.cs.s, "GROUPBY", strconv.FormatInt(nargs, 10))
-	return c
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpGroupbyGroupby)
 }
 
 func (c FtAggregateOpGroupbyGroupby) Sortby(nargs int64) FtAggregateOpSortbySortby {
-	c.cs.s = append(c.cs.s, "SORTBY", strconv.FormatInt(nargs, 10))
-	return (FtAggregateOpSortbySortby)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpSortbySortby)
 }
 
 func (c FtAggregateOpGroupbyGroupby) Limit() FtAggregateOpLimitLimit {
-	c.cs.s = append(c.cs.s, "LIMIT")
-	return (FtAggregateOpLimitLimit)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpLimitLimit)
 }
 
 func (c FtAggregateOpGroupbyGroupby) Filter(filter string) FtAggregateOpFilter {
-	c.cs.s = append(c.cs.s, "FILTER", filter)
-	return (FtAggregateOpFilter)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpFilter)
 }
 
 func (c FtAggregateOpGroupbyGroupby) LoadAll() FtAggregateOpLoadallLoadAll {
-	c.cs.s = append(c.cs.s, "LOAD", "*")
-	return (FtAggregateOpLoadallLoadAll)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpLoadallLoadAll)
 }
 
 func (c FtAggregateOpGroupbyGroupby) Load(count int64) FtAggregateOpLoadLoad {
-	c.cs.s = append(c.cs.s, "LOAD", strconv.FormatInt(count, 10))
-	return (FtAggregateOpLoadLoad)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpLoadLoad)
 }
 
 func (c FtAggregateOpGroupbyGroupby) Apply(expression string) FtAggregateOpApplyApply {
-	c.cs.s = append(c.cs.s, "APPLY", expression)
-	return (FtAggregateOpApplyApply)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpApplyApply)
 }
 
 func (c FtAggregateOpGroupbyGroupby) Withcursor() FtAggregateCursorWithcursor {
-	c.cs.s = append(c.cs.s, "WITHCURSOR")
-	return (FtAggregateCursorWithcursor)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateCursorWithcursor)
 }
 
 func (c FtAggregateOpGroupbyGroupby) Params() FtAggregateParamsParams {
-	c.cs.s = append(c.cs.s, "PARAMS")
-	return (FtAggregateParamsParams)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateParamsParams)
 }
 
 func (c FtAggregateOpGroupbyGroupby) Addscores() FtAggregateAddscores {
-	c.cs.s = append(c.cs.s, "ADDSCORES")
-	return (FtAggregateAddscores)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateAddscores)
 }
 
 func (c FtAggregateOpGroupbyGroupby) Dialect(dialect int64) FtAggregateDialect {
-	c.cs.s = append(c.cs.s, "DIALECT", strconv.FormatInt(dialect, 10))
-	return (FtAggregateDialect)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateDialect)
 }
 
 func (c FtAggregateOpGroupbyGroupby) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type FtAggregateOpGroupbyProperty Incomplete
 
 func (c FtAggregateOpGroupbyProperty) Property(property ...string) FtAggregateOpGroupbyProperty {
-	c.cs.s = append(c.cs.s, property...)
-	return c
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpGroupbyProperty)
 }
 
 func (c FtAggregateOpGroupbyProperty) Reduce(function string) FtAggregateOpGroupbyReduceReduce {
-	c.cs.s = append(c.cs.s, "REDUCE", function)
-	return (FtAggregateOpGroupbyReduceReduce)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpGroupbyReduceReduce)
 }
 
 func (c FtAggregateOpGroupbyProperty) Groupby(nargs int64) FtAggregateOpGroupbyGroupby {
-	c.cs.s = append(c.cs.s, "GROUPBY", strconv.FormatInt(nargs, 10))
-	return (FtAggregateOpGroupbyGroupby)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpGroupbyGroupby)
 }
 
 func (c FtAggregateOpGroupbyProperty) Sortby(nargs int64) FtAggregateOpSortbySortby {
-	c.cs.s = append(c.cs.s, "SORTBY", strconv.FormatInt(nargs, 10))
-	return (FtAggregateOpSortbySortby)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpSortbySortby)
 }
 
 func (c FtAggregateOpGroupbyProperty) Limit() FtAggregateOpLimitLimit {
-	c.cs.s = append(c.cs.s, "LIMIT")
-	return (FtAggregateOpLimitLimit)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpLimitLimit)
 }
 
 func (c FtAggregateOpGroupbyProperty) Filter(filter string) FtAggregateOpFilter {
-	c.cs.s = append(c.cs.s, "FILTER", filter)
-	return (FtAggregateOpFilter)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpFilter)
 }
 
 func (c FtAggregateOpGroupbyProperty) LoadAll() FtAggregateOpLoadallLoadAll {
-	c.cs.s = append(c.cs.s, "LOAD", "*")
-	return (FtAggregateOpLoadallLoadAll)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpLoadallLoadAll)
 }
 
 func (c FtAggregateOpGroupbyProperty) Load(count int64) FtAggregateOpLoadLoad {
-	c.cs.s = append(c.cs.s, "LOAD", strconv.FormatInt(count, 10))
-	return (FtAggregateOpLoadLoad)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpLoadLoad)
 }
 
 func (c FtAggregateOpGroupbyProperty) Apply(expression string) FtAggregateOpApplyApply {
-	c.cs.s = append(c.cs.s, "APPLY", expression)
-	return (FtAggregateOpApplyApply)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpApplyApply)
 }
 
 func (c FtAggregateOpGroupbyProperty) Withcursor() FtAggregateCursorWithcursor {
-	c.cs.s = append(c.cs.s, "WITHCURSOR")
-	return (FtAggregateCursorWithcursor)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateCursorWithcursor)
 }
 
 func (c FtAggregateOpGroupbyProperty) Params() FtAggregateParamsParams {
-	c.cs.s = append(c.cs.s, "PARAMS")
-	return (FtAggregateParamsParams)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateParamsParams)
 }
 
 func (c FtAggregateOpGroupbyProperty) Addscores() FtAggregateAddscores {
-	c.cs.s = append(c.cs.s, "ADDSCORES")
-	return (FtAggregateAddscores)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateAddscores)
 }
 
 func (c FtAggregateOpGroupbyProperty) Dialect(dialect int64) FtAggregateDialect {
-	c.cs.s = append(c.cs.s, "DIALECT", strconv.FormatInt(dialect, 10))
-	return (FtAggregateDialect)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateDialect)
 }
 
 func (c FtAggregateOpGroupbyProperty) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type FtAggregateOpGroupbyReduceArg Incomplete
 
 func (c FtAggregateOpGroupbyReduceArg) Arg(arg ...string) FtAggregateOpGroupbyReduceArg {
-	c.cs.s = append(c.cs.s, arg...)
-	return c
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpGroupbyReduceArg)
 }
 
 func (c FtAggregateOpGroupbyReduceArg) As(name string) FtAggregateOpGroupbyReduceAs {
-	c.cs.s = append(c.cs.s, "AS", name)
-	return (FtAggregateOpGroupbyReduceAs)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpGroupbyReduceAs)
 }
 
 func (c FtAggregateOpGroupbyReduceArg) By(by string) FtAggregateOpGroupbyReduceBy {
-	c.cs.s = append(c.cs.s, "BY", by)
-	return (FtAggregateOpGroupbyReduceBy)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpGroupbyReduceBy)
 }
 
 func (c FtAggregateOpGroupbyReduceArg) Asc() FtAggregateOpGroupbyReduceOrderAsc {
-	c.cs.s = append(c.cs.s, "ASC")
-	return (FtAggregateOpGroupbyReduceOrderAsc)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpGroupbyReduceOrderAsc)
 }
 
 func (c FtAggregateOpGroupbyReduceArg) Desc() FtAggregateOpGroupbyReduceOrderDesc {
-	c.cs.s = append(c.cs.s, "DESC")
-	return (FtAggregateOpGroupbyReduceOrderDesc)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpGroupbyReduceOrderDesc)
 }
 
 func (c FtAggregateOpGroupbyReduceArg) Reduce(function string) FtAggregateOpGroupbyReduceReduce {
-	c.cs.s = append(c.cs.s, "REDUCE", function)
-	return (FtAggregateOpGroupbyReduceReduce)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpGroupbyReduceReduce)
 }
 
 func (c FtAggregateOpGroupbyReduceArg) Groupby(nargs int64) FtAggregateOpGroupbyGroupby {
-	c.cs.s = append(c.cs.s, "GROUPBY", strconv.FormatInt(nargs, 10))
-	return (FtAggregateOpGroupbyGroupby)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpGroupbyGroupby)
 }
 
 func (c FtAggregateOpGroupbyReduceArg) Sortby(nargs int64) FtAggregateOpSortbySortby {
-	c.cs.s = append(c.cs.s, "SORTBY", strconv.FormatInt(nargs, 10))
-	return (FtAggregateOpSortbySortby)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpSortbySortby)
 }
 
 func (c FtAggregateOpGroupbyReduceArg) Limit() FtAggregateOpLimitLimit {
-	c.cs.s = append(c.cs.s, "LIMIT")
-	return (FtAggregateOpLimitLimit)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpLimitLimit)
 }
 
 func (c FtAggregateOpGroupbyReduceArg) Filter(filter string) FtAggregateOpFilter {
-	c.cs.s = append(c.cs.s, "FILTER", filter)
-	return (FtAggregateOpFilter)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpFilter)
 }
 
 func (c FtAggregateOpGroupbyReduceArg) LoadAll() FtAggregateOpLoadallLoadAll {
-	c.cs.s = append(c.cs.s, "LOAD", "*")
-	return (FtAggregateOpLoadallLoadAll)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpLoadallLoadAll)
 }
 
 func (c FtAggregateOpGroupbyReduceArg) Load(count int64) FtAggregateOpLoadLoad {
-	c.cs.s = append(c.cs.s, "LOAD", strconv.FormatInt(count, 10))
-	return (FtAggregateOpLoadLoad)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpLoadLoad)
 }
 
 func (c FtAggregateOpGroupbyReduceArg) Apply(expression string) FtAggregateOpApplyApply {
-	c.cs.s = append(c.cs.s, "APPLY", expression)
-	return (FtAggregateOpApplyApply)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpApplyApply)
 }
 
 func (c FtAggregateOpGroupbyReduceArg) Withcursor() FtAggregateCursorWithcursor {
-	c.cs.s = append(c.cs.s, "WITHCURSOR")
-	return (FtAggregateCursorWithcursor)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateCursorWithcursor)
 }
 
 func (c FtAggregateOpGroupbyReduceArg) Params() FtAggregateParamsParams {
-	c.cs.s = append(c.cs.s, "PARAMS")
-	return (FtAggregateParamsParams)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateParamsParams)
 }
 
 func (c FtAggregateOpGroupbyReduceArg) Addscores() FtAggregateAddscores {
-	c.cs.s = append(c.cs.s, "ADDSCORES")
-	return (FtAggregateAddscores)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateAddscores)
 }
 
 func (c FtAggregateOpGroupbyReduceArg) Dialect(dialect int64) FtAggregateDialect {
-	c.cs.s = append(c.cs.s, "DIALECT", strconv.FormatInt(dialect, 10))
-	return (FtAggregateDialect)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateDialect)
 }
 
 func (c FtAggregateOpGroupbyReduceArg) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type FtAggregateOpGroupbyReduceAs Incomplete
 
 func (c FtAggregateOpGroupbyReduceAs) By(by string) FtAggregateOpGroupbyReduceBy {
-	c.cs.s = append(c.cs.s, "BY", by)
-	return (FtAggregateOpGroupbyReduceBy)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpGroupbyReduceBy)
 }
 
 func (c FtAggregateOpGroupbyReduceAs) Asc() FtAggregateOpGroupbyReduceOrderAsc {
-	c.cs.s = append(c.cs.s, "ASC")
-	return (FtAggregateOpGroupbyReduceOrderAsc)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpGroupbyReduceOrderAsc)
 }
 
 func (c FtAggregateOpGroupbyReduceAs) Desc() FtAggregateOpGroupbyReduceOrderDesc {
-	c.cs.s = append(c.cs.s, "DESC")
-	return (FtAggregateOpGroupbyReduceOrderDesc)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpGroupbyReduceOrderDesc)
 }
 
 func (c FtAggregateOpGroupbyReduceAs) Reduce(function string) FtAggregateOpGroupbyReduceReduce {
-	c.cs.s = append(c.cs.s, "REDUCE", function)
-	return (FtAggregateOpGroupbyReduceReduce)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpGroupbyReduceReduce)
 }
 
 func (c FtAggregateOpGroupbyReduceAs) Groupby(nargs int64) FtAggregateOpGroupbyGroupby {
-	c.cs.s = append(c.cs.s, "GROUPBY", strconv.FormatInt(nargs, 10))
-	return (FtAggregateOpGroupbyGroupby)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpGroupbyGroupby)
 }
 
 func (c FtAggregateOpGroupbyReduceAs) Sortby(nargs int64) FtAggregateOpSortbySortby {
-	c.cs.s = append(c.cs.s, "SORTBY", strconv.FormatInt(nargs, 10))
-	return (FtAggregateOpSortbySortby)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpSortbySortby)
 }
 
 func (c FtAggregateOpGroupbyReduceAs) Limit() FtAggregateOpLimitLimit {
-	c.cs.s = append(c.cs.s, "LIMIT")
-	return (FtAggregateOpLimitLimit)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpLimitLimit)
 }
 
 func (c FtAggregateOpGroupbyReduceAs) Filter(filter string) FtAggregateOpFilter {
-	c.cs.s = append(c.cs.s, "FILTER", filter)
-	return (FtAggregateOpFilter)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpFilter)
 }
 
 func (c FtAggregateOpGroupbyReduceAs) LoadAll() FtAggregateOpLoadallLoadAll {
-	c.cs.s = append(c.cs.s, "LOAD", "*")
-	return (FtAggregateOpLoadallLoadAll)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpLoadallLoadAll)
 }
 
 func (c FtAggregateOpGroupbyReduceAs) Load(count int64) FtAggregateOpLoadLoad {
-	c.cs.s = append(c.cs.s, "LOAD", strconv.FormatInt(count, 10))
-	return (FtAggregateOpLoadLoad)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpLoadLoad)
 }
 
 func (c FtAggregateOpGroupbyReduceAs) Apply(expression string) FtAggregateOpApplyApply {
-	c.cs.s = append(c.cs.s, "APPLY", expression)
-	return (FtAggregateOpApplyApply)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpApplyApply)
 }
 
 func (c FtAggregateOpGroupbyReduceAs) Withcursor() FtAggregateCursorWithcursor {
-	c.cs.s = append(c.cs.s, "WITHCURSOR")
-	return (FtAggregateCursorWithcursor)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateCursorWithcursor)
 }
 
 func (c FtAggregateOpGroupbyReduceAs) Params() FtAggregateParamsParams {
-	c.cs.s = append(c.cs.s, "PARAMS")
-	return (FtAggregateParamsParams)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateParamsParams)
 }
 
 func (c FtAggregateOpGroupbyReduceAs) Addscores() FtAggregateAddscores {
-	c.cs.s = append(c.cs.s, "ADDSCORES")
-	return (FtAggregateAddscores)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateAddscores)
 }
 
 func (c FtAggregateOpGroupbyReduceAs) Dialect(dialect int64) FtAggregateDialect {
-	c.cs.s = append(c.cs.s, "DIALECT", strconv.FormatInt(dialect, 10))
-	return (FtAggregateDialect)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateDialect)
 }
 
 func (c FtAggregateOpGroupbyReduceAs) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type FtAggregateOpGroupbyReduceBy Incomplete
 
 func (c FtAggregateOpGroupbyReduceBy) Asc() FtAggregateOpGroupbyReduceOrderAsc {
-	c.cs.s = append(c.cs.s, "ASC")
-	return (FtAggregateOpGroupbyReduceOrderAsc)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpGroupbyReduceOrderAsc)
 }
 
 func (c FtAggregateOpGroupbyReduceBy) Desc() FtAggregateOpGroupbyReduceOrderDesc {
-	c.cs.s = append(c.cs.s, "DESC")
-	return (FtAggregateOpGroupbyReduceOrderDesc)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpGroupbyReduceOrderDesc)
 }
 
 func (c FtAggregateOpGroupbyReduceBy) Reduce(function string) FtAggregateOpGroupbyReduceReduce {
-	c.cs.s = append(c.cs.s, "REDUCE", function)
-	return (FtAggregateOpGroupbyReduceReduce)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpGroupbyReduceReduce)
 }
 
 func (c FtAggregateOpGroupbyReduceBy) Groupby(nargs int64) FtAggregateOpGroupbyGroupby {
-	c.cs.s = append(c.cs.s, "GROUPBY", strconv.FormatInt(nargs, 10))
-	return (FtAggregateOpGroupbyGroupby)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpGroupbyGroupby)
 }
 
 func (c FtAggregateOpGroupbyReduceBy) Sortby(nargs int64) FtAggregateOpSortbySortby {
-	c.cs.s = append(c.cs.s, "SORTBY", strconv.FormatInt(nargs, 10))
-	return (FtAggregateOpSortbySortby)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpSortbySortby)
 }
 
 func (c FtAggregateOpGroupbyReduceBy) Limit() FtAggregateOpLimitLimit {
-	c.cs.s = append(c.cs.s, "LIMIT")
-	return (FtAggregateOpLimitLimit)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpLimitLimit)
 }
 
 func (c FtAggregateOpGroupbyReduceBy) Filter(filter string) FtAggregateOpFilter {
-	c.cs.s = append(c.cs.s, "FILTER", filter)
-	return (FtAggregateOpFilter)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpFilter)
 }
 
 func (c FtAggregateOpGroupbyReduceBy) LoadAll() FtAggregateOpLoadallLoadAll {
-	c.cs.s = append(c.cs.s, "LOAD", "*")
-	return (FtAggregateOpLoadallLoadAll)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpLoadallLoadAll)
 }
 
 func (c FtAggregateOpGroupbyReduceBy) Load(count int64) FtAggregateOpLoadLoad {
-	c.cs.s = append(c.cs.s, "LOAD", strconv.FormatInt(count, 10))
-	return (FtAggregateOpLoadLoad)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpLoadLoad)
 }
 
 func (c FtAggregateOpGroupbyReduceBy) Apply(expression string) FtAggregateOpApplyApply {
-	c.cs.s = append(c.cs.s, "APPLY", expression)
-	return (FtAggregateOpApplyApply)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpApplyApply)
 }
 
 func (c FtAggregateOpGroupbyReduceBy) Withcursor() FtAggregateCursorWithcursor {
-	c.cs.s = append(c.cs.s, "WITHCURSOR")
-	return (FtAggregateCursorWithcursor)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateCursorWithcursor)
 }
 
 func (c FtAggregateOpGroupbyReduceBy) Params() FtAggregateParamsParams {
-	c.cs.s = append(c.cs.s, "PARAMS")
-	return (FtAggregateParamsParams)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateParamsParams)
 }
 
 func (c FtAggregateOpGroupbyReduceBy) Addscores() FtAggregateAddscores {
-	c.cs.s = append(c.cs.s, "ADDSCORES")
-	return (FtAggregateAddscores)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateAddscores)
 }
 
 func (c FtAggregateOpGroupbyReduceBy) Dialect(dialect int64) FtAggregateDialect {
-	c.cs.s = append(c.cs.s, "DIALECT", strconv.FormatInt(dialect, 10))
-	return (FtAggregateDialect)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateDialect)
 }
 
 func (c FtAggregateOpGroupbyReduceBy) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type FtAggregateOpGroupbyReduceNargs Incomplete
 
 func (c FtAggregateOpGroupbyReduceNargs) Arg(arg ...string) FtAggregateOpGroupbyReduceArg {
-	c.cs.s = append(c.cs.s, arg...)
-	return (FtAggregateOpGroupbyReduceArg)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpGroupbyReduceArg)
 }
 
 func (c FtAggregateOpGroupbyReduceNargs) As(name string) FtAggregateOpGroupbyReduceAs {
-	c.cs.s = append(c.cs.s, "AS", name)
-	return (FtAggregateOpGroupbyReduceAs)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpGroupbyReduceAs)
 }
 
 func (c FtAggregateOpGroupbyReduceNargs) By(by string) FtAggregateOpGroupbyReduceBy {
-	c.cs.s = append(c.cs.s, "BY", by)
-	return (FtAggregateOpGroupbyReduceBy)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpGroupbyReduceBy)
 }
 
 func (c FtAggregateOpGroupbyReduceNargs) Asc() FtAggregateOpGroupbyReduceOrderAsc {
-	c.cs.s = append(c.cs.s, "ASC")
-	return (FtAggregateOpGroupbyReduceOrderAsc)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpGroupbyReduceOrderAsc)
 }
 
 func (c FtAggregateOpGroupbyReduceNargs) Desc() FtAggregateOpGroupbyReduceOrderDesc {
-	c.cs.s = append(c.cs.s, "DESC")
-	return (FtAggregateOpGroupbyReduceOrderDesc)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpGroupbyReduceOrderDesc)
 }
 
 func (c FtAggregateOpGroupbyReduceNargs) Reduce(function string) FtAggregateOpGroupbyReduceReduce {
-	c.cs.s = append(c.cs.s, "REDUCE", function)
-	return (FtAggregateOpGroupbyReduceReduce)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpGroupbyReduceReduce)
 }
 
 func (c FtAggregateOpGroupbyReduceNargs) Groupby(nargs int64) FtAggregateOpGroupbyGroupby {
-	c.cs.s = append(c.cs.s, "GROUPBY", strconv.FormatInt(nargs, 10))
-	return (FtAggregateOpGroupbyGroupby)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpGroupbyGroupby)
 }
 
 func (c FtAggregateOpGroupbyReduceNargs) Sortby(nargs int64) FtAggregateOpSortbySortby {
-	c.cs.s = append(c.cs.s, "SORTBY", strconv.FormatInt(nargs, 10))
-	return (FtAggregateOpSortbySortby)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpSortbySortby)
 }
 
 func (c FtAggregateOpGroupbyReduceNargs) Limit() FtAggregateOpLimitLimit {
-	c.cs.s = append(c.cs.s, "LIMIT")
-	return (FtAggregateOpLimitLimit)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpLimitLimit)
 }
 
 func (c FtAggregateOpGroupbyReduceNargs) Filter(filter string) FtAggregateOpFilter {
-	c.cs.s = append(c.cs.s, "FILTER", filter)
-	return (FtAggregateOpFilter)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpFilter)
 }
 
 func (c FtAggregateOpGroupbyReduceNargs) LoadAll() FtAggregateOpLoadallLoadAll {
-	c.cs.s = append(c.cs.s, "LOAD", "*")
-	return (FtAggregateOpLoadallLoadAll)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpLoadallLoadAll)
 }
 
 func (c FtAggregateOpGroupbyReduceNargs) Load(count int64) FtAggregateOpLoadLoad {
-	c.cs.s = append(c.cs.s, "LOAD", strconv.FormatInt(count, 10))
-	return (FtAggregateOpLoadLoad)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpLoadLoad)
 }
 
 func (c FtAggregateOpGroupbyReduceNargs) Apply(expression string) FtAggregateOpApplyApply {
-	c.cs.s = append(c.cs.s, "APPLY", expression)
-	return (FtAggregateOpApplyApply)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpApplyApply)
 }
 
 func (c FtAggregateOpGroupbyReduceNargs) Withcursor() FtAggregateCursorWithcursor {
-	c.cs.s = append(c.cs.s, "WITHCURSOR")
-	return (FtAggregateCursorWithcursor)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateCursorWithcursor)
 }
 
 func (c FtAggregateOpGroupbyReduceNargs) Params() FtAggregateParamsParams {
-	c.cs.s = append(c.cs.s, "PARAMS")
-	return (FtAggregateParamsParams)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateParamsParams)
 }
 
 func (c FtAggregateOpGroupbyReduceNargs) Addscores() FtAggregateAddscores {
-	c.cs.s = append(c.cs.s, "ADDSCORES")
-	return (FtAggregateAddscores)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateAddscores)
 }
 
 func (c FtAggregateOpGroupbyReduceNargs) Dialect(dialect int64) FtAggregateDialect {
-	c.cs.s = append(c.cs.s, "DIALECT", strconv.FormatInt(dialect, 10))
-	return (FtAggregateDialect)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateDialect)
 }
 
 func (c FtAggregateOpGroupbyReduceNargs) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type FtAggregateOpGroupbyReduceOrderAsc Incomplete
 
 func (c FtAggregateOpGroupbyReduceOrderAsc) Reduce(function string) FtAggregateOpGroupbyReduceReduce {
-	c.cs.s = append(c.cs.s, "REDUCE", function)
-	return (FtAggregateOpGroupbyReduceReduce)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpGroupbyReduceReduce)
 }
 
 func (c FtAggregateOpGroupbyReduceOrderAsc) Groupby(nargs int64) FtAggregateOpGroupbyGroupby {
-	c.cs.s = append(c.cs.s, "GROUPBY", strconv.FormatInt(nargs, 10))
-	return (FtAggregateOpGroupbyGroupby)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpGroupbyGroupby)
 }
 
 func (c FtAggregateOpGroupbyReduceOrderAsc) Sortby(nargs int64) FtAggregateOpSortbySortby {
-	c.cs.s = append(c.cs.s, "SORTBY", strconv.FormatInt(nargs, 10))
-	return (FtAggregateOpSortbySortby)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpSortbySortby)
 }
 
 func (c FtAggregateOpGroupbyReduceOrderAsc) Limit() FtAggregateOpLimitLimit {
-	c.cs.s = append(c.cs.s, "LIMIT")
-	return (FtAggregateOpLimitLimit)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpLimitLimit)
 }
 
 func (c FtAggregateOpGroupbyReduceOrderAsc) Filter(filter string) FtAggregateOpFilter {
-	c.cs.s = append(c.cs.s, "FILTER", filter)
-	return (FtAggregateOpFilter)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpFilter)
 }
 
 func (c FtAggregateOpGroupbyReduceOrderAsc) LoadAll() FtAggregateOpLoadallLoadAll {
-	c.cs.s = append(c.cs.s, "LOAD", "*")
-	return (FtAggregateOpLoadallLoadAll)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpLoadallLoadAll)
 }
 
 func (c FtAggregateOpGroupbyReduceOrderAsc) Load(count int64) FtAggregateOpLoadLoad {
-	c.cs.s = append(c.cs.s, "LOAD", strconv.FormatInt(count, 10))
-	return (FtAggregateOpLoadLoad)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpLoadLoad)
 }
 
 func (c FtAggregateOpGroupbyReduceOrderAsc) Apply(expression string) FtAggregateOpApplyApply {
-	c.cs.s = append(c.cs.s, "APPLY", expression)
-	return (FtAggregateOpApplyApply)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpApplyApply)
 }
 
 func (c FtAggregateOpGroupbyReduceOrderAsc) Withcursor() FtAggregateCursorWithcursor {
-	c.cs.s = append(c.cs.s, "WITHCURSOR")
-	return (FtAggregateCursorWithcursor)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateCursorWithcursor)
 }
 
 func (c FtAggregateOpGroupbyReduceOrderAsc) Params() FtAggregateParamsParams {
-	c.cs.s = append(c.cs.s, "PARAMS")
-	return (FtAggregateParamsParams)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateParamsParams)
 }
 
 func (c FtAggregateOpGroupbyReduceOrderAsc) Addscores() FtAggregateAddscores {
-	c.cs.s = append(c.cs.s, "ADDSCORES")
-	return (FtAggregateAddscores)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateAddscores)
 }
 
 func (c FtAggregateOpGroupbyReduceOrderAsc) Dialect(dialect int64) FtAggregateDialect {
-	c.cs.s = append(c.cs.s, "DIALECT", strconv.FormatInt(dialect, 10))
-	return (FtAggregateDialect)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateDialect)
 }
 
 func (c FtAggregateOpGroupbyReduceOrderAsc) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type FtAggregateOpGroupbyReduceOrderDesc Incomplete
 
 func (c FtAggregateOpGroupbyReduceOrderDesc) Reduce(function string) FtAggregateOpGroupbyReduceReduce {
-	c.cs.s = append(c.cs.s, "REDUCE", function)
-	return (FtAggregateOpGroupbyReduceReduce)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpGroupbyReduceReduce)
 }
 
 func (c FtAggregateOpGroupbyReduceOrderDesc) Groupby(nargs int64) FtAggregateOpGroupbyGroupby {
-	c.cs.s = append(c.cs.s, "GROUPBY", strconv.FormatInt(nargs, 10))
-	return (FtAggregateOpGroupbyGroupby)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpGroupbyGroupby)
 }
 
 func (c FtAggregateOpGroupbyReduceOrderDesc) Sortby(nargs int64) FtAggregateOpSortbySortby {
-	c.cs.s = append(c.cs.s, "SORTBY", strconv.FormatInt(nargs, 10))
-	return (FtAggregateOpSortbySortby)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpSortbySortby)
 }
 
 func (c FtAggregateOpGroupbyReduceOrderDesc) Limit() FtAggregateOpLimitLimit {
-	c.cs.s = append(c.cs.s, "LIMIT")
-	return (FtAggregateOpLimitLimit)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpLimitLimit)
 }
 
 func (c FtAggregateOpGroupbyReduceOrderDesc) Filter(filter string) FtAggregateOpFilter {
-	c.cs.s = append(c.cs.s, "FILTER", filter)
-	return (FtAggregateOpFilter)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpFilter)
 }
 
 func (c FtAggregateOpGroupbyReduceOrderDesc) LoadAll() FtAggregateOpLoadallLoadAll {
-	c.cs.s = append(c.cs.s, "LOAD", "*")
-	return (FtAggregateOpLoadallLoadAll)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpLoadallLoadAll)
 }
 
 func (c FtAggregateOpGroupbyReduceOrderDesc) Load(count int64) FtAggregateOpLoadLoad {
-	c.cs.s = append(c.cs.s, "LOAD", strconv.FormatInt(count, 10))
-	return (FtAggregateOpLoadLoad)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpLoadLoad)
 }
 
 func (c FtAggregateOpGroupbyReduceOrderDesc) Apply(expression string) FtAggregateOpApplyApply {
-	c.cs.s = append(c.cs.s, "APPLY", expression)
-	return (FtAggregateOpApplyApply)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpApplyApply)
 }
 
 func (c FtAggregateOpGroupbyReduceOrderDesc) Withcursor() FtAggregateCursorWithcursor {
-	c.cs.s = append(c.cs.s, "WITHCURSOR")
-	return (FtAggregateCursorWithcursor)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateCursorWithcursor)
 }
 
 func (c FtAggregateOpGroupbyReduceOrderDesc) Params() FtAggregateParamsParams {
-	c.cs.s = append(c.cs.s, "PARAMS")
-	return (FtAggregateParamsParams)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateParamsParams)
 }
 
 func (c FtAggregateOpGroupbyReduceOrderDesc) Addscores() FtAggregateAddscores {
-	c.cs.s = append(c.cs.s, "ADDSCORES")
-	return (FtAggregateAddscores)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateAddscores)
 }
 
 func (c FtAggregateOpGroupbyReduceOrderDesc) Dialect(dialect int64) FtAggregateDialect {
-	c.cs.s = append(c.cs.s, "DIALECT", strconv.FormatInt(dialect, 10))
-	return (FtAggregateDialect)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateDialect)
 }
 
 func (c FtAggregateOpGroupbyReduceOrderDesc) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type FtAggregateOpGroupbyReduceReduce Incomplete
 
 func (c FtAggregateOpGroupbyReduceReduce) Nargs(nargs int64) FtAggregateOpGroupbyReduceNargs {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(nargs, 10))
-	return (FtAggregateOpGroupbyReduceNargs)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpGroupbyReduceNargs)
 }
 
 type FtAggregateOpLimitLimit Incomplete
 
 func (c FtAggregateOpLimitLimit) OffsetNum(offset int64, num int64) FtAggregateOpLimitOffsetNum {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(offset, 10), strconv.FormatInt(num, 10))
-	return (FtAggregateOpLimitOffsetNum)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpLimitOffsetNum)
 }
 
 type FtAggregateOpLimitOffsetNum Incomplete
 
 func (c FtAggregateOpLimitOffsetNum) Filter(filter string) FtAggregateOpFilter {
-	c.cs.s = append(c.cs.s, "FILTER", filter)
-	return (FtAggregateOpFilter)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpFilter)
 }
 
 func (c FtAggregateOpLimitOffsetNum) LoadAll() FtAggregateOpLoadallLoadAll {
-	c.cs.s = append(c.cs.s, "LOAD", "*")
-	return (FtAggregateOpLoadallLoadAll)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpLoadallLoadAll)
 }
 
 func (c FtAggregateOpLimitOffsetNum) Load(count int64) FtAggregateOpLoadLoad {
-	c.cs.s = append(c.cs.s, "LOAD", strconv.FormatInt(count, 10))
-	return (FtAggregateOpLoadLoad)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpLoadLoad)
 }
 
 func (c FtAggregateOpLimitOffsetNum) Apply(expression string) FtAggregateOpApplyApply {
-	c.cs.s = append(c.cs.s, "APPLY", expression)
-	return (FtAggregateOpApplyApply)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpApplyApply)
 }
 
 func (c FtAggregateOpLimitOffsetNum) Groupby(nargs int64) FtAggregateOpGroupbyGroupby {
-	c.cs.s = append(c.cs.s, "GROUPBY", strconv.FormatInt(nargs, 10))
-	return (FtAggregateOpGroupbyGroupby)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpGroupbyGroupby)
 }
 
 func (c FtAggregateOpLimitOffsetNum) Sortby(nargs int64) FtAggregateOpSortbySortby {
-	c.cs.s = append(c.cs.s, "SORTBY", strconv.FormatInt(nargs, 10))
-	return (FtAggregateOpSortbySortby)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpSortbySortby)
 }
 
 func (c FtAggregateOpLimitOffsetNum) Limit() FtAggregateOpLimitLimit {
-	c.cs.s = append(c.cs.s, "LIMIT")
-	return (FtAggregateOpLimitLimit)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpLimitLimit)
 }
 
 func (c FtAggregateOpLimitOffsetNum) Withcursor() FtAggregateCursorWithcursor {
-	c.cs.s = append(c.cs.s, "WITHCURSOR")
-	return (FtAggregateCursorWithcursor)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateCursorWithcursor)
 }
 
 func (c FtAggregateOpLimitOffsetNum) Params() FtAggregateParamsParams {
-	c.cs.s = append(c.cs.s, "PARAMS")
-	return (FtAggregateParamsParams)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateParamsParams)
 }
 
 func (c FtAggregateOpLimitOffsetNum) Addscores() FtAggregateAddscores {
-	c.cs.s = append(c.cs.s, "ADDSCORES")
-	return (FtAggregateAddscores)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateAddscores)
 }
 
 func (c FtAggregateOpLimitOffsetNum) Dialect(dialect int64) FtAggregateDialect {
-	c.cs.s = append(c.cs.s, "DIALECT", strconv.FormatInt(dialect, 10))
-	return (FtAggregateDialect)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateDialect)
 }
 
 func (c FtAggregateOpLimitOffsetNum) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type FtAggregateOpLoadField Incomplete
 
 func (c FtAggregateOpLoadField) Field(field ...string) FtAggregateOpLoadField {
-	c.cs.s = append(c.cs.s, field...)
-	return c
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpLoadField)
 }
 
 func (c FtAggregateOpLoadField) Apply(expression string) FtAggregateOpApplyApply {
-	c.cs.s = append(c.cs.s, "APPLY", expression)
-	return (FtAggregateOpApplyApply)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpApplyApply)
 }
 
 func (c FtAggregateOpLoadField) Groupby(nargs int64) FtAggregateOpGroupbyGroupby {
-	c.cs.s = append(c.cs.s, "GROUPBY", strconv.FormatInt(nargs, 10))
-	return (FtAggregateOpGroupbyGroupby)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpGroupbyGroupby)
 }
 
 func (c FtAggregateOpLoadField) Sortby(nargs int64) FtAggregateOpSortbySortby {
-	c.cs.s = append(c.cs.s, "SORTBY", strconv.FormatInt(nargs, 10))
-	return (FtAggregateOpSortbySortby)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpSortbySortby)
 }
 
 func (c FtAggregateOpLoadField) Limit() FtAggregateOpLimitLimit {
-	c.cs.s = append(c.cs.s, "LIMIT")
-	return (FtAggregateOpLimitLimit)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpLimitLimit)
 }
 
 func (c FtAggregateOpLoadField) Filter(filter string) FtAggregateOpFilter {
-	c.cs.s = append(c.cs.s, "FILTER", filter)
-	return (FtAggregateOpFilter)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpFilter)
 }
 
 func (c FtAggregateOpLoadField) LoadAll() FtAggregateOpLoadallLoadAll {
-	c.cs.s = append(c.cs.s, "LOAD", "*")
-	return (FtAggregateOpLoadallLoadAll)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpLoadallLoadAll)
 }
 
 func (c FtAggregateOpLoadField) Load(count int64) FtAggregateOpLoadLoad {
-	c.cs.s = append(c.cs.s, "LOAD", strconv.FormatInt(count, 10))
-	return (FtAggregateOpLoadLoad)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpLoadLoad)
 }
 
 func (c FtAggregateOpLoadField) Withcursor() FtAggregateCursorWithcursor {
-	c.cs.s = append(c.cs.s, "WITHCURSOR")
-	return (FtAggregateCursorWithcursor)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateCursorWithcursor)
 }
 
 func (c FtAggregateOpLoadField) Params() FtAggregateParamsParams {
-	c.cs.s = append(c.cs.s, "PARAMS")
-	return (FtAggregateParamsParams)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateParamsParams)
 }
 
 func (c FtAggregateOpLoadField) Addscores() FtAggregateAddscores {
-	c.cs.s = append(c.cs.s, "ADDSCORES")
-	return (FtAggregateAddscores)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateAddscores)
 }
 
 func (c FtAggregateOpLoadField) Dialect(dialect int64) FtAggregateDialect {
-	c.cs.s = append(c.cs.s, "DIALECT", strconv.FormatInt(dialect, 10))
-	return (FtAggregateDialect)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateDialect)
 }
 
 func (c FtAggregateOpLoadField) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type FtAggregateOpLoadLoad Incomplete
 
 func (c FtAggregateOpLoadLoad) Field(field ...string) FtAggregateOpLoadField {
-	c.cs.s = append(c.cs.s, field...)
-	return (FtAggregateOpLoadField)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpLoadField)
 }
 
 type FtAggregateOpLoadallLoadAll Incomplete
 
 func (c FtAggregateOpLoadallLoadAll) Load(count int64) FtAggregateOpLoadLoad {
-	c.cs.s = append(c.cs.s, "LOAD", strconv.FormatInt(count, 10))
-	return (FtAggregateOpLoadLoad)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpLoadLoad)
 }
 
 func (c FtAggregateOpLoadallLoadAll) Apply(expression string) FtAggregateOpApplyApply {
-	c.cs.s = append(c.cs.s, "APPLY", expression)
-	return (FtAggregateOpApplyApply)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpApplyApply)
 }
 
 func (c FtAggregateOpLoadallLoadAll) Groupby(nargs int64) FtAggregateOpGroupbyGroupby {
-	c.cs.s = append(c.cs.s, "GROUPBY", strconv.FormatInt(nargs, 10))
-	return (FtAggregateOpGroupbyGroupby)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpGroupbyGroupby)
 }
 
 func (c FtAggregateOpLoadallLoadAll) Sortby(nargs int64) FtAggregateOpSortbySortby {
-	c.cs.s = append(c.cs.s, "SORTBY", strconv.FormatInt(nargs, 10))
-	return (FtAggregateOpSortbySortby)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpSortbySortby)
 }
 
 func (c FtAggregateOpLoadallLoadAll) Limit() FtAggregateOpLimitLimit {
-	c.cs.s = append(c.cs.s, "LIMIT")
-	return (FtAggregateOpLimitLimit)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpLimitLimit)
 }
 
 func (c FtAggregateOpLoadallLoadAll) Filter(filter string) FtAggregateOpFilter {
-	c.cs.s = append(c.cs.s, "FILTER", filter)
-	return (FtAggregateOpFilter)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpFilter)
 }
 
 func (c FtAggregateOpLoadallLoadAll) LoadAll() FtAggregateOpLoadallLoadAll {
-	c.cs.s = append(c.cs.s, "LOAD", "*")
-	return c
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpLoadallLoadAll)
 }
 
 func (c FtAggregateOpLoadallLoadAll) Withcursor() FtAggregateCursorWithcursor {
-	c.cs.s = append(c.cs.s, "WITHCURSOR")
-	return (FtAggregateCursorWithcursor)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateCursorWithcursor)
 }
 
 func (c FtAggregateOpLoadallLoadAll) Params() FtAggregateParamsParams {
-	c.cs.s = append(c.cs.s, "PARAMS")
-	return (FtAggregateParamsParams)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateParamsParams)
 }
 
 func (c FtAggregateOpLoadallLoadAll) Addscores() FtAggregateAddscores {
-	c.cs.s = append(c.cs.s, "ADDSCORES")
-	return (FtAggregateAddscores)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateAddscores)
 }
 
 func (c FtAggregateOpLoadallLoadAll) Dialect(dialect int64) FtAggregateDialect {
-	c.cs.s = append(c.cs.s, "DIALECT", strconv.FormatInt(dialect, 10))
-	return (FtAggregateDialect)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateDialect)
 }
 
 func (c FtAggregateOpLoadallLoadAll) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type FtAggregateOpSortbyFieldsOrderAsc Incomplete
 
 func (c FtAggregateOpSortbyFieldsOrderAsc) Property(property string) FtAggregateOpSortbyFieldsProperty {
-	c.cs.s = append(c.cs.s, property)
-	return (FtAggregateOpSortbyFieldsProperty)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpSortbyFieldsProperty)
 }
 
 func (c FtAggregateOpSortbyFieldsOrderAsc) Max(num int64) FtAggregateOpSortbyMax {
-	c.cs.s = append(c.cs.s, "MAX", strconv.FormatInt(num, 10))
-	return (FtAggregateOpSortbyMax)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpSortbyMax)
 }
 
 func (c FtAggregateOpSortbyFieldsOrderAsc) Withcount() FtAggregateOpSortbyWithcount {
-	c.cs.s = append(c.cs.s, "WITHCOUNT")
-	return (FtAggregateOpSortbyWithcount)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpSortbyWithcount)
 }
 
 func (c FtAggregateOpSortbyFieldsOrderAsc) Limit() FtAggregateOpLimitLimit {
-	c.cs.s = append(c.cs.s, "LIMIT")
-	return (FtAggregateOpLimitLimit)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpLimitLimit)
 }
 
 func (c FtAggregateOpSortbyFieldsOrderAsc) Filter(filter string) FtAggregateOpFilter {
-	c.cs.s = append(c.cs.s, "FILTER", filter)
-	return (FtAggregateOpFilter)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpFilter)
 }
 
 func (c FtAggregateOpSortbyFieldsOrderAsc) LoadAll() FtAggregateOpLoadallLoadAll {
-	c.cs.s = append(c.cs.s, "LOAD", "*")
-	return (FtAggregateOpLoadallLoadAll)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpLoadallLoadAll)
 }
 
 func (c FtAggregateOpSortbyFieldsOrderAsc) Load(count int64) FtAggregateOpLoadLoad {
-	c.cs.s = append(c.cs.s, "LOAD", strconv.FormatInt(count, 10))
-	return (FtAggregateOpLoadLoad)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpLoadLoad)
 }
 
 func (c FtAggregateOpSortbyFieldsOrderAsc) Apply(expression string) FtAggregateOpApplyApply {
-	c.cs.s = append(c.cs.s, "APPLY", expression)
-	return (FtAggregateOpApplyApply)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpApplyApply)
 }
 
 func (c FtAggregateOpSortbyFieldsOrderAsc) Groupby(nargs int64) FtAggregateOpGroupbyGroupby {
-	c.cs.s = append(c.cs.s, "GROUPBY", strconv.FormatInt(nargs, 10))
-	return (FtAggregateOpGroupbyGroupby)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpGroupbyGroupby)
 }
 
 func (c FtAggregateOpSortbyFieldsOrderAsc) Sortby(nargs int64) FtAggregateOpSortbySortby {
-	c.cs.s = append(c.cs.s, "SORTBY", strconv.FormatInt(nargs, 10))
-	return (FtAggregateOpSortbySortby)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpSortbySortby)
 }
 
 func (c FtAggregateOpSortbyFieldsOrderAsc) Withcursor() FtAggregateCursorWithcursor {
-	c.cs.s = append(c.cs.s, "WITHCURSOR")
-	return (FtAggregateCursorWithcursor)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateCursorWithcursor)
 }
 
 func (c FtAggregateOpSortbyFieldsOrderAsc) Params() FtAggregateParamsParams {
-	c.cs.s = append(c.cs.s, "PARAMS")
-	return (FtAggregateParamsParams)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateParamsParams)
 }
 
 func (c FtAggregateOpSortbyFieldsOrderAsc) Addscores() FtAggregateAddscores {
-	c.cs.s = append(c.cs.s, "ADDSCORES")
-	return (FtAggregateAddscores)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateAddscores)
 }
 
 func (c FtAggregateOpSortbyFieldsOrderAsc) Dialect(dialect int64) FtAggregateDialect {
-	c.cs.s = append(c.cs.s, "DIALECT", strconv.FormatInt(dialect, 10))
-	return (FtAggregateDialect)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateDialect)
 }
 
 func (c FtAggregateOpSortbyFieldsOrderAsc) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type FtAggregateOpSortbyFieldsOrderDesc Incomplete
 
 func (c FtAggregateOpSortbyFieldsOrderDesc) Property(property string) FtAggregateOpSortbyFieldsProperty {
-	c.cs.s = append(c.cs.s, property)
-	return (FtAggregateOpSortbyFieldsProperty)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpSortbyFieldsProperty)
 }
 
 func (c FtAggregateOpSortbyFieldsOrderDesc) Max(num int64) FtAggregateOpSortbyMax {
-	c.cs.s = append(c.cs.s, "MAX", strconv.FormatInt(num, 10))
-	return (FtAggregateOpSortbyMax)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpSortbyMax)
 }
 
 func (c FtAggregateOpSortbyFieldsOrderDesc) Withcount() FtAggregateOpSortbyWithcount {
-	c.cs.s = append(c.cs.s, "WITHCOUNT")
-	return (FtAggregateOpSortbyWithcount)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpSortbyWithcount)
 }
 
 func (c FtAggregateOpSortbyFieldsOrderDesc) Limit() FtAggregateOpLimitLimit {
-	c.cs.s = append(c.cs.s, "LIMIT")
-	return (FtAggregateOpLimitLimit)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpLimitLimit)
 }
 
 func (c FtAggregateOpSortbyFieldsOrderDesc) Filter(filter string) FtAggregateOpFilter {
-	c.cs.s = append(c.cs.s, "FILTER", filter)
-	return (FtAggregateOpFilter)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpFilter)
 }
 
 func (c FtAggregateOpSortbyFieldsOrderDesc) LoadAll() FtAggregateOpLoadallLoadAll {
-	c.cs.s = append(c.cs.s, "LOAD", "*")
-	return (FtAggregateOpLoadallLoadAll)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpLoadallLoadAll)
 }
 
 func (c FtAggregateOpSortbyFieldsOrderDesc) Load(count int64) FtAggregateOpLoadLoad {
-	c.cs.s = append(c.cs.s, "LOAD", strconv.FormatInt(count, 10))
-	return (FtAggregateOpLoadLoad)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpLoadLoad)
 }
 
 func (c FtAggregateOpSortbyFieldsOrderDesc) Apply(expression string) FtAggregateOpApplyApply {
-	c.cs.s = append(c.cs.s, "APPLY", expression)
-	return (FtAggregateOpApplyApply)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpApplyApply)
 }
 
 func (c FtAggregateOpSortbyFieldsOrderDesc) Groupby(nargs int64) FtAggregateOpGroupbyGroupby {
-	c.cs.s = append(c.cs.s, "GROUPBY", strconv.FormatInt(nargs, 10))
-	return (FtAggregateOpGroupbyGroupby)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpGroupbyGroupby)
 }
 
 func (c FtAggregateOpSortbyFieldsOrderDesc) Sortby(nargs int64) FtAggregateOpSortbySortby {
-	c.cs.s = append(c.cs.s, "SORTBY", strconv.FormatInt(nargs, 10))
-	return (FtAggregateOpSortbySortby)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpSortbySortby)
 }
 
 func (c FtAggregateOpSortbyFieldsOrderDesc) Withcursor() FtAggregateCursorWithcursor {
-	c.cs.s = append(c.cs.s, "WITHCURSOR")
-	return (FtAggregateCursorWithcursor)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateCursorWithcursor)
 }
 
 func (c FtAggregateOpSortbyFieldsOrderDesc) Params() FtAggregateParamsParams {
-	c.cs.s = append(c.cs.s, "PARAMS")
-	return (FtAggregateParamsParams)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateParamsParams)
 }
 
 func (c FtAggregateOpSortbyFieldsOrderDesc) Addscores() FtAggregateAddscores {
-	c.cs.s = append(c.cs.s, "ADDSCORES")
-	return (FtAggregateAddscores)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateAddscores)
 }
 
 func (c FtAggregateOpSortbyFieldsOrderDesc) Dialect(dialect int64) FtAggregateDialect {
-	c.cs.s = append(c.cs.s, "DIALECT", strconv.FormatInt(dialect, 10))
-	return (FtAggregateDialect)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateDialect)
 }
 
 func (c FtAggregateOpSortbyFieldsOrderDesc) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type FtAggregateOpSortbyFieldsProperty Incomplete
 
 func (c FtAggregateOpSortbyFieldsProperty) Asc() FtAggregateOpSortbyFieldsOrderAsc {
-	c.cs.s = append(c.cs.s, "ASC")
-	return (FtAggregateOpSortbyFieldsOrderAsc)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpSortbyFieldsOrderAsc)
 }
 
 func (c FtAggregateOpSortbyFieldsProperty) Desc() FtAggregateOpSortbyFieldsOrderDesc {
-	c.cs.s = append(c.cs.s, "DESC")
-	return (FtAggregateOpSortbyFieldsOrderDesc)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpSortbyFieldsOrderDesc)
 }
 
 func (c FtAggregateOpSortbyFieldsProperty) Property(property string) FtAggregateOpSortbyFieldsProperty {
-	c.cs.s = append(c.cs.s, property)
-	return c
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpSortbyFieldsProperty)
 }
 
 func (c FtAggregateOpSortbyFieldsProperty) Max(num int64) FtAggregateOpSortbyMax {
-	c.cs.s = append(c.cs.s, "MAX", strconv.FormatInt(num, 10))
-	return (FtAggregateOpSortbyMax)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpSortbyMax)
 }
 
 func (c FtAggregateOpSortbyFieldsProperty) Withcount() FtAggregateOpSortbyWithcount {
-	c.cs.s = append(c.cs.s, "WITHCOUNT")
-	return (FtAggregateOpSortbyWithcount)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpSortbyWithcount)
 }
 
 func (c FtAggregateOpSortbyFieldsProperty) Limit() FtAggregateOpLimitLimit {
-	c.cs.s = append(c.cs.s, "LIMIT")
-	return (FtAggregateOpLimitLimit)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpLimitLimit)
 }
 
 func (c FtAggregateOpSortbyFieldsProperty) Filter(filter string) FtAggregateOpFilter {
-	c.cs.s = append(c.cs.s, "FILTER", filter)
-	return (FtAggregateOpFilter)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpFilter)
 }
 
 func (c FtAggregateOpSortbyFieldsProperty) LoadAll() FtAggregateOpLoadallLoadAll {
-	c.cs.s = append(c.cs.s, "LOAD", "*")
-	return (FtAggregateOpLoadallLoadAll)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpLoadallLoadAll)
 }
 
 func (c FtAggregateOpSortbyFieldsProperty) Load(count int64) FtAggregateOpLoadLoad {
-	c.cs.s = append(c.cs.s, "LOAD", strconv.FormatInt(count, 10))
-	return (FtAggregateOpLoadLoad)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpLoadLoad)
 }
 
 func (c FtAggregateOpSortbyFieldsProperty) Apply(expression string) FtAggregateOpApplyApply {
-	c.cs.s = append(c.cs.s, "APPLY", expression)
-	return (FtAggregateOpApplyApply)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpApplyApply)
 }
 
 func (c FtAggregateOpSortbyFieldsProperty) Groupby(nargs int64) FtAggregateOpGroupbyGroupby {
-	c.cs.s = append(c.cs.s, "GROUPBY", strconv.FormatInt(nargs, 10))
-	return (FtAggregateOpGroupbyGroupby)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpGroupbyGroupby)
 }
 
 func (c FtAggregateOpSortbyFieldsProperty) Sortby(nargs int64) FtAggregateOpSortbySortby {
-	c.cs.s = append(c.cs.s, "SORTBY", strconv.FormatInt(nargs, 10))
-	return (FtAggregateOpSortbySortby)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpSortbySortby)
 }
 
 func (c FtAggregateOpSortbyFieldsProperty) Withcursor() FtAggregateCursorWithcursor {
-	c.cs.s = append(c.cs.s, "WITHCURSOR")
-	return (FtAggregateCursorWithcursor)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateCursorWithcursor)
 }
 
 func (c FtAggregateOpSortbyFieldsProperty) Params() FtAggregateParamsParams {
-	c.cs.s = append(c.cs.s, "PARAMS")
-	return (FtAggregateParamsParams)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateParamsParams)
 }
 
 func (c FtAggregateOpSortbyFieldsProperty) Addscores() FtAggregateAddscores {
-	c.cs.s = append(c.cs.s, "ADDSCORES")
-	return (FtAggregateAddscores)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateAddscores)
 }
 
 func (c FtAggregateOpSortbyFieldsProperty) Dialect(dialect int64) FtAggregateDialect {
-	c.cs.s = append(c.cs.s, "DIALECT", strconv.FormatInt(dialect, 10))
-	return (FtAggregateDialect)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateDialect)
 }
 
 func (c FtAggregateOpSortbyFieldsProperty) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type FtAggregateOpSortbyMax Incomplete
 
 func (c FtAggregateOpSortbyMax) Withcount() FtAggregateOpSortbyWithcount {
-	c.cs.s = append(c.cs.s, "WITHCOUNT")
-	return (FtAggregateOpSortbyWithcount)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpSortbyWithcount)
 }
 
 func (c FtAggregateOpSortbyMax) Limit() FtAggregateOpLimitLimit {
-	c.cs.s = append(c.cs.s, "LIMIT")
-	return (FtAggregateOpLimitLimit)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpLimitLimit)
 }
 
 func (c FtAggregateOpSortbyMax) Filter(filter string) FtAggregateOpFilter {
-	c.cs.s = append(c.cs.s, "FILTER", filter)
-	return (FtAggregateOpFilter)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpFilter)
 }
 
 func (c FtAggregateOpSortbyMax) LoadAll() FtAggregateOpLoadallLoadAll {
-	c.cs.s = append(c.cs.s, "LOAD", "*")
-	return (FtAggregateOpLoadallLoadAll)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpLoadallLoadAll)
 }
 
 func (c FtAggregateOpSortbyMax) Load(count int64) FtAggregateOpLoadLoad {
-	c.cs.s = append(c.cs.s, "LOAD", strconv.FormatInt(count, 10))
-	return (FtAggregateOpLoadLoad)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpLoadLoad)
 }
 
 func (c FtAggregateOpSortbyMax) Apply(expression string) FtAggregateOpApplyApply {
-	c.cs.s = append(c.cs.s, "APPLY", expression)
-	return (FtAggregateOpApplyApply)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpApplyApply)
 }
 
 func (c FtAggregateOpSortbyMax) Groupby(nargs int64) FtAggregateOpGroupbyGroupby {
-	c.cs.s = append(c.cs.s, "GROUPBY", strconv.FormatInt(nargs, 10))
-	return (FtAggregateOpGroupbyGroupby)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpGroupbyGroupby)
 }
 
 func (c FtAggregateOpSortbyMax) Sortby(nargs int64) FtAggregateOpSortbySortby {
-	c.cs.s = append(c.cs.s, "SORTBY", strconv.FormatInt(nargs, 10))
-	return (FtAggregateOpSortbySortby)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpSortbySortby)
 }
 
 func (c FtAggregateOpSortbyMax) Withcursor() FtAggregateCursorWithcursor {
-	c.cs.s = append(c.cs.s, "WITHCURSOR")
-	return (FtAggregateCursorWithcursor)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateCursorWithcursor)
 }
 
 func (c FtAggregateOpSortbyMax) Params() FtAggregateParamsParams {
-	c.cs.s = append(c.cs.s, "PARAMS")
-	return (FtAggregateParamsParams)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateParamsParams)
 }
 
 func (c FtAggregateOpSortbyMax) Addscores() FtAggregateAddscores {
-	c.cs.s = append(c.cs.s, "ADDSCORES")
-	return (FtAggregateAddscores)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateAddscores)
 }
 
 func (c FtAggregateOpSortbyMax) Dialect(dialect int64) FtAggregateDialect {
-	c.cs.s = append(c.cs.s, "DIALECT", strconv.FormatInt(dialect, 10))
-	return (FtAggregateDialect)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateDialect)
 }
 
 func (c FtAggregateOpSortbyMax) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type FtAggregateOpSortbySortby Incomplete
 
 func (c FtAggregateOpSortbySortby) Property(property string) FtAggregateOpSortbyFieldsProperty {
-	c.cs.s = append(c.cs.s, property)
-	return (FtAggregateOpSortbyFieldsProperty)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpSortbyFieldsProperty)
 }
 
 func (c FtAggregateOpSortbySortby) Max(num int64) FtAggregateOpSortbyMax {
-	c.cs.s = append(c.cs.s, "MAX", strconv.FormatInt(num, 10))
-	return (FtAggregateOpSortbyMax)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpSortbyMax)
 }
 
 func (c FtAggregateOpSortbySortby) Withcount() FtAggregateOpSortbyWithcount {
-	c.cs.s = append(c.cs.s, "WITHCOUNT")
-	return (FtAggregateOpSortbyWithcount)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpSortbyWithcount)
 }
 
 func (c FtAggregateOpSortbySortby) Limit() FtAggregateOpLimitLimit {
-	c.cs.s = append(c.cs.s, "LIMIT")
-	return (FtAggregateOpLimitLimit)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpLimitLimit)
 }
 
 func (c FtAggregateOpSortbySortby) Filter(filter string) FtAggregateOpFilter {
-	c.cs.s = append(c.cs.s, "FILTER", filter)
-	return (FtAggregateOpFilter)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpFilter)
 }
 
 func (c FtAggregateOpSortbySortby) LoadAll() FtAggregateOpLoadallLoadAll {
-	c.cs.s = append(c.cs.s, "LOAD", "*")
-	return (FtAggregateOpLoadallLoadAll)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpLoadallLoadAll)
 }
 
 func (c FtAggregateOpSortbySortby) Load(count int64) FtAggregateOpLoadLoad {
-	c.cs.s = append(c.cs.s, "LOAD", strconv.FormatInt(count, 10))
-	return (FtAggregateOpLoadLoad)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpLoadLoad)
 }
 
 func (c FtAggregateOpSortbySortby) Apply(expression string) FtAggregateOpApplyApply {
-	c.cs.s = append(c.cs.s, "APPLY", expression)
-	return (FtAggregateOpApplyApply)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpApplyApply)
 }
 
 func (c FtAggregateOpSortbySortby) Groupby(nargs int64) FtAggregateOpGroupbyGroupby {
-	c.cs.s = append(c.cs.s, "GROUPBY", strconv.FormatInt(nargs, 10))
-	return (FtAggregateOpGroupbyGroupby)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpGroupbyGroupby)
 }
 
 func (c FtAggregateOpSortbySortby) Sortby(nargs int64) FtAggregateOpSortbySortby {
-	c.cs.s = append(c.cs.s, "SORTBY", strconv.FormatInt(nargs, 10))
-	return c
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpSortbySortby)
 }
 
 func (c FtAggregateOpSortbySortby) Withcursor() FtAggregateCursorWithcursor {
-	c.cs.s = append(c.cs.s, "WITHCURSOR")
-	return (FtAggregateCursorWithcursor)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateCursorWithcursor)
 }
 
 func (c FtAggregateOpSortbySortby) Params() FtAggregateParamsParams {
-	c.cs.s = append(c.cs.s, "PARAMS")
-	return (FtAggregateParamsParams)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateParamsParams)
 }
 
 func (c FtAggregateOpSortbySortby) Addscores() FtAggregateAddscores {
-	c.cs.s = append(c.cs.s, "ADDSCORES")
-	return (FtAggregateAddscores)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateAddscores)
 }
 
 func (c FtAggregateOpSortbySortby) Dialect(dialect int64) FtAggregateDialect {
-	c.cs.s = append(c.cs.s, "DIALECT", strconv.FormatInt(dialect, 10))
-	return (FtAggregateDialect)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateDialect)
 }
 
 func (c FtAggregateOpSortbySortby) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type FtAggregateOpSortbyWithcount Incomplete
 
 func (c FtAggregateOpSortbyWithcount) Limit() FtAggregateOpLimitLimit {
-	c.cs.s = append(c.cs.s, "LIMIT")
-	return (FtAggregateOpLimitLimit)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpLimitLimit)
 }
 
 func (c FtAggregateOpSortbyWithcount) Filter(filter string) FtAggregateOpFilter {
-	c.cs.s = append(c.cs.s, "FILTER", filter)
-	return (FtAggregateOpFilter)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpFilter)
 }
 
 func (c FtAggregateOpSortbyWithcount) LoadAll() FtAggregateOpLoadallLoadAll {
-	c.cs.s = append(c.cs.s, "LOAD", "*")
-	return (FtAggregateOpLoadallLoadAll)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpLoadallLoadAll)
 }
 
 func (c FtAggregateOpSortbyWithcount) Load(count int64) FtAggregateOpLoadLoad {
-	c.cs.s = append(c.cs.s, "LOAD", strconv.FormatInt(count, 10))
-	return (FtAggregateOpLoadLoad)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpLoadLoad)
 }
 
 func (c FtAggregateOpSortbyWithcount) Apply(expression string) FtAggregateOpApplyApply {
-	c.cs.s = append(c.cs.s, "APPLY", expression)
-	return (FtAggregateOpApplyApply)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpApplyApply)
 }
 
 func (c FtAggregateOpSortbyWithcount) Groupby(nargs int64) FtAggregateOpGroupbyGroupby {
-	c.cs.s = append(c.cs.s, "GROUPBY", strconv.FormatInt(nargs, 10))
-	return (FtAggregateOpGroupbyGroupby)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpGroupbyGroupby)
 }
 
 func (c FtAggregateOpSortbyWithcount) Sortby(nargs int64) FtAggregateOpSortbySortby {
-	c.cs.s = append(c.cs.s, "SORTBY", strconv.FormatInt(nargs, 10))
-	return (FtAggregateOpSortbySortby)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpSortbySortby)
 }
 
 func (c FtAggregateOpSortbyWithcount) Withcursor() FtAggregateCursorWithcursor {
-	c.cs.s = append(c.cs.s, "WITHCURSOR")
-	return (FtAggregateCursorWithcursor)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateCursorWithcursor)
 }
 
 func (c FtAggregateOpSortbyWithcount) Params() FtAggregateParamsParams {
-	c.cs.s = append(c.cs.s, "PARAMS")
-	return (FtAggregateParamsParams)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateParamsParams)
 }
 
 func (c FtAggregateOpSortbyWithcount) Addscores() FtAggregateAddscores {
-	c.cs.s = append(c.cs.s, "ADDSCORES")
-	return (FtAggregateAddscores)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateAddscores)
 }
 
 func (c FtAggregateOpSortbyWithcount) Dialect(dialect int64) FtAggregateDialect {
-	c.cs.s = append(c.cs.s, "DIALECT", strconv.FormatInt(dialect, 10))
-	return (FtAggregateDialect)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateDialect)
 }
 
 func (c FtAggregateOpSortbyWithcount) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type FtAggregateParamsNameValue Incomplete
 
 func (c FtAggregateParamsNameValue) NameValue(name string, value string) FtAggregateParamsNameValue {
-	c.cs.s = append(c.cs.s, name, value)
-	return c
+	_ = "STUB: not implemented"
+	return *new(FtAggregateParamsNameValue)
 }
 
 func (c FtAggregateParamsNameValue) Addscores() FtAggregateAddscores {
-	c.cs.s = append(c.cs.s, "ADDSCORES")
-	return (FtAggregateAddscores)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateAddscores)
 }
 
 func (c FtAggregateParamsNameValue) Dialect(dialect int64) FtAggregateDialect {
-	c.cs.s = append(c.cs.s, "DIALECT", strconv.FormatInt(dialect, 10))
-	return (FtAggregateDialect)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateDialect)
 }
 
 func (c FtAggregateParamsNameValue) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type FtAggregateParamsNargs Incomplete
 
 func (c FtAggregateParamsNargs) NameValue() FtAggregateParamsNameValue {
-	return (FtAggregateParamsNameValue)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateParamsNameValue)
 }
 
 type FtAggregateParamsParams Incomplete
 
 func (c FtAggregateParamsParams) Nargs(nargs int64) FtAggregateParamsNargs {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(nargs, 10))
-	return (FtAggregateParamsNargs)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateParamsNargs)
 }
 
 type FtAggregateQuery Incomplete
 
 func (c FtAggregateQuery) Verbatim() FtAggregateVerbatim {
-	c.cs.s = append(c.cs.s, "VERBATIM")
-	return (FtAggregateVerbatim)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateVerbatim)
 }
 
 func (c FtAggregateQuery) Scorer(scorer string) FtAggregateScorer {
-	c.cs.s = append(c.cs.s, "SCORER", scorer)
-	return (FtAggregateScorer)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateScorer)
 }
 
 func (c FtAggregateQuery) Timeout(timeout int64) FtAggregateTimeout {
-	c.cs.s = append(c.cs.s, "TIMEOUT", strconv.FormatInt(timeout, 10))
-	return (FtAggregateTimeout)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateTimeout)
 }
 
 func (c FtAggregateQuery) LoadAll() FtAggregateOpLoadallLoadAll {
-	c.cs.s = append(c.cs.s, "LOAD", "*")
-	return (FtAggregateOpLoadallLoadAll)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpLoadallLoadAll)
 }
 
 func (c FtAggregateQuery) Load(count int64) FtAggregateOpLoadLoad {
-	c.cs.s = append(c.cs.s, "LOAD", strconv.FormatInt(count, 10))
-	return (FtAggregateOpLoadLoad)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpLoadLoad)
 }
 
 func (c FtAggregateQuery) Apply(expression string) FtAggregateOpApplyApply {
-	c.cs.s = append(c.cs.s, "APPLY", expression)
-	return (FtAggregateOpApplyApply)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpApplyApply)
 }
 
 func (c FtAggregateQuery) Groupby(nargs int64) FtAggregateOpGroupbyGroupby {
-	c.cs.s = append(c.cs.s, "GROUPBY", strconv.FormatInt(nargs, 10))
-	return (FtAggregateOpGroupbyGroupby)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpGroupbyGroupby)
 }
 
 func (c FtAggregateQuery) Sortby(nargs int64) FtAggregateOpSortbySortby {
-	c.cs.s = append(c.cs.s, "SORTBY", strconv.FormatInt(nargs, 10))
-	return (FtAggregateOpSortbySortby)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpSortbySortby)
 }
 
 func (c FtAggregateQuery) Limit() FtAggregateOpLimitLimit {
-	c.cs.s = append(c.cs.s, "LIMIT")
-	return (FtAggregateOpLimitLimit)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpLimitLimit)
 }
 
 func (c FtAggregateQuery) Filter(filter string) FtAggregateOpFilter {
-	c.cs.s = append(c.cs.s, "FILTER", filter)
-	return (FtAggregateOpFilter)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpFilter)
 }
 
 func (c FtAggregateQuery) Withcursor() FtAggregateCursorWithcursor {
-	c.cs.s = append(c.cs.s, "WITHCURSOR")
-	return (FtAggregateCursorWithcursor)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateCursorWithcursor)
 }
 
 func (c FtAggregateQuery) Params() FtAggregateParamsParams {
-	c.cs.s = append(c.cs.s, "PARAMS")
-	return (FtAggregateParamsParams)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateParamsParams)
 }
 
 func (c FtAggregateQuery) Addscores() FtAggregateAddscores {
-	c.cs.s = append(c.cs.s, "ADDSCORES")
-	return (FtAggregateAddscores)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateAddscores)
 }
 
 func (c FtAggregateQuery) Dialect(dialect int64) FtAggregateDialect {
-	c.cs.s = append(c.cs.s, "DIALECT", strconv.FormatInt(dialect, 10))
-	return (FtAggregateDialect)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateDialect)
 }
 
-func (c FtAggregateQuery) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c FtAggregateQuery) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type FtAggregateScorer Incomplete
 
 func (c FtAggregateScorer) Timeout(timeout int64) FtAggregateTimeout {
-	c.cs.s = append(c.cs.s, "TIMEOUT", strconv.FormatInt(timeout, 10))
-	return (FtAggregateTimeout)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateTimeout)
 }
 
 func (c FtAggregateScorer) LoadAll() FtAggregateOpLoadallLoadAll {
-	c.cs.s = append(c.cs.s, "LOAD", "*")
-	return (FtAggregateOpLoadallLoadAll)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpLoadallLoadAll)
 }
 
 func (c FtAggregateScorer) Load(count int64) FtAggregateOpLoadLoad {
-	c.cs.s = append(c.cs.s, "LOAD", strconv.FormatInt(count, 10))
-	return (FtAggregateOpLoadLoad)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpLoadLoad)
 }
 
 func (c FtAggregateScorer) Apply(expression string) FtAggregateOpApplyApply {
-	c.cs.s = append(c.cs.s, "APPLY", expression)
-	return (FtAggregateOpApplyApply)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpApplyApply)
 }
 
 func (c FtAggregateScorer) Groupby(nargs int64) FtAggregateOpGroupbyGroupby {
-	c.cs.s = append(c.cs.s, "GROUPBY", strconv.FormatInt(nargs, 10))
-	return (FtAggregateOpGroupbyGroupby)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpGroupbyGroupby)
 }
 
 func (c FtAggregateScorer) Sortby(nargs int64) FtAggregateOpSortbySortby {
-	c.cs.s = append(c.cs.s, "SORTBY", strconv.FormatInt(nargs, 10))
-	return (FtAggregateOpSortbySortby)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpSortbySortby)
 }
 
 func (c FtAggregateScorer) Limit() FtAggregateOpLimitLimit {
-	c.cs.s = append(c.cs.s, "LIMIT")
-	return (FtAggregateOpLimitLimit)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpLimitLimit)
 }
 
 func (c FtAggregateScorer) Filter(filter string) FtAggregateOpFilter {
-	c.cs.s = append(c.cs.s, "FILTER", filter)
-	return (FtAggregateOpFilter)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpFilter)
 }
 
 func (c FtAggregateScorer) Withcursor() FtAggregateCursorWithcursor {
-	c.cs.s = append(c.cs.s, "WITHCURSOR")
-	return (FtAggregateCursorWithcursor)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateCursorWithcursor)
 }
 
 func (c FtAggregateScorer) Params() FtAggregateParamsParams {
-	c.cs.s = append(c.cs.s, "PARAMS")
-	return (FtAggregateParamsParams)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateParamsParams)
 }
 
 func (c FtAggregateScorer) Addscores() FtAggregateAddscores {
-	c.cs.s = append(c.cs.s, "ADDSCORES")
-	return (FtAggregateAddscores)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateAddscores)
 }
 
 func (c FtAggregateScorer) Dialect(dialect int64) FtAggregateDialect {
-	c.cs.s = append(c.cs.s, "DIALECT", strconv.FormatInt(dialect, 10))
-	return (FtAggregateDialect)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateDialect)
 }
 
-func (c FtAggregateScorer) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c FtAggregateScorer) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type FtAggregateTimeout Incomplete
 
 func (c FtAggregateTimeout) LoadAll() FtAggregateOpLoadallLoadAll {
-	c.cs.s = append(c.cs.s, "LOAD", "*")
-	return (FtAggregateOpLoadallLoadAll)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpLoadallLoadAll)
 }
 
 func (c FtAggregateTimeout) Load(count int64) FtAggregateOpLoadLoad {
-	c.cs.s = append(c.cs.s, "LOAD", strconv.FormatInt(count, 10))
-	return (FtAggregateOpLoadLoad)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpLoadLoad)
 }
 
 func (c FtAggregateTimeout) Apply(expression string) FtAggregateOpApplyApply {
-	c.cs.s = append(c.cs.s, "APPLY", expression)
-	return (FtAggregateOpApplyApply)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpApplyApply)
 }
 
 func (c FtAggregateTimeout) Groupby(nargs int64) FtAggregateOpGroupbyGroupby {
-	c.cs.s = append(c.cs.s, "GROUPBY", strconv.FormatInt(nargs, 10))
-	return (FtAggregateOpGroupbyGroupby)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpGroupbyGroupby)
 }
 
 func (c FtAggregateTimeout) Sortby(nargs int64) FtAggregateOpSortbySortby {
-	c.cs.s = append(c.cs.s, "SORTBY", strconv.FormatInt(nargs, 10))
-	return (FtAggregateOpSortbySortby)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpSortbySortby)
 }
 
 func (c FtAggregateTimeout) Limit() FtAggregateOpLimitLimit {
-	c.cs.s = append(c.cs.s, "LIMIT")
-	return (FtAggregateOpLimitLimit)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpLimitLimit)
 }
 
 func (c FtAggregateTimeout) Filter(filter string) FtAggregateOpFilter {
-	c.cs.s = append(c.cs.s, "FILTER", filter)
-	return (FtAggregateOpFilter)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpFilter)
 }
 
 func (c FtAggregateTimeout) Withcursor() FtAggregateCursorWithcursor {
-	c.cs.s = append(c.cs.s, "WITHCURSOR")
-	return (FtAggregateCursorWithcursor)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateCursorWithcursor)
 }
 
 func (c FtAggregateTimeout) Params() FtAggregateParamsParams {
-	c.cs.s = append(c.cs.s, "PARAMS")
-	return (FtAggregateParamsParams)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateParamsParams)
 }
 
 func (c FtAggregateTimeout) Addscores() FtAggregateAddscores {
-	c.cs.s = append(c.cs.s, "ADDSCORES")
-	return (FtAggregateAddscores)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateAddscores)
 }
 
 func (c FtAggregateTimeout) Dialect(dialect int64) FtAggregateDialect {
-	c.cs.s = append(c.cs.s, "DIALECT", strconv.FormatInt(dialect, 10))
-	return (FtAggregateDialect)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateDialect)
 }
 
-func (c FtAggregateTimeout) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c FtAggregateTimeout) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type FtAggregateVerbatim Incomplete
 
 func (c FtAggregateVerbatim) Scorer(scorer string) FtAggregateScorer {
-	c.cs.s = append(c.cs.s, "SCORER", scorer)
-	return (FtAggregateScorer)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateScorer)
 }
 
 func (c FtAggregateVerbatim) Timeout(timeout int64) FtAggregateTimeout {
-	c.cs.s = append(c.cs.s, "TIMEOUT", strconv.FormatInt(timeout, 10))
-	return (FtAggregateTimeout)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateTimeout)
 }
 
 func (c FtAggregateVerbatim) LoadAll() FtAggregateOpLoadallLoadAll {
-	c.cs.s = append(c.cs.s, "LOAD", "*")
-	return (FtAggregateOpLoadallLoadAll)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpLoadallLoadAll)
 }
 
 func (c FtAggregateVerbatim) Load(count int64) FtAggregateOpLoadLoad {
-	c.cs.s = append(c.cs.s, "LOAD", strconv.FormatInt(count, 10))
-	return (FtAggregateOpLoadLoad)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpLoadLoad)
 }
 
 func (c FtAggregateVerbatim) Apply(expression string) FtAggregateOpApplyApply {
-	c.cs.s = append(c.cs.s, "APPLY", expression)
-	return (FtAggregateOpApplyApply)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpApplyApply)
 }
 
 func (c FtAggregateVerbatim) Groupby(nargs int64) FtAggregateOpGroupbyGroupby {
-	c.cs.s = append(c.cs.s, "GROUPBY", strconv.FormatInt(nargs, 10))
-	return (FtAggregateOpGroupbyGroupby)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpGroupbyGroupby)
 }
 
 func (c FtAggregateVerbatim) Sortby(nargs int64) FtAggregateOpSortbySortby {
-	c.cs.s = append(c.cs.s, "SORTBY", strconv.FormatInt(nargs, 10))
-	return (FtAggregateOpSortbySortby)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpSortbySortby)
 }
 
 func (c FtAggregateVerbatim) Limit() FtAggregateOpLimitLimit {
-	c.cs.s = append(c.cs.s, "LIMIT")
-	return (FtAggregateOpLimitLimit)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpLimitLimit)
 }
 
 func (c FtAggregateVerbatim) Filter(filter string) FtAggregateOpFilter {
-	c.cs.s = append(c.cs.s, "FILTER", filter)
-	return (FtAggregateOpFilter)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateOpFilter)
 }
 
 func (c FtAggregateVerbatim) Withcursor() FtAggregateCursorWithcursor {
-	c.cs.s = append(c.cs.s, "WITHCURSOR")
-	return (FtAggregateCursorWithcursor)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateCursorWithcursor)
 }
 
 func (c FtAggregateVerbatim) Params() FtAggregateParamsParams {
-	c.cs.s = append(c.cs.s, "PARAMS")
-	return (FtAggregateParamsParams)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateParamsParams)
 }
 
 func (c FtAggregateVerbatim) Addscores() FtAggregateAddscores {
-	c.cs.s = append(c.cs.s, "ADDSCORES")
-	return (FtAggregateAddscores)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateAddscores)
 }
 
 func (c FtAggregateVerbatim) Dialect(dialect int64) FtAggregateDialect {
-	c.cs.s = append(c.cs.s, "DIALECT", strconv.FormatInt(dialect, 10))
-	return (FtAggregateDialect)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAggregateDialect)
 }
 
-func (c FtAggregateVerbatim) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c FtAggregateVerbatim) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type FtAliasadd Incomplete
 
-func (b Builder) FtAliasadd() (c FtAliasadd) {
-	c = FtAliasadd{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "FT.ALIASADD")
-	return c
-}
+func (b Builder) FtAliasadd() (c FtAliasadd) { _ = "STUB: not implemented"; return *new(FtAliasadd) }
 
 func (c FtAliasadd) Alias(alias string) FtAliasaddAlias {
-	c.cs.s = append(c.cs.s, alias)
-	return (FtAliasaddAlias)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAliasaddAlias)
 }
 
 type FtAliasaddAlias Incomplete
 
 func (c FtAliasaddAlias) Index(index string) FtAliasaddIndex {
-	c.cs.s = append(c.cs.s, index)
-	return (FtAliasaddIndex)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAliasaddIndex)
 }
 
 type FtAliasaddIndex Incomplete
 
-func (c FtAliasaddIndex) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c FtAliasaddIndex) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type FtAliasdel Incomplete
 
-func (b Builder) FtAliasdel() (c FtAliasdel) {
-	c = FtAliasdel{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "FT.ALIASDEL")
-	return c
-}
+func (b Builder) FtAliasdel() (c FtAliasdel) { _ = "STUB: not implemented"; return *new(FtAliasdel) }
 
 func (c FtAliasdel) Alias(alias string) FtAliasdelAlias {
-	c.cs.s = append(c.cs.s, alias)
-	return (FtAliasdelAlias)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAliasdelAlias)
 }
 
 type FtAliasdelAlias Incomplete
 
-func (c FtAliasdelAlias) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c FtAliasdelAlias) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type FtAliasupdate Incomplete
 
 func (b Builder) FtAliasupdate() (c FtAliasupdate) {
-	c = FtAliasupdate{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "FT.ALIASUPDATE")
-	return c
+	_ = "STUB: not implemented"
+	return *new(FtAliasupdate)
 }
 
 func (c FtAliasupdate) Alias(alias string) FtAliasupdateAlias {
-	c.cs.s = append(c.cs.s, alias)
-	return (FtAliasupdateAlias)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAliasupdateAlias)
 }
 
 type FtAliasupdateAlias Incomplete
 
 func (c FtAliasupdateAlias) Index(index string) FtAliasupdateIndex {
-	c.cs.s = append(c.cs.s, index)
-	return (FtAliasupdateIndex)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAliasupdateIndex)
 }
 
 type FtAliasupdateIndex Incomplete
 
-func (c FtAliasupdateIndex) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c FtAliasupdateIndex) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type FtAlter Incomplete
 
-func (b Builder) FtAlter() (c FtAlter) {
-	c = FtAlter{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "FT.ALTER")
-	return c
-}
+func (b Builder) FtAlter() (c FtAlter) { _ = "STUB: not implemented"; return *new(FtAlter) }
 
 func (c FtAlter) Index(index string) FtAlterIndex {
-	c.cs.s = append(c.cs.s, index)
-	return (FtAlterIndex)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAlterIndex)
 }
 
 type FtAlterAdd Incomplete
 
 func (c FtAlterAdd) Field(field string) FtAlterField {
-	c.cs.s = append(c.cs.s, field)
-	return (FtAlterField)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAlterField)
 }
 
 type FtAlterField Incomplete
 
 func (c FtAlterField) Options(options ...string) FtAlterOptions {
-	c.cs.s = append(c.cs.s, options...)
-	return (FtAlterOptions)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAlterOptions)
 }
 
 type FtAlterIndex Incomplete
 
 func (c FtAlterIndex) Skipinitialscan() FtAlterSkipinitialscan {
-	c.cs.s = append(c.cs.s, "SKIPINITIALSCAN")
-	return (FtAlterSkipinitialscan)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAlterSkipinitialscan)
 }
 
-func (c FtAlterIndex) Schema() FtAlterSchema {
-	c.cs.s = append(c.cs.s, "SCHEMA")
-	return (FtAlterSchema)(c)
-}
+func (c FtAlterIndex) Schema() FtAlterSchema { _ = "STUB: not implemented"; return *new(FtAlterSchema) }
 
 type FtAlterOptions Incomplete
 
 func (c FtAlterOptions) Options(options ...string) FtAlterOptions {
-	c.cs.s = append(c.cs.s, options...)
-	return c
+	_ = "STUB: not implemented"
+	return *new(FtAlterOptions)
 }
 
-func (c FtAlterOptions) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c FtAlterOptions) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type FtAlterSchema Incomplete
 
-func (c FtAlterSchema) Add() FtAlterAdd {
-	c.cs.s = append(c.cs.s, "ADD")
-	return (FtAlterAdd)(c)
-}
+func (c FtAlterSchema) Add() FtAlterAdd { _ = "STUB: not implemented"; return *new(FtAlterAdd) }
 
 type FtAlterSkipinitialscan Incomplete
 
 func (c FtAlterSkipinitialscan) Schema() FtAlterSchema {
-	c.cs.s = append(c.cs.s, "SCHEMA")
-	return (FtAlterSchema)(c)
+	_ = "STUB: not implemented"
+	return *new(FtAlterSchema)
 }
 
 type FtConfigGet Incomplete
 
-func (b Builder) FtConfigGet() (c FtConfigGet) {
-	c = FtConfigGet{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "FT.CONFIG", "GET")
-	return c
-}
+func (b Builder) FtConfigGet() (c FtConfigGet) { _ = "STUB: not implemented"; return *new(FtConfigGet) }
 
 func (c FtConfigGet) Option(option string) FtConfigGetOption {
-	c.cs.s = append(c.cs.s, option)
-	return (FtConfigGetOption)(c)
+	_ = "STUB: not implemented"
+	return *new(FtConfigGetOption)
 }
 
 type FtConfigGetOption Incomplete
 
-func (c FtConfigGetOption) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c FtConfigGetOption) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type FtConfigHelp Incomplete
 
 func (b Builder) FtConfigHelp() (c FtConfigHelp) {
-	c = FtConfigHelp{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "FT.CONFIG", "HELP")
-	return c
+	_ = "STUB: not implemented"
+	return *new(FtConfigHelp)
 }
 
 func (c FtConfigHelp) Option(option string) FtConfigHelpOption {
-	c.cs.s = append(c.cs.s, option)
-	return (FtConfigHelpOption)(c)
+	_ = "STUB: not implemented"
+	return *new(FtConfigHelpOption)
 }
 
 type FtConfigHelpOption Incomplete
 
-func (c FtConfigHelpOption) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c FtConfigHelpOption) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type FtConfigSet Incomplete
 
-func (b Builder) FtConfigSet() (c FtConfigSet) {
-	c = FtConfigSet{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "FT.CONFIG", "SET")
-	return c
-}
+func (b Builder) FtConfigSet() (c FtConfigSet) { _ = "STUB: not implemented"; return *new(FtConfigSet) }
 
 func (c FtConfigSet) Option(option string) FtConfigSetOption {
-	c.cs.s = append(c.cs.s, option)
-	return (FtConfigSetOption)(c)
+	_ = "STUB: not implemented"
+	return *new(FtConfigSetOption)
 }
 
 type FtConfigSetOption Incomplete
 
 func (c FtConfigSetOption) Value(value string) FtConfigSetValue {
-	c.cs.s = append(c.cs.s, value)
-	return (FtConfigSetValue)(c)
+	_ = "STUB: not implemented"
+	return *new(FtConfigSetValue)
 }
 
 type FtConfigSetValue Incomplete
 
-func (c FtConfigSetValue) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c FtConfigSetValue) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type FtCreate Incomplete
 
-func (b Builder) FtCreate() (c FtCreate) {
-	c = FtCreate{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "FT.CREATE")
-	return c
-}
+func (b Builder) FtCreate() (c FtCreate) { _ = "STUB: not implemented"; return *new(FtCreate) }
 
 func (c FtCreate) Index(index string) FtCreateIndex {
-	c.cs.s = append(c.cs.s, index)
-	return (FtCreateIndex)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateIndex)
 }
 
 type FtCreateFieldAs Incomplete
 
 func (c FtCreateFieldAs) Text() FtCreateFieldFieldTypeText {
-	c.cs.s = append(c.cs.s, "TEXT")
-	return (FtCreateFieldFieldTypeText)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldFieldTypeText)
 }
 
 func (c FtCreateFieldAs) Tag() FtCreateFieldFieldTypeTag {
-	c.cs.s = append(c.cs.s, "TAG")
-	return (FtCreateFieldFieldTypeTag)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldFieldTypeTag)
 }
 
 func (c FtCreateFieldAs) Numeric() FtCreateFieldFieldTypeNumeric {
-	c.cs.s = append(c.cs.s, "NUMERIC")
-	return (FtCreateFieldFieldTypeNumeric)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldFieldTypeNumeric)
 }
 
 func (c FtCreateFieldAs) Geo() FtCreateFieldFieldTypeGeo {
-	c.cs.s = append(c.cs.s, "GEO")
-	return (FtCreateFieldFieldTypeGeo)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldFieldTypeGeo)
 }
 
 func (c FtCreateFieldAs) Vector(algo string, nargs int64, args ...string) FtCreateFieldFieldTypeVector {
-	c.cs.s = append(c.cs.s, "VECTOR", algo, strconv.FormatInt(nargs, 10))
-	c.cs.s = append(c.cs.s, args...)
-	return (FtCreateFieldFieldTypeVector)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldFieldTypeVector)
 }
 
 func (c FtCreateFieldAs) Geoshape() FtCreateFieldFieldTypeGeoshape {
-	c.cs.s = append(c.cs.s, "GEOSHAPE")
-	return (FtCreateFieldFieldTypeGeoshape)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldFieldTypeGeoshape)
 }
 
 type FtCreateFieldFieldName Incomplete
 
 func (c FtCreateFieldFieldName) As(alias string) FtCreateFieldAs {
-	c.cs.s = append(c.cs.s, "AS", alias)
-	return (FtCreateFieldAs)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldAs)
 }
 
 func (c FtCreateFieldFieldName) Text() FtCreateFieldFieldTypeText {
-	c.cs.s = append(c.cs.s, "TEXT")
-	return (FtCreateFieldFieldTypeText)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldFieldTypeText)
 }
 
 func (c FtCreateFieldFieldName) Tag() FtCreateFieldFieldTypeTag {
-	c.cs.s = append(c.cs.s, "TAG")
-	return (FtCreateFieldFieldTypeTag)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldFieldTypeTag)
 }
 
 func (c FtCreateFieldFieldName) Numeric() FtCreateFieldFieldTypeNumeric {
-	c.cs.s = append(c.cs.s, "NUMERIC")
-	return (FtCreateFieldFieldTypeNumeric)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldFieldTypeNumeric)
 }
 
 func (c FtCreateFieldFieldName) Geo() FtCreateFieldFieldTypeGeo {
-	c.cs.s = append(c.cs.s, "GEO")
-	return (FtCreateFieldFieldTypeGeo)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldFieldTypeGeo)
 }
 
 func (c FtCreateFieldFieldName) Vector(algo string, nargs int64, args ...string) FtCreateFieldFieldTypeVector {
-	c.cs.s = append(c.cs.s, "VECTOR", algo, strconv.FormatInt(nargs, 10))
-	c.cs.s = append(c.cs.s, args...)
-	return (FtCreateFieldFieldTypeVector)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldFieldTypeVector)
 }
 
 func (c FtCreateFieldFieldName) Geoshape() FtCreateFieldFieldTypeGeoshape {
-	c.cs.s = append(c.cs.s, "GEOSHAPE")
-	return (FtCreateFieldFieldTypeGeoshape)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldFieldTypeGeoshape)
 }
 
 type FtCreateFieldFieldTypeGeo Incomplete
 
 func (c FtCreateFieldFieldTypeGeo) Sortable() FtCreateFieldOptionSortableSortable {
-	c.cs.s = append(c.cs.s, "SORTABLE")
-	return (FtCreateFieldOptionSortableSortable)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionSortableSortable)
 }
 
 func (c FtCreateFieldFieldTypeGeo) Noindex() FtCreateFieldOptionNoindex {
-	c.cs.s = append(c.cs.s, "NOINDEX")
-	return (FtCreateFieldOptionNoindex)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionNoindex)
 }
 
 func (c FtCreateFieldFieldTypeGeo) Nostem() FtCreateFieldOptionNostem {
-	c.cs.s = append(c.cs.s, "NOSTEM")
-	return (FtCreateFieldOptionNostem)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionNostem)
 }
 
 func (c FtCreateFieldFieldTypeGeo) Phonetic(phonetic string) FtCreateFieldOptionPhonetic {
-	c.cs.s = append(c.cs.s, "PHONETIC", phonetic)
-	return (FtCreateFieldOptionPhonetic)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionPhonetic)
 }
 
 func (c FtCreateFieldFieldTypeGeo) Weight(weight float64) FtCreateFieldOptionWeight {
-	c.cs.s = append(c.cs.s, "WEIGHT", strconv.FormatFloat(weight, 'f', -1, 64))
-	return (FtCreateFieldOptionWeight)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionWeight)
 }
 
 func (c FtCreateFieldFieldTypeGeo) Separator(separator string) FtCreateFieldOptionSeparator {
-	c.cs.s = append(c.cs.s, "SEPARATOR", separator)
-	return (FtCreateFieldOptionSeparator)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionSeparator)
 }
 
 func (c FtCreateFieldFieldTypeGeo) Casesensitive() FtCreateFieldOptionCasesensitive {
-	c.cs.s = append(c.cs.s, "CASESENSITIVE")
-	return (FtCreateFieldOptionCasesensitive)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionCasesensitive)
 }
 
 func (c FtCreateFieldFieldTypeGeo) Withsuffixtrie() FtCreateFieldOptionWithsuffixtrie {
-	c.cs.s = append(c.cs.s, "WITHSUFFIXTRIE")
-	return (FtCreateFieldOptionWithsuffixtrie)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionWithsuffixtrie)
 }
 
 func (c FtCreateFieldFieldTypeGeo) Indexempty() FtCreateFieldOptionIndexempty {
-	c.cs.s = append(c.cs.s, "INDEXEMPTY")
-	return (FtCreateFieldOptionIndexempty)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionIndexempty)
 }
 
 func (c FtCreateFieldFieldTypeGeo) Indexmissing() FtCreateFieldOptionIndexmissing {
-	c.cs.s = append(c.cs.s, "INDEXMISSING")
-	return (FtCreateFieldOptionIndexmissing)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionIndexmissing)
 }
 
 func (c FtCreateFieldFieldTypeGeo) FieldName(fieldName string) FtCreateFieldFieldName {
-	c.cs.s = append(c.cs.s, fieldName)
-	return (FtCreateFieldFieldName)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldFieldName)
 }
 
 func (c FtCreateFieldFieldTypeGeo) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type FtCreateFieldFieldTypeGeoshape Incomplete
 
 func (c FtCreateFieldFieldTypeGeoshape) Sortable() FtCreateFieldOptionSortableSortable {
-	c.cs.s = append(c.cs.s, "SORTABLE")
-	return (FtCreateFieldOptionSortableSortable)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionSortableSortable)
 }
 
 func (c FtCreateFieldFieldTypeGeoshape) Noindex() FtCreateFieldOptionNoindex {
-	c.cs.s = append(c.cs.s, "NOINDEX")
-	return (FtCreateFieldOptionNoindex)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionNoindex)
 }
 
 func (c FtCreateFieldFieldTypeGeoshape) Nostem() FtCreateFieldOptionNostem {
-	c.cs.s = append(c.cs.s, "NOSTEM")
-	return (FtCreateFieldOptionNostem)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionNostem)
 }
 
 func (c FtCreateFieldFieldTypeGeoshape) Phonetic(phonetic string) FtCreateFieldOptionPhonetic {
-	c.cs.s = append(c.cs.s, "PHONETIC", phonetic)
-	return (FtCreateFieldOptionPhonetic)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionPhonetic)
 }
 
 func (c FtCreateFieldFieldTypeGeoshape) Weight(weight float64) FtCreateFieldOptionWeight {
-	c.cs.s = append(c.cs.s, "WEIGHT", strconv.FormatFloat(weight, 'f', -1, 64))
-	return (FtCreateFieldOptionWeight)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionWeight)
 }
 
 func (c FtCreateFieldFieldTypeGeoshape) Separator(separator string) FtCreateFieldOptionSeparator {
-	c.cs.s = append(c.cs.s, "SEPARATOR", separator)
-	return (FtCreateFieldOptionSeparator)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionSeparator)
 }
 
 func (c FtCreateFieldFieldTypeGeoshape) Casesensitive() FtCreateFieldOptionCasesensitive {
-	c.cs.s = append(c.cs.s, "CASESENSITIVE")
-	return (FtCreateFieldOptionCasesensitive)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionCasesensitive)
 }
 
 func (c FtCreateFieldFieldTypeGeoshape) Withsuffixtrie() FtCreateFieldOptionWithsuffixtrie {
-	c.cs.s = append(c.cs.s, "WITHSUFFIXTRIE")
-	return (FtCreateFieldOptionWithsuffixtrie)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionWithsuffixtrie)
 }
 
 func (c FtCreateFieldFieldTypeGeoshape) Indexempty() FtCreateFieldOptionIndexempty {
-	c.cs.s = append(c.cs.s, "INDEXEMPTY")
-	return (FtCreateFieldOptionIndexempty)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionIndexempty)
 }
 
 func (c FtCreateFieldFieldTypeGeoshape) Indexmissing() FtCreateFieldOptionIndexmissing {
-	c.cs.s = append(c.cs.s, "INDEXMISSING")
-	return (FtCreateFieldOptionIndexmissing)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionIndexmissing)
 }
 
 func (c FtCreateFieldFieldTypeGeoshape) FieldName(fieldName string) FtCreateFieldFieldName {
-	c.cs.s = append(c.cs.s, fieldName)
-	return (FtCreateFieldFieldName)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldFieldName)
 }
 
 func (c FtCreateFieldFieldTypeGeoshape) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type FtCreateFieldFieldTypeNumeric Incomplete
 
 func (c FtCreateFieldFieldTypeNumeric) Sortable() FtCreateFieldOptionSortableSortable {
-	c.cs.s = append(c.cs.s, "SORTABLE")
-	return (FtCreateFieldOptionSortableSortable)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionSortableSortable)
 }
 
 func (c FtCreateFieldFieldTypeNumeric) Noindex() FtCreateFieldOptionNoindex {
-	c.cs.s = append(c.cs.s, "NOINDEX")
-	return (FtCreateFieldOptionNoindex)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionNoindex)
 }
 
 func (c FtCreateFieldFieldTypeNumeric) Nostem() FtCreateFieldOptionNostem {
-	c.cs.s = append(c.cs.s, "NOSTEM")
-	return (FtCreateFieldOptionNostem)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionNostem)
 }
 
 func (c FtCreateFieldFieldTypeNumeric) Phonetic(phonetic string) FtCreateFieldOptionPhonetic {
-	c.cs.s = append(c.cs.s, "PHONETIC", phonetic)
-	return (FtCreateFieldOptionPhonetic)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionPhonetic)
 }
 
 func (c FtCreateFieldFieldTypeNumeric) Weight(weight float64) FtCreateFieldOptionWeight {
-	c.cs.s = append(c.cs.s, "WEIGHT", strconv.FormatFloat(weight, 'f', -1, 64))
-	return (FtCreateFieldOptionWeight)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionWeight)
 }
 
 func (c FtCreateFieldFieldTypeNumeric) Separator(separator string) FtCreateFieldOptionSeparator {
-	c.cs.s = append(c.cs.s, "SEPARATOR", separator)
-	return (FtCreateFieldOptionSeparator)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionSeparator)
 }
 
 func (c FtCreateFieldFieldTypeNumeric) Casesensitive() FtCreateFieldOptionCasesensitive {
-	c.cs.s = append(c.cs.s, "CASESENSITIVE")
-	return (FtCreateFieldOptionCasesensitive)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionCasesensitive)
 }
 
 func (c FtCreateFieldFieldTypeNumeric) Withsuffixtrie() FtCreateFieldOptionWithsuffixtrie {
-	c.cs.s = append(c.cs.s, "WITHSUFFIXTRIE")
-	return (FtCreateFieldOptionWithsuffixtrie)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionWithsuffixtrie)
 }
 
 func (c FtCreateFieldFieldTypeNumeric) Indexempty() FtCreateFieldOptionIndexempty {
-	c.cs.s = append(c.cs.s, "INDEXEMPTY")
-	return (FtCreateFieldOptionIndexempty)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionIndexempty)
 }
 
 func (c FtCreateFieldFieldTypeNumeric) Indexmissing() FtCreateFieldOptionIndexmissing {
-	c.cs.s = append(c.cs.s, "INDEXMISSING")
-	return (FtCreateFieldOptionIndexmissing)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionIndexmissing)
 }
 
 func (c FtCreateFieldFieldTypeNumeric) FieldName(fieldName string) FtCreateFieldFieldName {
-	c.cs.s = append(c.cs.s, fieldName)
-	return (FtCreateFieldFieldName)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldFieldName)
 }
 
 func (c FtCreateFieldFieldTypeNumeric) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type FtCreateFieldFieldTypeTag Incomplete
 
 func (c FtCreateFieldFieldTypeTag) Sortable() FtCreateFieldOptionSortableSortable {
-	c.cs.s = append(c.cs.s, "SORTABLE")
-	return (FtCreateFieldOptionSortableSortable)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionSortableSortable)
 }
 
 func (c FtCreateFieldFieldTypeTag) Noindex() FtCreateFieldOptionNoindex {
-	c.cs.s = append(c.cs.s, "NOINDEX")
-	return (FtCreateFieldOptionNoindex)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionNoindex)
 }
 
 func (c FtCreateFieldFieldTypeTag) Nostem() FtCreateFieldOptionNostem {
-	c.cs.s = append(c.cs.s, "NOSTEM")
-	return (FtCreateFieldOptionNostem)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionNostem)
 }
 
 func (c FtCreateFieldFieldTypeTag) Phonetic(phonetic string) FtCreateFieldOptionPhonetic {
-	c.cs.s = append(c.cs.s, "PHONETIC", phonetic)
-	return (FtCreateFieldOptionPhonetic)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionPhonetic)
 }
 
 func (c FtCreateFieldFieldTypeTag) Weight(weight float64) FtCreateFieldOptionWeight {
-	c.cs.s = append(c.cs.s, "WEIGHT", strconv.FormatFloat(weight, 'f', -1, 64))
-	return (FtCreateFieldOptionWeight)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionWeight)
 }
 
 func (c FtCreateFieldFieldTypeTag) Separator(separator string) FtCreateFieldOptionSeparator {
-	c.cs.s = append(c.cs.s, "SEPARATOR", separator)
-	return (FtCreateFieldOptionSeparator)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionSeparator)
 }
 
 func (c FtCreateFieldFieldTypeTag) Casesensitive() FtCreateFieldOptionCasesensitive {
-	c.cs.s = append(c.cs.s, "CASESENSITIVE")
-	return (FtCreateFieldOptionCasesensitive)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionCasesensitive)
 }
 
 func (c FtCreateFieldFieldTypeTag) Withsuffixtrie() FtCreateFieldOptionWithsuffixtrie {
-	c.cs.s = append(c.cs.s, "WITHSUFFIXTRIE")
-	return (FtCreateFieldOptionWithsuffixtrie)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionWithsuffixtrie)
 }
 
 func (c FtCreateFieldFieldTypeTag) Indexempty() FtCreateFieldOptionIndexempty {
-	c.cs.s = append(c.cs.s, "INDEXEMPTY")
-	return (FtCreateFieldOptionIndexempty)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionIndexempty)
 }
 
 func (c FtCreateFieldFieldTypeTag) Indexmissing() FtCreateFieldOptionIndexmissing {
-	c.cs.s = append(c.cs.s, "INDEXMISSING")
-	return (FtCreateFieldOptionIndexmissing)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionIndexmissing)
 }
 
 func (c FtCreateFieldFieldTypeTag) FieldName(fieldName string) FtCreateFieldFieldName {
-	c.cs.s = append(c.cs.s, fieldName)
-	return (FtCreateFieldFieldName)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldFieldName)
 }
 
 func (c FtCreateFieldFieldTypeTag) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type FtCreateFieldFieldTypeText Incomplete
 
 func (c FtCreateFieldFieldTypeText) Sortable() FtCreateFieldOptionSortableSortable {
-	c.cs.s = append(c.cs.s, "SORTABLE")
-	return (FtCreateFieldOptionSortableSortable)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionSortableSortable)
 }
 
 func (c FtCreateFieldFieldTypeText) Noindex() FtCreateFieldOptionNoindex {
-	c.cs.s = append(c.cs.s, "NOINDEX")
-	return (FtCreateFieldOptionNoindex)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionNoindex)
 }
 
 func (c FtCreateFieldFieldTypeText) Nostem() FtCreateFieldOptionNostem {
-	c.cs.s = append(c.cs.s, "NOSTEM")
-	return (FtCreateFieldOptionNostem)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionNostem)
 }
 
 func (c FtCreateFieldFieldTypeText) Phonetic(phonetic string) FtCreateFieldOptionPhonetic {
-	c.cs.s = append(c.cs.s, "PHONETIC", phonetic)
-	return (FtCreateFieldOptionPhonetic)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionPhonetic)
 }
 
 func (c FtCreateFieldFieldTypeText) Weight(weight float64) FtCreateFieldOptionWeight {
-	c.cs.s = append(c.cs.s, "WEIGHT", strconv.FormatFloat(weight, 'f', -1, 64))
-	return (FtCreateFieldOptionWeight)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionWeight)
 }
 
 func (c FtCreateFieldFieldTypeText) Separator(separator string) FtCreateFieldOptionSeparator {
-	c.cs.s = append(c.cs.s, "SEPARATOR", separator)
-	return (FtCreateFieldOptionSeparator)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionSeparator)
 }
 
 func (c FtCreateFieldFieldTypeText) Casesensitive() FtCreateFieldOptionCasesensitive {
-	c.cs.s = append(c.cs.s, "CASESENSITIVE")
-	return (FtCreateFieldOptionCasesensitive)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionCasesensitive)
 }
 
 func (c FtCreateFieldFieldTypeText) Withsuffixtrie() FtCreateFieldOptionWithsuffixtrie {
-	c.cs.s = append(c.cs.s, "WITHSUFFIXTRIE")
-	return (FtCreateFieldOptionWithsuffixtrie)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionWithsuffixtrie)
 }
 
 func (c FtCreateFieldFieldTypeText) Indexempty() FtCreateFieldOptionIndexempty {
-	c.cs.s = append(c.cs.s, "INDEXEMPTY")
-	return (FtCreateFieldOptionIndexempty)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionIndexempty)
 }
 
 func (c FtCreateFieldFieldTypeText) Indexmissing() FtCreateFieldOptionIndexmissing {
-	c.cs.s = append(c.cs.s, "INDEXMISSING")
-	return (FtCreateFieldOptionIndexmissing)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionIndexmissing)
 }
 
 func (c FtCreateFieldFieldTypeText) FieldName(fieldName string) FtCreateFieldFieldName {
-	c.cs.s = append(c.cs.s, fieldName)
-	return (FtCreateFieldFieldName)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldFieldName)
 }
 
 func (c FtCreateFieldFieldTypeText) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type FtCreateFieldFieldTypeVector Incomplete
 
 func (c FtCreateFieldFieldTypeVector) Sortable() FtCreateFieldOptionSortableSortable {
-	c.cs.s = append(c.cs.s, "SORTABLE")
-	return (FtCreateFieldOptionSortableSortable)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionSortableSortable)
 }
 
 func (c FtCreateFieldFieldTypeVector) Noindex() FtCreateFieldOptionNoindex {
-	c.cs.s = append(c.cs.s, "NOINDEX")
-	return (FtCreateFieldOptionNoindex)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionNoindex)
 }
 
 func (c FtCreateFieldFieldTypeVector) Nostem() FtCreateFieldOptionNostem {
-	c.cs.s = append(c.cs.s, "NOSTEM")
-	return (FtCreateFieldOptionNostem)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionNostem)
 }
 
 func (c FtCreateFieldFieldTypeVector) Phonetic(phonetic string) FtCreateFieldOptionPhonetic {
-	c.cs.s = append(c.cs.s, "PHONETIC", phonetic)
-	return (FtCreateFieldOptionPhonetic)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionPhonetic)
 }
 
 func (c FtCreateFieldFieldTypeVector) Weight(weight float64) FtCreateFieldOptionWeight {
-	c.cs.s = append(c.cs.s, "WEIGHT", strconv.FormatFloat(weight, 'f', -1, 64))
-	return (FtCreateFieldOptionWeight)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionWeight)
 }
 
 func (c FtCreateFieldFieldTypeVector) Separator(separator string) FtCreateFieldOptionSeparator {
-	c.cs.s = append(c.cs.s, "SEPARATOR", separator)
-	return (FtCreateFieldOptionSeparator)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionSeparator)
 }
 
 func (c FtCreateFieldFieldTypeVector) Casesensitive() FtCreateFieldOptionCasesensitive {
-	c.cs.s = append(c.cs.s, "CASESENSITIVE")
-	return (FtCreateFieldOptionCasesensitive)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionCasesensitive)
 }
 
 func (c FtCreateFieldFieldTypeVector) Withsuffixtrie() FtCreateFieldOptionWithsuffixtrie {
-	c.cs.s = append(c.cs.s, "WITHSUFFIXTRIE")
-	return (FtCreateFieldOptionWithsuffixtrie)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionWithsuffixtrie)
 }
 
 func (c FtCreateFieldFieldTypeVector) Indexempty() FtCreateFieldOptionIndexempty {
-	c.cs.s = append(c.cs.s, "INDEXEMPTY")
-	return (FtCreateFieldOptionIndexempty)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionIndexempty)
 }
 
 func (c FtCreateFieldFieldTypeVector) Indexmissing() FtCreateFieldOptionIndexmissing {
-	c.cs.s = append(c.cs.s, "INDEXMISSING")
-	return (FtCreateFieldOptionIndexmissing)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionIndexmissing)
 }
 
 func (c FtCreateFieldFieldTypeVector) FieldName(fieldName string) FtCreateFieldFieldName {
-	c.cs.s = append(c.cs.s, fieldName)
-	return (FtCreateFieldFieldName)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldFieldName)
 }
 
 func (c FtCreateFieldFieldTypeVector) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type FtCreateFieldOptionCasesensitive Incomplete
 
 func (c FtCreateFieldOptionCasesensitive) Withsuffixtrie() FtCreateFieldOptionWithsuffixtrie {
-	c.cs.s = append(c.cs.s, "WITHSUFFIXTRIE")
-	return (FtCreateFieldOptionWithsuffixtrie)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionWithsuffixtrie)
 }
 
 func (c FtCreateFieldOptionCasesensitive) Indexempty() FtCreateFieldOptionIndexempty {
-	c.cs.s = append(c.cs.s, "INDEXEMPTY")
-	return (FtCreateFieldOptionIndexempty)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionIndexempty)
 }
 
 func (c FtCreateFieldOptionCasesensitive) Indexmissing() FtCreateFieldOptionIndexmissing {
-	c.cs.s = append(c.cs.s, "INDEXMISSING")
-	return (FtCreateFieldOptionIndexmissing)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionIndexmissing)
 }
 
 func (c FtCreateFieldOptionCasesensitive) Sortable() FtCreateFieldOptionSortableSortable {
-	c.cs.s = append(c.cs.s, "SORTABLE")
-	return (FtCreateFieldOptionSortableSortable)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionSortableSortable)
 }
 
 func (c FtCreateFieldOptionCasesensitive) Noindex() FtCreateFieldOptionNoindex {
-	c.cs.s = append(c.cs.s, "NOINDEX")
-	return (FtCreateFieldOptionNoindex)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionNoindex)
 }
 
 func (c FtCreateFieldOptionCasesensitive) Nostem() FtCreateFieldOptionNostem {
-	c.cs.s = append(c.cs.s, "NOSTEM")
-	return (FtCreateFieldOptionNostem)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionNostem)
 }
 
 func (c FtCreateFieldOptionCasesensitive) Phonetic(phonetic string) FtCreateFieldOptionPhonetic {
-	c.cs.s = append(c.cs.s, "PHONETIC", phonetic)
-	return (FtCreateFieldOptionPhonetic)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionPhonetic)
 }
 
 func (c FtCreateFieldOptionCasesensitive) Weight(weight float64) FtCreateFieldOptionWeight {
-	c.cs.s = append(c.cs.s, "WEIGHT", strconv.FormatFloat(weight, 'f', -1, 64))
-	return (FtCreateFieldOptionWeight)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionWeight)
 }
 
 func (c FtCreateFieldOptionCasesensitive) Separator(separator string) FtCreateFieldOptionSeparator {
-	c.cs.s = append(c.cs.s, "SEPARATOR", separator)
-	return (FtCreateFieldOptionSeparator)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionSeparator)
 }
 
 func (c FtCreateFieldOptionCasesensitive) Casesensitive() FtCreateFieldOptionCasesensitive {
-	c.cs.s = append(c.cs.s, "CASESENSITIVE")
-	return c
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionCasesensitive)
 }
 
 func (c FtCreateFieldOptionCasesensitive) FieldName(fieldName string) FtCreateFieldFieldName {
-	c.cs.s = append(c.cs.s, fieldName)
-	return (FtCreateFieldFieldName)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldFieldName)
 }
 
 func (c FtCreateFieldOptionCasesensitive) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type FtCreateFieldOptionIndexempty Incomplete
 
 func (c FtCreateFieldOptionIndexempty) Indexmissing() FtCreateFieldOptionIndexmissing {
-	c.cs.s = append(c.cs.s, "INDEXMISSING")
-	return (FtCreateFieldOptionIndexmissing)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionIndexmissing)
 }
 
 func (c FtCreateFieldOptionIndexempty) Sortable() FtCreateFieldOptionSortableSortable {
-	c.cs.s = append(c.cs.s, "SORTABLE")
-	return (FtCreateFieldOptionSortableSortable)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionSortableSortable)
 }
 
 func (c FtCreateFieldOptionIndexempty) Noindex() FtCreateFieldOptionNoindex {
-	c.cs.s = append(c.cs.s, "NOINDEX")
-	return (FtCreateFieldOptionNoindex)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionNoindex)
 }
 
 func (c FtCreateFieldOptionIndexempty) Nostem() FtCreateFieldOptionNostem {
-	c.cs.s = append(c.cs.s, "NOSTEM")
-	return (FtCreateFieldOptionNostem)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionNostem)
 }
 
 func (c FtCreateFieldOptionIndexempty) Phonetic(phonetic string) FtCreateFieldOptionPhonetic {
-	c.cs.s = append(c.cs.s, "PHONETIC", phonetic)
-	return (FtCreateFieldOptionPhonetic)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionPhonetic)
 }
 
 func (c FtCreateFieldOptionIndexempty) Weight(weight float64) FtCreateFieldOptionWeight {
-	c.cs.s = append(c.cs.s, "WEIGHT", strconv.FormatFloat(weight, 'f', -1, 64))
-	return (FtCreateFieldOptionWeight)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionWeight)
 }
 
 func (c FtCreateFieldOptionIndexempty) Separator(separator string) FtCreateFieldOptionSeparator {
-	c.cs.s = append(c.cs.s, "SEPARATOR", separator)
-	return (FtCreateFieldOptionSeparator)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionSeparator)
 }
 
 func (c FtCreateFieldOptionIndexempty) Casesensitive() FtCreateFieldOptionCasesensitive {
-	c.cs.s = append(c.cs.s, "CASESENSITIVE")
-	return (FtCreateFieldOptionCasesensitive)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionCasesensitive)
 }
 
 func (c FtCreateFieldOptionIndexempty) Withsuffixtrie() FtCreateFieldOptionWithsuffixtrie {
-	c.cs.s = append(c.cs.s, "WITHSUFFIXTRIE")
-	return (FtCreateFieldOptionWithsuffixtrie)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionWithsuffixtrie)
 }
 
 func (c FtCreateFieldOptionIndexempty) Indexempty() FtCreateFieldOptionIndexempty {
-	c.cs.s = append(c.cs.s, "INDEXEMPTY")
-	return c
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionIndexempty)
 }
 
 func (c FtCreateFieldOptionIndexempty) FieldName(fieldName string) FtCreateFieldFieldName {
-	c.cs.s = append(c.cs.s, fieldName)
-	return (FtCreateFieldFieldName)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldFieldName)
 }
 
 func (c FtCreateFieldOptionIndexempty) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type FtCreateFieldOptionIndexmissing Incomplete
 
 func (c FtCreateFieldOptionIndexmissing) Sortable() FtCreateFieldOptionSortableSortable {
-	c.cs.s = append(c.cs.s, "SORTABLE")
-	return (FtCreateFieldOptionSortableSortable)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionSortableSortable)
 }
 
 func (c FtCreateFieldOptionIndexmissing) Noindex() FtCreateFieldOptionNoindex {
-	c.cs.s = append(c.cs.s, "NOINDEX")
-	return (FtCreateFieldOptionNoindex)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionNoindex)
 }
 
 func (c FtCreateFieldOptionIndexmissing) Nostem() FtCreateFieldOptionNostem {
-	c.cs.s = append(c.cs.s, "NOSTEM")
-	return (FtCreateFieldOptionNostem)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionNostem)
 }
 
 func (c FtCreateFieldOptionIndexmissing) Phonetic(phonetic string) FtCreateFieldOptionPhonetic {
-	c.cs.s = append(c.cs.s, "PHONETIC", phonetic)
-	return (FtCreateFieldOptionPhonetic)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionPhonetic)
 }
 
 func (c FtCreateFieldOptionIndexmissing) Weight(weight float64) FtCreateFieldOptionWeight {
-	c.cs.s = append(c.cs.s, "WEIGHT", strconv.FormatFloat(weight, 'f', -1, 64))
-	return (FtCreateFieldOptionWeight)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionWeight)
 }
 
 func (c FtCreateFieldOptionIndexmissing) Separator(separator string) FtCreateFieldOptionSeparator {
-	c.cs.s = append(c.cs.s, "SEPARATOR", separator)
-	return (FtCreateFieldOptionSeparator)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionSeparator)
 }
 
 func (c FtCreateFieldOptionIndexmissing) Casesensitive() FtCreateFieldOptionCasesensitive {
-	c.cs.s = append(c.cs.s, "CASESENSITIVE")
-	return (FtCreateFieldOptionCasesensitive)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionCasesensitive)
 }
 
 func (c FtCreateFieldOptionIndexmissing) Withsuffixtrie() FtCreateFieldOptionWithsuffixtrie {
-	c.cs.s = append(c.cs.s, "WITHSUFFIXTRIE")
-	return (FtCreateFieldOptionWithsuffixtrie)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionWithsuffixtrie)
 }
 
 func (c FtCreateFieldOptionIndexmissing) Indexempty() FtCreateFieldOptionIndexempty {
-	c.cs.s = append(c.cs.s, "INDEXEMPTY")
-	return (FtCreateFieldOptionIndexempty)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionIndexempty)
 }
 
 func (c FtCreateFieldOptionIndexmissing) Indexmissing() FtCreateFieldOptionIndexmissing {
-	c.cs.s = append(c.cs.s, "INDEXMISSING")
-	return c
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionIndexmissing)
 }
 
 func (c FtCreateFieldOptionIndexmissing) FieldName(fieldName string) FtCreateFieldFieldName {
-	c.cs.s = append(c.cs.s, fieldName)
-	return (FtCreateFieldFieldName)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldFieldName)
 }
 
 func (c FtCreateFieldOptionIndexmissing) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type FtCreateFieldOptionNoindex Incomplete
 
 func (c FtCreateFieldOptionNoindex) Nostem() FtCreateFieldOptionNostem {
-	c.cs.s = append(c.cs.s, "NOSTEM")
-	return (FtCreateFieldOptionNostem)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionNostem)
 }
 
 func (c FtCreateFieldOptionNoindex) Phonetic(phonetic string) FtCreateFieldOptionPhonetic {
-	c.cs.s = append(c.cs.s, "PHONETIC", phonetic)
-	return (FtCreateFieldOptionPhonetic)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionPhonetic)
 }
 
 func (c FtCreateFieldOptionNoindex) Weight(weight float64) FtCreateFieldOptionWeight {
-	c.cs.s = append(c.cs.s, "WEIGHT", strconv.FormatFloat(weight, 'f', -1, 64))
-	return (FtCreateFieldOptionWeight)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionWeight)
 }
 
 func (c FtCreateFieldOptionNoindex) Separator(separator string) FtCreateFieldOptionSeparator {
-	c.cs.s = append(c.cs.s, "SEPARATOR", separator)
-	return (FtCreateFieldOptionSeparator)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionSeparator)
 }
 
 func (c FtCreateFieldOptionNoindex) Casesensitive() FtCreateFieldOptionCasesensitive {
-	c.cs.s = append(c.cs.s, "CASESENSITIVE")
-	return (FtCreateFieldOptionCasesensitive)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionCasesensitive)
 }
 
 func (c FtCreateFieldOptionNoindex) Withsuffixtrie() FtCreateFieldOptionWithsuffixtrie {
-	c.cs.s = append(c.cs.s, "WITHSUFFIXTRIE")
-	return (FtCreateFieldOptionWithsuffixtrie)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionWithsuffixtrie)
 }
 
 func (c FtCreateFieldOptionNoindex) Indexempty() FtCreateFieldOptionIndexempty {
-	c.cs.s = append(c.cs.s, "INDEXEMPTY")
-	return (FtCreateFieldOptionIndexempty)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionIndexempty)
 }
 
 func (c FtCreateFieldOptionNoindex) Indexmissing() FtCreateFieldOptionIndexmissing {
-	c.cs.s = append(c.cs.s, "INDEXMISSING")
-	return (FtCreateFieldOptionIndexmissing)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionIndexmissing)
 }
 
 func (c FtCreateFieldOptionNoindex) Sortable() FtCreateFieldOptionSortableSortable {
-	c.cs.s = append(c.cs.s, "SORTABLE")
-	return (FtCreateFieldOptionSortableSortable)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionSortableSortable)
 }
 
 func (c FtCreateFieldOptionNoindex) Noindex() FtCreateFieldOptionNoindex {
-	c.cs.s = append(c.cs.s, "NOINDEX")
-	return c
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionNoindex)
 }
 
 func (c FtCreateFieldOptionNoindex) FieldName(fieldName string) FtCreateFieldFieldName {
-	c.cs.s = append(c.cs.s, fieldName)
-	return (FtCreateFieldFieldName)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldFieldName)
 }
 
 func (c FtCreateFieldOptionNoindex) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type FtCreateFieldOptionNostem Incomplete
 
 func (c FtCreateFieldOptionNostem) Phonetic(phonetic string) FtCreateFieldOptionPhonetic {
-	c.cs.s = append(c.cs.s, "PHONETIC", phonetic)
-	return (FtCreateFieldOptionPhonetic)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionPhonetic)
 }
 
 func (c FtCreateFieldOptionNostem) Weight(weight float64) FtCreateFieldOptionWeight {
-	c.cs.s = append(c.cs.s, "WEIGHT", strconv.FormatFloat(weight, 'f', -1, 64))
-	return (FtCreateFieldOptionWeight)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionWeight)
 }
 
 func (c FtCreateFieldOptionNostem) Separator(separator string) FtCreateFieldOptionSeparator {
-	c.cs.s = append(c.cs.s, "SEPARATOR", separator)
-	return (FtCreateFieldOptionSeparator)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionSeparator)
 }
 
 func (c FtCreateFieldOptionNostem) Casesensitive() FtCreateFieldOptionCasesensitive {
-	c.cs.s = append(c.cs.s, "CASESENSITIVE")
-	return (FtCreateFieldOptionCasesensitive)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionCasesensitive)
 }
 
 func (c FtCreateFieldOptionNostem) Withsuffixtrie() FtCreateFieldOptionWithsuffixtrie {
-	c.cs.s = append(c.cs.s, "WITHSUFFIXTRIE")
-	return (FtCreateFieldOptionWithsuffixtrie)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionWithsuffixtrie)
 }
 
 func (c FtCreateFieldOptionNostem) Indexempty() FtCreateFieldOptionIndexempty {
-	c.cs.s = append(c.cs.s, "INDEXEMPTY")
-	return (FtCreateFieldOptionIndexempty)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionIndexempty)
 }
 
 func (c FtCreateFieldOptionNostem) Indexmissing() FtCreateFieldOptionIndexmissing {
-	c.cs.s = append(c.cs.s, "INDEXMISSING")
-	return (FtCreateFieldOptionIndexmissing)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionIndexmissing)
 }
 
 func (c FtCreateFieldOptionNostem) Sortable() FtCreateFieldOptionSortableSortable {
-	c.cs.s = append(c.cs.s, "SORTABLE")
-	return (FtCreateFieldOptionSortableSortable)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionSortableSortable)
 }
 
 func (c FtCreateFieldOptionNostem) Noindex() FtCreateFieldOptionNoindex {
-	c.cs.s = append(c.cs.s, "NOINDEX")
-	return (FtCreateFieldOptionNoindex)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionNoindex)
 }
 
 func (c FtCreateFieldOptionNostem) Nostem() FtCreateFieldOptionNostem {
-	c.cs.s = append(c.cs.s, "NOSTEM")
-	return c
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionNostem)
 }
 
 func (c FtCreateFieldOptionNostem) FieldName(fieldName string) FtCreateFieldFieldName {
-	c.cs.s = append(c.cs.s, fieldName)
-	return (FtCreateFieldFieldName)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldFieldName)
 }
 
 func (c FtCreateFieldOptionNostem) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type FtCreateFieldOptionPhonetic Incomplete
 
 func (c FtCreateFieldOptionPhonetic) Weight(weight float64) FtCreateFieldOptionWeight {
-	c.cs.s = append(c.cs.s, "WEIGHT", strconv.FormatFloat(weight, 'f', -1, 64))
-	return (FtCreateFieldOptionWeight)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionWeight)
 }
 
 func (c FtCreateFieldOptionPhonetic) Separator(separator string) FtCreateFieldOptionSeparator {
-	c.cs.s = append(c.cs.s, "SEPARATOR", separator)
-	return (FtCreateFieldOptionSeparator)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionSeparator)
 }
 
 func (c FtCreateFieldOptionPhonetic) Casesensitive() FtCreateFieldOptionCasesensitive {
-	c.cs.s = append(c.cs.s, "CASESENSITIVE")
-	return (FtCreateFieldOptionCasesensitive)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionCasesensitive)
 }
 
 func (c FtCreateFieldOptionPhonetic) Withsuffixtrie() FtCreateFieldOptionWithsuffixtrie {
-	c.cs.s = append(c.cs.s, "WITHSUFFIXTRIE")
-	return (FtCreateFieldOptionWithsuffixtrie)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionWithsuffixtrie)
 }
 
 func (c FtCreateFieldOptionPhonetic) Indexempty() FtCreateFieldOptionIndexempty {
-	c.cs.s = append(c.cs.s, "INDEXEMPTY")
-	return (FtCreateFieldOptionIndexempty)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionIndexempty)
 }
 
 func (c FtCreateFieldOptionPhonetic) Indexmissing() FtCreateFieldOptionIndexmissing {
-	c.cs.s = append(c.cs.s, "INDEXMISSING")
-	return (FtCreateFieldOptionIndexmissing)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionIndexmissing)
 }
 
 func (c FtCreateFieldOptionPhonetic) Sortable() FtCreateFieldOptionSortableSortable {
-	c.cs.s = append(c.cs.s, "SORTABLE")
-	return (FtCreateFieldOptionSortableSortable)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionSortableSortable)
 }
 
 func (c FtCreateFieldOptionPhonetic) Noindex() FtCreateFieldOptionNoindex {
-	c.cs.s = append(c.cs.s, "NOINDEX")
-	return (FtCreateFieldOptionNoindex)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionNoindex)
 }
 
 func (c FtCreateFieldOptionPhonetic) Nostem() FtCreateFieldOptionNostem {
-	c.cs.s = append(c.cs.s, "NOSTEM")
-	return (FtCreateFieldOptionNostem)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionNostem)
 }
 
 func (c FtCreateFieldOptionPhonetic) Phonetic(phonetic string) FtCreateFieldOptionPhonetic {
-	c.cs.s = append(c.cs.s, "PHONETIC", phonetic)
-	return c
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionPhonetic)
 }
 
 func (c FtCreateFieldOptionPhonetic) FieldName(fieldName string) FtCreateFieldFieldName {
-	c.cs.s = append(c.cs.s, fieldName)
-	return (FtCreateFieldFieldName)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldFieldName)
 }
 
 func (c FtCreateFieldOptionPhonetic) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type FtCreateFieldOptionSeparator Incomplete
 
 func (c FtCreateFieldOptionSeparator) Casesensitive() FtCreateFieldOptionCasesensitive {
-	c.cs.s = append(c.cs.s, "CASESENSITIVE")
-	return (FtCreateFieldOptionCasesensitive)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionCasesensitive)
 }
 
 func (c FtCreateFieldOptionSeparator) Withsuffixtrie() FtCreateFieldOptionWithsuffixtrie {
-	c.cs.s = append(c.cs.s, "WITHSUFFIXTRIE")
-	return (FtCreateFieldOptionWithsuffixtrie)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionWithsuffixtrie)
 }
 
 func (c FtCreateFieldOptionSeparator) Indexempty() FtCreateFieldOptionIndexempty {
-	c.cs.s = append(c.cs.s, "INDEXEMPTY")
-	return (FtCreateFieldOptionIndexempty)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionIndexempty)
 }
 
 func (c FtCreateFieldOptionSeparator) Indexmissing() FtCreateFieldOptionIndexmissing {
-	c.cs.s = append(c.cs.s, "INDEXMISSING")
-	return (FtCreateFieldOptionIndexmissing)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionIndexmissing)
 }
 
 func (c FtCreateFieldOptionSeparator) Sortable() FtCreateFieldOptionSortableSortable {
-	c.cs.s = append(c.cs.s, "SORTABLE")
-	return (FtCreateFieldOptionSortableSortable)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionSortableSortable)
 }
 
 func (c FtCreateFieldOptionSeparator) Noindex() FtCreateFieldOptionNoindex {
-	c.cs.s = append(c.cs.s, "NOINDEX")
-	return (FtCreateFieldOptionNoindex)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionNoindex)
 }
 
 func (c FtCreateFieldOptionSeparator) Nostem() FtCreateFieldOptionNostem {
-	c.cs.s = append(c.cs.s, "NOSTEM")
-	return (FtCreateFieldOptionNostem)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionNostem)
 }
 
 func (c FtCreateFieldOptionSeparator) Phonetic(phonetic string) FtCreateFieldOptionPhonetic {
-	c.cs.s = append(c.cs.s, "PHONETIC", phonetic)
-	return (FtCreateFieldOptionPhonetic)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionPhonetic)
 }
 
 func (c FtCreateFieldOptionSeparator) Weight(weight float64) FtCreateFieldOptionWeight {
-	c.cs.s = append(c.cs.s, "WEIGHT", strconv.FormatFloat(weight, 'f', -1, 64))
-	return (FtCreateFieldOptionWeight)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionWeight)
 }
 
 func (c FtCreateFieldOptionSeparator) Separator(separator string) FtCreateFieldOptionSeparator {
-	c.cs.s = append(c.cs.s, "SEPARATOR", separator)
-	return c
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionSeparator)
 }
 
 func (c FtCreateFieldOptionSeparator) FieldName(fieldName string) FtCreateFieldFieldName {
-	c.cs.s = append(c.cs.s, fieldName)
-	return (FtCreateFieldFieldName)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldFieldName)
 }
 
 func (c FtCreateFieldOptionSeparator) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type FtCreateFieldOptionSortableSortable Incomplete
 
 func (c FtCreateFieldOptionSortableSortable) Unf() FtCreateFieldOptionSortableUnf {
-	c.cs.s = append(c.cs.s, "UNF")
-	return (FtCreateFieldOptionSortableUnf)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionSortableUnf)
 }
 
 func (c FtCreateFieldOptionSortableSortable) Noindex() FtCreateFieldOptionNoindex {
-	c.cs.s = append(c.cs.s, "NOINDEX")
-	return (FtCreateFieldOptionNoindex)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionNoindex)
 }
 
 func (c FtCreateFieldOptionSortableSortable) Nostem() FtCreateFieldOptionNostem {
-	c.cs.s = append(c.cs.s, "NOSTEM")
-	return (FtCreateFieldOptionNostem)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionNostem)
 }
 
 func (c FtCreateFieldOptionSortableSortable) Phonetic(phonetic string) FtCreateFieldOptionPhonetic {
-	c.cs.s = append(c.cs.s, "PHONETIC", phonetic)
-	return (FtCreateFieldOptionPhonetic)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionPhonetic)
 }
 
 func (c FtCreateFieldOptionSortableSortable) Weight(weight float64) FtCreateFieldOptionWeight {
-	c.cs.s = append(c.cs.s, "WEIGHT", strconv.FormatFloat(weight, 'f', -1, 64))
-	return (FtCreateFieldOptionWeight)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionWeight)
 }
 
 func (c FtCreateFieldOptionSortableSortable) Separator(separator string) FtCreateFieldOptionSeparator {
-	c.cs.s = append(c.cs.s, "SEPARATOR", separator)
-	return (FtCreateFieldOptionSeparator)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionSeparator)
 }
 
 func (c FtCreateFieldOptionSortableSortable) Casesensitive() FtCreateFieldOptionCasesensitive {
-	c.cs.s = append(c.cs.s, "CASESENSITIVE")
-	return (FtCreateFieldOptionCasesensitive)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionCasesensitive)
 }
 
 func (c FtCreateFieldOptionSortableSortable) Withsuffixtrie() FtCreateFieldOptionWithsuffixtrie {
-	c.cs.s = append(c.cs.s, "WITHSUFFIXTRIE")
-	return (FtCreateFieldOptionWithsuffixtrie)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionWithsuffixtrie)
 }
 
 func (c FtCreateFieldOptionSortableSortable) Indexempty() FtCreateFieldOptionIndexempty {
-	c.cs.s = append(c.cs.s, "INDEXEMPTY")
-	return (FtCreateFieldOptionIndexempty)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionIndexempty)
 }
 
 func (c FtCreateFieldOptionSortableSortable) Indexmissing() FtCreateFieldOptionIndexmissing {
-	c.cs.s = append(c.cs.s, "INDEXMISSING")
-	return (FtCreateFieldOptionIndexmissing)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionIndexmissing)
 }
 
 func (c FtCreateFieldOptionSortableSortable) Sortable() FtCreateFieldOptionSortableSortable {
-	c.cs.s = append(c.cs.s, "SORTABLE")
-	return c
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionSortableSortable)
 }
 
 func (c FtCreateFieldOptionSortableSortable) FieldName(fieldName string) FtCreateFieldFieldName {
-	c.cs.s = append(c.cs.s, fieldName)
-	return (FtCreateFieldFieldName)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldFieldName)
 }
 
 func (c FtCreateFieldOptionSortableSortable) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type FtCreateFieldOptionSortableUnf Incomplete
 
 func (c FtCreateFieldOptionSortableUnf) Noindex() FtCreateFieldOptionNoindex {
-	c.cs.s = append(c.cs.s, "NOINDEX")
-	return (FtCreateFieldOptionNoindex)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionNoindex)
 }
 
 func (c FtCreateFieldOptionSortableUnf) Nostem() FtCreateFieldOptionNostem {
-	c.cs.s = append(c.cs.s, "NOSTEM")
-	return (FtCreateFieldOptionNostem)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionNostem)
 }
 
 func (c FtCreateFieldOptionSortableUnf) Phonetic(phonetic string) FtCreateFieldOptionPhonetic {
-	c.cs.s = append(c.cs.s, "PHONETIC", phonetic)
-	return (FtCreateFieldOptionPhonetic)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionPhonetic)
 }
 
 func (c FtCreateFieldOptionSortableUnf) Weight(weight float64) FtCreateFieldOptionWeight {
-	c.cs.s = append(c.cs.s, "WEIGHT", strconv.FormatFloat(weight, 'f', -1, 64))
-	return (FtCreateFieldOptionWeight)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionWeight)
 }
 
 func (c FtCreateFieldOptionSortableUnf) Separator(separator string) FtCreateFieldOptionSeparator {
-	c.cs.s = append(c.cs.s, "SEPARATOR", separator)
-	return (FtCreateFieldOptionSeparator)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionSeparator)
 }
 
 func (c FtCreateFieldOptionSortableUnf) Casesensitive() FtCreateFieldOptionCasesensitive {
-	c.cs.s = append(c.cs.s, "CASESENSITIVE")
-	return (FtCreateFieldOptionCasesensitive)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionCasesensitive)
 }
 
 func (c FtCreateFieldOptionSortableUnf) Withsuffixtrie() FtCreateFieldOptionWithsuffixtrie {
-	c.cs.s = append(c.cs.s, "WITHSUFFIXTRIE")
-	return (FtCreateFieldOptionWithsuffixtrie)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionWithsuffixtrie)
 }
 
 func (c FtCreateFieldOptionSortableUnf) Indexempty() FtCreateFieldOptionIndexempty {
-	c.cs.s = append(c.cs.s, "INDEXEMPTY")
-	return (FtCreateFieldOptionIndexempty)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionIndexempty)
 }
 
 func (c FtCreateFieldOptionSortableUnf) Indexmissing() FtCreateFieldOptionIndexmissing {
-	c.cs.s = append(c.cs.s, "INDEXMISSING")
-	return (FtCreateFieldOptionIndexmissing)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionIndexmissing)
 }
 
 func (c FtCreateFieldOptionSortableUnf) Sortable() FtCreateFieldOptionSortableSortable {
-	c.cs.s = append(c.cs.s, "SORTABLE")
-	return (FtCreateFieldOptionSortableSortable)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionSortableSortable)
 }
 
 func (c FtCreateFieldOptionSortableUnf) FieldName(fieldName string) FtCreateFieldFieldName {
-	c.cs.s = append(c.cs.s, fieldName)
-	return (FtCreateFieldFieldName)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldFieldName)
 }
 
 func (c FtCreateFieldOptionSortableUnf) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type FtCreateFieldOptionWeight Incomplete
 
 func (c FtCreateFieldOptionWeight) Separator(separator string) FtCreateFieldOptionSeparator {
-	c.cs.s = append(c.cs.s, "SEPARATOR", separator)
-	return (FtCreateFieldOptionSeparator)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionSeparator)
 }
 
 func (c FtCreateFieldOptionWeight) Casesensitive() FtCreateFieldOptionCasesensitive {
-	c.cs.s = append(c.cs.s, "CASESENSITIVE")
-	return (FtCreateFieldOptionCasesensitive)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionCasesensitive)
 }
 
 func (c FtCreateFieldOptionWeight) Withsuffixtrie() FtCreateFieldOptionWithsuffixtrie {
-	c.cs.s = append(c.cs.s, "WITHSUFFIXTRIE")
-	return (FtCreateFieldOptionWithsuffixtrie)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionWithsuffixtrie)
 }
 
 func (c FtCreateFieldOptionWeight) Indexempty() FtCreateFieldOptionIndexempty {
-	c.cs.s = append(c.cs.s, "INDEXEMPTY")
-	return (FtCreateFieldOptionIndexempty)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionIndexempty)
 }
 
 func (c FtCreateFieldOptionWeight) Indexmissing() FtCreateFieldOptionIndexmissing {
-	c.cs.s = append(c.cs.s, "INDEXMISSING")
-	return (FtCreateFieldOptionIndexmissing)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionIndexmissing)
 }
 
 func (c FtCreateFieldOptionWeight) Sortable() FtCreateFieldOptionSortableSortable {
-	c.cs.s = append(c.cs.s, "SORTABLE")
-	return (FtCreateFieldOptionSortableSortable)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionSortableSortable)
 }
 
 func (c FtCreateFieldOptionWeight) Noindex() FtCreateFieldOptionNoindex {
-	c.cs.s = append(c.cs.s, "NOINDEX")
-	return (FtCreateFieldOptionNoindex)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionNoindex)
 }
 
 func (c FtCreateFieldOptionWeight) Nostem() FtCreateFieldOptionNostem {
-	c.cs.s = append(c.cs.s, "NOSTEM")
-	return (FtCreateFieldOptionNostem)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionNostem)
 }
 
 func (c FtCreateFieldOptionWeight) Phonetic(phonetic string) FtCreateFieldOptionPhonetic {
-	c.cs.s = append(c.cs.s, "PHONETIC", phonetic)
-	return (FtCreateFieldOptionPhonetic)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionPhonetic)
 }
 
 func (c FtCreateFieldOptionWeight) Weight(weight float64) FtCreateFieldOptionWeight {
-	c.cs.s = append(c.cs.s, "WEIGHT", strconv.FormatFloat(weight, 'f', -1, 64))
-	return c
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionWeight)
 }
 
 func (c FtCreateFieldOptionWeight) FieldName(fieldName string) FtCreateFieldFieldName {
-	c.cs.s = append(c.cs.s, fieldName)
-	return (FtCreateFieldFieldName)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldFieldName)
 }
 
 func (c FtCreateFieldOptionWeight) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type FtCreateFieldOptionWithsuffixtrie Incomplete
 
 func (c FtCreateFieldOptionWithsuffixtrie) Indexempty() FtCreateFieldOptionIndexempty {
-	c.cs.s = append(c.cs.s, "INDEXEMPTY")
-	return (FtCreateFieldOptionIndexempty)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionIndexempty)
 }
 
 func (c FtCreateFieldOptionWithsuffixtrie) Indexmissing() FtCreateFieldOptionIndexmissing {
-	c.cs.s = append(c.cs.s, "INDEXMISSING")
-	return (FtCreateFieldOptionIndexmissing)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionIndexmissing)
 }
 
 func (c FtCreateFieldOptionWithsuffixtrie) Sortable() FtCreateFieldOptionSortableSortable {
-	c.cs.s = append(c.cs.s, "SORTABLE")
-	return (FtCreateFieldOptionSortableSortable)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionSortableSortable)
 }
 
 func (c FtCreateFieldOptionWithsuffixtrie) Noindex() FtCreateFieldOptionNoindex {
-	c.cs.s = append(c.cs.s, "NOINDEX")
-	return (FtCreateFieldOptionNoindex)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionNoindex)
 }
 
 func (c FtCreateFieldOptionWithsuffixtrie) Nostem() FtCreateFieldOptionNostem {
-	c.cs.s = append(c.cs.s, "NOSTEM")
-	return (FtCreateFieldOptionNostem)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionNostem)
 }
 
 func (c FtCreateFieldOptionWithsuffixtrie) Phonetic(phonetic string) FtCreateFieldOptionPhonetic {
-	c.cs.s = append(c.cs.s, "PHONETIC", phonetic)
-	return (FtCreateFieldOptionPhonetic)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionPhonetic)
 }
 
 func (c FtCreateFieldOptionWithsuffixtrie) Weight(weight float64) FtCreateFieldOptionWeight {
-	c.cs.s = append(c.cs.s, "WEIGHT", strconv.FormatFloat(weight, 'f', -1, 64))
-	return (FtCreateFieldOptionWeight)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionWeight)
 }
 
 func (c FtCreateFieldOptionWithsuffixtrie) Separator(separator string) FtCreateFieldOptionSeparator {
-	c.cs.s = append(c.cs.s, "SEPARATOR", separator)
-	return (FtCreateFieldOptionSeparator)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionSeparator)
 }
 
 func (c FtCreateFieldOptionWithsuffixtrie) Casesensitive() FtCreateFieldOptionCasesensitive {
-	c.cs.s = append(c.cs.s, "CASESENSITIVE")
-	return (FtCreateFieldOptionCasesensitive)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionCasesensitive)
 }
 
 func (c FtCreateFieldOptionWithsuffixtrie) Withsuffixtrie() FtCreateFieldOptionWithsuffixtrie {
-	c.cs.s = append(c.cs.s, "WITHSUFFIXTRIE")
-	return c
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldOptionWithsuffixtrie)
 }
 
 func (c FtCreateFieldOptionWithsuffixtrie) FieldName(fieldName string) FtCreateFieldFieldName {
-	c.cs.s = append(c.cs.s, fieldName)
-	return (FtCreateFieldFieldName)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldFieldName)
 }
 
 func (c FtCreateFieldOptionWithsuffixtrie) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type FtCreateFilter Incomplete
 
 func (c FtCreateFilter) Language(defaultLang string) FtCreateLanguage {
-	c.cs.s = append(c.cs.s, "LANGUAGE", defaultLang)
-	return (FtCreateLanguage)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateLanguage)
 }
 
 func (c FtCreateFilter) LanguageField(langAttribute string) FtCreateLanguageField {
-	c.cs.s = append(c.cs.s, "LANGUAGE_FIELD", langAttribute)
-	return (FtCreateLanguageField)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateLanguageField)
 }
 
 func (c FtCreateFilter) Score(defaultScore float64) FtCreateScore {
-	c.cs.s = append(c.cs.s, "SCORE", strconv.FormatFloat(defaultScore, 'f', -1, 64))
-	return (FtCreateScore)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateScore)
 }
 
 func (c FtCreateFilter) ScoreField(scoreAttribute string) FtCreateScoreField {
-	c.cs.s = append(c.cs.s, "SCORE_FIELD", scoreAttribute)
-	return (FtCreateScoreField)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateScoreField)
 }
 
 func (c FtCreateFilter) PayloadField(payloadAttribute string) FtCreatePayloadField {
-	c.cs.s = append(c.cs.s, "PAYLOAD_FIELD", payloadAttribute)
-	return (FtCreatePayloadField)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreatePayloadField)
 }
 
 func (c FtCreateFilter) Maxtextfields() FtCreateMaxtextfields {
-	c.cs.s = append(c.cs.s, "MAXTEXTFIELDS")
-	return (FtCreateMaxtextfields)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateMaxtextfields)
 }
 
 func (c FtCreateFilter) Temporary(seconds float64) FtCreateTemporary {
-	c.cs.s = append(c.cs.s, "TEMPORARY", strconv.FormatFloat(seconds, 'f', -1, 64))
-	return (FtCreateTemporary)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateTemporary)
 }
 
 func (c FtCreateFilter) Nooffsets() FtCreateNooffsets {
-	c.cs.s = append(c.cs.s, "NOOFFSETS")
-	return (FtCreateNooffsets)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateNooffsets)
 }
 
-func (c FtCreateFilter) Nohl() FtCreateNohl {
-	c.cs.s = append(c.cs.s, "NOHL")
-	return (FtCreateNohl)(c)
-}
+func (c FtCreateFilter) Nohl() FtCreateNohl { _ = "STUB: not implemented"; return *new(FtCreateNohl) }
 
 func (c FtCreateFilter) Nofields() FtCreateNofields {
-	c.cs.s = append(c.cs.s, "NOFIELDS")
-	return (FtCreateNofields)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateNofields)
 }
 
 func (c FtCreateFilter) Nofreqs() FtCreateNofreqs {
-	c.cs.s = append(c.cs.s, "NOFREQS")
-	return (FtCreateNofreqs)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateNofreqs)
 }
 
 func (c FtCreateFilter) Stopwords(count int64) FtCreateStopwordsStopwords {
-	c.cs.s = append(c.cs.s, "STOPWORDS", strconv.FormatInt(count, 10))
-	return (FtCreateStopwordsStopwords)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateStopwordsStopwords)
 }
 
 func (c FtCreateFilter) Skipinitialscan() FtCreateSkipinitialscan {
-	c.cs.s = append(c.cs.s, "SKIPINITIALSCAN")
-	return (FtCreateSkipinitialscan)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateSkipinitialscan)
 }
 
 func (c FtCreateFilter) Schema() FtCreateSchema {
-	c.cs.s = append(c.cs.s, "SCHEMA")
-	return (FtCreateSchema)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateSchema)
 }
 
 type FtCreateIndex Incomplete
 
 func (c FtCreateIndex) OnHash() FtCreateOnHash {
-	c.cs.s = append(c.cs.s, "ON", "HASH")
-	return (FtCreateOnHash)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateOnHash)
 }
 
 func (c FtCreateIndex) OnJson() FtCreateOnJson {
-	c.cs.s = append(c.cs.s, "ON", "JSON")
-	return (FtCreateOnJson)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateOnJson)
 }
 
 func (c FtCreateIndex) Prefix(count int64) FtCreatePrefixCount {
-	c.cs.s = append(c.cs.s, "PREFIX", strconv.FormatInt(count, 10))
-	return (FtCreatePrefixCount)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreatePrefixCount)
 }
 
 func (c FtCreateIndex) Filter(filter string) FtCreateFilter {
-	c.cs.s = append(c.cs.s, "FILTER", filter)
-	return (FtCreateFilter)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFilter)
 }
 
 func (c FtCreateIndex) Language(defaultLang string) FtCreateLanguage {
-	c.cs.s = append(c.cs.s, "LANGUAGE", defaultLang)
-	return (FtCreateLanguage)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateLanguage)
 }
 
 func (c FtCreateIndex) LanguageField(langAttribute string) FtCreateLanguageField {
-	c.cs.s = append(c.cs.s, "LANGUAGE_FIELD", langAttribute)
-	return (FtCreateLanguageField)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateLanguageField)
 }
 
 func (c FtCreateIndex) Score(defaultScore float64) FtCreateScore {
-	c.cs.s = append(c.cs.s, "SCORE", strconv.FormatFloat(defaultScore, 'f', -1, 64))
-	return (FtCreateScore)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateScore)
 }
 
 func (c FtCreateIndex) ScoreField(scoreAttribute string) FtCreateScoreField {
-	c.cs.s = append(c.cs.s, "SCORE_FIELD", scoreAttribute)
-	return (FtCreateScoreField)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateScoreField)
 }
 
 func (c FtCreateIndex) PayloadField(payloadAttribute string) FtCreatePayloadField {
-	c.cs.s = append(c.cs.s, "PAYLOAD_FIELD", payloadAttribute)
-	return (FtCreatePayloadField)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreatePayloadField)
 }
 
 func (c FtCreateIndex) Maxtextfields() FtCreateMaxtextfields {
-	c.cs.s = append(c.cs.s, "MAXTEXTFIELDS")
-	return (FtCreateMaxtextfields)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateMaxtextfields)
 }
 
 func (c FtCreateIndex) Temporary(seconds float64) FtCreateTemporary {
-	c.cs.s = append(c.cs.s, "TEMPORARY", strconv.FormatFloat(seconds, 'f', -1, 64))
-	return (FtCreateTemporary)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateTemporary)
 }
 
 func (c FtCreateIndex) Nooffsets() FtCreateNooffsets {
-	c.cs.s = append(c.cs.s, "NOOFFSETS")
-	return (FtCreateNooffsets)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateNooffsets)
 }
 
-func (c FtCreateIndex) Nohl() FtCreateNohl {
-	c.cs.s = append(c.cs.s, "NOHL")
-	return (FtCreateNohl)(c)
-}
+func (c FtCreateIndex) Nohl() FtCreateNohl { _ = "STUB: not implemented"; return *new(FtCreateNohl) }
 
 func (c FtCreateIndex) Nofields() FtCreateNofields {
-	c.cs.s = append(c.cs.s, "NOFIELDS")
-	return (FtCreateNofields)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateNofields)
 }
 
 func (c FtCreateIndex) Nofreqs() FtCreateNofreqs {
-	c.cs.s = append(c.cs.s, "NOFREQS")
-	return (FtCreateNofreqs)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateNofreqs)
 }
 
 func (c FtCreateIndex) Stopwords(count int64) FtCreateStopwordsStopwords {
-	c.cs.s = append(c.cs.s, "STOPWORDS", strconv.FormatInt(count, 10))
-	return (FtCreateStopwordsStopwords)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateStopwordsStopwords)
 }
 
 func (c FtCreateIndex) Skipinitialscan() FtCreateSkipinitialscan {
-	c.cs.s = append(c.cs.s, "SKIPINITIALSCAN")
-	return (FtCreateSkipinitialscan)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateSkipinitialscan)
 }
 
 func (c FtCreateIndex) Schema() FtCreateSchema {
-	c.cs.s = append(c.cs.s, "SCHEMA")
-	return (FtCreateSchema)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateSchema)
 }
 
 type FtCreateLanguage Incomplete
 
 func (c FtCreateLanguage) LanguageField(langAttribute string) FtCreateLanguageField {
-	c.cs.s = append(c.cs.s, "LANGUAGE_FIELD", langAttribute)
-	return (FtCreateLanguageField)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateLanguageField)
 }
 
 func (c FtCreateLanguage) Score(defaultScore float64) FtCreateScore {
-	c.cs.s = append(c.cs.s, "SCORE", strconv.FormatFloat(defaultScore, 'f', -1, 64))
-	return (FtCreateScore)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateScore)
 }
 
 func (c FtCreateLanguage) ScoreField(scoreAttribute string) FtCreateScoreField {
-	c.cs.s = append(c.cs.s, "SCORE_FIELD", scoreAttribute)
-	return (FtCreateScoreField)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateScoreField)
 }
 
 func (c FtCreateLanguage) PayloadField(payloadAttribute string) FtCreatePayloadField {
-	c.cs.s = append(c.cs.s, "PAYLOAD_FIELD", payloadAttribute)
-	return (FtCreatePayloadField)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreatePayloadField)
 }
 
 func (c FtCreateLanguage) Maxtextfields() FtCreateMaxtextfields {
-	c.cs.s = append(c.cs.s, "MAXTEXTFIELDS")
-	return (FtCreateMaxtextfields)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateMaxtextfields)
 }
 
 func (c FtCreateLanguage) Temporary(seconds float64) FtCreateTemporary {
-	c.cs.s = append(c.cs.s, "TEMPORARY", strconv.FormatFloat(seconds, 'f', -1, 64))
-	return (FtCreateTemporary)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateTemporary)
 }
 
 func (c FtCreateLanguage) Nooffsets() FtCreateNooffsets {
-	c.cs.s = append(c.cs.s, "NOOFFSETS")
-	return (FtCreateNooffsets)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateNooffsets)
 }
 
-func (c FtCreateLanguage) Nohl() FtCreateNohl {
-	c.cs.s = append(c.cs.s, "NOHL")
-	return (FtCreateNohl)(c)
-}
+func (c FtCreateLanguage) Nohl() FtCreateNohl { _ = "STUB: not implemented"; return *new(FtCreateNohl) }
 
 func (c FtCreateLanguage) Nofields() FtCreateNofields {
-	c.cs.s = append(c.cs.s, "NOFIELDS")
-	return (FtCreateNofields)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateNofields)
 }
 
 func (c FtCreateLanguage) Nofreqs() FtCreateNofreqs {
-	c.cs.s = append(c.cs.s, "NOFREQS")
-	return (FtCreateNofreqs)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateNofreqs)
 }
 
 func (c FtCreateLanguage) Stopwords(count int64) FtCreateStopwordsStopwords {
-	c.cs.s = append(c.cs.s, "STOPWORDS", strconv.FormatInt(count, 10))
-	return (FtCreateStopwordsStopwords)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateStopwordsStopwords)
 }
 
 func (c FtCreateLanguage) Skipinitialscan() FtCreateSkipinitialscan {
-	c.cs.s = append(c.cs.s, "SKIPINITIALSCAN")
-	return (FtCreateSkipinitialscan)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateSkipinitialscan)
 }
 
 func (c FtCreateLanguage) Schema() FtCreateSchema {
-	c.cs.s = append(c.cs.s, "SCHEMA")
-	return (FtCreateSchema)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateSchema)
 }
 
 type FtCreateLanguageField Incomplete
 
 func (c FtCreateLanguageField) Score(defaultScore float64) FtCreateScore {
-	c.cs.s = append(c.cs.s, "SCORE", strconv.FormatFloat(defaultScore, 'f', -1, 64))
-	return (FtCreateScore)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateScore)
 }
 
 func (c FtCreateLanguageField) ScoreField(scoreAttribute string) FtCreateScoreField {
-	c.cs.s = append(c.cs.s, "SCORE_FIELD", scoreAttribute)
-	return (FtCreateScoreField)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateScoreField)
 }
 
 func (c FtCreateLanguageField) PayloadField(payloadAttribute string) FtCreatePayloadField {
-	c.cs.s = append(c.cs.s, "PAYLOAD_FIELD", payloadAttribute)
-	return (FtCreatePayloadField)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreatePayloadField)
 }
 
 func (c FtCreateLanguageField) Maxtextfields() FtCreateMaxtextfields {
-	c.cs.s = append(c.cs.s, "MAXTEXTFIELDS")
-	return (FtCreateMaxtextfields)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateMaxtextfields)
 }
 
 func (c FtCreateLanguageField) Temporary(seconds float64) FtCreateTemporary {
-	c.cs.s = append(c.cs.s, "TEMPORARY", strconv.FormatFloat(seconds, 'f', -1, 64))
-	return (FtCreateTemporary)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateTemporary)
 }
 
 func (c FtCreateLanguageField) Nooffsets() FtCreateNooffsets {
-	c.cs.s = append(c.cs.s, "NOOFFSETS")
-	return (FtCreateNooffsets)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateNooffsets)
 }
 
 func (c FtCreateLanguageField) Nohl() FtCreateNohl {
-	c.cs.s = append(c.cs.s, "NOHL")
-	return (FtCreateNohl)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateNohl)
 }
 
 func (c FtCreateLanguageField) Nofields() FtCreateNofields {
-	c.cs.s = append(c.cs.s, "NOFIELDS")
-	return (FtCreateNofields)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateNofields)
 }
 
 func (c FtCreateLanguageField) Nofreqs() FtCreateNofreqs {
-	c.cs.s = append(c.cs.s, "NOFREQS")
-	return (FtCreateNofreqs)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateNofreqs)
 }
 
 func (c FtCreateLanguageField) Stopwords(count int64) FtCreateStopwordsStopwords {
-	c.cs.s = append(c.cs.s, "STOPWORDS", strconv.FormatInt(count, 10))
-	return (FtCreateStopwordsStopwords)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateStopwordsStopwords)
 }
 
 func (c FtCreateLanguageField) Skipinitialscan() FtCreateSkipinitialscan {
-	c.cs.s = append(c.cs.s, "SKIPINITIALSCAN")
-	return (FtCreateSkipinitialscan)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateSkipinitialscan)
 }
 
 func (c FtCreateLanguageField) Schema() FtCreateSchema {
-	c.cs.s = append(c.cs.s, "SCHEMA")
-	return (FtCreateSchema)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateSchema)
 }
 
 type FtCreateMaxtextfields Incomplete
 
 func (c FtCreateMaxtextfields) Temporary(seconds float64) FtCreateTemporary {
-	c.cs.s = append(c.cs.s, "TEMPORARY", strconv.FormatFloat(seconds, 'f', -1, 64))
-	return (FtCreateTemporary)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateTemporary)
 }
 
 func (c FtCreateMaxtextfields) Nooffsets() FtCreateNooffsets {
-	c.cs.s = append(c.cs.s, "NOOFFSETS")
-	return (FtCreateNooffsets)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateNooffsets)
 }
 
 func (c FtCreateMaxtextfields) Nohl() FtCreateNohl {
-	c.cs.s = append(c.cs.s, "NOHL")
-	return (FtCreateNohl)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateNohl)
 }
 
 func (c FtCreateMaxtextfields) Nofields() FtCreateNofields {
-	c.cs.s = append(c.cs.s, "NOFIELDS")
-	return (FtCreateNofields)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateNofields)
 }
 
 func (c FtCreateMaxtextfields) Nofreqs() FtCreateNofreqs {
-	c.cs.s = append(c.cs.s, "NOFREQS")
-	return (FtCreateNofreqs)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateNofreqs)
 }
 
 func (c FtCreateMaxtextfields) Stopwords(count int64) FtCreateStopwordsStopwords {
-	c.cs.s = append(c.cs.s, "STOPWORDS", strconv.FormatInt(count, 10))
-	return (FtCreateStopwordsStopwords)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateStopwordsStopwords)
 }
 
 func (c FtCreateMaxtextfields) Skipinitialscan() FtCreateSkipinitialscan {
-	c.cs.s = append(c.cs.s, "SKIPINITIALSCAN")
-	return (FtCreateSkipinitialscan)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateSkipinitialscan)
 }
 
 func (c FtCreateMaxtextfields) Schema() FtCreateSchema {
-	c.cs.s = append(c.cs.s, "SCHEMA")
-	return (FtCreateSchema)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateSchema)
 }
 
 type FtCreateNofields Incomplete
 
 func (c FtCreateNofields) Nofreqs() FtCreateNofreqs {
-	c.cs.s = append(c.cs.s, "NOFREQS")
-	return (FtCreateNofreqs)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateNofreqs)
 }
 
 func (c FtCreateNofields) Stopwords(count int64) FtCreateStopwordsStopwords {
-	c.cs.s = append(c.cs.s, "STOPWORDS", strconv.FormatInt(count, 10))
-	return (FtCreateStopwordsStopwords)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateStopwordsStopwords)
 }
 
 func (c FtCreateNofields) Skipinitialscan() FtCreateSkipinitialscan {
-	c.cs.s = append(c.cs.s, "SKIPINITIALSCAN")
-	return (FtCreateSkipinitialscan)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateSkipinitialscan)
 }
 
 func (c FtCreateNofields) Schema() FtCreateSchema {
-	c.cs.s = append(c.cs.s, "SCHEMA")
-	return (FtCreateSchema)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateSchema)
 }
 
 type FtCreateNofreqs Incomplete
 
 func (c FtCreateNofreqs) Stopwords(count int64) FtCreateStopwordsStopwords {
-	c.cs.s = append(c.cs.s, "STOPWORDS", strconv.FormatInt(count, 10))
-	return (FtCreateStopwordsStopwords)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateStopwordsStopwords)
 }
 
 func (c FtCreateNofreqs) Skipinitialscan() FtCreateSkipinitialscan {
-	c.cs.s = append(c.cs.s, "SKIPINITIALSCAN")
-	return (FtCreateSkipinitialscan)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateSkipinitialscan)
 }
 
 func (c FtCreateNofreqs) Schema() FtCreateSchema {
-	c.cs.s = append(c.cs.s, "SCHEMA")
-	return (FtCreateSchema)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateSchema)
 }
 
 type FtCreateNohl Incomplete
 
 func (c FtCreateNohl) Nofields() FtCreateNofields {
-	c.cs.s = append(c.cs.s, "NOFIELDS")
-	return (FtCreateNofields)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateNofields)
 }
 
 func (c FtCreateNohl) Nofreqs() FtCreateNofreqs {
-	c.cs.s = append(c.cs.s, "NOFREQS")
-	return (FtCreateNofreqs)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateNofreqs)
 }
 
 func (c FtCreateNohl) Stopwords(count int64) FtCreateStopwordsStopwords {
-	c.cs.s = append(c.cs.s, "STOPWORDS", strconv.FormatInt(count, 10))
-	return (FtCreateStopwordsStopwords)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateStopwordsStopwords)
 }
 
 func (c FtCreateNohl) Skipinitialscan() FtCreateSkipinitialscan {
-	c.cs.s = append(c.cs.s, "SKIPINITIALSCAN")
-	return (FtCreateSkipinitialscan)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateSkipinitialscan)
 }
 
 func (c FtCreateNohl) Schema() FtCreateSchema {
-	c.cs.s = append(c.cs.s, "SCHEMA")
-	return (FtCreateSchema)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateSchema)
 }
 
 type FtCreateNooffsets Incomplete
 
 func (c FtCreateNooffsets) Nohl() FtCreateNohl {
-	c.cs.s = append(c.cs.s, "NOHL")
-	return (FtCreateNohl)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateNohl)
 }
 
 func (c FtCreateNooffsets) Nofields() FtCreateNofields {
-	c.cs.s = append(c.cs.s, "NOFIELDS")
-	return (FtCreateNofields)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateNofields)
 }
 
 func (c FtCreateNooffsets) Nofreqs() FtCreateNofreqs {
-	c.cs.s = append(c.cs.s, "NOFREQS")
-	return (FtCreateNofreqs)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateNofreqs)
 }
 
 func (c FtCreateNooffsets) Stopwords(count int64) FtCreateStopwordsStopwords {
-	c.cs.s = append(c.cs.s, "STOPWORDS", strconv.FormatInt(count, 10))
-	return (FtCreateStopwordsStopwords)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateStopwordsStopwords)
 }
 
 func (c FtCreateNooffsets) Skipinitialscan() FtCreateSkipinitialscan {
-	c.cs.s = append(c.cs.s, "SKIPINITIALSCAN")
-	return (FtCreateSkipinitialscan)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateSkipinitialscan)
 }
 
 func (c FtCreateNooffsets) Schema() FtCreateSchema {
-	c.cs.s = append(c.cs.s, "SCHEMA")
-	return (FtCreateSchema)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateSchema)
 }
 
 type FtCreateOnHash Incomplete
 
 func (c FtCreateOnHash) Prefix(count int64) FtCreatePrefixCount {
-	c.cs.s = append(c.cs.s, "PREFIX", strconv.FormatInt(count, 10))
-	return (FtCreatePrefixCount)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreatePrefixCount)
 }
 
 func (c FtCreateOnHash) Filter(filter string) FtCreateFilter {
-	c.cs.s = append(c.cs.s, "FILTER", filter)
-	return (FtCreateFilter)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFilter)
 }
 
 func (c FtCreateOnHash) Language(defaultLang string) FtCreateLanguage {
-	c.cs.s = append(c.cs.s, "LANGUAGE", defaultLang)
-	return (FtCreateLanguage)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateLanguage)
 }
 
 func (c FtCreateOnHash) LanguageField(langAttribute string) FtCreateLanguageField {
-	c.cs.s = append(c.cs.s, "LANGUAGE_FIELD", langAttribute)
-	return (FtCreateLanguageField)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateLanguageField)
 }
 
 func (c FtCreateOnHash) Score(defaultScore float64) FtCreateScore {
-	c.cs.s = append(c.cs.s, "SCORE", strconv.FormatFloat(defaultScore, 'f', -1, 64))
-	return (FtCreateScore)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateScore)
 }
 
 func (c FtCreateOnHash) ScoreField(scoreAttribute string) FtCreateScoreField {
-	c.cs.s = append(c.cs.s, "SCORE_FIELD", scoreAttribute)
-	return (FtCreateScoreField)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateScoreField)
 }
 
 func (c FtCreateOnHash) PayloadField(payloadAttribute string) FtCreatePayloadField {
-	c.cs.s = append(c.cs.s, "PAYLOAD_FIELD", payloadAttribute)
-	return (FtCreatePayloadField)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreatePayloadField)
 }
 
 func (c FtCreateOnHash) Maxtextfields() FtCreateMaxtextfields {
-	c.cs.s = append(c.cs.s, "MAXTEXTFIELDS")
-	return (FtCreateMaxtextfields)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateMaxtextfields)
 }
 
 func (c FtCreateOnHash) Temporary(seconds float64) FtCreateTemporary {
-	c.cs.s = append(c.cs.s, "TEMPORARY", strconv.FormatFloat(seconds, 'f', -1, 64))
-	return (FtCreateTemporary)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateTemporary)
 }
 
 func (c FtCreateOnHash) Nooffsets() FtCreateNooffsets {
-	c.cs.s = append(c.cs.s, "NOOFFSETS")
-	return (FtCreateNooffsets)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateNooffsets)
 }
 
-func (c FtCreateOnHash) Nohl() FtCreateNohl {
-	c.cs.s = append(c.cs.s, "NOHL")
-	return (FtCreateNohl)(c)
-}
+func (c FtCreateOnHash) Nohl() FtCreateNohl { _ = "STUB: not implemented"; return *new(FtCreateNohl) }
 
 func (c FtCreateOnHash) Nofields() FtCreateNofields {
-	c.cs.s = append(c.cs.s, "NOFIELDS")
-	return (FtCreateNofields)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateNofields)
 }
 
 func (c FtCreateOnHash) Nofreqs() FtCreateNofreqs {
-	c.cs.s = append(c.cs.s, "NOFREQS")
-	return (FtCreateNofreqs)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateNofreqs)
 }
 
 func (c FtCreateOnHash) Stopwords(count int64) FtCreateStopwordsStopwords {
-	c.cs.s = append(c.cs.s, "STOPWORDS", strconv.FormatInt(count, 10))
-	return (FtCreateStopwordsStopwords)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateStopwordsStopwords)
 }
 
 func (c FtCreateOnHash) Skipinitialscan() FtCreateSkipinitialscan {
-	c.cs.s = append(c.cs.s, "SKIPINITIALSCAN")
-	return (FtCreateSkipinitialscan)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateSkipinitialscan)
 }
 
 func (c FtCreateOnHash) Schema() FtCreateSchema {
-	c.cs.s = append(c.cs.s, "SCHEMA")
-	return (FtCreateSchema)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateSchema)
 }
 
 type FtCreateOnJson Incomplete
 
 func (c FtCreateOnJson) Prefix(count int64) FtCreatePrefixCount {
-	c.cs.s = append(c.cs.s, "PREFIX", strconv.FormatInt(count, 10))
-	return (FtCreatePrefixCount)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreatePrefixCount)
 }
 
 func (c FtCreateOnJson) Filter(filter string) FtCreateFilter {
-	c.cs.s = append(c.cs.s, "FILTER", filter)
-	return (FtCreateFilter)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFilter)
 }
 
 func (c FtCreateOnJson) Language(defaultLang string) FtCreateLanguage {
-	c.cs.s = append(c.cs.s, "LANGUAGE", defaultLang)
-	return (FtCreateLanguage)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateLanguage)
 }
 
 func (c FtCreateOnJson) LanguageField(langAttribute string) FtCreateLanguageField {
-	c.cs.s = append(c.cs.s, "LANGUAGE_FIELD", langAttribute)
-	return (FtCreateLanguageField)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateLanguageField)
 }
 
 func (c FtCreateOnJson) Score(defaultScore float64) FtCreateScore {
-	c.cs.s = append(c.cs.s, "SCORE", strconv.FormatFloat(defaultScore, 'f', -1, 64))
-	return (FtCreateScore)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateScore)
 }
 
 func (c FtCreateOnJson) ScoreField(scoreAttribute string) FtCreateScoreField {
-	c.cs.s = append(c.cs.s, "SCORE_FIELD", scoreAttribute)
-	return (FtCreateScoreField)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateScoreField)
 }
 
 func (c FtCreateOnJson) PayloadField(payloadAttribute string) FtCreatePayloadField {
-	c.cs.s = append(c.cs.s, "PAYLOAD_FIELD", payloadAttribute)
-	return (FtCreatePayloadField)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreatePayloadField)
 }
 
 func (c FtCreateOnJson) Maxtextfields() FtCreateMaxtextfields {
-	c.cs.s = append(c.cs.s, "MAXTEXTFIELDS")
-	return (FtCreateMaxtextfields)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateMaxtextfields)
 }
 
 func (c FtCreateOnJson) Temporary(seconds float64) FtCreateTemporary {
-	c.cs.s = append(c.cs.s, "TEMPORARY", strconv.FormatFloat(seconds, 'f', -1, 64))
-	return (FtCreateTemporary)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateTemporary)
 }
 
 func (c FtCreateOnJson) Nooffsets() FtCreateNooffsets {
-	c.cs.s = append(c.cs.s, "NOOFFSETS")
-	return (FtCreateNooffsets)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateNooffsets)
 }
 
-func (c FtCreateOnJson) Nohl() FtCreateNohl {
-	c.cs.s = append(c.cs.s, "NOHL")
-	return (FtCreateNohl)(c)
-}
+func (c FtCreateOnJson) Nohl() FtCreateNohl { _ = "STUB: not implemented"; return *new(FtCreateNohl) }
 
 func (c FtCreateOnJson) Nofields() FtCreateNofields {
-	c.cs.s = append(c.cs.s, "NOFIELDS")
-	return (FtCreateNofields)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateNofields)
 }
 
 func (c FtCreateOnJson) Nofreqs() FtCreateNofreqs {
-	c.cs.s = append(c.cs.s, "NOFREQS")
-	return (FtCreateNofreqs)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateNofreqs)
 }
 
 func (c FtCreateOnJson) Stopwords(count int64) FtCreateStopwordsStopwords {
-	c.cs.s = append(c.cs.s, "STOPWORDS", strconv.FormatInt(count, 10))
-	return (FtCreateStopwordsStopwords)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateStopwordsStopwords)
 }
 
 func (c FtCreateOnJson) Skipinitialscan() FtCreateSkipinitialscan {
-	c.cs.s = append(c.cs.s, "SKIPINITIALSCAN")
-	return (FtCreateSkipinitialscan)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateSkipinitialscan)
 }
 
 func (c FtCreateOnJson) Schema() FtCreateSchema {
-	c.cs.s = append(c.cs.s, "SCHEMA")
-	return (FtCreateSchema)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateSchema)
 }
 
 type FtCreatePayloadField Incomplete
 
 func (c FtCreatePayloadField) Maxtextfields() FtCreateMaxtextfields {
-	c.cs.s = append(c.cs.s, "MAXTEXTFIELDS")
-	return (FtCreateMaxtextfields)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateMaxtextfields)
 }
 
 func (c FtCreatePayloadField) Temporary(seconds float64) FtCreateTemporary {
-	c.cs.s = append(c.cs.s, "TEMPORARY", strconv.FormatFloat(seconds, 'f', -1, 64))
-	return (FtCreateTemporary)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateTemporary)
 }
 
 func (c FtCreatePayloadField) Nooffsets() FtCreateNooffsets {
-	c.cs.s = append(c.cs.s, "NOOFFSETS")
-	return (FtCreateNooffsets)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateNooffsets)
 }
 
 func (c FtCreatePayloadField) Nohl() FtCreateNohl {
-	c.cs.s = append(c.cs.s, "NOHL")
-	return (FtCreateNohl)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateNohl)
 }
 
 func (c FtCreatePayloadField) Nofields() FtCreateNofields {
-	c.cs.s = append(c.cs.s, "NOFIELDS")
-	return (FtCreateNofields)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateNofields)
 }
 
 func (c FtCreatePayloadField) Nofreqs() FtCreateNofreqs {
-	c.cs.s = append(c.cs.s, "NOFREQS")
-	return (FtCreateNofreqs)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateNofreqs)
 }
 
 func (c FtCreatePayloadField) Stopwords(count int64) FtCreateStopwordsStopwords {
-	c.cs.s = append(c.cs.s, "STOPWORDS", strconv.FormatInt(count, 10))
-	return (FtCreateStopwordsStopwords)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateStopwordsStopwords)
 }
 
 func (c FtCreatePayloadField) Skipinitialscan() FtCreateSkipinitialscan {
-	c.cs.s = append(c.cs.s, "SKIPINITIALSCAN")
-	return (FtCreateSkipinitialscan)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateSkipinitialscan)
 }
 
 func (c FtCreatePayloadField) Schema() FtCreateSchema {
-	c.cs.s = append(c.cs.s, "SCHEMA")
-	return (FtCreateSchema)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateSchema)
 }
 
 type FtCreatePrefixCount Incomplete
 
 func (c FtCreatePrefixCount) Prefix(prefix ...string) FtCreatePrefixPrefix {
-	c.cs.s = append(c.cs.s, prefix...)
-	return (FtCreatePrefixPrefix)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreatePrefixPrefix)
 }
 
 type FtCreatePrefixPrefix Incomplete
 
 func (c FtCreatePrefixPrefix) Prefix(prefix ...string) FtCreatePrefixPrefix {
-	c.cs.s = append(c.cs.s, prefix...)
-	return c
+	_ = "STUB: not implemented"
+	return *new(FtCreatePrefixPrefix)
 }
 
 func (c FtCreatePrefixPrefix) Filter(filter string) FtCreateFilter {
-	c.cs.s = append(c.cs.s, "FILTER", filter)
-	return (FtCreateFilter)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFilter)
 }
 
 func (c FtCreatePrefixPrefix) Language(defaultLang string) FtCreateLanguage {
-	c.cs.s = append(c.cs.s, "LANGUAGE", defaultLang)
-	return (FtCreateLanguage)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateLanguage)
 }
 
 func (c FtCreatePrefixPrefix) LanguageField(langAttribute string) FtCreateLanguageField {
-	c.cs.s = append(c.cs.s, "LANGUAGE_FIELD", langAttribute)
-	return (FtCreateLanguageField)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateLanguageField)
 }
 
 func (c FtCreatePrefixPrefix) Score(defaultScore float64) FtCreateScore {
-	c.cs.s = append(c.cs.s, "SCORE", strconv.FormatFloat(defaultScore, 'f', -1, 64))
-	return (FtCreateScore)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateScore)
 }
 
 func (c FtCreatePrefixPrefix) ScoreField(scoreAttribute string) FtCreateScoreField {
-	c.cs.s = append(c.cs.s, "SCORE_FIELD", scoreAttribute)
-	return (FtCreateScoreField)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateScoreField)
 }
 
 func (c FtCreatePrefixPrefix) PayloadField(payloadAttribute string) FtCreatePayloadField {
-	c.cs.s = append(c.cs.s, "PAYLOAD_FIELD", payloadAttribute)
-	return (FtCreatePayloadField)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreatePayloadField)
 }
 
 func (c FtCreatePrefixPrefix) Maxtextfields() FtCreateMaxtextfields {
-	c.cs.s = append(c.cs.s, "MAXTEXTFIELDS")
-	return (FtCreateMaxtextfields)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateMaxtextfields)
 }
 
 func (c FtCreatePrefixPrefix) Temporary(seconds float64) FtCreateTemporary {
-	c.cs.s = append(c.cs.s, "TEMPORARY", strconv.FormatFloat(seconds, 'f', -1, 64))
-	return (FtCreateTemporary)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateTemporary)
 }
 
 func (c FtCreatePrefixPrefix) Nooffsets() FtCreateNooffsets {
-	c.cs.s = append(c.cs.s, "NOOFFSETS")
-	return (FtCreateNooffsets)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateNooffsets)
 }
 
 func (c FtCreatePrefixPrefix) Nohl() FtCreateNohl {
-	c.cs.s = append(c.cs.s, "NOHL")
-	return (FtCreateNohl)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateNohl)
 }
 
 func (c FtCreatePrefixPrefix) Nofields() FtCreateNofields {
-	c.cs.s = append(c.cs.s, "NOFIELDS")
-	return (FtCreateNofields)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateNofields)
 }
 
 func (c FtCreatePrefixPrefix) Nofreqs() FtCreateNofreqs {
-	c.cs.s = append(c.cs.s, "NOFREQS")
-	return (FtCreateNofreqs)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateNofreqs)
 }
 
 func (c FtCreatePrefixPrefix) Stopwords(count int64) FtCreateStopwordsStopwords {
-	c.cs.s = append(c.cs.s, "STOPWORDS", strconv.FormatInt(count, 10))
-	return (FtCreateStopwordsStopwords)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateStopwordsStopwords)
 }
 
 func (c FtCreatePrefixPrefix) Skipinitialscan() FtCreateSkipinitialscan {
-	c.cs.s = append(c.cs.s, "SKIPINITIALSCAN")
-	return (FtCreateSkipinitialscan)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateSkipinitialscan)
 }
 
 func (c FtCreatePrefixPrefix) Schema() FtCreateSchema {
-	c.cs.s = append(c.cs.s, "SCHEMA")
-	return (FtCreateSchema)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateSchema)
 }
 
 type FtCreateSchema Incomplete
 
 func (c FtCreateSchema) FieldName(fieldName string) FtCreateFieldFieldName {
-	c.cs.s = append(c.cs.s, fieldName)
-	return (FtCreateFieldFieldName)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateFieldFieldName)
 }
 
 type FtCreateScore Incomplete
 
 func (c FtCreateScore) ScoreField(scoreAttribute string) FtCreateScoreField {
-	c.cs.s = append(c.cs.s, "SCORE_FIELD", scoreAttribute)
-	return (FtCreateScoreField)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateScoreField)
 }
 
 func (c FtCreateScore) PayloadField(payloadAttribute string) FtCreatePayloadField {
-	c.cs.s = append(c.cs.s, "PAYLOAD_FIELD", payloadAttribute)
-	return (FtCreatePayloadField)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreatePayloadField)
 }
 
 func (c FtCreateScore) Maxtextfields() FtCreateMaxtextfields {
-	c.cs.s = append(c.cs.s, "MAXTEXTFIELDS")
-	return (FtCreateMaxtextfields)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateMaxtextfields)
 }
 
 func (c FtCreateScore) Temporary(seconds float64) FtCreateTemporary {
-	c.cs.s = append(c.cs.s, "TEMPORARY", strconv.FormatFloat(seconds, 'f', -1, 64))
-	return (FtCreateTemporary)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateTemporary)
 }
 
 func (c FtCreateScore) Nooffsets() FtCreateNooffsets {
-	c.cs.s = append(c.cs.s, "NOOFFSETS")
-	return (FtCreateNooffsets)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateNooffsets)
 }
 
-func (c FtCreateScore) Nohl() FtCreateNohl {
-	c.cs.s = append(c.cs.s, "NOHL")
-	return (FtCreateNohl)(c)
-}
+func (c FtCreateScore) Nohl() FtCreateNohl { _ = "STUB: not implemented"; return *new(FtCreateNohl) }
 
 func (c FtCreateScore) Nofields() FtCreateNofields {
-	c.cs.s = append(c.cs.s, "NOFIELDS")
-	return (FtCreateNofields)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateNofields)
 }
 
 func (c FtCreateScore) Nofreqs() FtCreateNofreqs {
-	c.cs.s = append(c.cs.s, "NOFREQS")
-	return (FtCreateNofreqs)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateNofreqs)
 }
 
 func (c FtCreateScore) Stopwords(count int64) FtCreateStopwordsStopwords {
-	c.cs.s = append(c.cs.s, "STOPWORDS", strconv.FormatInt(count, 10))
-	return (FtCreateStopwordsStopwords)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateStopwordsStopwords)
 }
 
 func (c FtCreateScore) Skipinitialscan() FtCreateSkipinitialscan {
-	c.cs.s = append(c.cs.s, "SKIPINITIALSCAN")
-	return (FtCreateSkipinitialscan)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateSkipinitialscan)
 }
 
 func (c FtCreateScore) Schema() FtCreateSchema {
-	c.cs.s = append(c.cs.s, "SCHEMA")
-	return (FtCreateSchema)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateSchema)
 }
 
 type FtCreateScoreField Incomplete
 
 func (c FtCreateScoreField) PayloadField(payloadAttribute string) FtCreatePayloadField {
-	c.cs.s = append(c.cs.s, "PAYLOAD_FIELD", payloadAttribute)
-	return (FtCreatePayloadField)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreatePayloadField)
 }
 
 func (c FtCreateScoreField) Maxtextfields() FtCreateMaxtextfields {
-	c.cs.s = append(c.cs.s, "MAXTEXTFIELDS")
-	return (FtCreateMaxtextfields)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateMaxtextfields)
 }
 
 func (c FtCreateScoreField) Temporary(seconds float64) FtCreateTemporary {
-	c.cs.s = append(c.cs.s, "TEMPORARY", strconv.FormatFloat(seconds, 'f', -1, 64))
-	return (FtCreateTemporary)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateTemporary)
 }
 
 func (c FtCreateScoreField) Nooffsets() FtCreateNooffsets {
-	c.cs.s = append(c.cs.s, "NOOFFSETS")
-	return (FtCreateNooffsets)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateNooffsets)
 }
 
 func (c FtCreateScoreField) Nohl() FtCreateNohl {
-	c.cs.s = append(c.cs.s, "NOHL")
-	return (FtCreateNohl)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateNohl)
 }
 
 func (c FtCreateScoreField) Nofields() FtCreateNofields {
-	c.cs.s = append(c.cs.s, "NOFIELDS")
-	return (FtCreateNofields)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateNofields)
 }
 
 func (c FtCreateScoreField) Nofreqs() FtCreateNofreqs {
-	c.cs.s = append(c.cs.s, "NOFREQS")
-	return (FtCreateNofreqs)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateNofreqs)
 }
 
 func (c FtCreateScoreField) Stopwords(count int64) FtCreateStopwordsStopwords {
-	c.cs.s = append(c.cs.s, "STOPWORDS", strconv.FormatInt(count, 10))
-	return (FtCreateStopwordsStopwords)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateStopwordsStopwords)
 }
 
 func (c FtCreateScoreField) Skipinitialscan() FtCreateSkipinitialscan {
-	c.cs.s = append(c.cs.s, "SKIPINITIALSCAN")
-	return (FtCreateSkipinitialscan)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateSkipinitialscan)
 }
 
 func (c FtCreateScoreField) Schema() FtCreateSchema {
-	c.cs.s = append(c.cs.s, "SCHEMA")
-	return (FtCreateSchema)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateSchema)
 }
 
 type FtCreateSkipinitialscan Incomplete
 
 func (c FtCreateSkipinitialscan) Schema() FtCreateSchema {
-	c.cs.s = append(c.cs.s, "SCHEMA")
-	return (FtCreateSchema)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateSchema)
 }
 
 type FtCreateStopwordsStopword Incomplete
 
 func (c FtCreateStopwordsStopword) Stopword(stopword ...string) FtCreateStopwordsStopword {
-	c.cs.s = append(c.cs.s, stopword...)
-	return c
+	_ = "STUB: not implemented"
+	return *new(FtCreateStopwordsStopword)
 }
 
 func (c FtCreateStopwordsStopword) Skipinitialscan() FtCreateSkipinitialscan {
-	c.cs.s = append(c.cs.s, "SKIPINITIALSCAN")
-	return (FtCreateSkipinitialscan)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateSkipinitialscan)
 }
 
 func (c FtCreateStopwordsStopword) Schema() FtCreateSchema {
-	c.cs.s = append(c.cs.s, "SCHEMA")
-	return (FtCreateSchema)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateSchema)
 }
 
 type FtCreateStopwordsStopwords Incomplete
 
 func (c FtCreateStopwordsStopwords) Stopword(stopword ...string) FtCreateStopwordsStopword {
-	c.cs.s = append(c.cs.s, stopword...)
-	return (FtCreateStopwordsStopword)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateStopwordsStopword)
 }
 
 func (c FtCreateStopwordsStopwords) Skipinitialscan() FtCreateSkipinitialscan {
-	c.cs.s = append(c.cs.s, "SKIPINITIALSCAN")
-	return (FtCreateSkipinitialscan)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateSkipinitialscan)
 }
 
 func (c FtCreateStopwordsStopwords) Schema() FtCreateSchema {
-	c.cs.s = append(c.cs.s, "SCHEMA")
-	return (FtCreateSchema)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateSchema)
 }
 
 type FtCreateTemporary Incomplete
 
 func (c FtCreateTemporary) Nooffsets() FtCreateNooffsets {
-	c.cs.s = append(c.cs.s, "NOOFFSETS")
-	return (FtCreateNooffsets)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateNooffsets)
 }
 
 func (c FtCreateTemporary) Nohl() FtCreateNohl {
-	c.cs.s = append(c.cs.s, "NOHL")
-	return (FtCreateNohl)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateNohl)
 }
 
 func (c FtCreateTemporary) Nofields() FtCreateNofields {
-	c.cs.s = append(c.cs.s, "NOFIELDS")
-	return (FtCreateNofields)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateNofields)
 }
 
 func (c FtCreateTemporary) Nofreqs() FtCreateNofreqs {
-	c.cs.s = append(c.cs.s, "NOFREQS")
-	return (FtCreateNofreqs)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateNofreqs)
 }
 
 func (c FtCreateTemporary) Stopwords(count int64) FtCreateStopwordsStopwords {
-	c.cs.s = append(c.cs.s, "STOPWORDS", strconv.FormatInt(count, 10))
-	return (FtCreateStopwordsStopwords)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateStopwordsStopwords)
 }
 
 func (c FtCreateTemporary) Skipinitialscan() FtCreateSkipinitialscan {
-	c.cs.s = append(c.cs.s, "SKIPINITIALSCAN")
-	return (FtCreateSkipinitialscan)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateSkipinitialscan)
 }
 
 func (c FtCreateTemporary) Schema() FtCreateSchema {
-	c.cs.s = append(c.cs.s, "SCHEMA")
-	return (FtCreateSchema)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCreateSchema)
 }
 
 type FtCursorDel Incomplete
 
-func (b Builder) FtCursorDel() (c FtCursorDel) {
-	c = FtCursorDel{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "FT.CURSOR", "DEL")
-	return c
-}
+func (b Builder) FtCursorDel() (c FtCursorDel) { _ = "STUB: not implemented"; return *new(FtCursorDel) }
 
 func (c FtCursorDel) Index(index string) FtCursorDelIndex {
-	c.cs.s = append(c.cs.s, index)
-	return (FtCursorDelIndex)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCursorDelIndex)
 }
 
 type FtCursorDelCursorId Incomplete
 
-func (c FtCursorDelCursorId) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c FtCursorDelCursorId) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type FtCursorDelIndex Incomplete
 
 func (c FtCursorDelIndex) CursorId(cursorId int64) FtCursorDelCursorId {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(cursorId, 10))
-	return (FtCursorDelCursorId)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCursorDelCursorId)
 }
 
 type FtCursorRead Incomplete
 
 func (b Builder) FtCursorRead() (c FtCursorRead) {
-	c = FtCursorRead{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "FT.CURSOR", "READ")
-	return c
+	_ = "STUB: not implemented"
+	return *new(FtCursorRead)
 }
 
 func (c FtCursorRead) Index(index string) FtCursorReadIndex {
-	c.cs.s = append(c.cs.s, index)
-	return (FtCursorReadIndex)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCursorReadIndex)
 }
 
 type FtCursorReadCount Incomplete
 
-func (c FtCursorReadCount) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c FtCursorReadCount) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type FtCursorReadCursorId Incomplete
 
 func (c FtCursorReadCursorId) Count(readSize int64) FtCursorReadCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(readSize, 10))
-	return (FtCursorReadCount)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCursorReadCount)
 }
 
-func (c FtCursorReadCursorId) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c FtCursorReadCursorId) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type FtCursorReadIndex Incomplete
 
 func (c FtCursorReadIndex) CursorId(cursorId int64) FtCursorReadCursorId {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(cursorId, 10))
-	return (FtCursorReadCursorId)(c)
+	_ = "STUB: not implemented"
+	return *new(FtCursorReadCursorId)
 }
 
 type FtDictadd Incomplete
 
-func (b Builder) FtDictadd() (c FtDictadd) {
-	c = FtDictadd{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "FT.DICTADD")
-	return c
-}
+func (b Builder) FtDictadd() (c FtDictadd) { _ = "STUB: not implemented"; return *new(FtDictadd) }
 
 func (c FtDictadd) Dict(dict string) FtDictaddDict {
-	c.cs.s = append(c.cs.s, dict)
-	return (FtDictaddDict)(c)
+	_ = "STUB: not implemented"
+	return *new(FtDictaddDict)
 }
 
 type FtDictaddDict Incomplete
 
 func (c FtDictaddDict) Term(term ...string) FtDictaddTerm {
-	c.cs.s = append(c.cs.s, term...)
-	return (FtDictaddTerm)(c)
+	_ = "STUB: not implemented"
+	return *new(FtDictaddTerm)
 }
 
 type FtDictaddTerm Incomplete
 
 func (c FtDictaddTerm) Term(term ...string) FtDictaddTerm {
-	c.cs.s = append(c.cs.s, term...)
-	return c
+	_ = "STUB: not implemented"
+	return *new(FtDictaddTerm)
 }
 
-func (c FtDictaddTerm) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c FtDictaddTerm) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type FtDictdel Incomplete
 
-func (b Builder) FtDictdel() (c FtDictdel) {
-	c = FtDictdel{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "FT.DICTDEL")
-	return c
-}
+func (b Builder) FtDictdel() (c FtDictdel) { _ = "STUB: not implemented"; return *new(FtDictdel) }
 
 func (c FtDictdel) Dict(dict string) FtDictdelDict {
-	c.cs.s = append(c.cs.s, dict)
-	return (FtDictdelDict)(c)
+	_ = "STUB: not implemented"
+	return *new(FtDictdelDict)
 }
 
 type FtDictdelDict Incomplete
 
 func (c FtDictdelDict) Term(term ...string) FtDictdelTerm {
-	c.cs.s = append(c.cs.s, term...)
-	return (FtDictdelTerm)(c)
+	_ = "STUB: not implemented"
+	return *new(FtDictdelTerm)
 }
 
 type FtDictdelTerm Incomplete
 
 func (c FtDictdelTerm) Term(term ...string) FtDictdelTerm {
-	c.cs.s = append(c.cs.s, term...)
-	return c
+	_ = "STUB: not implemented"
+	return *new(FtDictdelTerm)
 }
 
-func (c FtDictdelTerm) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c FtDictdelTerm) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type FtDictdump Incomplete
 
-func (b Builder) FtDictdump() (c FtDictdump) {
-	c = FtDictdump{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "FT.DICTDUMP")
-	return c
-}
+func (b Builder) FtDictdump() (c FtDictdump) { _ = "STUB: not implemented"; return *new(FtDictdump) }
 
 func (c FtDictdump) Dict(dict string) FtDictdumpDict {
-	c.cs.s = append(c.cs.s, dict)
-	return (FtDictdumpDict)(c)
+	_ = "STUB: not implemented"
+	return *new(FtDictdumpDict)
 }
 
 type FtDictdumpDict Incomplete
 
-func (c FtDictdumpDict) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c FtDictdumpDict) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type FtDropindex Incomplete
 
-func (b Builder) FtDropindex() (c FtDropindex) {
-	c = FtDropindex{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "FT.DROPINDEX")
-	return c
-}
+func (b Builder) FtDropindex() (c FtDropindex) { _ = "STUB: not implemented"; return *new(FtDropindex) }
 
 func (c FtDropindex) Index(index string) FtDropindexIndex {
-	c.cs.s = append(c.cs.s, index)
-	return (FtDropindexIndex)(c)
+	_ = "STUB: not implemented"
+	return *new(FtDropindexIndex)
 }
 
 type FtDropindexDeleteDocsDd Incomplete
 
 func (c FtDropindexDeleteDocsDd) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type FtDropindexIndex Incomplete
 
 func (c FtDropindexIndex) Dd() FtDropindexDeleteDocsDd {
-	c.cs.s = append(c.cs.s, "DD")
-	return (FtDropindexDeleteDocsDd)(c)
+	_ = "STUB: not implemented"
+	return *new(FtDropindexDeleteDocsDd)
 }
 
-func (c FtDropindexIndex) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c FtDropindexIndex) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type FtExplain Incomplete
 
-func (b Builder) FtExplain() (c FtExplain) {
-	c = FtExplain{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "FT.EXPLAIN")
-	return c
-}
+func (b Builder) FtExplain() (c FtExplain) { _ = "STUB: not implemented"; return *new(FtExplain) }
 
 func (c FtExplain) Index(index string) FtExplainIndex {
-	c.cs.s = append(c.cs.s, index)
-	return (FtExplainIndex)(c)
+	_ = "STUB: not implemented"
+	return *new(FtExplainIndex)
 }
 
 type FtExplainDialect Incomplete
 
-func (c FtExplainDialect) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c FtExplainDialect) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type FtExplainIndex Incomplete
 
 func (c FtExplainIndex) Query(query string) FtExplainQuery {
-	c.cs.s = append(c.cs.s, query)
-	return (FtExplainQuery)(c)
+	_ = "STUB: not implemented"
+	return *new(FtExplainQuery)
 }
 
 type FtExplainQuery Incomplete
 
 func (c FtExplainQuery) Dialect(dialect int64) FtExplainDialect {
-	c.cs.s = append(c.cs.s, "DIALECT", strconv.FormatInt(dialect, 10))
-	return (FtExplainDialect)(c)
+	_ = "STUB: not implemented"
+	return *new(FtExplainDialect)
 }
 
-func (c FtExplainQuery) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c FtExplainQuery) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type FtExplaincli Incomplete
 
 func (b Builder) FtExplaincli() (c FtExplaincli) {
-	c = FtExplaincli{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "FT.EXPLAINCLI")
-	return c
+	_ = "STUB: not implemented"
+	return *new(FtExplaincli)
 }
 
 func (c FtExplaincli) Index(index string) FtExplaincliIndex {
-	c.cs.s = append(c.cs.s, index)
-	return (FtExplaincliIndex)(c)
+	_ = "STUB: not implemented"
+	return *new(FtExplaincliIndex)
 }
 
 type FtExplaincliDialect Incomplete
 
-func (c FtExplaincliDialect) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c FtExplaincliDialect) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type FtExplaincliIndex Incomplete
 
 func (c FtExplaincliIndex) Query(query string) FtExplaincliQuery {
-	c.cs.s = append(c.cs.s, query)
-	return (FtExplaincliQuery)(c)
+	_ = "STUB: not implemented"
+	return *new(FtExplaincliQuery)
 }
 
 type FtExplaincliQuery Incomplete
 
 func (c FtExplaincliQuery) Dialect(dialect int64) FtExplaincliDialect {
-	c.cs.s = append(c.cs.s, "DIALECT", strconv.FormatInt(dialect, 10))
-	return (FtExplaincliDialect)(c)
+	_ = "STUB: not implemented"
+	return *new(FtExplaincliDialect)
 }
 
-func (c FtExplaincliQuery) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c FtExplaincliQuery) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type FtInfo Incomplete
 
-func (b Builder) FtInfo() (c FtInfo) {
-	c = FtInfo{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "FT.INFO")
-	return c
-}
+func (b Builder) FtInfo() (c FtInfo) { _ = "STUB: not implemented"; return *new(FtInfo) }
 
 func (c FtInfo) Index(index string) FtInfoIndex {
-	c.cs.s = append(c.cs.s, index)
-	return (FtInfoIndex)(c)
+	_ = "STUB: not implemented"
+	return *new(FtInfoIndex)
 }
 
 type FtInfoIndex Incomplete
 
-func (c FtInfoIndex) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c FtInfoIndex) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type FtList Incomplete
 
-func (b Builder) FtList() (c FtList) {
-	c = FtList{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "FT._LIST")
-	return c
-}
+func (b Builder) FtList() (c FtList) { _ = "STUB: not implemented"; return *new(FtList) }
 
-func (c FtList) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c FtList) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type FtProfile Incomplete
 
-func (b Builder) FtProfile() (c FtProfile) {
-	c = FtProfile{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "FT.PROFILE")
-	return c
-}
+func (b Builder) FtProfile() (c FtProfile) { _ = "STUB: not implemented"; return *new(FtProfile) }
 
 func (c FtProfile) Index(index string) FtProfileIndex {
-	c.cs.s = append(c.cs.s, index)
-	return (FtProfileIndex)(c)
+	_ = "STUB: not implemented"
+	return *new(FtProfileIndex)
 }
 
 type FtProfileIndex Incomplete
 
 func (c FtProfileIndex) Search() FtProfileQuerytypeSearch {
-	c.cs.s = append(c.cs.s, "SEARCH")
-	return (FtProfileQuerytypeSearch)(c)
+	_ = "STUB: not implemented"
+	return *new(FtProfileQuerytypeSearch)
 }
 
 func (c FtProfileIndex) Aggregate() FtProfileQuerytypeAggregate {
-	c.cs.s = append(c.cs.s, "AGGREGATE")
-	return (FtProfileQuerytypeAggregate)(c)
+	_ = "STUB: not implemented"
+	return *new(FtProfileQuerytypeAggregate)
 }
 
 type FtProfileLimited Incomplete
 
 func (c FtProfileLimited) Query(query string) FtProfileQuery {
-	c.cs.s = append(c.cs.s, "QUERY", query)
-	return (FtProfileQuery)(c)
+	_ = "STUB: not implemented"
+	return *new(FtProfileQuery)
 }
 
 type FtProfileQuery Incomplete
 
-func (c FtProfileQuery) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c FtProfileQuery) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type FtProfileQuerytypeAggregate Incomplete
 
 func (c FtProfileQuerytypeAggregate) Limited() FtProfileLimited {
-	c.cs.s = append(c.cs.s, "LIMITED")
-	return (FtProfileLimited)(c)
+	_ = "STUB: not implemented"
+	return *new(FtProfileLimited)
 }
 
 func (c FtProfileQuerytypeAggregate) Query(query string) FtProfileQuery {
-	c.cs.s = append(c.cs.s, "QUERY", query)
-	return (FtProfileQuery)(c)
+	_ = "STUB: not implemented"
+	return *new(FtProfileQuery)
 }
 
 type FtProfileQuerytypeSearch Incomplete
 
 func (c FtProfileQuerytypeSearch) Limited() FtProfileLimited {
-	c.cs.s = append(c.cs.s, "LIMITED")
-	return (FtProfileLimited)(c)
+	_ = "STUB: not implemented"
+	return *new(FtProfileLimited)
 }
 
 func (c FtProfileQuerytypeSearch) Query(query string) FtProfileQuery {
-	c.cs.s = append(c.cs.s, "QUERY", query)
-	return (FtProfileQuery)(c)
+	_ = "STUB: not implemented"
+	return *new(FtProfileQuery)
 }
 
 type FtSearch Incomplete
 
-func (b Builder) FtSearch() (c FtSearch) {
-	c = FtSearch{cs: get(), ks: b.ks, cf: int16(readonly)}
-	c.cs.s = append(c.cs.s, "FT.SEARCH")
-	return c
-}
+func (b Builder) FtSearch() (c FtSearch) { _ = "STUB: not implemented"; return *new(FtSearch) }
 
 func (c FtSearch) Index(index string) FtSearchIndex {
-	c.cs.s = append(c.cs.s, index)
-	return (FtSearchIndex)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchIndex)
 }
 
 type FtSearchDialect Incomplete
 
-func (c FtSearchDialect) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c FtSearchDialect) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type FtSearchExpander Incomplete
 
 func (c FtSearchExpander) Scorer(scorer string) FtSearchScorer {
-	c.cs.s = append(c.cs.s, "SCORER", scorer)
-	return (FtSearchScorer)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchScorer)
 }
 
 func (c FtSearchExpander) Explainscore() FtSearchExplainscore {
-	c.cs.s = append(c.cs.s, "EXPLAINSCORE")
-	return (FtSearchExplainscore)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchExplainscore)
 }
 
 func (c FtSearchExpander) Payload(payload string) FtSearchPayload {
-	c.cs.s = append(c.cs.s, "PAYLOAD", payload)
-	return (FtSearchPayload)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchPayload)
 }
 
 func (c FtSearchExpander) Sortby(sortby string) FtSearchSortbySortby {
-	c.cs.s = append(c.cs.s, "SORTBY", sortby)
-	return (FtSearchSortbySortby)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSortbySortby)
 }
 
 func (c FtSearchExpander) Limit() FtSearchLimitLimit {
-	c.cs.s = append(c.cs.s, "LIMIT")
-	return (FtSearchLimitLimit)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchLimitLimit)
 }
 
 func (c FtSearchExpander) Params() FtSearchParamsParams {
-	c.cs.s = append(c.cs.s, "PARAMS")
-	return (FtSearchParamsParams)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchParamsParams)
 }
 
 func (c FtSearchExpander) Dialect(dialect int64) FtSearchDialect {
-	c.cs.s = append(c.cs.s, "DIALECT", strconv.FormatInt(dialect, 10))
-	return (FtSearchDialect)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchDialect)
 }
 
-func (c FtSearchExpander) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c FtSearchExpander) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type FtSearchExplainscore Incomplete
 
 func (c FtSearchExplainscore) Payload(payload string) FtSearchPayload {
-	c.cs.s = append(c.cs.s, "PAYLOAD", payload)
-	return (FtSearchPayload)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchPayload)
 }
 
 func (c FtSearchExplainscore) Sortby(sortby string) FtSearchSortbySortby {
-	c.cs.s = append(c.cs.s, "SORTBY", sortby)
-	return (FtSearchSortbySortby)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSortbySortby)
 }
 
 func (c FtSearchExplainscore) Limit() FtSearchLimitLimit {
-	c.cs.s = append(c.cs.s, "LIMIT")
-	return (FtSearchLimitLimit)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchLimitLimit)
 }
 
 func (c FtSearchExplainscore) Params() FtSearchParamsParams {
-	c.cs.s = append(c.cs.s, "PARAMS")
-	return (FtSearchParamsParams)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchParamsParams)
 }
 
 func (c FtSearchExplainscore) Dialect(dialect int64) FtSearchDialect {
-	c.cs.s = append(c.cs.s, "DIALECT", strconv.FormatInt(dialect, 10))
-	return (FtSearchDialect)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchDialect)
 }
 
-func (c FtSearchExplainscore) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c FtSearchExplainscore) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type FtSearchFilterFilter Incomplete
 
 func (c FtSearchFilterFilter) Min(min float64) FtSearchFilterMin {
-	c.cs.s = append(c.cs.s, strconv.FormatFloat(min, 'f', -1, 64))
-	return (FtSearchFilterMin)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchFilterMin)
 }
 
 type FtSearchFilterMax Incomplete
 
 func (c FtSearchFilterMax) Filter(numericField string) FtSearchFilterFilter {
-	c.cs.s = append(c.cs.s, "FILTER", numericField)
-	return (FtSearchFilterFilter)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchFilterFilter)
 }
 
 func (c FtSearchFilterMax) Geofilter(geoField string) FtSearchGeoFilterGeofilter {
-	c.cs.s = append(c.cs.s, "GEOFILTER", geoField)
-	return (FtSearchGeoFilterGeofilter)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchGeoFilterGeofilter)
 }
 
 func (c FtSearchFilterMax) Inkeys(count string) FtSearchInKeysInkeys {
-	c.cs.s = append(c.cs.s, "INKEYS", count)
-	return (FtSearchInKeysInkeys)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchInKeysInkeys)
 }
 
 func (c FtSearchFilterMax) Infields(count string) FtSearchInFieldsInfields {
-	c.cs.s = append(c.cs.s, "INFIELDS", count)
-	return (FtSearchInFieldsInfields)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchInFieldsInfields)
 }
 
 func (c FtSearchFilterMax) Return(count string) FtSearchReturnReturn {
-	c.cs.s = append(c.cs.s, "RETURN", count)
-	return (FtSearchReturnReturn)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchReturnReturn)
 }
 
 func (c FtSearchFilterMax) Summarize() FtSearchSummarizeSummarize {
-	c.cs.s = append(c.cs.s, "SUMMARIZE")
-	return (FtSearchSummarizeSummarize)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSummarizeSummarize)
 }
 
 func (c FtSearchFilterMax) Highlight() FtSearchHighlightHighlight {
-	c.cs.s = append(c.cs.s, "HIGHLIGHT")
-	return (FtSearchHighlightHighlight)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchHighlightHighlight)
 }
 
 func (c FtSearchFilterMax) Slop(slop int64) FtSearchSlop {
-	c.cs.s = append(c.cs.s, "SLOP", strconv.FormatInt(slop, 10))
-	return (FtSearchSlop)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSlop)
 }
 
 func (c FtSearchFilterMax) Timeout(timeout int64) FtSearchTimeout {
-	c.cs.s = append(c.cs.s, "TIMEOUT", strconv.FormatInt(timeout, 10))
-	return (FtSearchTimeout)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchTimeout)
 }
 
 func (c FtSearchFilterMax) Inorder() FtSearchTagsInorder {
-	c.cs.s = append(c.cs.s, "INORDER")
-	return (FtSearchTagsInorder)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchTagsInorder)
 }
 
 func (c FtSearchFilterMax) Language(language string) FtSearchLanguage {
-	c.cs.s = append(c.cs.s, "LANGUAGE", language)
-	return (FtSearchLanguage)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchLanguage)
 }
 
 func (c FtSearchFilterMax) Expander(expander string) FtSearchExpander {
-	c.cs.s = append(c.cs.s, "EXPANDER", expander)
-	return (FtSearchExpander)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchExpander)
 }
 
 func (c FtSearchFilterMax) Scorer(scorer string) FtSearchScorer {
-	c.cs.s = append(c.cs.s, "SCORER", scorer)
-	return (FtSearchScorer)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchScorer)
 }
 
 func (c FtSearchFilterMax) Explainscore() FtSearchExplainscore {
-	c.cs.s = append(c.cs.s, "EXPLAINSCORE")
-	return (FtSearchExplainscore)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchExplainscore)
 }
 
 func (c FtSearchFilterMax) Payload(payload string) FtSearchPayload {
-	c.cs.s = append(c.cs.s, "PAYLOAD", payload)
-	return (FtSearchPayload)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchPayload)
 }
 
 func (c FtSearchFilterMax) Sortby(sortby string) FtSearchSortbySortby {
-	c.cs.s = append(c.cs.s, "SORTBY", sortby)
-	return (FtSearchSortbySortby)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSortbySortby)
 }
 
 func (c FtSearchFilterMax) Limit() FtSearchLimitLimit {
-	c.cs.s = append(c.cs.s, "LIMIT")
-	return (FtSearchLimitLimit)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchLimitLimit)
 }
 
 func (c FtSearchFilterMax) Params() FtSearchParamsParams {
-	c.cs.s = append(c.cs.s, "PARAMS")
-	return (FtSearchParamsParams)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchParamsParams)
 }
 
 func (c FtSearchFilterMax) Dialect(dialect int64) FtSearchDialect {
-	c.cs.s = append(c.cs.s, "DIALECT", strconv.FormatInt(dialect, 10))
-	return (FtSearchDialect)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchDialect)
 }
 
-func (c FtSearchFilterMax) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c FtSearchFilterMax) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type FtSearchFilterMin Incomplete
 
 func (c FtSearchFilterMin) Max(max float64) FtSearchFilterMax {
-	c.cs.s = append(c.cs.s, strconv.FormatFloat(max, 'f', -1, 64))
-	return (FtSearchFilterMax)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchFilterMax)
 }
 
 type FtSearchGeoFilterGeofilter Incomplete
 
 func (c FtSearchGeoFilterGeofilter) Lon(lon float64) FtSearchGeoFilterLon {
-	c.cs.s = append(c.cs.s, strconv.FormatFloat(lon, 'f', -1, 64))
-	return (FtSearchGeoFilterLon)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchGeoFilterLon)
 }
 
 type FtSearchGeoFilterLat Incomplete
 
 func (c FtSearchGeoFilterLat) Radius(radius float64) FtSearchGeoFilterRadius {
-	c.cs.s = append(c.cs.s, strconv.FormatFloat(radius, 'f', -1, 64))
-	return (FtSearchGeoFilterRadius)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchGeoFilterRadius)
 }
 
 type FtSearchGeoFilterLon Incomplete
 
 func (c FtSearchGeoFilterLon) Lat(lat float64) FtSearchGeoFilterLat {
-	c.cs.s = append(c.cs.s, strconv.FormatFloat(lat, 'f', -1, 64))
-	return (FtSearchGeoFilterLat)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchGeoFilterLat)
 }
 
 type FtSearchGeoFilterRadius Incomplete
 
 func (c FtSearchGeoFilterRadius) M() FtSearchGeoFilterRadiusTypeM {
-	c.cs.s = append(c.cs.s, "m")
-	return (FtSearchGeoFilterRadiusTypeM)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchGeoFilterRadiusTypeM)
 }
 
 func (c FtSearchGeoFilterRadius) Km() FtSearchGeoFilterRadiusTypeKm {
-	c.cs.s = append(c.cs.s, "km")
-	return (FtSearchGeoFilterRadiusTypeKm)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchGeoFilterRadiusTypeKm)
 }
 
 func (c FtSearchGeoFilterRadius) Mi() FtSearchGeoFilterRadiusTypeMi {
-	c.cs.s = append(c.cs.s, "mi")
-	return (FtSearchGeoFilterRadiusTypeMi)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchGeoFilterRadiusTypeMi)
 }
 
 func (c FtSearchGeoFilterRadius) Ft() FtSearchGeoFilterRadiusTypeFt {
-	c.cs.s = append(c.cs.s, "ft")
-	return (FtSearchGeoFilterRadiusTypeFt)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchGeoFilterRadiusTypeFt)
 }
 
 type FtSearchGeoFilterRadiusTypeFt Incomplete
 
 func (c FtSearchGeoFilterRadiusTypeFt) Geofilter(geoField string) FtSearchGeoFilterGeofilter {
-	c.cs.s = append(c.cs.s, "GEOFILTER", geoField)
-	return (FtSearchGeoFilterGeofilter)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchGeoFilterGeofilter)
 }
 
 func (c FtSearchGeoFilterRadiusTypeFt) Inkeys(count string) FtSearchInKeysInkeys {
-	c.cs.s = append(c.cs.s, "INKEYS", count)
-	return (FtSearchInKeysInkeys)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchInKeysInkeys)
 }
 
 func (c FtSearchGeoFilterRadiusTypeFt) Infields(count string) FtSearchInFieldsInfields {
-	c.cs.s = append(c.cs.s, "INFIELDS", count)
-	return (FtSearchInFieldsInfields)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchInFieldsInfields)
 }
 
 func (c FtSearchGeoFilterRadiusTypeFt) Return(count string) FtSearchReturnReturn {
-	c.cs.s = append(c.cs.s, "RETURN", count)
-	return (FtSearchReturnReturn)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchReturnReturn)
 }
 
 func (c FtSearchGeoFilterRadiusTypeFt) Summarize() FtSearchSummarizeSummarize {
-	c.cs.s = append(c.cs.s, "SUMMARIZE")
-	return (FtSearchSummarizeSummarize)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSummarizeSummarize)
 }
 
 func (c FtSearchGeoFilterRadiusTypeFt) Highlight() FtSearchHighlightHighlight {
-	c.cs.s = append(c.cs.s, "HIGHLIGHT")
-	return (FtSearchHighlightHighlight)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchHighlightHighlight)
 }
 
 func (c FtSearchGeoFilterRadiusTypeFt) Slop(slop int64) FtSearchSlop {
-	c.cs.s = append(c.cs.s, "SLOP", strconv.FormatInt(slop, 10))
-	return (FtSearchSlop)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSlop)
 }
 
 func (c FtSearchGeoFilterRadiusTypeFt) Timeout(timeout int64) FtSearchTimeout {
-	c.cs.s = append(c.cs.s, "TIMEOUT", strconv.FormatInt(timeout, 10))
-	return (FtSearchTimeout)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchTimeout)
 }
 
 func (c FtSearchGeoFilterRadiusTypeFt) Inorder() FtSearchTagsInorder {
-	c.cs.s = append(c.cs.s, "INORDER")
-	return (FtSearchTagsInorder)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchTagsInorder)
 }
 
 func (c FtSearchGeoFilterRadiusTypeFt) Language(language string) FtSearchLanguage {
-	c.cs.s = append(c.cs.s, "LANGUAGE", language)
-	return (FtSearchLanguage)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchLanguage)
 }
 
 func (c FtSearchGeoFilterRadiusTypeFt) Expander(expander string) FtSearchExpander {
-	c.cs.s = append(c.cs.s, "EXPANDER", expander)
-	return (FtSearchExpander)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchExpander)
 }
 
 func (c FtSearchGeoFilterRadiusTypeFt) Scorer(scorer string) FtSearchScorer {
-	c.cs.s = append(c.cs.s, "SCORER", scorer)
-	return (FtSearchScorer)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchScorer)
 }
 
 func (c FtSearchGeoFilterRadiusTypeFt) Explainscore() FtSearchExplainscore {
-	c.cs.s = append(c.cs.s, "EXPLAINSCORE")
-	return (FtSearchExplainscore)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchExplainscore)
 }
 
 func (c FtSearchGeoFilterRadiusTypeFt) Payload(payload string) FtSearchPayload {
-	c.cs.s = append(c.cs.s, "PAYLOAD", payload)
-	return (FtSearchPayload)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchPayload)
 }
 
 func (c FtSearchGeoFilterRadiusTypeFt) Sortby(sortby string) FtSearchSortbySortby {
-	c.cs.s = append(c.cs.s, "SORTBY", sortby)
-	return (FtSearchSortbySortby)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSortbySortby)
 }
 
 func (c FtSearchGeoFilterRadiusTypeFt) Limit() FtSearchLimitLimit {
-	c.cs.s = append(c.cs.s, "LIMIT")
-	return (FtSearchLimitLimit)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchLimitLimit)
 }
 
 func (c FtSearchGeoFilterRadiusTypeFt) Params() FtSearchParamsParams {
-	c.cs.s = append(c.cs.s, "PARAMS")
-	return (FtSearchParamsParams)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchParamsParams)
 }
 
 func (c FtSearchGeoFilterRadiusTypeFt) Dialect(dialect int64) FtSearchDialect {
-	c.cs.s = append(c.cs.s, "DIALECT", strconv.FormatInt(dialect, 10))
-	return (FtSearchDialect)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchDialect)
 }
 
 func (c FtSearchGeoFilterRadiusTypeFt) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type FtSearchGeoFilterRadiusTypeKm Incomplete
 
 func (c FtSearchGeoFilterRadiusTypeKm) Geofilter(geoField string) FtSearchGeoFilterGeofilter {
-	c.cs.s = append(c.cs.s, "GEOFILTER", geoField)
-	return (FtSearchGeoFilterGeofilter)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchGeoFilterGeofilter)
 }
 
 func (c FtSearchGeoFilterRadiusTypeKm) Inkeys(count string) FtSearchInKeysInkeys {
-	c.cs.s = append(c.cs.s, "INKEYS", count)
-	return (FtSearchInKeysInkeys)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchInKeysInkeys)
 }
 
 func (c FtSearchGeoFilterRadiusTypeKm) Infields(count string) FtSearchInFieldsInfields {
-	c.cs.s = append(c.cs.s, "INFIELDS", count)
-	return (FtSearchInFieldsInfields)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchInFieldsInfields)
 }
 
 func (c FtSearchGeoFilterRadiusTypeKm) Return(count string) FtSearchReturnReturn {
-	c.cs.s = append(c.cs.s, "RETURN", count)
-	return (FtSearchReturnReturn)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchReturnReturn)
 }
 
 func (c FtSearchGeoFilterRadiusTypeKm) Summarize() FtSearchSummarizeSummarize {
-	c.cs.s = append(c.cs.s, "SUMMARIZE")
-	return (FtSearchSummarizeSummarize)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSummarizeSummarize)
 }
 
 func (c FtSearchGeoFilterRadiusTypeKm) Highlight() FtSearchHighlightHighlight {
-	c.cs.s = append(c.cs.s, "HIGHLIGHT")
-	return (FtSearchHighlightHighlight)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchHighlightHighlight)
 }
 
 func (c FtSearchGeoFilterRadiusTypeKm) Slop(slop int64) FtSearchSlop {
-	c.cs.s = append(c.cs.s, "SLOP", strconv.FormatInt(slop, 10))
-	return (FtSearchSlop)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSlop)
 }
 
 func (c FtSearchGeoFilterRadiusTypeKm) Timeout(timeout int64) FtSearchTimeout {
-	c.cs.s = append(c.cs.s, "TIMEOUT", strconv.FormatInt(timeout, 10))
-	return (FtSearchTimeout)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchTimeout)
 }
 
 func (c FtSearchGeoFilterRadiusTypeKm) Inorder() FtSearchTagsInorder {
-	c.cs.s = append(c.cs.s, "INORDER")
-	return (FtSearchTagsInorder)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchTagsInorder)
 }
 
 func (c FtSearchGeoFilterRadiusTypeKm) Language(language string) FtSearchLanguage {
-	c.cs.s = append(c.cs.s, "LANGUAGE", language)
-	return (FtSearchLanguage)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchLanguage)
 }
 
 func (c FtSearchGeoFilterRadiusTypeKm) Expander(expander string) FtSearchExpander {
-	c.cs.s = append(c.cs.s, "EXPANDER", expander)
-	return (FtSearchExpander)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchExpander)
 }
 
 func (c FtSearchGeoFilterRadiusTypeKm) Scorer(scorer string) FtSearchScorer {
-	c.cs.s = append(c.cs.s, "SCORER", scorer)
-	return (FtSearchScorer)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchScorer)
 }
 
 func (c FtSearchGeoFilterRadiusTypeKm) Explainscore() FtSearchExplainscore {
-	c.cs.s = append(c.cs.s, "EXPLAINSCORE")
-	return (FtSearchExplainscore)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchExplainscore)
 }
 
 func (c FtSearchGeoFilterRadiusTypeKm) Payload(payload string) FtSearchPayload {
-	c.cs.s = append(c.cs.s, "PAYLOAD", payload)
-	return (FtSearchPayload)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchPayload)
 }
 
 func (c FtSearchGeoFilterRadiusTypeKm) Sortby(sortby string) FtSearchSortbySortby {
-	c.cs.s = append(c.cs.s, "SORTBY", sortby)
-	return (FtSearchSortbySortby)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSortbySortby)
 }
 
 func (c FtSearchGeoFilterRadiusTypeKm) Limit() FtSearchLimitLimit {
-	c.cs.s = append(c.cs.s, "LIMIT")
-	return (FtSearchLimitLimit)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchLimitLimit)
 }
 
 func (c FtSearchGeoFilterRadiusTypeKm) Params() FtSearchParamsParams {
-	c.cs.s = append(c.cs.s, "PARAMS")
-	return (FtSearchParamsParams)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchParamsParams)
 }
 
 func (c FtSearchGeoFilterRadiusTypeKm) Dialect(dialect int64) FtSearchDialect {
-	c.cs.s = append(c.cs.s, "DIALECT", strconv.FormatInt(dialect, 10))
-	return (FtSearchDialect)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchDialect)
 }
 
 func (c FtSearchGeoFilterRadiusTypeKm) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type FtSearchGeoFilterRadiusTypeM Incomplete
 
 func (c FtSearchGeoFilterRadiusTypeM) Geofilter(geoField string) FtSearchGeoFilterGeofilter {
-	c.cs.s = append(c.cs.s, "GEOFILTER", geoField)
-	return (FtSearchGeoFilterGeofilter)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchGeoFilterGeofilter)
 }
 
 func (c FtSearchGeoFilterRadiusTypeM) Inkeys(count string) FtSearchInKeysInkeys {
-	c.cs.s = append(c.cs.s, "INKEYS", count)
-	return (FtSearchInKeysInkeys)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchInKeysInkeys)
 }
 
 func (c FtSearchGeoFilterRadiusTypeM) Infields(count string) FtSearchInFieldsInfields {
-	c.cs.s = append(c.cs.s, "INFIELDS", count)
-	return (FtSearchInFieldsInfields)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchInFieldsInfields)
 }
 
 func (c FtSearchGeoFilterRadiusTypeM) Return(count string) FtSearchReturnReturn {
-	c.cs.s = append(c.cs.s, "RETURN", count)
-	return (FtSearchReturnReturn)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchReturnReturn)
 }
 
 func (c FtSearchGeoFilterRadiusTypeM) Summarize() FtSearchSummarizeSummarize {
-	c.cs.s = append(c.cs.s, "SUMMARIZE")
-	return (FtSearchSummarizeSummarize)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSummarizeSummarize)
 }
 
 func (c FtSearchGeoFilterRadiusTypeM) Highlight() FtSearchHighlightHighlight {
-	c.cs.s = append(c.cs.s, "HIGHLIGHT")
-	return (FtSearchHighlightHighlight)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchHighlightHighlight)
 }
 
 func (c FtSearchGeoFilterRadiusTypeM) Slop(slop int64) FtSearchSlop {
-	c.cs.s = append(c.cs.s, "SLOP", strconv.FormatInt(slop, 10))
-	return (FtSearchSlop)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSlop)
 }
 
 func (c FtSearchGeoFilterRadiusTypeM) Timeout(timeout int64) FtSearchTimeout {
-	c.cs.s = append(c.cs.s, "TIMEOUT", strconv.FormatInt(timeout, 10))
-	return (FtSearchTimeout)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchTimeout)
 }
 
 func (c FtSearchGeoFilterRadiusTypeM) Inorder() FtSearchTagsInorder {
-	c.cs.s = append(c.cs.s, "INORDER")
-	return (FtSearchTagsInorder)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchTagsInorder)
 }
 
 func (c FtSearchGeoFilterRadiusTypeM) Language(language string) FtSearchLanguage {
-	c.cs.s = append(c.cs.s, "LANGUAGE", language)
-	return (FtSearchLanguage)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchLanguage)
 }
 
 func (c FtSearchGeoFilterRadiusTypeM) Expander(expander string) FtSearchExpander {
-	c.cs.s = append(c.cs.s, "EXPANDER", expander)
-	return (FtSearchExpander)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchExpander)
 }
 
 func (c FtSearchGeoFilterRadiusTypeM) Scorer(scorer string) FtSearchScorer {
-	c.cs.s = append(c.cs.s, "SCORER", scorer)
-	return (FtSearchScorer)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchScorer)
 }
 
 func (c FtSearchGeoFilterRadiusTypeM) Explainscore() FtSearchExplainscore {
-	c.cs.s = append(c.cs.s, "EXPLAINSCORE")
-	return (FtSearchExplainscore)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchExplainscore)
 }
 
 func (c FtSearchGeoFilterRadiusTypeM) Payload(payload string) FtSearchPayload {
-	c.cs.s = append(c.cs.s, "PAYLOAD", payload)
-	return (FtSearchPayload)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchPayload)
 }
 
 func (c FtSearchGeoFilterRadiusTypeM) Sortby(sortby string) FtSearchSortbySortby {
-	c.cs.s = append(c.cs.s, "SORTBY", sortby)
-	return (FtSearchSortbySortby)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSortbySortby)
 }
 
 func (c FtSearchGeoFilterRadiusTypeM) Limit() FtSearchLimitLimit {
-	c.cs.s = append(c.cs.s, "LIMIT")
-	return (FtSearchLimitLimit)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchLimitLimit)
 }
 
 func (c FtSearchGeoFilterRadiusTypeM) Params() FtSearchParamsParams {
-	c.cs.s = append(c.cs.s, "PARAMS")
-	return (FtSearchParamsParams)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchParamsParams)
 }
 
 func (c FtSearchGeoFilterRadiusTypeM) Dialect(dialect int64) FtSearchDialect {
-	c.cs.s = append(c.cs.s, "DIALECT", strconv.FormatInt(dialect, 10))
-	return (FtSearchDialect)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchDialect)
 }
 
 func (c FtSearchGeoFilterRadiusTypeM) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type FtSearchGeoFilterRadiusTypeMi Incomplete
 
 func (c FtSearchGeoFilterRadiusTypeMi) Geofilter(geoField string) FtSearchGeoFilterGeofilter {
-	c.cs.s = append(c.cs.s, "GEOFILTER", geoField)
-	return (FtSearchGeoFilterGeofilter)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchGeoFilterGeofilter)
 }
 
 func (c FtSearchGeoFilterRadiusTypeMi) Inkeys(count string) FtSearchInKeysInkeys {
-	c.cs.s = append(c.cs.s, "INKEYS", count)
-	return (FtSearchInKeysInkeys)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchInKeysInkeys)
 }
 
 func (c FtSearchGeoFilterRadiusTypeMi) Infields(count string) FtSearchInFieldsInfields {
-	c.cs.s = append(c.cs.s, "INFIELDS", count)
-	return (FtSearchInFieldsInfields)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchInFieldsInfields)
 }
 
 func (c FtSearchGeoFilterRadiusTypeMi) Return(count string) FtSearchReturnReturn {
-	c.cs.s = append(c.cs.s, "RETURN", count)
-	return (FtSearchReturnReturn)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchReturnReturn)
 }
 
 func (c FtSearchGeoFilterRadiusTypeMi) Summarize() FtSearchSummarizeSummarize {
-	c.cs.s = append(c.cs.s, "SUMMARIZE")
-	return (FtSearchSummarizeSummarize)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSummarizeSummarize)
 }
 
 func (c FtSearchGeoFilterRadiusTypeMi) Highlight() FtSearchHighlightHighlight {
-	c.cs.s = append(c.cs.s, "HIGHLIGHT")
-	return (FtSearchHighlightHighlight)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchHighlightHighlight)
 }
 
 func (c FtSearchGeoFilterRadiusTypeMi) Slop(slop int64) FtSearchSlop {
-	c.cs.s = append(c.cs.s, "SLOP", strconv.FormatInt(slop, 10))
-	return (FtSearchSlop)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSlop)
 }
 
 func (c FtSearchGeoFilterRadiusTypeMi) Timeout(timeout int64) FtSearchTimeout {
-	c.cs.s = append(c.cs.s, "TIMEOUT", strconv.FormatInt(timeout, 10))
-	return (FtSearchTimeout)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchTimeout)
 }
 
 func (c FtSearchGeoFilterRadiusTypeMi) Inorder() FtSearchTagsInorder {
-	c.cs.s = append(c.cs.s, "INORDER")
-	return (FtSearchTagsInorder)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchTagsInorder)
 }
 
 func (c FtSearchGeoFilterRadiusTypeMi) Language(language string) FtSearchLanguage {
-	c.cs.s = append(c.cs.s, "LANGUAGE", language)
-	return (FtSearchLanguage)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchLanguage)
 }
 
 func (c FtSearchGeoFilterRadiusTypeMi) Expander(expander string) FtSearchExpander {
-	c.cs.s = append(c.cs.s, "EXPANDER", expander)
-	return (FtSearchExpander)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchExpander)
 }
 
 func (c FtSearchGeoFilterRadiusTypeMi) Scorer(scorer string) FtSearchScorer {
-	c.cs.s = append(c.cs.s, "SCORER", scorer)
-	return (FtSearchScorer)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchScorer)
 }
 
 func (c FtSearchGeoFilterRadiusTypeMi) Explainscore() FtSearchExplainscore {
-	c.cs.s = append(c.cs.s, "EXPLAINSCORE")
-	return (FtSearchExplainscore)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchExplainscore)
 }
 
 func (c FtSearchGeoFilterRadiusTypeMi) Payload(payload string) FtSearchPayload {
-	c.cs.s = append(c.cs.s, "PAYLOAD", payload)
-	return (FtSearchPayload)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchPayload)
 }
 
 func (c FtSearchGeoFilterRadiusTypeMi) Sortby(sortby string) FtSearchSortbySortby {
-	c.cs.s = append(c.cs.s, "SORTBY", sortby)
-	return (FtSearchSortbySortby)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSortbySortby)
 }
 
 func (c FtSearchGeoFilterRadiusTypeMi) Limit() FtSearchLimitLimit {
-	c.cs.s = append(c.cs.s, "LIMIT")
-	return (FtSearchLimitLimit)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchLimitLimit)
 }
 
 func (c FtSearchGeoFilterRadiusTypeMi) Params() FtSearchParamsParams {
-	c.cs.s = append(c.cs.s, "PARAMS")
-	return (FtSearchParamsParams)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchParamsParams)
 }
 
 func (c FtSearchGeoFilterRadiusTypeMi) Dialect(dialect int64) FtSearchDialect {
-	c.cs.s = append(c.cs.s, "DIALECT", strconv.FormatInt(dialect, 10))
-	return (FtSearchDialect)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchDialect)
 }
 
 func (c FtSearchGeoFilterRadiusTypeMi) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type FtSearchHighlightFieldsField Incomplete
 
 func (c FtSearchHighlightFieldsField) Field(field ...string) FtSearchHighlightFieldsField {
-	c.cs.s = append(c.cs.s, field...)
-	return c
+	_ = "STUB: not implemented"
+	return *new(FtSearchHighlightFieldsField)
 }
 
 func (c FtSearchHighlightFieldsField) Tags() FtSearchHighlightTagsTags {
-	c.cs.s = append(c.cs.s, "TAGS")
-	return (FtSearchHighlightTagsTags)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchHighlightTagsTags)
 }
 
 func (c FtSearchHighlightFieldsField) Slop(slop int64) FtSearchSlop {
-	c.cs.s = append(c.cs.s, "SLOP", strconv.FormatInt(slop, 10))
-	return (FtSearchSlop)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSlop)
 }
 
 func (c FtSearchHighlightFieldsField) Timeout(timeout int64) FtSearchTimeout {
-	c.cs.s = append(c.cs.s, "TIMEOUT", strconv.FormatInt(timeout, 10))
-	return (FtSearchTimeout)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchTimeout)
 }
 
 func (c FtSearchHighlightFieldsField) Inorder() FtSearchTagsInorder {
-	c.cs.s = append(c.cs.s, "INORDER")
-	return (FtSearchTagsInorder)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchTagsInorder)
 }
 
 func (c FtSearchHighlightFieldsField) Language(language string) FtSearchLanguage {
-	c.cs.s = append(c.cs.s, "LANGUAGE", language)
-	return (FtSearchLanguage)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchLanguage)
 }
 
 func (c FtSearchHighlightFieldsField) Expander(expander string) FtSearchExpander {
-	c.cs.s = append(c.cs.s, "EXPANDER", expander)
-	return (FtSearchExpander)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchExpander)
 }
 
 func (c FtSearchHighlightFieldsField) Scorer(scorer string) FtSearchScorer {
-	c.cs.s = append(c.cs.s, "SCORER", scorer)
-	return (FtSearchScorer)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchScorer)
 }
 
 func (c FtSearchHighlightFieldsField) Explainscore() FtSearchExplainscore {
-	c.cs.s = append(c.cs.s, "EXPLAINSCORE")
-	return (FtSearchExplainscore)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchExplainscore)
 }
 
 func (c FtSearchHighlightFieldsField) Payload(payload string) FtSearchPayload {
-	c.cs.s = append(c.cs.s, "PAYLOAD", payload)
-	return (FtSearchPayload)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchPayload)
 }
 
 func (c FtSearchHighlightFieldsField) Sortby(sortby string) FtSearchSortbySortby {
-	c.cs.s = append(c.cs.s, "SORTBY", sortby)
-	return (FtSearchSortbySortby)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSortbySortby)
 }
 
 func (c FtSearchHighlightFieldsField) Limit() FtSearchLimitLimit {
-	c.cs.s = append(c.cs.s, "LIMIT")
-	return (FtSearchLimitLimit)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchLimitLimit)
 }
 
 func (c FtSearchHighlightFieldsField) Params() FtSearchParamsParams {
-	c.cs.s = append(c.cs.s, "PARAMS")
-	return (FtSearchParamsParams)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchParamsParams)
 }
 
 func (c FtSearchHighlightFieldsField) Dialect(dialect int64) FtSearchDialect {
-	c.cs.s = append(c.cs.s, "DIALECT", strconv.FormatInt(dialect, 10))
-	return (FtSearchDialect)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchDialect)
 }
 
 func (c FtSearchHighlightFieldsField) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type FtSearchHighlightFieldsFields Incomplete
 
 func (c FtSearchHighlightFieldsFields) Field(field ...string) FtSearchHighlightFieldsField {
-	c.cs.s = append(c.cs.s, field...)
-	return (FtSearchHighlightFieldsField)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchHighlightFieldsField)
 }
 
 type FtSearchHighlightHighlight Incomplete
 
 func (c FtSearchHighlightHighlight) Fields(count string) FtSearchHighlightFieldsFields {
-	c.cs.s = append(c.cs.s, "FIELDS", count)
-	return (FtSearchHighlightFieldsFields)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchHighlightFieldsFields)
 }
 
 func (c FtSearchHighlightHighlight) Tags() FtSearchHighlightTagsTags {
-	c.cs.s = append(c.cs.s, "TAGS")
-	return (FtSearchHighlightTagsTags)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchHighlightTagsTags)
 }
 
 func (c FtSearchHighlightHighlight) Slop(slop int64) FtSearchSlop {
-	c.cs.s = append(c.cs.s, "SLOP", strconv.FormatInt(slop, 10))
-	return (FtSearchSlop)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSlop)
 }
 
 func (c FtSearchHighlightHighlight) Timeout(timeout int64) FtSearchTimeout {
-	c.cs.s = append(c.cs.s, "TIMEOUT", strconv.FormatInt(timeout, 10))
-	return (FtSearchTimeout)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchTimeout)
 }
 
 func (c FtSearchHighlightHighlight) Inorder() FtSearchTagsInorder {
-	c.cs.s = append(c.cs.s, "INORDER")
-	return (FtSearchTagsInorder)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchTagsInorder)
 }
 
 func (c FtSearchHighlightHighlight) Language(language string) FtSearchLanguage {
-	c.cs.s = append(c.cs.s, "LANGUAGE", language)
-	return (FtSearchLanguage)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchLanguage)
 }
 
 func (c FtSearchHighlightHighlight) Expander(expander string) FtSearchExpander {
-	c.cs.s = append(c.cs.s, "EXPANDER", expander)
-	return (FtSearchExpander)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchExpander)
 }
 
 func (c FtSearchHighlightHighlight) Scorer(scorer string) FtSearchScorer {
-	c.cs.s = append(c.cs.s, "SCORER", scorer)
-	return (FtSearchScorer)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchScorer)
 }
 
 func (c FtSearchHighlightHighlight) Explainscore() FtSearchExplainscore {
-	c.cs.s = append(c.cs.s, "EXPLAINSCORE")
-	return (FtSearchExplainscore)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchExplainscore)
 }
 
 func (c FtSearchHighlightHighlight) Payload(payload string) FtSearchPayload {
-	c.cs.s = append(c.cs.s, "PAYLOAD", payload)
-	return (FtSearchPayload)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchPayload)
 }
 
 func (c FtSearchHighlightHighlight) Sortby(sortby string) FtSearchSortbySortby {
-	c.cs.s = append(c.cs.s, "SORTBY", sortby)
-	return (FtSearchSortbySortby)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSortbySortby)
 }
 
 func (c FtSearchHighlightHighlight) Limit() FtSearchLimitLimit {
-	c.cs.s = append(c.cs.s, "LIMIT")
-	return (FtSearchLimitLimit)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchLimitLimit)
 }
 
 func (c FtSearchHighlightHighlight) Params() FtSearchParamsParams {
-	c.cs.s = append(c.cs.s, "PARAMS")
-	return (FtSearchParamsParams)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchParamsParams)
 }
 
 func (c FtSearchHighlightHighlight) Dialect(dialect int64) FtSearchDialect {
-	c.cs.s = append(c.cs.s, "DIALECT", strconv.FormatInt(dialect, 10))
-	return (FtSearchDialect)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchDialect)
 }
 
 func (c FtSearchHighlightHighlight) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type FtSearchHighlightTagsOpenClose Incomplete
 
 func (c FtSearchHighlightTagsOpenClose) Slop(slop int64) FtSearchSlop {
-	c.cs.s = append(c.cs.s, "SLOP", strconv.FormatInt(slop, 10))
-	return (FtSearchSlop)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSlop)
 }
 
 func (c FtSearchHighlightTagsOpenClose) Timeout(timeout int64) FtSearchTimeout {
-	c.cs.s = append(c.cs.s, "TIMEOUT", strconv.FormatInt(timeout, 10))
-	return (FtSearchTimeout)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchTimeout)
 }
 
 func (c FtSearchHighlightTagsOpenClose) Inorder() FtSearchTagsInorder {
-	c.cs.s = append(c.cs.s, "INORDER")
-	return (FtSearchTagsInorder)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchTagsInorder)
 }
 
 func (c FtSearchHighlightTagsOpenClose) Language(language string) FtSearchLanguage {
-	c.cs.s = append(c.cs.s, "LANGUAGE", language)
-	return (FtSearchLanguage)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchLanguage)
 }
 
 func (c FtSearchHighlightTagsOpenClose) Expander(expander string) FtSearchExpander {
-	c.cs.s = append(c.cs.s, "EXPANDER", expander)
-	return (FtSearchExpander)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchExpander)
 }
 
 func (c FtSearchHighlightTagsOpenClose) Scorer(scorer string) FtSearchScorer {
-	c.cs.s = append(c.cs.s, "SCORER", scorer)
-	return (FtSearchScorer)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchScorer)
 }
 
 func (c FtSearchHighlightTagsOpenClose) Explainscore() FtSearchExplainscore {
-	c.cs.s = append(c.cs.s, "EXPLAINSCORE")
-	return (FtSearchExplainscore)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchExplainscore)
 }
 
 func (c FtSearchHighlightTagsOpenClose) Payload(payload string) FtSearchPayload {
-	c.cs.s = append(c.cs.s, "PAYLOAD", payload)
-	return (FtSearchPayload)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchPayload)
 }
 
 func (c FtSearchHighlightTagsOpenClose) Sortby(sortby string) FtSearchSortbySortby {
-	c.cs.s = append(c.cs.s, "SORTBY", sortby)
-	return (FtSearchSortbySortby)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSortbySortby)
 }
 
 func (c FtSearchHighlightTagsOpenClose) Limit() FtSearchLimitLimit {
-	c.cs.s = append(c.cs.s, "LIMIT")
-	return (FtSearchLimitLimit)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchLimitLimit)
 }
 
 func (c FtSearchHighlightTagsOpenClose) Params() FtSearchParamsParams {
-	c.cs.s = append(c.cs.s, "PARAMS")
-	return (FtSearchParamsParams)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchParamsParams)
 }
 
 func (c FtSearchHighlightTagsOpenClose) Dialect(dialect int64) FtSearchDialect {
-	c.cs.s = append(c.cs.s, "DIALECT", strconv.FormatInt(dialect, 10))
-	return (FtSearchDialect)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchDialect)
 }
 
 func (c FtSearchHighlightTagsOpenClose) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type FtSearchHighlightTagsTags Incomplete
 
 func (c FtSearchHighlightTagsTags) OpenClose(open string, close string) FtSearchHighlightTagsOpenClose {
-	c.cs.s = append(c.cs.s, open, close)
-	return (FtSearchHighlightTagsOpenClose)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchHighlightTagsOpenClose)
 }
 
 type FtSearchInFieldsField Incomplete
 
 func (c FtSearchInFieldsField) Field(field ...string) FtSearchInFieldsField {
-	c.cs.s = append(c.cs.s, field...)
-	return c
+	_ = "STUB: not implemented"
+	return *new(FtSearchInFieldsField)
 }
 
 func (c FtSearchInFieldsField) Return(count string) FtSearchReturnReturn {
-	c.cs.s = append(c.cs.s, "RETURN", count)
-	return (FtSearchReturnReturn)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchReturnReturn)
 }
 
 func (c FtSearchInFieldsField) Summarize() FtSearchSummarizeSummarize {
-	c.cs.s = append(c.cs.s, "SUMMARIZE")
-	return (FtSearchSummarizeSummarize)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSummarizeSummarize)
 }
 
 func (c FtSearchInFieldsField) Highlight() FtSearchHighlightHighlight {
-	c.cs.s = append(c.cs.s, "HIGHLIGHT")
-	return (FtSearchHighlightHighlight)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchHighlightHighlight)
 }
 
 func (c FtSearchInFieldsField) Slop(slop int64) FtSearchSlop {
-	c.cs.s = append(c.cs.s, "SLOP", strconv.FormatInt(slop, 10))
-	return (FtSearchSlop)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSlop)
 }
 
 func (c FtSearchInFieldsField) Timeout(timeout int64) FtSearchTimeout {
-	c.cs.s = append(c.cs.s, "TIMEOUT", strconv.FormatInt(timeout, 10))
-	return (FtSearchTimeout)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchTimeout)
 }
 
 func (c FtSearchInFieldsField) Inorder() FtSearchTagsInorder {
-	c.cs.s = append(c.cs.s, "INORDER")
-	return (FtSearchTagsInorder)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchTagsInorder)
 }
 
 func (c FtSearchInFieldsField) Language(language string) FtSearchLanguage {
-	c.cs.s = append(c.cs.s, "LANGUAGE", language)
-	return (FtSearchLanguage)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchLanguage)
 }
 
 func (c FtSearchInFieldsField) Expander(expander string) FtSearchExpander {
-	c.cs.s = append(c.cs.s, "EXPANDER", expander)
-	return (FtSearchExpander)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchExpander)
 }
 
 func (c FtSearchInFieldsField) Scorer(scorer string) FtSearchScorer {
-	c.cs.s = append(c.cs.s, "SCORER", scorer)
-	return (FtSearchScorer)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchScorer)
 }
 
 func (c FtSearchInFieldsField) Explainscore() FtSearchExplainscore {
-	c.cs.s = append(c.cs.s, "EXPLAINSCORE")
-	return (FtSearchExplainscore)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchExplainscore)
 }
 
 func (c FtSearchInFieldsField) Payload(payload string) FtSearchPayload {
-	c.cs.s = append(c.cs.s, "PAYLOAD", payload)
-	return (FtSearchPayload)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchPayload)
 }
 
 func (c FtSearchInFieldsField) Sortby(sortby string) FtSearchSortbySortby {
-	c.cs.s = append(c.cs.s, "SORTBY", sortby)
-	return (FtSearchSortbySortby)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSortbySortby)
 }
 
 func (c FtSearchInFieldsField) Limit() FtSearchLimitLimit {
-	c.cs.s = append(c.cs.s, "LIMIT")
-	return (FtSearchLimitLimit)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchLimitLimit)
 }
 
 func (c FtSearchInFieldsField) Params() FtSearchParamsParams {
-	c.cs.s = append(c.cs.s, "PARAMS")
-	return (FtSearchParamsParams)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchParamsParams)
 }
 
 func (c FtSearchInFieldsField) Dialect(dialect int64) FtSearchDialect {
-	c.cs.s = append(c.cs.s, "DIALECT", strconv.FormatInt(dialect, 10))
-	return (FtSearchDialect)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchDialect)
 }
 
-func (c FtSearchInFieldsField) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c FtSearchInFieldsField) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type FtSearchInFieldsInfields Incomplete
 
 func (c FtSearchInFieldsInfields) Field(field ...string) FtSearchInFieldsField {
-	c.cs.s = append(c.cs.s, field...)
-	return (FtSearchInFieldsField)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchInFieldsField)
 }
 
 type FtSearchInKeysInkeys Incomplete
 
 func (c FtSearchInKeysInkeys) Key(key ...string) FtSearchInKeysKey {
-	c.cs.s = append(c.cs.s, key...)
-	return (FtSearchInKeysKey)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchInKeysKey)
 }
 
 type FtSearchInKeysKey Incomplete
 
 func (c FtSearchInKeysKey) Key(key ...string) FtSearchInKeysKey {
-	c.cs.s = append(c.cs.s, key...)
-	return c
+	_ = "STUB: not implemented"
+	return *new(FtSearchInKeysKey)
 }
 
 func (c FtSearchInKeysKey) Infields(count string) FtSearchInFieldsInfields {
-	c.cs.s = append(c.cs.s, "INFIELDS", count)
-	return (FtSearchInFieldsInfields)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchInFieldsInfields)
 }
 
 func (c FtSearchInKeysKey) Return(count string) FtSearchReturnReturn {
-	c.cs.s = append(c.cs.s, "RETURN", count)
-	return (FtSearchReturnReturn)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchReturnReturn)
 }
 
 func (c FtSearchInKeysKey) Summarize() FtSearchSummarizeSummarize {
-	c.cs.s = append(c.cs.s, "SUMMARIZE")
-	return (FtSearchSummarizeSummarize)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSummarizeSummarize)
 }
 
 func (c FtSearchInKeysKey) Highlight() FtSearchHighlightHighlight {
-	c.cs.s = append(c.cs.s, "HIGHLIGHT")
-	return (FtSearchHighlightHighlight)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchHighlightHighlight)
 }
 
 func (c FtSearchInKeysKey) Slop(slop int64) FtSearchSlop {
-	c.cs.s = append(c.cs.s, "SLOP", strconv.FormatInt(slop, 10))
-	return (FtSearchSlop)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSlop)
 }
 
 func (c FtSearchInKeysKey) Timeout(timeout int64) FtSearchTimeout {
-	c.cs.s = append(c.cs.s, "TIMEOUT", strconv.FormatInt(timeout, 10))
-	return (FtSearchTimeout)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchTimeout)
 }
 
 func (c FtSearchInKeysKey) Inorder() FtSearchTagsInorder {
-	c.cs.s = append(c.cs.s, "INORDER")
-	return (FtSearchTagsInorder)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchTagsInorder)
 }
 
 func (c FtSearchInKeysKey) Language(language string) FtSearchLanguage {
-	c.cs.s = append(c.cs.s, "LANGUAGE", language)
-	return (FtSearchLanguage)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchLanguage)
 }
 
 func (c FtSearchInKeysKey) Expander(expander string) FtSearchExpander {
-	c.cs.s = append(c.cs.s, "EXPANDER", expander)
-	return (FtSearchExpander)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchExpander)
 }
 
 func (c FtSearchInKeysKey) Scorer(scorer string) FtSearchScorer {
-	c.cs.s = append(c.cs.s, "SCORER", scorer)
-	return (FtSearchScorer)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchScorer)
 }
 
 func (c FtSearchInKeysKey) Explainscore() FtSearchExplainscore {
-	c.cs.s = append(c.cs.s, "EXPLAINSCORE")
-	return (FtSearchExplainscore)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchExplainscore)
 }
 
 func (c FtSearchInKeysKey) Payload(payload string) FtSearchPayload {
-	c.cs.s = append(c.cs.s, "PAYLOAD", payload)
-	return (FtSearchPayload)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchPayload)
 }
 
 func (c FtSearchInKeysKey) Sortby(sortby string) FtSearchSortbySortby {
-	c.cs.s = append(c.cs.s, "SORTBY", sortby)
-	return (FtSearchSortbySortby)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSortbySortby)
 }
 
 func (c FtSearchInKeysKey) Limit() FtSearchLimitLimit {
-	c.cs.s = append(c.cs.s, "LIMIT")
-	return (FtSearchLimitLimit)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchLimitLimit)
 }
 
 func (c FtSearchInKeysKey) Params() FtSearchParamsParams {
-	c.cs.s = append(c.cs.s, "PARAMS")
-	return (FtSearchParamsParams)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchParamsParams)
 }
 
 func (c FtSearchInKeysKey) Dialect(dialect int64) FtSearchDialect {
-	c.cs.s = append(c.cs.s, "DIALECT", strconv.FormatInt(dialect, 10))
-	return (FtSearchDialect)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchDialect)
 }
 
-func (c FtSearchInKeysKey) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c FtSearchInKeysKey) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type FtSearchIndex Incomplete
 
 func (c FtSearchIndex) Query(query string) FtSearchQuery {
-	c.cs.s = append(c.cs.s, query)
-	return (FtSearchQuery)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchQuery)
 }
 
 type FtSearchLanguage Incomplete
 
 func (c FtSearchLanguage) Expander(expander string) FtSearchExpander {
-	c.cs.s = append(c.cs.s, "EXPANDER", expander)
-	return (FtSearchExpander)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchExpander)
 }
 
 func (c FtSearchLanguage) Scorer(scorer string) FtSearchScorer {
-	c.cs.s = append(c.cs.s, "SCORER", scorer)
-	return (FtSearchScorer)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchScorer)
 }
 
 func (c FtSearchLanguage) Explainscore() FtSearchExplainscore {
-	c.cs.s = append(c.cs.s, "EXPLAINSCORE")
-	return (FtSearchExplainscore)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchExplainscore)
 }
 
 func (c FtSearchLanguage) Payload(payload string) FtSearchPayload {
-	c.cs.s = append(c.cs.s, "PAYLOAD", payload)
-	return (FtSearchPayload)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchPayload)
 }
 
 func (c FtSearchLanguage) Sortby(sortby string) FtSearchSortbySortby {
-	c.cs.s = append(c.cs.s, "SORTBY", sortby)
-	return (FtSearchSortbySortby)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSortbySortby)
 }
 
 func (c FtSearchLanguage) Limit() FtSearchLimitLimit {
-	c.cs.s = append(c.cs.s, "LIMIT")
-	return (FtSearchLimitLimit)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchLimitLimit)
 }
 
 func (c FtSearchLanguage) Params() FtSearchParamsParams {
-	c.cs.s = append(c.cs.s, "PARAMS")
-	return (FtSearchParamsParams)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchParamsParams)
 }
 
 func (c FtSearchLanguage) Dialect(dialect int64) FtSearchDialect {
-	c.cs.s = append(c.cs.s, "DIALECT", strconv.FormatInt(dialect, 10))
-	return (FtSearchDialect)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchDialect)
 }
 
-func (c FtSearchLanguage) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c FtSearchLanguage) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type FtSearchLimitLimit Incomplete
 
 func (c FtSearchLimitLimit) OffsetNum(offset int64, num int64) FtSearchLimitOffsetNum {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(offset, 10), strconv.FormatInt(num, 10))
-	return (FtSearchLimitOffsetNum)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchLimitOffsetNum)
 }
 
 type FtSearchLimitOffsetNum Incomplete
 
 func (c FtSearchLimitOffsetNum) Params() FtSearchParamsParams {
-	c.cs.s = append(c.cs.s, "PARAMS")
-	return (FtSearchParamsParams)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchParamsParams)
 }
 
 func (c FtSearchLimitOffsetNum) Dialect(dialect int64) FtSearchDialect {
-	c.cs.s = append(c.cs.s, "DIALECT", strconv.FormatInt(dialect, 10))
-	return (FtSearchDialect)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchDialect)
 }
 
 func (c FtSearchLimitOffsetNum) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type FtSearchNocontent Incomplete
 
 func (c FtSearchNocontent) Verbatim() FtSearchVerbatim {
-	c.cs.s = append(c.cs.s, "VERBATIM")
-	return (FtSearchVerbatim)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchVerbatim)
 }
 
 func (c FtSearchNocontent) Nostopwords() FtSearchNostopwords {
-	c.cs.s = append(c.cs.s, "NOSTOPWORDS")
-	return (FtSearchNostopwords)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchNostopwords)
 }
 
 func (c FtSearchNocontent) Withscores() FtSearchWithscores {
-	c.cs.s = append(c.cs.s, "WITHSCORES")
-	return (FtSearchWithscores)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchWithscores)
 }
 
 func (c FtSearchNocontent) Withpayloads() FtSearchWithpayloads {
-	c.cs.s = append(c.cs.s, "WITHPAYLOADS")
-	return (FtSearchWithpayloads)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchWithpayloads)
 }
 
 func (c FtSearchNocontent) Withsortkeys() FtSearchWithsortkeys {
-	c.cs.s = append(c.cs.s, "WITHSORTKEYS")
-	return (FtSearchWithsortkeys)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchWithsortkeys)
 }
 
 func (c FtSearchNocontent) Filter(numericField string) FtSearchFilterFilter {
-	c.cs.s = append(c.cs.s, "FILTER", numericField)
-	return (FtSearchFilterFilter)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchFilterFilter)
 }
 
 func (c FtSearchNocontent) Geofilter(geoField string) FtSearchGeoFilterGeofilter {
-	c.cs.s = append(c.cs.s, "GEOFILTER", geoField)
-	return (FtSearchGeoFilterGeofilter)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchGeoFilterGeofilter)
 }
 
 func (c FtSearchNocontent) Inkeys(count string) FtSearchInKeysInkeys {
-	c.cs.s = append(c.cs.s, "INKEYS", count)
-	return (FtSearchInKeysInkeys)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchInKeysInkeys)
 }
 
 func (c FtSearchNocontent) Infields(count string) FtSearchInFieldsInfields {
-	c.cs.s = append(c.cs.s, "INFIELDS", count)
-	return (FtSearchInFieldsInfields)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchInFieldsInfields)
 }
 
 func (c FtSearchNocontent) Return(count string) FtSearchReturnReturn {
-	c.cs.s = append(c.cs.s, "RETURN", count)
-	return (FtSearchReturnReturn)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchReturnReturn)
 }
 
 func (c FtSearchNocontent) Summarize() FtSearchSummarizeSummarize {
-	c.cs.s = append(c.cs.s, "SUMMARIZE")
-	return (FtSearchSummarizeSummarize)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSummarizeSummarize)
 }
 
 func (c FtSearchNocontent) Highlight() FtSearchHighlightHighlight {
-	c.cs.s = append(c.cs.s, "HIGHLIGHT")
-	return (FtSearchHighlightHighlight)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchHighlightHighlight)
 }
 
 func (c FtSearchNocontent) Slop(slop int64) FtSearchSlop {
-	c.cs.s = append(c.cs.s, "SLOP", strconv.FormatInt(slop, 10))
-	return (FtSearchSlop)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSlop)
 }
 
 func (c FtSearchNocontent) Timeout(timeout int64) FtSearchTimeout {
-	c.cs.s = append(c.cs.s, "TIMEOUT", strconv.FormatInt(timeout, 10))
-	return (FtSearchTimeout)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchTimeout)
 }
 
 func (c FtSearchNocontent) Inorder() FtSearchTagsInorder {
-	c.cs.s = append(c.cs.s, "INORDER")
-	return (FtSearchTagsInorder)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchTagsInorder)
 }
 
 func (c FtSearchNocontent) Language(language string) FtSearchLanguage {
-	c.cs.s = append(c.cs.s, "LANGUAGE", language)
-	return (FtSearchLanguage)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchLanguage)
 }
 
 func (c FtSearchNocontent) Expander(expander string) FtSearchExpander {
-	c.cs.s = append(c.cs.s, "EXPANDER", expander)
-	return (FtSearchExpander)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchExpander)
 }
 
 func (c FtSearchNocontent) Scorer(scorer string) FtSearchScorer {
-	c.cs.s = append(c.cs.s, "SCORER", scorer)
-	return (FtSearchScorer)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchScorer)
 }
 
 func (c FtSearchNocontent) Explainscore() FtSearchExplainscore {
-	c.cs.s = append(c.cs.s, "EXPLAINSCORE")
-	return (FtSearchExplainscore)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchExplainscore)
 }
 
 func (c FtSearchNocontent) Payload(payload string) FtSearchPayload {
-	c.cs.s = append(c.cs.s, "PAYLOAD", payload)
-	return (FtSearchPayload)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchPayload)
 }
 
 func (c FtSearchNocontent) Sortby(sortby string) FtSearchSortbySortby {
-	c.cs.s = append(c.cs.s, "SORTBY", sortby)
-	return (FtSearchSortbySortby)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSortbySortby)
 }
 
 func (c FtSearchNocontent) Limit() FtSearchLimitLimit {
-	c.cs.s = append(c.cs.s, "LIMIT")
-	return (FtSearchLimitLimit)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchLimitLimit)
 }
 
 func (c FtSearchNocontent) Params() FtSearchParamsParams {
-	c.cs.s = append(c.cs.s, "PARAMS")
-	return (FtSearchParamsParams)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchParamsParams)
 }
 
 func (c FtSearchNocontent) Dialect(dialect int64) FtSearchDialect {
-	c.cs.s = append(c.cs.s, "DIALECT", strconv.FormatInt(dialect, 10))
-	return (FtSearchDialect)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchDialect)
 }
 
-func (c FtSearchNocontent) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c FtSearchNocontent) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type FtSearchNostopwords Incomplete
 
 func (c FtSearchNostopwords) Withscores() FtSearchWithscores {
-	c.cs.s = append(c.cs.s, "WITHSCORES")
-	return (FtSearchWithscores)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchWithscores)
 }
 
 func (c FtSearchNostopwords) Withpayloads() FtSearchWithpayloads {
-	c.cs.s = append(c.cs.s, "WITHPAYLOADS")
-	return (FtSearchWithpayloads)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchWithpayloads)
 }
 
 func (c FtSearchNostopwords) Withsortkeys() FtSearchWithsortkeys {
-	c.cs.s = append(c.cs.s, "WITHSORTKEYS")
-	return (FtSearchWithsortkeys)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchWithsortkeys)
 }
 
 func (c FtSearchNostopwords) Filter(numericField string) FtSearchFilterFilter {
-	c.cs.s = append(c.cs.s, "FILTER", numericField)
-	return (FtSearchFilterFilter)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchFilterFilter)
 }
 
 func (c FtSearchNostopwords) Geofilter(geoField string) FtSearchGeoFilterGeofilter {
-	c.cs.s = append(c.cs.s, "GEOFILTER", geoField)
-	return (FtSearchGeoFilterGeofilter)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchGeoFilterGeofilter)
 }
 
 func (c FtSearchNostopwords) Inkeys(count string) FtSearchInKeysInkeys {
-	c.cs.s = append(c.cs.s, "INKEYS", count)
-	return (FtSearchInKeysInkeys)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchInKeysInkeys)
 }
 
 func (c FtSearchNostopwords) Infields(count string) FtSearchInFieldsInfields {
-	c.cs.s = append(c.cs.s, "INFIELDS", count)
-	return (FtSearchInFieldsInfields)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchInFieldsInfields)
 }
 
 func (c FtSearchNostopwords) Return(count string) FtSearchReturnReturn {
-	c.cs.s = append(c.cs.s, "RETURN", count)
-	return (FtSearchReturnReturn)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchReturnReturn)
 }
 
 func (c FtSearchNostopwords) Summarize() FtSearchSummarizeSummarize {
-	c.cs.s = append(c.cs.s, "SUMMARIZE")
-	return (FtSearchSummarizeSummarize)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSummarizeSummarize)
 }
 
 func (c FtSearchNostopwords) Highlight() FtSearchHighlightHighlight {
-	c.cs.s = append(c.cs.s, "HIGHLIGHT")
-	return (FtSearchHighlightHighlight)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchHighlightHighlight)
 }
 
 func (c FtSearchNostopwords) Slop(slop int64) FtSearchSlop {
-	c.cs.s = append(c.cs.s, "SLOP", strconv.FormatInt(slop, 10))
-	return (FtSearchSlop)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSlop)
 }
 
 func (c FtSearchNostopwords) Timeout(timeout int64) FtSearchTimeout {
-	c.cs.s = append(c.cs.s, "TIMEOUT", strconv.FormatInt(timeout, 10))
-	return (FtSearchTimeout)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchTimeout)
 }
 
 func (c FtSearchNostopwords) Inorder() FtSearchTagsInorder {
-	c.cs.s = append(c.cs.s, "INORDER")
-	return (FtSearchTagsInorder)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchTagsInorder)
 }
 
 func (c FtSearchNostopwords) Language(language string) FtSearchLanguage {
-	c.cs.s = append(c.cs.s, "LANGUAGE", language)
-	return (FtSearchLanguage)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchLanguage)
 }
 
 func (c FtSearchNostopwords) Expander(expander string) FtSearchExpander {
-	c.cs.s = append(c.cs.s, "EXPANDER", expander)
-	return (FtSearchExpander)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchExpander)
 }
 
 func (c FtSearchNostopwords) Scorer(scorer string) FtSearchScorer {
-	c.cs.s = append(c.cs.s, "SCORER", scorer)
-	return (FtSearchScorer)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchScorer)
 }
 
 func (c FtSearchNostopwords) Explainscore() FtSearchExplainscore {
-	c.cs.s = append(c.cs.s, "EXPLAINSCORE")
-	return (FtSearchExplainscore)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchExplainscore)
 }
 
 func (c FtSearchNostopwords) Payload(payload string) FtSearchPayload {
-	c.cs.s = append(c.cs.s, "PAYLOAD", payload)
-	return (FtSearchPayload)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchPayload)
 }
 
 func (c FtSearchNostopwords) Sortby(sortby string) FtSearchSortbySortby {
-	c.cs.s = append(c.cs.s, "SORTBY", sortby)
-	return (FtSearchSortbySortby)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSortbySortby)
 }
 
 func (c FtSearchNostopwords) Limit() FtSearchLimitLimit {
-	c.cs.s = append(c.cs.s, "LIMIT")
-	return (FtSearchLimitLimit)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchLimitLimit)
 }
 
 func (c FtSearchNostopwords) Params() FtSearchParamsParams {
-	c.cs.s = append(c.cs.s, "PARAMS")
-	return (FtSearchParamsParams)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchParamsParams)
 }
 
 func (c FtSearchNostopwords) Dialect(dialect int64) FtSearchDialect {
-	c.cs.s = append(c.cs.s, "DIALECT", strconv.FormatInt(dialect, 10))
-	return (FtSearchDialect)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchDialect)
 }
 
-func (c FtSearchNostopwords) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c FtSearchNostopwords) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type FtSearchParamsNameValue Incomplete
 
 func (c FtSearchParamsNameValue) NameValue(name string, value string) FtSearchParamsNameValue {
-	c.cs.s = append(c.cs.s, name, value)
-	return c
+	_ = "STUB: not implemented"
+	return *new(FtSearchParamsNameValue)
 }
 
 func (c FtSearchParamsNameValue) Dialect(dialect int64) FtSearchDialect {
-	c.cs.s = append(c.cs.s, "DIALECT", strconv.FormatInt(dialect, 10))
-	return (FtSearchDialect)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchDialect)
 }
 
 func (c FtSearchParamsNameValue) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type FtSearchParamsNargs Incomplete
 
 func (c FtSearchParamsNargs) NameValue() FtSearchParamsNameValue {
-	return (FtSearchParamsNameValue)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchParamsNameValue)
 }
 
 type FtSearchParamsParams Incomplete
 
 func (c FtSearchParamsParams) Nargs(nargs int64) FtSearchParamsNargs {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(nargs, 10))
-	return (FtSearchParamsNargs)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchParamsNargs)
 }
 
 type FtSearchPayload Incomplete
 
 func (c FtSearchPayload) Sortby(sortby string) FtSearchSortbySortby {
-	c.cs.s = append(c.cs.s, "SORTBY", sortby)
-	return (FtSearchSortbySortby)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSortbySortby)
 }
 
 func (c FtSearchPayload) Limit() FtSearchLimitLimit {
-	c.cs.s = append(c.cs.s, "LIMIT")
-	return (FtSearchLimitLimit)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchLimitLimit)
 }
 
 func (c FtSearchPayload) Params() FtSearchParamsParams {
-	c.cs.s = append(c.cs.s, "PARAMS")
-	return (FtSearchParamsParams)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchParamsParams)
 }
 
 func (c FtSearchPayload) Dialect(dialect int64) FtSearchDialect {
-	c.cs.s = append(c.cs.s, "DIALECT", strconv.FormatInt(dialect, 10))
-	return (FtSearchDialect)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchDialect)
 }
 
-func (c FtSearchPayload) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c FtSearchPayload) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type FtSearchQuery Incomplete
 
 func (c FtSearchQuery) Nocontent() FtSearchNocontent {
-	c.cs.s = append(c.cs.s, "NOCONTENT")
-	return (FtSearchNocontent)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchNocontent)
 }
 
 func (c FtSearchQuery) Verbatim() FtSearchVerbatim {
-	c.cs.s = append(c.cs.s, "VERBATIM")
-	return (FtSearchVerbatim)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchVerbatim)
 }
 
 func (c FtSearchQuery) Nostopwords() FtSearchNostopwords {
-	c.cs.s = append(c.cs.s, "NOSTOPWORDS")
-	return (FtSearchNostopwords)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchNostopwords)
 }
 
 func (c FtSearchQuery) Withscores() FtSearchWithscores {
-	c.cs.s = append(c.cs.s, "WITHSCORES")
-	return (FtSearchWithscores)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchWithscores)
 }
 
 func (c FtSearchQuery) Withpayloads() FtSearchWithpayloads {
-	c.cs.s = append(c.cs.s, "WITHPAYLOADS")
-	return (FtSearchWithpayloads)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchWithpayloads)
 }
 
 func (c FtSearchQuery) Withsortkeys() FtSearchWithsortkeys {
-	c.cs.s = append(c.cs.s, "WITHSORTKEYS")
-	return (FtSearchWithsortkeys)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchWithsortkeys)
 }
 
 func (c FtSearchQuery) Filter(numericField string) FtSearchFilterFilter {
-	c.cs.s = append(c.cs.s, "FILTER", numericField)
-	return (FtSearchFilterFilter)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchFilterFilter)
 }
 
 func (c FtSearchQuery) Geofilter(geoField string) FtSearchGeoFilterGeofilter {
-	c.cs.s = append(c.cs.s, "GEOFILTER", geoField)
-	return (FtSearchGeoFilterGeofilter)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchGeoFilterGeofilter)
 }
 
 func (c FtSearchQuery) Inkeys(count string) FtSearchInKeysInkeys {
-	c.cs.s = append(c.cs.s, "INKEYS", count)
-	return (FtSearchInKeysInkeys)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchInKeysInkeys)
 }
 
 func (c FtSearchQuery) Infields(count string) FtSearchInFieldsInfields {
-	c.cs.s = append(c.cs.s, "INFIELDS", count)
-	return (FtSearchInFieldsInfields)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchInFieldsInfields)
 }
 
 func (c FtSearchQuery) Return(count string) FtSearchReturnReturn {
-	c.cs.s = append(c.cs.s, "RETURN", count)
-	return (FtSearchReturnReturn)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchReturnReturn)
 }
 
 func (c FtSearchQuery) Summarize() FtSearchSummarizeSummarize {
-	c.cs.s = append(c.cs.s, "SUMMARIZE")
-	return (FtSearchSummarizeSummarize)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSummarizeSummarize)
 }
 
 func (c FtSearchQuery) Highlight() FtSearchHighlightHighlight {
-	c.cs.s = append(c.cs.s, "HIGHLIGHT")
-	return (FtSearchHighlightHighlight)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchHighlightHighlight)
 }
 
 func (c FtSearchQuery) Slop(slop int64) FtSearchSlop {
-	c.cs.s = append(c.cs.s, "SLOP", strconv.FormatInt(slop, 10))
-	return (FtSearchSlop)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSlop)
 }
 
 func (c FtSearchQuery) Timeout(timeout int64) FtSearchTimeout {
-	c.cs.s = append(c.cs.s, "TIMEOUT", strconv.FormatInt(timeout, 10))
-	return (FtSearchTimeout)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchTimeout)
 }
 
 func (c FtSearchQuery) Inorder() FtSearchTagsInorder {
-	c.cs.s = append(c.cs.s, "INORDER")
-	return (FtSearchTagsInorder)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchTagsInorder)
 }
 
 func (c FtSearchQuery) Language(language string) FtSearchLanguage {
-	c.cs.s = append(c.cs.s, "LANGUAGE", language)
-	return (FtSearchLanguage)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchLanguage)
 }
 
 func (c FtSearchQuery) Expander(expander string) FtSearchExpander {
-	c.cs.s = append(c.cs.s, "EXPANDER", expander)
-	return (FtSearchExpander)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchExpander)
 }
 
 func (c FtSearchQuery) Scorer(scorer string) FtSearchScorer {
-	c.cs.s = append(c.cs.s, "SCORER", scorer)
-	return (FtSearchScorer)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchScorer)
 }
 
 func (c FtSearchQuery) Explainscore() FtSearchExplainscore {
-	c.cs.s = append(c.cs.s, "EXPLAINSCORE")
-	return (FtSearchExplainscore)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchExplainscore)
 }
 
 func (c FtSearchQuery) Payload(payload string) FtSearchPayload {
-	c.cs.s = append(c.cs.s, "PAYLOAD", payload)
-	return (FtSearchPayload)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchPayload)
 }
 
 func (c FtSearchQuery) Sortby(sortby string) FtSearchSortbySortby {
-	c.cs.s = append(c.cs.s, "SORTBY", sortby)
-	return (FtSearchSortbySortby)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSortbySortby)
 }
 
 func (c FtSearchQuery) Limit() FtSearchLimitLimit {
-	c.cs.s = append(c.cs.s, "LIMIT")
-	return (FtSearchLimitLimit)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchLimitLimit)
 }
 
 func (c FtSearchQuery) Params() FtSearchParamsParams {
-	c.cs.s = append(c.cs.s, "PARAMS")
-	return (FtSearchParamsParams)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchParamsParams)
 }
 
 func (c FtSearchQuery) Dialect(dialect int64) FtSearchDialect {
-	c.cs.s = append(c.cs.s, "DIALECT", strconv.FormatInt(dialect, 10))
-	return (FtSearchDialect)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchDialect)
 }
 
-func (c FtSearchQuery) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c FtSearchQuery) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type FtSearchReturnIdentifiersAs Incomplete
 
 func (c FtSearchReturnIdentifiersAs) Identifier(identifier string) FtSearchReturnIdentifiersIdentifier {
-	c.cs.s = append(c.cs.s, identifier)
-	return (FtSearchReturnIdentifiersIdentifier)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchReturnIdentifiersIdentifier)
 }
 
 func (c FtSearchReturnIdentifiersAs) Summarize() FtSearchSummarizeSummarize {
-	c.cs.s = append(c.cs.s, "SUMMARIZE")
-	return (FtSearchSummarizeSummarize)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSummarizeSummarize)
 }
 
 func (c FtSearchReturnIdentifiersAs) Highlight() FtSearchHighlightHighlight {
-	c.cs.s = append(c.cs.s, "HIGHLIGHT")
-	return (FtSearchHighlightHighlight)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchHighlightHighlight)
 }
 
 func (c FtSearchReturnIdentifiersAs) Slop(slop int64) FtSearchSlop {
-	c.cs.s = append(c.cs.s, "SLOP", strconv.FormatInt(slop, 10))
-	return (FtSearchSlop)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSlop)
 }
 
 func (c FtSearchReturnIdentifiersAs) Timeout(timeout int64) FtSearchTimeout {
-	c.cs.s = append(c.cs.s, "TIMEOUT", strconv.FormatInt(timeout, 10))
-	return (FtSearchTimeout)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchTimeout)
 }
 
 func (c FtSearchReturnIdentifiersAs) Inorder() FtSearchTagsInorder {
-	c.cs.s = append(c.cs.s, "INORDER")
-	return (FtSearchTagsInorder)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchTagsInorder)
 }
 
 func (c FtSearchReturnIdentifiersAs) Language(language string) FtSearchLanguage {
-	c.cs.s = append(c.cs.s, "LANGUAGE", language)
-	return (FtSearchLanguage)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchLanguage)
 }
 
 func (c FtSearchReturnIdentifiersAs) Expander(expander string) FtSearchExpander {
-	c.cs.s = append(c.cs.s, "EXPANDER", expander)
-	return (FtSearchExpander)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchExpander)
 }
 
 func (c FtSearchReturnIdentifiersAs) Scorer(scorer string) FtSearchScorer {
-	c.cs.s = append(c.cs.s, "SCORER", scorer)
-	return (FtSearchScorer)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchScorer)
 }
 
 func (c FtSearchReturnIdentifiersAs) Explainscore() FtSearchExplainscore {
-	c.cs.s = append(c.cs.s, "EXPLAINSCORE")
-	return (FtSearchExplainscore)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchExplainscore)
 }
 
 func (c FtSearchReturnIdentifiersAs) Payload(payload string) FtSearchPayload {
-	c.cs.s = append(c.cs.s, "PAYLOAD", payload)
-	return (FtSearchPayload)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchPayload)
 }
 
 func (c FtSearchReturnIdentifiersAs) Sortby(sortby string) FtSearchSortbySortby {
-	c.cs.s = append(c.cs.s, "SORTBY", sortby)
-	return (FtSearchSortbySortby)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSortbySortby)
 }
 
 func (c FtSearchReturnIdentifiersAs) Limit() FtSearchLimitLimit {
-	c.cs.s = append(c.cs.s, "LIMIT")
-	return (FtSearchLimitLimit)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchLimitLimit)
 }
 
 func (c FtSearchReturnIdentifiersAs) Params() FtSearchParamsParams {
-	c.cs.s = append(c.cs.s, "PARAMS")
-	return (FtSearchParamsParams)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchParamsParams)
 }
 
 func (c FtSearchReturnIdentifiersAs) Dialect(dialect int64) FtSearchDialect {
-	c.cs.s = append(c.cs.s, "DIALECT", strconv.FormatInt(dialect, 10))
-	return (FtSearchDialect)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchDialect)
 }
 
 func (c FtSearchReturnIdentifiersAs) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type FtSearchReturnIdentifiersIdentifier Incomplete
 
 func (c FtSearchReturnIdentifiersIdentifier) As(property string) FtSearchReturnIdentifiersAs {
-	c.cs.s = append(c.cs.s, "AS", property)
-	return (FtSearchReturnIdentifiersAs)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchReturnIdentifiersAs)
 }
 
 func (c FtSearchReturnIdentifiersIdentifier) Identifier(identifier string) FtSearchReturnIdentifiersIdentifier {
-	c.cs.s = append(c.cs.s, identifier)
-	return c
+	_ = "STUB: not implemented"
+	return *new(FtSearchReturnIdentifiersIdentifier)
 }
 
 func (c FtSearchReturnIdentifiersIdentifier) Summarize() FtSearchSummarizeSummarize {
-	c.cs.s = append(c.cs.s, "SUMMARIZE")
-	return (FtSearchSummarizeSummarize)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSummarizeSummarize)
 }
 
 func (c FtSearchReturnIdentifiersIdentifier) Highlight() FtSearchHighlightHighlight {
-	c.cs.s = append(c.cs.s, "HIGHLIGHT")
-	return (FtSearchHighlightHighlight)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchHighlightHighlight)
 }
 
 func (c FtSearchReturnIdentifiersIdentifier) Slop(slop int64) FtSearchSlop {
-	c.cs.s = append(c.cs.s, "SLOP", strconv.FormatInt(slop, 10))
-	return (FtSearchSlop)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSlop)
 }
 
 func (c FtSearchReturnIdentifiersIdentifier) Timeout(timeout int64) FtSearchTimeout {
-	c.cs.s = append(c.cs.s, "TIMEOUT", strconv.FormatInt(timeout, 10))
-	return (FtSearchTimeout)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchTimeout)
 }
 
 func (c FtSearchReturnIdentifiersIdentifier) Inorder() FtSearchTagsInorder {
-	c.cs.s = append(c.cs.s, "INORDER")
-	return (FtSearchTagsInorder)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchTagsInorder)
 }
 
 func (c FtSearchReturnIdentifiersIdentifier) Language(language string) FtSearchLanguage {
-	c.cs.s = append(c.cs.s, "LANGUAGE", language)
-	return (FtSearchLanguage)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchLanguage)
 }
 
 func (c FtSearchReturnIdentifiersIdentifier) Expander(expander string) FtSearchExpander {
-	c.cs.s = append(c.cs.s, "EXPANDER", expander)
-	return (FtSearchExpander)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchExpander)
 }
 
 func (c FtSearchReturnIdentifiersIdentifier) Scorer(scorer string) FtSearchScorer {
-	c.cs.s = append(c.cs.s, "SCORER", scorer)
-	return (FtSearchScorer)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchScorer)
 }
 
 func (c FtSearchReturnIdentifiersIdentifier) Explainscore() FtSearchExplainscore {
-	c.cs.s = append(c.cs.s, "EXPLAINSCORE")
-	return (FtSearchExplainscore)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchExplainscore)
 }
 
 func (c FtSearchReturnIdentifiersIdentifier) Payload(payload string) FtSearchPayload {
-	c.cs.s = append(c.cs.s, "PAYLOAD", payload)
-	return (FtSearchPayload)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchPayload)
 }
 
 func (c FtSearchReturnIdentifiersIdentifier) Sortby(sortby string) FtSearchSortbySortby {
-	c.cs.s = append(c.cs.s, "SORTBY", sortby)
-	return (FtSearchSortbySortby)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSortbySortby)
 }
 
 func (c FtSearchReturnIdentifiersIdentifier) Limit() FtSearchLimitLimit {
-	c.cs.s = append(c.cs.s, "LIMIT")
-	return (FtSearchLimitLimit)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchLimitLimit)
 }
 
 func (c FtSearchReturnIdentifiersIdentifier) Params() FtSearchParamsParams {
-	c.cs.s = append(c.cs.s, "PARAMS")
-	return (FtSearchParamsParams)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchParamsParams)
 }
 
 func (c FtSearchReturnIdentifiersIdentifier) Dialect(dialect int64) FtSearchDialect {
-	c.cs.s = append(c.cs.s, "DIALECT", strconv.FormatInt(dialect, 10))
-	return (FtSearchDialect)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchDialect)
 }
 
 func (c FtSearchReturnIdentifiersIdentifier) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type FtSearchReturnReturn Incomplete
 
 func (c FtSearchReturnReturn) Identifier(identifier string) FtSearchReturnIdentifiersIdentifier {
-	c.cs.s = append(c.cs.s, identifier)
-	return (FtSearchReturnIdentifiersIdentifier)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchReturnIdentifiersIdentifier)
 }
 
 type FtSearchScorer Incomplete
 
 func (c FtSearchScorer) Explainscore() FtSearchExplainscore {
-	c.cs.s = append(c.cs.s, "EXPLAINSCORE")
-	return (FtSearchExplainscore)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchExplainscore)
 }
 
 func (c FtSearchScorer) Payload(payload string) FtSearchPayload {
-	c.cs.s = append(c.cs.s, "PAYLOAD", payload)
-	return (FtSearchPayload)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchPayload)
 }
 
 func (c FtSearchScorer) Sortby(sortby string) FtSearchSortbySortby {
-	c.cs.s = append(c.cs.s, "SORTBY", sortby)
-	return (FtSearchSortbySortby)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSortbySortby)
 }
 
 func (c FtSearchScorer) Limit() FtSearchLimitLimit {
-	c.cs.s = append(c.cs.s, "LIMIT")
-	return (FtSearchLimitLimit)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchLimitLimit)
 }
 
 func (c FtSearchScorer) Params() FtSearchParamsParams {
-	c.cs.s = append(c.cs.s, "PARAMS")
-	return (FtSearchParamsParams)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchParamsParams)
 }
 
 func (c FtSearchScorer) Dialect(dialect int64) FtSearchDialect {
-	c.cs.s = append(c.cs.s, "DIALECT", strconv.FormatInt(dialect, 10))
-	return (FtSearchDialect)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchDialect)
 }
 
-func (c FtSearchScorer) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c FtSearchScorer) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type FtSearchSlop Incomplete
 
 func (c FtSearchSlop) Timeout(timeout int64) FtSearchTimeout {
-	c.cs.s = append(c.cs.s, "TIMEOUT", strconv.FormatInt(timeout, 10))
-	return (FtSearchTimeout)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchTimeout)
 }
 
 func (c FtSearchSlop) Inorder() FtSearchTagsInorder {
-	c.cs.s = append(c.cs.s, "INORDER")
-	return (FtSearchTagsInorder)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchTagsInorder)
 }
 
 func (c FtSearchSlop) Language(language string) FtSearchLanguage {
-	c.cs.s = append(c.cs.s, "LANGUAGE", language)
-	return (FtSearchLanguage)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchLanguage)
 }
 
 func (c FtSearchSlop) Expander(expander string) FtSearchExpander {
-	c.cs.s = append(c.cs.s, "EXPANDER", expander)
-	return (FtSearchExpander)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchExpander)
 }
 
 func (c FtSearchSlop) Scorer(scorer string) FtSearchScorer {
-	c.cs.s = append(c.cs.s, "SCORER", scorer)
-	return (FtSearchScorer)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchScorer)
 }
 
 func (c FtSearchSlop) Explainscore() FtSearchExplainscore {
-	c.cs.s = append(c.cs.s, "EXPLAINSCORE")
-	return (FtSearchExplainscore)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchExplainscore)
 }
 
 func (c FtSearchSlop) Payload(payload string) FtSearchPayload {
-	c.cs.s = append(c.cs.s, "PAYLOAD", payload)
-	return (FtSearchPayload)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchPayload)
 }
 
 func (c FtSearchSlop) Sortby(sortby string) FtSearchSortbySortby {
-	c.cs.s = append(c.cs.s, "SORTBY", sortby)
-	return (FtSearchSortbySortby)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSortbySortby)
 }
 
 func (c FtSearchSlop) Limit() FtSearchLimitLimit {
-	c.cs.s = append(c.cs.s, "LIMIT")
-	return (FtSearchLimitLimit)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchLimitLimit)
 }
 
 func (c FtSearchSlop) Params() FtSearchParamsParams {
-	c.cs.s = append(c.cs.s, "PARAMS")
-	return (FtSearchParamsParams)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchParamsParams)
 }
 
 func (c FtSearchSlop) Dialect(dialect int64) FtSearchDialect {
-	c.cs.s = append(c.cs.s, "DIALECT", strconv.FormatInt(dialect, 10))
-	return (FtSearchDialect)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchDialect)
 }
 
-func (c FtSearchSlop) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c FtSearchSlop) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type FtSearchSortbyOrderAsc Incomplete
 
 func (c FtSearchSortbyOrderAsc) Withcount() FtSearchSortbyWithcount {
-	c.cs.s = append(c.cs.s, "WITHCOUNT")
-	return (FtSearchSortbyWithcount)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSortbyWithcount)
 }
 
 func (c FtSearchSortbyOrderAsc) Limit() FtSearchLimitLimit {
-	c.cs.s = append(c.cs.s, "LIMIT")
-	return (FtSearchLimitLimit)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchLimitLimit)
 }
 
 func (c FtSearchSortbyOrderAsc) Params() FtSearchParamsParams {
-	c.cs.s = append(c.cs.s, "PARAMS")
-	return (FtSearchParamsParams)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchParamsParams)
 }
 
 func (c FtSearchSortbyOrderAsc) Dialect(dialect int64) FtSearchDialect {
-	c.cs.s = append(c.cs.s, "DIALECT", strconv.FormatInt(dialect, 10))
-	return (FtSearchDialect)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchDialect)
 }
 
 func (c FtSearchSortbyOrderAsc) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type FtSearchSortbyOrderDesc Incomplete
 
 func (c FtSearchSortbyOrderDesc) Withcount() FtSearchSortbyWithcount {
-	c.cs.s = append(c.cs.s, "WITHCOUNT")
-	return (FtSearchSortbyWithcount)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSortbyWithcount)
 }
 
 func (c FtSearchSortbyOrderDesc) Limit() FtSearchLimitLimit {
-	c.cs.s = append(c.cs.s, "LIMIT")
-	return (FtSearchLimitLimit)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchLimitLimit)
 }
 
 func (c FtSearchSortbyOrderDesc) Params() FtSearchParamsParams {
-	c.cs.s = append(c.cs.s, "PARAMS")
-	return (FtSearchParamsParams)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchParamsParams)
 }
 
 func (c FtSearchSortbyOrderDesc) Dialect(dialect int64) FtSearchDialect {
-	c.cs.s = append(c.cs.s, "DIALECT", strconv.FormatInt(dialect, 10))
-	return (FtSearchDialect)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchDialect)
 }
 
 func (c FtSearchSortbyOrderDesc) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type FtSearchSortbySortby Incomplete
 
 func (c FtSearchSortbySortby) Asc() FtSearchSortbyOrderAsc {
-	c.cs.s = append(c.cs.s, "ASC")
-	return (FtSearchSortbyOrderAsc)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSortbyOrderAsc)
 }
 
 func (c FtSearchSortbySortby) Desc() FtSearchSortbyOrderDesc {
-	c.cs.s = append(c.cs.s, "DESC")
-	return (FtSearchSortbyOrderDesc)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSortbyOrderDesc)
 }
 
 func (c FtSearchSortbySortby) Withcount() FtSearchSortbyWithcount {
-	c.cs.s = append(c.cs.s, "WITHCOUNT")
-	return (FtSearchSortbyWithcount)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSortbyWithcount)
 }
 
 func (c FtSearchSortbySortby) Limit() FtSearchLimitLimit {
-	c.cs.s = append(c.cs.s, "LIMIT")
-	return (FtSearchLimitLimit)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchLimitLimit)
 }
 
 func (c FtSearchSortbySortby) Params() FtSearchParamsParams {
-	c.cs.s = append(c.cs.s, "PARAMS")
-	return (FtSearchParamsParams)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchParamsParams)
 }
 
 func (c FtSearchSortbySortby) Dialect(dialect int64) FtSearchDialect {
-	c.cs.s = append(c.cs.s, "DIALECT", strconv.FormatInt(dialect, 10))
-	return (FtSearchDialect)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchDialect)
 }
 
-func (c FtSearchSortbySortby) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c FtSearchSortbySortby) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type FtSearchSortbyWithcount Incomplete
 
 func (c FtSearchSortbyWithcount) Limit() FtSearchLimitLimit {
-	c.cs.s = append(c.cs.s, "LIMIT")
-	return (FtSearchLimitLimit)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchLimitLimit)
 }
 
 func (c FtSearchSortbyWithcount) Params() FtSearchParamsParams {
-	c.cs.s = append(c.cs.s, "PARAMS")
-	return (FtSearchParamsParams)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchParamsParams)
 }
 
 func (c FtSearchSortbyWithcount) Dialect(dialect int64) FtSearchDialect {
-	c.cs.s = append(c.cs.s, "DIALECT", strconv.FormatInt(dialect, 10))
-	return (FtSearchDialect)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchDialect)
 }
 
 func (c FtSearchSortbyWithcount) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type FtSearchSummarizeFieldsField Incomplete
 
 func (c FtSearchSummarizeFieldsField) Field(field ...string) FtSearchSummarizeFieldsField {
-	c.cs.s = append(c.cs.s, field...)
-	return c
+	_ = "STUB: not implemented"
+	return *new(FtSearchSummarizeFieldsField)
 }
 
 func (c FtSearchSummarizeFieldsField) Frags(num int64) FtSearchSummarizeFrags {
-	c.cs.s = append(c.cs.s, "FRAGS", strconv.FormatInt(num, 10))
-	return (FtSearchSummarizeFrags)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSummarizeFrags)
 }
 
 func (c FtSearchSummarizeFieldsField) Len(fragsize int64) FtSearchSummarizeLen {
-	c.cs.s = append(c.cs.s, "LEN", strconv.FormatInt(fragsize, 10))
-	return (FtSearchSummarizeLen)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSummarizeLen)
 }
 
 func (c FtSearchSummarizeFieldsField) Separator(separator string) FtSearchSummarizeSeparator {
-	c.cs.s = append(c.cs.s, "SEPARATOR", separator)
-	return (FtSearchSummarizeSeparator)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSummarizeSeparator)
 }
 
 func (c FtSearchSummarizeFieldsField) Highlight() FtSearchHighlightHighlight {
-	c.cs.s = append(c.cs.s, "HIGHLIGHT")
-	return (FtSearchHighlightHighlight)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchHighlightHighlight)
 }
 
 func (c FtSearchSummarizeFieldsField) Slop(slop int64) FtSearchSlop {
-	c.cs.s = append(c.cs.s, "SLOP", strconv.FormatInt(slop, 10))
-	return (FtSearchSlop)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSlop)
 }
 
 func (c FtSearchSummarizeFieldsField) Timeout(timeout int64) FtSearchTimeout {
-	c.cs.s = append(c.cs.s, "TIMEOUT", strconv.FormatInt(timeout, 10))
-	return (FtSearchTimeout)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchTimeout)
 }
 
 func (c FtSearchSummarizeFieldsField) Inorder() FtSearchTagsInorder {
-	c.cs.s = append(c.cs.s, "INORDER")
-	return (FtSearchTagsInorder)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchTagsInorder)
 }
 
 func (c FtSearchSummarizeFieldsField) Language(language string) FtSearchLanguage {
-	c.cs.s = append(c.cs.s, "LANGUAGE", language)
-	return (FtSearchLanguage)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchLanguage)
 }
 
 func (c FtSearchSummarizeFieldsField) Expander(expander string) FtSearchExpander {
-	c.cs.s = append(c.cs.s, "EXPANDER", expander)
-	return (FtSearchExpander)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchExpander)
 }
 
 func (c FtSearchSummarizeFieldsField) Scorer(scorer string) FtSearchScorer {
-	c.cs.s = append(c.cs.s, "SCORER", scorer)
-	return (FtSearchScorer)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchScorer)
 }
 
 func (c FtSearchSummarizeFieldsField) Explainscore() FtSearchExplainscore {
-	c.cs.s = append(c.cs.s, "EXPLAINSCORE")
-	return (FtSearchExplainscore)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchExplainscore)
 }
 
 func (c FtSearchSummarizeFieldsField) Payload(payload string) FtSearchPayload {
-	c.cs.s = append(c.cs.s, "PAYLOAD", payload)
-	return (FtSearchPayload)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchPayload)
 }
 
 func (c FtSearchSummarizeFieldsField) Sortby(sortby string) FtSearchSortbySortby {
-	c.cs.s = append(c.cs.s, "SORTBY", sortby)
-	return (FtSearchSortbySortby)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSortbySortby)
 }
 
 func (c FtSearchSummarizeFieldsField) Limit() FtSearchLimitLimit {
-	c.cs.s = append(c.cs.s, "LIMIT")
-	return (FtSearchLimitLimit)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchLimitLimit)
 }
 
 func (c FtSearchSummarizeFieldsField) Params() FtSearchParamsParams {
-	c.cs.s = append(c.cs.s, "PARAMS")
-	return (FtSearchParamsParams)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchParamsParams)
 }
 
 func (c FtSearchSummarizeFieldsField) Dialect(dialect int64) FtSearchDialect {
-	c.cs.s = append(c.cs.s, "DIALECT", strconv.FormatInt(dialect, 10))
-	return (FtSearchDialect)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchDialect)
 }
 
 func (c FtSearchSummarizeFieldsField) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type FtSearchSummarizeFieldsFields Incomplete
 
 func (c FtSearchSummarizeFieldsFields) Field(field ...string) FtSearchSummarizeFieldsField {
-	c.cs.s = append(c.cs.s, field...)
-	return (FtSearchSummarizeFieldsField)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSummarizeFieldsField)
 }
 
 type FtSearchSummarizeFrags Incomplete
 
 func (c FtSearchSummarizeFrags) Len(fragsize int64) FtSearchSummarizeLen {
-	c.cs.s = append(c.cs.s, "LEN", strconv.FormatInt(fragsize, 10))
-	return (FtSearchSummarizeLen)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSummarizeLen)
 }
 
 func (c FtSearchSummarizeFrags) Separator(separator string) FtSearchSummarizeSeparator {
-	c.cs.s = append(c.cs.s, "SEPARATOR", separator)
-	return (FtSearchSummarizeSeparator)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSummarizeSeparator)
 }
 
 func (c FtSearchSummarizeFrags) Highlight() FtSearchHighlightHighlight {
-	c.cs.s = append(c.cs.s, "HIGHLIGHT")
-	return (FtSearchHighlightHighlight)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchHighlightHighlight)
 }
 
 func (c FtSearchSummarizeFrags) Slop(slop int64) FtSearchSlop {
-	c.cs.s = append(c.cs.s, "SLOP", strconv.FormatInt(slop, 10))
-	return (FtSearchSlop)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSlop)
 }
 
 func (c FtSearchSummarizeFrags) Timeout(timeout int64) FtSearchTimeout {
-	c.cs.s = append(c.cs.s, "TIMEOUT", strconv.FormatInt(timeout, 10))
-	return (FtSearchTimeout)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchTimeout)
 }
 
 func (c FtSearchSummarizeFrags) Inorder() FtSearchTagsInorder {
-	c.cs.s = append(c.cs.s, "INORDER")
-	return (FtSearchTagsInorder)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchTagsInorder)
 }
 
 func (c FtSearchSummarizeFrags) Language(language string) FtSearchLanguage {
-	c.cs.s = append(c.cs.s, "LANGUAGE", language)
-	return (FtSearchLanguage)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchLanguage)
 }
 
 func (c FtSearchSummarizeFrags) Expander(expander string) FtSearchExpander {
-	c.cs.s = append(c.cs.s, "EXPANDER", expander)
-	return (FtSearchExpander)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchExpander)
 }
 
 func (c FtSearchSummarizeFrags) Scorer(scorer string) FtSearchScorer {
-	c.cs.s = append(c.cs.s, "SCORER", scorer)
-	return (FtSearchScorer)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchScorer)
 }
 
 func (c FtSearchSummarizeFrags) Explainscore() FtSearchExplainscore {
-	c.cs.s = append(c.cs.s, "EXPLAINSCORE")
-	return (FtSearchExplainscore)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchExplainscore)
 }
 
 func (c FtSearchSummarizeFrags) Payload(payload string) FtSearchPayload {
-	c.cs.s = append(c.cs.s, "PAYLOAD", payload)
-	return (FtSearchPayload)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchPayload)
 }
 
 func (c FtSearchSummarizeFrags) Sortby(sortby string) FtSearchSortbySortby {
-	c.cs.s = append(c.cs.s, "SORTBY", sortby)
-	return (FtSearchSortbySortby)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSortbySortby)
 }
 
 func (c FtSearchSummarizeFrags) Limit() FtSearchLimitLimit {
-	c.cs.s = append(c.cs.s, "LIMIT")
-	return (FtSearchLimitLimit)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchLimitLimit)
 }
 
 func (c FtSearchSummarizeFrags) Params() FtSearchParamsParams {
-	c.cs.s = append(c.cs.s, "PARAMS")
-	return (FtSearchParamsParams)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchParamsParams)
 }
 
 func (c FtSearchSummarizeFrags) Dialect(dialect int64) FtSearchDialect {
-	c.cs.s = append(c.cs.s, "DIALECT", strconv.FormatInt(dialect, 10))
-	return (FtSearchDialect)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchDialect)
 }
 
 func (c FtSearchSummarizeFrags) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type FtSearchSummarizeLen Incomplete
 
 func (c FtSearchSummarizeLen) Separator(separator string) FtSearchSummarizeSeparator {
-	c.cs.s = append(c.cs.s, "SEPARATOR", separator)
-	return (FtSearchSummarizeSeparator)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSummarizeSeparator)
 }
 
 func (c FtSearchSummarizeLen) Highlight() FtSearchHighlightHighlight {
-	c.cs.s = append(c.cs.s, "HIGHLIGHT")
-	return (FtSearchHighlightHighlight)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchHighlightHighlight)
 }
 
 func (c FtSearchSummarizeLen) Slop(slop int64) FtSearchSlop {
-	c.cs.s = append(c.cs.s, "SLOP", strconv.FormatInt(slop, 10))
-	return (FtSearchSlop)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSlop)
 }
 
 func (c FtSearchSummarizeLen) Timeout(timeout int64) FtSearchTimeout {
-	c.cs.s = append(c.cs.s, "TIMEOUT", strconv.FormatInt(timeout, 10))
-	return (FtSearchTimeout)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchTimeout)
 }
 
 func (c FtSearchSummarizeLen) Inorder() FtSearchTagsInorder {
-	c.cs.s = append(c.cs.s, "INORDER")
-	return (FtSearchTagsInorder)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchTagsInorder)
 }
 
 func (c FtSearchSummarizeLen) Language(language string) FtSearchLanguage {
-	c.cs.s = append(c.cs.s, "LANGUAGE", language)
-	return (FtSearchLanguage)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchLanguage)
 }
 
 func (c FtSearchSummarizeLen) Expander(expander string) FtSearchExpander {
-	c.cs.s = append(c.cs.s, "EXPANDER", expander)
-	return (FtSearchExpander)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchExpander)
 }
 
 func (c FtSearchSummarizeLen) Scorer(scorer string) FtSearchScorer {
-	c.cs.s = append(c.cs.s, "SCORER", scorer)
-	return (FtSearchScorer)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchScorer)
 }
 
 func (c FtSearchSummarizeLen) Explainscore() FtSearchExplainscore {
-	c.cs.s = append(c.cs.s, "EXPLAINSCORE")
-	return (FtSearchExplainscore)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchExplainscore)
 }
 
 func (c FtSearchSummarizeLen) Payload(payload string) FtSearchPayload {
-	c.cs.s = append(c.cs.s, "PAYLOAD", payload)
-	return (FtSearchPayload)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchPayload)
 }
 
 func (c FtSearchSummarizeLen) Sortby(sortby string) FtSearchSortbySortby {
-	c.cs.s = append(c.cs.s, "SORTBY", sortby)
-	return (FtSearchSortbySortby)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSortbySortby)
 }
 
 func (c FtSearchSummarizeLen) Limit() FtSearchLimitLimit {
-	c.cs.s = append(c.cs.s, "LIMIT")
-	return (FtSearchLimitLimit)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchLimitLimit)
 }
 
 func (c FtSearchSummarizeLen) Params() FtSearchParamsParams {
-	c.cs.s = append(c.cs.s, "PARAMS")
-	return (FtSearchParamsParams)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchParamsParams)
 }
 
 func (c FtSearchSummarizeLen) Dialect(dialect int64) FtSearchDialect {
-	c.cs.s = append(c.cs.s, "DIALECT", strconv.FormatInt(dialect, 10))
-	return (FtSearchDialect)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchDialect)
 }
 
-func (c FtSearchSummarizeLen) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c FtSearchSummarizeLen) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type FtSearchSummarizeSeparator Incomplete
 
 func (c FtSearchSummarizeSeparator) Highlight() FtSearchHighlightHighlight {
-	c.cs.s = append(c.cs.s, "HIGHLIGHT")
-	return (FtSearchHighlightHighlight)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchHighlightHighlight)
 }
 
 func (c FtSearchSummarizeSeparator) Slop(slop int64) FtSearchSlop {
-	c.cs.s = append(c.cs.s, "SLOP", strconv.FormatInt(slop, 10))
-	return (FtSearchSlop)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSlop)
 }
 
 func (c FtSearchSummarizeSeparator) Timeout(timeout int64) FtSearchTimeout {
-	c.cs.s = append(c.cs.s, "TIMEOUT", strconv.FormatInt(timeout, 10))
-	return (FtSearchTimeout)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchTimeout)
 }
 
 func (c FtSearchSummarizeSeparator) Inorder() FtSearchTagsInorder {
-	c.cs.s = append(c.cs.s, "INORDER")
-	return (FtSearchTagsInorder)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchTagsInorder)
 }
 
 func (c FtSearchSummarizeSeparator) Language(language string) FtSearchLanguage {
-	c.cs.s = append(c.cs.s, "LANGUAGE", language)
-	return (FtSearchLanguage)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchLanguage)
 }
 
 func (c FtSearchSummarizeSeparator) Expander(expander string) FtSearchExpander {
-	c.cs.s = append(c.cs.s, "EXPANDER", expander)
-	return (FtSearchExpander)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchExpander)
 }
 
 func (c FtSearchSummarizeSeparator) Scorer(scorer string) FtSearchScorer {
-	c.cs.s = append(c.cs.s, "SCORER", scorer)
-	return (FtSearchScorer)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchScorer)
 }
 
 func (c FtSearchSummarizeSeparator) Explainscore() FtSearchExplainscore {
-	c.cs.s = append(c.cs.s, "EXPLAINSCORE")
-	return (FtSearchExplainscore)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchExplainscore)
 }
 
 func (c FtSearchSummarizeSeparator) Payload(payload string) FtSearchPayload {
-	c.cs.s = append(c.cs.s, "PAYLOAD", payload)
-	return (FtSearchPayload)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchPayload)
 }
 
 func (c FtSearchSummarizeSeparator) Sortby(sortby string) FtSearchSortbySortby {
-	c.cs.s = append(c.cs.s, "SORTBY", sortby)
-	return (FtSearchSortbySortby)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSortbySortby)
 }
 
 func (c FtSearchSummarizeSeparator) Limit() FtSearchLimitLimit {
-	c.cs.s = append(c.cs.s, "LIMIT")
-	return (FtSearchLimitLimit)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchLimitLimit)
 }
 
 func (c FtSearchSummarizeSeparator) Params() FtSearchParamsParams {
-	c.cs.s = append(c.cs.s, "PARAMS")
-	return (FtSearchParamsParams)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchParamsParams)
 }
 
 func (c FtSearchSummarizeSeparator) Dialect(dialect int64) FtSearchDialect {
-	c.cs.s = append(c.cs.s, "DIALECT", strconv.FormatInt(dialect, 10))
-	return (FtSearchDialect)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchDialect)
 }
 
 func (c FtSearchSummarizeSeparator) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type FtSearchSummarizeSummarize Incomplete
 
 func (c FtSearchSummarizeSummarize) Fields(count string) FtSearchSummarizeFieldsFields {
-	c.cs.s = append(c.cs.s, "FIELDS", count)
-	return (FtSearchSummarizeFieldsFields)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSummarizeFieldsFields)
 }
 
 func (c FtSearchSummarizeSummarize) Frags(num int64) FtSearchSummarizeFrags {
-	c.cs.s = append(c.cs.s, "FRAGS", strconv.FormatInt(num, 10))
-	return (FtSearchSummarizeFrags)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSummarizeFrags)
 }
 
 func (c FtSearchSummarizeSummarize) Len(fragsize int64) FtSearchSummarizeLen {
-	c.cs.s = append(c.cs.s, "LEN", strconv.FormatInt(fragsize, 10))
-	return (FtSearchSummarizeLen)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSummarizeLen)
 }
 
 func (c FtSearchSummarizeSummarize) Separator(separator string) FtSearchSummarizeSeparator {
-	c.cs.s = append(c.cs.s, "SEPARATOR", separator)
-	return (FtSearchSummarizeSeparator)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSummarizeSeparator)
 }
 
 func (c FtSearchSummarizeSummarize) Highlight() FtSearchHighlightHighlight {
-	c.cs.s = append(c.cs.s, "HIGHLIGHT")
-	return (FtSearchHighlightHighlight)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchHighlightHighlight)
 }
 
 func (c FtSearchSummarizeSummarize) Slop(slop int64) FtSearchSlop {
-	c.cs.s = append(c.cs.s, "SLOP", strconv.FormatInt(slop, 10))
-	return (FtSearchSlop)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSlop)
 }
 
 func (c FtSearchSummarizeSummarize) Timeout(timeout int64) FtSearchTimeout {
-	c.cs.s = append(c.cs.s, "TIMEOUT", strconv.FormatInt(timeout, 10))
-	return (FtSearchTimeout)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchTimeout)
 }
 
 func (c FtSearchSummarizeSummarize) Inorder() FtSearchTagsInorder {
-	c.cs.s = append(c.cs.s, "INORDER")
-	return (FtSearchTagsInorder)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchTagsInorder)
 }
 
 func (c FtSearchSummarizeSummarize) Language(language string) FtSearchLanguage {
-	c.cs.s = append(c.cs.s, "LANGUAGE", language)
-	return (FtSearchLanguage)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchLanguage)
 }
 
 func (c FtSearchSummarizeSummarize) Expander(expander string) FtSearchExpander {
-	c.cs.s = append(c.cs.s, "EXPANDER", expander)
-	return (FtSearchExpander)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchExpander)
 }
 
 func (c FtSearchSummarizeSummarize) Scorer(scorer string) FtSearchScorer {
-	c.cs.s = append(c.cs.s, "SCORER", scorer)
-	return (FtSearchScorer)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchScorer)
 }
 
 func (c FtSearchSummarizeSummarize) Explainscore() FtSearchExplainscore {
-	c.cs.s = append(c.cs.s, "EXPLAINSCORE")
-	return (FtSearchExplainscore)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchExplainscore)
 }
 
 func (c FtSearchSummarizeSummarize) Payload(payload string) FtSearchPayload {
-	c.cs.s = append(c.cs.s, "PAYLOAD", payload)
-	return (FtSearchPayload)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchPayload)
 }
 
 func (c FtSearchSummarizeSummarize) Sortby(sortby string) FtSearchSortbySortby {
-	c.cs.s = append(c.cs.s, "SORTBY", sortby)
-	return (FtSearchSortbySortby)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSortbySortby)
 }
 
 func (c FtSearchSummarizeSummarize) Limit() FtSearchLimitLimit {
-	c.cs.s = append(c.cs.s, "LIMIT")
-	return (FtSearchLimitLimit)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchLimitLimit)
 }
 
 func (c FtSearchSummarizeSummarize) Params() FtSearchParamsParams {
-	c.cs.s = append(c.cs.s, "PARAMS")
-	return (FtSearchParamsParams)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchParamsParams)
 }
 
 func (c FtSearchSummarizeSummarize) Dialect(dialect int64) FtSearchDialect {
-	c.cs.s = append(c.cs.s, "DIALECT", strconv.FormatInt(dialect, 10))
-	return (FtSearchDialect)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchDialect)
 }
 
 func (c FtSearchSummarizeSummarize) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type FtSearchTagsInorder Incomplete
 
 func (c FtSearchTagsInorder) Language(language string) FtSearchLanguage {
-	c.cs.s = append(c.cs.s, "LANGUAGE", language)
-	return (FtSearchLanguage)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchLanguage)
 }
 
 func (c FtSearchTagsInorder) Expander(expander string) FtSearchExpander {
-	c.cs.s = append(c.cs.s, "EXPANDER", expander)
-	return (FtSearchExpander)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchExpander)
 }
 
 func (c FtSearchTagsInorder) Scorer(scorer string) FtSearchScorer {
-	c.cs.s = append(c.cs.s, "SCORER", scorer)
-	return (FtSearchScorer)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchScorer)
 }
 
 func (c FtSearchTagsInorder) Explainscore() FtSearchExplainscore {
-	c.cs.s = append(c.cs.s, "EXPLAINSCORE")
-	return (FtSearchExplainscore)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchExplainscore)
 }
 
 func (c FtSearchTagsInorder) Payload(payload string) FtSearchPayload {
-	c.cs.s = append(c.cs.s, "PAYLOAD", payload)
-	return (FtSearchPayload)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchPayload)
 }
 
 func (c FtSearchTagsInorder) Sortby(sortby string) FtSearchSortbySortby {
-	c.cs.s = append(c.cs.s, "SORTBY", sortby)
-	return (FtSearchSortbySortby)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSortbySortby)
 }
 
 func (c FtSearchTagsInorder) Limit() FtSearchLimitLimit {
-	c.cs.s = append(c.cs.s, "LIMIT")
-	return (FtSearchLimitLimit)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchLimitLimit)
 }
 
 func (c FtSearchTagsInorder) Params() FtSearchParamsParams {
-	c.cs.s = append(c.cs.s, "PARAMS")
-	return (FtSearchParamsParams)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchParamsParams)
 }
 
 func (c FtSearchTagsInorder) Dialect(dialect int64) FtSearchDialect {
-	c.cs.s = append(c.cs.s, "DIALECT", strconv.FormatInt(dialect, 10))
-	return (FtSearchDialect)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchDialect)
 }
 
-func (c FtSearchTagsInorder) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c FtSearchTagsInorder) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type FtSearchTimeout Incomplete
 
 func (c FtSearchTimeout) Inorder() FtSearchTagsInorder {
-	c.cs.s = append(c.cs.s, "INORDER")
-	return (FtSearchTagsInorder)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchTagsInorder)
 }
 
 func (c FtSearchTimeout) Language(language string) FtSearchLanguage {
-	c.cs.s = append(c.cs.s, "LANGUAGE", language)
-	return (FtSearchLanguage)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchLanguage)
 }
 
 func (c FtSearchTimeout) Expander(expander string) FtSearchExpander {
-	c.cs.s = append(c.cs.s, "EXPANDER", expander)
-	return (FtSearchExpander)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchExpander)
 }
 
 func (c FtSearchTimeout) Scorer(scorer string) FtSearchScorer {
-	c.cs.s = append(c.cs.s, "SCORER", scorer)
-	return (FtSearchScorer)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchScorer)
 }
 
 func (c FtSearchTimeout) Explainscore() FtSearchExplainscore {
-	c.cs.s = append(c.cs.s, "EXPLAINSCORE")
-	return (FtSearchExplainscore)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchExplainscore)
 }
 
 func (c FtSearchTimeout) Payload(payload string) FtSearchPayload {
-	c.cs.s = append(c.cs.s, "PAYLOAD", payload)
-	return (FtSearchPayload)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchPayload)
 }
 
 func (c FtSearchTimeout) Sortby(sortby string) FtSearchSortbySortby {
-	c.cs.s = append(c.cs.s, "SORTBY", sortby)
-	return (FtSearchSortbySortby)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSortbySortby)
 }
 
 func (c FtSearchTimeout) Limit() FtSearchLimitLimit {
-	c.cs.s = append(c.cs.s, "LIMIT")
-	return (FtSearchLimitLimit)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchLimitLimit)
 }
 
 func (c FtSearchTimeout) Params() FtSearchParamsParams {
-	c.cs.s = append(c.cs.s, "PARAMS")
-	return (FtSearchParamsParams)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchParamsParams)
 }
 
 func (c FtSearchTimeout) Dialect(dialect int64) FtSearchDialect {
-	c.cs.s = append(c.cs.s, "DIALECT", strconv.FormatInt(dialect, 10))
-	return (FtSearchDialect)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchDialect)
 }
 
-func (c FtSearchTimeout) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c FtSearchTimeout) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type FtSearchVerbatim Incomplete
 
 func (c FtSearchVerbatim) Nostopwords() FtSearchNostopwords {
-	c.cs.s = append(c.cs.s, "NOSTOPWORDS")
-	return (FtSearchNostopwords)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchNostopwords)
 }
 
 func (c FtSearchVerbatim) Withscores() FtSearchWithscores {
-	c.cs.s = append(c.cs.s, "WITHSCORES")
-	return (FtSearchWithscores)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchWithscores)
 }
 
 func (c FtSearchVerbatim) Withpayloads() FtSearchWithpayloads {
-	c.cs.s = append(c.cs.s, "WITHPAYLOADS")
-	return (FtSearchWithpayloads)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchWithpayloads)
 }
 
 func (c FtSearchVerbatim) Withsortkeys() FtSearchWithsortkeys {
-	c.cs.s = append(c.cs.s, "WITHSORTKEYS")
-	return (FtSearchWithsortkeys)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchWithsortkeys)
 }
 
 func (c FtSearchVerbatim) Filter(numericField string) FtSearchFilterFilter {
-	c.cs.s = append(c.cs.s, "FILTER", numericField)
-	return (FtSearchFilterFilter)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchFilterFilter)
 }
 
 func (c FtSearchVerbatim) Geofilter(geoField string) FtSearchGeoFilterGeofilter {
-	c.cs.s = append(c.cs.s, "GEOFILTER", geoField)
-	return (FtSearchGeoFilterGeofilter)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchGeoFilterGeofilter)
 }
 
 func (c FtSearchVerbatim) Inkeys(count string) FtSearchInKeysInkeys {
-	c.cs.s = append(c.cs.s, "INKEYS", count)
-	return (FtSearchInKeysInkeys)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchInKeysInkeys)
 }
 
 func (c FtSearchVerbatim) Infields(count string) FtSearchInFieldsInfields {
-	c.cs.s = append(c.cs.s, "INFIELDS", count)
-	return (FtSearchInFieldsInfields)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchInFieldsInfields)
 }
 
 func (c FtSearchVerbatim) Return(count string) FtSearchReturnReturn {
-	c.cs.s = append(c.cs.s, "RETURN", count)
-	return (FtSearchReturnReturn)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchReturnReturn)
 }
 
 func (c FtSearchVerbatim) Summarize() FtSearchSummarizeSummarize {
-	c.cs.s = append(c.cs.s, "SUMMARIZE")
-	return (FtSearchSummarizeSummarize)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSummarizeSummarize)
 }
 
 func (c FtSearchVerbatim) Highlight() FtSearchHighlightHighlight {
-	c.cs.s = append(c.cs.s, "HIGHLIGHT")
-	return (FtSearchHighlightHighlight)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchHighlightHighlight)
 }
 
 func (c FtSearchVerbatim) Slop(slop int64) FtSearchSlop {
-	c.cs.s = append(c.cs.s, "SLOP", strconv.FormatInt(slop, 10))
-	return (FtSearchSlop)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSlop)
 }
 
 func (c FtSearchVerbatim) Timeout(timeout int64) FtSearchTimeout {
-	c.cs.s = append(c.cs.s, "TIMEOUT", strconv.FormatInt(timeout, 10))
-	return (FtSearchTimeout)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchTimeout)
 }
 
 func (c FtSearchVerbatim) Inorder() FtSearchTagsInorder {
-	c.cs.s = append(c.cs.s, "INORDER")
-	return (FtSearchTagsInorder)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchTagsInorder)
 }
 
 func (c FtSearchVerbatim) Language(language string) FtSearchLanguage {
-	c.cs.s = append(c.cs.s, "LANGUAGE", language)
-	return (FtSearchLanguage)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchLanguage)
 }
 
 func (c FtSearchVerbatim) Expander(expander string) FtSearchExpander {
-	c.cs.s = append(c.cs.s, "EXPANDER", expander)
-	return (FtSearchExpander)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchExpander)
 }
 
 func (c FtSearchVerbatim) Scorer(scorer string) FtSearchScorer {
-	c.cs.s = append(c.cs.s, "SCORER", scorer)
-	return (FtSearchScorer)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchScorer)
 }
 
 func (c FtSearchVerbatim) Explainscore() FtSearchExplainscore {
-	c.cs.s = append(c.cs.s, "EXPLAINSCORE")
-	return (FtSearchExplainscore)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchExplainscore)
 }
 
 func (c FtSearchVerbatim) Payload(payload string) FtSearchPayload {
-	c.cs.s = append(c.cs.s, "PAYLOAD", payload)
-	return (FtSearchPayload)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchPayload)
 }
 
 func (c FtSearchVerbatim) Sortby(sortby string) FtSearchSortbySortby {
-	c.cs.s = append(c.cs.s, "SORTBY", sortby)
-	return (FtSearchSortbySortby)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSortbySortby)
 }
 
 func (c FtSearchVerbatim) Limit() FtSearchLimitLimit {
-	c.cs.s = append(c.cs.s, "LIMIT")
-	return (FtSearchLimitLimit)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchLimitLimit)
 }
 
 func (c FtSearchVerbatim) Params() FtSearchParamsParams {
-	c.cs.s = append(c.cs.s, "PARAMS")
-	return (FtSearchParamsParams)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchParamsParams)
 }
 
 func (c FtSearchVerbatim) Dialect(dialect int64) FtSearchDialect {
-	c.cs.s = append(c.cs.s, "DIALECT", strconv.FormatInt(dialect, 10))
-	return (FtSearchDialect)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchDialect)
 }
 
-func (c FtSearchVerbatim) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c FtSearchVerbatim) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type FtSearchWithpayloads Incomplete
 
 func (c FtSearchWithpayloads) Withsortkeys() FtSearchWithsortkeys {
-	c.cs.s = append(c.cs.s, "WITHSORTKEYS")
-	return (FtSearchWithsortkeys)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchWithsortkeys)
 }
 
 func (c FtSearchWithpayloads) Filter(numericField string) FtSearchFilterFilter {
-	c.cs.s = append(c.cs.s, "FILTER", numericField)
-	return (FtSearchFilterFilter)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchFilterFilter)
 }
 
 func (c FtSearchWithpayloads) Geofilter(geoField string) FtSearchGeoFilterGeofilter {
-	c.cs.s = append(c.cs.s, "GEOFILTER", geoField)
-	return (FtSearchGeoFilterGeofilter)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchGeoFilterGeofilter)
 }
 
 func (c FtSearchWithpayloads) Inkeys(count string) FtSearchInKeysInkeys {
-	c.cs.s = append(c.cs.s, "INKEYS", count)
-	return (FtSearchInKeysInkeys)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchInKeysInkeys)
 }
 
 func (c FtSearchWithpayloads) Infields(count string) FtSearchInFieldsInfields {
-	c.cs.s = append(c.cs.s, "INFIELDS", count)
-	return (FtSearchInFieldsInfields)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchInFieldsInfields)
 }
 
 func (c FtSearchWithpayloads) Return(count string) FtSearchReturnReturn {
-	c.cs.s = append(c.cs.s, "RETURN", count)
-	return (FtSearchReturnReturn)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchReturnReturn)
 }
 
 func (c FtSearchWithpayloads) Summarize() FtSearchSummarizeSummarize {
-	c.cs.s = append(c.cs.s, "SUMMARIZE")
-	return (FtSearchSummarizeSummarize)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSummarizeSummarize)
 }
 
 func (c FtSearchWithpayloads) Highlight() FtSearchHighlightHighlight {
-	c.cs.s = append(c.cs.s, "HIGHLIGHT")
-	return (FtSearchHighlightHighlight)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchHighlightHighlight)
 }
 
 func (c FtSearchWithpayloads) Slop(slop int64) FtSearchSlop {
-	c.cs.s = append(c.cs.s, "SLOP", strconv.FormatInt(slop, 10))
-	return (FtSearchSlop)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSlop)
 }
 
 func (c FtSearchWithpayloads) Timeout(timeout int64) FtSearchTimeout {
-	c.cs.s = append(c.cs.s, "TIMEOUT", strconv.FormatInt(timeout, 10))
-	return (FtSearchTimeout)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchTimeout)
 }
 
 func (c FtSearchWithpayloads) Inorder() FtSearchTagsInorder {
-	c.cs.s = append(c.cs.s, "INORDER")
-	return (FtSearchTagsInorder)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchTagsInorder)
 }
 
 func (c FtSearchWithpayloads) Language(language string) FtSearchLanguage {
-	c.cs.s = append(c.cs.s, "LANGUAGE", language)
-	return (FtSearchLanguage)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchLanguage)
 }
 
 func (c FtSearchWithpayloads) Expander(expander string) FtSearchExpander {
-	c.cs.s = append(c.cs.s, "EXPANDER", expander)
-	return (FtSearchExpander)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchExpander)
 }
 
 func (c FtSearchWithpayloads) Scorer(scorer string) FtSearchScorer {
-	c.cs.s = append(c.cs.s, "SCORER", scorer)
-	return (FtSearchScorer)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchScorer)
 }
 
 func (c FtSearchWithpayloads) Explainscore() FtSearchExplainscore {
-	c.cs.s = append(c.cs.s, "EXPLAINSCORE")
-	return (FtSearchExplainscore)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchExplainscore)
 }
 
 func (c FtSearchWithpayloads) Payload(payload string) FtSearchPayload {
-	c.cs.s = append(c.cs.s, "PAYLOAD", payload)
-	return (FtSearchPayload)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchPayload)
 }
 
 func (c FtSearchWithpayloads) Sortby(sortby string) FtSearchSortbySortby {
-	c.cs.s = append(c.cs.s, "SORTBY", sortby)
-	return (FtSearchSortbySortby)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSortbySortby)
 }
 
 func (c FtSearchWithpayloads) Limit() FtSearchLimitLimit {
-	c.cs.s = append(c.cs.s, "LIMIT")
-	return (FtSearchLimitLimit)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchLimitLimit)
 }
 
 func (c FtSearchWithpayloads) Params() FtSearchParamsParams {
-	c.cs.s = append(c.cs.s, "PARAMS")
-	return (FtSearchParamsParams)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchParamsParams)
 }
 
 func (c FtSearchWithpayloads) Dialect(dialect int64) FtSearchDialect {
-	c.cs.s = append(c.cs.s, "DIALECT", strconv.FormatInt(dialect, 10))
-	return (FtSearchDialect)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchDialect)
 }
 
-func (c FtSearchWithpayloads) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c FtSearchWithpayloads) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type FtSearchWithscores Incomplete
 
 func (c FtSearchWithscores) Withpayloads() FtSearchWithpayloads {
-	c.cs.s = append(c.cs.s, "WITHPAYLOADS")
-	return (FtSearchWithpayloads)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchWithpayloads)
 }
 
 func (c FtSearchWithscores) Withsortkeys() FtSearchWithsortkeys {
-	c.cs.s = append(c.cs.s, "WITHSORTKEYS")
-	return (FtSearchWithsortkeys)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchWithsortkeys)
 }
 
 func (c FtSearchWithscores) Filter(numericField string) FtSearchFilterFilter {
-	c.cs.s = append(c.cs.s, "FILTER", numericField)
-	return (FtSearchFilterFilter)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchFilterFilter)
 }
 
 func (c FtSearchWithscores) Geofilter(geoField string) FtSearchGeoFilterGeofilter {
-	c.cs.s = append(c.cs.s, "GEOFILTER", geoField)
-	return (FtSearchGeoFilterGeofilter)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchGeoFilterGeofilter)
 }
 
 func (c FtSearchWithscores) Inkeys(count string) FtSearchInKeysInkeys {
-	c.cs.s = append(c.cs.s, "INKEYS", count)
-	return (FtSearchInKeysInkeys)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchInKeysInkeys)
 }
 
 func (c FtSearchWithscores) Infields(count string) FtSearchInFieldsInfields {
-	c.cs.s = append(c.cs.s, "INFIELDS", count)
-	return (FtSearchInFieldsInfields)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchInFieldsInfields)
 }
 
 func (c FtSearchWithscores) Return(count string) FtSearchReturnReturn {
-	c.cs.s = append(c.cs.s, "RETURN", count)
-	return (FtSearchReturnReturn)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchReturnReturn)
 }
 
 func (c FtSearchWithscores) Summarize() FtSearchSummarizeSummarize {
-	c.cs.s = append(c.cs.s, "SUMMARIZE")
-	return (FtSearchSummarizeSummarize)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSummarizeSummarize)
 }
 
 func (c FtSearchWithscores) Highlight() FtSearchHighlightHighlight {
-	c.cs.s = append(c.cs.s, "HIGHLIGHT")
-	return (FtSearchHighlightHighlight)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchHighlightHighlight)
 }
 
 func (c FtSearchWithscores) Slop(slop int64) FtSearchSlop {
-	c.cs.s = append(c.cs.s, "SLOP", strconv.FormatInt(slop, 10))
-	return (FtSearchSlop)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSlop)
 }
 
 func (c FtSearchWithscores) Timeout(timeout int64) FtSearchTimeout {
-	c.cs.s = append(c.cs.s, "TIMEOUT", strconv.FormatInt(timeout, 10))
-	return (FtSearchTimeout)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchTimeout)
 }
 
 func (c FtSearchWithscores) Inorder() FtSearchTagsInorder {
-	c.cs.s = append(c.cs.s, "INORDER")
-	return (FtSearchTagsInorder)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchTagsInorder)
 }
 
 func (c FtSearchWithscores) Language(language string) FtSearchLanguage {
-	c.cs.s = append(c.cs.s, "LANGUAGE", language)
-	return (FtSearchLanguage)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchLanguage)
 }
 
 func (c FtSearchWithscores) Expander(expander string) FtSearchExpander {
-	c.cs.s = append(c.cs.s, "EXPANDER", expander)
-	return (FtSearchExpander)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchExpander)
 }
 
 func (c FtSearchWithscores) Scorer(scorer string) FtSearchScorer {
-	c.cs.s = append(c.cs.s, "SCORER", scorer)
-	return (FtSearchScorer)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchScorer)
 }
 
 func (c FtSearchWithscores) Explainscore() FtSearchExplainscore {
-	c.cs.s = append(c.cs.s, "EXPLAINSCORE")
-	return (FtSearchExplainscore)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchExplainscore)
 }
 
 func (c FtSearchWithscores) Payload(payload string) FtSearchPayload {
-	c.cs.s = append(c.cs.s, "PAYLOAD", payload)
-	return (FtSearchPayload)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchPayload)
 }
 
 func (c FtSearchWithscores) Sortby(sortby string) FtSearchSortbySortby {
-	c.cs.s = append(c.cs.s, "SORTBY", sortby)
-	return (FtSearchSortbySortby)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSortbySortby)
 }
 
 func (c FtSearchWithscores) Limit() FtSearchLimitLimit {
-	c.cs.s = append(c.cs.s, "LIMIT")
-	return (FtSearchLimitLimit)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchLimitLimit)
 }
 
 func (c FtSearchWithscores) Params() FtSearchParamsParams {
-	c.cs.s = append(c.cs.s, "PARAMS")
-	return (FtSearchParamsParams)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchParamsParams)
 }
 
 func (c FtSearchWithscores) Dialect(dialect int64) FtSearchDialect {
-	c.cs.s = append(c.cs.s, "DIALECT", strconv.FormatInt(dialect, 10))
-	return (FtSearchDialect)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchDialect)
 }
 
-func (c FtSearchWithscores) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c FtSearchWithscores) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type FtSearchWithsortkeys Incomplete
 
 func (c FtSearchWithsortkeys) Filter(numericField string) FtSearchFilterFilter {
-	c.cs.s = append(c.cs.s, "FILTER", numericField)
-	return (FtSearchFilterFilter)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchFilterFilter)
 }
 
 func (c FtSearchWithsortkeys) Geofilter(geoField string) FtSearchGeoFilterGeofilter {
-	c.cs.s = append(c.cs.s, "GEOFILTER", geoField)
-	return (FtSearchGeoFilterGeofilter)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchGeoFilterGeofilter)
 }
 
 func (c FtSearchWithsortkeys) Inkeys(count string) FtSearchInKeysInkeys {
-	c.cs.s = append(c.cs.s, "INKEYS", count)
-	return (FtSearchInKeysInkeys)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchInKeysInkeys)
 }
 
 func (c FtSearchWithsortkeys) Infields(count string) FtSearchInFieldsInfields {
-	c.cs.s = append(c.cs.s, "INFIELDS", count)
-	return (FtSearchInFieldsInfields)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchInFieldsInfields)
 }
 
 func (c FtSearchWithsortkeys) Return(count string) FtSearchReturnReturn {
-	c.cs.s = append(c.cs.s, "RETURN", count)
-	return (FtSearchReturnReturn)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchReturnReturn)
 }
 
 func (c FtSearchWithsortkeys) Summarize() FtSearchSummarizeSummarize {
-	c.cs.s = append(c.cs.s, "SUMMARIZE")
-	return (FtSearchSummarizeSummarize)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSummarizeSummarize)
 }
 
 func (c FtSearchWithsortkeys) Highlight() FtSearchHighlightHighlight {
-	c.cs.s = append(c.cs.s, "HIGHLIGHT")
-	return (FtSearchHighlightHighlight)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchHighlightHighlight)
 }
 
 func (c FtSearchWithsortkeys) Slop(slop int64) FtSearchSlop {
-	c.cs.s = append(c.cs.s, "SLOP", strconv.FormatInt(slop, 10))
-	return (FtSearchSlop)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSlop)
 }
 
 func (c FtSearchWithsortkeys) Timeout(timeout int64) FtSearchTimeout {
-	c.cs.s = append(c.cs.s, "TIMEOUT", strconv.FormatInt(timeout, 10))
-	return (FtSearchTimeout)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchTimeout)
 }
 
 func (c FtSearchWithsortkeys) Inorder() FtSearchTagsInorder {
-	c.cs.s = append(c.cs.s, "INORDER")
-	return (FtSearchTagsInorder)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchTagsInorder)
 }
 
 func (c FtSearchWithsortkeys) Language(language string) FtSearchLanguage {
-	c.cs.s = append(c.cs.s, "LANGUAGE", language)
-	return (FtSearchLanguage)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchLanguage)
 }
 
 func (c FtSearchWithsortkeys) Expander(expander string) FtSearchExpander {
-	c.cs.s = append(c.cs.s, "EXPANDER", expander)
-	return (FtSearchExpander)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchExpander)
 }
 
 func (c FtSearchWithsortkeys) Scorer(scorer string) FtSearchScorer {
-	c.cs.s = append(c.cs.s, "SCORER", scorer)
-	return (FtSearchScorer)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchScorer)
 }
 
 func (c FtSearchWithsortkeys) Explainscore() FtSearchExplainscore {
-	c.cs.s = append(c.cs.s, "EXPLAINSCORE")
-	return (FtSearchExplainscore)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchExplainscore)
 }
 
 func (c FtSearchWithsortkeys) Payload(payload string) FtSearchPayload {
-	c.cs.s = append(c.cs.s, "PAYLOAD", payload)
-	return (FtSearchPayload)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchPayload)
 }
 
 func (c FtSearchWithsortkeys) Sortby(sortby string) FtSearchSortbySortby {
-	c.cs.s = append(c.cs.s, "SORTBY", sortby)
-	return (FtSearchSortbySortby)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchSortbySortby)
 }
 
 func (c FtSearchWithsortkeys) Limit() FtSearchLimitLimit {
-	c.cs.s = append(c.cs.s, "LIMIT")
-	return (FtSearchLimitLimit)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchLimitLimit)
 }
 
 func (c FtSearchWithsortkeys) Params() FtSearchParamsParams {
-	c.cs.s = append(c.cs.s, "PARAMS")
-	return (FtSearchParamsParams)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchParamsParams)
 }
 
 func (c FtSearchWithsortkeys) Dialect(dialect int64) FtSearchDialect {
-	c.cs.s = append(c.cs.s, "DIALECT", strconv.FormatInt(dialect, 10))
-	return (FtSearchDialect)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSearchDialect)
 }
 
-func (c FtSearchWithsortkeys) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c FtSearchWithsortkeys) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type FtSpellcheck Incomplete
 
 func (b Builder) FtSpellcheck() (c FtSpellcheck) {
-	c = FtSpellcheck{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "FT.SPELLCHECK")
-	return c
+	_ = "STUB: not implemented"
+	return *new(FtSpellcheck)
 }
 
 func (c FtSpellcheck) Index(index string) FtSpellcheckIndex {
-	c.cs.s = append(c.cs.s, index)
-	return (FtSpellcheckIndex)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSpellcheckIndex)
 }
 
 type FtSpellcheckDialect Incomplete
 
-func (c FtSpellcheckDialect) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c FtSpellcheckDialect) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type FtSpellcheckDistance Incomplete
 
 func (c FtSpellcheckDistance) TermsInclude() FtSpellcheckTermsTermsInclude {
-	c.cs.s = append(c.cs.s, "TERMS", "INCLUDE")
-	return (FtSpellcheckTermsTermsInclude)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSpellcheckTermsTermsInclude)
 }
 
 func (c FtSpellcheckDistance) TermsExclude() FtSpellcheckTermsTermsExclude {
-	c.cs.s = append(c.cs.s, "TERMS", "EXCLUDE")
-	return (FtSpellcheckTermsTermsExclude)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSpellcheckTermsTermsExclude)
 }
 
 func (c FtSpellcheckDistance) Dialect(dialect int64) FtSpellcheckDialect {
-	c.cs.s = append(c.cs.s, "DIALECT", strconv.FormatInt(dialect, 10))
-	return (FtSpellcheckDialect)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSpellcheckDialect)
 }
 
-func (c FtSpellcheckDistance) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c FtSpellcheckDistance) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type FtSpellcheckIndex Incomplete
 
 func (c FtSpellcheckIndex) Query(query string) FtSpellcheckQuery {
-	c.cs.s = append(c.cs.s, query)
-	return (FtSpellcheckQuery)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSpellcheckQuery)
 }
 
 type FtSpellcheckQuery Incomplete
 
 func (c FtSpellcheckQuery) Distance(distance int64) FtSpellcheckDistance {
-	c.cs.s = append(c.cs.s, "DISTANCE", strconv.FormatInt(distance, 10))
-	return (FtSpellcheckDistance)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSpellcheckDistance)
 }
 
 func (c FtSpellcheckQuery) TermsInclude() FtSpellcheckTermsTermsInclude {
-	c.cs.s = append(c.cs.s, "TERMS", "INCLUDE")
-	return (FtSpellcheckTermsTermsInclude)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSpellcheckTermsTermsInclude)
 }
 
 func (c FtSpellcheckQuery) TermsExclude() FtSpellcheckTermsTermsExclude {
-	c.cs.s = append(c.cs.s, "TERMS", "EXCLUDE")
-	return (FtSpellcheckTermsTermsExclude)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSpellcheckTermsTermsExclude)
 }
 
 func (c FtSpellcheckQuery) Dialect(dialect int64) FtSpellcheckDialect {
-	c.cs.s = append(c.cs.s, "DIALECT", strconv.FormatInt(dialect, 10))
-	return (FtSpellcheckDialect)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSpellcheckDialect)
 }
 
-func (c FtSpellcheckQuery) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c FtSpellcheckQuery) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type FtSpellcheckTermsDictionary Incomplete
 
 func (c FtSpellcheckTermsDictionary) Terms(terms ...string) FtSpellcheckTermsTerms {
-	c.cs.s = append(c.cs.s, terms...)
-	return (FtSpellcheckTermsTerms)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSpellcheckTermsTerms)
 }
 
 func (c FtSpellcheckTermsDictionary) Dialect(dialect int64) FtSpellcheckDialect {
-	c.cs.s = append(c.cs.s, "DIALECT", strconv.FormatInt(dialect, 10))
-	return (FtSpellcheckDialect)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSpellcheckDialect)
 }
 
 func (c FtSpellcheckTermsDictionary) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type FtSpellcheckTermsTerms Incomplete
 
 func (c FtSpellcheckTermsTerms) Terms(terms ...string) FtSpellcheckTermsTerms {
-	c.cs.s = append(c.cs.s, terms...)
-	return c
+	_ = "STUB: not implemented"
+	return *new(FtSpellcheckTermsTerms)
 }
 
 func (c FtSpellcheckTermsTerms) Dialect(dialect int64) FtSpellcheckDialect {
-	c.cs.s = append(c.cs.s, "DIALECT", strconv.FormatInt(dialect, 10))
-	return (FtSpellcheckDialect)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSpellcheckDialect)
 }
 
 func (c FtSpellcheckTermsTerms) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type FtSpellcheckTermsTermsExclude Incomplete
 
 func (c FtSpellcheckTermsTermsExclude) Dictionary(dictionary string) FtSpellcheckTermsDictionary {
-	c.cs.s = append(c.cs.s, dictionary)
-	return (FtSpellcheckTermsDictionary)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSpellcheckTermsDictionary)
 }
 
 type FtSpellcheckTermsTermsInclude Incomplete
 
 func (c FtSpellcheckTermsTermsInclude) Dictionary(dictionary string) FtSpellcheckTermsDictionary {
-	c.cs.s = append(c.cs.s, dictionary)
-	return (FtSpellcheckTermsDictionary)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSpellcheckTermsDictionary)
 }
 
 type FtSyndump Incomplete
 
-func (b Builder) FtSyndump() (c FtSyndump) {
-	c = FtSyndump{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "FT.SYNDUMP")
-	return c
-}
+func (b Builder) FtSyndump() (c FtSyndump) { _ = "STUB: not implemented"; return *new(FtSyndump) }
 
 func (c FtSyndump) Index(index string) FtSyndumpIndex {
-	c.cs.s = append(c.cs.s, index)
-	return (FtSyndumpIndex)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSyndumpIndex)
 }
 
 type FtSyndumpIndex Incomplete
 
-func (c FtSyndumpIndex) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c FtSyndumpIndex) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type FtSynupdate Incomplete
 
-func (b Builder) FtSynupdate() (c FtSynupdate) {
-	c = FtSynupdate{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "FT.SYNUPDATE")
-	return c
-}
+func (b Builder) FtSynupdate() (c FtSynupdate) { _ = "STUB: not implemented"; return *new(FtSynupdate) }
 
 func (c FtSynupdate) Index(index string) FtSynupdateIndex {
-	c.cs.s = append(c.cs.s, index)
-	return (FtSynupdateIndex)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSynupdateIndex)
 }
 
 type FtSynupdateIndex Incomplete
 
 func (c FtSynupdateIndex) SynonymGroupId(synonymGroupId string) FtSynupdateSynonymGroupId {
-	c.cs.s = append(c.cs.s, synonymGroupId)
-	return (FtSynupdateSynonymGroupId)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSynupdateSynonymGroupId)
 }
 
 type FtSynupdateSkipinitialscan Incomplete
 
 func (c FtSynupdateSkipinitialscan) Term(term ...string) FtSynupdateTerm {
-	c.cs.s = append(c.cs.s, term...)
-	return (FtSynupdateTerm)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSynupdateTerm)
 }
 
 type FtSynupdateSynonymGroupId Incomplete
 
 func (c FtSynupdateSynonymGroupId) Skipinitialscan() FtSynupdateSkipinitialscan {
-	c.cs.s = append(c.cs.s, "SKIPINITIALSCAN")
-	return (FtSynupdateSkipinitialscan)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSynupdateSkipinitialscan)
 }
 
 func (c FtSynupdateSynonymGroupId) Term(term ...string) FtSynupdateTerm {
-	c.cs.s = append(c.cs.s, term...)
-	return (FtSynupdateTerm)(c)
+	_ = "STUB: not implemented"
+	return *new(FtSynupdateTerm)
 }
 
 type FtSynupdateTerm Incomplete
 
 func (c FtSynupdateTerm) Term(term ...string) FtSynupdateTerm {
-	c.cs.s = append(c.cs.s, term...)
-	return c
+	_ = "STUB: not implemented"
+	return *new(FtSynupdateTerm)
 }
 
-func (c FtSynupdateTerm) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c FtSynupdateTerm) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type FtTagvals Incomplete
 
-func (b Builder) FtTagvals() (c FtTagvals) {
-	c = FtTagvals{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "FT.TAGVALS")
-	return c
-}
+func (b Builder) FtTagvals() (c FtTagvals) { _ = "STUB: not implemented"; return *new(FtTagvals) }
 
 func (c FtTagvals) Index(index string) FtTagvalsIndex {
-	c.cs.s = append(c.cs.s, index)
-	return (FtTagvalsIndex)(c)
+	_ = "STUB: not implemented"
+	return *new(FtTagvalsIndex)
 }
 
 type FtTagvalsFieldName Incomplete
 
-func (c FtTagvalsFieldName) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c FtTagvalsFieldName) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type FtTagvalsIndex Incomplete
 
 func (c FtTagvalsIndex) FieldName(fieldName string) FtTagvalsFieldName {
-	c.cs.s = append(c.cs.s, fieldName)
-	return (FtTagvalsFieldName)(c)
+	_ = "STUB: not implemented"
+	return *new(FtTagvalsFieldName)
 }

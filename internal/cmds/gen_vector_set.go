@@ -2,1036 +2,741 @@
 
 package cmds
 
-import "strconv"
-
 type Vadd Incomplete
 
-func (b Builder) Vadd() (c Vadd) {
-	c = Vadd{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "VADD")
-	return c
-}
+func (b Builder) Vadd() (c Vadd) { _ = "STUB: not implemented"; return *new(Vadd) }
 
-func (c Vadd) Key(key string) VaddKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (VaddKey)(c)
-}
+func (c Vadd) Key(key string) VaddKey { _ = "STUB: not implemented"; return *new(VaddKey) }
 
 type VaddCas Incomplete
 
 func (c VaddCas) Noquant() VaddQuantizationNoquant {
-	c.cs.s = append(c.cs.s, "NOQUANT")
-	return (VaddQuantizationNoquant)(c)
+	_ = "STUB: not implemented"
+	return *new(VaddQuantizationNoquant)
 }
 
 func (c VaddCas) Q8() VaddQuantizationQ8 {
-	c.cs.s = append(c.cs.s, "Q8")
-	return (VaddQuantizationQ8)(c)
+	_ = "STUB: not implemented"
+	return *new(VaddQuantizationQ8)
 }
 
 func (c VaddCas) Bin() VaddQuantizationBin {
-	c.cs.s = append(c.cs.s, "BIN")
-	return (VaddQuantizationBin)(c)
+	_ = "STUB: not implemented"
+	return *new(VaddQuantizationBin)
 }
 
 func (c VaddCas) Ef(buildExplorationFactor int64) VaddEf {
-	c.cs.s = append(c.cs.s, "EF", strconv.FormatInt(buildExplorationFactor, 10))
-	return (VaddEf)(c)
+	_ = "STUB: not implemented"
+	return *new(VaddEf)
 }
 
 func (c VaddCas) Setattr(attributes string) VaddSetattr {
-	c.cs.s = append(c.cs.s, "SETATTR", attributes)
-	return (VaddSetattr)(c)
+	_ = "STUB: not implemented"
+	return *new(VaddSetattr)
 }
 
-func (c VaddCas) M(numlinks int64) VaddM {
-	c.cs.s = append(c.cs.s, "M", strconv.FormatInt(numlinks, 10))
-	return (VaddM)(c)
-}
+func (c VaddCas) M(numlinks int64) VaddM { _ = "STUB: not implemented"; return *new(VaddM) }
 
-func (c VaddCas) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c VaddCas) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type VaddEf Incomplete
 
 func (c VaddEf) Setattr(attributes string) VaddSetattr {
-	c.cs.s = append(c.cs.s, "SETATTR", attributes)
-	return (VaddSetattr)(c)
+	_ = "STUB: not implemented"
+	return *new(VaddSetattr)
 }
 
-func (c VaddEf) M(numlinks int64) VaddM {
-	c.cs.s = append(c.cs.s, "M", strconv.FormatInt(numlinks, 10))
-	return (VaddM)(c)
-}
+func (c VaddEf) M(numlinks int64) VaddM { _ = "STUB: not implemented"; return *new(VaddM) }
 
-func (c VaddEf) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c VaddEf) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type VaddElement Incomplete
 
-func (c VaddElement) Cas() VaddCas {
-	c.cs.s = append(c.cs.s, "CAS")
-	return (VaddCas)(c)
-}
+func (c VaddElement) Cas() VaddCas { _ = "STUB: not implemented"; return *new(VaddCas) }
 
 func (c VaddElement) Noquant() VaddQuantizationNoquant {
-	c.cs.s = append(c.cs.s, "NOQUANT")
-	return (VaddQuantizationNoquant)(c)
+	_ = "STUB: not implemented"
+	return *new(VaddQuantizationNoquant)
 }
 
 func (c VaddElement) Q8() VaddQuantizationQ8 {
-	c.cs.s = append(c.cs.s, "Q8")
-	return (VaddQuantizationQ8)(c)
+	_ = "STUB: not implemented"
+	return *new(VaddQuantizationQ8)
 }
 
 func (c VaddElement) Bin() VaddQuantizationBin {
-	c.cs.s = append(c.cs.s, "BIN")
-	return (VaddQuantizationBin)(c)
+	_ = "STUB: not implemented"
+	return *new(VaddQuantizationBin)
 }
 
 func (c VaddElement) Ef(buildExplorationFactor int64) VaddEf {
-	c.cs.s = append(c.cs.s, "EF", strconv.FormatInt(buildExplorationFactor, 10))
-	return (VaddEf)(c)
+	_ = "STUB: not implemented"
+	return *new(VaddEf)
 }
 
 func (c VaddElement) Setattr(attributes string) VaddSetattr {
-	c.cs.s = append(c.cs.s, "SETATTR", attributes)
-	return (VaddSetattr)(c)
+	_ = "STUB: not implemented"
+	return *new(VaddSetattr)
 }
 
-func (c VaddElement) M(numlinks int64) VaddM {
-	c.cs.s = append(c.cs.s, "M", strconv.FormatInt(numlinks, 10))
-	return (VaddM)(c)
-}
+func (c VaddElement) M(numlinks int64) VaddM { _ = "STUB: not implemented"; return *new(VaddM) }
 
-func (c VaddElement) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c VaddElement) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type VaddKey Incomplete
 
-func (c VaddKey) Reduce(dim int64) VaddReduce {
-	c.cs.s = append(c.cs.s, "REDUCE", strconv.FormatInt(dim, 10))
-	return (VaddReduce)(c)
-}
+func (c VaddKey) Reduce(dim int64) VaddReduce { _ = "STUB: not implemented"; return *new(VaddReduce) }
 
-func (c VaddKey) Fp32() VaddNumFp32Fp32 {
-	c.cs.s = append(c.cs.s, "FP32")
-	return (VaddNumFp32Fp32)(c)
-}
+func (c VaddKey) Fp32() VaddNumFp32Fp32 { _ = "STUB: not implemented"; return *new(VaddNumFp32Fp32) }
 
 func (c VaddKey) Values(num int64) VaddNumValuesValues {
-	c.cs.s = append(c.cs.s, "VALUES", strconv.FormatInt(num, 10))
-	return (VaddNumValuesValues)(c)
+	_ = "STUB: not implemented"
+	return *new(VaddNumValuesValues)
 }
 
 type VaddM Incomplete
 
-func (c VaddM) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c VaddM) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type VaddNumFp32Fp32 Incomplete
 
 func (c VaddNumFp32Fp32) Vector(vector string) VaddNumFp32Vector {
-	c.cs.s = append(c.cs.s, vector)
-	return (VaddNumFp32Vector)(c)
+	_ = "STUB: not implemented"
+	return *new(VaddNumFp32Vector)
 }
 
 type VaddNumFp32Vector Incomplete
 
 func (c VaddNumFp32Vector) Element(element string) VaddElement {
-	c.cs.s = append(c.cs.s, element)
-	return (VaddElement)(c)
+	_ = "STUB: not implemented"
+	return *new(VaddElement)
 }
 
 type VaddNumValuesValues Incomplete
 
 func (c VaddNumValuesValues) Vector(vector ...float32) VaddNumValuesVector {
-	for _, n := range vector {
-		c.cs.s = append(c.cs.s, strconv.FormatFloat(float64(n), 'f', -1, 64))
-	}
-	return (VaddNumValuesVector)(c)
+	_ = "STUB: not implemented"
+	return *new(VaddNumValuesVector)
 }
 
 type VaddNumValuesVector Incomplete
 
 func (c VaddNumValuesVector) Vector(vector ...float32) VaddNumValuesVector {
-	for _, n := range vector {
-		c.cs.s = append(c.cs.s, strconv.FormatFloat(float64(n), 'f', -1, 64))
-	}
-	return c
+	_ = "STUB: not implemented"
+	return *new(VaddNumValuesVector)
 }
 
 func (c VaddNumValuesVector) Element(element string) VaddElement {
-	c.cs.s = append(c.cs.s, element)
-	return (VaddElement)(c)
+	_ = "STUB: not implemented"
+	return *new(VaddElement)
 }
 
 type VaddQuantizationBin Incomplete
 
 func (c VaddQuantizationBin) Ef(buildExplorationFactor int64) VaddEf {
-	c.cs.s = append(c.cs.s, "EF", strconv.FormatInt(buildExplorationFactor, 10))
-	return (VaddEf)(c)
+	_ = "STUB: not implemented"
+	return *new(VaddEf)
 }
 
 func (c VaddQuantizationBin) Setattr(attributes string) VaddSetattr {
-	c.cs.s = append(c.cs.s, "SETATTR", attributes)
-	return (VaddSetattr)(c)
+	_ = "STUB: not implemented"
+	return *new(VaddSetattr)
 }
 
-func (c VaddQuantizationBin) M(numlinks int64) VaddM {
-	c.cs.s = append(c.cs.s, "M", strconv.FormatInt(numlinks, 10))
-	return (VaddM)(c)
-}
+func (c VaddQuantizationBin) M(numlinks int64) VaddM { _ = "STUB: not implemented"; return *new(VaddM) }
 
-func (c VaddQuantizationBin) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c VaddQuantizationBin) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type VaddQuantizationNoquant Incomplete
 
 func (c VaddQuantizationNoquant) Ef(buildExplorationFactor int64) VaddEf {
-	c.cs.s = append(c.cs.s, "EF", strconv.FormatInt(buildExplorationFactor, 10))
-	return (VaddEf)(c)
+	_ = "STUB: not implemented"
+	return *new(VaddEf)
 }
 
 func (c VaddQuantizationNoquant) Setattr(attributes string) VaddSetattr {
-	c.cs.s = append(c.cs.s, "SETATTR", attributes)
-	return (VaddSetattr)(c)
+	_ = "STUB: not implemented"
+	return *new(VaddSetattr)
 }
 
 func (c VaddQuantizationNoquant) M(numlinks int64) VaddM {
-	c.cs.s = append(c.cs.s, "M", strconv.FormatInt(numlinks, 10))
-	return (VaddM)(c)
+	_ = "STUB: not implemented"
+	return *new(VaddM)
 }
 
 func (c VaddQuantizationNoquant) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type VaddQuantizationQ8 Incomplete
 
 func (c VaddQuantizationQ8) Ef(buildExplorationFactor int64) VaddEf {
-	c.cs.s = append(c.cs.s, "EF", strconv.FormatInt(buildExplorationFactor, 10))
-	return (VaddEf)(c)
+	_ = "STUB: not implemented"
+	return *new(VaddEf)
 }
 
 func (c VaddQuantizationQ8) Setattr(attributes string) VaddSetattr {
-	c.cs.s = append(c.cs.s, "SETATTR", attributes)
-	return (VaddSetattr)(c)
+	_ = "STUB: not implemented"
+	return *new(VaddSetattr)
 }
 
-func (c VaddQuantizationQ8) M(numlinks int64) VaddM {
-	c.cs.s = append(c.cs.s, "M", strconv.FormatInt(numlinks, 10))
-	return (VaddM)(c)
-}
+func (c VaddQuantizationQ8) M(numlinks int64) VaddM { _ = "STUB: not implemented"; return *new(VaddM) }
 
-func (c VaddQuantizationQ8) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c VaddQuantizationQ8) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type VaddReduce Incomplete
 
-func (c VaddReduce) Fp32() VaddNumFp32Fp32 {
-	c.cs.s = append(c.cs.s, "FP32")
-	return (VaddNumFp32Fp32)(c)
-}
+func (c VaddReduce) Fp32() VaddNumFp32Fp32 { _ = "STUB: not implemented"; return *new(VaddNumFp32Fp32) }
 
 func (c VaddReduce) Values(num int64) VaddNumValuesValues {
-	c.cs.s = append(c.cs.s, "VALUES", strconv.FormatInt(num, 10))
-	return (VaddNumValuesValues)(c)
+	_ = "STUB: not implemented"
+	return *new(VaddNumValuesValues)
 }
 
 type VaddSetattr Incomplete
 
-func (c VaddSetattr) M(numlinks int64) VaddM {
-	c.cs.s = append(c.cs.s, "M", strconv.FormatInt(numlinks, 10))
-	return (VaddM)(c)
-}
+func (c VaddSetattr) M(numlinks int64) VaddM { _ = "STUB: not implemented"; return *new(VaddM) }
 
-func (c VaddSetattr) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c VaddSetattr) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type Vcard Incomplete
 
-func (b Builder) Vcard() (c Vcard) {
-	c = Vcard{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "VCARD")
-	return c
-}
+func (b Builder) Vcard() (c Vcard) { _ = "STUB: not implemented"; return *new(Vcard) }
 
-func (c Vcard) Key(key string) VcardKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (VcardKey)(c)
-}
+func (c Vcard) Key(key string) VcardKey { _ = "STUB: not implemented"; return *new(VcardKey) }
 
 type VcardKey Incomplete
 
-func (c VcardKey) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c VcardKey) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type Vdim Incomplete
 
-func (b Builder) Vdim() (c Vdim) {
-	c = Vdim{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "VDIM")
-	return c
-}
+func (b Builder) Vdim() (c Vdim) { _ = "STUB: not implemented"; return *new(Vdim) }
 
-func (c Vdim) Key(key string) VdimKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (VdimKey)(c)
-}
+func (c Vdim) Key(key string) VdimKey { _ = "STUB: not implemented"; return *new(VdimKey) }
 
 type VdimKey Incomplete
 
-func (c VdimKey) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c VdimKey) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type Vemb Incomplete
 
-func (b Builder) Vemb() (c Vemb) {
-	c = Vemb{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "VEMB")
-	return c
-}
+func (b Builder) Vemb() (c Vemb) { _ = "STUB: not implemented"; return *new(Vemb) }
 
-func (c Vemb) Key(key string) VembKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (VembKey)(c)
-}
+func (c Vemb) Key(key string) VembKey { _ = "STUB: not implemented"; return *new(VembKey) }
 
 type VembElement Incomplete
 
-func (c VembElement) Raw() VembRaw {
-	c.cs.s = append(c.cs.s, "RAW")
-	return (VembRaw)(c)
-}
+func (c VembElement) Raw() VembRaw { _ = "STUB: not implemented"; return *new(VembRaw) }
 
-func (c VembElement) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c VembElement) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type VembKey Incomplete
 
 func (c VembKey) Element(element string) VembElement {
-	c.cs.s = append(c.cs.s, element)
-	return (VembElement)(c)
+	_ = "STUB: not implemented"
+	return *new(VembElement)
 }
 
 type VembRaw Incomplete
 
-func (c VembRaw) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c VembRaw) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type Vgetattr Incomplete
 
-func (b Builder) Vgetattr() (c Vgetattr) {
-	c = Vgetattr{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "VGETATTR")
-	return c
-}
+func (b Builder) Vgetattr() (c Vgetattr) { _ = "STUB: not implemented"; return *new(Vgetattr) }
 
-func (c Vgetattr) Key(key string) VgetattrKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (VgetattrKey)(c)
-}
+func (c Vgetattr) Key(key string) VgetattrKey { _ = "STUB: not implemented"; return *new(VgetattrKey) }
 
 type VgetattrElement Incomplete
 
-func (c VgetattrElement) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c VgetattrElement) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type VgetattrKey Incomplete
 
 func (c VgetattrKey) Element(element string) VgetattrElement {
-	c.cs.s = append(c.cs.s, element)
-	return (VgetattrElement)(c)
+	_ = "STUB: not implemented"
+	return *new(VgetattrElement)
 }
 
 type Vinfo Incomplete
 
-func (b Builder) Vinfo() (c Vinfo) {
-	c = Vinfo{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "VINFO")
-	return c
-}
+func (b Builder) Vinfo() (c Vinfo) { _ = "STUB: not implemented"; return *new(Vinfo) }
 
-func (c Vinfo) Key(key string) VinfoKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (VinfoKey)(c)
-}
+func (c Vinfo) Key(key string) VinfoKey { _ = "STUB: not implemented"; return *new(VinfoKey) }
 
 type VinfoKey Incomplete
 
-func (c VinfoKey) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c VinfoKey) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type Vlinks Incomplete
 
-func (b Builder) Vlinks() (c Vlinks) {
-	c = Vlinks{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "VLINKS")
-	return c
-}
+func (b Builder) Vlinks() (c Vlinks) { _ = "STUB: not implemented"; return *new(Vlinks) }
 
-func (c Vlinks) Key(key string) VlinksKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (VlinksKey)(c)
-}
+func (c Vlinks) Key(key string) VlinksKey { _ = "STUB: not implemented"; return *new(VlinksKey) }
 
 type VlinksElement Incomplete
 
 func (c VlinksElement) Withscores() VlinksWithscores {
-	c.cs.s = append(c.cs.s, "WITHSCORES")
-	return (VlinksWithscores)(c)
+	_ = "STUB: not implemented"
+	return *new(VlinksWithscores)
 }
 
-func (c VlinksElement) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c VlinksElement) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type VlinksKey Incomplete
 
 func (c VlinksKey) Element(element string) VlinksElement {
-	c.cs.s = append(c.cs.s, element)
-	return (VlinksElement)(c)
+	_ = "STUB: not implemented"
+	return *new(VlinksElement)
 }
 
 type VlinksWithscores Incomplete
 
-func (c VlinksWithscores) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c VlinksWithscores) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type Vrandmember Incomplete
 
-func (b Builder) Vrandmember() (c Vrandmember) {
-	c = Vrandmember{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "VRANDMEMBER")
-	return c
-}
+func (b Builder) Vrandmember() (c Vrandmember) { _ = "STUB: not implemented"; return *new(Vrandmember) }
 
 func (c Vrandmember) Key(key string) VrandmemberKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (VrandmemberKey)(c)
+	_ = "STUB: not implemented"
+	return *new(VrandmemberKey)
 }
 
 type VrandmemberCount Incomplete
 
-func (c VrandmemberCount) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c VrandmemberCount) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type VrandmemberKey Incomplete
 
 func (c VrandmemberKey) Count(count int64) VrandmemberCount {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(count, 10))
-	return (VrandmemberCount)(c)
+	_ = "STUB: not implemented"
+	return *new(VrandmemberCount)
 }
 
-func (c VrandmemberKey) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c VrandmemberKey) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type Vrem Incomplete
 
-func (b Builder) Vrem() (c Vrem) {
-	c = Vrem{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "VREM")
-	return c
-}
+func (b Builder) Vrem() (c Vrem) { _ = "STUB: not implemented"; return *new(Vrem) }
 
-func (c Vrem) Key(key string) VremKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (VremKey)(c)
-}
+func (c Vrem) Key(key string) VremKey { _ = "STUB: not implemented"; return *new(VremKey) }
 
 type VremElement Incomplete
 
-func (c VremElement) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c VremElement) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type VremKey Incomplete
 
 func (c VremKey) Element(element string) VremElement {
-	c.cs.s = append(c.cs.s, element)
-	return (VremElement)(c)
+	_ = "STUB: not implemented"
+	return *new(VremElement)
 }
 
 type Vsetattr Incomplete
 
-func (b Builder) Vsetattr() (c Vsetattr) {
-	c = Vsetattr{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "VSETATTR")
-	return c
-}
+func (b Builder) Vsetattr() (c Vsetattr) { _ = "STUB: not implemented"; return *new(Vsetattr) }
 
-func (c Vsetattr) Key(key string) VsetattrKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (VsetattrKey)(c)
-}
+func (c Vsetattr) Key(key string) VsetattrKey { _ = "STUB: not implemented"; return *new(VsetattrKey) }
 
 type VsetattrElement Incomplete
 
 func (c VsetattrElement) Json(json string) VsetattrJson {
-	c.cs.s = append(c.cs.s, json)
-	return (VsetattrJson)(c)
+	_ = "STUB: not implemented"
+	return *new(VsetattrJson)
 }
 
 type VsetattrJson Incomplete
 
-func (c VsetattrJson) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c VsetattrJson) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type VsetattrKey Incomplete
 
 func (c VsetattrKey) Element(element string) VsetattrElement {
-	c.cs.s = append(c.cs.s, element)
-	return (VsetattrElement)(c)
+	_ = "STUB: not implemented"
+	return *new(VsetattrElement)
 }
 
 type Vsim Incomplete
 
-func (b Builder) Vsim() (c Vsim) {
-	c = Vsim{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "VSIM")
-	return c
-}
+func (b Builder) Vsim() (c Vsim) { _ = "STUB: not implemented"; return *new(Vsim) }
 
-func (c Vsim) Key(key string) VsimKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (VsimKey)(c)
-}
+func (c Vsim) Key(key string) VsimKey { _ = "STUB: not implemented"; return *new(VsimKey) }
 
 type VsimCount Incomplete
 
 func (c VsimCount) Epsilon(delta float32) VsimEpsilon {
-	c.cs.s = append(c.cs.s, "EPSILON", strconv.FormatFloat(float64(delta), 'f', -1, 64))
-	return (VsimEpsilon)(c)
+	_ = "STUB: not implemented"
+	return *new(VsimEpsilon)
 }
 
 func (c VsimCount) Ef(searchExplorationFactor int64) VsimEf {
-	c.cs.s = append(c.cs.s, "EF", strconv.FormatInt(searchExplorationFactor, 10))
-	return (VsimEf)(c)
+	_ = "STUB: not implemented"
+	return *new(VsimEf)
 }
 
 func (c VsimCount) Filter(expression string) VsimFilter {
-	c.cs.s = append(c.cs.s, "FILTER", expression)
-	return (VsimFilter)(c)
+	_ = "STUB: not implemented"
+	return *new(VsimFilter)
 }
 
 func (c VsimCount) FilterEf(maxFilteringEffort int64) VsimFilterEf {
-	c.cs.s = append(c.cs.s, "FILTER-EF", strconv.FormatInt(maxFilteringEffort, 10))
-	return (VsimFilterEf)(c)
+	_ = "STUB: not implemented"
+	return *new(VsimFilterEf)
 }
 
-func (c VsimCount) Truth() VsimTruth {
-	c.cs.s = append(c.cs.s, "TRUTH")
-	return (VsimTruth)(c)
-}
+func (c VsimCount) Truth() VsimTruth { _ = "STUB: not implemented"; return *new(VsimTruth) }
 
-func (c VsimCount) Nothread() VsimNothread {
-	c.cs.s = append(c.cs.s, "NOTHREAD")
-	return (VsimNothread)(c)
-}
+func (c VsimCount) Nothread() VsimNothread { _ = "STUB: not implemented"; return *new(VsimNothread) }
 
-func (c VsimCount) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c VsimCount) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type VsimEf Incomplete
 
 func (c VsimEf) Filter(expression string) VsimFilter {
-	c.cs.s = append(c.cs.s, "FILTER", expression)
-	return (VsimFilter)(c)
+	_ = "STUB: not implemented"
+	return *new(VsimFilter)
 }
 
 func (c VsimEf) FilterEf(maxFilteringEffort int64) VsimFilterEf {
-	c.cs.s = append(c.cs.s, "FILTER-EF", strconv.FormatInt(maxFilteringEffort, 10))
-	return (VsimFilterEf)(c)
+	_ = "STUB: not implemented"
+	return *new(VsimFilterEf)
 }
 
-func (c VsimEf) Truth() VsimTruth {
-	c.cs.s = append(c.cs.s, "TRUTH")
-	return (VsimTruth)(c)
-}
+func (c VsimEf) Truth() VsimTruth { _ = "STUB: not implemented"; return *new(VsimTruth) }
 
-func (c VsimEf) Nothread() VsimNothread {
-	c.cs.s = append(c.cs.s, "NOTHREAD")
-	return (VsimNothread)(c)
-}
+func (c VsimEf) Nothread() VsimNothread { _ = "STUB: not implemented"; return *new(VsimNothread) }
 
-func (c VsimEf) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c VsimEf) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type VsimEpsilon Incomplete
 
 func (c VsimEpsilon) Ef(searchExplorationFactor int64) VsimEf {
-	c.cs.s = append(c.cs.s, "EF", strconv.FormatInt(searchExplorationFactor, 10))
-	return (VsimEf)(c)
+	_ = "STUB: not implemented"
+	return *new(VsimEf)
 }
 
 func (c VsimEpsilon) Filter(expression string) VsimFilter {
-	c.cs.s = append(c.cs.s, "FILTER", expression)
-	return (VsimFilter)(c)
+	_ = "STUB: not implemented"
+	return *new(VsimFilter)
 }
 
 func (c VsimEpsilon) FilterEf(maxFilteringEffort int64) VsimFilterEf {
-	c.cs.s = append(c.cs.s, "FILTER-EF", strconv.FormatInt(maxFilteringEffort, 10))
-	return (VsimFilterEf)(c)
+	_ = "STUB: not implemented"
+	return *new(VsimFilterEf)
 }
 
-func (c VsimEpsilon) Truth() VsimTruth {
-	c.cs.s = append(c.cs.s, "TRUTH")
-	return (VsimTruth)(c)
-}
+func (c VsimEpsilon) Truth() VsimTruth { _ = "STUB: not implemented"; return *new(VsimTruth) }
 
-func (c VsimEpsilon) Nothread() VsimNothread {
-	c.cs.s = append(c.cs.s, "NOTHREAD")
-	return (VsimNothread)(c)
-}
+func (c VsimEpsilon) Nothread() VsimNothread { _ = "STUB: not implemented"; return *new(VsimNothread) }
 
-func (c VsimEpsilon) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c VsimEpsilon) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type VsimFilter Incomplete
 
 func (c VsimFilter) FilterEf(maxFilteringEffort int64) VsimFilterEf {
-	c.cs.s = append(c.cs.s, "FILTER-EF", strconv.FormatInt(maxFilteringEffort, 10))
-	return (VsimFilterEf)(c)
+	_ = "STUB: not implemented"
+	return *new(VsimFilterEf)
 }
 
-func (c VsimFilter) Truth() VsimTruth {
-	c.cs.s = append(c.cs.s, "TRUTH")
-	return (VsimTruth)(c)
-}
+func (c VsimFilter) Truth() VsimTruth { _ = "STUB: not implemented"; return *new(VsimTruth) }
 
-func (c VsimFilter) Nothread() VsimNothread {
-	c.cs.s = append(c.cs.s, "NOTHREAD")
-	return (VsimNothread)(c)
-}
+func (c VsimFilter) Nothread() VsimNothread { _ = "STUB: not implemented"; return *new(VsimNothread) }
 
-func (c VsimFilter) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c VsimFilter) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type VsimFilterEf Incomplete
 
-func (c VsimFilterEf) Truth() VsimTruth {
-	c.cs.s = append(c.cs.s, "TRUTH")
-	return (VsimTruth)(c)
-}
+func (c VsimFilterEf) Truth() VsimTruth { _ = "STUB: not implemented"; return *new(VsimTruth) }
 
-func (c VsimFilterEf) Nothread() VsimNothread {
-	c.cs.s = append(c.cs.s, "NOTHREAD")
-	return (VsimNothread)(c)
-}
+func (c VsimFilterEf) Nothread() VsimNothread { _ = "STUB: not implemented"; return *new(VsimNothread) }
 
-func (c VsimFilterEf) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c VsimFilterEf) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type VsimKey Incomplete
 
 func (c VsimKey) Ele() VsimQueryTypeEleEle {
-	c.cs.s = append(c.cs.s, "ELE")
-	return (VsimQueryTypeEleEle)(c)
+	_ = "STUB: not implemented"
+	return *new(VsimQueryTypeEleEle)
 }
 
 func (c VsimKey) Fp32() VsimQueryTypeFp32Fp32 {
-	c.cs.s = append(c.cs.s, "FP32")
-	return (VsimQueryTypeFp32Fp32)(c)
+	_ = "STUB: not implemented"
+	return *new(VsimQueryTypeFp32Fp32)
 }
 
 func (c VsimKey) Values(num int64) VsimQueryTypeValuesValues {
-	c.cs.s = append(c.cs.s, "VALUES", strconv.FormatInt(num, 10))
-	return (VsimQueryTypeValuesValues)(c)
+	_ = "STUB: not implemented"
+	return *new(VsimQueryTypeValuesValues)
 }
 
 type VsimNothread Incomplete
 
-func (c VsimNothread) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c VsimNothread) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type VsimQueryTypeEleEle Incomplete
 
 func (c VsimQueryTypeEleEle) Element(element string) VsimQueryTypeEleElement {
-	c.cs.s = append(c.cs.s, element)
-	return (VsimQueryTypeEleElement)(c)
+	_ = "STUB: not implemented"
+	return *new(VsimQueryTypeEleElement)
 }
 
 type VsimQueryTypeEleElement Incomplete
 
 func (c VsimQueryTypeEleElement) Withscores() VsimWithscores {
-	c.cs.s = append(c.cs.s, "WITHSCORES")
-	return (VsimWithscores)(c)
+	_ = "STUB: not implemented"
+	return *new(VsimWithscores)
 }
 
 func (c VsimQueryTypeEleElement) Withattribs() VsimWithattribs {
-	c.cs.s = append(c.cs.s, "WITHATTRIBS")
-	return (VsimWithattribs)(c)
+	_ = "STUB: not implemented"
+	return *new(VsimWithattribs)
 }
 
 func (c VsimQueryTypeEleElement) Count(num int64) VsimCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(num, 10))
-	return (VsimCount)(c)
+	_ = "STUB: not implemented"
+	return *new(VsimCount)
 }
 
 func (c VsimQueryTypeEleElement) Epsilon(delta float32) VsimEpsilon {
-	c.cs.s = append(c.cs.s, "EPSILON", strconv.FormatFloat(float64(delta), 'f', -1, 64))
-	return (VsimEpsilon)(c)
+	_ = "STUB: not implemented"
+	return *new(VsimEpsilon)
 }
 
 func (c VsimQueryTypeEleElement) Ef(searchExplorationFactor int64) VsimEf {
-	c.cs.s = append(c.cs.s, "EF", strconv.FormatInt(searchExplorationFactor, 10))
-	return (VsimEf)(c)
+	_ = "STUB: not implemented"
+	return *new(VsimEf)
 }
 
 func (c VsimQueryTypeEleElement) Filter(expression string) VsimFilter {
-	c.cs.s = append(c.cs.s, "FILTER", expression)
-	return (VsimFilter)(c)
+	_ = "STUB: not implemented"
+	return *new(VsimFilter)
 }
 
 func (c VsimQueryTypeEleElement) FilterEf(maxFilteringEffort int64) VsimFilterEf {
-	c.cs.s = append(c.cs.s, "FILTER-EF", strconv.FormatInt(maxFilteringEffort, 10))
-	return (VsimFilterEf)(c)
+	_ = "STUB: not implemented"
+	return *new(VsimFilterEf)
 }
 
 func (c VsimQueryTypeEleElement) Truth() VsimTruth {
-	c.cs.s = append(c.cs.s, "TRUTH")
-	return (VsimTruth)(c)
+	_ = "STUB: not implemented"
+	return *new(VsimTruth)
 }
 
 func (c VsimQueryTypeEleElement) Nothread() VsimNothread {
-	c.cs.s = append(c.cs.s, "NOTHREAD")
-	return (VsimNothread)(c)
+	_ = "STUB: not implemented"
+	return *new(VsimNothread)
 }
 
 func (c VsimQueryTypeEleElement) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type VsimQueryTypeFp32Fp32 Incomplete
 
 func (c VsimQueryTypeFp32Fp32) Vector(vector string) VsimQueryTypeFp32Vector {
-	c.cs.s = append(c.cs.s, vector)
-	return (VsimQueryTypeFp32Vector)(c)
+	_ = "STUB: not implemented"
+	return *new(VsimQueryTypeFp32Vector)
 }
 
 type VsimQueryTypeFp32Vector Incomplete
 
 func (c VsimQueryTypeFp32Vector) Withscores() VsimWithscores {
-	c.cs.s = append(c.cs.s, "WITHSCORES")
-	return (VsimWithscores)(c)
+	_ = "STUB: not implemented"
+	return *new(VsimWithscores)
 }
 
 func (c VsimQueryTypeFp32Vector) Withattribs() VsimWithattribs {
-	c.cs.s = append(c.cs.s, "WITHATTRIBS")
-	return (VsimWithattribs)(c)
+	_ = "STUB: not implemented"
+	return *new(VsimWithattribs)
 }
 
 func (c VsimQueryTypeFp32Vector) Count(num int64) VsimCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(num, 10))
-	return (VsimCount)(c)
+	_ = "STUB: not implemented"
+	return *new(VsimCount)
 }
 
 func (c VsimQueryTypeFp32Vector) Epsilon(delta float32) VsimEpsilon {
-	c.cs.s = append(c.cs.s, "EPSILON", strconv.FormatFloat(float64(delta), 'f', -1, 64))
-	return (VsimEpsilon)(c)
+	_ = "STUB: not implemented"
+	return *new(VsimEpsilon)
 }
 
 func (c VsimQueryTypeFp32Vector) Ef(searchExplorationFactor int64) VsimEf {
-	c.cs.s = append(c.cs.s, "EF", strconv.FormatInt(searchExplorationFactor, 10))
-	return (VsimEf)(c)
+	_ = "STUB: not implemented"
+	return *new(VsimEf)
 }
 
 func (c VsimQueryTypeFp32Vector) Filter(expression string) VsimFilter {
-	c.cs.s = append(c.cs.s, "FILTER", expression)
-	return (VsimFilter)(c)
+	_ = "STUB: not implemented"
+	return *new(VsimFilter)
 }
 
 func (c VsimQueryTypeFp32Vector) FilterEf(maxFilteringEffort int64) VsimFilterEf {
-	c.cs.s = append(c.cs.s, "FILTER-EF", strconv.FormatInt(maxFilteringEffort, 10))
-	return (VsimFilterEf)(c)
+	_ = "STUB: not implemented"
+	return *new(VsimFilterEf)
 }
 
 func (c VsimQueryTypeFp32Vector) Truth() VsimTruth {
-	c.cs.s = append(c.cs.s, "TRUTH")
-	return (VsimTruth)(c)
+	_ = "STUB: not implemented"
+	return *new(VsimTruth)
 }
 
 func (c VsimQueryTypeFp32Vector) Nothread() VsimNothread {
-	c.cs.s = append(c.cs.s, "NOTHREAD")
-	return (VsimNothread)(c)
+	_ = "STUB: not implemented"
+	return *new(VsimNothread)
 }
 
 func (c VsimQueryTypeFp32Vector) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type VsimQueryTypeValuesValues Incomplete
 
 func (c VsimQueryTypeValuesValues) Vector(vector ...float32) VsimQueryTypeValuesVector {
-	for _, n := range vector {
-		c.cs.s = append(c.cs.s, strconv.FormatFloat(float64(n), 'f', -1, 64))
-	}
-	return (VsimQueryTypeValuesVector)(c)
+	_ = "STUB: not implemented"
+	return *new(VsimQueryTypeValuesVector)
 }
 
 type VsimQueryTypeValuesVector Incomplete
 
 func (c VsimQueryTypeValuesVector) Vector(vector ...float32) VsimQueryTypeValuesVector {
-	for _, n := range vector {
-		c.cs.s = append(c.cs.s, strconv.FormatFloat(float64(n), 'f', -1, 64))
-	}
-	return c
+	_ = "STUB: not implemented"
+	return *new(VsimQueryTypeValuesVector)
 }
 
 func (c VsimQueryTypeValuesVector) Withscores() VsimWithscores {
-	c.cs.s = append(c.cs.s, "WITHSCORES")
-	return (VsimWithscores)(c)
+	_ = "STUB: not implemented"
+	return *new(VsimWithscores)
 }
 
 func (c VsimQueryTypeValuesVector) Withattribs() VsimWithattribs {
-	c.cs.s = append(c.cs.s, "WITHATTRIBS")
-	return (VsimWithattribs)(c)
+	_ = "STUB: not implemented"
+	return *new(VsimWithattribs)
 }
 
 func (c VsimQueryTypeValuesVector) Count(num int64) VsimCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(num, 10))
-	return (VsimCount)(c)
+	_ = "STUB: not implemented"
+	return *new(VsimCount)
 }
 
 func (c VsimQueryTypeValuesVector) Epsilon(delta float32) VsimEpsilon {
-	c.cs.s = append(c.cs.s, "EPSILON", strconv.FormatFloat(float64(delta), 'f', -1, 64))
-	return (VsimEpsilon)(c)
+	_ = "STUB: not implemented"
+	return *new(VsimEpsilon)
 }
 
 func (c VsimQueryTypeValuesVector) Ef(searchExplorationFactor int64) VsimEf {
-	c.cs.s = append(c.cs.s, "EF", strconv.FormatInt(searchExplorationFactor, 10))
-	return (VsimEf)(c)
+	_ = "STUB: not implemented"
+	return *new(VsimEf)
 }
 
 func (c VsimQueryTypeValuesVector) Filter(expression string) VsimFilter {
-	c.cs.s = append(c.cs.s, "FILTER", expression)
-	return (VsimFilter)(c)
+	_ = "STUB: not implemented"
+	return *new(VsimFilter)
 }
 
 func (c VsimQueryTypeValuesVector) FilterEf(maxFilteringEffort int64) VsimFilterEf {
-	c.cs.s = append(c.cs.s, "FILTER-EF", strconv.FormatInt(maxFilteringEffort, 10))
-	return (VsimFilterEf)(c)
+	_ = "STUB: not implemented"
+	return *new(VsimFilterEf)
 }
 
 func (c VsimQueryTypeValuesVector) Truth() VsimTruth {
-	c.cs.s = append(c.cs.s, "TRUTH")
-	return (VsimTruth)(c)
+	_ = "STUB: not implemented"
+	return *new(VsimTruth)
 }
 
 func (c VsimQueryTypeValuesVector) Nothread() VsimNothread {
-	c.cs.s = append(c.cs.s, "NOTHREAD")
-	return (VsimNothread)(c)
+	_ = "STUB: not implemented"
+	return *new(VsimNothread)
 }
 
 func (c VsimQueryTypeValuesVector) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type VsimTruth Incomplete
 
-func (c VsimTruth) Nothread() VsimNothread {
-	c.cs.s = append(c.cs.s, "NOTHREAD")
-	return (VsimNothread)(c)
-}
+func (c VsimTruth) Nothread() VsimNothread { _ = "STUB: not implemented"; return *new(VsimNothread) }
 
-func (c VsimTruth) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c VsimTruth) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type VsimWithattribs Incomplete
 
 func (c VsimWithattribs) Count(num int64) VsimCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(num, 10))
-	return (VsimCount)(c)
+	_ = "STUB: not implemented"
+	return *new(VsimCount)
 }
 
 func (c VsimWithattribs) Epsilon(delta float32) VsimEpsilon {
-	c.cs.s = append(c.cs.s, "EPSILON", strconv.FormatFloat(float64(delta), 'f', -1, 64))
-	return (VsimEpsilon)(c)
+	_ = "STUB: not implemented"
+	return *new(VsimEpsilon)
 }
 
 func (c VsimWithattribs) Ef(searchExplorationFactor int64) VsimEf {
-	c.cs.s = append(c.cs.s, "EF", strconv.FormatInt(searchExplorationFactor, 10))
-	return (VsimEf)(c)
+	_ = "STUB: not implemented"
+	return *new(VsimEf)
 }
 
 func (c VsimWithattribs) Filter(expression string) VsimFilter {
-	c.cs.s = append(c.cs.s, "FILTER", expression)
-	return (VsimFilter)(c)
+	_ = "STUB: not implemented"
+	return *new(VsimFilter)
 }
 
 func (c VsimWithattribs) FilterEf(maxFilteringEffort int64) VsimFilterEf {
-	c.cs.s = append(c.cs.s, "FILTER-EF", strconv.FormatInt(maxFilteringEffort, 10))
-	return (VsimFilterEf)(c)
+	_ = "STUB: not implemented"
+	return *new(VsimFilterEf)
 }
 
-func (c VsimWithattribs) Truth() VsimTruth {
-	c.cs.s = append(c.cs.s, "TRUTH")
-	return (VsimTruth)(c)
-}
+func (c VsimWithattribs) Truth() VsimTruth { _ = "STUB: not implemented"; return *new(VsimTruth) }
 
 func (c VsimWithattribs) Nothread() VsimNothread {
-	c.cs.s = append(c.cs.s, "NOTHREAD")
-	return (VsimNothread)(c)
+	_ = "STUB: not implemented"
+	return *new(VsimNothread)
 }
 
-func (c VsimWithattribs) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c VsimWithattribs) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type VsimWithscores Incomplete
 
 func (c VsimWithscores) Withattribs() VsimWithattribs {
-	c.cs.s = append(c.cs.s, "WITHATTRIBS")
-	return (VsimWithattribs)(c)
+	_ = "STUB: not implemented"
+	return *new(VsimWithattribs)
 }
 
 func (c VsimWithscores) Count(num int64) VsimCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(num, 10))
-	return (VsimCount)(c)
+	_ = "STUB: not implemented"
+	return *new(VsimCount)
 }
 
 func (c VsimWithscores) Epsilon(delta float32) VsimEpsilon {
-	c.cs.s = append(c.cs.s, "EPSILON", strconv.FormatFloat(float64(delta), 'f', -1, 64))
-	return (VsimEpsilon)(c)
+	_ = "STUB: not implemented"
+	return *new(VsimEpsilon)
 }
 
 func (c VsimWithscores) Ef(searchExplorationFactor int64) VsimEf {
-	c.cs.s = append(c.cs.s, "EF", strconv.FormatInt(searchExplorationFactor, 10))
-	return (VsimEf)(c)
+	_ = "STUB: not implemented"
+	return *new(VsimEf)
 }
 
 func (c VsimWithscores) Filter(expression string) VsimFilter {
-	c.cs.s = append(c.cs.s, "FILTER", expression)
-	return (VsimFilter)(c)
+	_ = "STUB: not implemented"
+	return *new(VsimFilter)
 }
 
 func (c VsimWithscores) FilterEf(maxFilteringEffort int64) VsimFilterEf {
-	c.cs.s = append(c.cs.s, "FILTER-EF", strconv.FormatInt(maxFilteringEffort, 10))
-	return (VsimFilterEf)(c)
+	_ = "STUB: not implemented"
+	return *new(VsimFilterEf)
 }
 
-func (c VsimWithscores) Truth() VsimTruth {
-	c.cs.s = append(c.cs.s, "TRUTH")
-	return (VsimTruth)(c)
-}
+func (c VsimWithscores) Truth() VsimTruth { _ = "STUB: not implemented"; return *new(VsimTruth) }
 
 func (c VsimWithscores) Nothread() VsimNothread {
-	c.cs.s = append(c.cs.s, "NOTHREAD")
-	return (VsimNothread)(c)
+	_ = "STUB: not implemented"
+	return *new(VsimNothread)
 }
 
-func (c VsimWithscores) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c VsimWithscores) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }

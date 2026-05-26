@@ -2,7 +2,6 @@ package rueidis
 
 import (
 	"sync"
-	"sync/atomic"
 )
 
 // PubSubMessage represents a pubsub message from redis
@@ -35,13 +34,9 @@ type PubSubHooks struct {
 	onInvalidations func([]RedisMessage)
 }
 
-func (h *PubSubHooks) isZero() bool {
-	return h.OnMessage == nil && h.OnSubscription == nil && h.onInvalidations == nil
-}
+func (h *PubSubHooks) isZero() bool { _ = "STUB: not implemented"; return false }
 
-func newSubs() *subs {
-	return &subs{chs: make(map[string]chs), sub: make(map[uint64]*sub)}
-}
+func newSubs() *subs { _ = "STUB: not implemented"; return nil }
 
 type subs struct {
 	chs map[string]chs
@@ -60,93 +55,17 @@ type sub struct {
 	cs []string
 }
 
-func (s *subs) Publish(channel string, msg PubSubMessage) {
-	if atomic.LoadUint64(&s.cnt) != 0 {
-		s.mu.RLock()
-		for _, sb := range s.chs[channel].sub {
-			sb.ch <- msg
-		}
-		s.mu.RUnlock()
-	}
-}
+func (s *subs) Publish(channel string, msg PubSubMessage) { _ = "STUB: not implemented"; return }
 
 func (s *subs) Subscribe(channels []string, fn func(PubSubSubscription)) (ch chan PubSubMessage, cancel func()) {
-	id := atomic.AddUint64(&s.cnt, 1)
-	s.mu.Lock()
-	if s.chs != nil {
-		ch = make(chan PubSubMessage, 16)
-		sb := &sub{cs: channels, ch: ch, fn: fn}
-		s.sub[id] = sb
-		for _, channel := range channels {
-			c := s.chs[channel].sub
-			if c == nil {
-				c = make(map[uint64]*sub, 1)
-				s.chs[channel] = chs{sub: c}
-			}
-			c[id] = sb
-		}
-		cancel = func() {
-			go func() {
-				for range ch {
-				}
-			}()
-			s.mu.Lock()
-			if s.chs != nil {
-				s.remove(id)
-			}
-			s.mu.Unlock()
-		}
-	}
-	s.mu.Unlock()
-	return ch, cancel
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (s *subs) remove(id uint64) {
-	if sb := s.sub[id]; sb != nil {
-		for _, channel := range sb.cs {
-			if c := s.chs[channel].sub; c != nil {
-				delete(c, id)
-			}
-		}
-		close(sb.ch)
-		delete(s.sub, id)
-	}
-}
+func (s *subs) remove(id uint64) { _ = "STUB: not implemented"; return }
 
-func (s *subs) Confirm(sub PubSubSubscription) {
-	if atomic.LoadUint64(&s.cnt) != 0 {
-		s.mu.RLock()
-		for _, sb := range s.chs[sub.Channel].sub {
-			if sb.fn != nil {
-				sb.fn(sub)
-			}
-		}
-		s.mu.RUnlock()
-	}
-}
+func (s *subs) Confirm(sub PubSubSubscription) { _ = "STUB: not implemented"; return }
 
-func (s *subs) Unsubscribe(sub PubSubSubscription) {
-	if atomic.LoadUint64(&s.cnt) != 0 {
-		s.mu.Lock()
-		for id, sb := range s.chs[sub.Channel].sub {
-			if sb.fn != nil {
-				sb.fn(sub)
-			}
-			s.remove(id)
-		}
-		delete(s.chs, sub.Channel)
-		s.mu.Unlock()
-	}
-}
+func (s *subs) Unsubscribe(sub PubSubSubscription) { _ = "STUB: not implemented"; return }
 
-func (s *subs) Close() {
-	var sbs map[uint64]*sub
-	s.mu.Lock()
-	sbs = s.sub
-	s.chs = nil
-	s.sub = nil
-	s.mu.Unlock()
-	for _, sb := range sbs {
-		close(sb.ch)
-	}
-}
+func (s *subs) Close() { _ = "STUB: not implemented"; return }

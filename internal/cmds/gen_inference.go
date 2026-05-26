@@ -2,279 +2,259 @@
 
 package cmds
 
-import "strconv"
-
 type AiModelexecute Incomplete
 
 func (b Builder) AiModelexecute() (c AiModelexecute) {
-	c = AiModelexecute{cs: get(), ks: b.ks, cf: int16(readonly)}
-	c.cs.s = append(c.cs.s, "AI.MODELEXECUTE")
-	return c
+	_ = "STUB: not implemented"
+	return *new(AiModelexecute)
 }
 
 func (c AiModelexecute) Key(key string) AiModelexecuteKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (AiModelexecuteKey)(c)
+	_ = "STUB: not implemented"
+	return *new(AiModelexecuteKey)
 }
 
 type AiModelexecuteInputsInput Incomplete
 
 func (c AiModelexecuteInputsInput) Input(input ...string) AiModelexecuteInputsInput {
-	c.cs.s = append(c.cs.s, input...)
-	return c
+	_ = "STUB: not implemented"
+	return *new(AiModelexecuteInputsInput)
 }
 
 func (c AiModelexecuteInputsInput) Outputs(outputCount int64) AiModelexecuteOutputsOutputs {
-	c.cs.s = append(c.cs.s, "OUTPUTS", strconv.FormatInt(outputCount, 10))
-	return (AiModelexecuteOutputsOutputs)(c)
+	_ = "STUB: not implemented"
+	return *new(AiModelexecuteOutputsOutputs)
 }
 
 type AiModelexecuteInputsInputs Incomplete
 
 func (c AiModelexecuteInputsInputs) Input(input ...string) AiModelexecuteInputsInput {
-	c.cs.s = append(c.cs.s, input...)
-	return (AiModelexecuteInputsInput)(c)
+	_ = "STUB: not implemented"
+	return *new(AiModelexecuteInputsInput)
 }
 
 type AiModelexecuteKey Incomplete
 
 func (c AiModelexecuteKey) Inputs(inputCount int64) AiModelexecuteInputsInputs {
-	c.cs.s = append(c.cs.s, "INPUTS", strconv.FormatInt(inputCount, 10))
-	return (AiModelexecuteInputsInputs)(c)
+	_ = "STUB: not implemented"
+	return *new(AiModelexecuteInputsInputs)
 }
 
 type AiModelexecuteOutputsOutput Incomplete
 
 func (c AiModelexecuteOutputsOutput) Output(output ...string) AiModelexecuteOutputsOutput {
-	c.cs.s = append(c.cs.s, output...)
-	return c
+	_ = "STUB: not implemented"
+	return *new(AiModelexecuteOutputsOutput)
 }
 
 func (c AiModelexecuteOutputsOutput) Timeout(timeout int64) AiModelexecuteTimeout {
-	c.cs.s = append(c.cs.s, "TIMEOUT", strconv.FormatInt(timeout, 10))
-	return (AiModelexecuteTimeout)(c)
+	_ = "STUB: not implemented"
+	return *new(AiModelexecuteTimeout)
 }
 
 func (c AiModelexecuteOutputsOutput) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 func (c AiModelexecuteOutputsOutput) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Cacheable)
 }
 
 type AiModelexecuteOutputsOutputs Incomplete
 
 func (c AiModelexecuteOutputsOutputs) Output(output ...string) AiModelexecuteOutputsOutput {
-	c.cs.s = append(c.cs.s, output...)
-	return (AiModelexecuteOutputsOutput)(c)
+	_ = "STUB: not implemented"
+	return *new(AiModelexecuteOutputsOutput)
 }
 
 type AiModelexecuteTimeout Incomplete
 
-func (c AiModelexecuteTimeout) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c AiModelexecuteTimeout) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c AiModelexecuteTimeout) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c AiModelexecuteTimeout) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type AiScriptexecute Incomplete
 
 func (b Builder) AiScriptexecute() (c AiScriptexecute) {
-	c = AiScriptexecute{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "AI.SCRIPTEXECUTE")
-	return c
+	_ = "STUB: not implemented"
+	return *new(AiScriptexecute)
 }
 
 func (c AiScriptexecute) Key(key string) AiScriptexecuteKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (AiScriptexecuteKey)(c)
+	_ = "STUB: not implemented"
+	return *new(AiScriptexecuteKey)
 }
 
 type AiScriptexecuteArgsArg Incomplete
 
 func (c AiScriptexecuteArgsArg) Arg(arg ...string) AiScriptexecuteArgsArg {
-	c.cs.s = append(c.cs.s, arg...)
-	return c
+	_ = "STUB: not implemented"
+	return *new(AiScriptexecuteArgsArg)
 }
 
 func (c AiScriptexecuteArgsArg) Outputs(outputCount int64) AiScriptexecuteOutputsOutputs {
-	c.cs.s = append(c.cs.s, "OUTPUTS", strconv.FormatInt(outputCount, 10))
-	return (AiScriptexecuteOutputsOutputs)(c)
+	_ = "STUB: not implemented"
+	return *new(AiScriptexecuteOutputsOutputs)
 }
 
 func (c AiScriptexecuteArgsArg) Timeout(timeout int64) AiScriptexecuteTimeout {
-	c.cs.s = append(c.cs.s, "TIMEOUT", strconv.FormatInt(timeout, 10))
-	return (AiScriptexecuteTimeout)(c)
+	_ = "STUB: not implemented"
+	return *new(AiScriptexecuteTimeout)
 }
 
 func (c AiScriptexecuteArgsArg) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type AiScriptexecuteArgsArgs Incomplete
 
 func (c AiScriptexecuteArgsArgs) Arg(arg ...string) AiScriptexecuteArgsArg {
-	c.cs.s = append(c.cs.s, arg...)
-	return (AiScriptexecuteArgsArg)(c)
+	_ = "STUB: not implemented"
+	return *new(AiScriptexecuteArgsArg)
 }
 
 type AiScriptexecuteFunction Incomplete
 
 func (c AiScriptexecuteFunction) Keys(keyCount int64) AiScriptexecuteKeysKeys {
-	c.cs.s = append(c.cs.s, "KEYS", strconv.FormatInt(keyCount, 10))
-	return (AiScriptexecuteKeysKeys)(c)
+	_ = "STUB: not implemented"
+	return *new(AiScriptexecuteKeysKeys)
 }
 
 func (c AiScriptexecuteFunction) Inputs(inputCount int64) AiScriptexecuteInputsInputs {
-	c.cs.s = append(c.cs.s, "INPUTS", strconv.FormatInt(inputCount, 10))
-	return (AiScriptexecuteInputsInputs)(c)
+	_ = "STUB: not implemented"
+	return *new(AiScriptexecuteInputsInputs)
 }
 
 func (c AiScriptexecuteFunction) Args(argCount int64) AiScriptexecuteArgsArgs {
-	c.cs.s = append(c.cs.s, "ARGS", strconv.FormatInt(argCount, 10))
-	return (AiScriptexecuteArgsArgs)(c)
+	_ = "STUB: not implemented"
+	return *new(AiScriptexecuteArgsArgs)
 }
 
 func (c AiScriptexecuteFunction) Outputs(outputCount int64) AiScriptexecuteOutputsOutputs {
-	c.cs.s = append(c.cs.s, "OUTPUTS", strconv.FormatInt(outputCount, 10))
-	return (AiScriptexecuteOutputsOutputs)(c)
+	_ = "STUB: not implemented"
+	return *new(AiScriptexecuteOutputsOutputs)
 }
 
 func (c AiScriptexecuteFunction) Timeout(timeout int64) AiScriptexecuteTimeout {
-	c.cs.s = append(c.cs.s, "TIMEOUT", strconv.FormatInt(timeout, 10))
-	return (AiScriptexecuteTimeout)(c)
+	_ = "STUB: not implemented"
+	return *new(AiScriptexecuteTimeout)
 }
 
 func (c AiScriptexecuteFunction) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type AiScriptexecuteInputsInput Incomplete
 
 func (c AiScriptexecuteInputsInput) Input(input ...string) AiScriptexecuteInputsInput {
-	c.cs.s = append(c.cs.s, input...)
-	return c
+	_ = "STUB: not implemented"
+	return *new(AiScriptexecuteInputsInput)
 }
 
 func (c AiScriptexecuteInputsInput) Args(argCount int64) AiScriptexecuteArgsArgs {
-	c.cs.s = append(c.cs.s, "ARGS", strconv.FormatInt(argCount, 10))
-	return (AiScriptexecuteArgsArgs)(c)
+	_ = "STUB: not implemented"
+	return *new(AiScriptexecuteArgsArgs)
 }
 
 func (c AiScriptexecuteInputsInput) Outputs(outputCount int64) AiScriptexecuteOutputsOutputs {
-	c.cs.s = append(c.cs.s, "OUTPUTS", strconv.FormatInt(outputCount, 10))
-	return (AiScriptexecuteOutputsOutputs)(c)
+	_ = "STUB: not implemented"
+	return *new(AiScriptexecuteOutputsOutputs)
 }
 
 func (c AiScriptexecuteInputsInput) Timeout(timeout int64) AiScriptexecuteTimeout {
-	c.cs.s = append(c.cs.s, "TIMEOUT", strconv.FormatInt(timeout, 10))
-	return (AiScriptexecuteTimeout)(c)
+	_ = "STUB: not implemented"
+	return *new(AiScriptexecuteTimeout)
 }
 
 func (c AiScriptexecuteInputsInput) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type AiScriptexecuteInputsInputs Incomplete
 
 func (c AiScriptexecuteInputsInputs) Input(input ...string) AiScriptexecuteInputsInput {
-	c.cs.s = append(c.cs.s, input...)
-	return (AiScriptexecuteInputsInput)(c)
+	_ = "STUB: not implemented"
+	return *new(AiScriptexecuteInputsInput)
 }
 
 type AiScriptexecuteKey Incomplete
 
 func (c AiScriptexecuteKey) Function(function string) AiScriptexecuteFunction {
-	c.cs.s = append(c.cs.s, function)
-	return (AiScriptexecuteFunction)(c)
+	_ = "STUB: not implemented"
+	return *new(AiScriptexecuteFunction)
 }
 
 type AiScriptexecuteKeysKey Incomplete
 
 func (c AiScriptexecuteKeysKey) Key(key ...string) AiScriptexecuteKeysKey {
-	c.cs.s = append(c.cs.s, key...)
-	return c
+	_ = "STUB: not implemented"
+	return *new(AiScriptexecuteKeysKey)
 }
 
 func (c AiScriptexecuteKeysKey) Inputs(inputCount int64) AiScriptexecuteInputsInputs {
-	c.cs.s = append(c.cs.s, "INPUTS", strconv.FormatInt(inputCount, 10))
-	return (AiScriptexecuteInputsInputs)(c)
+	_ = "STUB: not implemented"
+	return *new(AiScriptexecuteInputsInputs)
 }
 
 func (c AiScriptexecuteKeysKey) Args(argCount int64) AiScriptexecuteArgsArgs {
-	c.cs.s = append(c.cs.s, "ARGS", strconv.FormatInt(argCount, 10))
-	return (AiScriptexecuteArgsArgs)(c)
+	_ = "STUB: not implemented"
+	return *new(AiScriptexecuteArgsArgs)
 }
 
 func (c AiScriptexecuteKeysKey) Outputs(outputCount int64) AiScriptexecuteOutputsOutputs {
-	c.cs.s = append(c.cs.s, "OUTPUTS", strconv.FormatInt(outputCount, 10))
-	return (AiScriptexecuteOutputsOutputs)(c)
+	_ = "STUB: not implemented"
+	return *new(AiScriptexecuteOutputsOutputs)
 }
 
 func (c AiScriptexecuteKeysKey) Timeout(timeout int64) AiScriptexecuteTimeout {
-	c.cs.s = append(c.cs.s, "TIMEOUT", strconv.FormatInt(timeout, 10))
-	return (AiScriptexecuteTimeout)(c)
+	_ = "STUB: not implemented"
+	return *new(AiScriptexecuteTimeout)
 }
 
 func (c AiScriptexecuteKeysKey) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type AiScriptexecuteKeysKeys Incomplete
 
 func (c AiScriptexecuteKeysKeys) Key(key ...string) AiScriptexecuteKeysKey {
-	c.cs.s = append(c.cs.s, key...)
-	return (AiScriptexecuteKeysKey)(c)
+	_ = "STUB: not implemented"
+	return *new(AiScriptexecuteKeysKey)
 }
 
 type AiScriptexecuteOutputsOutput Incomplete
 
 func (c AiScriptexecuteOutputsOutput) Output(output ...string) AiScriptexecuteOutputsOutput {
-	c.cs.s = append(c.cs.s, output...)
-	return c
+	_ = "STUB: not implemented"
+	return *new(AiScriptexecuteOutputsOutput)
 }
 
 func (c AiScriptexecuteOutputsOutput) Timeout(timeout int64) AiScriptexecuteTimeout {
-	c.cs.s = append(c.cs.s, "TIMEOUT", strconv.FormatInt(timeout, 10))
-	return (AiScriptexecuteTimeout)(c)
+	_ = "STUB: not implemented"
+	return *new(AiScriptexecuteTimeout)
 }
 
 func (c AiScriptexecuteOutputsOutput) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type AiScriptexecuteOutputsOutputs Incomplete
 
 func (c AiScriptexecuteOutputsOutputs) Output(output ...string) AiScriptexecuteOutputsOutput {
-	c.cs.s = append(c.cs.s, output...)
-	return (AiScriptexecuteOutputsOutput)(c)
+	_ = "STUB: not implemented"
+	return *new(AiScriptexecuteOutputsOutput)
 }
 
 type AiScriptexecuteTimeout Incomplete
 
 func (c AiScriptexecuteTimeout) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }

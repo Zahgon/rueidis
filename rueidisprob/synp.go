@@ -10,11 +10,6 @@ type bytesContainer struct {
 	s []byte
 }
 
-func (r *bytesContainer) Capacity() int {
-	return cap(r.s)
-}
+func (r *bytesContainer) Capacity() int { _ = "STUB: not implemented"; return 0 }
 
-func (r *bytesContainer) ResetLen(n int) {
-	clear(r.s)
-	r.s = r.s[:n]
-}
+func (r *bytesContainer) ResetLen(n int) { _ = "STUB: not implemented"; return }

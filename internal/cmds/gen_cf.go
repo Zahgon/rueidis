@@ -2,541 +2,350 @@
 
 package cmds
 
-import "strconv"
-
 type CfAdd Incomplete
 
-func (b Builder) CfAdd() (c CfAdd) {
-	c = CfAdd{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "CF.ADD")
-	return c
-}
+func (b Builder) CfAdd() (c CfAdd) { _ = "STUB: not implemented"; return *new(CfAdd) }
 
-func (c CfAdd) Key(key string) CfAddKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (CfAddKey)(c)
-}
+func (c CfAdd) Key(key string) CfAddKey { _ = "STUB: not implemented"; return *new(CfAddKey) }
 
 type CfAddItem Incomplete
 
-func (c CfAddItem) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c CfAddItem) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type CfAddKey Incomplete
 
-func (c CfAddKey) Item(item string) CfAddItem {
-	c.cs.s = append(c.cs.s, item)
-	return (CfAddItem)(c)
-}
+func (c CfAddKey) Item(item string) CfAddItem { _ = "STUB: not implemented"; return *new(CfAddItem) }
 
 type CfAddnx Incomplete
 
-func (b Builder) CfAddnx() (c CfAddnx) {
-	c = CfAddnx{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "CF.ADDNX")
-	return c
-}
+func (b Builder) CfAddnx() (c CfAddnx) { _ = "STUB: not implemented"; return *new(CfAddnx) }
 
-func (c CfAddnx) Key(key string) CfAddnxKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (CfAddnxKey)(c)
-}
+func (c CfAddnx) Key(key string) CfAddnxKey { _ = "STUB: not implemented"; return *new(CfAddnxKey) }
 
 type CfAddnxItem Incomplete
 
-func (c CfAddnxItem) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c CfAddnxItem) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type CfAddnxKey Incomplete
 
 func (c CfAddnxKey) Item(item string) CfAddnxItem {
-	c.cs.s = append(c.cs.s, item)
-	return (CfAddnxItem)(c)
+	_ = "STUB: not implemented"
+	return *new(CfAddnxItem)
 }
 
 type CfCount Incomplete
 
-func (b Builder) CfCount() (c CfCount) {
-	c = CfCount{cs: get(), ks: b.ks, cf: int16(readonly)}
-	c.cs.s = append(c.cs.s, "CF.COUNT")
-	return c
-}
+func (b Builder) CfCount() (c CfCount) { _ = "STUB: not implemented"; return *new(CfCount) }
 
-func (c CfCount) Key(key string) CfCountKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (CfCountKey)(c)
-}
+func (c CfCount) Key(key string) CfCountKey { _ = "STUB: not implemented"; return *new(CfCountKey) }
 
 type CfCountItem Incomplete
 
-func (c CfCountItem) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c CfCountItem) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c CfCountItem) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c CfCountItem) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type CfCountKey Incomplete
 
 func (c CfCountKey) Item(item string) CfCountItem {
-	c.cs.s = append(c.cs.s, item)
-	return (CfCountItem)(c)
+	_ = "STUB: not implemented"
+	return *new(CfCountItem)
 }
 
 type CfDel Incomplete
 
-func (b Builder) CfDel() (c CfDel) {
-	c = CfDel{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "CF.DEL")
-	return c
-}
+func (b Builder) CfDel() (c CfDel) { _ = "STUB: not implemented"; return *new(CfDel) }
 
-func (c CfDel) Key(key string) CfDelKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (CfDelKey)(c)
-}
+func (c CfDel) Key(key string) CfDelKey { _ = "STUB: not implemented"; return *new(CfDelKey) }
 
 type CfDelItem Incomplete
 
-func (c CfDelItem) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c CfDelItem) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type CfDelKey Incomplete
 
-func (c CfDelKey) Item(item string) CfDelItem {
-	c.cs.s = append(c.cs.s, item)
-	return (CfDelItem)(c)
-}
+func (c CfDelKey) Item(item string) CfDelItem { _ = "STUB: not implemented"; return *new(CfDelItem) }
 
 type CfExists Incomplete
 
-func (b Builder) CfExists() (c CfExists) {
-	c = CfExists{cs: get(), ks: b.ks, cf: int16(readonly)}
-	c.cs.s = append(c.cs.s, "CF.EXISTS")
-	return c
-}
+func (b Builder) CfExists() (c CfExists) { _ = "STUB: not implemented"; return *new(CfExists) }
 
-func (c CfExists) Key(key string) CfExistsKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (CfExistsKey)(c)
-}
+func (c CfExists) Key(key string) CfExistsKey { _ = "STUB: not implemented"; return *new(CfExistsKey) }
 
 type CfExistsItem Incomplete
 
-func (c CfExistsItem) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c CfExistsItem) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c CfExistsItem) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c CfExistsItem) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type CfExistsKey Incomplete
 
 func (c CfExistsKey) Item(item string) CfExistsItem {
-	c.cs.s = append(c.cs.s, item)
-	return (CfExistsItem)(c)
+	_ = "STUB: not implemented"
+	return *new(CfExistsItem)
 }
 
 type CfInfo Incomplete
 
-func (b Builder) CfInfo() (c CfInfo) {
-	c = CfInfo{cs: get(), ks: b.ks, cf: int16(readonly)}
-	c.cs.s = append(c.cs.s, "CF.INFO")
-	return c
-}
+func (b Builder) CfInfo() (c CfInfo) { _ = "STUB: not implemented"; return *new(CfInfo) }
 
-func (c CfInfo) Key(key string) CfInfoKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (CfInfoKey)(c)
-}
+func (c CfInfo) Key(key string) CfInfoKey { _ = "STUB: not implemented"; return *new(CfInfoKey) }
 
 type CfInfoKey Incomplete
 
-func (c CfInfoKey) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c CfInfoKey) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c CfInfoKey) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c CfInfoKey) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type CfInsert Incomplete
 
-func (b Builder) CfInsert() (c CfInsert) {
-	c = CfInsert{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "CF.INSERT")
-	return c
-}
+func (b Builder) CfInsert() (c CfInsert) { _ = "STUB: not implemented"; return *new(CfInsert) }
 
-func (c CfInsert) Key(key string) CfInsertKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (CfInsertKey)(c)
-}
+func (c CfInsert) Key(key string) CfInsertKey { _ = "STUB: not implemented"; return *new(CfInsertKey) }
 
 type CfInsertCapacity Incomplete
 
 func (c CfInsertCapacity) Nocreate() CfInsertNocreate {
-	c.cs.s = append(c.cs.s, "NOCREATE")
-	return (CfInsertNocreate)(c)
+	_ = "STUB: not implemented"
+	return *new(CfInsertNocreate)
 }
 
 func (c CfInsertCapacity) Items() CfInsertItems {
-	c.cs.s = append(c.cs.s, "ITEMS")
-	return (CfInsertItems)(c)
+	_ = "STUB: not implemented"
+	return *new(CfInsertItems)
 }
 
 type CfInsertItem Incomplete
 
 func (c CfInsertItem) Item(item ...string) CfInsertItem {
-	c.cs.s = append(c.cs.s, item...)
-	return c
+	_ = "STUB: not implemented"
+	return *new(CfInsertItem)
 }
 
-func (c CfInsertItem) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c CfInsertItem) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type CfInsertItems Incomplete
 
 func (c CfInsertItems) Item(item ...string) CfInsertItem {
-	c.cs.s = append(c.cs.s, item...)
-	return (CfInsertItem)(c)
+	_ = "STUB: not implemented"
+	return *new(CfInsertItem)
 }
 
 type CfInsertKey Incomplete
 
 func (c CfInsertKey) Capacity(capacity int64) CfInsertCapacity {
-	c.cs.s = append(c.cs.s, "CAPACITY", strconv.FormatInt(capacity, 10))
-	return (CfInsertCapacity)(c)
+	_ = "STUB: not implemented"
+	return *new(CfInsertCapacity)
 }
 
 func (c CfInsertKey) Nocreate() CfInsertNocreate {
-	c.cs.s = append(c.cs.s, "NOCREATE")
-	return (CfInsertNocreate)(c)
+	_ = "STUB: not implemented"
+	return *new(CfInsertNocreate)
 }
 
-func (c CfInsertKey) Items() CfInsertItems {
-	c.cs.s = append(c.cs.s, "ITEMS")
-	return (CfInsertItems)(c)
-}
+func (c CfInsertKey) Items() CfInsertItems { _ = "STUB: not implemented"; return *new(CfInsertItems) }
 
 type CfInsertNocreate Incomplete
 
 func (c CfInsertNocreate) Items() CfInsertItems {
-	c.cs.s = append(c.cs.s, "ITEMS")
-	return (CfInsertItems)(c)
+	_ = "STUB: not implemented"
+	return *new(CfInsertItems)
 }
 
 type CfInsertnx Incomplete
 
-func (b Builder) CfInsertnx() (c CfInsertnx) {
-	c = CfInsertnx{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "CF.INSERTNX")
-	return c
-}
+func (b Builder) CfInsertnx() (c CfInsertnx) { _ = "STUB: not implemented"; return *new(CfInsertnx) }
 
 func (c CfInsertnx) Key(key string) CfInsertnxKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (CfInsertnxKey)(c)
+	_ = "STUB: not implemented"
+	return *new(CfInsertnxKey)
 }
 
 type CfInsertnxCapacity Incomplete
 
 func (c CfInsertnxCapacity) Nocreate() CfInsertnxNocreate {
-	c.cs.s = append(c.cs.s, "NOCREATE")
-	return (CfInsertnxNocreate)(c)
+	_ = "STUB: not implemented"
+	return *new(CfInsertnxNocreate)
 }
 
 func (c CfInsertnxCapacity) Items() CfInsertnxItems {
-	c.cs.s = append(c.cs.s, "ITEMS")
-	return (CfInsertnxItems)(c)
+	_ = "STUB: not implemented"
+	return *new(CfInsertnxItems)
 }
 
 type CfInsertnxItem Incomplete
 
 func (c CfInsertnxItem) Item(item ...string) CfInsertnxItem {
-	c.cs.s = append(c.cs.s, item...)
-	return c
+	_ = "STUB: not implemented"
+	return *new(CfInsertnxItem)
 }
 
-func (c CfInsertnxItem) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c CfInsertnxItem) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type CfInsertnxItems Incomplete
 
 func (c CfInsertnxItems) Item(item ...string) CfInsertnxItem {
-	c.cs.s = append(c.cs.s, item...)
-	return (CfInsertnxItem)(c)
+	_ = "STUB: not implemented"
+	return *new(CfInsertnxItem)
 }
 
 type CfInsertnxKey Incomplete
 
 func (c CfInsertnxKey) Capacity(capacity int64) CfInsertnxCapacity {
-	c.cs.s = append(c.cs.s, "CAPACITY", strconv.FormatInt(capacity, 10))
-	return (CfInsertnxCapacity)(c)
+	_ = "STUB: not implemented"
+	return *new(CfInsertnxCapacity)
 }
 
 func (c CfInsertnxKey) Nocreate() CfInsertnxNocreate {
-	c.cs.s = append(c.cs.s, "NOCREATE")
-	return (CfInsertnxNocreate)(c)
+	_ = "STUB: not implemented"
+	return *new(CfInsertnxNocreate)
 }
 
 func (c CfInsertnxKey) Items() CfInsertnxItems {
-	c.cs.s = append(c.cs.s, "ITEMS")
-	return (CfInsertnxItems)(c)
+	_ = "STUB: not implemented"
+	return *new(CfInsertnxItems)
 }
 
 type CfInsertnxNocreate Incomplete
 
 func (c CfInsertnxNocreate) Items() CfInsertnxItems {
-	c.cs.s = append(c.cs.s, "ITEMS")
-	return (CfInsertnxItems)(c)
+	_ = "STUB: not implemented"
+	return *new(CfInsertnxItems)
 }
 
 type CfLoadchunk Incomplete
 
-func (b Builder) CfLoadchunk() (c CfLoadchunk) {
-	c = CfLoadchunk{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "CF.LOADCHUNK")
-	return c
-}
+func (b Builder) CfLoadchunk() (c CfLoadchunk) { _ = "STUB: not implemented"; return *new(CfLoadchunk) }
 
 func (c CfLoadchunk) Key(key string) CfLoadchunkKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (CfLoadchunkKey)(c)
+	_ = "STUB: not implemented"
+	return *new(CfLoadchunkKey)
 }
 
 type CfLoadchunkData Incomplete
 
-func (c CfLoadchunkData) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c CfLoadchunkData) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type CfLoadchunkIterator Incomplete
 
 func (c CfLoadchunkIterator) Data(data string) CfLoadchunkData {
-	c.cs.s = append(c.cs.s, data)
-	return (CfLoadchunkData)(c)
+	_ = "STUB: not implemented"
+	return *new(CfLoadchunkData)
 }
 
 type CfLoadchunkKey Incomplete
 
 func (c CfLoadchunkKey) Iterator(iterator int64) CfLoadchunkIterator {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(iterator, 10))
-	return (CfLoadchunkIterator)(c)
+	_ = "STUB: not implemented"
+	return *new(CfLoadchunkIterator)
 }
 
 type CfMexists Incomplete
 
-func (b Builder) CfMexists() (c CfMexists) {
-	c = CfMexists{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "CF.MEXISTS")
-	return c
-}
+func (b Builder) CfMexists() (c CfMexists) { _ = "STUB: not implemented"; return *new(CfMexists) }
 
 func (c CfMexists) Key(key string) CfMexistsKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (CfMexistsKey)(c)
+	_ = "STUB: not implemented"
+	return *new(CfMexistsKey)
 }
 
 type CfMexistsItem Incomplete
 
 func (c CfMexistsItem) Item(item ...string) CfMexistsItem {
-	c.cs.s = append(c.cs.s, item...)
-	return c
+	_ = "STUB: not implemented"
+	return *new(CfMexistsItem)
 }
 
-func (c CfMexistsItem) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c CfMexistsItem) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type CfMexistsKey Incomplete
 
 func (c CfMexistsKey) Item(item ...string) CfMexistsItem {
-	c.cs.s = append(c.cs.s, item...)
-	return (CfMexistsItem)(c)
+	_ = "STUB: not implemented"
+	return *new(CfMexistsItem)
 }
 
 type CfReserve Incomplete
 
-func (b Builder) CfReserve() (c CfReserve) {
-	c = CfReserve{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "CF.RESERVE")
-	return c
-}
+func (b Builder) CfReserve() (c CfReserve) { _ = "STUB: not implemented"; return *new(CfReserve) }
 
 func (c CfReserve) Key(key string) CfReserveKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (CfReserveKey)(c)
+	_ = "STUB: not implemented"
+	return *new(CfReserveKey)
 }
 
 type CfReserveBucketsize Incomplete
 
 func (c CfReserveBucketsize) Maxiterations(maxiterations int64) CfReserveMaxiterations {
-	c.cs.s = append(c.cs.s, "MAXITERATIONS", strconv.FormatInt(maxiterations, 10))
-	return (CfReserveMaxiterations)(c)
+	_ = "STUB: not implemented"
+	return *new(CfReserveMaxiterations)
 }
 
 func (c CfReserveBucketsize) Expansion(expansion int64) CfReserveExpansion {
-	c.cs.s = append(c.cs.s, "EXPANSION", strconv.FormatInt(expansion, 10))
-	return (CfReserveExpansion)(c)
+	_ = "STUB: not implemented"
+	return *new(CfReserveExpansion)
 }
 
-func (c CfReserveBucketsize) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c CfReserveBucketsize) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type CfReserveCapacity Incomplete
 
 func (c CfReserveCapacity) Bucketsize(bucketsize int64) CfReserveBucketsize {
-	c.cs.s = append(c.cs.s, "BUCKETSIZE", strconv.FormatInt(bucketsize, 10))
-	return (CfReserveBucketsize)(c)
+	_ = "STUB: not implemented"
+	return *new(CfReserveBucketsize)
 }
 
 func (c CfReserveCapacity) Maxiterations(maxiterations int64) CfReserveMaxiterations {
-	c.cs.s = append(c.cs.s, "MAXITERATIONS", strconv.FormatInt(maxiterations, 10))
-	return (CfReserveMaxiterations)(c)
+	_ = "STUB: not implemented"
+	return *new(CfReserveMaxiterations)
 }
 
 func (c CfReserveCapacity) Expansion(expansion int64) CfReserveExpansion {
-	c.cs.s = append(c.cs.s, "EXPANSION", strconv.FormatInt(expansion, 10))
-	return (CfReserveExpansion)(c)
+	_ = "STUB: not implemented"
+	return *new(CfReserveExpansion)
 }
 
-func (c CfReserveCapacity) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c CfReserveCapacity) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type CfReserveExpansion Incomplete
 
-func (c CfReserveExpansion) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c CfReserveExpansion) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type CfReserveKey Incomplete
 
 func (c CfReserveKey) Capacity(capacity int64) CfReserveCapacity {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(capacity, 10))
-	return (CfReserveCapacity)(c)
+	_ = "STUB: not implemented"
+	return *new(CfReserveCapacity)
 }
 
 type CfReserveMaxiterations Incomplete
 
 func (c CfReserveMaxiterations) Expansion(expansion int64) CfReserveExpansion {
-	c.cs.s = append(c.cs.s, "EXPANSION", strconv.FormatInt(expansion, 10))
-	return (CfReserveExpansion)(c)
+	_ = "STUB: not implemented"
+	return *new(CfReserveExpansion)
 }
 
 func (c CfReserveMaxiterations) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type CfScandump Incomplete
 
-func (b Builder) CfScandump() (c CfScandump) {
-	c = CfScandump{cs: get(), ks: b.ks, cf: int16(readonly)}
-	c.cs.s = append(c.cs.s, "CF.SCANDUMP")
-	return c
-}
+func (b Builder) CfScandump() (c CfScandump) { _ = "STUB: not implemented"; return *new(CfScandump) }
 
 func (c CfScandump) Key(key string) CfScandumpKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (CfScandumpKey)(c)
+	_ = "STUB: not implemented"
+	return *new(CfScandumpKey)
 }
 
 type CfScandumpIterator Incomplete
 
-func (c CfScandumpIterator) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c CfScandumpIterator) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type CfScandumpKey Incomplete
 
 func (c CfScandumpKey) Iterator(iterator int64) CfScandumpIterator {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(iterator, 10))
-	return (CfScandumpIterator)(c)
+	_ = "STUB: not implemented"
+	return *new(CfScandumpIterator)
 }

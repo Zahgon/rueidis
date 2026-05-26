@@ -4,97 +4,36 @@ package cmds
 
 type Discard Incomplete
 
-func (b Builder) Discard() (c Discard) {
-	c = Discard{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "DISCARD")
-	return c
-}
+func (b Builder) Discard() (c Discard) { _ = "STUB: not implemented"; return *new(Discard) }
 
-func (c Discard) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c Discard) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type Exec Incomplete
 
-func (b Builder) Exec() (c Exec) {
-	c = Exec{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "EXEC")
-	return c
-}
+func (b Builder) Exec() (c Exec) { _ = "STUB: not implemented"; return *new(Exec) }
 
-func (c Exec) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c Exec) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type Multi Incomplete
 
-func (b Builder) Multi() (c Multi) {
-	c = Multi{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "MULTI")
-	return c
-}
+func (b Builder) Multi() (c Multi) { _ = "STUB: not implemented"; return *new(Multi) }
 
-func (c Multi) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c Multi) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type Unwatch Incomplete
 
-func (b Builder) Unwatch() (c Unwatch) {
-	c = Unwatch{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "UNWATCH")
-	return c
-}
+func (b Builder) Unwatch() (c Unwatch) { _ = "STUB: not implemented"; return *new(Unwatch) }
 
-func (c Unwatch) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c Unwatch) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type Watch Incomplete
 
-func (b Builder) Watch() (c Watch) {
-	c = Watch{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "WATCH")
-	return c
-}
+func (b Builder) Watch() (c Watch) { _ = "STUB: not implemented"; return *new(Watch) }
 
-func (c Watch) Key(key ...string) WatchKey {
-	if c.ks&NoSlot == NoSlot {
-		for _, k := range key {
-			c.ks = NoSlot | slot(k)
-			break
-		}
-	} else {
-		for _, k := range key {
-			c.ks = check(c.ks, slot(k))
-		}
-	}
-	c.cs.s = append(c.cs.s, key...)
-	return (WatchKey)(c)
-}
+func (c Watch) Key(key ...string) WatchKey { _ = "STUB: not implemented"; return *new(WatchKey) }
 
 type WatchKey Incomplete
 
-func (c WatchKey) Key(key ...string) WatchKey {
-	if c.ks&NoSlot == NoSlot {
-		for _, k := range key {
-			c.ks = NoSlot | slot(k)
-			break
-		}
-	} else {
-		for _, k := range key {
-			c.ks = check(c.ks, slot(k))
-		}
-	}
-	c.cs.s = append(c.cs.s, key...)
-	return c
-}
+func (c WatchKey) Key(key ...string) WatchKey { _ = "STUB: not implemented"; return *new(WatchKey) }
 
-func (c WatchKey) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c WatchKey) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }

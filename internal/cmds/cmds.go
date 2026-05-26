@@ -1,7 +1,5 @@
 package cmds
 
-import "strings"
-
 const (
 	optInTag     = uint16(1 << 15)
 	blockTag     = uint16(1 << 14)
@@ -99,10 +97,12 @@ var (
 
 // ToBlock marks the command with blockTag
 func ToBlock(c *Completed) {
-	c.cf |= blockTag
+	_ = "STUB: not implemented"
+
+	// Incomplete represents an incomplete Redis command. It should then be completed by calling Build().
+	return
 }
 
-// Incomplete represents an incomplete Redis command. It should then be completed by calling Build().
 type Incomplete struct {
 	cs *CommandSlice
 	cf int16 // use int16 instead of uint16 to make a difference with Completed
@@ -118,88 +118,68 @@ type Completed struct {
 
 // Pin prevents a Completed to be recycled
 func (c Completed) Pin() Completed {
-	c.cs.r = 1
-	return c
+	_ = "STUB: not implemented"
+	return *
+
+	// ToPipe returns a new command with pipeTag
+	new(Completed)
 }
 
-// ToPipe returns a new command with pipeTag
 func (c Completed) ToPipe() Completed {
-	c.cf |= pipeTag
-	return c
+	_ = "STUB: not implemented"
+	return *
+
+	// ToRetryable return a new command with retryableTag
+	new(Completed)
 }
 
-// ToRetryable return a new command with retryableTag
-func (c Completed) ToRetryable() Completed {
-	c.cf |= retryableTag
-	return c
-}
+func (c Completed) ToRetryable() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 // IsEmpty checks if it is an empty command.
-func (c *Completed) IsEmpty() bool {
-	return c.cs == nil || len(c.cs.s) == 0
-}
+func (c *Completed) IsEmpty() bool { _ = "STUB: not implemented"; return false }
 
 // IsOptIn checks if it is client side caching opt-int command.
-func (c *Completed) IsOptIn() bool {
-	return c.cf&optInTag == optInTag
-}
+func (c *Completed) IsOptIn() bool { _ = "STUB: not implemented"; return false }
 
 // IsBlock checks if it is blocking command which needs to be process by dedicated connection.
-func (c *Completed) IsBlock() bool {
-	return c.cf&blockTag == blockTag
-}
+func (c *Completed) IsBlock() bool { _ = "STUB: not implemented"; return false }
 
 // NoReply checks if it is one of the SUBSCRIBE, PSUBSCRIBE, UNSUBSCRIBE or PUNSUBSCRIBE commands.
-func (c *Completed) NoReply() bool {
-	return c.cf&noRetTag == noRetTag
-}
+func (c *Completed) NoReply() bool { _ = "STUB: not implemented"; return false }
 
 // IsUnsub checks if it is one of the UNSUBSCRIBE, PUNSUBSCRIBE, or SUNSUBSCRIBE commands.
-func (c *Completed) IsUnsub() bool {
-	return c.cf&unsubTag == unsubTag
-}
+func (c *Completed) IsUnsub() bool { _ = "STUB: not implemented"; return false }
 
 // IsReadOnly checks if it is readonly command and can be retried when network error.
-func (c *Completed) IsReadOnly() bool {
-	return c.cf&readonly == readonly
-}
+func (c *Completed) IsReadOnly() bool { _ = "STUB: not implemented"; return false }
 
 // IsWrite checks if it is not readonly command.
-func (c *Completed) IsWrite() bool {
-	return !c.IsReadOnly()
-}
+func (c *Completed) IsWrite() bool { _ = "STUB: not implemented"; return false }
 
 // IsPipe checks if it is set pipeTag which prefers auto pipelining
-func (c *Completed) IsPipe() bool {
-	return c.cf&pipeTag == pipeTag
-}
+func (c *Completed) IsPipe() bool { _ = "STUB: not implemented"; return false }
 
 // IsRetryable checks if it is set retryableTag
-func (c *Completed) IsRetryable() bool {
-	return c.cf&retryableTag == retryableTag
-}
+func (c *Completed) IsRetryable() bool { _ = "STUB: not implemented"; return false }
 
 // Commands returns the commands as []string.
 // Note that the returned []string should not be modified
 // and should not be read after passing into the Client interface, because it will be recycled.
 func (c *Completed) Commands() []string {
-	return c.cs.s
+	_ = "STUB: not implemented"
+
+	// Slot returns the command key slot
+	return nil
 }
 
-// Slot returns the command key slot
 func (c *Completed) Slot() uint16 {
-	return c.ks
+	_ = "STUB: not implemented"
+
+	// SetSlot returns a new completed command with its key slot be overridden
+	return 0
 }
 
-// SetSlot returns a new completed command with its key slot be overridden
-func (c Completed) SetSlot(key string) Completed {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = slot(key)
-	}
-	return c
-}
+func (c Completed) SetSlot(key string) Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 var Slot = slot
 
@@ -209,213 +189,111 @@ type Cacheable Completed
 
 // Pin prevents a Cacheable to be recycled
 func (c Cacheable) Pin() Cacheable {
-	c.cs.r = 1
-	return c
+	_ = "STUB: not implemented"
+	return *
+
+	// Slot returns the command key slot
+	new(Cacheable)
 }
 
-// Slot returns the command key slot
 func (c *Cacheable) Slot() uint16 {
-	return c.ks
+	_ = "STUB: not implemented"
+
+	// Commands returns the commands as []string.
+	// Note that the returned []string should not be modified
+	// and should not be read after passing into the Client interface, because it will be recycled.
+	return 0
 }
 
-// Commands returns the commands as []string.
-// Note that the returned []string should not be modified
-// and should not be read after passing into the Client interface, because it will be recycled.
 func (c *Cacheable) Commands() []string {
-	return c.cs.s
+	_ = "STUB: not implemented"
+
+	// IsMGet returns if the command is MGET
+	return nil
 }
 
-// IsMGet returns if the command is MGET
-func (c *Cacheable) IsMGet() bool {
-	return c.cf == mtGetTag
-}
+func (c *Cacheable) IsMGet() bool { _ = "STUB: not implemented"; return false }
 
 // MGetCacheCmd returns the cache command of the MGET singular command
-func MGetCacheCmd(c Cacheable) string {
-	if c.cs.s[0][0] == 'J' {
-		return "JSON.GET" + c.cs.s[len(c.cs.s)-1]
-	}
-	return "GET"
-}
+func MGetCacheCmd(c Cacheable) string { _ = "STUB: not implemented"; return "" }
 
 // MGetCacheKey returns the cache key of the MGET singular command
 func MGetCacheKey(c Cacheable, i int) string {
-	return c.cs.s[i+1]
+	_ = "STUB: not implemented"
+
+	// CacheKey returns the cache key used by the server-assisted client side caching
+	return ""
 }
 
-// CacheKey returns the cache key used by the server-assisted client side caching
-func CacheKey(c Cacheable) (key, command string) {
-	if len(c.cs.s) == 2 {
-		return c.cs.s[1], c.cs.s[0]
-	}
-
-	kp := 1
-
-	if c.cf == scrRoTag {
-		if c.cs.s[2] != "1" {
-			panic(multiKeyCacheErr)
-		}
-		kp = 3
-	}
-
-	length := 0
-	for i, v := range c.cs.s {
-		if i == kp {
-			continue
-		}
-		length += len(v)
-	}
-	sb := strings.Builder{}
-	sb.Grow(length)
-	for i, v := range c.cs.s {
-		if i == kp {
-			key = v
-		} else {
-			sb.WriteString(v)
-		}
-	}
-	return key, sb.String()
-}
+func CacheKey(c Cacheable) (key, command string) { _ = "STUB: not implemented"; return "", "" }
 
 // AppendCompleted appends an arg to a Completed
-func AppendCompleted(c Completed, s string) {
-	c.cs.s = append(c.cs.s, s)
-	c.cs.l += 1
-}
+func AppendCompleted(c Completed, s string) { _ = "STUB: not implemented"; return }
 
 // CompletedCS get the underlying *CommandSlice
 func CompletedCS(c Completed) *CommandSlice {
-	return c.cs
+	_ = "STUB: not implemented"
+
+	// CacheableCS get the underlying *CommandSlice
+	return nil
 }
 
-// CacheableCS get the underlying *CommandSlice
 func CacheableCS(c Cacheable) *CommandSlice {
-	return c.cs
+	_ = "STUB: not implemented"
+
+	// NewCompleted creates an arbitrary Completed command.
+	return nil
 }
 
-// NewCompleted creates an arbitrary Completed command.
-func NewCompleted(ss []string) Completed {
-	return Completed{cs: newCommandSlice(ss)}
-}
+func NewCompleted(ss []string) Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 // NewBlockingCompleted creates an arbitrary blocking Completed command.
-func NewBlockingCompleted(ss []string) Completed {
-	return Completed{cs: newCommandSlice(ss), cf: blockTag}
-}
+func NewBlockingCompleted(ss []string) Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 // NewReadOnlyCompleted creates an arbitrary readonly Completed command.
-func NewReadOnlyCompleted(ss []string) Completed {
-	return Completed{cs: newCommandSlice(ss), cf: readonly}
-}
+func NewReadOnlyCompleted(ss []string) Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 // NewMGetCompleted creates an arbitrary readonly Completed command.
-func NewMGetCompleted(ss []string) Completed {
-	return Completed{cs: newCommandSlice(ss), cf: mtGetTag}
-}
+func NewMGetCompleted(ss []string) Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 // MGets groups keys by their slot and returns multi MGET commands
-func MGets(keys []string) map[uint16]Completed {
-	return slotMCMDs("MGET", keys, mtGetTag)
-}
+func MGets(keys []string) map[uint16]Completed { _ = "STUB: not implemented"; return nil }
 
 // MDels groups keys by their slot and returns multi DEL commands
-func MDels(keys []string) map[uint16]Completed {
-	return slotMCMDs("DEL", keys, 0)
-}
+func MDels(keys []string) map[uint16]Completed { _ = "STUB: not implemented"; return nil }
 
 // MSets groups keys by their slot and returns multi MSET commands
-func MSets(kvs map[string]string) map[uint16]Completed {
-	return slotMSets("MSET", kvs)
-}
+func MSets(kvs map[string]string) map[uint16]Completed { _ = "STUB: not implemented"; return nil }
 
 // MSetNXs groups keys by their slot and returns multi MSETNX commands
-func MSetNXs(kvs map[string]string) map[uint16]Completed {
-	return slotMSets("MSETNX", kvs)
-}
+func MSetNXs(kvs map[string]string) map[uint16]Completed { _ = "STUB: not implemented"; return nil }
 
 // JsonMGets groups keys by their slot and returns multi JSON.MGET commands
 func JsonMGets(keys []string, path string) map[uint16]Completed {
-	ret := slotMCMDs("JSON.MGET", keys, mtGetTag)
-	for _, jsonmget := range ret {
-		jsonmget.cs.s = append(jsonmget.cs.s, path)
-		jsonmget.cs.l++
-	}
-	return ret
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // JsonMSets groups keys by their slot and returns multi JSON.MSET commands
 func JsonMSets(kvs map[string]string, path string) map[uint16]Completed {
-	ret := make(map[uint16]Completed, 8)
-	for key, value := range kvs {
-		var cs *CommandSlice
-		ks := slot(key)
-		if cp, ok := ret[ks]; ok {
-			cs = cp.cs
-		} else {
-			cs = get()
-			cs.s = append(cs.s, "JSON.MSET")
-			cs.l = 1
-			ret[ks] = Completed{cs: cs, ks: ks}
-		}
-		cs.s = append(cs.s, key, path, value)
-		cs.l += 3
-	}
-	return ret
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func slotMCMDs(cmd string, keys []string, cf uint16) map[uint16]Completed {
-	ret := make(map[uint16]Completed, 8)
-	for _, key := range keys {
-		var cs *CommandSlice
-		ks := slot(key)
-		if cp, ok := ret[ks]; ok {
-			cs = cp.cs
-		} else {
-			cs = get()
-			cs.s = append(cs.s, cmd)
-			cs.l = 1
-			ret[ks] = Completed{cs: cs, cf: cf, ks: ks}
-		}
-		cs.s = append(cs.s, key)
-		cs.l++
-	}
-	return ret
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func slotMSets(cmd string, kvs map[string]string) map[uint16]Completed {
-	ret := make(map[uint16]Completed, 8)
-	for key, value := range kvs {
-		var cs *CommandSlice
-		ks := slot(key)
-		if cp, ok := ret[ks]; ok {
-			cs = cp.cs
-		} else {
-			cs = get()
-			cs.s = append(cs.s, cmd)
-			cs.l = 1
-			ret[ks] = Completed{cs: cs, ks: ks}
-		}
-		cs.s = append(cs.s, key, value)
-		cs.l += 2
-	}
-	return ret
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // NewMultiCompleted creates multiple arbitrary Completed commands.
-func NewMultiCompleted(cs [][]string) []Completed {
-	ret := make([]Completed, len(cs))
-	for i, c := range cs {
-		ret[i] = NewCompleted(c)
-	}
-	return ret
-}
+func NewMultiCompleted(cs [][]string) []Completed { _ = "STUB: not implemented"; return nil }
 
-func check(prev, new uint16) uint16 {
-	if prev == InitSlot || prev == new {
-		return new
-	}
-	panic(multiKeySlotErr)
-}
+func check(prev, new uint16) uint16 { _ = "STUB: not implemented"; return 0 }
 
 const multiKeySlotErr = "multi key command with different key slots are not allowed"
 const multiKeyCacheErr = "client side caching for scripting only supports numkeys=1"

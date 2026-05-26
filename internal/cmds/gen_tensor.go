@@ -2,286 +2,220 @@
 
 package cmds
 
-import "strconv"
-
 type AiTensorget Incomplete
 
-func (b Builder) AiTensorget() (c AiTensorget) {
-	c = AiTensorget{cs: get(), ks: b.ks, cf: int16(readonly)}
-	c.cs.s = append(c.cs.s, "AI.TENSORGET")
-	return c
-}
+func (b Builder) AiTensorget() (c AiTensorget) { _ = "STUB: not implemented"; return *new(AiTensorget) }
 
 func (c AiTensorget) Key(key string) AiTensorgetKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (AiTensorgetKey)(c)
+	_ = "STUB: not implemented"
+	return *new(AiTensorgetKey)
 }
 
 type AiTensorgetFormatBlob Incomplete
 
-func (c AiTensorgetFormatBlob) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c AiTensorgetFormatBlob) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c AiTensorgetFormatBlob) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c AiTensorgetFormatBlob) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type AiTensorgetFormatValues Incomplete
 
 func (c AiTensorgetFormatValues) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 func (c AiTensorgetFormatValues) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Cacheable)
 }
 
 type AiTensorgetKey Incomplete
 
 func (c AiTensorgetKey) Meta() AiTensorgetMeta {
-	c.cs.s = append(c.cs.s, "META")
-	return (AiTensorgetMeta)(c)
+	_ = "STUB: not implemented"
+	return *new(AiTensorgetMeta)
 }
 
 type AiTensorgetMeta Incomplete
 
 func (c AiTensorgetMeta) Blob() AiTensorgetFormatBlob {
-	c.cs.s = append(c.cs.s, "BLOB")
-	return (AiTensorgetFormatBlob)(c)
+	_ = "STUB: not implemented"
+	return *new(AiTensorgetFormatBlob)
 }
 
 func (c AiTensorgetMeta) Values() AiTensorgetFormatValues {
-	c.cs.s = append(c.cs.s, "VALUES")
-	return (AiTensorgetFormatValues)(c)
+	_ = "STUB: not implemented"
+	return *new(AiTensorgetFormatValues)
 }
 
-func (c AiTensorgetMeta) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c AiTensorgetMeta) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c AiTensorgetMeta) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c AiTensorgetMeta) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type AiTensorset Incomplete
 
-func (b Builder) AiTensorset() (c AiTensorset) {
-	c = AiTensorset{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "AI.TENSORSET")
-	return c
-}
+func (b Builder) AiTensorset() (c AiTensorset) { _ = "STUB: not implemented"; return *new(AiTensorset) }
 
 func (c AiTensorset) Key(key string) AiTensorsetKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (AiTensorsetKey)(c)
+	_ = "STUB: not implemented"
+	return *new(AiTensorsetKey)
 }
 
 type AiTensorsetBlob Incomplete
 
 func (c AiTensorsetBlob) Values(value ...string) AiTensorsetValues {
-	c.cs.s = append(c.cs.s, "VALUES")
-	c.cs.s = append(c.cs.s, value...)
-	return (AiTensorsetValues)(c)
+	_ = "STUB: not implemented"
+	return *new(AiTensorsetValues)
 }
 
-func (c AiTensorsetBlob) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c AiTensorsetBlob) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type AiTensorsetKey Incomplete
 
 func (c AiTensorsetKey) Float() AiTensorsetTypeFloat {
-	c.cs.s = append(c.cs.s, "FLOAT")
-	return (AiTensorsetTypeFloat)(c)
+	_ = "STUB: not implemented"
+	return *new(AiTensorsetTypeFloat)
 }
 
 func (c AiTensorsetKey) Double() AiTensorsetTypeDouble {
-	c.cs.s = append(c.cs.s, "DOUBLE")
-	return (AiTensorsetTypeDouble)(c)
+	_ = "STUB: not implemented"
+	return *new(AiTensorsetTypeDouble)
 }
 
 func (c AiTensorsetKey) Int8() AiTensorsetTypeInt8 {
-	c.cs.s = append(c.cs.s, "INT8")
-	return (AiTensorsetTypeInt8)(c)
+	_ = "STUB: not implemented"
+	return *new(AiTensorsetTypeInt8)
 }
 
 func (c AiTensorsetKey) Int16() AiTensorsetTypeInt16 {
-	c.cs.s = append(c.cs.s, "INT16")
-	return (AiTensorsetTypeInt16)(c)
+	_ = "STUB: not implemented"
+	return *new(AiTensorsetTypeInt16)
 }
 
 func (c AiTensorsetKey) Int32() AiTensorsetTypeInt32 {
-	c.cs.s = append(c.cs.s, "INT32")
-	return (AiTensorsetTypeInt32)(c)
+	_ = "STUB: not implemented"
+	return *new(AiTensorsetTypeInt32)
 }
 
 func (c AiTensorsetKey) Int64() AiTensorsetTypeInt64 {
-	c.cs.s = append(c.cs.s, "INT64")
-	return (AiTensorsetTypeInt64)(c)
+	_ = "STUB: not implemented"
+	return *new(AiTensorsetTypeInt64)
 }
 
 func (c AiTensorsetKey) Uint8() AiTensorsetTypeUint8 {
-	c.cs.s = append(c.cs.s, "UINT8")
-	return (AiTensorsetTypeUint8)(c)
+	_ = "STUB: not implemented"
+	return *new(AiTensorsetTypeUint8)
 }
 
 func (c AiTensorsetKey) Uint16() AiTensorsetTypeUint16 {
-	c.cs.s = append(c.cs.s, "UINT16")
-	return (AiTensorsetTypeUint16)(c)
+	_ = "STUB: not implemented"
+	return *new(AiTensorsetTypeUint16)
 }
 
 func (c AiTensorsetKey) String() AiTensorsetTypeString {
-	c.cs.s = append(c.cs.s, "STRING")
-	return (AiTensorsetTypeString)(c)
+	_ = "STUB: not implemented"
+	return *new(AiTensorsetTypeString)
 }
 
 func (c AiTensorsetKey) Bool() AiTensorsetTypeBool {
-	c.cs.s = append(c.cs.s, "BOOL")
-	return (AiTensorsetTypeBool)(c)
+	_ = "STUB: not implemented"
+	return *new(AiTensorsetTypeBool)
 }
 
 type AiTensorsetShape Incomplete
 
 func (c AiTensorsetShape) Shape(shape ...int64) AiTensorsetShape {
-	for _, n := range shape {
-		c.cs.s = append(c.cs.s, strconv.FormatInt(n, 10))
-	}
-	return c
+	_ = "STUB: not implemented"
+	return *new(AiTensorsetShape)
 }
 
 func (c AiTensorsetShape) Blob(blob string) AiTensorsetBlob {
-	c.cs.s = append(c.cs.s, "BLOB", blob)
-	return (AiTensorsetBlob)(c)
+	_ = "STUB: not implemented"
+	return *new(AiTensorsetBlob)
 }
 
 func (c AiTensorsetShape) Values(value ...string) AiTensorsetValues {
-	c.cs.s = append(c.cs.s, "VALUES")
-	c.cs.s = append(c.cs.s, value...)
-	return (AiTensorsetValues)(c)
+	_ = "STUB: not implemented"
+	return *new(AiTensorsetValues)
 }
 
-func (c AiTensorsetShape) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c AiTensorsetShape) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type AiTensorsetTypeBool Incomplete
 
 func (c AiTensorsetTypeBool) Shape(shape ...int64) AiTensorsetShape {
-	for _, n := range shape {
-		c.cs.s = append(c.cs.s, strconv.FormatInt(n, 10))
-	}
-	return (AiTensorsetShape)(c)
+	_ = "STUB: not implemented"
+	return *new(AiTensorsetShape)
 }
 
 type AiTensorsetTypeDouble Incomplete
 
 func (c AiTensorsetTypeDouble) Shape(shape ...int64) AiTensorsetShape {
-	for _, n := range shape {
-		c.cs.s = append(c.cs.s, strconv.FormatInt(n, 10))
-	}
-	return (AiTensorsetShape)(c)
+	_ = "STUB: not implemented"
+	return *new(AiTensorsetShape)
 }
 
 type AiTensorsetTypeFloat Incomplete
 
 func (c AiTensorsetTypeFloat) Shape(shape ...int64) AiTensorsetShape {
-	for _, n := range shape {
-		c.cs.s = append(c.cs.s, strconv.FormatInt(n, 10))
-	}
-	return (AiTensorsetShape)(c)
+	_ = "STUB: not implemented"
+	return *new(AiTensorsetShape)
 }
 
 type AiTensorsetTypeInt16 Incomplete
 
 func (c AiTensorsetTypeInt16) Shape(shape ...int64) AiTensorsetShape {
-	for _, n := range shape {
-		c.cs.s = append(c.cs.s, strconv.FormatInt(n, 10))
-	}
-	return (AiTensorsetShape)(c)
+	_ = "STUB: not implemented"
+	return *new(AiTensorsetShape)
 }
 
 type AiTensorsetTypeInt32 Incomplete
 
 func (c AiTensorsetTypeInt32) Shape(shape ...int64) AiTensorsetShape {
-	for _, n := range shape {
-		c.cs.s = append(c.cs.s, strconv.FormatInt(n, 10))
-	}
-	return (AiTensorsetShape)(c)
+	_ = "STUB: not implemented"
+	return *new(AiTensorsetShape)
 }
 
 type AiTensorsetTypeInt64 Incomplete
 
 func (c AiTensorsetTypeInt64) Shape(shape ...int64) AiTensorsetShape {
-	for _, n := range shape {
-		c.cs.s = append(c.cs.s, strconv.FormatInt(n, 10))
-	}
-	return (AiTensorsetShape)(c)
+	_ = "STUB: not implemented"
+	return *new(AiTensorsetShape)
 }
 
 type AiTensorsetTypeInt8 Incomplete
 
 func (c AiTensorsetTypeInt8) Shape(shape ...int64) AiTensorsetShape {
-	for _, n := range shape {
-		c.cs.s = append(c.cs.s, strconv.FormatInt(n, 10))
-	}
-	return (AiTensorsetShape)(c)
+	_ = "STUB: not implemented"
+	return *new(AiTensorsetShape)
 }
 
 type AiTensorsetTypeString Incomplete
 
 func (c AiTensorsetTypeString) Shape(shape ...int64) AiTensorsetShape {
-	for _, n := range shape {
-		c.cs.s = append(c.cs.s, strconv.FormatInt(n, 10))
-	}
-	return (AiTensorsetShape)(c)
+	_ = "STUB: not implemented"
+	return *new(AiTensorsetShape)
 }
 
 type AiTensorsetTypeUint16 Incomplete
 
 func (c AiTensorsetTypeUint16) Shape(shape ...int64) AiTensorsetShape {
-	for _, n := range shape {
-		c.cs.s = append(c.cs.s, strconv.FormatInt(n, 10))
-	}
-	return (AiTensorsetShape)(c)
+	_ = "STUB: not implemented"
+	return *new(AiTensorsetShape)
 }
 
 type AiTensorsetTypeUint8 Incomplete
 
 func (c AiTensorsetTypeUint8) Shape(shape ...int64) AiTensorsetShape {
-	for _, n := range shape {
-		c.cs.s = append(c.cs.s, strconv.FormatInt(n, 10))
-	}
-	return (AiTensorsetShape)(c)
+	_ = "STUB: not implemented"
+	return *new(AiTensorsetShape)
 }
 
 type AiTensorsetValues Incomplete
 
 func (c AiTensorsetValues) Values(value ...string) AiTensorsetValues {
-	c.cs.s = append(c.cs.s, "VALUES")
-	c.cs.s = append(c.cs.s, value...)
-	return c
+	_ = "STUB: not implemented"
+	return *new(AiTensorsetValues)
 }
 
-func (c AiTensorsetValues) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c AiTensorsetValues) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }

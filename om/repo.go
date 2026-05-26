@@ -30,9 +30,7 @@ var (
 )
 
 // IsRecordNotFound checks if the error is indicating the requested entity is not found.
-func IsRecordNotFound(err error) bool {
-	return rueidis.IsRedisNil(err) || errors.Is(err, ErrEmptyHashRecord)
-}
+func IsRecordNotFound(err error) bool { _ = "STUB: not implemented"; return false }
 
 // Repository is backed by HashRepository or JSONRepository
 type Repository[T any] interface {
@@ -54,12 +52,6 @@ type Repository[T any] interface {
 type RepositoryOption func(Repository[any])
 
 func WithIndexName(name string) RepositoryOption {
-	return func(r Repository[any]) {
-		switch repo := r.(type) {
-		case *HashRepository[any]:
-			repo.idx = name
-		case *JSONRepository[any]:
-			repo.idx = name
-		}
-	}
+	_ = "STUB: not implemented"
+	return *new(RepositoryOption)
 }

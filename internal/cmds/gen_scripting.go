@@ -2,963 +2,607 @@
 
 package cmds
 
-import "strconv"
-
 type Eval Incomplete
 
-func (b Builder) Eval() (c Eval) {
-	c = Eval{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "EVAL")
-	return c
-}
+func (b Builder) Eval() (c Eval) { _ = "STUB: not implemented"; return *new(Eval) }
 
-func (c Eval) Script(script string) EvalScript {
-	c.cs.s = append(c.cs.s, script)
-	return (EvalScript)(c)
-}
+func (c Eval) Script(script string) EvalScript { _ = "STUB: not implemented"; return *new(EvalScript) }
 
 type EvalArg Incomplete
 
-func (c EvalArg) Arg(arg ...string) EvalArg {
-	c.cs.s = append(c.cs.s, arg...)
-	return c
-}
+func (c EvalArg) Arg(arg ...string) EvalArg { _ = "STUB: not implemented"; return *new(EvalArg) }
 
-func (c EvalArg) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c EvalArg) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type EvalKey Incomplete
 
-func (c EvalKey) Key(key ...string) EvalKey {
-	if c.ks&NoSlot == NoSlot {
-		for _, k := range key {
-			c.ks = NoSlot | slot(k)
-			break
-		}
-	} else {
-		for _, k := range key {
-			c.ks = check(c.ks, slot(k))
-		}
-	}
-	c.cs.s = append(c.cs.s, key...)
-	return c
-}
+func (c EvalKey) Key(key ...string) EvalKey { _ = "STUB: not implemented"; return *new(EvalKey) }
 
-func (c EvalKey) Arg(arg ...string) EvalArg {
-	c.cs.s = append(c.cs.s, arg...)
-	return (EvalArg)(c)
-}
+func (c EvalKey) Arg(arg ...string) EvalArg { _ = "STUB: not implemented"; return *new(EvalArg) }
 
-func (c EvalKey) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c EvalKey) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type EvalNumkeys Incomplete
 
-func (c EvalNumkeys) Key(key ...string) EvalKey {
-	if c.ks&NoSlot == NoSlot {
-		for _, k := range key {
-			c.ks = NoSlot | slot(k)
-			break
-		}
-	} else {
-		for _, k := range key {
-			c.ks = check(c.ks, slot(k))
-		}
-	}
-	c.cs.s = append(c.cs.s, key...)
-	return (EvalKey)(c)
-}
+func (c EvalNumkeys) Key(key ...string) EvalKey { _ = "STUB: not implemented"; return *new(EvalKey) }
 
-func (c EvalNumkeys) Arg(arg ...string) EvalArg {
-	c.cs.s = append(c.cs.s, arg...)
-	return (EvalArg)(c)
-}
+func (c EvalNumkeys) Arg(arg ...string) EvalArg { _ = "STUB: not implemented"; return *new(EvalArg) }
 
-func (c EvalNumkeys) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c EvalNumkeys) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type EvalRo Incomplete
 
-func (b Builder) EvalRo() (c EvalRo) {
-	c = EvalRo{cs: get(), ks: b.ks, cf: int16(scrRoTag)}
-	c.cs.s = append(c.cs.s, "EVAL_RO")
-	return c
-}
+func (b Builder) EvalRo() (c EvalRo) { _ = "STUB: not implemented"; return *new(EvalRo) }
 
 func (c EvalRo) Script(script string) EvalRoScript {
-	c.cs.s = append(c.cs.s, script)
-	return (EvalRoScript)(c)
+	_ = "STUB: not implemented"
+	return *new(EvalRoScript)
 }
 
 type EvalRoArg Incomplete
 
-func (c EvalRoArg) Arg(arg ...string) EvalRoArg {
-	c.cs.s = append(c.cs.s, arg...)
-	return c
-}
+func (c EvalRoArg) Arg(arg ...string) EvalRoArg { _ = "STUB: not implemented"; return *new(EvalRoArg) }
 
-func (c EvalRoArg) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c EvalRoArg) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c EvalRoArg) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c EvalRoArg) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type EvalRoKey Incomplete
 
-func (c EvalRoKey) Key(key ...string) EvalRoKey {
-	if c.ks&NoSlot == NoSlot {
-		for _, k := range key {
-			c.ks = NoSlot | slot(k)
-			break
-		}
-	} else {
-		for _, k := range key {
-			c.ks = check(c.ks, slot(k))
-		}
-	}
-	c.cs.s = append(c.cs.s, key...)
-	return c
-}
+func (c EvalRoKey) Key(key ...string) EvalRoKey { _ = "STUB: not implemented"; return *new(EvalRoKey) }
 
-func (c EvalRoKey) Arg(arg ...string) EvalRoArg {
-	c.cs.s = append(c.cs.s, arg...)
-	return (EvalRoArg)(c)
-}
+func (c EvalRoKey) Arg(arg ...string) EvalRoArg { _ = "STUB: not implemented"; return *new(EvalRoArg) }
 
-func (c EvalRoKey) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c EvalRoKey) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c EvalRoKey) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c EvalRoKey) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type EvalRoNumkeys Incomplete
 
 func (c EvalRoNumkeys) Key(key ...string) EvalRoKey {
-	if c.ks&NoSlot == NoSlot {
-		for _, k := range key {
-			c.ks = NoSlot | slot(k)
-			break
-		}
-	} else {
-		for _, k := range key {
-			c.ks = check(c.ks, slot(k))
-		}
-	}
-	c.cs.s = append(c.cs.s, key...)
-	return (EvalRoKey)(c)
+	_ = "STUB: not implemented"
+	return *new(EvalRoKey)
 }
 
 func (c EvalRoNumkeys) Arg(arg ...string) EvalRoArg {
-	c.cs.s = append(c.cs.s, arg...)
-	return (EvalRoArg)(c)
+	_ = "STUB: not implemented"
+	return *new(EvalRoArg)
 }
 
-func (c EvalRoNumkeys) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c EvalRoNumkeys) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c EvalRoNumkeys) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c EvalRoNumkeys) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type EvalRoScript Incomplete
 
 func (c EvalRoScript) Numkeys(numkeys int64) EvalRoNumkeys {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(numkeys, 10))
-	return (EvalRoNumkeys)(c)
+	_ = "STUB: not implemented"
+	return *new(EvalRoNumkeys)
 }
 
 type EvalScript Incomplete
 
 func (c EvalScript) Numkeys(numkeys int64) EvalNumkeys {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(numkeys, 10))
-	return (EvalNumkeys)(c)
+	_ = "STUB: not implemented"
+	return *new(EvalNumkeys)
 }
 
 type Evalsha Incomplete
 
-func (b Builder) Evalsha() (c Evalsha) {
-	c = Evalsha{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "EVALSHA")
-	return c
-}
+func (b Builder) Evalsha() (c Evalsha) { _ = "STUB: not implemented"; return *new(Evalsha) }
 
-func (c Evalsha) Sha1(sha1 string) EvalshaSha1 {
-	c.cs.s = append(c.cs.s, sha1)
-	return (EvalshaSha1)(c)
-}
+func (c Evalsha) Sha1(sha1 string) EvalshaSha1 { _ = "STUB: not implemented"; return *new(EvalshaSha1) }
 
 type EvalshaArg Incomplete
 
 func (c EvalshaArg) Arg(arg ...string) EvalshaArg {
-	c.cs.s = append(c.cs.s, arg...)
-	return c
+	_ = "STUB: not implemented"
+	return *new(EvalshaArg)
 }
 
-func (c EvalshaArg) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c EvalshaArg) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type EvalshaKey Incomplete
 
 func (c EvalshaKey) Key(key ...string) EvalshaKey {
-	if c.ks&NoSlot == NoSlot {
-		for _, k := range key {
-			c.ks = NoSlot | slot(k)
-			break
-		}
-	} else {
-		for _, k := range key {
-			c.ks = check(c.ks, slot(k))
-		}
-	}
-	c.cs.s = append(c.cs.s, key...)
-	return c
+	_ = "STUB: not implemented"
+	return *new(EvalshaKey)
 }
 
 func (c EvalshaKey) Arg(arg ...string) EvalshaArg {
-	c.cs.s = append(c.cs.s, arg...)
-	return (EvalshaArg)(c)
+	_ = "STUB: not implemented"
+	return *new(EvalshaArg)
 }
 
-func (c EvalshaKey) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c EvalshaKey) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type EvalshaNumkeys Incomplete
 
 func (c EvalshaNumkeys) Key(key ...string) EvalshaKey {
-	if c.ks&NoSlot == NoSlot {
-		for _, k := range key {
-			c.ks = NoSlot | slot(k)
-			break
-		}
-	} else {
-		for _, k := range key {
-			c.ks = check(c.ks, slot(k))
-		}
-	}
-	c.cs.s = append(c.cs.s, key...)
-	return (EvalshaKey)(c)
+	_ = "STUB: not implemented"
+	return *new(EvalshaKey)
 }
 
 func (c EvalshaNumkeys) Arg(arg ...string) EvalshaArg {
-	c.cs.s = append(c.cs.s, arg...)
-	return (EvalshaArg)(c)
+	_ = "STUB: not implemented"
+	return *new(EvalshaArg)
 }
 
-func (c EvalshaNumkeys) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c EvalshaNumkeys) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type EvalshaRo Incomplete
 
-func (b Builder) EvalshaRo() (c EvalshaRo) {
-	c = EvalshaRo{cs: get(), ks: b.ks, cf: int16(scrRoTag)}
-	c.cs.s = append(c.cs.s, "EVALSHA_RO")
-	return c
-}
+func (b Builder) EvalshaRo() (c EvalshaRo) { _ = "STUB: not implemented"; return *new(EvalshaRo) }
 
 func (c EvalshaRo) Sha1(sha1 string) EvalshaRoSha1 {
-	c.cs.s = append(c.cs.s, sha1)
-	return (EvalshaRoSha1)(c)
+	_ = "STUB: not implemented"
+	return *new(EvalshaRoSha1)
 }
 
 type EvalshaRoArg Incomplete
 
 func (c EvalshaRoArg) Arg(arg ...string) EvalshaRoArg {
-	c.cs.s = append(c.cs.s, arg...)
-	return c
+	_ = "STUB: not implemented"
+	return *new(EvalshaRoArg)
 }
 
-func (c EvalshaRoArg) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c EvalshaRoArg) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c EvalshaRoArg) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c EvalshaRoArg) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type EvalshaRoKey Incomplete
 
 func (c EvalshaRoKey) Key(key ...string) EvalshaRoKey {
-	if c.ks&NoSlot == NoSlot {
-		for _, k := range key {
-			c.ks = NoSlot | slot(k)
-			break
-		}
-	} else {
-		for _, k := range key {
-			c.ks = check(c.ks, slot(k))
-		}
-	}
-	c.cs.s = append(c.cs.s, key...)
-	return c
+	_ = "STUB: not implemented"
+	return *new(EvalshaRoKey)
 }
 
 func (c EvalshaRoKey) Arg(arg ...string) EvalshaRoArg {
-	c.cs.s = append(c.cs.s, arg...)
-	return (EvalshaRoArg)(c)
+	_ = "STUB: not implemented"
+	return *new(EvalshaRoArg)
 }
 
-func (c EvalshaRoKey) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c EvalshaRoKey) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c EvalshaRoKey) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c EvalshaRoKey) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type EvalshaRoNumkeys Incomplete
 
 func (c EvalshaRoNumkeys) Key(key ...string) EvalshaRoKey {
-	if c.ks&NoSlot == NoSlot {
-		for _, k := range key {
-			c.ks = NoSlot | slot(k)
-			break
-		}
-	} else {
-		for _, k := range key {
-			c.ks = check(c.ks, slot(k))
-		}
-	}
-	c.cs.s = append(c.cs.s, key...)
-	return (EvalshaRoKey)(c)
+	_ = "STUB: not implemented"
+	return *new(EvalshaRoKey)
 }
 
 func (c EvalshaRoNumkeys) Arg(arg ...string) EvalshaRoArg {
-	c.cs.s = append(c.cs.s, arg...)
-	return (EvalshaRoArg)(c)
+	_ = "STUB: not implemented"
+	return *new(EvalshaRoArg)
 }
 
-func (c EvalshaRoNumkeys) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c EvalshaRoNumkeys) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c EvalshaRoNumkeys) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c EvalshaRoNumkeys) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type EvalshaRoSha1 Incomplete
 
 func (c EvalshaRoSha1) Numkeys(numkeys int64) EvalshaRoNumkeys {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(numkeys, 10))
-	return (EvalshaRoNumkeys)(c)
+	_ = "STUB: not implemented"
+	return *new(EvalshaRoNumkeys)
 }
 
 type EvalshaSha1 Incomplete
 
 func (c EvalshaSha1) Numkeys(numkeys int64) EvalshaNumkeys {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(numkeys, 10))
-	return (EvalshaNumkeys)(c)
+	_ = "STUB: not implemented"
+	return *new(EvalshaNumkeys)
 }
 
 type Fcall Incomplete
 
-func (b Builder) Fcall() (c Fcall) {
-	c = Fcall{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "FCALL")
-	return c
-}
+func (b Builder) Fcall() (c Fcall) { _ = "STUB: not implemented"; return *new(Fcall) }
 
 func (c Fcall) Function(function string) FcallFunction {
-	c.cs.s = append(c.cs.s, function)
-	return (FcallFunction)(c)
+	_ = "STUB: not implemented"
+	return *new(FcallFunction)
 }
 
 type FcallArg Incomplete
 
-func (c FcallArg) Arg(arg ...string) FcallArg {
-	c.cs.s = append(c.cs.s, arg...)
-	return c
-}
+func (c FcallArg) Arg(arg ...string) FcallArg { _ = "STUB: not implemented"; return *new(FcallArg) }
 
-func (c FcallArg) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c FcallArg) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type FcallFunction Incomplete
 
 func (c FcallFunction) Numkeys(numkeys int64) FcallNumkeys {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(numkeys, 10))
-	return (FcallNumkeys)(c)
+	_ = "STUB: not implemented"
+	return *new(FcallNumkeys)
 }
 
 type FcallKey Incomplete
 
-func (c FcallKey) Key(key ...string) FcallKey {
-	if c.ks&NoSlot == NoSlot {
-		for _, k := range key {
-			c.ks = NoSlot | slot(k)
-			break
-		}
-	} else {
-		for _, k := range key {
-			c.ks = check(c.ks, slot(k))
-		}
-	}
-	c.cs.s = append(c.cs.s, key...)
-	return c
-}
+func (c FcallKey) Key(key ...string) FcallKey { _ = "STUB: not implemented"; return *new(FcallKey) }
 
-func (c FcallKey) Arg(arg ...string) FcallArg {
-	c.cs.s = append(c.cs.s, arg...)
-	return (FcallArg)(c)
-}
+func (c FcallKey) Arg(arg ...string) FcallArg { _ = "STUB: not implemented"; return *new(FcallArg) }
 
-func (c FcallKey) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c FcallKey) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type FcallNumkeys Incomplete
 
-func (c FcallNumkeys) Key(key ...string) FcallKey {
-	if c.ks&NoSlot == NoSlot {
-		for _, k := range key {
-			c.ks = NoSlot | slot(k)
-			break
-		}
-	} else {
-		for _, k := range key {
-			c.ks = check(c.ks, slot(k))
-		}
-	}
-	c.cs.s = append(c.cs.s, key...)
-	return (FcallKey)(c)
-}
+func (c FcallNumkeys) Key(key ...string) FcallKey { _ = "STUB: not implemented"; return *new(FcallKey) }
 
-func (c FcallNumkeys) Arg(arg ...string) FcallArg {
-	c.cs.s = append(c.cs.s, arg...)
-	return (FcallArg)(c)
-}
+func (c FcallNumkeys) Arg(arg ...string) FcallArg { _ = "STUB: not implemented"; return *new(FcallArg) }
 
-func (c FcallNumkeys) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c FcallNumkeys) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type FcallRo Incomplete
 
-func (b Builder) FcallRo() (c FcallRo) {
-	c = FcallRo{cs: get(), ks: b.ks, cf: int16(scrRoTag)}
-	c.cs.s = append(c.cs.s, "FCALL_RO")
-	return c
-}
+func (b Builder) FcallRo() (c FcallRo) { _ = "STUB: not implemented"; return *new(FcallRo) }
 
 func (c FcallRo) Function(function string) FcallRoFunction {
-	c.cs.s = append(c.cs.s, function)
-	return (FcallRoFunction)(c)
+	_ = "STUB: not implemented"
+	return *new(FcallRoFunction)
 }
 
 type FcallRoArg Incomplete
 
 func (c FcallRoArg) Arg(arg ...string) FcallRoArg {
-	c.cs.s = append(c.cs.s, arg...)
-	return c
+	_ = "STUB: not implemented"
+	return *new(FcallRoArg)
 }
 
-func (c FcallRoArg) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c FcallRoArg) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c FcallRoArg) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c FcallRoArg) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type FcallRoFunction Incomplete
 
 func (c FcallRoFunction) Numkeys(numkeys int64) FcallRoNumkeys {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(numkeys, 10))
-	return (FcallRoNumkeys)(c)
+	_ = "STUB: not implemented"
+	return *new(FcallRoNumkeys)
 }
 
 type FcallRoKey Incomplete
 
 func (c FcallRoKey) Key(key ...string) FcallRoKey {
-	if c.ks&NoSlot == NoSlot {
-		for _, k := range key {
-			c.ks = NoSlot | slot(k)
-			break
-		}
-	} else {
-		for _, k := range key {
-			c.ks = check(c.ks, slot(k))
-		}
-	}
-	c.cs.s = append(c.cs.s, key...)
-	return c
+	_ = "STUB: not implemented"
+	return *new(FcallRoKey)
 }
 
 func (c FcallRoKey) Arg(arg ...string) FcallRoArg {
-	c.cs.s = append(c.cs.s, arg...)
-	return (FcallRoArg)(c)
+	_ = "STUB: not implemented"
+	return *new(FcallRoArg)
 }
 
-func (c FcallRoKey) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c FcallRoKey) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c FcallRoKey) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c FcallRoKey) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type FcallRoNumkeys Incomplete
 
 func (c FcallRoNumkeys) Key(key ...string) FcallRoKey {
-	if c.ks&NoSlot == NoSlot {
-		for _, k := range key {
-			c.ks = NoSlot | slot(k)
-			break
-		}
-	} else {
-		for _, k := range key {
-			c.ks = check(c.ks, slot(k))
-		}
-	}
-	c.cs.s = append(c.cs.s, key...)
-	return (FcallRoKey)(c)
+	_ = "STUB: not implemented"
+	return *new(FcallRoKey)
 }
 
 func (c FcallRoNumkeys) Arg(arg ...string) FcallRoArg {
-	c.cs.s = append(c.cs.s, arg...)
-	return (FcallRoArg)(c)
+	_ = "STUB: not implemented"
+	return *new(FcallRoArg)
 }
 
-func (c FcallRoNumkeys) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c FcallRoNumkeys) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c FcallRoNumkeys) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c FcallRoNumkeys) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type FunctionDelete Incomplete
 
 func (b Builder) FunctionDelete() (c FunctionDelete) {
-	c = FunctionDelete{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "FUNCTION", "DELETE")
-	return c
+	_ = "STUB: not implemented"
+	return *new(FunctionDelete)
 }
 
 func (c FunctionDelete) LibraryName(libraryName string) FunctionDeleteLibraryName {
-	c.cs.s = append(c.cs.s, libraryName)
-	return (FunctionDeleteLibraryName)(c)
+	_ = "STUB: not implemented"
+	return *new(FunctionDeleteLibraryName)
 }
 
 type FunctionDeleteLibraryName Incomplete
 
 func (c FunctionDeleteLibraryName) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type FunctionDump Incomplete
 
 func (b Builder) FunctionDump() (c FunctionDump) {
-	c = FunctionDump{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "FUNCTION", "DUMP")
-	return c
+	_ = "STUB: not implemented"
+	return *new(FunctionDump)
 }
 
-func (c FunctionDump) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c FunctionDump) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type FunctionFlush Incomplete
 
 func (b Builder) FunctionFlush() (c FunctionFlush) {
-	c = FunctionFlush{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "FUNCTION", "FLUSH")
-	return c
+	_ = "STUB: not implemented"
+	return *new(FunctionFlush)
 }
 
 func (c FunctionFlush) Async() FunctionFlushAsync {
-	c.cs.s = append(c.cs.s, "ASYNC")
-	return (FunctionFlushAsync)(c)
+	_ = "STUB: not implemented"
+	return *new(FunctionFlushAsync)
 }
 
 func (c FunctionFlush) Sync() FunctionFlushAsyncSync {
-	c.cs.s = append(c.cs.s, "SYNC")
-	return (FunctionFlushAsyncSync)(c)
+	_ = "STUB: not implemented"
+	return *new(FunctionFlushAsyncSync)
 }
 
-func (c FunctionFlush) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c FunctionFlush) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type FunctionFlushAsync Incomplete
 
-func (c FunctionFlushAsync) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c FunctionFlushAsync) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type FunctionFlushAsyncSync Incomplete
 
 func (c FunctionFlushAsyncSync) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type FunctionHelp Incomplete
 
 func (b Builder) FunctionHelp() (c FunctionHelp) {
-	c = FunctionHelp{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "FUNCTION", "HELP")
-	return c
+	_ = "STUB: not implemented"
+	return *new(FunctionHelp)
 }
 
-func (c FunctionHelp) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c FunctionHelp) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type FunctionKill Incomplete
 
 func (b Builder) FunctionKill() (c FunctionKill) {
-	c = FunctionKill{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "FUNCTION", "KILL")
-	return c
+	_ = "STUB: not implemented"
+	return *new(FunctionKill)
 }
 
-func (c FunctionKill) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c FunctionKill) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type FunctionList Incomplete
 
 func (b Builder) FunctionList() (c FunctionList) {
-	c = FunctionList{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "FUNCTION", "LIST")
-	return c
+	_ = "STUB: not implemented"
+	return *new(FunctionList)
 }
 
 func (c FunctionList) Libraryname(libraryNamePattern string) FunctionListLibraryname {
-	c.cs.s = append(c.cs.s, "LIBRARYNAME", libraryNamePattern)
-	return (FunctionListLibraryname)(c)
+	_ = "STUB: not implemented"
+	return *new(FunctionListLibraryname)
 }
 
 func (c FunctionList) Withcode() FunctionListWithcode {
-	c.cs.s = append(c.cs.s, "WITHCODE")
-	return (FunctionListWithcode)(c)
+	_ = "STUB: not implemented"
+	return *new(FunctionListWithcode)
 }
 
-func (c FunctionList) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c FunctionList) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type FunctionListLibraryname Incomplete
 
 func (c FunctionListLibraryname) Withcode() FunctionListWithcode {
-	c.cs.s = append(c.cs.s, "WITHCODE")
-	return (FunctionListWithcode)(c)
+	_ = "STUB: not implemented"
+	return *new(FunctionListWithcode)
 }
 
 func (c FunctionListLibraryname) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type FunctionListWithcode Incomplete
 
-func (c FunctionListWithcode) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c FunctionListWithcode) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type FunctionLoad Incomplete
 
 func (b Builder) FunctionLoad() (c FunctionLoad) {
-	c = FunctionLoad{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "FUNCTION", "LOAD")
-	return c
+	_ = "STUB: not implemented"
+	return *new(FunctionLoad)
 }
 
 func (c FunctionLoad) Replace() FunctionLoadReplace {
-	c.cs.s = append(c.cs.s, "REPLACE")
-	return (FunctionLoadReplace)(c)
+	_ = "STUB: not implemented"
+	return *new(FunctionLoadReplace)
 }
 
 func (c FunctionLoad) FunctionCode(functionCode string) FunctionLoadFunctionCode {
-	c.cs.s = append(c.cs.s, functionCode)
-	return (FunctionLoadFunctionCode)(c)
+	_ = "STUB: not implemented"
+	return *new(FunctionLoadFunctionCode)
 }
 
 type FunctionLoadFunctionCode Incomplete
 
 func (c FunctionLoadFunctionCode) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type FunctionLoadReplace Incomplete
 
 func (c FunctionLoadReplace) FunctionCode(functionCode string) FunctionLoadFunctionCode {
-	c.cs.s = append(c.cs.s, functionCode)
-	return (FunctionLoadFunctionCode)(c)
+	_ = "STUB: not implemented"
+	return *new(FunctionLoadFunctionCode)
 }
 
 type FunctionRestore Incomplete
 
 func (b Builder) FunctionRestore() (c FunctionRestore) {
-	c = FunctionRestore{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "FUNCTION", "RESTORE")
-	return c
+	_ = "STUB: not implemented"
+	return *new(FunctionRestore)
 }
 
 func (c FunctionRestore) SerializedValue(serializedValue string) FunctionRestoreSerializedValue {
-	c.cs.s = append(c.cs.s, serializedValue)
-	return (FunctionRestoreSerializedValue)(c)
+	_ = "STUB: not implemented"
+	return *new(FunctionRestoreSerializedValue)
 }
 
 type FunctionRestorePolicyAppend Incomplete
 
 func (c FunctionRestorePolicyAppend) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type FunctionRestorePolicyFlush Incomplete
 
 func (c FunctionRestorePolicyFlush) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type FunctionRestorePolicyReplace Incomplete
 
 func (c FunctionRestorePolicyReplace) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type FunctionRestoreSerializedValue Incomplete
 
 func (c FunctionRestoreSerializedValue) Flush() FunctionRestorePolicyFlush {
-	c.cs.s = append(c.cs.s, "FLUSH")
-	return (FunctionRestorePolicyFlush)(c)
+	_ = "STUB: not implemented"
+	return *new(FunctionRestorePolicyFlush)
 }
 
 func (c FunctionRestoreSerializedValue) Append() FunctionRestorePolicyAppend {
-	c.cs.s = append(c.cs.s, "APPEND")
-	return (FunctionRestorePolicyAppend)(c)
+	_ = "STUB: not implemented"
+	return *new(FunctionRestorePolicyAppend)
 }
 
 func (c FunctionRestoreSerializedValue) Replace() FunctionRestorePolicyReplace {
-	c.cs.s = append(c.cs.s, "REPLACE")
-	return (FunctionRestorePolicyReplace)(c)
+	_ = "STUB: not implemented"
+	return *new(FunctionRestorePolicyReplace)
 }
 
 func (c FunctionRestoreSerializedValue) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type FunctionStats Incomplete
 
 func (b Builder) FunctionStats() (c FunctionStats) {
-	c = FunctionStats{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "FUNCTION", "STATS")
-	return c
+	_ = "STUB: not implemented"
+	return *new(FunctionStats)
 }
 
-func (c FunctionStats) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c FunctionStats) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type ScriptDebug Incomplete
 
-func (b Builder) ScriptDebug() (c ScriptDebug) {
-	c = ScriptDebug{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "SCRIPT", "DEBUG")
-	return c
-}
+func (b Builder) ScriptDebug() (c ScriptDebug) { _ = "STUB: not implemented"; return *new(ScriptDebug) }
 
 func (c ScriptDebug) Yes() ScriptDebugModeYes {
-	c.cs.s = append(c.cs.s, "YES")
-	return (ScriptDebugModeYes)(c)
+	_ = "STUB: not implemented"
+	return *new(ScriptDebugModeYes)
 }
 
 func (c ScriptDebug) Sync() ScriptDebugModeSync {
-	c.cs.s = append(c.cs.s, "SYNC")
-	return (ScriptDebugModeSync)(c)
+	_ = "STUB: not implemented"
+	return *new(ScriptDebugModeSync)
 }
 
 func (c ScriptDebug) No() ScriptDebugModeNo {
-	c.cs.s = append(c.cs.s, "NO")
-	return (ScriptDebugModeNo)(c)
+	_ = "STUB: not implemented"
+	return *new(ScriptDebugModeNo)
 }
 
 type ScriptDebugModeNo Incomplete
 
-func (c ScriptDebugModeNo) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ScriptDebugModeNo) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type ScriptDebugModeSync Incomplete
 
-func (c ScriptDebugModeSync) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ScriptDebugModeSync) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type ScriptDebugModeYes Incomplete
 
-func (c ScriptDebugModeYes) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ScriptDebugModeYes) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type ScriptExists Incomplete
 
 func (b Builder) ScriptExists() (c ScriptExists) {
-	c = ScriptExists{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "SCRIPT", "EXISTS")
-	return c
+	_ = "STUB: not implemented"
+	return *new(ScriptExists)
 }
 
 func (c ScriptExists) Sha1(sha1 ...string) ScriptExistsSha1 {
-	c.cs.s = append(c.cs.s, sha1...)
-	return (ScriptExistsSha1)(c)
+	_ = "STUB: not implemented"
+	return *new(ScriptExistsSha1)
 }
 
 type ScriptExistsSha1 Incomplete
 
 func (c ScriptExistsSha1) Sha1(sha1 ...string) ScriptExistsSha1 {
-	c.cs.s = append(c.cs.s, sha1...)
-	return c
+	_ = "STUB: not implemented"
+	return *new(ScriptExistsSha1)
 }
 
-func (c ScriptExistsSha1) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ScriptExistsSha1) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type ScriptFlush Incomplete
 
-func (b Builder) ScriptFlush() (c ScriptFlush) {
-	c = ScriptFlush{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "SCRIPT", "FLUSH")
-	return c
-}
+func (b Builder) ScriptFlush() (c ScriptFlush) { _ = "STUB: not implemented"; return *new(ScriptFlush) }
 
 func (c ScriptFlush) Async() ScriptFlushAsync {
-	c.cs.s = append(c.cs.s, "ASYNC")
-	return (ScriptFlushAsync)(c)
+	_ = "STUB: not implemented"
+	return *new(ScriptFlushAsync)
 }
 
 func (c ScriptFlush) Sync() ScriptFlushAsyncSync {
-	c.cs.s = append(c.cs.s, "SYNC")
-	return (ScriptFlushAsyncSync)(c)
+	_ = "STUB: not implemented"
+	return *new(ScriptFlushAsyncSync)
 }
 
-func (c ScriptFlush) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ScriptFlush) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type ScriptFlushAsync Incomplete
 
-func (c ScriptFlushAsync) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ScriptFlushAsync) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type ScriptFlushAsyncSync Incomplete
 
-func (c ScriptFlushAsyncSync) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ScriptFlushAsyncSync) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type ScriptKill Incomplete
 
-func (b Builder) ScriptKill() (c ScriptKill) {
-	c = ScriptKill{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "SCRIPT", "KILL")
-	return c
-}
+func (b Builder) ScriptKill() (c ScriptKill) { _ = "STUB: not implemented"; return *new(ScriptKill) }
 
-func (c ScriptKill) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ScriptKill) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type ScriptLoad Incomplete
 
-func (b Builder) ScriptLoad() (c ScriptLoad) {
-	c = ScriptLoad{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "SCRIPT", "LOAD")
-	return c
-}
+func (b Builder) ScriptLoad() (c ScriptLoad) { _ = "STUB: not implemented"; return *new(ScriptLoad) }
 
 func (c ScriptLoad) Script(script string) ScriptLoadScript {
-	c.cs.s = append(c.cs.s, script)
-	return (ScriptLoadScript)(c)
+	_ = "STUB: not implemented"
+	return *new(ScriptLoadScript)
 }
 
 type ScriptLoadScript Incomplete
 
-func (c ScriptLoadScript) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ScriptLoadScript) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type ScriptShow Incomplete
 
-func (b Builder) ScriptShow() (c ScriptShow) {
-	c = ScriptShow{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "SCRIPT", "SHOW")
-	return c
-}
+func (b Builder) ScriptShow() (c ScriptShow) { _ = "STUB: not implemented"; return *new(ScriptShow) }
 
 func (c ScriptShow) Sha1(sha1 string) ScriptShowSha1 {
-	c.cs.s = append(c.cs.s, sha1)
-	return (ScriptShowSha1)(c)
+	_ = "STUB: not implemented"
+	return *new(ScriptShowSha1)
 }
 
 type ScriptShowSha1 Incomplete
 
-func (c ScriptShowSha1) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ScriptShowSha1) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }

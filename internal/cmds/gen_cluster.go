@@ -2,863 +2,731 @@
 
 package cmds
 
-import "strconv"
-
 type Asking Incomplete
 
-func (b Builder) Asking() (c Asking) {
-	c = Asking{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "ASKING")
-	return c
-}
+func (b Builder) Asking() (c Asking) { _ = "STUB: not implemented"; return *new(Asking) }
 
-func (c Asking) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c Asking) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type ClusterAddslots Incomplete
 
 func (b Builder) ClusterAddslots() (c ClusterAddslots) {
-	c = ClusterAddslots{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "CLUSTER", "ADDSLOTS")
-	return c
+	_ = "STUB: not implemented"
+	return *new(ClusterAddslots)
 }
 
 func (c ClusterAddslots) Slot(slot ...int64) ClusterAddslotsSlot {
-	for _, n := range slot {
-		c.cs.s = append(c.cs.s, strconv.FormatInt(n, 10))
-	}
-	return (ClusterAddslotsSlot)(c)
+	_ = "STUB: not implemented"
+	return *new(ClusterAddslotsSlot)
 }
 
 type ClusterAddslotsSlot Incomplete
 
 func (c ClusterAddslotsSlot) Slot(slot ...int64) ClusterAddslotsSlot {
-	for _, n := range slot {
-		c.cs.s = append(c.cs.s, strconv.FormatInt(n, 10))
-	}
-	return c
+	_ = "STUB: not implemented"
+	return *new(ClusterAddslotsSlot)
 }
 
-func (c ClusterAddslotsSlot) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ClusterAddslotsSlot) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type ClusterAddslotsrange Incomplete
 
 func (b Builder) ClusterAddslotsrange() (c ClusterAddslotsrange) {
-	c = ClusterAddslotsrange{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "CLUSTER", "ADDSLOTSRANGE")
-	return c
+	_ = "STUB: not implemented"
+	return *new(ClusterAddslotsrange)
 }
 
 func (c ClusterAddslotsrange) StartSlotEndSlot() ClusterAddslotsrangeStartSlotEndSlot {
-	return (ClusterAddslotsrangeStartSlotEndSlot)(c)
+	_ = "STUB: not implemented"
+	return *new(ClusterAddslotsrangeStartSlotEndSlot)
 }
 
 type ClusterAddslotsrangeStartSlotEndSlot Incomplete
 
 func (c ClusterAddslotsrangeStartSlotEndSlot) StartSlotEndSlot(startSlot int64, endSlot int64) ClusterAddslotsrangeStartSlotEndSlot {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(startSlot, 10), strconv.FormatInt(endSlot, 10))
-	return c
+	_ = "STUB: not implemented"
+	return *new(ClusterAddslotsrangeStartSlotEndSlot)
 }
 
 func (c ClusterAddslotsrangeStartSlotEndSlot) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type ClusterBumpepoch Incomplete
 
 func (b Builder) ClusterBumpepoch() (c ClusterBumpepoch) {
-	c = ClusterBumpepoch{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "CLUSTER", "BUMPEPOCH")
-	return c
+	_ = "STUB: not implemented"
+	return *new(ClusterBumpepoch)
 }
 
-func (c ClusterBumpepoch) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ClusterBumpepoch) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type ClusterCancelslotmigrations Incomplete
 
 func (b Builder) ClusterCancelslotmigrations() (c ClusterCancelslotmigrations) {
-	c = ClusterCancelslotmigrations{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "CLUSTER", "CANCELSLOTMIGRATIONS")
-	return c
+	_ = "STUB: not implemented"
+	return *new(ClusterCancelslotmigrations)
 }
 
 func (c ClusterCancelslotmigrations) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type ClusterCountFailureReports Incomplete
 
 func (b Builder) ClusterCountFailureReports() (c ClusterCountFailureReports) {
-	c = ClusterCountFailureReports{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "CLUSTER", "COUNT-FAILURE-REPORTS")
-	return c
+	_ = "STUB: not implemented"
+	return *new(ClusterCountFailureReports)
 }
 
 func (c ClusterCountFailureReports) NodeId(nodeId string) ClusterCountFailureReportsNodeId {
-	c.cs.s = append(c.cs.s, nodeId)
-	return (ClusterCountFailureReportsNodeId)(c)
+	_ = "STUB: not implemented"
+	return *new(ClusterCountFailureReportsNodeId)
 }
 
 type ClusterCountFailureReportsNodeId Incomplete
 
 func (c ClusterCountFailureReportsNodeId) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type ClusterCountkeysinslot Incomplete
 
 func (b Builder) ClusterCountkeysinslot() (c ClusterCountkeysinslot) {
-	c = ClusterCountkeysinslot{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "CLUSTER", "COUNTKEYSINSLOT")
-	return c
+	_ = "STUB: not implemented"
+	return *new(ClusterCountkeysinslot)
 }
 
 func (c ClusterCountkeysinslot) Slot(slot int64) ClusterCountkeysinslotSlot {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(slot, 10))
-	return (ClusterCountkeysinslotSlot)(c)
+	_ = "STUB: not implemented"
+	return *new(ClusterCountkeysinslotSlot)
 }
 
 type ClusterCountkeysinslotSlot Incomplete
 
 func (c ClusterCountkeysinslotSlot) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type ClusterDelslots Incomplete
 
 func (b Builder) ClusterDelslots() (c ClusterDelslots) {
-	c = ClusterDelslots{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "CLUSTER", "DELSLOTS")
-	return c
+	_ = "STUB: not implemented"
+	return *new(ClusterDelslots)
 }
 
 func (c ClusterDelslots) Slot(slot ...int64) ClusterDelslotsSlot {
-	for _, n := range slot {
-		c.cs.s = append(c.cs.s, strconv.FormatInt(n, 10))
-	}
-	return (ClusterDelslotsSlot)(c)
+	_ = "STUB: not implemented"
+	return *new(ClusterDelslotsSlot)
 }
 
 type ClusterDelslotsSlot Incomplete
 
 func (c ClusterDelslotsSlot) Slot(slot ...int64) ClusterDelslotsSlot {
-	for _, n := range slot {
-		c.cs.s = append(c.cs.s, strconv.FormatInt(n, 10))
-	}
-	return c
+	_ = "STUB: not implemented"
+	return *new(ClusterDelslotsSlot)
 }
 
-func (c ClusterDelslotsSlot) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ClusterDelslotsSlot) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type ClusterDelslotsrange Incomplete
 
 func (b Builder) ClusterDelslotsrange() (c ClusterDelslotsrange) {
-	c = ClusterDelslotsrange{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "CLUSTER", "DELSLOTSRANGE")
-	return c
+	_ = "STUB: not implemented"
+	return *new(ClusterDelslotsrange)
 }
 
 func (c ClusterDelslotsrange) StartSlotEndSlot() ClusterDelslotsrangeStartSlotEndSlot {
-	return (ClusterDelslotsrangeStartSlotEndSlot)(c)
+	_ = "STUB: not implemented"
+	return *new(ClusterDelslotsrangeStartSlotEndSlot)
 }
 
 type ClusterDelslotsrangeStartSlotEndSlot Incomplete
 
 func (c ClusterDelslotsrangeStartSlotEndSlot) StartSlotEndSlot(startSlot int64, endSlot int64) ClusterDelslotsrangeStartSlotEndSlot {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(startSlot, 10), strconv.FormatInt(endSlot, 10))
-	return c
+	_ = "STUB: not implemented"
+	return *new(ClusterDelslotsrangeStartSlotEndSlot)
 }
 
 func (c ClusterDelslotsrangeStartSlotEndSlot) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type ClusterFailover Incomplete
 
 func (b Builder) ClusterFailover() (c ClusterFailover) {
-	c = ClusterFailover{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "CLUSTER", "FAILOVER")
-	return c
+	_ = "STUB: not implemented"
+	return *new(ClusterFailover)
 }
 
 func (c ClusterFailover) Force() ClusterFailoverOptionsForce {
-	c.cs.s = append(c.cs.s, "FORCE")
-	return (ClusterFailoverOptionsForce)(c)
+	_ = "STUB: not implemented"
+	return *new(ClusterFailoverOptionsForce)
 }
 
 func (c ClusterFailover) Takeover() ClusterFailoverOptionsTakeover {
-	c.cs.s = append(c.cs.s, "TAKEOVER")
-	return (ClusterFailoverOptionsTakeover)(c)
+	_ = "STUB: not implemented"
+	return *new(ClusterFailoverOptionsTakeover)
 }
 
-func (c ClusterFailover) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ClusterFailover) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type ClusterFailoverOptionsForce Incomplete
 
 func (c ClusterFailoverOptionsForce) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type ClusterFailoverOptionsTakeover Incomplete
 
 func (c ClusterFailoverOptionsTakeover) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type ClusterFlushslots Incomplete
 
 func (b Builder) ClusterFlushslots() (c ClusterFlushslots) {
-	c = ClusterFlushslots{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "CLUSTER", "FLUSHSLOTS")
-	return c
+	_ = "STUB: not implemented"
+	return *new(ClusterFlushslots)
 }
 
-func (c ClusterFlushslots) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ClusterFlushslots) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type ClusterForget Incomplete
 
 func (b Builder) ClusterForget() (c ClusterForget) {
-	c = ClusterForget{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "CLUSTER", "FORGET")
-	return c
+	_ = "STUB: not implemented"
+	return *new(ClusterForget)
 }
 
 func (c ClusterForget) NodeId(nodeId string) ClusterForgetNodeId {
-	c.cs.s = append(c.cs.s, nodeId)
-	return (ClusterForgetNodeId)(c)
+	_ = "STUB: not implemented"
+	return *new(ClusterForgetNodeId)
 }
 
 type ClusterForgetNodeId Incomplete
 
-func (c ClusterForgetNodeId) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ClusterForgetNodeId) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type ClusterGetkeysinslot Incomplete
 
 func (b Builder) ClusterGetkeysinslot() (c ClusterGetkeysinslot) {
-	c = ClusterGetkeysinslot{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "CLUSTER", "GETKEYSINSLOT")
-	return c
+	_ = "STUB: not implemented"
+	return *new(ClusterGetkeysinslot)
 }
 
 func (c ClusterGetkeysinslot) Slot(slot int64) ClusterGetkeysinslotSlot {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(slot, 10))
-	return (ClusterGetkeysinslotSlot)(c)
+	_ = "STUB: not implemented"
+	return *new(ClusterGetkeysinslotSlot)
 }
 
 type ClusterGetkeysinslotCount Incomplete
 
 func (c ClusterGetkeysinslotCount) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type ClusterGetkeysinslotSlot Incomplete
 
 func (c ClusterGetkeysinslotSlot) Count(count int64) ClusterGetkeysinslotCount {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(count, 10))
-	return (ClusterGetkeysinslotCount)(c)
+	_ = "STUB: not implemented"
+	return *new(ClusterGetkeysinslotCount)
 }
 
 type ClusterGetslotmigrations Incomplete
 
 func (b Builder) ClusterGetslotmigrations() (c ClusterGetslotmigrations) {
-	c = ClusterGetslotmigrations{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "CLUSTER", "GETSLOTMIGRATIONS")
-	return c
+	_ = "STUB: not implemented"
+	return *new(ClusterGetslotmigrations)
 }
 
 func (c ClusterGetslotmigrations) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type ClusterInfo Incomplete
 
-func (b Builder) ClusterInfo() (c ClusterInfo) {
-	c = ClusterInfo{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "CLUSTER", "INFO")
-	return c
-}
+func (b Builder) ClusterInfo() (c ClusterInfo) { _ = "STUB: not implemented"; return *new(ClusterInfo) }
 
-func (c ClusterInfo) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ClusterInfo) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type ClusterKeyslot Incomplete
 
 func (b Builder) ClusterKeyslot() (c ClusterKeyslot) {
-	c = ClusterKeyslot{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "CLUSTER", "KEYSLOT")
-	return c
+	_ = "STUB: not implemented"
+	return *new(ClusterKeyslot)
 }
 
 func (c ClusterKeyslot) Key(key string) ClusterKeyslotKey {
-	c.cs.s = append(c.cs.s, key)
-	return (ClusterKeyslotKey)(c)
+	_ = "STUB: not implemented"
+	return *new(ClusterKeyslotKey)
 }
 
 type ClusterKeyslotKey Incomplete
 
-func (c ClusterKeyslotKey) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ClusterKeyslotKey) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type ClusterLinks Incomplete
 
 func (b Builder) ClusterLinks() (c ClusterLinks) {
-	c = ClusterLinks{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "CLUSTER", "LINKS")
-	return c
+	_ = "STUB: not implemented"
+	return *new(ClusterLinks)
 }
 
-func (c ClusterLinks) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ClusterLinks) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type ClusterMeet Incomplete
 
-func (b Builder) ClusterMeet() (c ClusterMeet) {
-	c = ClusterMeet{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "CLUSTER", "MEET")
-	return c
-}
+func (b Builder) ClusterMeet() (c ClusterMeet) { _ = "STUB: not implemented"; return *new(ClusterMeet) }
 
 func (c ClusterMeet) Ip(ip string) ClusterMeetIp {
-	c.cs.s = append(c.cs.s, ip)
-	return (ClusterMeetIp)(c)
+	_ = "STUB: not implemented"
+	return *new(ClusterMeetIp)
 }
 
 type ClusterMeetClusterBusPort Incomplete
 
 func (c ClusterMeetClusterBusPort) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type ClusterMeetIp Incomplete
 
 func (c ClusterMeetIp) Port(port int64) ClusterMeetPort {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(port, 10))
-	return (ClusterMeetPort)(c)
+	_ = "STUB: not implemented"
+	return *new(ClusterMeetPort)
 }
 
 type ClusterMeetPort Incomplete
 
 func (c ClusterMeetPort) ClusterBusPort(clusterBusPort int64) ClusterMeetClusterBusPort {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(clusterBusPort, 10))
-	return (ClusterMeetClusterBusPort)(c)
+	_ = "STUB: not implemented"
+	return *new(ClusterMeetClusterBusPort)
 }
 
-func (c ClusterMeetPort) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ClusterMeetPort) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type ClusterMigrateslots Incomplete
 
 func (b Builder) ClusterMigrateslots() (c ClusterMigrateslots) {
-	c = ClusterMigrateslots{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "CLUSTER", "MIGRATESLOTS")
-	return c
+	_ = "STUB: not implemented"
+	return *new(ClusterMigrateslots)
 }
 
 func (c ClusterMigrateslots) Slotsrange() ClusterMigrateslotsSlotMigrationSpecSlotsrange {
-	c.cs.s = append(c.cs.s, "SLOTSRANGE")
-	return (ClusterMigrateslotsSlotMigrationSpecSlotsrange)(c)
+	_ = "STUB: not implemented"
+	return *new(ClusterMigrateslotsSlotMigrationSpecSlotsrange)
 }
 
 type ClusterMigrateslotsSlotMigrationSpecNode Incomplete
 
 func (c ClusterMigrateslotsSlotMigrationSpecNode) Slotsrange() ClusterMigrateslotsSlotMigrationSpecSlotsrange {
-	c.cs.s = append(c.cs.s, "SLOTSRANGE")
-	return (ClusterMigrateslotsSlotMigrationSpecSlotsrange)(c)
+	_ = "STUB: not implemented"
+	return *new(ClusterMigrateslotsSlotMigrationSpecSlotsrange)
 }
 
 func (c ClusterMigrateslotsSlotMigrationSpecNode) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type ClusterMigrateslotsSlotMigrationSpecSlotsrange Incomplete
 
 func (c ClusterMigrateslotsSlotMigrationSpecSlotsrange) Slotsrange(startSlot int64, endSlot int64) ClusterMigrateslotsSlotMigrationSpecSlotsrange {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(startSlot, 10), strconv.FormatInt(endSlot, 10))
-	return c
+	_ = "STUB: not implemented"
+	return *new(ClusterMigrateslotsSlotMigrationSpecSlotsrange)
 }
 
 func (c ClusterMigrateslotsSlotMigrationSpecSlotsrange) Node(nodeId string) ClusterMigrateslotsSlotMigrationSpecNode {
-	c.cs.s = append(c.cs.s, "NODE", nodeId)
-	return (ClusterMigrateslotsSlotMigrationSpecNode)(c)
+	_ = "STUB: not implemented"
+	return *new(ClusterMigrateslotsSlotMigrationSpecNode)
 }
 
 type ClusterMyid Incomplete
 
-func (b Builder) ClusterMyid() (c ClusterMyid) {
-	c = ClusterMyid{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "CLUSTER", "MYID")
-	return c
-}
+func (b Builder) ClusterMyid() (c ClusterMyid) { _ = "STUB: not implemented"; return *new(ClusterMyid) }
 
-func (c ClusterMyid) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ClusterMyid) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type ClusterMyshardid Incomplete
 
 func (b Builder) ClusterMyshardid() (c ClusterMyshardid) {
-	c = ClusterMyshardid{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "CLUSTER", "MYSHARDID")
-	return c
+	_ = "STUB: not implemented"
+	return *new(ClusterMyshardid)
 }
 
-func (c ClusterMyshardid) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ClusterMyshardid) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type ClusterNodes Incomplete
 
 func (b Builder) ClusterNodes() (c ClusterNodes) {
-	c = ClusterNodes{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "CLUSTER", "NODES")
-	return c
+	_ = "STUB: not implemented"
+	return *new(ClusterNodes)
 }
 
-func (c ClusterNodes) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ClusterNodes) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type ClusterReplicas Incomplete
 
 func (b Builder) ClusterReplicas() (c ClusterReplicas) {
-	c = ClusterReplicas{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "CLUSTER", "REPLICAS")
-	return c
+	_ = "STUB: not implemented"
+	return *new(ClusterReplicas)
 }
 
 func (c ClusterReplicas) NodeId(nodeId string) ClusterReplicasNodeId {
-	c.cs.s = append(c.cs.s, nodeId)
-	return (ClusterReplicasNodeId)(c)
+	_ = "STUB: not implemented"
+	return *new(ClusterReplicasNodeId)
 }
 
 type ClusterReplicasNodeId Incomplete
 
-func (c ClusterReplicasNodeId) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ClusterReplicasNodeId) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type ClusterReplicate Incomplete
 
 func (b Builder) ClusterReplicate() (c ClusterReplicate) {
-	c = ClusterReplicate{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "CLUSTER", "REPLICATE")
-	return c
+	_ = "STUB: not implemented"
+	return *new(ClusterReplicate)
 }
 
 func (c ClusterReplicate) NodeId(nodeId string) ClusterReplicateNodeId {
-	c.cs.s = append(c.cs.s, nodeId)
-	return (ClusterReplicateNodeId)(c)
+	_ = "STUB: not implemented"
+	return *new(ClusterReplicateNodeId)
 }
 
 type ClusterReplicateNodeId Incomplete
 
 func (c ClusterReplicateNodeId) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type ClusterReset Incomplete
 
 func (b Builder) ClusterReset() (c ClusterReset) {
-	c = ClusterReset{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "CLUSTER", "RESET")
-	return c
+	_ = "STUB: not implemented"
+	return *new(ClusterReset)
 }
 
 func (c ClusterReset) Hard() ClusterResetResetTypeHard {
-	c.cs.s = append(c.cs.s, "HARD")
-	return (ClusterResetResetTypeHard)(c)
+	_ = "STUB: not implemented"
+	return *new(ClusterResetResetTypeHard)
 }
 
 func (c ClusterReset) Soft() ClusterResetResetTypeSoft {
-	c.cs.s = append(c.cs.s, "SOFT")
-	return (ClusterResetResetTypeSoft)(c)
+	_ = "STUB: not implemented"
+	return *new(ClusterResetResetTypeSoft)
 }
 
-func (c ClusterReset) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ClusterReset) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type ClusterResetResetTypeHard Incomplete
 
 func (c ClusterResetResetTypeHard) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type ClusterResetResetTypeSoft Incomplete
 
 func (c ClusterResetResetTypeSoft) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type ClusterSaveconfig Incomplete
 
 func (b Builder) ClusterSaveconfig() (c ClusterSaveconfig) {
-	c = ClusterSaveconfig{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "CLUSTER", "SAVECONFIG")
-	return c
+	_ = "STUB: not implemented"
+	return *new(ClusterSaveconfig)
 }
 
-func (c ClusterSaveconfig) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ClusterSaveconfig) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type ClusterSetConfigEpoch Incomplete
 
 func (b Builder) ClusterSetConfigEpoch() (c ClusterSetConfigEpoch) {
-	c = ClusterSetConfigEpoch{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "CLUSTER", "SET-CONFIG-EPOCH")
-	return c
+	_ = "STUB: not implemented"
+	return *new(ClusterSetConfigEpoch)
 }
 
 func (c ClusterSetConfigEpoch) ConfigEpoch(configEpoch int64) ClusterSetConfigEpochConfigEpoch {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(configEpoch, 10))
-	return (ClusterSetConfigEpochConfigEpoch)(c)
+	_ = "STUB: not implemented"
+	return *new(ClusterSetConfigEpochConfigEpoch)
 }
 
 type ClusterSetConfigEpochConfigEpoch Incomplete
 
 func (c ClusterSetConfigEpochConfigEpoch) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type ClusterSetslot Incomplete
 
 func (b Builder) ClusterSetslot() (c ClusterSetslot) {
-	c = ClusterSetslot{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "CLUSTER", "SETSLOT")
-	return c
+	_ = "STUB: not implemented"
+	return *new(ClusterSetslot)
 }
 
 func (c ClusterSetslot) Slot(slot int64) ClusterSetslotSlot {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(slot, 10))
-	return (ClusterSetslotSlot)(c)
+	_ = "STUB: not implemented"
+	return *new(ClusterSetslotSlot)
 }
 
 type ClusterSetslotNodeId Incomplete
 
 func (c ClusterSetslotNodeId) Timeout(timeout int64) ClusterSetslotTimeout {
-	c.cs.s = append(c.cs.s, "TIMEOUT", strconv.FormatInt(timeout, 10))
-	return (ClusterSetslotTimeout)(c)
+	_ = "STUB: not implemented"
+	return *new(ClusterSetslotTimeout)
 }
 
-func (c ClusterSetslotNodeId) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ClusterSetslotNodeId) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type ClusterSetslotSlot Incomplete
 
 func (c ClusterSetslotSlot) Importing() ClusterSetslotSubcommandImporting {
-	c.cs.s = append(c.cs.s, "IMPORTING")
-	return (ClusterSetslotSubcommandImporting)(c)
+	_ = "STUB: not implemented"
+	return *new(ClusterSetslotSubcommandImporting)
 }
 
 func (c ClusterSetslotSlot) Migrating() ClusterSetslotSubcommandMigrating {
-	c.cs.s = append(c.cs.s, "MIGRATING")
-	return (ClusterSetslotSubcommandMigrating)(c)
+	_ = "STUB: not implemented"
+	return *new(ClusterSetslotSubcommandMigrating)
 }
 
 func (c ClusterSetslotSlot) Stable() ClusterSetslotSubcommandStable {
-	c.cs.s = append(c.cs.s, "STABLE")
-	return (ClusterSetslotSubcommandStable)(c)
+	_ = "STUB: not implemented"
+	return *new(ClusterSetslotSubcommandStable)
 }
 
 func (c ClusterSetslotSlot) Node() ClusterSetslotSubcommandNode {
-	c.cs.s = append(c.cs.s, "NODE")
-	return (ClusterSetslotSubcommandNode)(c)
+	_ = "STUB: not implemented"
+	return *new(ClusterSetslotSubcommandNode)
 }
 
 type ClusterSetslotSubcommandImporting Incomplete
 
 func (c ClusterSetslotSubcommandImporting) NodeId(nodeId string) ClusterSetslotNodeId {
-	c.cs.s = append(c.cs.s, nodeId)
-	return (ClusterSetslotNodeId)(c)
+	_ = "STUB: not implemented"
+	return *new(ClusterSetslotNodeId)
 }
 
 func (c ClusterSetslotSubcommandImporting) Timeout(timeout int64) ClusterSetslotTimeout {
-	c.cs.s = append(c.cs.s, "TIMEOUT", strconv.FormatInt(timeout, 10))
-	return (ClusterSetslotTimeout)(c)
+	_ = "STUB: not implemented"
+	return *new(ClusterSetslotTimeout)
 }
 
 func (c ClusterSetslotSubcommandImporting) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type ClusterSetslotSubcommandMigrating Incomplete
 
 func (c ClusterSetslotSubcommandMigrating) NodeId(nodeId string) ClusterSetslotNodeId {
-	c.cs.s = append(c.cs.s, nodeId)
-	return (ClusterSetslotNodeId)(c)
+	_ = "STUB: not implemented"
+	return *new(ClusterSetslotNodeId)
 }
 
 func (c ClusterSetslotSubcommandMigrating) Timeout(timeout int64) ClusterSetslotTimeout {
-	c.cs.s = append(c.cs.s, "TIMEOUT", strconv.FormatInt(timeout, 10))
-	return (ClusterSetslotTimeout)(c)
+	_ = "STUB: not implemented"
+	return *new(ClusterSetslotTimeout)
 }
 
 func (c ClusterSetslotSubcommandMigrating) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type ClusterSetslotSubcommandNode Incomplete
 
 func (c ClusterSetslotSubcommandNode) NodeId(nodeId string) ClusterSetslotNodeId {
-	c.cs.s = append(c.cs.s, nodeId)
-	return (ClusterSetslotNodeId)(c)
+	_ = "STUB: not implemented"
+	return *new(ClusterSetslotNodeId)
 }
 
 func (c ClusterSetslotSubcommandNode) Timeout(timeout int64) ClusterSetslotTimeout {
-	c.cs.s = append(c.cs.s, "TIMEOUT", strconv.FormatInt(timeout, 10))
-	return (ClusterSetslotTimeout)(c)
+	_ = "STUB: not implemented"
+	return *new(ClusterSetslotTimeout)
 }
 
 func (c ClusterSetslotSubcommandNode) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type ClusterSetslotSubcommandStable Incomplete
 
 func (c ClusterSetslotSubcommandStable) NodeId(nodeId string) ClusterSetslotNodeId {
-	c.cs.s = append(c.cs.s, nodeId)
-	return (ClusterSetslotNodeId)(c)
+	_ = "STUB: not implemented"
+	return *new(ClusterSetslotNodeId)
 }
 
 func (c ClusterSetslotSubcommandStable) Timeout(timeout int64) ClusterSetslotTimeout {
-	c.cs.s = append(c.cs.s, "TIMEOUT", strconv.FormatInt(timeout, 10))
-	return (ClusterSetslotTimeout)(c)
+	_ = "STUB: not implemented"
+	return *new(ClusterSetslotTimeout)
 }
 
 func (c ClusterSetslotSubcommandStable) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type ClusterSetslotTimeout Incomplete
 
-func (c ClusterSetslotTimeout) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ClusterSetslotTimeout) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type ClusterShards Incomplete
 
 func (b Builder) ClusterShards() (c ClusterShards) {
-	c = ClusterShards{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "CLUSTER", "SHARDS")
-	return c
+	_ = "STUB: not implemented"
+	return *new(ClusterShards)
 }
 
-func (c ClusterShards) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ClusterShards) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type ClusterSlaves Incomplete
 
 func (b Builder) ClusterSlaves() (c ClusterSlaves) {
-	c = ClusterSlaves{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "CLUSTER", "SLAVES")
-	return c
+	_ = "STUB: not implemented"
+	return *new(ClusterSlaves)
 }
 
 func (c ClusterSlaves) NodeId(nodeId string) ClusterSlavesNodeId {
-	c.cs.s = append(c.cs.s, nodeId)
-	return (ClusterSlavesNodeId)(c)
+	_ = "STUB: not implemented"
+	return *new(ClusterSlavesNodeId)
 }
 
 type ClusterSlavesNodeId Incomplete
 
-func (c ClusterSlavesNodeId) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ClusterSlavesNodeId) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type ClusterSlotStats Incomplete
 
 func (b Builder) ClusterSlotStats() (c ClusterSlotStats) {
-	c = ClusterSlotStats{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "CLUSTER", "SLOT-STATS")
-	return c
+	_ = "STUB: not implemented"
+	return *new(ClusterSlotStats)
 }
 
 func (c ClusterSlotStats) Slotsrange() ClusterSlotStatsFilterSlotsrangeSlotsrange {
-	c.cs.s = append(c.cs.s, "SLOTSRANGE")
-	return (ClusterSlotStatsFilterSlotsrangeSlotsrange)(c)
+	_ = "STUB: not implemented"
+	return *new(ClusterSlotStatsFilterSlotsrangeSlotsrange)
 }
 
 func (c ClusterSlotStats) Orderby() ClusterSlotStatsFilterOrderbyOrderby {
-	c.cs.s = append(c.cs.s, "ORDERBY")
-	return (ClusterSlotStatsFilterOrderbyOrderby)(c)
+	_ = "STUB: not implemented"
+	return *new(ClusterSlotStatsFilterOrderbyOrderby)
 }
 
 type ClusterSlotStatsFilterOrderbyLimit Incomplete
 
 func (c ClusterSlotStatsFilterOrderbyLimit) Asc() ClusterSlotStatsFilterOrderbyOrderAsc {
-	c.cs.s = append(c.cs.s, "ASC")
-	return (ClusterSlotStatsFilterOrderbyOrderAsc)(c)
+	_ = "STUB: not implemented"
+	return *new(ClusterSlotStatsFilterOrderbyOrderAsc)
 }
 
 func (c ClusterSlotStatsFilterOrderbyLimit) Desc() ClusterSlotStatsFilterOrderbyOrderDesc {
-	c.cs.s = append(c.cs.s, "DESC")
-	return (ClusterSlotStatsFilterOrderbyOrderDesc)(c)
+	_ = "STUB: not implemented"
+	return *new(ClusterSlotStatsFilterOrderbyOrderDesc)
 }
 
 func (c ClusterSlotStatsFilterOrderbyLimit) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type ClusterSlotStatsFilterOrderbyMetric Incomplete
 
 func (c ClusterSlotStatsFilterOrderbyMetric) Limit(limit int64) ClusterSlotStatsFilterOrderbyLimit {
-	c.cs.s = append(c.cs.s, "LIMIT", strconv.FormatInt(limit, 10))
-	return (ClusterSlotStatsFilterOrderbyLimit)(c)
+	_ = "STUB: not implemented"
+	return *new(ClusterSlotStatsFilterOrderbyLimit)
 }
 
 func (c ClusterSlotStatsFilterOrderbyMetric) Asc() ClusterSlotStatsFilterOrderbyOrderAsc {
-	c.cs.s = append(c.cs.s, "ASC")
-	return (ClusterSlotStatsFilterOrderbyOrderAsc)(c)
+	_ = "STUB: not implemented"
+	return *new(ClusterSlotStatsFilterOrderbyOrderAsc)
 }
 
 func (c ClusterSlotStatsFilterOrderbyMetric) Desc() ClusterSlotStatsFilterOrderbyOrderDesc {
-	c.cs.s = append(c.cs.s, "DESC")
-	return (ClusterSlotStatsFilterOrderbyOrderDesc)(c)
+	_ = "STUB: not implemented"
+	return *new(ClusterSlotStatsFilterOrderbyOrderDesc)
 }
 
 func (c ClusterSlotStatsFilterOrderbyMetric) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type ClusterSlotStatsFilterOrderbyOrderAsc Incomplete
 
 func (c ClusterSlotStatsFilterOrderbyOrderAsc) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type ClusterSlotStatsFilterOrderbyOrderDesc Incomplete
 
 func (c ClusterSlotStatsFilterOrderbyOrderDesc) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type ClusterSlotStatsFilterOrderbyOrderby Incomplete
 
 func (c ClusterSlotStatsFilterOrderbyOrderby) Metric(metric string) ClusterSlotStatsFilterOrderbyMetric {
-	c.cs.s = append(c.cs.s, metric)
-	return (ClusterSlotStatsFilterOrderbyMetric)(c)
+	_ = "STUB: not implemented"
+	return *new(ClusterSlotStatsFilterOrderbyMetric)
 }
 
 type ClusterSlotStatsFilterSlotsrangeEndSlot Incomplete
 
 func (c ClusterSlotStatsFilterSlotsrangeEndSlot) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type ClusterSlotStatsFilterSlotsrangeSlotsrange Incomplete
 
 func (c ClusterSlotStatsFilterSlotsrangeSlotsrange) StartSlot(startSlot int64) ClusterSlotStatsFilterSlotsrangeStartSlot {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(startSlot, 10))
-	return (ClusterSlotStatsFilterSlotsrangeStartSlot)(c)
+	_ = "STUB: not implemented"
+	return *new(ClusterSlotStatsFilterSlotsrangeStartSlot)
 }
 
 type ClusterSlotStatsFilterSlotsrangeStartSlot Incomplete
 
 func (c ClusterSlotStatsFilterSlotsrangeStartSlot) EndSlot(endSlot int64) ClusterSlotStatsFilterSlotsrangeEndSlot {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(endSlot, 10))
-	return (ClusterSlotStatsFilterSlotsrangeEndSlot)(c)
+	_ = "STUB: not implemented"
+	return *new(ClusterSlotStatsFilterSlotsrangeEndSlot)
 }
 
 type ClusterSlots Incomplete
 
 func (b Builder) ClusterSlots() (c ClusterSlots) {
-	c = ClusterSlots{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "CLUSTER", "SLOTS")
-	return c
+	_ = "STUB: not implemented"
+	return *new(ClusterSlots)
 }
 
-func (c ClusterSlots) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ClusterSlots) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type Readonly Incomplete
 
-func (b Builder) Readonly() (c Readonly) {
-	c = Readonly{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "READONLY")
-	return c
-}
+func (b Builder) Readonly() (c Readonly) { _ = "STUB: not implemented"; return *new(Readonly) }
 
-func (c Readonly) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c Readonly) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type Readwrite Incomplete
 
-func (b Builder) Readwrite() (c Readwrite) {
-	c = Readwrite{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "READWRITE")
-	return c
-}
+func (b Builder) Readwrite() (c Readwrite) { _ = "STUB: not implemented"; return *new(Readwrite) }
 
-func (c Readwrite) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c Readwrite) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }

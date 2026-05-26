@@ -2,26 +2,7 @@ package cmds
 
 // https://redis.io/topics/cluster-spec
 
-func slot(key string) uint16 {
-	var s, e int
-	for ; s < len(key); s++ {
-		if key[s] == '{' {
-			break
-		}
-	}
-	if s == len(key) {
-		return crc16(key) & 16383
-	}
-	for e = s + 1; e < len(key); e++ {
-		if key[e] == '}' {
-			break
-		}
-	}
-	if e == len(key) || e == s+1 {
-		return crc16(key) & 16383
-	}
-	return crc16(key[s+1:e]) & 16383
-}
+func slot(key string) uint16 { _ = "STUB: not implemented"; return 0 }
 
 /*
  * Copyright 2001-2010 Georges Menie (www.menie.org)
@@ -101,9 +82,4 @@ var crc16tab = [256]uint16{
 	0x6e17, 0x7e36, 0x4e55, 0x5e74, 0x2e93, 0x3eb2, 0x0ed1, 0x1ef0,
 }
 
-func crc16(key string) (crc uint16) {
-	for i := 0; i < len(key); i++ {
-		crc = (crc << 8) ^ crc16tab[(uint8(crc>>8)^key[i])&0x00FF]
-	}
-	return crc
-}
+func crc16(key string) (crc uint16) { _ = "STUB: not implemented"; return 0 }

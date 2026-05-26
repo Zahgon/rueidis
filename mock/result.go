@@ -3,126 +3,86 @@ package mock
 import (
 	"bufio"
 	"bytes"
-	"fmt"
 	"net"
-	"strconv"
 	"sync"
 	"sync/atomic"
 	"time"
-	"unsafe"
 
 	"github.com/redis/rueidis"
 )
 
 func Result(val rueidis.RedisMessage) rueidis.RedisResult {
-	r := result{val: val}
-	return *(*rueidis.RedisResult)(unsafe.Pointer(&r))
+	_ = "STUB: not implemented"
+	return *new(rueidis.RedisResult)
 }
 
 func ErrorResult(err error) rueidis.RedisResult {
-	r := result{err: err}
-	return *(*rueidis.RedisResult)(unsafe.Pointer(&r))
+	_ = "STUB: not implemented"
+	return *new(rueidis.RedisResult)
 }
 
 func RedisString(v string) rueidis.RedisMessage {
-	m := strmsg('+', v)
-	return *(*rueidis.RedisMessage)(unsafe.Pointer(&m))
+	_ = "STUB: not implemented"
+	return *new(rueidis.RedisMessage)
 }
 
 func RedisBlobString(v string) rueidis.RedisMessage {
-	m := strmsg('$', v)
-	return *(*rueidis.RedisMessage)(unsafe.Pointer(&m))
+	_ = "STUB: not implemented"
+	return *new(rueidis.RedisMessage)
 }
 
 func RedisError(v string) rueidis.RedisMessage {
-	m := strmsg('-', v)
-	return *(*rueidis.RedisMessage)(unsafe.Pointer(&m))
+	_ = "STUB: not implemented"
+	return *new(rueidis.RedisMessage)
 }
 
 func RedisInt64(v int64) rueidis.RedisMessage {
-	m := message{typ: ':', integer: v}
-	return *(*rueidis.RedisMessage)(unsafe.Pointer(&m))
+	_ = "STUB: not implemented"
+	return *new(rueidis.RedisMessage)
 }
 
 func RedisFloat64(v float64) rueidis.RedisMessage {
-	m := strmsg(',', strconv.FormatFloat(v, 'f', -1, 64))
-	return *(*rueidis.RedisMessage)(unsafe.Pointer(&m))
+	_ = "STUB: not implemented"
+	return *new(rueidis.RedisMessage)
 }
 
 func RedisBool(v bool) rueidis.RedisMessage {
-	m := message{typ: '#'}
-	if v {
-		m.integer = 1
-	}
-	return *(*rueidis.RedisMessage)(unsafe.Pointer(&m))
+	_ = "STUB: not implemented"
+	return *new(rueidis.RedisMessage)
 }
 
-func RedisNil() rueidis.RedisMessage {
-	m := message{typ: '_'}
-	return *(*rueidis.RedisMessage)(unsafe.Pointer(&m))
-}
+func RedisNil() rueidis.RedisMessage { _ = "STUB: not implemented"; return *new(rueidis.RedisMessage) }
 
 func RedisArray(values ...rueidis.RedisMessage) rueidis.RedisMessage {
-	m := slicemsg('*', values)
-	return *(*rueidis.RedisMessage)(unsafe.Pointer(&m))
+	_ = "STUB: not implemented"
+	return *new(rueidis.RedisMessage)
 }
 
 func RedisMap(kv map[string]rueidis.RedisMessage) rueidis.RedisMessage {
-	values := make([]rueidis.RedisMessage, 0, 2*len(kv))
-	for k, v := range kv {
-		values = append(values, RedisString(k))
-		values = append(values, v)
-	}
-	m := slicemsg('%', values)
-	return *(*rueidis.RedisMessage)(unsafe.Pointer(&m))
+	_ = "STUB: not implemented"
+	return *new(rueidis.RedisMessage)
 }
 
-func serialize(m message, buf *bytes.Buffer) {
-	switch m.typ {
-	case '$', '!', '=':
-		buf.WriteString(fmt.Sprintf("%s%d\r\n%s\r\n", string(m.typ), len(m.string()), m.string()))
-	case '+', '-', ',', '(':
-		buf.WriteString(fmt.Sprintf("%s%s\r\n", string(m.typ), m.string()))
-	case ':', '#':
-		buf.WriteString(fmt.Sprintf("%s%d\r\n", string(m.typ), m.integer))
-	case '_':
-		buf.WriteString(fmt.Sprintf("%s\r\n", string(m.typ)))
-	case '*':
-		buf.WriteString(fmt.Sprintf("%s%d\r\n", string(m.typ), len(m.values())))
-		for _, v := range m.values() {
-			pv := *(*message)(unsafe.Pointer(&v))
-			serialize(pv, buf)
-		}
-	case '%':
-		buf.WriteString(fmt.Sprintf("%s%d\r\n", string(m.typ), len(m.values())/2))
-		for _, v := range m.values() {
-			pv := *(*message)(unsafe.Pointer(&v))
-			serialize(pv, buf)
-		}
-	}
-}
+func serialize(m message, buf *bytes.Buffer) { _ = "STUB: not implemented"; return }
 
 func RedisResultStreamError(err error) rueidis.RedisResultStream {
-	s := stream{e: err}
-	return *(*rueidis.RedisResultStream)(unsafe.Pointer(&s))
+	_ = "STUB: not implemented"
+	return *new(rueidis.RedisResultStream)
 }
 
 func RedisResultStream(ms ...rueidis.RedisMessage) rueidis.RedisResultStream {
-	buf := bytes.NewBuffer(nil)
-	for _, m := range ms {
-		pm := *(*message)(unsafe.Pointer(&m))
-		serialize(pm, buf)
-	}
-	s := stream{n: len(ms), p: &pool{size: 1, cond: sync.NewCond(&sync.Mutex{})}, w: &pipe{r: bufio.NewReader(buf)}}
-	return *(*rueidis.RedisResultStream)(unsafe.Pointer(&s))
+	_ = "STUB: not implemented"
+	return *new(rueidis.RedisResultStream)
 }
 
 func MultiRedisResultStream(ms ...rueidis.RedisMessage) rueidis.MultiRedisResultStream {
-	return RedisResultStream(ms...)
+	_ = "STUB: not implemented"
+	return *new(rueidis.MultiRedisResultStream)
 }
 
 func MultiRedisResultStreamError(err error) rueidis.RedisResultStream {
-	return RedisResultStreamError(err)
+	_ = "STUB: not implemented"
+	return *new(rueidis.RedisResultStream)
 }
 
 type message struct {
@@ -134,35 +94,16 @@ type message struct {
 	ttl     [7]byte
 }
 
-func (m *message) string() string {
-	if m.bytes == nil {
-		return ""
-	}
-	return unsafe.String(m.bytes, m.integer)
-}
+func (m *message) string() string { _ = "STUB: not implemented"; return "" }
 
-func (m *message) values() []rueidis.RedisMessage {
-	if m.array == nil {
-		return nil
-	}
-	return unsafe.Slice(m.array, m.integer)
-}
+func (m *message) values() []rueidis.RedisMessage { _ = "STUB: not implemented"; return nil }
 
 func slicemsg(typ byte, values []rueidis.RedisMessage) message {
-	return message{
-		typ:     typ,
-		array:   unsafe.SliceData(values),
-		integer: int64(len(values)),
-	}
+	_ = "STUB: not implemented"
+	return *new(message)
 }
 
-func strmsg(typ byte, value string) message {
-	return message{
-		typ:     typ,
-		bytes:   unsafe.StringData(value),
-		integer: int64(len(value)),
-	}
-}
+func strmsg(typ byte, value string) message { _ = "STUB: not implemented"; return *new(message) }
 
 type result struct {
 	err error

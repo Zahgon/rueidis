@@ -2,431 +2,369 @@
 
 package cmds
 
-import "strconv"
-
 type AiModeldel Incomplete
 
-func (b Builder) AiModeldel() (c AiModeldel) {
-	c = AiModeldel{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "AI.MODELDEL")
-	return c
-}
+func (b Builder) AiModeldel() (c AiModeldel) { _ = "STUB: not implemented"; return *new(AiModeldel) }
 
 func (c AiModeldel) Key(key string) AiModeldelKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (AiModeldelKey)(c)
+	_ = "STUB: not implemented"
+	return *new(AiModeldelKey)
 }
 
 type AiModeldelKey Incomplete
 
-func (c AiModeldelKey) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c AiModeldelKey) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type AiModelget Incomplete
 
-func (b Builder) AiModelget() (c AiModelget) {
-	c = AiModelget{cs: get(), ks: b.ks, cf: int16(readonly)}
-	c.cs.s = append(c.cs.s, "AI.MODELGET")
-	return c
-}
+func (b Builder) AiModelget() (c AiModelget) { _ = "STUB: not implemented"; return *new(AiModelget) }
 
 func (c AiModelget) Key(key string) AiModelgetKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (AiModelgetKey)(c)
+	_ = "STUB: not implemented"
+	return *new(AiModelgetKey)
 }
 
 type AiModelgetBlob Incomplete
 
-func (c AiModelgetBlob) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c AiModelgetBlob) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c AiModelgetBlob) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c AiModelgetBlob) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type AiModelgetKey Incomplete
 
 func (c AiModelgetKey) Meta() AiModelgetMeta {
-	c.cs.s = append(c.cs.s, "META")
-	return (AiModelgetMeta)(c)
+	_ = "STUB: not implemented"
+	return *new(AiModelgetMeta)
 }
 
 func (c AiModelgetKey) Blob() AiModelgetBlob {
-	c.cs.s = append(c.cs.s, "BLOB")
-	return (AiModelgetBlob)(c)
+	_ = "STUB: not implemented"
+	return *new(AiModelgetBlob)
 }
 
-func (c AiModelgetKey) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c AiModelgetKey) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c AiModelgetKey) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c AiModelgetKey) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type AiModelgetMeta Incomplete
 
 func (c AiModelgetMeta) Blob() AiModelgetBlob {
-	c.cs.s = append(c.cs.s, "BLOB")
-	return (AiModelgetBlob)(c)
+	_ = "STUB: not implemented"
+	return *new(AiModelgetBlob)
 }
 
-func (c AiModelgetMeta) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c AiModelgetMeta) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c AiModelgetMeta) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c AiModelgetMeta) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type AiModelstore Incomplete
 
 func (b Builder) AiModelstore() (c AiModelstore) {
-	c = AiModelstore{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "AI.MODELSTORE")
-	return c
+	_ = "STUB: not implemented"
+	return *new(AiModelstore)
 }
 
 func (c AiModelstore) Key(key string) AiModelstoreKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (AiModelstoreKey)(c)
+	_ = "STUB: not implemented"
+	return *new(AiModelstoreKey)
 }
 
 type AiModelstoreBackendOnnx Incomplete
 
 func (c AiModelstoreBackendOnnx) Cpu() AiModelstoreDeviceCpu {
-	c.cs.s = append(c.cs.s, "CPU")
-	return (AiModelstoreDeviceCpu)(c)
+	_ = "STUB: not implemented"
+	return *new(AiModelstoreDeviceCpu)
 }
 
 func (c AiModelstoreBackendOnnx) Gpu() AiModelstoreDeviceGpu {
-	c.cs.s = append(c.cs.s, "GPU")
-	return (AiModelstoreDeviceGpu)(c)
+	_ = "STUB: not implemented"
+	return *new(AiModelstoreDeviceGpu)
 }
 
 type AiModelstoreBackendTf Incomplete
 
 func (c AiModelstoreBackendTf) Cpu() AiModelstoreDeviceCpu {
-	c.cs.s = append(c.cs.s, "CPU")
-	return (AiModelstoreDeviceCpu)(c)
+	_ = "STUB: not implemented"
+	return *new(AiModelstoreDeviceCpu)
 }
 
 func (c AiModelstoreBackendTf) Gpu() AiModelstoreDeviceGpu {
-	c.cs.s = append(c.cs.s, "GPU")
-	return (AiModelstoreDeviceGpu)(c)
+	_ = "STUB: not implemented"
+	return *new(AiModelstoreDeviceGpu)
 }
 
 type AiModelstoreBackendTorch Incomplete
 
 func (c AiModelstoreBackendTorch) Cpu() AiModelstoreDeviceCpu {
-	c.cs.s = append(c.cs.s, "CPU")
-	return (AiModelstoreDeviceCpu)(c)
+	_ = "STUB: not implemented"
+	return *new(AiModelstoreDeviceCpu)
 }
 
 func (c AiModelstoreBackendTorch) Gpu() AiModelstoreDeviceGpu {
-	c.cs.s = append(c.cs.s, "GPU")
-	return (AiModelstoreDeviceGpu)(c)
+	_ = "STUB: not implemented"
+	return *new(AiModelstoreDeviceGpu)
 }
 
 type AiModelstoreBatchsize Incomplete
 
 func (c AiModelstoreBatchsize) Minbatchsize(minbatchsize int64) AiModelstoreMinbatchsize {
-	c.cs.s = append(c.cs.s, "MINBATCHSIZE", strconv.FormatInt(minbatchsize, 10))
-	return (AiModelstoreMinbatchsize)(c)
+	_ = "STUB: not implemented"
+	return *new(AiModelstoreMinbatchsize)
 }
 
 func (c AiModelstoreBatchsize) Minbatchtimeout(minbatchtimeout int64) AiModelstoreMinbatchtimeout {
-	c.cs.s = append(c.cs.s, "MINBATCHTIMEOUT", strconv.FormatInt(minbatchtimeout, 10))
-	return (AiModelstoreMinbatchtimeout)(c)
+	_ = "STUB: not implemented"
+	return *new(AiModelstoreMinbatchtimeout)
 }
 
 func (c AiModelstoreBatchsize) Inputs(inputCount int64) AiModelstoreInputsInputs {
-	c.cs.s = append(c.cs.s, "INPUTS", strconv.FormatInt(inputCount, 10))
-	return (AiModelstoreInputsInputs)(c)
+	_ = "STUB: not implemented"
+	return *new(AiModelstoreInputsInputs)
 }
 
 func (c AiModelstoreBatchsize) Outputs(outputCount int64) AiModelstoreOutputsOutputs {
-	c.cs.s = append(c.cs.s, "OUTPUTS", strconv.FormatInt(outputCount, 10))
-	return (AiModelstoreOutputsOutputs)(c)
+	_ = "STUB: not implemented"
+	return *new(AiModelstoreOutputsOutputs)
 }
 
 func (c AiModelstoreBatchsize) Blob(blob string) AiModelstoreBlob {
-	c.cs.s = append(c.cs.s, "BLOB", blob)
-	return (AiModelstoreBlob)(c)
+	_ = "STUB: not implemented"
+	return *new(AiModelstoreBlob)
 }
 
-func (c AiModelstoreBatchsize) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c AiModelstoreBatchsize) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type AiModelstoreBlob Incomplete
 
-func (c AiModelstoreBlob) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c AiModelstoreBlob) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type AiModelstoreDeviceCpu Incomplete
 
 func (c AiModelstoreDeviceCpu) Tag(tag string) AiModelstoreTag {
-	c.cs.s = append(c.cs.s, "TAG", tag)
-	return (AiModelstoreTag)(c)
+	_ = "STUB: not implemented"
+	return *new(AiModelstoreTag)
 }
 
 func (c AiModelstoreDeviceCpu) Batchsize(batchsize int64) AiModelstoreBatchsize {
-	c.cs.s = append(c.cs.s, "BATCHSIZE", strconv.FormatInt(batchsize, 10))
-	return (AiModelstoreBatchsize)(c)
+	_ = "STUB: not implemented"
+	return *new(AiModelstoreBatchsize)
 }
 
 func (c AiModelstoreDeviceCpu) Minbatchsize(minbatchsize int64) AiModelstoreMinbatchsize {
-	c.cs.s = append(c.cs.s, "MINBATCHSIZE", strconv.FormatInt(minbatchsize, 10))
-	return (AiModelstoreMinbatchsize)(c)
+	_ = "STUB: not implemented"
+	return *new(AiModelstoreMinbatchsize)
 }
 
 func (c AiModelstoreDeviceCpu) Minbatchtimeout(minbatchtimeout int64) AiModelstoreMinbatchtimeout {
-	c.cs.s = append(c.cs.s, "MINBATCHTIMEOUT", strconv.FormatInt(minbatchtimeout, 10))
-	return (AiModelstoreMinbatchtimeout)(c)
+	_ = "STUB: not implemented"
+	return *new(AiModelstoreMinbatchtimeout)
 }
 
 func (c AiModelstoreDeviceCpu) Inputs(inputCount int64) AiModelstoreInputsInputs {
-	c.cs.s = append(c.cs.s, "INPUTS", strconv.FormatInt(inputCount, 10))
-	return (AiModelstoreInputsInputs)(c)
+	_ = "STUB: not implemented"
+	return *new(AiModelstoreInputsInputs)
 }
 
 func (c AiModelstoreDeviceCpu) Outputs(outputCount int64) AiModelstoreOutputsOutputs {
-	c.cs.s = append(c.cs.s, "OUTPUTS", strconv.FormatInt(outputCount, 10))
-	return (AiModelstoreOutputsOutputs)(c)
+	_ = "STUB: not implemented"
+	return *new(AiModelstoreOutputsOutputs)
 }
 
 func (c AiModelstoreDeviceCpu) Blob(blob string) AiModelstoreBlob {
-	c.cs.s = append(c.cs.s, "BLOB", blob)
-	return (AiModelstoreBlob)(c)
+	_ = "STUB: not implemented"
+	return *new(AiModelstoreBlob)
 }
 
-func (c AiModelstoreDeviceCpu) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c AiModelstoreDeviceCpu) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type AiModelstoreDeviceGpu Incomplete
 
 func (c AiModelstoreDeviceGpu) Tag(tag string) AiModelstoreTag {
-	c.cs.s = append(c.cs.s, "TAG", tag)
-	return (AiModelstoreTag)(c)
+	_ = "STUB: not implemented"
+	return *new(AiModelstoreTag)
 }
 
 func (c AiModelstoreDeviceGpu) Batchsize(batchsize int64) AiModelstoreBatchsize {
-	c.cs.s = append(c.cs.s, "BATCHSIZE", strconv.FormatInt(batchsize, 10))
-	return (AiModelstoreBatchsize)(c)
+	_ = "STUB: not implemented"
+	return *new(AiModelstoreBatchsize)
 }
 
 func (c AiModelstoreDeviceGpu) Minbatchsize(minbatchsize int64) AiModelstoreMinbatchsize {
-	c.cs.s = append(c.cs.s, "MINBATCHSIZE", strconv.FormatInt(minbatchsize, 10))
-	return (AiModelstoreMinbatchsize)(c)
+	_ = "STUB: not implemented"
+	return *new(AiModelstoreMinbatchsize)
 }
 
 func (c AiModelstoreDeviceGpu) Minbatchtimeout(minbatchtimeout int64) AiModelstoreMinbatchtimeout {
-	c.cs.s = append(c.cs.s, "MINBATCHTIMEOUT", strconv.FormatInt(minbatchtimeout, 10))
-	return (AiModelstoreMinbatchtimeout)(c)
+	_ = "STUB: not implemented"
+	return *new(AiModelstoreMinbatchtimeout)
 }
 
 func (c AiModelstoreDeviceGpu) Inputs(inputCount int64) AiModelstoreInputsInputs {
-	c.cs.s = append(c.cs.s, "INPUTS", strconv.FormatInt(inputCount, 10))
-	return (AiModelstoreInputsInputs)(c)
+	_ = "STUB: not implemented"
+	return *new(AiModelstoreInputsInputs)
 }
 
 func (c AiModelstoreDeviceGpu) Outputs(outputCount int64) AiModelstoreOutputsOutputs {
-	c.cs.s = append(c.cs.s, "OUTPUTS", strconv.FormatInt(outputCount, 10))
-	return (AiModelstoreOutputsOutputs)(c)
+	_ = "STUB: not implemented"
+	return *new(AiModelstoreOutputsOutputs)
 }
 
 func (c AiModelstoreDeviceGpu) Blob(blob string) AiModelstoreBlob {
-	c.cs.s = append(c.cs.s, "BLOB", blob)
-	return (AiModelstoreBlob)(c)
+	_ = "STUB: not implemented"
+	return *new(AiModelstoreBlob)
 }
 
-func (c AiModelstoreDeviceGpu) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c AiModelstoreDeviceGpu) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type AiModelstoreInputsInput Incomplete
 
 func (c AiModelstoreInputsInput) Input(input ...string) AiModelstoreInputsInput {
-	c.cs.s = append(c.cs.s, input...)
-	return c
+	_ = "STUB: not implemented"
+	return *new(AiModelstoreInputsInput)
 }
 
 func (c AiModelstoreInputsInput) Outputs(outputCount int64) AiModelstoreOutputsOutputs {
-	c.cs.s = append(c.cs.s, "OUTPUTS", strconv.FormatInt(outputCount, 10))
-	return (AiModelstoreOutputsOutputs)(c)
+	_ = "STUB: not implemented"
+	return *new(AiModelstoreOutputsOutputs)
 }
 
 func (c AiModelstoreInputsInput) Blob(blob string) AiModelstoreBlob {
-	c.cs.s = append(c.cs.s, "BLOB", blob)
-	return (AiModelstoreBlob)(c)
+	_ = "STUB: not implemented"
+	return *new(AiModelstoreBlob)
 }
 
 func (c AiModelstoreInputsInput) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type AiModelstoreInputsInputs Incomplete
 
 func (c AiModelstoreInputsInputs) Input(input ...string) AiModelstoreInputsInput {
-	c.cs.s = append(c.cs.s, input...)
-	return (AiModelstoreInputsInput)(c)
+	_ = "STUB: not implemented"
+	return *new(AiModelstoreInputsInput)
 }
 
 type AiModelstoreKey Incomplete
 
 func (c AiModelstoreKey) Tf() AiModelstoreBackendTf {
-	c.cs.s = append(c.cs.s, "TF")
-	return (AiModelstoreBackendTf)(c)
+	_ = "STUB: not implemented"
+	return *new(AiModelstoreBackendTf)
 }
 
 func (c AiModelstoreKey) Torch() AiModelstoreBackendTorch {
-	c.cs.s = append(c.cs.s, "TORCH")
-	return (AiModelstoreBackendTorch)(c)
+	_ = "STUB: not implemented"
+	return *new(AiModelstoreBackendTorch)
 }
 
 func (c AiModelstoreKey) Onnx() AiModelstoreBackendOnnx {
-	c.cs.s = append(c.cs.s, "ONNX")
-	return (AiModelstoreBackendOnnx)(c)
+	_ = "STUB: not implemented"
+	return *new(AiModelstoreBackendOnnx)
 }
 
 type AiModelstoreMinbatchsize Incomplete
 
 func (c AiModelstoreMinbatchsize) Minbatchtimeout(minbatchtimeout int64) AiModelstoreMinbatchtimeout {
-	c.cs.s = append(c.cs.s, "MINBATCHTIMEOUT", strconv.FormatInt(minbatchtimeout, 10))
-	return (AiModelstoreMinbatchtimeout)(c)
+	_ = "STUB: not implemented"
+	return *new(AiModelstoreMinbatchtimeout)
 }
 
 func (c AiModelstoreMinbatchsize) Inputs(inputCount int64) AiModelstoreInputsInputs {
-	c.cs.s = append(c.cs.s, "INPUTS", strconv.FormatInt(inputCount, 10))
-	return (AiModelstoreInputsInputs)(c)
+	_ = "STUB: not implemented"
+	return *new(AiModelstoreInputsInputs)
 }
 
 func (c AiModelstoreMinbatchsize) Outputs(outputCount int64) AiModelstoreOutputsOutputs {
-	c.cs.s = append(c.cs.s, "OUTPUTS", strconv.FormatInt(outputCount, 10))
-	return (AiModelstoreOutputsOutputs)(c)
+	_ = "STUB: not implemented"
+	return *new(AiModelstoreOutputsOutputs)
 }
 
 func (c AiModelstoreMinbatchsize) Blob(blob string) AiModelstoreBlob {
-	c.cs.s = append(c.cs.s, "BLOB", blob)
-	return (AiModelstoreBlob)(c)
+	_ = "STUB: not implemented"
+	return *new(AiModelstoreBlob)
 }
 
 func (c AiModelstoreMinbatchsize) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type AiModelstoreMinbatchtimeout Incomplete
 
 func (c AiModelstoreMinbatchtimeout) Inputs(inputCount int64) AiModelstoreInputsInputs {
-	c.cs.s = append(c.cs.s, "INPUTS", strconv.FormatInt(inputCount, 10))
-	return (AiModelstoreInputsInputs)(c)
+	_ = "STUB: not implemented"
+	return *new(AiModelstoreInputsInputs)
 }
 
 func (c AiModelstoreMinbatchtimeout) Outputs(outputCount int64) AiModelstoreOutputsOutputs {
-	c.cs.s = append(c.cs.s, "OUTPUTS", strconv.FormatInt(outputCount, 10))
-	return (AiModelstoreOutputsOutputs)(c)
+	_ = "STUB: not implemented"
+	return *new(AiModelstoreOutputsOutputs)
 }
 
 func (c AiModelstoreMinbatchtimeout) Blob(blob string) AiModelstoreBlob {
-	c.cs.s = append(c.cs.s, "BLOB", blob)
-	return (AiModelstoreBlob)(c)
+	_ = "STUB: not implemented"
+	return *new(AiModelstoreBlob)
 }
 
 func (c AiModelstoreMinbatchtimeout) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type AiModelstoreOutputsOutput Incomplete
 
 func (c AiModelstoreOutputsOutput) Output(output ...string) AiModelstoreOutputsOutput {
-	c.cs.s = append(c.cs.s, output...)
-	return c
+	_ = "STUB: not implemented"
+	return *new(AiModelstoreOutputsOutput)
 }
 
 func (c AiModelstoreOutputsOutput) Blob(blob string) AiModelstoreBlob {
-	c.cs.s = append(c.cs.s, "BLOB", blob)
-	return (AiModelstoreBlob)(c)
+	_ = "STUB: not implemented"
+	return *new(AiModelstoreBlob)
 }
 
 func (c AiModelstoreOutputsOutput) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type AiModelstoreOutputsOutputs Incomplete
 
 func (c AiModelstoreOutputsOutputs) Output(output ...string) AiModelstoreOutputsOutput {
-	c.cs.s = append(c.cs.s, output...)
-	return (AiModelstoreOutputsOutput)(c)
+	_ = "STUB: not implemented"
+	return *new(AiModelstoreOutputsOutput)
 }
 
 type AiModelstoreTag Incomplete
 
 func (c AiModelstoreTag) Batchsize(batchsize int64) AiModelstoreBatchsize {
-	c.cs.s = append(c.cs.s, "BATCHSIZE", strconv.FormatInt(batchsize, 10))
-	return (AiModelstoreBatchsize)(c)
+	_ = "STUB: not implemented"
+	return *new(AiModelstoreBatchsize)
 }
 
 func (c AiModelstoreTag) Minbatchsize(minbatchsize int64) AiModelstoreMinbatchsize {
-	c.cs.s = append(c.cs.s, "MINBATCHSIZE", strconv.FormatInt(minbatchsize, 10))
-	return (AiModelstoreMinbatchsize)(c)
+	_ = "STUB: not implemented"
+	return *new(AiModelstoreMinbatchsize)
 }
 
 func (c AiModelstoreTag) Minbatchtimeout(minbatchtimeout int64) AiModelstoreMinbatchtimeout {
-	c.cs.s = append(c.cs.s, "MINBATCHTIMEOUT", strconv.FormatInt(minbatchtimeout, 10))
-	return (AiModelstoreMinbatchtimeout)(c)
+	_ = "STUB: not implemented"
+	return *new(AiModelstoreMinbatchtimeout)
 }
 
 func (c AiModelstoreTag) Inputs(inputCount int64) AiModelstoreInputsInputs {
-	c.cs.s = append(c.cs.s, "INPUTS", strconv.FormatInt(inputCount, 10))
-	return (AiModelstoreInputsInputs)(c)
+	_ = "STUB: not implemented"
+	return *new(AiModelstoreInputsInputs)
 }
 
 func (c AiModelstoreTag) Outputs(outputCount int64) AiModelstoreOutputsOutputs {
-	c.cs.s = append(c.cs.s, "OUTPUTS", strconv.FormatInt(outputCount, 10))
-	return (AiModelstoreOutputsOutputs)(c)
+	_ = "STUB: not implemented"
+	return *new(AiModelstoreOutputsOutputs)
 }
 
 func (c AiModelstoreTag) Blob(blob string) AiModelstoreBlob {
-	c.cs.s = append(c.cs.s, "BLOB", blob)
-	return (AiModelstoreBlob)(c)
+	_ = "STUB: not implemented"
+	return *new(AiModelstoreBlob)
 }
 
-func (c AiModelstoreTag) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c AiModelstoreTag) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }

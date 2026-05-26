@@ -2,1660 +2,1208 @@
 
 package cmds
 
-import "strconv"
-
 type Hdel Incomplete
 
-func (b Builder) Hdel() (c Hdel) {
-	c = Hdel{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "HDEL")
-	return c
-}
+func (b Builder) Hdel() (c Hdel) { _ = "STUB: not implemented"; return *new(Hdel) }
 
-func (c Hdel) Key(key string) HdelKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (HdelKey)(c)
-}
+func (c Hdel) Key(key string) HdelKey { _ = "STUB: not implemented"; return *new(HdelKey) }
 
 type HdelField Incomplete
 
 func (c HdelField) Field(field ...string) HdelField {
-	c.cs.s = append(c.cs.s, field...)
-	return c
+	_ = "STUB: not implemented"
+	return *new(HdelField)
 }
 
-func (c HdelField) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c HdelField) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type HdelKey Incomplete
 
 func (c HdelKey) Field(field ...string) HdelField {
-	c.cs.s = append(c.cs.s, field...)
-	return (HdelField)(c)
+	_ = "STUB: not implemented"
+	return *new(HdelField)
 }
 
 type Hexists Incomplete
 
-func (b Builder) Hexists() (c Hexists) {
-	c = Hexists{cs: get(), ks: b.ks, cf: int16(readonly)}
-	c.cs.s = append(c.cs.s, "HEXISTS")
-	return c
-}
+func (b Builder) Hexists() (c Hexists) { _ = "STUB: not implemented"; return *new(Hexists) }
 
-func (c Hexists) Key(key string) HexistsKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (HexistsKey)(c)
-}
+func (c Hexists) Key(key string) HexistsKey { _ = "STUB: not implemented"; return *new(HexistsKey) }
 
 type HexistsField Incomplete
 
-func (c HexistsField) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c HexistsField) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c HexistsField) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c HexistsField) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type HexistsKey Incomplete
 
 func (c HexistsKey) Field(field string) HexistsField {
-	c.cs.s = append(c.cs.s, field)
-	return (HexistsField)(c)
+	_ = "STUB: not implemented"
+	return *new(HexistsField)
 }
 
 type Hexpire Incomplete
 
-func (b Builder) Hexpire() (c Hexpire) {
-	c = Hexpire{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "HEXPIRE")
-	return c
-}
+func (b Builder) Hexpire() (c Hexpire) { _ = "STUB: not implemented"; return *new(Hexpire) }
 
-func (c Hexpire) Key(key string) HexpireKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (HexpireKey)(c)
-}
+func (c Hexpire) Key(key string) HexpireKey { _ = "STUB: not implemented"; return *new(HexpireKey) }
 
 type HexpireConditionGt Incomplete
 
 func (c HexpireConditionGt) Fields() HexpireFields {
-	c.cs.s = append(c.cs.s, "FIELDS")
-	return (HexpireFields)(c)
+	_ = "STUB: not implemented"
+	return *new(HexpireFields)
 }
 
 type HexpireConditionLt Incomplete
 
 func (c HexpireConditionLt) Fields() HexpireFields {
-	c.cs.s = append(c.cs.s, "FIELDS")
-	return (HexpireFields)(c)
+	_ = "STUB: not implemented"
+	return *new(HexpireFields)
 }
 
 type HexpireConditionNx Incomplete
 
 func (c HexpireConditionNx) Fields() HexpireFields {
-	c.cs.s = append(c.cs.s, "FIELDS")
-	return (HexpireFields)(c)
+	_ = "STUB: not implemented"
+	return *new(HexpireFields)
 }
 
 type HexpireConditionXx Incomplete
 
 func (c HexpireConditionXx) Fields() HexpireFields {
-	c.cs.s = append(c.cs.s, "FIELDS")
-	return (HexpireFields)(c)
+	_ = "STUB: not implemented"
+	return *new(HexpireFields)
 }
 
 type HexpireField Incomplete
 
 func (c HexpireField) Field(field ...string) HexpireField {
-	c.cs.s = append(c.cs.s, field...)
-	return c
+	_ = "STUB: not implemented"
+	return *new(HexpireField)
 }
 
-func (c HexpireField) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c HexpireField) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type HexpireFields Incomplete
 
 func (c HexpireFields) Numfields(numfields int64) HexpireNumfields {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(numfields, 10))
-	return (HexpireNumfields)(c)
+	_ = "STUB: not implemented"
+	return *new(HexpireNumfields)
 }
 
 type HexpireKey Incomplete
 
 func (c HexpireKey) Seconds(seconds int64) HexpireSeconds {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(seconds, 10))
-	return (HexpireSeconds)(c)
+	_ = "STUB: not implemented"
+	return *new(HexpireSeconds)
 }
 
 type HexpireNumfields Incomplete
 
 func (c HexpireNumfields) Field(field ...string) HexpireField {
-	c.cs.s = append(c.cs.s, field...)
-	return (HexpireField)(c)
+	_ = "STUB: not implemented"
+	return *new(HexpireField)
 }
 
 type HexpireSeconds Incomplete
 
 func (c HexpireSeconds) Nx() HexpireConditionNx {
-	c.cs.s = append(c.cs.s, "NX")
-	return (HexpireConditionNx)(c)
+	_ = "STUB: not implemented"
+	return *new(HexpireConditionNx)
 }
 
 func (c HexpireSeconds) Xx() HexpireConditionXx {
-	c.cs.s = append(c.cs.s, "XX")
-	return (HexpireConditionXx)(c)
+	_ = "STUB: not implemented"
+	return *new(HexpireConditionXx)
 }
 
 func (c HexpireSeconds) Gt() HexpireConditionGt {
-	c.cs.s = append(c.cs.s, "GT")
-	return (HexpireConditionGt)(c)
+	_ = "STUB: not implemented"
+	return *new(HexpireConditionGt)
 }
 
 func (c HexpireSeconds) Lt() HexpireConditionLt {
-	c.cs.s = append(c.cs.s, "LT")
-	return (HexpireConditionLt)(c)
+	_ = "STUB: not implemented"
+	return *new(HexpireConditionLt)
 }
 
 func (c HexpireSeconds) Fields() HexpireFields {
-	c.cs.s = append(c.cs.s, "FIELDS")
-	return (HexpireFields)(c)
+	_ = "STUB: not implemented"
+	return *new(HexpireFields)
 }
 
 type Hexpireat Incomplete
 
-func (b Builder) Hexpireat() (c Hexpireat) {
-	c = Hexpireat{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "HEXPIREAT")
-	return c
-}
+func (b Builder) Hexpireat() (c Hexpireat) { _ = "STUB: not implemented"; return *new(Hexpireat) }
 
 func (c Hexpireat) Key(key string) HexpireatKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (HexpireatKey)(c)
+	_ = "STUB: not implemented"
+	return *new(HexpireatKey)
 }
 
 type HexpireatConditionGt Incomplete
 
 func (c HexpireatConditionGt) Fields() HexpireatFields {
-	c.cs.s = append(c.cs.s, "FIELDS")
-	return (HexpireatFields)(c)
+	_ = "STUB: not implemented"
+	return *new(HexpireatFields)
 }
 
 type HexpireatConditionLt Incomplete
 
 func (c HexpireatConditionLt) Fields() HexpireatFields {
-	c.cs.s = append(c.cs.s, "FIELDS")
-	return (HexpireatFields)(c)
+	_ = "STUB: not implemented"
+	return *new(HexpireatFields)
 }
 
 type HexpireatConditionNx Incomplete
 
 func (c HexpireatConditionNx) Fields() HexpireatFields {
-	c.cs.s = append(c.cs.s, "FIELDS")
-	return (HexpireatFields)(c)
+	_ = "STUB: not implemented"
+	return *new(HexpireatFields)
 }
 
 type HexpireatConditionXx Incomplete
 
 func (c HexpireatConditionXx) Fields() HexpireatFields {
-	c.cs.s = append(c.cs.s, "FIELDS")
-	return (HexpireatFields)(c)
+	_ = "STUB: not implemented"
+	return *new(HexpireatFields)
 }
 
 type HexpireatField Incomplete
 
 func (c HexpireatField) Field(field ...string) HexpireatField {
-	c.cs.s = append(c.cs.s, field...)
-	return c
+	_ = "STUB: not implemented"
+	return *new(HexpireatField)
 }
 
-func (c HexpireatField) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c HexpireatField) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type HexpireatFields Incomplete
 
 func (c HexpireatFields) Numfields(numfields int64) HexpireatNumfields {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(numfields, 10))
-	return (HexpireatNumfields)(c)
+	_ = "STUB: not implemented"
+	return *new(HexpireatNumfields)
 }
 
 type HexpireatKey Incomplete
 
 func (c HexpireatKey) UnixTimeSeconds(unixTimeSeconds int64) HexpireatUnixTimeSeconds {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(unixTimeSeconds, 10))
-	return (HexpireatUnixTimeSeconds)(c)
+	_ = "STUB: not implemented"
+	return *new(HexpireatUnixTimeSeconds)
 }
 
 type HexpireatNumfields Incomplete
 
 func (c HexpireatNumfields) Field(field ...string) HexpireatField {
-	c.cs.s = append(c.cs.s, field...)
-	return (HexpireatField)(c)
+	_ = "STUB: not implemented"
+	return *new(HexpireatField)
 }
 
 type HexpireatUnixTimeSeconds Incomplete
 
 func (c HexpireatUnixTimeSeconds) Nx() HexpireatConditionNx {
-	c.cs.s = append(c.cs.s, "NX")
-	return (HexpireatConditionNx)(c)
+	_ = "STUB: not implemented"
+	return *new(HexpireatConditionNx)
 }
 
 func (c HexpireatUnixTimeSeconds) Xx() HexpireatConditionXx {
-	c.cs.s = append(c.cs.s, "XX")
-	return (HexpireatConditionXx)(c)
+	_ = "STUB: not implemented"
+	return *new(HexpireatConditionXx)
 }
 
 func (c HexpireatUnixTimeSeconds) Gt() HexpireatConditionGt {
-	c.cs.s = append(c.cs.s, "GT")
-	return (HexpireatConditionGt)(c)
+	_ = "STUB: not implemented"
+	return *new(HexpireatConditionGt)
 }
 
 func (c HexpireatUnixTimeSeconds) Lt() HexpireatConditionLt {
-	c.cs.s = append(c.cs.s, "LT")
-	return (HexpireatConditionLt)(c)
+	_ = "STUB: not implemented"
+	return *new(HexpireatConditionLt)
 }
 
 func (c HexpireatUnixTimeSeconds) Fields() HexpireatFields {
-	c.cs.s = append(c.cs.s, "FIELDS")
-	return (HexpireatFields)(c)
+	_ = "STUB: not implemented"
+	return *new(HexpireatFields)
 }
 
 type Hexpiretime Incomplete
 
-func (b Builder) Hexpiretime() (c Hexpiretime) {
-	c = Hexpiretime{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "HEXPIRETIME")
-	return c
-}
+func (b Builder) Hexpiretime() (c Hexpiretime) { _ = "STUB: not implemented"; return *new(Hexpiretime) }
 
 func (c Hexpiretime) Key(key string) HexpiretimeKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (HexpiretimeKey)(c)
+	_ = "STUB: not implemented"
+	return *new(HexpiretimeKey)
 }
 
 type HexpiretimeField Incomplete
 
 func (c HexpiretimeField) Field(field ...string) HexpiretimeField {
-	c.cs.s = append(c.cs.s, field...)
-	return c
+	_ = "STUB: not implemented"
+	return *new(HexpiretimeField)
 }
 
-func (c HexpiretimeField) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c HexpiretimeField) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type HexpiretimeFields Incomplete
 
 func (c HexpiretimeFields) Numfields(numfields int64) HexpiretimeNumfields {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(numfields, 10))
-	return (HexpiretimeNumfields)(c)
+	_ = "STUB: not implemented"
+	return *new(HexpiretimeNumfields)
 }
 
 type HexpiretimeKey Incomplete
 
 func (c HexpiretimeKey) Fields() HexpiretimeFields {
-	c.cs.s = append(c.cs.s, "FIELDS")
-	return (HexpiretimeFields)(c)
+	_ = "STUB: not implemented"
+	return *new(HexpiretimeFields)
 }
 
 type HexpiretimeNumfields Incomplete
 
 func (c HexpiretimeNumfields) Field(field ...string) HexpiretimeField {
-	c.cs.s = append(c.cs.s, field...)
-	return (HexpiretimeField)(c)
+	_ = "STUB: not implemented"
+	return *new(HexpiretimeField)
 }
 
 type Hget Incomplete
 
-func (b Builder) Hget() (c Hget) {
-	c = Hget{cs: get(), ks: b.ks, cf: int16(readonly)}
-	c.cs.s = append(c.cs.s, "HGET")
-	return c
-}
+func (b Builder) Hget() (c Hget) { _ = "STUB: not implemented"; return *new(Hget) }
 
-func (c Hget) Key(key string) HgetKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (HgetKey)(c)
-}
+func (c Hget) Key(key string) HgetKey { _ = "STUB: not implemented"; return *new(HgetKey) }
 
 type HgetField Incomplete
 
-func (c HgetField) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c HgetField) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c HgetField) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c HgetField) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type HgetKey Incomplete
 
-func (c HgetKey) Field(field string) HgetField {
-	c.cs.s = append(c.cs.s, field)
-	return (HgetField)(c)
-}
+func (c HgetKey) Field(field string) HgetField { _ = "STUB: not implemented"; return *new(HgetField) }
 
 type Hgetall Incomplete
 
-func (b Builder) Hgetall() (c Hgetall) {
-	c = Hgetall{cs: get(), ks: b.ks, cf: int16(readonly)}
-	c.cs.s = append(c.cs.s, "HGETALL")
-	return c
-}
+func (b Builder) Hgetall() (c Hgetall) { _ = "STUB: not implemented"; return *new(Hgetall) }
 
-func (c Hgetall) Key(key string) HgetallKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (HgetallKey)(c)
-}
+func (c Hgetall) Key(key string) HgetallKey { _ = "STUB: not implemented"; return *new(HgetallKey) }
 
 type HgetallKey Incomplete
 
-func (c HgetallKey) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c HgetallKey) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c HgetallKey) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c HgetallKey) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type Hgetdel Incomplete
 
-func (b Builder) Hgetdel() (c Hgetdel) {
-	c = Hgetdel{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "HGETDEL")
-	return c
-}
+func (b Builder) Hgetdel() (c Hgetdel) { _ = "STUB: not implemented"; return *new(Hgetdel) }
 
-func (c Hgetdel) Key(key string) HgetdelKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (HgetdelKey)(c)
-}
+func (c Hgetdel) Key(key string) HgetdelKey { _ = "STUB: not implemented"; return *new(HgetdelKey) }
 
 type HgetdelField Incomplete
 
 func (c HgetdelField) Field(field ...string) HgetdelField {
-	c.cs.s = append(c.cs.s, field...)
-	return c
+	_ = "STUB: not implemented"
+	return *new(HgetdelField)
 }
 
-func (c HgetdelField) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c HgetdelField) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type HgetdelFields Incomplete
 
 func (c HgetdelFields) Numfields(numfields int64) HgetdelNumfields {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(numfields, 10))
-	return (HgetdelNumfields)(c)
+	_ = "STUB: not implemented"
+	return *new(HgetdelNumfields)
 }
 
 type HgetdelKey Incomplete
 
-func (c HgetdelKey) Fields() HgetdelFields {
-	c.cs.s = append(c.cs.s, "FIELDS")
-	return (HgetdelFields)(c)
-}
+func (c HgetdelKey) Fields() HgetdelFields { _ = "STUB: not implemented"; return *new(HgetdelFields) }
 
 type HgetdelNumfields Incomplete
 
 func (c HgetdelNumfields) Field(field ...string) HgetdelField {
-	c.cs.s = append(c.cs.s, field...)
-	return (HgetdelField)(c)
+	_ = "STUB: not implemented"
+	return *new(HgetdelField)
 }
 
 type Hgetex Incomplete
 
-func (b Builder) Hgetex() (c Hgetex) {
-	c = Hgetex{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "HGETEX")
-	return c
-}
+func (b Builder) Hgetex() (c Hgetex) { _ = "STUB: not implemented"; return *new(Hgetex) }
 
-func (c Hgetex) Key(key string) HgetexKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (HgetexKey)(c)
-}
+func (c Hgetex) Key(key string) HgetexKey { _ = "STUB: not implemented"; return *new(HgetexKey) }
 
 type HgetexExpirationEx Incomplete
 
 func (c HgetexExpirationEx) Fields() HgetexFields {
-	c.cs.s = append(c.cs.s, "FIELDS")
-	return (HgetexFields)(c)
+	_ = "STUB: not implemented"
+	return *new(HgetexFields)
 }
 
 type HgetexExpirationExat Incomplete
 
 func (c HgetexExpirationExat) Fields() HgetexFields {
-	c.cs.s = append(c.cs.s, "FIELDS")
-	return (HgetexFields)(c)
+	_ = "STUB: not implemented"
+	return *new(HgetexFields)
 }
 
 type HgetexExpirationPersist Incomplete
 
 func (c HgetexExpirationPersist) Fields() HgetexFields {
-	c.cs.s = append(c.cs.s, "FIELDS")
-	return (HgetexFields)(c)
+	_ = "STUB: not implemented"
+	return *new(HgetexFields)
 }
 
 type HgetexExpirationPx Incomplete
 
 func (c HgetexExpirationPx) Fields() HgetexFields {
-	c.cs.s = append(c.cs.s, "FIELDS")
-	return (HgetexFields)(c)
+	_ = "STUB: not implemented"
+	return *new(HgetexFields)
 }
 
 type HgetexExpirationPxat Incomplete
 
 func (c HgetexExpirationPxat) Fields() HgetexFields {
-	c.cs.s = append(c.cs.s, "FIELDS")
-	return (HgetexFields)(c)
+	_ = "STUB: not implemented"
+	return *new(HgetexFields)
 }
 
 type HgetexField Incomplete
 
 func (c HgetexField) Field(field ...string) HgetexField {
-	c.cs.s = append(c.cs.s, field...)
-	return c
+	_ = "STUB: not implemented"
+	return *new(HgetexField)
 }
 
-func (c HgetexField) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c HgetexField) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type HgetexFields Incomplete
 
 func (c HgetexFields) Numfields(numfields int64) HgetexNumfields {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(numfields, 10))
-	return (HgetexNumfields)(c)
+	_ = "STUB: not implemented"
+	return *new(HgetexNumfields)
 }
 
 type HgetexKey Incomplete
 
 func (c HgetexKey) Ex(ex int64) HgetexExpirationEx {
-	c.cs.s = append(c.cs.s, "EX", strconv.FormatInt(ex, 10))
-	return (HgetexExpirationEx)(c)
+	_ = "STUB: not implemented"
+	return *new(HgetexExpirationEx)
 }
 
 func (c HgetexKey) Px(px int64) HgetexExpirationPx {
-	c.cs.s = append(c.cs.s, "PX", strconv.FormatInt(px, 10))
-	return (HgetexExpirationPx)(c)
+	_ = "STUB: not implemented"
+	return *new(HgetexExpirationPx)
 }
 
 func (c HgetexKey) Exat(exat int64) HgetexExpirationExat {
-	c.cs.s = append(c.cs.s, "EXAT", strconv.FormatInt(exat, 10))
-	return (HgetexExpirationExat)(c)
+	_ = "STUB: not implemented"
+	return *new(HgetexExpirationExat)
 }
 
 func (c HgetexKey) Pxat(pxat int64) HgetexExpirationPxat {
-	c.cs.s = append(c.cs.s, "PXAT", strconv.FormatInt(pxat, 10))
-	return (HgetexExpirationPxat)(c)
+	_ = "STUB: not implemented"
+	return *new(HgetexExpirationPxat)
 }
 
 func (c HgetexKey) Persist() HgetexExpirationPersist {
-	c.cs.s = append(c.cs.s, "PERSIST")
-	return (HgetexExpirationPersist)(c)
+	_ = "STUB: not implemented"
+	return *new(HgetexExpirationPersist)
 }
 
-func (c HgetexKey) Fields() HgetexFields {
-	c.cs.s = append(c.cs.s, "FIELDS")
-	return (HgetexFields)(c)
-}
+func (c HgetexKey) Fields() HgetexFields { _ = "STUB: not implemented"; return *new(HgetexFields) }
 
 type HgetexNumfields Incomplete
 
 func (c HgetexNumfields) Field(field ...string) HgetexField {
-	c.cs.s = append(c.cs.s, field...)
-	return (HgetexField)(c)
+	_ = "STUB: not implemented"
+	return *new(HgetexField)
 }
 
 type Hincrby Incomplete
 
-func (b Builder) Hincrby() (c Hincrby) {
-	c = Hincrby{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "HINCRBY")
-	return c
-}
+func (b Builder) Hincrby() (c Hincrby) { _ = "STUB: not implemented"; return *new(Hincrby) }
 
-func (c Hincrby) Key(key string) HincrbyKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (HincrbyKey)(c)
-}
+func (c Hincrby) Key(key string) HincrbyKey { _ = "STUB: not implemented"; return *new(HincrbyKey) }
 
 type HincrbyField Incomplete
 
 func (c HincrbyField) Increment(increment int64) HincrbyIncrement {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(increment, 10))
-	return (HincrbyIncrement)(c)
+	_ = "STUB: not implemented"
+	return *new(HincrbyIncrement)
 }
 
 type HincrbyIncrement Incomplete
 
-func (c HincrbyIncrement) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c HincrbyIncrement) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type HincrbyKey Incomplete
 
 func (c HincrbyKey) Field(field string) HincrbyField {
-	c.cs.s = append(c.cs.s, field)
-	return (HincrbyField)(c)
+	_ = "STUB: not implemented"
+	return *new(HincrbyField)
 }
 
 type Hincrbyfloat Incomplete
 
 func (b Builder) Hincrbyfloat() (c Hincrbyfloat) {
-	c = Hincrbyfloat{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "HINCRBYFLOAT")
-	return c
+	_ = "STUB: not implemented"
+	return *new(Hincrbyfloat)
 }
 
 func (c Hincrbyfloat) Key(key string) HincrbyfloatKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (HincrbyfloatKey)(c)
+	_ = "STUB: not implemented"
+	return *new(HincrbyfloatKey)
 }
 
 type HincrbyfloatField Incomplete
 
 func (c HincrbyfloatField) Increment(increment float64) HincrbyfloatIncrement {
-	c.cs.s = append(c.cs.s, strconv.FormatFloat(increment, 'f', -1, 64))
-	return (HincrbyfloatIncrement)(c)
+	_ = "STUB: not implemented"
+	return *new(HincrbyfloatIncrement)
 }
 
 type HincrbyfloatIncrement Incomplete
 
-func (c HincrbyfloatIncrement) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c HincrbyfloatIncrement) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type HincrbyfloatKey Incomplete
 
 func (c HincrbyfloatKey) Field(field string) HincrbyfloatField {
-	c.cs.s = append(c.cs.s, field)
-	return (HincrbyfloatField)(c)
+	_ = "STUB: not implemented"
+	return *new(HincrbyfloatField)
 }
 
 type Hkeys Incomplete
 
-func (b Builder) Hkeys() (c Hkeys) {
-	c = Hkeys{cs: get(), ks: b.ks, cf: int16(readonly)}
-	c.cs.s = append(c.cs.s, "HKEYS")
-	return c
-}
+func (b Builder) Hkeys() (c Hkeys) { _ = "STUB: not implemented"; return *new(Hkeys) }
 
-func (c Hkeys) Key(key string) HkeysKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (HkeysKey)(c)
-}
+func (c Hkeys) Key(key string) HkeysKey { _ = "STUB: not implemented"; return *new(HkeysKey) }
 
 type HkeysKey Incomplete
 
-func (c HkeysKey) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c HkeysKey) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c HkeysKey) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c HkeysKey) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type Hlen Incomplete
 
-func (b Builder) Hlen() (c Hlen) {
-	c = Hlen{cs: get(), ks: b.ks, cf: int16(readonly)}
-	c.cs.s = append(c.cs.s, "HLEN")
-	return c
-}
+func (b Builder) Hlen() (c Hlen) { _ = "STUB: not implemented"; return *new(Hlen) }
 
-func (c Hlen) Key(key string) HlenKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (HlenKey)(c)
-}
+func (c Hlen) Key(key string) HlenKey { _ = "STUB: not implemented"; return *new(HlenKey) }
 
 type HlenKey Incomplete
 
-func (c HlenKey) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c HlenKey) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c HlenKey) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c HlenKey) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type Hmget Incomplete
 
-func (b Builder) Hmget() (c Hmget) {
-	c = Hmget{cs: get(), ks: b.ks, cf: int16(readonly)}
-	c.cs.s = append(c.cs.s, "HMGET")
-	return c
-}
+func (b Builder) Hmget() (c Hmget) { _ = "STUB: not implemented"; return *new(Hmget) }
 
-func (c Hmget) Key(key string) HmgetKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (HmgetKey)(c)
-}
+func (c Hmget) Key(key string) HmgetKey { _ = "STUB: not implemented"; return *new(HmgetKey) }
 
 type HmgetField Incomplete
 
 func (c HmgetField) Field(field ...string) HmgetField {
-	c.cs.s = append(c.cs.s, field...)
-	return c
+	_ = "STUB: not implemented"
+	return *new(HmgetField)
 }
 
-func (c HmgetField) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c HmgetField) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c HmgetField) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c HmgetField) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type HmgetKey Incomplete
 
 func (c HmgetKey) Field(field ...string) HmgetField {
-	c.cs.s = append(c.cs.s, field...)
-	return (HmgetField)(c)
+	_ = "STUB: not implemented"
+	return *new(HmgetField)
 }
 
 type Hmset Incomplete
 
-func (b Builder) Hmset() (c Hmset) {
-	c = Hmset{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "HMSET")
-	return c
-}
+func (b Builder) Hmset() (c Hmset) { _ = "STUB: not implemented"; return *new(Hmset) }
 
-func (c Hmset) Key(key string) HmsetKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (HmsetKey)(c)
-}
+func (c Hmset) Key(key string) HmsetKey { _ = "STUB: not implemented"; return *new(HmsetKey) }
 
 type HmsetFieldValue Incomplete
 
 func (c HmsetFieldValue) FieldValue(field string, value string) HmsetFieldValue {
-	c.cs.s = append(c.cs.s, field, value)
-	return c
+	_ = "STUB: not implemented"
+	return *new(HmsetFieldValue)
 }
 
-func (c HmsetFieldValue) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c HmsetFieldValue) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type HmsetKey Incomplete
 
 func (c HmsetKey) FieldValue() HmsetFieldValue {
-	return (HmsetFieldValue)(c)
+	_ = "STUB: not implemented"
+	return *new(HmsetFieldValue)
 }
 
 type Hpersist Incomplete
 
-func (b Builder) Hpersist() (c Hpersist) {
-	c = Hpersist{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "HPERSIST")
-	return c
-}
+func (b Builder) Hpersist() (c Hpersist) { _ = "STUB: not implemented"; return *new(Hpersist) }
 
-func (c Hpersist) Key(key string) HpersistKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (HpersistKey)(c)
-}
+func (c Hpersist) Key(key string) HpersistKey { _ = "STUB: not implemented"; return *new(HpersistKey) }
 
 type HpersistField Incomplete
 
 func (c HpersistField) Field(field ...string) HpersistField {
-	c.cs.s = append(c.cs.s, field...)
-	return c
+	_ = "STUB: not implemented"
+	return *new(HpersistField)
 }
 
-func (c HpersistField) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c HpersistField) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type HpersistFields Incomplete
 
 func (c HpersistFields) Numfields(numfields int64) HpersistNumfields {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(numfields, 10))
-	return (HpersistNumfields)(c)
+	_ = "STUB: not implemented"
+	return *new(HpersistNumfields)
 }
 
 type HpersistKey Incomplete
 
 func (c HpersistKey) Fields() HpersistFields {
-	c.cs.s = append(c.cs.s, "FIELDS")
-	return (HpersistFields)(c)
+	_ = "STUB: not implemented"
+	return *new(HpersistFields)
 }
 
 type HpersistNumfields Incomplete
 
 func (c HpersistNumfields) Field(field ...string) HpersistField {
-	c.cs.s = append(c.cs.s, field...)
-	return (HpersistField)(c)
+	_ = "STUB: not implemented"
+	return *new(HpersistField)
 }
 
 type Hpexpire Incomplete
 
-func (b Builder) Hpexpire() (c Hpexpire) {
-	c = Hpexpire{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "HPEXPIRE")
-	return c
-}
+func (b Builder) Hpexpire() (c Hpexpire) { _ = "STUB: not implemented"; return *new(Hpexpire) }
 
-func (c Hpexpire) Key(key string) HpexpireKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (HpexpireKey)(c)
-}
+func (c Hpexpire) Key(key string) HpexpireKey { _ = "STUB: not implemented"; return *new(HpexpireKey) }
 
 type HpexpireConditionGt Incomplete
 
 func (c HpexpireConditionGt) Fields() HpexpireFields {
-	c.cs.s = append(c.cs.s, "FIELDS")
-	return (HpexpireFields)(c)
+	_ = "STUB: not implemented"
+	return *new(HpexpireFields)
 }
 
 type HpexpireConditionLt Incomplete
 
 func (c HpexpireConditionLt) Fields() HpexpireFields {
-	c.cs.s = append(c.cs.s, "FIELDS")
-	return (HpexpireFields)(c)
+	_ = "STUB: not implemented"
+	return *new(HpexpireFields)
 }
 
 type HpexpireConditionNx Incomplete
 
 func (c HpexpireConditionNx) Fields() HpexpireFields {
-	c.cs.s = append(c.cs.s, "FIELDS")
-	return (HpexpireFields)(c)
+	_ = "STUB: not implemented"
+	return *new(HpexpireFields)
 }
 
 type HpexpireConditionXx Incomplete
 
 func (c HpexpireConditionXx) Fields() HpexpireFields {
-	c.cs.s = append(c.cs.s, "FIELDS")
-	return (HpexpireFields)(c)
+	_ = "STUB: not implemented"
+	return *new(HpexpireFields)
 }
 
 type HpexpireField Incomplete
 
 func (c HpexpireField) Field(field ...string) HpexpireField {
-	c.cs.s = append(c.cs.s, field...)
-	return c
+	_ = "STUB: not implemented"
+	return *new(HpexpireField)
 }
 
-func (c HpexpireField) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c HpexpireField) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type HpexpireFields Incomplete
 
 func (c HpexpireFields) Numfields(numfields int64) HpexpireNumfields {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(numfields, 10))
-	return (HpexpireNumfields)(c)
+	_ = "STUB: not implemented"
+	return *new(HpexpireNumfields)
 }
 
 type HpexpireKey Incomplete
 
 func (c HpexpireKey) Milliseconds(milliseconds int64) HpexpireMilliseconds {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(milliseconds, 10))
-	return (HpexpireMilliseconds)(c)
+	_ = "STUB: not implemented"
+	return *new(HpexpireMilliseconds)
 }
 
 type HpexpireMilliseconds Incomplete
 
 func (c HpexpireMilliseconds) Nx() HpexpireConditionNx {
-	c.cs.s = append(c.cs.s, "NX")
-	return (HpexpireConditionNx)(c)
+	_ = "STUB: not implemented"
+	return *new(HpexpireConditionNx)
 }
 
 func (c HpexpireMilliseconds) Xx() HpexpireConditionXx {
-	c.cs.s = append(c.cs.s, "XX")
-	return (HpexpireConditionXx)(c)
+	_ = "STUB: not implemented"
+	return *new(HpexpireConditionXx)
 }
 
 func (c HpexpireMilliseconds) Gt() HpexpireConditionGt {
-	c.cs.s = append(c.cs.s, "GT")
-	return (HpexpireConditionGt)(c)
+	_ = "STUB: not implemented"
+	return *new(HpexpireConditionGt)
 }
 
 func (c HpexpireMilliseconds) Lt() HpexpireConditionLt {
-	c.cs.s = append(c.cs.s, "LT")
-	return (HpexpireConditionLt)(c)
+	_ = "STUB: not implemented"
+	return *new(HpexpireConditionLt)
 }
 
 func (c HpexpireMilliseconds) Fields() HpexpireFields {
-	c.cs.s = append(c.cs.s, "FIELDS")
-	return (HpexpireFields)(c)
+	_ = "STUB: not implemented"
+	return *new(HpexpireFields)
 }
 
 type HpexpireNumfields Incomplete
 
 func (c HpexpireNumfields) Field(field ...string) HpexpireField {
-	c.cs.s = append(c.cs.s, field...)
-	return (HpexpireField)(c)
+	_ = "STUB: not implemented"
+	return *new(HpexpireField)
 }
 
 type Hpexpireat Incomplete
 
-func (b Builder) Hpexpireat() (c Hpexpireat) {
-	c = Hpexpireat{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "HPEXPIREAT")
-	return c
-}
+func (b Builder) Hpexpireat() (c Hpexpireat) { _ = "STUB: not implemented"; return *new(Hpexpireat) }
 
 func (c Hpexpireat) Key(key string) HpexpireatKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (HpexpireatKey)(c)
+	_ = "STUB: not implemented"
+	return *new(HpexpireatKey)
 }
 
 type HpexpireatConditionGt Incomplete
 
 func (c HpexpireatConditionGt) Fields() HpexpireatFields {
-	c.cs.s = append(c.cs.s, "FIELDS")
-	return (HpexpireatFields)(c)
+	_ = "STUB: not implemented"
+	return *new(HpexpireatFields)
 }
 
 type HpexpireatConditionLt Incomplete
 
 func (c HpexpireatConditionLt) Fields() HpexpireatFields {
-	c.cs.s = append(c.cs.s, "FIELDS")
-	return (HpexpireatFields)(c)
+	_ = "STUB: not implemented"
+	return *new(HpexpireatFields)
 }
 
 type HpexpireatConditionNx Incomplete
 
 func (c HpexpireatConditionNx) Fields() HpexpireatFields {
-	c.cs.s = append(c.cs.s, "FIELDS")
-	return (HpexpireatFields)(c)
+	_ = "STUB: not implemented"
+	return *new(HpexpireatFields)
 }
 
 type HpexpireatConditionXx Incomplete
 
 func (c HpexpireatConditionXx) Fields() HpexpireatFields {
-	c.cs.s = append(c.cs.s, "FIELDS")
-	return (HpexpireatFields)(c)
+	_ = "STUB: not implemented"
+	return *new(HpexpireatFields)
 }
 
 type HpexpireatField Incomplete
 
 func (c HpexpireatField) Field(field ...string) HpexpireatField {
-	c.cs.s = append(c.cs.s, field...)
-	return c
+	_ = "STUB: not implemented"
+	return *new(HpexpireatField)
 }
 
-func (c HpexpireatField) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c HpexpireatField) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type HpexpireatFields Incomplete
 
 func (c HpexpireatFields) Numfields(numfields int64) HpexpireatNumfields {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(numfields, 10))
-	return (HpexpireatNumfields)(c)
+	_ = "STUB: not implemented"
+	return *new(HpexpireatNumfields)
 }
 
 type HpexpireatKey Incomplete
 
 func (c HpexpireatKey) UnixTimeMilliseconds(unixTimeMilliseconds int64) HpexpireatUnixTimeMilliseconds {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(unixTimeMilliseconds, 10))
-	return (HpexpireatUnixTimeMilliseconds)(c)
+	_ = "STUB: not implemented"
+	return *new(HpexpireatUnixTimeMilliseconds)
 }
 
 type HpexpireatNumfields Incomplete
 
 func (c HpexpireatNumfields) Field(field ...string) HpexpireatField {
-	c.cs.s = append(c.cs.s, field...)
-	return (HpexpireatField)(c)
+	_ = "STUB: not implemented"
+	return *new(HpexpireatField)
 }
 
 type HpexpireatUnixTimeMilliseconds Incomplete
 
 func (c HpexpireatUnixTimeMilliseconds) Nx() HpexpireatConditionNx {
-	c.cs.s = append(c.cs.s, "NX")
-	return (HpexpireatConditionNx)(c)
+	_ = "STUB: not implemented"
+	return *new(HpexpireatConditionNx)
 }
 
 func (c HpexpireatUnixTimeMilliseconds) Xx() HpexpireatConditionXx {
-	c.cs.s = append(c.cs.s, "XX")
-	return (HpexpireatConditionXx)(c)
+	_ = "STUB: not implemented"
+	return *new(HpexpireatConditionXx)
 }
 
 func (c HpexpireatUnixTimeMilliseconds) Gt() HpexpireatConditionGt {
-	c.cs.s = append(c.cs.s, "GT")
-	return (HpexpireatConditionGt)(c)
+	_ = "STUB: not implemented"
+	return *new(HpexpireatConditionGt)
 }
 
 func (c HpexpireatUnixTimeMilliseconds) Lt() HpexpireatConditionLt {
-	c.cs.s = append(c.cs.s, "LT")
-	return (HpexpireatConditionLt)(c)
+	_ = "STUB: not implemented"
+	return *new(HpexpireatConditionLt)
 }
 
 func (c HpexpireatUnixTimeMilliseconds) Fields() HpexpireatFields {
-	c.cs.s = append(c.cs.s, "FIELDS")
-	return (HpexpireatFields)(c)
+	_ = "STUB: not implemented"
+	return *new(HpexpireatFields)
 }
 
 type Hpexpiretime Incomplete
 
 func (b Builder) Hpexpiretime() (c Hpexpiretime) {
-	c = Hpexpiretime{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "HPEXPIRETIME")
-	return c
+	_ = "STUB: not implemented"
+	return *new(Hpexpiretime)
 }
 
 func (c Hpexpiretime) Key(key string) HpexpiretimeKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (HpexpiretimeKey)(c)
+	_ = "STUB: not implemented"
+	return *new(HpexpiretimeKey)
 }
 
 type HpexpiretimeField Incomplete
 
 func (c HpexpiretimeField) Field(field ...string) HpexpiretimeField {
-	c.cs.s = append(c.cs.s, field...)
-	return c
+	_ = "STUB: not implemented"
+	return *new(HpexpiretimeField)
 }
 
-func (c HpexpiretimeField) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c HpexpiretimeField) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type HpexpiretimeFields Incomplete
 
 func (c HpexpiretimeFields) Numfields(numfields int64) HpexpiretimeNumfields {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(numfields, 10))
-	return (HpexpiretimeNumfields)(c)
+	_ = "STUB: not implemented"
+	return *new(HpexpiretimeNumfields)
 }
 
 type HpexpiretimeKey Incomplete
 
 func (c HpexpiretimeKey) Fields() HpexpiretimeFields {
-	c.cs.s = append(c.cs.s, "FIELDS")
-	return (HpexpiretimeFields)(c)
+	_ = "STUB: not implemented"
+	return *new(HpexpiretimeFields)
 }
 
 type HpexpiretimeNumfields Incomplete
 
 func (c HpexpiretimeNumfields) Field(field ...string) HpexpiretimeField {
-	c.cs.s = append(c.cs.s, field...)
-	return (HpexpiretimeField)(c)
+	_ = "STUB: not implemented"
+	return *new(HpexpiretimeField)
 }
 
 type Hpttl Incomplete
 
-func (b Builder) Hpttl() (c Hpttl) {
-	c = Hpttl{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "HPTTL")
-	return c
-}
+func (b Builder) Hpttl() (c Hpttl) { _ = "STUB: not implemented"; return *new(Hpttl) }
 
-func (c Hpttl) Key(key string) HpttlKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (HpttlKey)(c)
-}
+func (c Hpttl) Key(key string) HpttlKey { _ = "STUB: not implemented"; return *new(HpttlKey) }
 
 type HpttlField Incomplete
 
 func (c HpttlField) Field(field ...string) HpttlField {
-	c.cs.s = append(c.cs.s, field...)
-	return c
+	_ = "STUB: not implemented"
+	return *new(HpttlField)
 }
 
-func (c HpttlField) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c HpttlField) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type HpttlFields Incomplete
 
 func (c HpttlFields) Numfields(numfields int64) HpttlNumfields {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(numfields, 10))
-	return (HpttlNumfields)(c)
+	_ = "STUB: not implemented"
+	return *new(HpttlNumfields)
 }
 
 type HpttlKey Incomplete
 
-func (c HpttlKey) Fields() HpttlFields {
-	c.cs.s = append(c.cs.s, "FIELDS")
-	return (HpttlFields)(c)
-}
+func (c HpttlKey) Fields() HpttlFields { _ = "STUB: not implemented"; return *new(HpttlFields) }
 
 type HpttlNumfields Incomplete
 
 func (c HpttlNumfields) Field(field ...string) HpttlField {
-	c.cs.s = append(c.cs.s, field...)
-	return (HpttlField)(c)
+	_ = "STUB: not implemented"
+	return *new(HpttlField)
 }
 
 type Hrandfield Incomplete
 
-func (b Builder) Hrandfield() (c Hrandfield) {
-	c = Hrandfield{cs: get(), ks: b.ks, cf: int16(readonly)}
-	c.cs.s = append(c.cs.s, "HRANDFIELD")
-	return c
-}
+func (b Builder) Hrandfield() (c Hrandfield) { _ = "STUB: not implemented"; return *new(Hrandfield) }
 
 func (c Hrandfield) Key(key string) HrandfieldKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (HrandfieldKey)(c)
+	_ = "STUB: not implemented"
+	return *new(HrandfieldKey)
 }
 
 type HrandfieldKey Incomplete
 
 func (c HrandfieldKey) Count(count int64) HrandfieldOptionsCount {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(count, 10))
-	return (HrandfieldOptionsCount)(c)
+	_ = "STUB: not implemented"
+	return *new(HrandfieldOptionsCount)
 }
 
-func (c HrandfieldKey) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c HrandfieldKey) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type HrandfieldOptionsCount Incomplete
 
 func (c HrandfieldOptionsCount) Withvalues() HrandfieldOptionsWithvalues {
-	c.cs.s = append(c.cs.s, "WITHVALUES")
-	return (HrandfieldOptionsWithvalues)(c)
+	_ = "STUB: not implemented"
+	return *new(HrandfieldOptionsWithvalues)
 }
 
 func (c HrandfieldOptionsCount) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type HrandfieldOptionsWithvalues Incomplete
 
 func (c HrandfieldOptionsWithvalues) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type Hscan Incomplete
 
-func (b Builder) Hscan() (c Hscan) {
-	c = Hscan{cs: get(), ks: b.ks, cf: int16(readonly)}
-	c.cs.s = append(c.cs.s, "HSCAN")
-	return c
-}
+func (b Builder) Hscan() (c Hscan) { _ = "STUB: not implemented"; return *new(Hscan) }
 
-func (c Hscan) Key(key string) HscanKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (HscanKey)(c)
-}
+func (c Hscan) Key(key string) HscanKey { _ = "STUB: not implemented"; return *new(HscanKey) }
 
 type HscanCount Incomplete
 
-func (c HscanCount) Novalues() HscanNovalues {
-	c.cs.s = append(c.cs.s, "NOVALUES")
-	return (HscanNovalues)(c)
-}
+func (c HscanCount) Novalues() HscanNovalues { _ = "STUB: not implemented"; return *new(HscanNovalues) }
 
-func (c HscanCount) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c HscanCount) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type HscanCursor Incomplete
 
 func (c HscanCursor) Match(pattern string) HscanMatch {
-	c.cs.s = append(c.cs.s, "MATCH", pattern)
-	return (HscanMatch)(c)
+	_ = "STUB: not implemented"
+	return *new(HscanMatch)
 }
 
 func (c HscanCursor) Count(count int64) HscanCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(count, 10))
-	return (HscanCount)(c)
+	_ = "STUB: not implemented"
+	return *new(HscanCount)
 }
 
 func (c HscanCursor) Novalues() HscanNovalues {
-	c.cs.s = append(c.cs.s, "NOVALUES")
-	return (HscanNovalues)(c)
+	_ = "STUB: not implemented"
+	return *new(HscanNovalues)
 }
 
-func (c HscanCursor) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c HscanCursor) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type HscanKey Incomplete
 
 func (c HscanKey) Cursor(cursor uint64) HscanCursor {
-	c.cs.s = append(c.cs.s, strconv.FormatUint(cursor, 10))
-	return (HscanCursor)(c)
+	_ = "STUB: not implemented"
+	return *new(HscanCursor)
 }
 
 type HscanMatch Incomplete
 
 func (c HscanMatch) Count(count int64) HscanCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(count, 10))
-	return (HscanCount)(c)
+	_ = "STUB: not implemented"
+	return *new(HscanCount)
 }
 
-func (c HscanMatch) Novalues() HscanNovalues {
-	c.cs.s = append(c.cs.s, "NOVALUES")
-	return (HscanNovalues)(c)
-}
+func (c HscanMatch) Novalues() HscanNovalues { _ = "STUB: not implemented"; return *new(HscanNovalues) }
 
-func (c HscanMatch) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c HscanMatch) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type HscanNovalues Incomplete
 
-func (c HscanNovalues) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c HscanNovalues) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type Hset Incomplete
 
-func (b Builder) Hset() (c Hset) {
-	c = Hset{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "HSET")
-	return c
-}
+func (b Builder) Hset() (c Hset) { _ = "STUB: not implemented"; return *new(Hset) }
 
-func (c Hset) Key(key string) HsetKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (HsetKey)(c)
-}
+func (c Hset) Key(key string) HsetKey { _ = "STUB: not implemented"; return *new(HsetKey) }
 
 type HsetFieldValue Incomplete
 
 func (c HsetFieldValue) FieldValue(field string, value string) HsetFieldValue {
-	c.cs.s = append(c.cs.s, field, value)
-	return c
+	_ = "STUB: not implemented"
+	return *new(HsetFieldValue)
 }
 
-func (c HsetFieldValue) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c HsetFieldValue) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type HsetKey Incomplete
 
 func (c HsetKey) FieldValue() HsetFieldValue {
-	return (HsetFieldValue)(c)
+	_ = "STUB: not implemented"
+	return *new(HsetFieldValue)
 }
 
 type Hsetex Incomplete
 
-func (b Builder) Hsetex() (c Hsetex) {
-	c = Hsetex{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "HSETEX")
-	return c
-}
+func (b Builder) Hsetex() (c Hsetex) { _ = "STUB: not implemented"; return *new(Hsetex) }
 
-func (c Hsetex) Key(key string) HsetexKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (HsetexKey)(c)
-}
+func (c Hsetex) Key(key string) HsetexKey { _ = "STUB: not implemented"; return *new(HsetexKey) }
 
 type HsetexConditionFnx Incomplete
 
 func (c HsetexConditionFnx) Ex(ex int64) HsetexExpirationEx {
-	c.cs.s = append(c.cs.s, "EX", strconv.FormatInt(ex, 10))
-	return (HsetexExpirationEx)(c)
+	_ = "STUB: not implemented"
+	return *new(HsetexExpirationEx)
 }
 
 func (c HsetexConditionFnx) Px(px int64) HsetexExpirationPx {
-	c.cs.s = append(c.cs.s, "PX", strconv.FormatInt(px, 10))
-	return (HsetexExpirationPx)(c)
+	_ = "STUB: not implemented"
+	return *new(HsetexExpirationPx)
 }
 
 func (c HsetexConditionFnx) Exat(exat int64) HsetexExpirationExat {
-	c.cs.s = append(c.cs.s, "EXAT", strconv.FormatInt(exat, 10))
-	return (HsetexExpirationExat)(c)
+	_ = "STUB: not implemented"
+	return *new(HsetexExpirationExat)
 }
 
 func (c HsetexConditionFnx) Pxat(pxat int64) HsetexExpirationPxat {
-	c.cs.s = append(c.cs.s, "PXAT", strconv.FormatInt(pxat, 10))
-	return (HsetexExpirationPxat)(c)
+	_ = "STUB: not implemented"
+	return *new(HsetexExpirationPxat)
 }
 
 func (c HsetexConditionFnx) Keepttl() HsetexExpirationKeepttl {
-	c.cs.s = append(c.cs.s, "KEEPTTL")
-	return (HsetexExpirationKeepttl)(c)
+	_ = "STUB: not implemented"
+	return *new(HsetexExpirationKeepttl)
 }
 
 func (c HsetexConditionFnx) Fields() HsetexFields {
-	c.cs.s = append(c.cs.s, "FIELDS")
-	return (HsetexFields)(c)
+	_ = "STUB: not implemented"
+	return *new(HsetexFields)
 }
 
 type HsetexConditionFxx Incomplete
 
 func (c HsetexConditionFxx) Ex(ex int64) HsetexExpirationEx {
-	c.cs.s = append(c.cs.s, "EX", strconv.FormatInt(ex, 10))
-	return (HsetexExpirationEx)(c)
+	_ = "STUB: not implemented"
+	return *new(HsetexExpirationEx)
 }
 
 func (c HsetexConditionFxx) Px(px int64) HsetexExpirationPx {
-	c.cs.s = append(c.cs.s, "PX", strconv.FormatInt(px, 10))
-	return (HsetexExpirationPx)(c)
+	_ = "STUB: not implemented"
+	return *new(HsetexExpirationPx)
 }
 
 func (c HsetexConditionFxx) Exat(exat int64) HsetexExpirationExat {
-	c.cs.s = append(c.cs.s, "EXAT", strconv.FormatInt(exat, 10))
-	return (HsetexExpirationExat)(c)
+	_ = "STUB: not implemented"
+	return *new(HsetexExpirationExat)
 }
 
 func (c HsetexConditionFxx) Pxat(pxat int64) HsetexExpirationPxat {
-	c.cs.s = append(c.cs.s, "PXAT", strconv.FormatInt(pxat, 10))
-	return (HsetexExpirationPxat)(c)
+	_ = "STUB: not implemented"
+	return *new(HsetexExpirationPxat)
 }
 
 func (c HsetexConditionFxx) Keepttl() HsetexExpirationKeepttl {
-	c.cs.s = append(c.cs.s, "KEEPTTL")
-	return (HsetexExpirationKeepttl)(c)
+	_ = "STUB: not implemented"
+	return *new(HsetexExpirationKeepttl)
 }
 
 func (c HsetexConditionFxx) Fields() HsetexFields {
-	c.cs.s = append(c.cs.s, "FIELDS")
-	return (HsetexFields)(c)
+	_ = "STUB: not implemented"
+	return *new(HsetexFields)
 }
 
 type HsetexExpirationEx Incomplete
 
 func (c HsetexExpirationEx) Fields() HsetexFields {
-	c.cs.s = append(c.cs.s, "FIELDS")
-	return (HsetexFields)(c)
+	_ = "STUB: not implemented"
+	return *new(HsetexFields)
 }
 
 type HsetexExpirationExat Incomplete
 
 func (c HsetexExpirationExat) Fields() HsetexFields {
-	c.cs.s = append(c.cs.s, "FIELDS")
-	return (HsetexFields)(c)
+	_ = "STUB: not implemented"
+	return *new(HsetexFields)
 }
 
 type HsetexExpirationKeepttl Incomplete
 
 func (c HsetexExpirationKeepttl) Fields() HsetexFields {
-	c.cs.s = append(c.cs.s, "FIELDS")
-	return (HsetexFields)(c)
+	_ = "STUB: not implemented"
+	return *new(HsetexFields)
 }
 
 type HsetexExpirationPx Incomplete
 
 func (c HsetexExpirationPx) Fields() HsetexFields {
-	c.cs.s = append(c.cs.s, "FIELDS")
-	return (HsetexFields)(c)
+	_ = "STUB: not implemented"
+	return *new(HsetexFields)
 }
 
 type HsetexExpirationPxat Incomplete
 
 func (c HsetexExpirationPxat) Fields() HsetexFields {
-	c.cs.s = append(c.cs.s, "FIELDS")
-	return (HsetexFields)(c)
+	_ = "STUB: not implemented"
+	return *new(HsetexFields)
 }
 
 type HsetexFieldValue Incomplete
 
 func (c HsetexFieldValue) FieldValue(field string, value string) HsetexFieldValue {
-	c.cs.s = append(c.cs.s, field, value)
-	return c
+	_ = "STUB: not implemented"
+	return *new(HsetexFieldValue)
 }
 
-func (c HsetexFieldValue) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c HsetexFieldValue) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type HsetexFields Incomplete
 
 func (c HsetexFields) Numfields(numfields int64) HsetexNumfields {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(numfields, 10))
-	return (HsetexNumfields)(c)
+	_ = "STUB: not implemented"
+	return *new(HsetexNumfields)
 }
 
 type HsetexKey Incomplete
 
 func (c HsetexKey) Fnx() HsetexConditionFnx {
-	c.cs.s = append(c.cs.s, "FNX")
-	return (HsetexConditionFnx)(c)
+	_ = "STUB: not implemented"
+	return *new(HsetexConditionFnx)
 }
 
 func (c HsetexKey) Fxx() HsetexConditionFxx {
-	c.cs.s = append(c.cs.s, "FXX")
-	return (HsetexConditionFxx)(c)
+	_ = "STUB: not implemented"
+	return *new(HsetexConditionFxx)
 }
 
 func (c HsetexKey) Ex(ex int64) HsetexExpirationEx {
-	c.cs.s = append(c.cs.s, "EX", strconv.FormatInt(ex, 10))
-	return (HsetexExpirationEx)(c)
+	_ = "STUB: not implemented"
+	return *new(HsetexExpirationEx)
 }
 
 func (c HsetexKey) Px(px int64) HsetexExpirationPx {
-	c.cs.s = append(c.cs.s, "PX", strconv.FormatInt(px, 10))
-	return (HsetexExpirationPx)(c)
+	_ = "STUB: not implemented"
+	return *new(HsetexExpirationPx)
 }
 
 func (c HsetexKey) Exat(exat int64) HsetexExpirationExat {
-	c.cs.s = append(c.cs.s, "EXAT", strconv.FormatInt(exat, 10))
-	return (HsetexExpirationExat)(c)
+	_ = "STUB: not implemented"
+	return *new(HsetexExpirationExat)
 }
 
 func (c HsetexKey) Pxat(pxat int64) HsetexExpirationPxat {
-	c.cs.s = append(c.cs.s, "PXAT", strconv.FormatInt(pxat, 10))
-	return (HsetexExpirationPxat)(c)
+	_ = "STUB: not implemented"
+	return *new(HsetexExpirationPxat)
 }
 
 func (c HsetexKey) Keepttl() HsetexExpirationKeepttl {
-	c.cs.s = append(c.cs.s, "KEEPTTL")
-	return (HsetexExpirationKeepttl)(c)
+	_ = "STUB: not implemented"
+	return *new(HsetexExpirationKeepttl)
 }
 
-func (c HsetexKey) Fields() HsetexFields {
-	c.cs.s = append(c.cs.s, "FIELDS")
-	return (HsetexFields)(c)
-}
+func (c HsetexKey) Fields() HsetexFields { _ = "STUB: not implemented"; return *new(HsetexFields) }
 
 type HsetexNumfields Incomplete
 
 func (c HsetexNumfields) FieldValue() HsetexFieldValue {
-	return (HsetexFieldValue)(c)
+	_ = "STUB: not implemented"
+	return *new(HsetexFieldValue)
 }
 
 type Hsetnx Incomplete
 
-func (b Builder) Hsetnx() (c Hsetnx) {
-	c = Hsetnx{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "HSETNX")
-	return c
-}
+func (b Builder) Hsetnx() (c Hsetnx) { _ = "STUB: not implemented"; return *new(Hsetnx) }
 
-func (c Hsetnx) Key(key string) HsetnxKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (HsetnxKey)(c)
-}
+func (c Hsetnx) Key(key string) HsetnxKey { _ = "STUB: not implemented"; return *new(HsetnxKey) }
 
 type HsetnxField Incomplete
 
 func (c HsetnxField) Value(value string) HsetnxValue {
-	c.cs.s = append(c.cs.s, value)
-	return (HsetnxValue)(c)
+	_ = "STUB: not implemented"
+	return *new(HsetnxValue)
 }
 
 type HsetnxKey Incomplete
 
 func (c HsetnxKey) Field(field string) HsetnxField {
-	c.cs.s = append(c.cs.s, field)
-	return (HsetnxField)(c)
+	_ = "STUB: not implemented"
+	return *new(HsetnxField)
 }
 
 type HsetnxValue Incomplete
 
-func (c HsetnxValue) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c HsetnxValue) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type Hstrlen Incomplete
 
-func (b Builder) Hstrlen() (c Hstrlen) {
-	c = Hstrlen{cs: get(), ks: b.ks, cf: int16(readonly)}
-	c.cs.s = append(c.cs.s, "HSTRLEN")
-	return c
-}
+func (b Builder) Hstrlen() (c Hstrlen) { _ = "STUB: not implemented"; return *new(Hstrlen) }
 
-func (c Hstrlen) Key(key string) HstrlenKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (HstrlenKey)(c)
-}
+func (c Hstrlen) Key(key string) HstrlenKey { _ = "STUB: not implemented"; return *new(HstrlenKey) }
 
 type HstrlenField Incomplete
 
-func (c HstrlenField) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c HstrlenField) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c HstrlenField) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c HstrlenField) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type HstrlenKey Incomplete
 
 func (c HstrlenKey) Field(field string) HstrlenField {
-	c.cs.s = append(c.cs.s, field)
-	return (HstrlenField)(c)
+	_ = "STUB: not implemented"
+	return *new(HstrlenField)
 }
 
 type Httl Incomplete
 
-func (b Builder) Httl() (c Httl) {
-	c = Httl{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "HTTL")
-	return c
-}
+func (b Builder) Httl() (c Httl) { _ = "STUB: not implemented"; return *new(Httl) }
 
-func (c Httl) Key(key string) HttlKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (HttlKey)(c)
-}
+func (c Httl) Key(key string) HttlKey { _ = "STUB: not implemented"; return *new(HttlKey) }
 
 type HttlField Incomplete
 
 func (c HttlField) Field(field ...string) HttlField {
-	c.cs.s = append(c.cs.s, field...)
-	return c
+	_ = "STUB: not implemented"
+	return *new(HttlField)
 }
 
-func (c HttlField) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c HttlField) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type HttlFields Incomplete
 
 func (c HttlFields) Numfields(numfields int64) HttlNumfields {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(numfields, 10))
-	return (HttlNumfields)(c)
+	_ = "STUB: not implemented"
+	return *new(HttlNumfields)
 }
 
 type HttlKey Incomplete
 
-func (c HttlKey) Fields() HttlFields {
-	c.cs.s = append(c.cs.s, "FIELDS")
-	return (HttlFields)(c)
-}
+func (c HttlKey) Fields() HttlFields { _ = "STUB: not implemented"; return *new(HttlFields) }
 
 type HttlNumfields Incomplete
 
 func (c HttlNumfields) Field(field ...string) HttlField {
-	c.cs.s = append(c.cs.s, field...)
-	return (HttlField)(c)
+	_ = "STUB: not implemented"
+	return *new(HttlField)
 }
 
 type Hvals Incomplete
 
-func (b Builder) Hvals() (c Hvals) {
-	c = Hvals{cs: get(), ks: b.ks, cf: int16(readonly)}
-	c.cs.s = append(c.cs.s, "HVALS")
-	return c
-}
+func (b Builder) Hvals() (c Hvals) { _ = "STUB: not implemented"; return *new(Hvals) }
 
-func (c Hvals) Key(key string) HvalsKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (HvalsKey)(c)
-}
+func (c Hvals) Key(key string) HvalsKey { _ = "STUB: not implemented"; return *new(HvalsKey) }
 
 type HvalsKey Incomplete
 
-func (c HvalsKey) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c HvalsKey) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c HvalsKey) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c HvalsKey) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }

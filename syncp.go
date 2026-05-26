@@ -55,52 +55,28 @@ type muxslots struct {
 	s []int
 }
 
-func (r *muxslots) Capacity() int {
-	return cap(r.s)
-}
+func (r *muxslots) Capacity() int { _ = "STUB: not implemented"; return 0 }
 
-func (r *muxslots) ResetLen(n int) {
-	clear(r.s)
-	r.s = r.s[:n]
-}
+func (r *muxslots) ResetLen(n int) { _ = "STUB: not implemented"; return }
 
-func (r *muxslots) LessThen(n int) bool {
-	count := 0
-	for _, value := range r.s {
-		if value > 0 {
-			if count++; count == n {
-				return false
-			}
-		}
-	}
-	return true
-}
+func (r *muxslots) LessThen(n int) bool { _ = "STUB: not implemented"; return false }
 
 type redisresults struct {
 	s []RedisResult
 }
 
-func (r *redisresults) Capacity() int {
-	return cap(r.s)
-}
+func (r *redisresults) Capacity() int { _ = "STUB: not implemented"; return 0 }
 
-func (r *redisresults) ResetLen(n int) {
-	clear(r.s)
-	r.s = r.s[:n]
-}
+func (r *redisresults) ResetLen(n int) { _ = "STUB: not implemented"; return }
 
 type cacheentries struct {
 	e map[int]CacheEntry
 	c int
 }
 
-func (c *cacheentries) Capacity() int {
-	return c.c
-}
+func (c *cacheentries) Capacity() int { _ = "STUB: not implemented"; return 0 }
 
-func (c *cacheentries) ResetLen(n int) {
-	clear(c.e)
-}
+func (c *cacheentries) ResetLen(n int) { _ = "STUB: not implemented"; return }
 
 var entriesp = util.NewPool(func(capacity int) *cacheentries {
 	return &cacheentries{e: make(map[int]CacheEntry, capacity), c: capacity}
@@ -110,27 +86,17 @@ type mgetcachecmds struct {
 	s []CacheableTTL
 }
 
-func (r *mgetcachecmds) Capacity() int {
-	return cap(r.s)
-}
+func (r *mgetcachecmds) Capacity() int { _ = "STUB: not implemented"; return 0 }
 
-func (r *mgetcachecmds) ResetLen(n int) {
-	clear(r.s)
-	r.s = r.s[:n]
-}
+func (r *mgetcachecmds) ResetLen(n int) { _ = "STUB: not implemented"; return }
 
 type mgetcmds struct {
 	s []Completed
 }
 
-func (r *mgetcmds) Capacity() int {
-	return cap(r.s)
-}
+func (r *mgetcmds) Capacity() int { _ = "STUB: not implemented"; return 0 }
 
-func (r *mgetcmds) ResetLen(n int) {
-	clear(r.s)
-	r.s = r.s[:n]
-}
+func (r *mgetcmds) ResetLen(n int) { _ = "STUB: not implemented"; return }
 
 type retry struct {
 	cIndexes []int
@@ -139,20 +105,9 @@ type retry struct {
 	cAskings []Completed
 }
 
-func (r *retry) Capacity() int {
-	return cap(r.commands)
-}
+func (r *retry) Capacity() int { _ = "STUB: not implemented"; return 0 }
 
-func (r *retry) ResetLen(n int) {
-	clear(r.cIndexes)
-	clear(r.commands)
-	clear(r.aIndexes)
-	clear(r.cAskings)
-	r.cIndexes = r.cIndexes[:n]
-	r.commands = r.commands[:n]
-	r.aIndexes = r.aIndexes[:0]
-	r.cAskings = r.cAskings[:0]
-}
+func (r *retry) ResetLen(n int) { _ = "STUB: not implemented"; return }
 
 type retrycache struct {
 	cIndexes []int
@@ -161,62 +116,36 @@ type retrycache struct {
 	cAskings []CacheableTTL
 }
 
-func (r *retrycache) Capacity() int {
-	return cap(r.commands)
-}
+func (r *retrycache) Capacity() int { _ = "STUB: not implemented"; return 0 }
 
-func (r *retrycache) ResetLen(n int) {
-	clear(r.cIndexes)
-	clear(r.commands)
-	clear(r.aIndexes)
-	clear(r.cAskings)
-	r.cIndexes = r.cIndexes[:n]
-	r.commands = r.commands[:n]
-	r.aIndexes = r.aIndexes[:0]
-	r.cAskings = r.cAskings[:0]
-}
+func (r *retrycache) ResetLen(n int) { _ = "STUB: not implemented"; return }
 
 type batchcache struct {
 	cIndexes []int
 	commands []CacheableTTL
 }
 
-func (r *batchcache) Capacity() int {
-	return cap(r.commands)
-}
+func (r *batchcache) Capacity() int { _ = "STUB: not implemented"; return 0 }
 
-func (r *batchcache) ResetLen(n int) {
-	clear(r.cIndexes)
-	clear(r.commands)
-	r.cIndexes = r.cIndexes[:n]
-	r.commands = r.commands[:n]
-}
+func (r *batchcache) ResetLen(n int) { _ = "STUB: not implemented"; return }
 
 type batchcachemap struct {
 	m map[uint16]*batchcache
 	n int
 }
 
-func (r *batchcachemap) Capacity() int {
-	return r.n
-}
+func (r *batchcachemap) Capacity() int { _ = "STUB: not implemented"; return 0 }
 
-func (r *batchcachemap) ResetLen(n int) {
-	clear(r.m)
-}
+func (r *batchcachemap) ResetLen(n int) { _ = "STUB: not implemented"; return }
 
 type conncount struct {
 	m map[conn]int
 	n int
 }
 
-func (r *conncount) Capacity() int {
-	return r.n
-}
+func (r *conncount) Capacity() int { _ = "STUB: not implemented"; return 0 }
 
-func (r *conncount) ResetLen(n int) {
-	clear(r.m)
-}
+func (r *conncount) ResetLen(n int) { _ = "STUB: not implemented"; return }
 
 type connretry struct {
 	m          map[conn]*retry
@@ -225,15 +154,11 @@ type connretry struct {
 	Redirects  uint32        // NOTE: This is not thread-safe.
 }
 
-func (r *connretry) Capacity() int {
-	return r.n
-}
+func (r *connretry) Capacity() int { _ = "STUB: not implemented"; return 0 }
 
-func (r *connretry) ResetLen(n int) {
-	clear(r.m)
-	r.Redirects = 0
-	r.RetryDelay = time.Duration(-1) // No retry.
-}
+func (r *connretry) ResetLen(n int) { _ = "STUB: not implemented"; return }
+
+// No retry.
 
 type connretrycache struct {
 	m          map[conn]*retrycache
@@ -242,12 +167,8 @@ type connretrycache struct {
 	Redirects  uint32        // NOTE: This is not thread-safe.
 }
 
-func (r *connretrycache) Capacity() int {
-	return r.n
-}
+func (r *connretrycache) Capacity() int { _ = "STUB: not implemented"; return 0 }
 
-func (r *connretrycache) ResetLen(n int) {
-	clear(r.m)
-	r.Redirects = 0
-	r.RetryDelay = time.Duration(-1) // No retry.
-}
+func (r *connretrycache) ResetLen(n int) { _ = "STUB: not implemented"; return }
+
+// No retry.

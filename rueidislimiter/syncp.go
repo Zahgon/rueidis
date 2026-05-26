@@ -12,10 +12,6 @@ type rateBuffersContainer struct {
 	keyBuf []byte
 }
 
-func (r *rateBuffersContainer) Capacity() int {
-	return cap(r.keyBuf)
-}
+func (r *rateBuffersContainer) Capacity() int { _ = "STUB: not implemented"; return 0 }
 
-func (r *rateBuffersContainer) ResetLen(n int) {
-	r.keyBuf = r.keyBuf[:0]
-}
+func (r *rateBuffersContainer) ResetLen(n int) { _ = "STUB: not implemented"; return }

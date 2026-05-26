@@ -4,420 +4,263 @@ package cmds
 
 type Psubscribe Incomplete
 
-func (b Builder) Psubscribe() (c Psubscribe) {
-	c = Psubscribe{cs: get(), ks: b.ks, cf: int16(noRetTag)}
-	c.cs.s = append(c.cs.s, "PSUBSCRIBE")
-	return c
-}
+func (b Builder) Psubscribe() (c Psubscribe) { _ = "STUB: not implemented"; return *new(Psubscribe) }
 
 func (c Psubscribe) Pattern(pattern ...string) PsubscribePattern {
-	c.cs.s = append(c.cs.s, pattern...)
-	return (PsubscribePattern)(c)
+	_ = "STUB: not implemented"
+	return *new(PsubscribePattern)
 }
 
 type PsubscribePattern Incomplete
 
 func (c PsubscribePattern) Pattern(pattern ...string) PsubscribePattern {
-	c.cs.s = append(c.cs.s, pattern...)
-	return c
+	_ = "STUB: not implemented"
+	return *new(PsubscribePattern)
 }
 
-func (c PsubscribePattern) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c PsubscribePattern) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type Publish Incomplete
 
-func (b Builder) Publish() (c Publish) {
-	c = Publish{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "PUBLISH")
-	return c
-}
+func (b Builder) Publish() (c Publish) { _ = "STUB: not implemented"; return *new(Publish) }
 
 func (c Publish) Channel(channel string) PublishChannel {
-	c.cs.s = append(c.cs.s, channel)
-	return (PublishChannel)(c)
+	_ = "STUB: not implemented"
+	return *new(PublishChannel)
 }
 
 type PublishChannel Incomplete
 
 func (c PublishChannel) Message(message string) PublishMessage {
-	c.cs.s = append(c.cs.s, message)
-	return (PublishMessage)(c)
+	_ = "STUB: not implemented"
+	return *new(PublishMessage)
 }
 
 type PublishMessage Incomplete
 
-func (c PublishMessage) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c PublishMessage) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type PubsubChannels Incomplete
 
 func (b Builder) PubsubChannels() (c PubsubChannels) {
-	c = PubsubChannels{cs: get(), ks: b.ks, cf: int16(readonly)}
-	c.cs.s = append(c.cs.s, "PUBSUB", "CHANNELS")
-	return c
+	_ = "STUB: not implemented"
+	return *new(PubsubChannels)
 }
 
 func (c PubsubChannels) Pattern(pattern string) PubsubChannelsPattern {
-	c.cs.s = append(c.cs.s, pattern)
-	return (PubsubChannelsPattern)(c)
+	_ = "STUB: not implemented"
+	return *new(PubsubChannelsPattern)
 }
 
-func (c PubsubChannels) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c PubsubChannels) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type PubsubChannelsPattern Incomplete
 
-func (c PubsubChannelsPattern) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c PubsubChannelsPattern) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type PubsubHelp Incomplete
 
-func (b Builder) PubsubHelp() (c PubsubHelp) {
-	c = PubsubHelp{cs: get(), ks: b.ks, cf: int16(readonly)}
-	c.cs.s = append(c.cs.s, "PUBSUB", "HELP")
-	return c
-}
+func (b Builder) PubsubHelp() (c PubsubHelp) { _ = "STUB: not implemented"; return *new(PubsubHelp) }
 
-func (c PubsubHelp) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c PubsubHelp) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type PubsubNumpat Incomplete
 
 func (b Builder) PubsubNumpat() (c PubsubNumpat) {
-	c = PubsubNumpat{cs: get(), ks: b.ks, cf: int16(readonly)}
-	c.cs.s = append(c.cs.s, "PUBSUB", "NUMPAT")
-	return c
+	_ = "STUB: not implemented"
+	return *new(PubsubNumpat)
 }
 
-func (c PubsubNumpat) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c PubsubNumpat) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type PubsubNumsub Incomplete
 
 func (b Builder) PubsubNumsub() (c PubsubNumsub) {
-	c = PubsubNumsub{cs: get(), ks: b.ks, cf: int16(readonly)}
-	c.cs.s = append(c.cs.s, "PUBSUB", "NUMSUB")
-	return c
+	_ = "STUB: not implemented"
+	return *new(PubsubNumsub)
 }
 
 func (c PubsubNumsub) Channel(channel ...string) PubsubNumsubChannel {
-	c.cs.s = append(c.cs.s, channel...)
-	return (PubsubNumsubChannel)(c)
+	_ = "STUB: not implemented"
+	return *new(PubsubNumsubChannel)
 }
 
-func (c PubsubNumsub) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c PubsubNumsub) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type PubsubNumsubChannel Incomplete
 
 func (c PubsubNumsubChannel) Channel(channel ...string) PubsubNumsubChannel {
-	c.cs.s = append(c.cs.s, channel...)
-	return c
+	_ = "STUB: not implemented"
+	return *new(PubsubNumsubChannel)
 }
 
-func (c PubsubNumsubChannel) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c PubsubNumsubChannel) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type PubsubShardchannels Incomplete
 
 func (b Builder) PubsubShardchannels() (c PubsubShardchannels) {
-	c = PubsubShardchannels{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "PUBSUB", "SHARDCHANNELS")
-	return c
+	_ = "STUB: not implemented"
+	return *new(PubsubShardchannels)
 }
 
 func (c PubsubShardchannels) Pattern(pattern string) PubsubShardchannelsPattern {
-	c.cs.s = append(c.cs.s, pattern)
-	return (PubsubShardchannelsPattern)(c)
+	_ = "STUB: not implemented"
+	return *new(PubsubShardchannelsPattern)
 }
 
-func (c PubsubShardchannels) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c PubsubShardchannels) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type PubsubShardchannelsPattern Incomplete
 
 func (c PubsubShardchannelsPattern) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type PubsubShardnumsub Incomplete
 
 func (b Builder) PubsubShardnumsub() (c PubsubShardnumsub) {
-	c = PubsubShardnumsub{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "PUBSUB", "SHARDNUMSUB")
-	return c
+	_ = "STUB: not implemented"
+	return *new(PubsubShardnumsub)
 }
 
 func (c PubsubShardnumsub) Channel(channel ...string) PubsubShardnumsubChannel {
-	if c.ks&NoSlot == NoSlot {
-		for _, k := range channel {
-			c.ks = NoSlot | slot(k)
-			break
-		}
-	} else {
-		for _, k := range channel {
-			c.ks = check(c.ks, slot(k))
-		}
-	}
-	c.cs.s = append(c.cs.s, channel...)
-	return (PubsubShardnumsubChannel)(c)
+	_ = "STUB: not implemented"
+	return *new(PubsubShardnumsubChannel)
 }
 
-func (c PubsubShardnumsub) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c PubsubShardnumsub) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type PubsubShardnumsubChannel Incomplete
 
 func (c PubsubShardnumsubChannel) Channel(channel ...string) PubsubShardnumsubChannel {
-	if c.ks&NoSlot == NoSlot {
-		for _, k := range channel {
-			c.ks = NoSlot | slot(k)
-			break
-		}
-	} else {
-		for _, k := range channel {
-			c.ks = check(c.ks, slot(k))
-		}
-	}
-	c.cs.s = append(c.cs.s, channel...)
-	return c
+	_ = "STUB: not implemented"
+	return *new(PubsubShardnumsubChannel)
 }
 
 func (c PubsubShardnumsubChannel) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type Punsubscribe Incomplete
 
 func (b Builder) Punsubscribe() (c Punsubscribe) {
-	c = Punsubscribe{cs: get(), ks: b.ks, cf: int16(unsubTag)}
-	c.cs.s = append(c.cs.s, "PUNSUBSCRIBE")
-	return c
+	_ = "STUB: not implemented"
+	return *new(Punsubscribe)
 }
 
 func (c Punsubscribe) Pattern(pattern ...string) PunsubscribePattern {
-	c.cs.s = append(c.cs.s, pattern...)
-	return (PunsubscribePattern)(c)
+	_ = "STUB: not implemented"
+	return *new(PunsubscribePattern)
 }
 
-func (c Punsubscribe) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c Punsubscribe) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type PunsubscribePattern Incomplete
 
 func (c PunsubscribePattern) Pattern(pattern ...string) PunsubscribePattern {
-	c.cs.s = append(c.cs.s, pattern...)
-	return c
+	_ = "STUB: not implemented"
+	return *new(PunsubscribePattern)
 }
 
-func (c PunsubscribePattern) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c PunsubscribePattern) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type Spublish Incomplete
 
-func (b Builder) Spublish() (c Spublish) {
-	c = Spublish{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "SPUBLISH")
-	return c
-}
+func (b Builder) Spublish() (c Spublish) { _ = "STUB: not implemented"; return *new(Spublish) }
 
 func (c Spublish) Channel(channel string) SpublishChannel {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(channel)
-	} else {
-		c.ks = check(c.ks, slot(channel))
-	}
-	c.cs.s = append(c.cs.s, channel)
-	return (SpublishChannel)(c)
+	_ = "STUB: not implemented"
+	return *new(SpublishChannel)
 }
 
 type SpublishChannel Incomplete
 
 func (c SpublishChannel) Message(message string) SpublishMessage {
-	c.cs.s = append(c.cs.s, message)
-	return (SpublishMessage)(c)
+	_ = "STUB: not implemented"
+	return *new(SpublishMessage)
 }
 
 type SpublishMessage Incomplete
 
-func (c SpublishMessage) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c SpublishMessage) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type Ssubscribe Incomplete
 
-func (b Builder) Ssubscribe() (c Ssubscribe) {
-	c = Ssubscribe{cs: get(), ks: b.ks, cf: int16(noRetTag)}
-	c.cs.s = append(c.cs.s, "SSUBSCRIBE")
-	return c
-}
+func (b Builder) Ssubscribe() (c Ssubscribe) { _ = "STUB: not implemented"; return *new(Ssubscribe) }
 
 func (c Ssubscribe) Channel(channel ...string) SsubscribeChannel {
-	if c.ks&NoSlot == NoSlot {
-		for _, k := range channel {
-			c.ks = NoSlot | slot(k)
-			break
-		}
-	} else {
-		for _, k := range channel {
-			c.ks = check(c.ks, slot(k))
-		}
-	}
-	c.cs.s = append(c.cs.s, channel...)
-	return (SsubscribeChannel)(c)
+	_ = "STUB: not implemented"
+	return *new(SsubscribeChannel)
 }
 
 type SsubscribeChannel Incomplete
 
 func (c SsubscribeChannel) Channel(channel ...string) SsubscribeChannel {
-	if c.ks&NoSlot == NoSlot {
-		for _, k := range channel {
-			c.ks = NoSlot | slot(k)
-			break
-		}
-	} else {
-		for _, k := range channel {
-			c.ks = check(c.ks, slot(k))
-		}
-	}
-	c.cs.s = append(c.cs.s, channel...)
-	return c
+	_ = "STUB: not implemented"
+	return *new(SsubscribeChannel)
 }
 
-func (c SsubscribeChannel) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c SsubscribeChannel) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type Subscribe Incomplete
 
-func (b Builder) Subscribe() (c Subscribe) {
-	c = Subscribe{cs: get(), ks: b.ks, cf: int16(noRetTag)}
-	c.cs.s = append(c.cs.s, "SUBSCRIBE")
-	return c
-}
+func (b Builder) Subscribe() (c Subscribe) { _ = "STUB: not implemented"; return *new(Subscribe) }
 
 func (c Subscribe) Channel(channel ...string) SubscribeChannel {
-	c.cs.s = append(c.cs.s, channel...)
-	return (SubscribeChannel)(c)
+	_ = "STUB: not implemented"
+	return *new(SubscribeChannel)
 }
 
 type SubscribeChannel Incomplete
 
 func (c SubscribeChannel) Channel(channel ...string) SubscribeChannel {
-	c.cs.s = append(c.cs.s, channel...)
-	return c
+	_ = "STUB: not implemented"
+	return *new(SubscribeChannel)
 }
 
-func (c SubscribeChannel) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c SubscribeChannel) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type Sunsubscribe Incomplete
 
 func (b Builder) Sunsubscribe() (c Sunsubscribe) {
-	c = Sunsubscribe{cs: get(), ks: b.ks, cf: int16(unsubTag)}
-	c.cs.s = append(c.cs.s, "SUNSUBSCRIBE")
-	return c
+	_ = "STUB: not implemented"
+	return *new(Sunsubscribe)
 }
 
 func (c Sunsubscribe) Channel(channel ...string) SunsubscribeChannel {
-	if c.ks&NoSlot == NoSlot {
-		for _, k := range channel {
-			c.ks = NoSlot | slot(k)
-			break
-		}
-	} else {
-		for _, k := range channel {
-			c.ks = check(c.ks, slot(k))
-		}
-	}
-	c.cs.s = append(c.cs.s, channel...)
-	return (SunsubscribeChannel)(c)
+	_ = "STUB: not implemented"
+	return *new(SunsubscribeChannel)
 }
 
-func (c Sunsubscribe) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c Sunsubscribe) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type SunsubscribeChannel Incomplete
 
 func (c SunsubscribeChannel) Channel(channel ...string) SunsubscribeChannel {
-	if c.ks&NoSlot == NoSlot {
-		for _, k := range channel {
-			c.ks = NoSlot | slot(k)
-			break
-		}
-	} else {
-		for _, k := range channel {
-			c.ks = check(c.ks, slot(k))
-		}
-	}
-	c.cs.s = append(c.cs.s, channel...)
-	return c
+	_ = "STUB: not implemented"
+	return *new(SunsubscribeChannel)
 }
 
-func (c SunsubscribeChannel) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c SunsubscribeChannel) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type Unsubscribe Incomplete
 
-func (b Builder) Unsubscribe() (c Unsubscribe) {
-	c = Unsubscribe{cs: get(), ks: b.ks, cf: int16(unsubTag)}
-	c.cs.s = append(c.cs.s, "UNSUBSCRIBE")
-	return c
-}
+func (b Builder) Unsubscribe() (c Unsubscribe) { _ = "STUB: not implemented"; return *new(Unsubscribe) }
 
 func (c Unsubscribe) Channel(channel ...string) UnsubscribeChannel {
-	c.cs.s = append(c.cs.s, channel...)
-	return (UnsubscribeChannel)(c)
+	_ = "STUB: not implemented"
+	return *new(UnsubscribeChannel)
 }
 
-func (c Unsubscribe) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c Unsubscribe) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type UnsubscribeChannel Incomplete
 
 func (c UnsubscribeChannel) Channel(channel ...string) UnsubscribeChannel {
-	c.cs.s = append(c.cs.s, channel...)
-	return c
+	_ = "STUB: not implemented"
+	return *new(UnsubscribeChannel)
 }
 
-func (c UnsubscribeChannel) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c UnsubscribeChannel) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }

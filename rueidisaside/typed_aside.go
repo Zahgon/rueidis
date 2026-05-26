@@ -30,36 +30,26 @@ func NewTypedCacheAsideClient[T any](
 	serializer func(*T) (string, error),
 	deserializer func(string) (*T, error),
 ) TypedCacheAsideClient[T] {
-	return &typedCacheAsideClient[T]{
-		client:       client,
-		serializer:   serializer,
-		deserializer: deserializer,
-	}
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Get retrieves a value of type T from the cache or fetches it using the provided
 // function and stores it in the cache. The value is cached for the specified TTL.
 // If the value cannot be retrieved or deserialized, an error is returned.
 func (c typedCacheAsideClient[T]) Get(ctx context.Context, ttl time.Duration, key string, fn func(ctx context.Context, key string) (val *T, err error)) (val *T, err error) {
-	strVal, err := c.client.Get(ctx, ttl, key, func(ctx context.Context, key string) (val string, err error) {
-		result, err := fn(ctx, key)
-		if err != nil {
-			return "", err
-		}
-		return c.serializer(result)
-	})
-	if err != nil {
-		return nil, err
-	}
-	return c.deserializer(strVal)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // Del deletes the value associated with the given key from the cache.
 func (c typedCacheAsideClient[T]) Del(ctx context.Context, key string) error {
-	return c.client.Del(ctx, key)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Client returns the underlying CacheAsideClient instance used by the TypedCacheAsideClient.
 func (c typedCacheAsideClient[T]) Client() CacheAsideClient {
-	return c.client
+	_ = "STUB: not implemented"
+	return *new(CacheAsideClient)
 }

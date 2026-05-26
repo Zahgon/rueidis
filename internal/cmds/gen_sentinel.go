@@ -5,79 +5,75 @@ package cmds
 type SentinelFailover Incomplete
 
 func (b Builder) SentinelFailover() (c SentinelFailover) {
-	c = SentinelFailover{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "SENTINEL", "FAILOVER")
-	return c
+	_ = "STUB: not implemented"
+	return *new(SentinelFailover)
 }
 
 func (c SentinelFailover) Master(master string) SentinelFailoverMaster {
-	c.cs.s = append(c.cs.s, master)
-	return (SentinelFailoverMaster)(c)
+	_ = "STUB: not implemented"
+	return *new(SentinelFailoverMaster)
 }
 
 type SentinelFailoverMaster Incomplete
 
 func (c SentinelFailoverMaster) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type SentinelGetMasterAddrByName Incomplete
 
 func (b Builder) SentinelGetMasterAddrByName() (c SentinelGetMasterAddrByName) {
-	c = SentinelGetMasterAddrByName{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "SENTINEL", "GET-MASTER-ADDR-BY-NAME")
-	return c
+	_ = "STUB: not implemented"
+	return *new(SentinelGetMasterAddrByName)
 }
 
 func (c SentinelGetMasterAddrByName) Master(master string) SentinelGetMasterAddrByNameMaster {
-	c.cs.s = append(c.cs.s, master)
-	return (SentinelGetMasterAddrByNameMaster)(c)
+	_ = "STUB: not implemented"
+	return *new(SentinelGetMasterAddrByNameMaster)
 }
 
 type SentinelGetMasterAddrByNameMaster Incomplete
 
 func (c SentinelGetMasterAddrByNameMaster) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type SentinelReplicas Incomplete
 
 func (b Builder) SentinelReplicas() (c SentinelReplicas) {
-	c = SentinelReplicas{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "SENTINEL", "REPLICAS")
-	return c
+	_ = "STUB: not implemented"
+	return *new(SentinelReplicas)
 }
 
 func (c SentinelReplicas) Master(master string) SentinelReplicasMaster {
-	c.cs.s = append(c.cs.s, master)
-	return (SentinelReplicasMaster)(c)
+	_ = "STUB: not implemented"
+	return *new(SentinelReplicasMaster)
 }
 
 type SentinelReplicasMaster Incomplete
 
 func (c SentinelReplicasMaster) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type SentinelSentinels Incomplete
 
 func (b Builder) SentinelSentinels() (c SentinelSentinels) {
-	c = SentinelSentinels{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "SENTINEL", "SENTINELS")
-	return c
+	_ = "STUB: not implemented"
+	return *new(SentinelSentinels)
 }
 
 func (c SentinelSentinels) Master(master string) SentinelSentinelsMaster {
-	c.cs.s = append(c.cs.s, master)
-	return (SentinelSentinelsMaster)(c)
+	_ = "STUB: not implemented"
+	return *new(SentinelSentinelsMaster)
 }
 
 type SentinelSentinelsMaster Incomplete
 
 func (c SentinelSentinelsMaster) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }

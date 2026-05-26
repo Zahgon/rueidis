@@ -7,14 +7,9 @@ import (
 	"context"
 	"crypto/tls"
 	"errors"
-	"math"
 	"net"
 	"os"
-	"runtime"
-	"strings"
 	"time"
-
-	"github.com/redis/rueidis/internal/util"
 )
 
 const (
@@ -456,7 +451,8 @@ type CoreClient interface {
 
 // CT is a shorthand constructor for CacheableTTL
 func CT(cmd Cacheable, ttl time.Duration) CacheableTTL {
-	return CacheableTTL{Cmd: cmd, TTL: ttl}
+	_ = "STUB: not implemented"
+	return *new(CacheableTTL)
 }
 
 // CacheableTTL is a parameter container of DoMultiCache
@@ -480,111 +476,20 @@ type AuthCredentials struct {
 // It will first try to connect as a cluster client. If the len(ClientOption.InitAddress) == 1 and
 // the address does not enable cluster mode, the NewClient() will use single client instead.
 func NewClient(option ClientOption) (client Client, err error) {
+	_ = "STUB: not implemented"
 	// Validate configuration conflicts early
-	if option.Standalone.EnableRedirect && len(option.Standalone.ReplicaAddress) > 0 {
-		return nil, errors.New("EnableRedirect and ReplicaAddress cannot be used together")
-	}
-
-	if option.ReadBufferEachConn < 32 { // the buffer should be able to hold an int64 string at least
-		option.ReadBufferEachConn = DefaultReadBuffer
-	}
-	if option.WriteBufferEachConn < 32 {
-		option.WriteBufferEachConn = DefaultWriteBuffer
-	}
-	if option.CacheSizeEachConn <= 0 {
-		option.CacheSizeEachConn = DefaultCacheBytes
-	}
-	if option.Dialer.Timeout == 0 {
-		option.Dialer.Timeout = DefaultDialTimeout
-	}
-	if option.Dialer.KeepAlive == 0 {
-		option.Dialer.KeepAlive = DefaultTCPKeepAlive
-	}
-	if option.ConnWriteTimeout == 0 {
-		option.ConnWriteTimeout = max(DefaultTCPKeepAlive, option.Dialer.KeepAlive) * 10
-	}
-	if option.BlockingPipeline == 0 {
-		option.BlockingPipeline = DefaultBlockingPipeline
-	}
-	if option.DisableAutoPipelining {
-		option.AlwaysPipelining = false
-	}
-	if option.ShuffleInit {
-		util.Shuffle(len(option.InitAddress), func(i, j int) {
-			option.InitAddress[i], option.InitAddress[j] = option.InitAddress[j], option.InitAddress[i]
-		})
-	}
-	if option.PipelineMultiplex > MaxPipelineMultiplex {
-		return nil, ErrWrongPipelineMultiplex
-	}
-	if option.RetryDelay == nil {
-		option.RetryDelay = defaultRetryDelayFn
-	}
-	if option.Sentinel.MasterSet != "" {
-		option.PipelineMultiplex = singleClientMultiplex(option.PipelineMultiplex)
-		return newSentinelClient(&option, makeConn, newRetryer(option.RetryDelay))
-	}
-
-	if option.Standalone.EnableRedirect {
-		option.PipelineMultiplex = singleClientMultiplex(option.PipelineMultiplex)
-		return newStandaloneClient(&option, makeConn, newRetryer(option.RetryDelay))
-	}
-	if len(option.Standalone.ReplicaAddress) > 0 {
-		if option.SendToReplicas == nil {
-			return nil, ErrNoSendToReplicas
-		}
-		option.PipelineMultiplex = singleClientMultiplex(option.PipelineMultiplex)
-		return newStandaloneClient(&option, makeConn, newRetryer(option.RetryDelay))
-	}
-	if option.ForceSingleClient {
-		option.PipelineMultiplex = singleClientMultiplex(option.PipelineMultiplex)
-		return newSingleClient(&option, nil, makeConn, newRetryer(option.RetryDelay))
-	}
-	if client, err = newClusterClient(&option, makeConn, newRetryer(option.RetryDelay)); err != nil {
-		if client == (*clusterClient)(nil) {
-			return nil, err
-		}
-		if len(option.InitAddress) == 1 && (err.Error() == redisErrMsgCommandNotAllow || strings.Contains(strings.ToUpper(err.Error()), "CLUSTER")) {
-			option.PipelineMultiplex = singleClientMultiplex(option.PipelineMultiplex)
-			client, err = newSingleClient(&option, client.(*clusterClient).single(), makeConn, newRetryer(option.RetryDelay))
-		} else {
-			client.Close()
-			return nil, err
-		}
-	}
-	return client, err
+	return *new(Client), nil
 }
 
-func singleClientMultiplex(multiplex int) int {
-	if multiplex == 0 {
-		if multiplex = int(math.Log2(float64(runtime.GOMAXPROCS(0)))); multiplex >= 2 {
-			multiplex = 2
-		}
-	}
-	if multiplex < 0 {
-		multiplex = 0
-	}
-	return multiplex
-}
+// the buffer should be able to hold an int64 string at least
 
-func makeConn(dst string, opt *ClientOption) conn {
-	return makeMux(dst, opt, dial)
-}
+func singleClientMultiplex(multiplex int) int { _ = "STUB: not implemented"; return 0 }
+
+func makeConn(dst string, opt *ClientOption) conn { _ = "STUB: not implemented"; return *new(conn) }
 
 func dial(ctx context.Context, dst string, opt *ClientOption) (conn net.Conn, err error) {
-	if opt.DialCtxFn != nil {
-		return opt.DialCtxFn(ctx, dst, &opt.Dialer, opt.TLSConfig)
-	}
-	if opt.DialFn != nil {
-		return opt.DialFn(dst, &opt.Dialer, opt.TLSConfig)
-	}
-	if opt.TLSConfig != nil {
-		dialer := tls.Dialer{NetDialer: &opt.Dialer, Config: opt.TLSConfig}
-		conn, err = dialer.DialContext(ctx, "tcp", dst)
-	} else {
-		conn, err = opt.Dialer.DialContext(ctx, "tcp", dst)
-	}
-	return conn, err
+	_ = "STUB: not implemented"
+	return *new(net.Conn), nil
 }
 
 const redisErrMsgCommandNotAllow = "command is not allowed"

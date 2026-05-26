@@ -2,32 +2,18 @@ package om
 
 import (
 	"context"
-	"encoding/json"
 	"reflect"
-	"strconv"
-	"strings"
 	"time"
 
-	"github.com/oklog/ulid/v2"
 	"github.com/redis/rueidis"
-	"github.com/redis/rueidis/internal/cmds"
 )
 
 // NewJSONRepository creates a JSONRepository.
 // The prefix parameter is used as redis key prefix. The entity stored by the repository will be named in the form of `{prefix}:{id}`
 // The schema parameter should be a struct with fields tagged with `redis:",key"`. The `redis:",ver"` tag is optional for optimistic locking.
 func NewJSONRepository[T any](prefix string, schema T, client rueidis.Client, opts ...RepositoryOption) Repository[T] {
-	repo := &JSONRepository[T]{
-		prefix: prefix,
-		idx:    "jsonidx:" + prefix,
-		typ:    reflect.TypeOf(schema),
-		client: client,
-	}
-	repo.schema = newSchema(repo.typ)
-	for _, opt := range opts {
-		opt((*JSONRepository[any])(repo))
-	}
-	return repo
+	_ = "STUB: not implemented"
+	return nil
 }
 
 var _ Repository[any] = (*JSONRepository[any])(nil)
@@ -42,133 +28,76 @@ type JSONRepository[T any] struct {
 }
 
 // NewEntity returns an empty entity and will have the `redis:",key"` field be set with ULID automatically.
-func (r *JSONRepository[T]) NewEntity() *T {
-	var v T
-	reflect.ValueOf(&v).Elem().Field(r.schema.key.idx).Set(reflect.ValueOf(ulid.Make().String()))
-	return &v
-}
+func (r *JSONRepository[T]) NewEntity() *T { _ = "STUB: not implemented"; return nil }
 
 // Fetch an entity whose name is `{prefix}:{id}`
 func (r *JSONRepository[T]) Fetch(ctx context.Context, id string) (v *T, err error) {
-	record, err := r.client.Do(ctx, r.client.B().JsonGet().Key(key(r.prefix, id)).Path(".").Build()).ToString()
-	if err == nil {
-		v, err = r.decode(record)
-	}
-	return v, err
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // FetchCache is like Fetch, but it uses the client side caching mechanism.
 func (r *JSONRepository[T]) FetchCache(ctx context.Context, id string, ttl time.Duration) (v *T, err error) {
-	record, err := r.client.DoCache(ctx, r.client.B().JsonGet().Key(key(r.prefix, id)).Path(".").Cache(), ttl).ToString()
-	if err == nil {
-		v, err = r.decode(record)
-	}
-	return v, err
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (r *JSONRepository[T]) decode(record string) (*T, error) {
-	var v T
-	if err := json.Unmarshal([]byte(record), &v); err != nil {
-		return nil, err
-	}
-	return &v, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (r *JSONRepository[T]) toExec(entity *T) (verf reflect.Value, exec rueidis.LuaExec) {
-	val := reflect.ValueOf(entity).Elem()
-	if !r.schema.verless {
-		verf = val.Field(r.schema.ver.idx)
-	} else {
-		verf = reflect.ValueOf(int64(0)) // verless, set verf to a dummy value
-	}
-	extVal := int64(0)
-	if r.schema.ext != nil {
-		if ext, ok := val.Field(r.schema.ext.idx).Interface().(time.Time); ok && !ext.IsZero() {
-			extVal = ext.UnixMilli()
-		}
-	}
-	exec.Keys = []string{key(r.prefix, val.Field(r.schema.key.idx).String())}
-	if extVal != 0 {
-		exec.Args = []string{r.schema.ver.name, strconv.FormatInt(verf.Int(), 10), rueidis.JSON(entity), strconv.FormatInt(extVal, 10)}
-	} else {
-		exec.Args = []string{r.schema.ver.name, strconv.FormatInt(verf.Int(), 10), rueidis.JSON(entity)}
-	}
-	return
+	_ = "STUB: not implemented"
+	return *new(reflect.Value), *new(rueidis.LuaExec)
 }
+
+// verless, set verf to a dummy value
 
 // Save the entity under the redis key of `{prefix}:{id}`.
 // If the entity has a `redis:",ver"` field, it uses optimistic locking to prevent lost updates.
 func (r *JSONRepository[T]) Save(ctx context.Context, entity *T) (err error) {
-	var verf reflect.Value
-	var exec rueidis.LuaExec
-	verf, exec = r.toExec(entity)
-	str, err := jsonSaveScript.Exec(ctx, r.client, exec.Keys, exec.Args).ToString()
-	if rueidis.IsRedisNil(err) {
-		return ErrVersionMismatch
-	}
-	if err == nil && !r.schema.verless {
-		ver, _ := strconv.ParseInt(str, 10, 64)
-		verf.SetInt(ver)
-	}
-	return err
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // SaveMulti batches multiple HashRepository.Save at once
 func (r *JSONRepository[T]) SaveMulti(ctx context.Context, entities ...*T) []error {
-	errs := make([]error, len(entities))
-	verf := make([]reflect.Value, len(entities))
-	exec := make([]rueidis.LuaExec, len(entities))
-	for i, entity := range entities {
-		verf[i], exec[i] = r.toExec(entity)
-	}
-	for i, resp := range jsonSaveScript.ExecMulti(ctx, r.client, exec...) {
-		str, err := resp.ToString()
-		if rueidis.IsRedisNil(err) {
-			errs[i] = ErrVersionMismatch
-			continue
-		}
-		if err == nil && !r.schema.verless {
-			ver, _ := strconv.ParseInt(str, 10, 64)
-			verf[i].SetInt(ver)
-		} else if err != nil {
-			errs[i] = err
-		}
-	}
-	return errs
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Remove the entity under the redis key of `{prefix}:{id}`.
 func (r *JSONRepository[T]) Remove(ctx context.Context, id string) error {
-	return r.client.Do(ctx, r.client.B().Del().Key(key(r.prefix, id)).Build()).Error()
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // AlterIndex uses FT.ALTER from the RediSearch module to alter index under the name `jsonidx:{prefix}`
 // You can use the cmdFn parameter to mutate the index alter command.
 func (r *JSONRepository[T]) AlterIndex(ctx context.Context, cmdFn func(alter FtAlterIndex) rueidis.Completed) error {
-	return r.client.Do(ctx, cmdFn(r.client.B().FtAlter().Index(r.idx))).Error()
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // CreateIndex uses FT.CREATE from the RediSearch module to create an inverted index under the name `jsonidx:{prefix}`
 // You can use the cmdFn parameter to mutate the index construction command,
 // and note that the field name should be specified with JSON path syntax; otherwise, the index may not work as expected.
 func (r *JSONRepository[T]) CreateIndex(ctx context.Context, cmdFn func(schema FtCreateSchema) rueidis.Completed) error {
-	return r.client.Do(ctx, cmdFn(r.client.B().FtCreate().Index(r.idx).OnJson().Prefix(1).Prefix(r.prefix+":").Schema())).Error()
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // CreateAndAliasIndex creates a new index, aliases it, and drops the old index if needed.
 func (r *JSONRepository[T]) CreateAndAliasIndex(ctx context.Context, cmdFn func(schema FtCreateSchema) rueidis.Completed) error {
-	return createAndAliasIndex(ctx, r.idx, r.client, func(idx string) cmds.FtCreatePrefixPrefix {
-		return r.client.B().FtCreate().
-			Index(idx).
-			OnJson().
-			Prefix(1).
-			Prefix(r.prefix + ":")
-	}, cmdFn)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // DropIndex uses FT.DROPINDEX from the RediSearch module to drop the index whose name is `jsonidx:{prefix}`
 func (r *JSONRepository[T]) DropIndex(ctx context.Context) error {
-	return r.client.Do(ctx, r.client.B().FtDropindex().Index(r.idx).Build()).Error()
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Search uses FT.SEARCH from the RediSearch module to search the index whose name is `jsonidx:{prefix}`
@@ -178,34 +107,20 @@ func (r *JSONRepository[T]) DropIndex(ctx context.Context) error {
 // 3. error if any
 // You can use the cmdFn parameter to mutate the search command.
 func (r *JSONRepository[T]) Search(ctx context.Context, cmdFn func(search FtSearchIndex) rueidis.Completed) (n int64, s []*T, err error) {
-	n, resp, err := r.client.Do(ctx, cmdFn(r.client.B().FtSearch().Index(r.idx))).AsFtSearch()
-	if err == nil {
-		s = make([]*T, len(resp))
-		for i, v := range resp {
-			doc := v.Doc["$"]
-			doc = strings.TrimPrefix(doc, "[") // supports dialect 3
-			doc = strings.TrimSuffix(doc, "]")
-			if s[i], err = r.decode(doc); err != nil {
-				return 0, nil, err
-			}
-		}
-	}
-	return n, s, err
+	_ = "STUB: not implemented"
+	return 0, nil, nil
 }
+
+// supports dialect 3
 
 // Aggregate performs the FT.AGGREGATE and returns a *AggregateCursor for accessing the results
 func (r *JSONRepository[T]) Aggregate(ctx context.Context, cmdFn func(agg FtAggregateIndex) rueidis.Completed) (cursor *AggregateCursor, err error) {
-	cid, total, resp, err := r.client.Do(ctx, cmdFn(r.client.B().FtAggregate().Index(r.idx))).AsFtAggregateCursor()
-	if err != nil {
-		return nil, err
-	}
-	return newAggregateCursor(r.idx, r.client, resp, cid, total), nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // IndexName returns the index name used in the FT.CREATE
-func (r *JSONRepository[T]) IndexName() string {
-	return r.idx
-}
+func (r *JSONRepository[T]) IndexName() string { _ = "STUB: not implemented"; return "" }
 
 var jsonSaveScript = rueidis.NewLuaScript(`
 if (ARGV[1] == '')

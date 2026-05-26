@@ -3,8 +3,6 @@ package rueidisprob
 import (
 	"context"
 	"errors"
-	"math"
-	"strconv"
 
 	"github.com/redis/rueidis"
 )
@@ -124,9 +122,8 @@ type BloomFilterOptionFunc func(*BloomFilterOptions)
 // If enabled, Exists and ExistsMulti methods will be available as read-only operations.
 // NOTE: If enabled, minimum redis version should be 7.0.0.
 func WithEnableReadOperation(enableReadOperations bool) BloomFilterOptionFunc {
-	return func(o *BloomFilterOptions) {
-		o.enableReadOperation = enableReadOperations
-	}
+	_ = "STUB: not implemented"
+	return *new(BloomFilterOptionFunc)
 }
 
 // BloomFilter based on Redis Bitmaps.
@@ -193,191 +190,46 @@ func NewBloomFilter(
 	falsePositiveRate float64,
 	opts ...BloomFilterOptionFunc,
 ) (BloomFilter, error) {
-	if len(name) == 0 {
-		return nil, ErrEmptyName
-	}
-
-	if falsePositiveRate <= 0 {
-		return nil, ErrFalsePositiveRateLessThanEqualZero
-	}
-	if falsePositiveRate > 1 {
-		return nil, ErrFalsePositiveRateGreaterThanOne
-	}
-
-	size := numberOfBloomFilterBits(expectedNumberOfItems, falsePositiveRate)
-	if size == 0 {
-		return nil, ErrBitsSizeZero
-	}
-	if size > maxSize {
-		return nil, ErrBitsSizeTooLarge
-	}
-	hashIterations := numberOfBloomFilterHashFunctions(size, expectedNumberOfItems)
-
-	options := &BloomFilterOptions{}
-	for _, opt := range opts {
-		opt(options)
-	}
-
-	var existsMultiScript *rueidis.Lua
-	if options.enableReadOperation {
-		existsMultiScript = rueidis.NewLuaScriptReadOnly(bloomFilterExistsMultiReadOnlyScript)
-	} else {
-		existsMultiScript = rueidis.NewLuaScript(bloomFilterExistsMultiScript)
-	}
-
-	// NOTE: https://redis.io/docs/reference/cluster-spec/#hash-tags
-	bfName := "{" + name + "}"
-	counterName := bfName + ":c"
-	return &bloomFilter{
-		client:              client,
-		name:                bfName,
-		counter:             counterName,
-		hashIterations:      hashIterations,
-		hashIterationString: strconv.FormatUint(uint64(hashIterations), 10),
-		size:                size,
-		addMultiScript:      rueidis.NewLuaScript(bloomFilterAddMultiScript),
-		addMultiKeys:        []string{bfName, counterName},
-		existsMultiScript:   existsMultiScript,
-		existsMultiKeys:     []string{bfName},
-	}, nil
+	_ = "STUB: not implemented"
+	return *new(BloomFilter), nil
 }
 
-func numberOfBloomFilterBits(n uint, r float64) uint {
-	return uint(math.Ceil(-float64(n) * math.Log(r) / math.Pow(math.Log(2), 2)))
-}
+// NOTE: https://redis.io/docs/reference/cluster-spec/#hash-tags
 
-func numberOfBloomFilterHashFunctions(s uint, n uint) uint {
-	return uint(math.Round(float64(s) / float64(n) * math.Log(2)))
-}
+func numberOfBloomFilterBits(n uint, r float64) uint { _ = "STUB: not implemented"; return 0 }
+
+func numberOfBloomFilterHashFunctions(s uint, n uint) uint { _ = "STUB: not implemented"; return 0 }
 
 func (c *bloomFilter) Add(ctx context.Context, key string) error {
-	return c.AddMulti(ctx, []string{key})
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func (c *bloomFilter) AddMulti(ctx context.Context, keys []string) error {
-	if len(keys) == 0 {
-		return nil
-	}
-
-	buf := bytesPool.Get(0, len(keys)*int(c.hashIterations)*8)
-	defer bytesPool.Put(buf)
-
-	indexes := c.indexes(keys, &buf.s)
-
-	args := make([]string, 0, len(indexes)+1)
-	args = append(args, c.hashIterationString)
-	args = append(args, indexes...)
-
-	resp := c.addMultiScript.Exec(ctx, c.client, c.addMultiKeys, args)
-	return resp.Error()
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func (c *bloomFilter) indexes(keys []string, buf *[]byte) []string {
-	allIndexes := make([]string, 0, len(keys)*int(c.hashIterations))
-	size := uint64(c.size)
-	for _, key := range keys {
-		h1, h2 := hash([]byte(key))
-		for i := uint(0); i < c.hashIterations; i++ {
-			offset := len(*buf)
-			*buf = strconv.AppendUint(*buf, index(h1, h2, i, size), 10)
-			allIndexes = append(allIndexes, rueidis.BinaryString((*buf)[offset:]))
-		}
-	}
-	return allIndexes
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func (c *bloomFilter) Exists(ctx context.Context, key string) (bool, error) {
-	exists, err := c.ExistsMulti(ctx, []string{key})
-	if err != nil {
-		return false, err
-	}
-
-	return exists[0], nil
+	_ = "STUB: not implemented"
+	return false, nil
 }
 
 func (c *bloomFilter) ExistsMulti(ctx context.Context, keys []string) ([]bool, error) {
-	if len(keys) == 0 {
-		return nil, nil
-	}
-
-	buf := bytesPool.Get(0, len(keys)*int(c.hashIterations)*8)
-	defer bytesPool.Put(buf)
-
-	indexes := c.indexes(keys, &buf.s)
-
-	args := make([]string, 0, len(indexes)+1)
-	args = append(args, c.hashIterationString)
-	args = append(args, indexes...)
-
-	resp := c.existsMultiScript.Exec(ctx, c.client, c.existsMultiKeys, args)
-	if resp.Error() != nil {
-		return nil, resp.Error()
-	}
-
-	arr, err := resp.ToArray()
-	if err != nil {
-		return nil, err
-	}
-
-	result := make([]bool, len(keys))
-	for i, el := range arr {
-		v, err := el.AsBool()
-		if err != nil {
-			if rueidis.IsRedisNil(err) {
-				result[i] = false
-				continue
-			}
-
-			return nil, err
-		}
-
-		result[i] = v
-	}
-	return result, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (c *bloomFilter) Reset(ctx context.Context) error {
-	resp := c.client.Do(
-		ctx,
-		c.client.B().
-			Eval().
-			Script(bloomFilterResetScript).
-			Numkeys(2).
-			Key(c.name, c.counter).
-			Build(),
-	)
-	return resp.Error()
-}
+func (c *bloomFilter) Reset(ctx context.Context) error { _ = "STUB: not implemented"; return nil }
 
-func (c *bloomFilter) Delete(ctx context.Context) error {
-	resp := c.client.Do(
-		ctx,
-		c.client.B().
-			Eval().
-			Script(bloomFilterDeleteScript).
-			Numkeys(2).
-			Key(c.name, c.counter).
-			Build(),
-	)
-	return resp.Error()
-}
+func (c *bloomFilter) Delete(ctx context.Context) error { _ = "STUB: not implemented"; return nil }
 
 func (c *bloomFilter) Count(ctx context.Context) (uint64, error) {
-	resp := c.client.Do(
-		ctx,
-		c.client.B().
-			Get().
-			Key(c.counter).
-			Build(),
-	)
-	count, err := resp.AsUint64()
-	if err != nil {
-		if rueidis.IsRedisNil(err) {
-			return 0, nil
-		}
-
-		return 0, err
-	}
-
-	return count, nil
+	_ = "STUB: not implemented"
+	return 0, nil
 }

@@ -3,8 +3,6 @@ package rueidisprob
 import (
 	"context"
 	"errors"
-	"math"
-	"strconv"
 
 	"github.com/redis/rueidis"
 )
@@ -187,250 +185,63 @@ func NewCountingBloomFilter(
 	expectedNumberOfItems uint,
 	falsePositiveRate float64,
 ) (CountingBloomFilter, error) {
-	if len(name) == 0 {
-		return nil, ErrEmptyCountingBloomFilterName
-	}
-
-	if falsePositiveRate <= 0 {
-		return nil, ErrCountingBloomFilterFalsePositiveRateLessThanEqualZero
-	}
-	if falsePositiveRate >= 1 {
-		return nil, ErrCountingBloomFilterFalsePositiveRateGreaterThanOne
-	}
-
-	size := numberOfBloomFilterBits(expectedNumberOfItems, falsePositiveRate)
-	if size == 0 {
-		return nil, ErrCountingBloomFilterBitsSizeZero
-	}
-	hashIterations := numberOfBloomFilterHashFunctions(size, expectedNumberOfItems)
-
-	// NOTE: https://redis.io/docs/reference/cluster-spec/#hash-tags
-	baseName := "{" + name + "}"
-	bfName := baseName + ":cbf"
-	counterName := bfName + ":c"
-	return &countingBloomFilter{
-		client:              client,
-		name:                bfName,
-		counter:             counterName,
-		hashIterations:      hashIterations,
-		hashIterationString: strconv.FormatUint(uint64(hashIterations), 10),
-		size:                size,
-		addMultiScript:      rueidis.NewLuaScript(countingBloomFilterAddMultiScript),
-		addMultiKeys:        []string{bfName, counterName},
-		removeMultiScript:   rueidis.NewLuaScript(countingBloomFilterRemoveMultiScript),
-		removeMultiKeys:     []string{bfName, counterName},
-	}, nil
+	_ = "STUB: not implemented"
+	return *new(CountingBloomFilter), nil
 }
 
+// NOTE: https://redis.io/docs/reference/cluster-spec/#hash-tags
+
 func (f *countingBloomFilter) Add(ctx context.Context, key string) error {
-	return f.AddMulti(ctx, []string{key})
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func (f *countingBloomFilter) AddMulti(ctx context.Context, keys []string) error {
-	if len(keys) == 0 {
-		return nil
-	}
-
-	buf := bytesPool.Get(0, len(keys)*int(f.hashIterations)*8)
-	defer bytesPool.Put(buf)
-
-	indexes := f.indexes(keys, &buf.s)
-
-	args := make([]string, 0, len(indexes)+1)
-	args = append(args, strconv.Itoa(len(keys)))
-	args = append(args, indexes...)
-
-	resp := f.addMultiScript.Exec(ctx, f.client, f.addMultiKeys, args)
-	return resp.Error()
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func (f *countingBloomFilter) indexes(keys []string, buf *[]byte) []string {
-	allIndexes := make([]string, 0, len(keys)*int(f.hashIterations))
-	size := uint64(f.size)
-	for _, key := range keys {
-		h1, h2 := hash([]byte(key))
-		for i := uint(0); i < f.hashIterations; i++ {
-			offset := len(*buf)
-			*buf = strconv.AppendUint(*buf, index(h1, h2, i, size), 10)
-			allIndexes = append(allIndexes, rueidis.BinaryString((*buf)[offset:]))
-		}
-	}
-	return allIndexes
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func (f *countingBloomFilter) Exists(ctx context.Context, key string) (bool, error) {
-	exists, err := f.ExistsMulti(ctx, []string{key})
-	if err != nil {
-		return false, err
-	}
-
-	return exists[0], nil
+	_ = "STUB: not implemented"
+	return false, nil
 }
 
 func (f *countingBloomFilter) ExistsMulti(ctx context.Context, keys []string) ([]bool, error) {
-	if len(keys) == 0 {
-		return nil, nil
-	}
-
-	buf := bytesPool.Get(0, len(keys)*int(f.hashIterations)*8)
-	defer bytesPool.Put(buf)
-
-	indexes := f.indexes(keys, &buf.s)
-
-	resp := f.client.Do(
-		ctx,
-		f.client.B().
-			Hmget().
-			Key(f.name).
-			Field(indexes...).
-			Build(),
-	)
-	if resp.Error() != nil {
-		return nil, resp.Error()
-	}
-
-	messages, err := resp.ToArray()
-	if err != nil {
-		return nil, err
-	}
-
-	result := make([]bool, 0, len(keys))
-	isExist := true
-	for i, message := range messages {
-		cnt, err := message.AsUint64()
-		if err != nil {
-			if !rueidis.IsRedisNil(err) {
-				return nil, err
-			}
-
-			isExist = false
-		}
-
-		if cnt == 0 {
-			isExist = false
-		}
-
-		if (i+1)%int(f.hashIterations) == 0 {
-			result = append(result, isExist)
-			isExist = true
-		}
-	}
-
-	return result, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (f *countingBloomFilter) Remove(ctx context.Context, key string) error {
-	return f.RemoveMulti(ctx, []string{key})
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func (f *countingBloomFilter) RemoveMulti(ctx context.Context, keys []string) error {
-	if len(keys) == 0 {
-		return nil
-	}
-
-	buf := bytesPool.Get(0, len(keys)*int(f.hashIterations)*8)
-	defer bytesPool.Put(buf)
-
-	indexes := f.indexes(keys, &buf.s)
-
-	args := make([]string, 0, len(indexes)+1)
-	args = append(args, indexes...)
-	args = append(args, f.hashIterationString)
-
-	resp := f.removeMultiScript.Exec(ctx, f.client, f.removeMultiKeys, args)
-	return resp.Error()
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func (f *countingBloomFilter) Delete(ctx context.Context) error {
-	resp := f.client.Do(
-		ctx,
-		f.client.B().
-			Eval().
-			Script(countingBloomFilterDeleteScript).
-			Numkeys(2).
-			Key(f.name, f.counter).
-			Build(),
-	)
-	return resp.Error()
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func (f *countingBloomFilter) ItemMinCount(ctx context.Context, key string) (uint64, error) {
-	counts, err := f.ItemMinCountMulti(ctx, []string{key})
-	if err != nil {
-		return 0, err
-	}
-
-	return counts[0], nil
+	_ = "STUB: not implemented"
+	return 0, nil
 }
 
 func (f *countingBloomFilter) ItemMinCountMulti(ctx context.Context, keys []string) ([]uint64, error) {
-	if len(keys) == 0 {
-		return nil, nil
-	}
-
-	buf := bytesPool.Get(0, len(keys)*int(f.hashIterations)*8)
-	defer bytesPool.Put(buf)
-
-	indexes := f.indexes(keys, &buf.s)
-
-	resp := f.client.Do(
-		ctx,
-		f.client.B().
-			Hmget().
-			Key(f.name).
-			Field(indexes...).
-			Build(),
-	)
-	if resp.Error() != nil {
-		return nil, resp.Error()
-	}
-
-	messages, err := resp.ToArray()
-	if err != nil {
-		return nil, err
-	}
-
-	counts := make([]uint64, 0, len(messages))
-	minCount := uint64(math.MaxUint64)
-	for i, message := range messages {
-		cnt, err := message.AsUint64()
-		if err != nil {
-			if !rueidis.IsRedisNil(err) {
-				return nil, err
-			}
-
-			minCount = 0
-		}
-
-		if cnt < minCount {
-			minCount = cnt
-		}
-
-		if (i+1)%int(f.hashIterations) == 0 {
-			counts = append(counts, minCount)
-			minCount = uint64(math.MaxUint64)
-		}
-	}
-
-	return counts, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (f *countingBloomFilter) Count(ctx context.Context) (uint64, error) {
-	resp := f.client.Do(
-		ctx,
-		f.client.B().
-			Get().
-			Key(f.counter).
-			Build(),
-	)
-	count, err := resp.AsUint64()
-	if err != nil {
-		if rueidis.IsRedisNil(err) {
-			return 0, nil
-		}
-
-		return 0, err
-	}
-
-	return count, nil
+	_ = "STUB: not implemented"
+	return 0, nil
 }

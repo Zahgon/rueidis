@@ -2,709 +2,494 @@
 
 package cmds
 
-import "strconv"
-
 type Bitcount Incomplete
 
-func (b Builder) Bitcount() (c Bitcount) {
-	c = Bitcount{cs: get(), ks: b.ks, cf: int16(readonly)}
-	c.cs.s = append(c.cs.s, "BITCOUNT")
-	return c
-}
+func (b Builder) Bitcount() (c Bitcount) { _ = "STUB: not implemented"; return *new(Bitcount) }
 
-func (c Bitcount) Key(key string) BitcountKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (BitcountKey)(c)
-}
+func (c Bitcount) Key(key string) BitcountKey { _ = "STUB: not implemented"; return *new(BitcountKey) }
 
 type BitcountIndexEnd Incomplete
 
 func (c BitcountIndexEnd) Byte() BitcountIndexIndexUnitByte {
-	c.cs.s = append(c.cs.s, "BYTE")
-	return (BitcountIndexIndexUnitByte)(c)
+	_ = "STUB: not implemented"
+	return *new(BitcountIndexIndexUnitByte)
 }
 
 func (c BitcountIndexEnd) Bit() BitcountIndexIndexUnitBit {
-	c.cs.s = append(c.cs.s, "BIT")
-	return (BitcountIndexIndexUnitBit)(c)
+	_ = "STUB: not implemented"
+	return *new(BitcountIndexIndexUnitBit)
 }
 
-func (c BitcountIndexEnd) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c BitcountIndexEnd) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c BitcountIndexEnd) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c BitcountIndexEnd) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type BitcountIndexIndexUnitBit Incomplete
 
 func (c BitcountIndexIndexUnitBit) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 func (c BitcountIndexIndexUnitBit) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Cacheable)
 }
 
 type BitcountIndexIndexUnitByte Incomplete
 
 func (c BitcountIndexIndexUnitByte) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 func (c BitcountIndexIndexUnitByte) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Cacheable)
 }
 
 type BitcountIndexStart Incomplete
 
 func (c BitcountIndexStart) End(end int64) BitcountIndexEnd {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(end, 10))
-	return (BitcountIndexEnd)(c)
+	_ = "STUB: not implemented"
+	return *new(BitcountIndexEnd)
 }
 
 type BitcountKey Incomplete
 
 func (c BitcountKey) Start(start int64) BitcountIndexStart {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(start, 10))
-	return (BitcountIndexStart)(c)
+	_ = "STUB: not implemented"
+	return *new(BitcountIndexStart)
 }
 
-func (c BitcountKey) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c BitcountKey) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c BitcountKey) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c BitcountKey) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type Bitfield Incomplete
 
-func (b Builder) Bitfield() (c Bitfield) {
-	c = Bitfield{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "BITFIELD")
-	return c
-}
+func (b Builder) Bitfield() (c Bitfield) { _ = "STUB: not implemented"; return *new(Bitfield) }
 
-func (c Bitfield) Key(key string) BitfieldKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (BitfieldKey)(c)
-}
+func (c Bitfield) Key(key string) BitfieldKey { _ = "STUB: not implemented"; return *new(BitfieldKey) }
 
 type BitfieldKey Incomplete
 
 func (c BitfieldKey) Get(encoding string, offset int64) BitfieldOperationGet {
-	c.cs.s = append(c.cs.s, "GET", encoding, strconv.FormatInt(offset, 10))
-	return (BitfieldOperationGet)(c)
+	_ = "STUB: not implemented"
+	return *new(BitfieldOperationGet)
 }
 
 func (c BitfieldKey) OverflowWrap() BitfieldOperationWriteOverflowWrap {
-	c.cs.s = append(c.cs.s, "OVERFLOW", "WRAP")
-	return (BitfieldOperationWriteOverflowWrap)(c)
+	_ = "STUB: not implemented"
+	return *new(BitfieldOperationWriteOverflowWrap)
 }
 
 func (c BitfieldKey) OverflowSat() BitfieldOperationWriteOverflowSat {
-	c.cs.s = append(c.cs.s, "OVERFLOW", "SAT")
-	return (BitfieldOperationWriteOverflowSat)(c)
+	_ = "STUB: not implemented"
+	return *new(BitfieldOperationWriteOverflowSat)
 }
 
 func (c BitfieldKey) OverflowFail() BitfieldOperationWriteOverflowFail {
-	c.cs.s = append(c.cs.s, "OVERFLOW", "FAIL")
-	return (BitfieldOperationWriteOverflowFail)(c)
+	_ = "STUB: not implemented"
+	return *new(BitfieldOperationWriteOverflowFail)
 }
 
 func (c BitfieldKey) Set(encoding string, offset int64, value int64) BitfieldOperationWriteSetSet {
-	c.cs.s = append(c.cs.s, "SET", encoding, strconv.FormatInt(offset, 10), strconv.FormatInt(value, 10))
-	return (BitfieldOperationWriteSetSet)(c)
+	_ = "STUB: not implemented"
+	return *new(BitfieldOperationWriteSetSet)
 }
 
 func (c BitfieldKey) Incrby(encoding string, offset int64, increment int64) BitfieldOperationWriteSetIncrby {
-	c.cs.s = append(c.cs.s, "INCRBY", encoding, strconv.FormatInt(offset, 10), strconv.FormatInt(increment, 10))
-	return (BitfieldOperationWriteSetIncrby)(c)
+	_ = "STUB: not implemented"
+	return *new(BitfieldOperationWriteSetIncrby)
 }
 
-func (c BitfieldKey) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c BitfieldKey) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type BitfieldOperationGet Incomplete
 
 func (c BitfieldOperationGet) OverflowWrap() BitfieldOperationWriteOverflowWrap {
-	c.cs.s = append(c.cs.s, "OVERFLOW", "WRAP")
-	return (BitfieldOperationWriteOverflowWrap)(c)
+	_ = "STUB: not implemented"
+	return *new(BitfieldOperationWriteOverflowWrap)
 }
 
 func (c BitfieldOperationGet) OverflowSat() BitfieldOperationWriteOverflowSat {
-	c.cs.s = append(c.cs.s, "OVERFLOW", "SAT")
-	return (BitfieldOperationWriteOverflowSat)(c)
+	_ = "STUB: not implemented"
+	return *new(BitfieldOperationWriteOverflowSat)
 }
 
 func (c BitfieldOperationGet) OverflowFail() BitfieldOperationWriteOverflowFail {
-	c.cs.s = append(c.cs.s, "OVERFLOW", "FAIL")
-	return (BitfieldOperationWriteOverflowFail)(c)
+	_ = "STUB: not implemented"
+	return *new(BitfieldOperationWriteOverflowFail)
 }
 
 func (c BitfieldOperationGet) Set(encoding string, offset int64, value int64) BitfieldOperationWriteSetSet {
-	c.cs.s = append(c.cs.s, "SET", encoding, strconv.FormatInt(offset, 10), strconv.FormatInt(value, 10))
-	return (BitfieldOperationWriteSetSet)(c)
+	_ = "STUB: not implemented"
+	return *new(BitfieldOperationWriteSetSet)
 }
 
 func (c BitfieldOperationGet) Incrby(encoding string, offset int64, increment int64) BitfieldOperationWriteSetIncrby {
-	c.cs.s = append(c.cs.s, "INCRBY", encoding, strconv.FormatInt(offset, 10), strconv.FormatInt(increment, 10))
-	return (BitfieldOperationWriteSetIncrby)(c)
+	_ = "STUB: not implemented"
+	return *new(BitfieldOperationWriteSetIncrby)
 }
 
 func (c BitfieldOperationGet) Get(encoding string, offset int64) BitfieldOperationGet {
-	c.cs.s = append(c.cs.s, "GET", encoding, strconv.FormatInt(offset, 10))
-	return c
+	_ = "STUB: not implemented"
+	return *new(BitfieldOperationGet)
 }
 
-func (c BitfieldOperationGet) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c BitfieldOperationGet) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type BitfieldOperationWriteOverflowFail Incomplete
 
 func (c BitfieldOperationWriteOverflowFail) Set(encoding string, offset int64, value int64) BitfieldOperationWriteSetSet {
-	c.cs.s = append(c.cs.s, "SET", encoding, strconv.FormatInt(offset, 10), strconv.FormatInt(value, 10))
-	return (BitfieldOperationWriteSetSet)(c)
+	_ = "STUB: not implemented"
+	return *new(BitfieldOperationWriteSetSet)
 }
 
 func (c BitfieldOperationWriteOverflowFail) Incrby(encoding string, offset int64, increment int64) BitfieldOperationWriteSetIncrby {
-	c.cs.s = append(c.cs.s, "INCRBY", encoding, strconv.FormatInt(offset, 10), strconv.FormatInt(increment, 10))
-	return (BitfieldOperationWriteSetIncrby)(c)
+	_ = "STUB: not implemented"
+	return *new(BitfieldOperationWriteSetIncrby)
 }
 
 type BitfieldOperationWriteOverflowSat Incomplete
 
 func (c BitfieldOperationWriteOverflowSat) Set(encoding string, offset int64, value int64) BitfieldOperationWriteSetSet {
-	c.cs.s = append(c.cs.s, "SET", encoding, strconv.FormatInt(offset, 10), strconv.FormatInt(value, 10))
-	return (BitfieldOperationWriteSetSet)(c)
+	_ = "STUB: not implemented"
+	return *new(BitfieldOperationWriteSetSet)
 }
 
 func (c BitfieldOperationWriteOverflowSat) Incrby(encoding string, offset int64, increment int64) BitfieldOperationWriteSetIncrby {
-	c.cs.s = append(c.cs.s, "INCRBY", encoding, strconv.FormatInt(offset, 10), strconv.FormatInt(increment, 10))
-	return (BitfieldOperationWriteSetIncrby)(c)
+	_ = "STUB: not implemented"
+	return *new(BitfieldOperationWriteSetIncrby)
 }
 
 type BitfieldOperationWriteOverflowWrap Incomplete
 
 func (c BitfieldOperationWriteOverflowWrap) Set(encoding string, offset int64, value int64) BitfieldOperationWriteSetSet {
-	c.cs.s = append(c.cs.s, "SET", encoding, strconv.FormatInt(offset, 10), strconv.FormatInt(value, 10))
-	return (BitfieldOperationWriteSetSet)(c)
+	_ = "STUB: not implemented"
+	return *new(BitfieldOperationWriteSetSet)
 }
 
 func (c BitfieldOperationWriteOverflowWrap) Incrby(encoding string, offset int64, increment int64) BitfieldOperationWriteSetIncrby {
-	c.cs.s = append(c.cs.s, "INCRBY", encoding, strconv.FormatInt(offset, 10), strconv.FormatInt(increment, 10))
-	return (BitfieldOperationWriteSetIncrby)(c)
+	_ = "STUB: not implemented"
+	return *new(BitfieldOperationWriteSetIncrby)
 }
 
 type BitfieldOperationWriteSetIncrby Incomplete
 
 func (c BitfieldOperationWriteSetIncrby) Get(encoding string, offset int64) BitfieldOperationGet {
-	c.cs.s = append(c.cs.s, "GET", encoding, strconv.FormatInt(offset, 10))
-	return (BitfieldOperationGet)(c)
+	_ = "STUB: not implemented"
+	return *new(BitfieldOperationGet)
 }
 
 func (c BitfieldOperationWriteSetIncrby) OverflowWrap() BitfieldOperationWriteOverflowWrap {
-	c.cs.s = append(c.cs.s, "OVERFLOW", "WRAP")
-	return (BitfieldOperationWriteOverflowWrap)(c)
+	_ = "STUB: not implemented"
+	return *new(BitfieldOperationWriteOverflowWrap)
 }
 
 func (c BitfieldOperationWriteSetIncrby) OverflowSat() BitfieldOperationWriteOverflowSat {
-	c.cs.s = append(c.cs.s, "OVERFLOW", "SAT")
-	return (BitfieldOperationWriteOverflowSat)(c)
+	_ = "STUB: not implemented"
+	return *new(BitfieldOperationWriteOverflowSat)
 }
 
 func (c BitfieldOperationWriteSetIncrby) OverflowFail() BitfieldOperationWriteOverflowFail {
-	c.cs.s = append(c.cs.s, "OVERFLOW", "FAIL")
-	return (BitfieldOperationWriteOverflowFail)(c)
+	_ = "STUB: not implemented"
+	return *new(BitfieldOperationWriteOverflowFail)
 }
 
 func (c BitfieldOperationWriteSetIncrby) Set(encoding string, offset int64, value int64) BitfieldOperationWriteSetSet {
-	c.cs.s = append(c.cs.s, "SET", encoding, strconv.FormatInt(offset, 10), strconv.FormatInt(value, 10))
-	return (BitfieldOperationWriteSetSet)(c)
+	_ = "STUB: not implemented"
+	return *new(BitfieldOperationWriteSetSet)
 }
 
 func (c BitfieldOperationWriteSetIncrby) Incrby(encoding string, offset int64, increment int64) BitfieldOperationWriteSetIncrby {
-	c.cs.s = append(c.cs.s, "INCRBY", encoding, strconv.FormatInt(offset, 10), strconv.FormatInt(increment, 10))
-	return c
+	_ = "STUB: not implemented"
+	return *new(BitfieldOperationWriteSetIncrby)
 }
 
 func (c BitfieldOperationWriteSetIncrby) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type BitfieldOperationWriteSetSet Incomplete
 
 func (c BitfieldOperationWriteSetSet) Incrby(encoding string, offset int64, increment int64) BitfieldOperationWriteSetIncrby {
-	c.cs.s = append(c.cs.s, "INCRBY", encoding, strconv.FormatInt(offset, 10), strconv.FormatInt(increment, 10))
-	return (BitfieldOperationWriteSetIncrby)(c)
+	_ = "STUB: not implemented"
+	return *new(BitfieldOperationWriteSetIncrby)
 }
 
 func (c BitfieldOperationWriteSetSet) Get(encoding string, offset int64) BitfieldOperationGet {
-	c.cs.s = append(c.cs.s, "GET", encoding, strconv.FormatInt(offset, 10))
-	return (BitfieldOperationGet)(c)
+	_ = "STUB: not implemented"
+	return *new(BitfieldOperationGet)
 }
 
 func (c BitfieldOperationWriteSetSet) OverflowWrap() BitfieldOperationWriteOverflowWrap {
-	c.cs.s = append(c.cs.s, "OVERFLOW", "WRAP")
-	return (BitfieldOperationWriteOverflowWrap)(c)
+	_ = "STUB: not implemented"
+	return *new(BitfieldOperationWriteOverflowWrap)
 }
 
 func (c BitfieldOperationWriteSetSet) OverflowSat() BitfieldOperationWriteOverflowSat {
-	c.cs.s = append(c.cs.s, "OVERFLOW", "SAT")
-	return (BitfieldOperationWriteOverflowSat)(c)
+	_ = "STUB: not implemented"
+	return *new(BitfieldOperationWriteOverflowSat)
 }
 
 func (c BitfieldOperationWriteSetSet) OverflowFail() BitfieldOperationWriteOverflowFail {
-	c.cs.s = append(c.cs.s, "OVERFLOW", "FAIL")
-	return (BitfieldOperationWriteOverflowFail)(c)
+	_ = "STUB: not implemented"
+	return *new(BitfieldOperationWriteOverflowFail)
 }
 
 func (c BitfieldOperationWriteSetSet) Set(encoding string, offset int64, value int64) BitfieldOperationWriteSetSet {
-	c.cs.s = append(c.cs.s, "SET", encoding, strconv.FormatInt(offset, 10), strconv.FormatInt(value, 10))
-	return c
+	_ = "STUB: not implemented"
+	return *new(BitfieldOperationWriteSetSet)
 }
 
 func (c BitfieldOperationWriteSetSet) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type BitfieldRo Incomplete
 
-func (b Builder) BitfieldRo() (c BitfieldRo) {
-	c = BitfieldRo{cs: get(), ks: b.ks, cf: int16(readonly)}
-	c.cs.s = append(c.cs.s, "BITFIELD_RO")
-	return c
-}
+func (b Builder) BitfieldRo() (c BitfieldRo) { _ = "STUB: not implemented"; return *new(BitfieldRo) }
 
 func (c BitfieldRo) Key(key string) BitfieldRoKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (BitfieldRoKey)(c)
+	_ = "STUB: not implemented"
+	return *new(BitfieldRoKey)
 }
 
 type BitfieldRoGet Incomplete
 
 func (c BitfieldRoGet) Get(encoding string, offset int64) BitfieldRoGet {
-	c.cs.s = append(c.cs.s, "GET", encoding, strconv.FormatInt(offset, 10))
-	return c
+	_ = "STUB: not implemented"
+	return *new(BitfieldRoGet)
 }
 
-func (c BitfieldRoGet) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c BitfieldRoGet) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c BitfieldRoGet) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c BitfieldRoGet) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type BitfieldRoKey Incomplete
 
-func (c BitfieldRoKey) Get() BitfieldRoGet {
-	return (BitfieldRoGet)(c)
-}
+func (c BitfieldRoKey) Get() BitfieldRoGet { _ = "STUB: not implemented"; return *new(BitfieldRoGet) }
 
-func (c BitfieldRoKey) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c BitfieldRoKey) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c BitfieldRoKey) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c BitfieldRoKey) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type Bitop Incomplete
 
-func (b Builder) Bitop() (c Bitop) {
-	c = Bitop{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "BITOP")
-	return c
-}
+func (b Builder) Bitop() (c Bitop) { _ = "STUB: not implemented"; return *new(Bitop) }
 
-func (c Bitop) And() BitopOperationAnd {
-	c.cs.s = append(c.cs.s, "AND")
-	return (BitopOperationAnd)(c)
-}
+func (c Bitop) And() BitopOperationAnd { _ = "STUB: not implemented"; return *new(BitopOperationAnd) }
 
-func (c Bitop) Or() BitopOperationOr {
-	c.cs.s = append(c.cs.s, "OR")
-	return (BitopOperationOr)(c)
-}
+func (c Bitop) Or() BitopOperationOr { _ = "STUB: not implemented"; return *new(BitopOperationOr) }
 
-func (c Bitop) Xor() BitopOperationXor {
-	c.cs.s = append(c.cs.s, "XOR")
-	return (BitopOperationXor)(c)
-}
+func (c Bitop) Xor() BitopOperationXor { _ = "STUB: not implemented"; return *new(BitopOperationXor) }
 
-func (c Bitop) Not() BitopOperationNot {
-	c.cs.s = append(c.cs.s, "NOT")
-	return (BitopOperationNot)(c)
-}
+func (c Bitop) Not() BitopOperationNot { _ = "STUB: not implemented"; return *new(BitopOperationNot) }
 
 func (c Bitop) Diff() BitopOperationDiff {
-	c.cs.s = append(c.cs.s, "DIFF")
-	return (BitopOperationDiff)(c)
+	_ = "STUB: not implemented"
+	return *new(BitopOperationDiff)
 }
 
 func (c Bitop) Diff1() BitopOperationDiff1 {
-	c.cs.s = append(c.cs.s, "DIFF1")
-	return (BitopOperationDiff1)(c)
+	_ = "STUB: not implemented"
+	return *new(BitopOperationDiff1)
 }
 
 func (c Bitop) Andor() BitopOperationAndor {
-	c.cs.s = append(c.cs.s, "ANDOR")
-	return (BitopOperationAndor)(c)
+	_ = "STUB: not implemented"
+	return *new(BitopOperationAndor)
 }
 
-func (c Bitop) One() BitopOperationOne {
-	c.cs.s = append(c.cs.s, "ONE")
-	return (BitopOperationOne)(c)
-}
+func (c Bitop) One() BitopOperationOne { _ = "STUB: not implemented"; return *new(BitopOperationOne) }
 
 type BitopDestkey Incomplete
 
-func (c BitopDestkey) Key(key ...string) BitopKey {
-	if c.ks&NoSlot == NoSlot {
-		for _, k := range key {
-			c.ks = NoSlot | slot(k)
-			break
-		}
-	} else {
-		for _, k := range key {
-			c.ks = check(c.ks, slot(k))
-		}
-	}
-	c.cs.s = append(c.cs.s, key...)
-	return (BitopKey)(c)
-}
+func (c BitopDestkey) Key(key ...string) BitopKey { _ = "STUB: not implemented"; return *new(BitopKey) }
 
 type BitopKey Incomplete
 
-func (c BitopKey) Key(key ...string) BitopKey {
-	if c.ks&NoSlot == NoSlot {
-		for _, k := range key {
-			c.ks = NoSlot | slot(k)
-			break
-		}
-	} else {
-		for _, k := range key {
-			c.ks = check(c.ks, slot(k))
-		}
-	}
-	c.cs.s = append(c.cs.s, key...)
-	return c
-}
+func (c BitopKey) Key(key ...string) BitopKey { _ = "STUB: not implemented"; return *new(BitopKey) }
 
-func (c BitopKey) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c BitopKey) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type BitopOperationAnd Incomplete
 
 func (c BitopOperationAnd) Destkey(destkey string) BitopDestkey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(destkey)
-	} else {
-		c.ks = check(c.ks, slot(destkey))
-	}
-	c.cs.s = append(c.cs.s, destkey)
-	return (BitopDestkey)(c)
+	_ = "STUB: not implemented"
+	return *new(BitopDestkey)
 }
 
 type BitopOperationAndor Incomplete
 
 func (c BitopOperationAndor) Destkey(destkey string) BitopDestkey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(destkey)
-	} else {
-		c.ks = check(c.ks, slot(destkey))
-	}
-	c.cs.s = append(c.cs.s, destkey)
-	return (BitopDestkey)(c)
+	_ = "STUB: not implemented"
+	return *new(BitopDestkey)
 }
 
 type BitopOperationDiff Incomplete
 
 func (c BitopOperationDiff) Destkey(destkey string) BitopDestkey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(destkey)
-	} else {
-		c.ks = check(c.ks, slot(destkey))
-	}
-	c.cs.s = append(c.cs.s, destkey)
-	return (BitopDestkey)(c)
+	_ = "STUB: not implemented"
+	return *new(BitopDestkey)
 }
 
 type BitopOperationDiff1 Incomplete
 
 func (c BitopOperationDiff1) Destkey(destkey string) BitopDestkey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(destkey)
-	} else {
-		c.ks = check(c.ks, slot(destkey))
-	}
-	c.cs.s = append(c.cs.s, destkey)
-	return (BitopDestkey)(c)
+	_ = "STUB: not implemented"
+	return *new(BitopDestkey)
 }
 
 type BitopOperationNot Incomplete
 
 func (c BitopOperationNot) Destkey(destkey string) BitopDestkey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(destkey)
-	} else {
-		c.ks = check(c.ks, slot(destkey))
-	}
-	c.cs.s = append(c.cs.s, destkey)
-	return (BitopDestkey)(c)
+	_ = "STUB: not implemented"
+	return *new(BitopDestkey)
 }
 
 type BitopOperationOne Incomplete
 
 func (c BitopOperationOne) Destkey(destkey string) BitopDestkey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(destkey)
-	} else {
-		c.ks = check(c.ks, slot(destkey))
-	}
-	c.cs.s = append(c.cs.s, destkey)
-	return (BitopDestkey)(c)
+	_ = "STUB: not implemented"
+	return *new(BitopDestkey)
 }
 
 type BitopOperationOr Incomplete
 
 func (c BitopOperationOr) Destkey(destkey string) BitopDestkey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(destkey)
-	} else {
-		c.ks = check(c.ks, slot(destkey))
-	}
-	c.cs.s = append(c.cs.s, destkey)
-	return (BitopDestkey)(c)
+	_ = "STUB: not implemented"
+	return *new(BitopDestkey)
 }
 
 type BitopOperationXor Incomplete
 
 func (c BitopOperationXor) Destkey(destkey string) BitopDestkey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(destkey)
-	} else {
-		c.ks = check(c.ks, slot(destkey))
-	}
-	c.cs.s = append(c.cs.s, destkey)
-	return (BitopDestkey)(c)
+	_ = "STUB: not implemented"
+	return *new(BitopDestkey)
 }
 
 type Bitpos Incomplete
 
-func (b Builder) Bitpos() (c Bitpos) {
-	c = Bitpos{cs: get(), ks: b.ks, cf: int16(readonly)}
-	c.cs.s = append(c.cs.s, "BITPOS")
-	return c
-}
+func (b Builder) Bitpos() (c Bitpos) { _ = "STUB: not implemented"; return *new(Bitpos) }
 
-func (c Bitpos) Key(key string) BitposKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (BitposKey)(c)
-}
+func (c Bitpos) Key(key string) BitposKey { _ = "STUB: not implemented"; return *new(BitposKey) }
 
 type BitposBit Incomplete
 
 func (c BitposBit) Start(start int64) BitposIndexStart {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(start, 10))
-	return (BitposIndexStart)(c)
+	_ = "STUB: not implemented"
+	return *new(BitposIndexStart)
 }
 
-func (c BitposBit) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c BitposBit) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c BitposBit) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c BitposBit) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type BitposIndexEndIndexEnd Incomplete
 
 func (c BitposIndexEndIndexEnd) Byte() BitposIndexEndIndexIndexUnitByte {
-	c.cs.s = append(c.cs.s, "BYTE")
-	return (BitposIndexEndIndexIndexUnitByte)(c)
+	_ = "STUB: not implemented"
+	return *new(BitposIndexEndIndexIndexUnitByte)
 }
 
 func (c BitposIndexEndIndexEnd) Bit() BitposIndexEndIndexIndexUnitBit {
-	c.cs.s = append(c.cs.s, "BIT")
-	return (BitposIndexEndIndexIndexUnitBit)(c)
+	_ = "STUB: not implemented"
+	return *new(BitposIndexEndIndexIndexUnitBit)
 }
 
 func (c BitposIndexEndIndexEnd) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 func (c BitposIndexEndIndexEnd) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Cacheable)
 }
 
 type BitposIndexEndIndexIndexUnitBit Incomplete
 
 func (c BitposIndexEndIndexIndexUnitBit) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 func (c BitposIndexEndIndexIndexUnitBit) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Cacheable)
 }
 
 type BitposIndexEndIndexIndexUnitByte Incomplete
 
 func (c BitposIndexEndIndexIndexUnitByte) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 func (c BitposIndexEndIndexIndexUnitByte) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Cacheable)
 }
 
 type BitposIndexStart Incomplete
 
 func (c BitposIndexStart) End(end int64) BitposIndexEndIndexEnd {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(end, 10))
-	return (BitposIndexEndIndexEnd)(c)
+	_ = "STUB: not implemented"
+	return *new(BitposIndexEndIndexEnd)
 }
 
-func (c BitposIndexStart) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c BitposIndexStart) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c BitposIndexStart) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c BitposIndexStart) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type BitposKey Incomplete
 
-func (c BitposKey) Bit(bit int64) BitposBit {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(bit, 10))
-	return (BitposBit)(c)
-}
+func (c BitposKey) Bit(bit int64) BitposBit { _ = "STUB: not implemented"; return *new(BitposBit) }
 
 type Getbit Incomplete
 
-func (b Builder) Getbit() (c Getbit) {
-	c = Getbit{cs: get(), ks: b.ks, cf: int16(readonly)}
-	c.cs.s = append(c.cs.s, "GETBIT")
-	return c
-}
+func (b Builder) Getbit() (c Getbit) { _ = "STUB: not implemented"; return *new(Getbit) }
 
-func (c Getbit) Key(key string) GetbitKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (GetbitKey)(c)
-}
+func (c Getbit) Key(key string) GetbitKey { _ = "STUB: not implemented"; return *new(GetbitKey) }
 
 type GetbitKey Incomplete
 
 func (c GetbitKey) Offset(offset int64) GetbitOffset {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(offset, 10))
-	return (GetbitOffset)(c)
+	_ = "STUB: not implemented"
+	return *new(GetbitOffset)
 }
 
 type GetbitOffset Incomplete
 
-func (c GetbitOffset) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c GetbitOffset) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c GetbitOffset) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c GetbitOffset) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type Setbit Incomplete
 
-func (b Builder) Setbit() (c Setbit) {
-	c = Setbit{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "SETBIT")
-	return c
-}
+func (b Builder) Setbit() (c Setbit) { _ = "STUB: not implemented"; return *new(Setbit) }
 
-func (c Setbit) Key(key string) SetbitKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (SetbitKey)(c)
-}
+func (c Setbit) Key(key string) SetbitKey { _ = "STUB: not implemented"; return *new(SetbitKey) }
 
 type SetbitKey Incomplete
 
 func (c SetbitKey) Offset(offset int64) SetbitOffset {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(offset, 10))
-	return (SetbitOffset)(c)
+	_ = "STUB: not implemented"
+	return *new(SetbitOffset)
 }
 
 type SetbitOffset Incomplete
 
 func (c SetbitOffset) Value(value int64) SetbitValue {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(value, 10))
-	return (SetbitValue)(c)
+	_ = "STUB: not implemented"
+	return *new(SetbitValue)
 }
 
 type SetbitValue Incomplete
 
-func (c SetbitValue) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c SetbitValue) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }

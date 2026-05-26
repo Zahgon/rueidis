@@ -2,62 +2,39 @@
 
 package cmds
 
-import "strconv"
-
 type Gcra Incomplete
 
-func (b Builder) Gcra() (c Gcra) {
-	c = Gcra{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "GCRA")
-	return c
-}
+func (b Builder) Gcra() (c Gcra) { _ = "STUB: not implemented"; return *new(Gcra) }
 
-func (c Gcra) Key(key string) GcraKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (GcraKey)(c)
-}
+func (c Gcra) Key(key string) GcraKey { _ = "STUB: not implemented"; return *new(GcraKey) }
 
 type GcraCount Incomplete
 
-func (c GcraCount) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c GcraCount) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type GcraKey Incomplete
 
 func (c GcraKey) MaxBurst(maxBurst int64) GcraMaxBurst {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(maxBurst, 10))
-	return (GcraMaxBurst)(c)
+	_ = "STUB: not implemented"
+	return *new(GcraMaxBurst)
 }
 
 type GcraMaxBurst Incomplete
 
 func (c GcraMaxBurst) TokensPerPeriod(tokensPerPeriod int64) GcraTokensPerPeriod {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(tokensPerPeriod, 10))
-	return (GcraTokensPerPeriod)(c)
+	_ = "STUB: not implemented"
+	return *new(GcraTokensPerPeriod)
 }
 
 type GcraPeriod Incomplete
 
-func (c GcraPeriod) Count(count int64) GcraCount {
-	c.cs.s = append(c.cs.s, "TOKENS", strconv.FormatInt(count, 10))
-	return (GcraCount)(c)
-}
+func (c GcraPeriod) Count(count int64) GcraCount { _ = "STUB: not implemented"; return *new(GcraCount) }
 
-func (c GcraPeriod) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c GcraPeriod) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type GcraTokensPerPeriod Incomplete
 
 func (c GcraTokensPerPeriod) Period(period float64) GcraPeriod {
-	c.cs.s = append(c.cs.s, strconv.FormatFloat(period, 'f', -1, 64))
-	return (GcraPeriod)(c)
+	_ = "STUB: not implemented"
+	return *new(GcraPeriod)
 }

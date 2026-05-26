@@ -2,4955 +2,4528 @@
 
 package cmds
 
-import "strconv"
-
 type TsAdd Incomplete
 
-func (b Builder) TsAdd() (c TsAdd) {
-	c = TsAdd{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "TS.ADD")
-	return c
-}
+func (b Builder) TsAdd() (c TsAdd) { _ = "STUB: not implemented"; return *new(TsAdd) }
 
-func (c TsAdd) Key(key string) TsAddKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (TsAddKey)(c)
-}
+func (c TsAdd) Key(key string) TsAddKey { _ = "STUB: not implemented"; return *new(TsAddKey) }
 
 type TsAddChunkSize Incomplete
 
 func (c TsAddChunkSize) OnDuplicateBlock() TsAddOnDuplicateBlock {
-	c.cf |= int16(blockTag)
-	c.cs.s = append(c.cs.s, "ON_DUPLICATE", "BLOCK")
-	return (TsAddOnDuplicateBlock)(c)
+	_ = "STUB: not implemented"
+	return *new(TsAddOnDuplicateBlock)
 }
 
 func (c TsAddChunkSize) OnDuplicateFirst() TsAddOnDuplicateFirst {
-	c.cs.s = append(c.cs.s, "ON_DUPLICATE", "FIRST")
-	return (TsAddOnDuplicateFirst)(c)
+	_ = "STUB: not implemented"
+	return *new(TsAddOnDuplicateFirst)
 }
 
 func (c TsAddChunkSize) OnDuplicateLast() TsAddOnDuplicateLast {
-	c.cs.s = append(c.cs.s, "ON_DUPLICATE", "LAST")
-	return (TsAddOnDuplicateLast)(c)
+	_ = "STUB: not implemented"
+	return *new(TsAddOnDuplicateLast)
 }
 
 func (c TsAddChunkSize) OnDuplicateMin() TsAddOnDuplicateMin {
-	c.cs.s = append(c.cs.s, "ON_DUPLICATE", "MIN")
-	return (TsAddOnDuplicateMin)(c)
+	_ = "STUB: not implemented"
+	return *new(TsAddOnDuplicateMin)
 }
 
 func (c TsAddChunkSize) OnDuplicateMax() TsAddOnDuplicateMax {
-	c.cs.s = append(c.cs.s, "ON_DUPLICATE", "MAX")
-	return (TsAddOnDuplicateMax)(c)
+	_ = "STUB: not implemented"
+	return *new(TsAddOnDuplicateMax)
 }
 
 func (c TsAddChunkSize) OnDuplicateSum() TsAddOnDuplicateSum {
-	c.cs.s = append(c.cs.s, "ON_DUPLICATE", "SUM")
-	return (TsAddOnDuplicateSum)(c)
+	_ = "STUB: not implemented"
+	return *new(TsAddOnDuplicateSum)
 }
 
-func (c TsAddChunkSize) Labels() TsAddLabels {
-	c.cs.s = append(c.cs.s, "LABELS")
-	return (TsAddLabels)(c)
-}
+func (c TsAddChunkSize) Labels() TsAddLabels { _ = "STUB: not implemented"; return *new(TsAddLabels) }
 
-func (c TsAddChunkSize) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c TsAddChunkSize) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type TsAddEncodingCompressed Incomplete
 
 func (c TsAddEncodingCompressed) ChunkSize(size int64) TsAddChunkSize {
-	c.cs.s = append(c.cs.s, "CHUNK_SIZE", strconv.FormatInt(size, 10))
-	return (TsAddChunkSize)(c)
+	_ = "STUB: not implemented"
+	return *new(TsAddChunkSize)
 }
 
 func (c TsAddEncodingCompressed) OnDuplicateBlock() TsAddOnDuplicateBlock {
-	c.cf |= int16(blockTag)
-	c.cs.s = append(c.cs.s, "ON_DUPLICATE", "BLOCK")
-	return (TsAddOnDuplicateBlock)(c)
+	_ = "STUB: not implemented"
+	return *new(TsAddOnDuplicateBlock)
 }
 
 func (c TsAddEncodingCompressed) OnDuplicateFirst() TsAddOnDuplicateFirst {
-	c.cs.s = append(c.cs.s, "ON_DUPLICATE", "FIRST")
-	return (TsAddOnDuplicateFirst)(c)
+	_ = "STUB: not implemented"
+	return *new(TsAddOnDuplicateFirst)
 }
 
 func (c TsAddEncodingCompressed) OnDuplicateLast() TsAddOnDuplicateLast {
-	c.cs.s = append(c.cs.s, "ON_DUPLICATE", "LAST")
-	return (TsAddOnDuplicateLast)(c)
+	_ = "STUB: not implemented"
+	return *new(TsAddOnDuplicateLast)
 }
 
 func (c TsAddEncodingCompressed) OnDuplicateMin() TsAddOnDuplicateMin {
-	c.cs.s = append(c.cs.s, "ON_DUPLICATE", "MIN")
-	return (TsAddOnDuplicateMin)(c)
+	_ = "STUB: not implemented"
+	return *new(TsAddOnDuplicateMin)
 }
 
 func (c TsAddEncodingCompressed) OnDuplicateMax() TsAddOnDuplicateMax {
-	c.cs.s = append(c.cs.s, "ON_DUPLICATE", "MAX")
-	return (TsAddOnDuplicateMax)(c)
+	_ = "STUB: not implemented"
+	return *new(TsAddOnDuplicateMax)
 }
 
 func (c TsAddEncodingCompressed) OnDuplicateSum() TsAddOnDuplicateSum {
-	c.cs.s = append(c.cs.s, "ON_DUPLICATE", "SUM")
-	return (TsAddOnDuplicateSum)(c)
+	_ = "STUB: not implemented"
+	return *new(TsAddOnDuplicateSum)
 }
 
 func (c TsAddEncodingCompressed) Labels() TsAddLabels {
-	c.cs.s = append(c.cs.s, "LABELS")
-	return (TsAddLabels)(c)
+	_ = "STUB: not implemented"
+	return *new(TsAddLabels)
 }
 
 func (c TsAddEncodingCompressed) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type TsAddEncodingUncompressed Incomplete
 
 func (c TsAddEncodingUncompressed) ChunkSize(size int64) TsAddChunkSize {
-	c.cs.s = append(c.cs.s, "CHUNK_SIZE", strconv.FormatInt(size, 10))
-	return (TsAddChunkSize)(c)
+	_ = "STUB: not implemented"
+	return *new(TsAddChunkSize)
 }
 
 func (c TsAddEncodingUncompressed) OnDuplicateBlock() TsAddOnDuplicateBlock {
-	c.cf |= int16(blockTag)
-	c.cs.s = append(c.cs.s, "ON_DUPLICATE", "BLOCK")
-	return (TsAddOnDuplicateBlock)(c)
+	_ = "STUB: not implemented"
+	return *new(TsAddOnDuplicateBlock)
 }
 
 func (c TsAddEncodingUncompressed) OnDuplicateFirst() TsAddOnDuplicateFirst {
-	c.cs.s = append(c.cs.s, "ON_DUPLICATE", "FIRST")
-	return (TsAddOnDuplicateFirst)(c)
+	_ = "STUB: not implemented"
+	return *new(TsAddOnDuplicateFirst)
 }
 
 func (c TsAddEncodingUncompressed) OnDuplicateLast() TsAddOnDuplicateLast {
-	c.cs.s = append(c.cs.s, "ON_DUPLICATE", "LAST")
-	return (TsAddOnDuplicateLast)(c)
+	_ = "STUB: not implemented"
+	return *new(TsAddOnDuplicateLast)
 }
 
 func (c TsAddEncodingUncompressed) OnDuplicateMin() TsAddOnDuplicateMin {
-	c.cs.s = append(c.cs.s, "ON_DUPLICATE", "MIN")
-	return (TsAddOnDuplicateMin)(c)
+	_ = "STUB: not implemented"
+	return *new(TsAddOnDuplicateMin)
 }
 
 func (c TsAddEncodingUncompressed) OnDuplicateMax() TsAddOnDuplicateMax {
-	c.cs.s = append(c.cs.s, "ON_DUPLICATE", "MAX")
-	return (TsAddOnDuplicateMax)(c)
+	_ = "STUB: not implemented"
+	return *new(TsAddOnDuplicateMax)
 }
 
 func (c TsAddEncodingUncompressed) OnDuplicateSum() TsAddOnDuplicateSum {
-	c.cs.s = append(c.cs.s, "ON_DUPLICATE", "SUM")
-	return (TsAddOnDuplicateSum)(c)
+	_ = "STUB: not implemented"
+	return *new(TsAddOnDuplicateSum)
 }
 
 func (c TsAddEncodingUncompressed) Labels() TsAddLabels {
-	c.cs.s = append(c.cs.s, "LABELS")
-	return (TsAddLabels)(c)
+	_ = "STUB: not implemented"
+	return *new(TsAddLabels)
 }
 
 func (c TsAddEncodingUncompressed) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type TsAddKey Incomplete
 
 func (c TsAddKey) Timestamp(timestamp string) TsAddTimestamp {
-	c.cs.s = append(c.cs.s, timestamp)
-	return (TsAddTimestamp)(c)
+	_ = "STUB: not implemented"
+	return *new(TsAddTimestamp)
 }
 
 type TsAddLabels Incomplete
 
 func (c TsAddLabels) Labels(label string, value string) TsAddLabels {
-	c.cs.s = append(c.cs.s, label, value)
-	return c
+	_ = "STUB: not implemented"
+	return *new(TsAddLabels)
 }
 
-func (c TsAddLabels) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c TsAddLabels) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type TsAddOnDuplicateBlock Incomplete
 
 func (c TsAddOnDuplicateBlock) Labels() TsAddLabels {
-	c.cs.s = append(c.cs.s, "LABELS")
-	return (TsAddLabels)(c)
+	_ = "STUB: not implemented"
+	return *new(TsAddLabels)
 }
 
-func (c TsAddOnDuplicateBlock) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c TsAddOnDuplicateBlock) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type TsAddOnDuplicateFirst Incomplete
 
 func (c TsAddOnDuplicateFirst) Labels() TsAddLabels {
-	c.cs.s = append(c.cs.s, "LABELS")
-	return (TsAddLabels)(c)
+	_ = "STUB: not implemented"
+	return *new(TsAddLabels)
 }
 
-func (c TsAddOnDuplicateFirst) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c TsAddOnDuplicateFirst) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type TsAddOnDuplicateLast Incomplete
 
 func (c TsAddOnDuplicateLast) Labels() TsAddLabels {
-	c.cs.s = append(c.cs.s, "LABELS")
-	return (TsAddLabels)(c)
+	_ = "STUB: not implemented"
+	return *new(TsAddLabels)
 }
 
-func (c TsAddOnDuplicateLast) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c TsAddOnDuplicateLast) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type TsAddOnDuplicateMax Incomplete
 
 func (c TsAddOnDuplicateMax) Labels() TsAddLabels {
-	c.cs.s = append(c.cs.s, "LABELS")
-	return (TsAddLabels)(c)
+	_ = "STUB: not implemented"
+	return *new(TsAddLabels)
 }
 
-func (c TsAddOnDuplicateMax) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c TsAddOnDuplicateMax) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type TsAddOnDuplicateMin Incomplete
 
 func (c TsAddOnDuplicateMin) Labels() TsAddLabels {
-	c.cs.s = append(c.cs.s, "LABELS")
-	return (TsAddLabels)(c)
+	_ = "STUB: not implemented"
+	return *new(TsAddLabels)
 }
 
-func (c TsAddOnDuplicateMin) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c TsAddOnDuplicateMin) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type TsAddOnDuplicateSum Incomplete
 
 func (c TsAddOnDuplicateSum) Labels() TsAddLabels {
-	c.cs.s = append(c.cs.s, "LABELS")
-	return (TsAddLabels)(c)
+	_ = "STUB: not implemented"
+	return *new(TsAddLabels)
 }
 
-func (c TsAddOnDuplicateSum) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c TsAddOnDuplicateSum) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type TsAddRetention Incomplete
 
 func (c TsAddRetention) EncodingUncompressed() TsAddEncodingUncompressed {
-	c.cs.s = append(c.cs.s, "ENCODING", "UNCOMPRESSED")
-	return (TsAddEncodingUncompressed)(c)
+	_ = "STUB: not implemented"
+	return *new(TsAddEncodingUncompressed)
 }
 
 func (c TsAddRetention) EncodingCompressed() TsAddEncodingCompressed {
-	c.cs.s = append(c.cs.s, "ENCODING", "COMPRESSED")
-	return (TsAddEncodingCompressed)(c)
+	_ = "STUB: not implemented"
+	return *new(TsAddEncodingCompressed)
 }
 
 func (c TsAddRetention) ChunkSize(size int64) TsAddChunkSize {
-	c.cs.s = append(c.cs.s, "CHUNK_SIZE", strconv.FormatInt(size, 10))
-	return (TsAddChunkSize)(c)
+	_ = "STUB: not implemented"
+	return *new(TsAddChunkSize)
 }
 
 func (c TsAddRetention) OnDuplicateBlock() TsAddOnDuplicateBlock {
-	c.cf |= int16(blockTag)
-	c.cs.s = append(c.cs.s, "ON_DUPLICATE", "BLOCK")
-	return (TsAddOnDuplicateBlock)(c)
+	_ = "STUB: not implemented"
+	return *new(TsAddOnDuplicateBlock)
 }
 
 func (c TsAddRetention) OnDuplicateFirst() TsAddOnDuplicateFirst {
-	c.cs.s = append(c.cs.s, "ON_DUPLICATE", "FIRST")
-	return (TsAddOnDuplicateFirst)(c)
+	_ = "STUB: not implemented"
+	return *new(TsAddOnDuplicateFirst)
 }
 
 func (c TsAddRetention) OnDuplicateLast() TsAddOnDuplicateLast {
-	c.cs.s = append(c.cs.s, "ON_DUPLICATE", "LAST")
-	return (TsAddOnDuplicateLast)(c)
+	_ = "STUB: not implemented"
+	return *new(TsAddOnDuplicateLast)
 }
 
 func (c TsAddRetention) OnDuplicateMin() TsAddOnDuplicateMin {
-	c.cs.s = append(c.cs.s, "ON_DUPLICATE", "MIN")
-	return (TsAddOnDuplicateMin)(c)
+	_ = "STUB: not implemented"
+	return *new(TsAddOnDuplicateMin)
 }
 
 func (c TsAddRetention) OnDuplicateMax() TsAddOnDuplicateMax {
-	c.cs.s = append(c.cs.s, "ON_DUPLICATE", "MAX")
-	return (TsAddOnDuplicateMax)(c)
+	_ = "STUB: not implemented"
+	return *new(TsAddOnDuplicateMax)
 }
 
 func (c TsAddRetention) OnDuplicateSum() TsAddOnDuplicateSum {
-	c.cs.s = append(c.cs.s, "ON_DUPLICATE", "SUM")
-	return (TsAddOnDuplicateSum)(c)
+	_ = "STUB: not implemented"
+	return *new(TsAddOnDuplicateSum)
 }
 
-func (c TsAddRetention) Labels() TsAddLabels {
-	c.cs.s = append(c.cs.s, "LABELS")
-	return (TsAddLabels)(c)
-}
+func (c TsAddRetention) Labels() TsAddLabels { _ = "STUB: not implemented"; return *new(TsAddLabels) }
 
-func (c TsAddRetention) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c TsAddRetention) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type TsAddTimestamp Incomplete
 
 func (c TsAddTimestamp) Value(value float64) TsAddValue {
-	c.cs.s = append(c.cs.s, strconv.FormatFloat(value, 'f', -1, 64))
-	return (TsAddValue)(c)
+	_ = "STUB: not implemented"
+	return *new(TsAddValue)
 }
 
 type TsAddValue Incomplete
 
 func (c TsAddValue) Retention(retentionperiod int64) TsAddRetention {
-	c.cs.s = append(c.cs.s, "RETENTION", strconv.FormatInt(retentionperiod, 10))
-	return (TsAddRetention)(c)
+	_ = "STUB: not implemented"
+	return *new(TsAddRetention)
 }
 
 func (c TsAddValue) EncodingUncompressed() TsAddEncodingUncompressed {
-	c.cs.s = append(c.cs.s, "ENCODING", "UNCOMPRESSED")
-	return (TsAddEncodingUncompressed)(c)
+	_ = "STUB: not implemented"
+	return *new(TsAddEncodingUncompressed)
 }
 
 func (c TsAddValue) EncodingCompressed() TsAddEncodingCompressed {
-	c.cs.s = append(c.cs.s, "ENCODING", "COMPRESSED")
-	return (TsAddEncodingCompressed)(c)
+	_ = "STUB: not implemented"
+	return *new(TsAddEncodingCompressed)
 }
 
 func (c TsAddValue) ChunkSize(size int64) TsAddChunkSize {
-	c.cs.s = append(c.cs.s, "CHUNK_SIZE", strconv.FormatInt(size, 10))
-	return (TsAddChunkSize)(c)
+	_ = "STUB: not implemented"
+	return *new(TsAddChunkSize)
 }
 
 func (c TsAddValue) OnDuplicateBlock() TsAddOnDuplicateBlock {
-	c.cf |= int16(blockTag)
-	c.cs.s = append(c.cs.s, "ON_DUPLICATE", "BLOCK")
-	return (TsAddOnDuplicateBlock)(c)
+	_ = "STUB: not implemented"
+	return *new(TsAddOnDuplicateBlock)
 }
 
 func (c TsAddValue) OnDuplicateFirst() TsAddOnDuplicateFirst {
-	c.cs.s = append(c.cs.s, "ON_DUPLICATE", "FIRST")
-	return (TsAddOnDuplicateFirst)(c)
+	_ = "STUB: not implemented"
+	return *new(TsAddOnDuplicateFirst)
 }
 
 func (c TsAddValue) OnDuplicateLast() TsAddOnDuplicateLast {
-	c.cs.s = append(c.cs.s, "ON_DUPLICATE", "LAST")
-	return (TsAddOnDuplicateLast)(c)
+	_ = "STUB: not implemented"
+	return *new(TsAddOnDuplicateLast)
 }
 
 func (c TsAddValue) OnDuplicateMin() TsAddOnDuplicateMin {
-	c.cs.s = append(c.cs.s, "ON_DUPLICATE", "MIN")
-	return (TsAddOnDuplicateMin)(c)
+	_ = "STUB: not implemented"
+	return *new(TsAddOnDuplicateMin)
 }
 
 func (c TsAddValue) OnDuplicateMax() TsAddOnDuplicateMax {
-	c.cs.s = append(c.cs.s, "ON_DUPLICATE", "MAX")
-	return (TsAddOnDuplicateMax)(c)
+	_ = "STUB: not implemented"
+	return *new(TsAddOnDuplicateMax)
 }
 
 func (c TsAddValue) OnDuplicateSum() TsAddOnDuplicateSum {
-	c.cs.s = append(c.cs.s, "ON_DUPLICATE", "SUM")
-	return (TsAddOnDuplicateSum)(c)
+	_ = "STUB: not implemented"
+	return *new(TsAddOnDuplicateSum)
 }
 
-func (c TsAddValue) Labels() TsAddLabels {
-	c.cs.s = append(c.cs.s, "LABELS")
-	return (TsAddLabels)(c)
-}
+func (c TsAddValue) Labels() TsAddLabels { _ = "STUB: not implemented"; return *new(TsAddLabels) }
 
-func (c TsAddValue) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c TsAddValue) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type TsAlter Incomplete
 
-func (b Builder) TsAlter() (c TsAlter) {
-	c = TsAlter{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "TS.ALTER")
-	return c
-}
+func (b Builder) TsAlter() (c TsAlter) { _ = "STUB: not implemented"; return *new(TsAlter) }
 
-func (c TsAlter) Key(key string) TsAlterKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (TsAlterKey)(c)
-}
+func (c TsAlter) Key(key string) TsAlterKey { _ = "STUB: not implemented"; return *new(TsAlterKey) }
 
 type TsAlterChunkSize Incomplete
 
 func (c TsAlterChunkSize) DuplicatePolicyBlock() TsAlterDuplicatePolicyBlock {
-	c.cf |= int16(blockTag)
-	c.cs.s = append(c.cs.s, "DUPLICATE_POLICY", "BLOCK")
-	return (TsAlterDuplicatePolicyBlock)(c)
+	_ = "STUB: not implemented"
+	return *new(TsAlterDuplicatePolicyBlock)
 }
 
 func (c TsAlterChunkSize) DuplicatePolicyFirst() TsAlterDuplicatePolicyFirst {
-	c.cs.s = append(c.cs.s, "DUPLICATE_POLICY", "FIRST")
-	return (TsAlterDuplicatePolicyFirst)(c)
+	_ = "STUB: not implemented"
+	return *new(TsAlterDuplicatePolicyFirst)
 }
 
 func (c TsAlterChunkSize) DuplicatePolicyLast() TsAlterDuplicatePolicyLast {
-	c.cs.s = append(c.cs.s, "DUPLICATE_POLICY", "LAST")
-	return (TsAlterDuplicatePolicyLast)(c)
+	_ = "STUB: not implemented"
+	return *new(TsAlterDuplicatePolicyLast)
 }
 
 func (c TsAlterChunkSize) DuplicatePolicyMin() TsAlterDuplicatePolicyMin {
-	c.cs.s = append(c.cs.s, "DUPLICATE_POLICY", "MIN")
-	return (TsAlterDuplicatePolicyMin)(c)
+	_ = "STUB: not implemented"
+	return *new(TsAlterDuplicatePolicyMin)
 }
 
 func (c TsAlterChunkSize) DuplicatePolicyMax() TsAlterDuplicatePolicyMax {
-	c.cs.s = append(c.cs.s, "DUPLICATE_POLICY", "MAX")
-	return (TsAlterDuplicatePolicyMax)(c)
+	_ = "STUB: not implemented"
+	return *new(TsAlterDuplicatePolicyMax)
 }
 
 func (c TsAlterChunkSize) DuplicatePolicySum() TsAlterDuplicatePolicySum {
-	c.cs.s = append(c.cs.s, "DUPLICATE_POLICY", "SUM")
-	return (TsAlterDuplicatePolicySum)(c)
+	_ = "STUB: not implemented"
+	return *new(TsAlterDuplicatePolicySum)
 }
 
 func (c TsAlterChunkSize) Labels() TsAlterLabels {
-	c.cs.s = append(c.cs.s, "LABELS")
-	return (TsAlterLabels)(c)
+	_ = "STUB: not implemented"
+	return *new(TsAlterLabels)
 }
 
-func (c TsAlterChunkSize) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c TsAlterChunkSize) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type TsAlterDuplicatePolicyBlock Incomplete
 
 func (c TsAlterDuplicatePolicyBlock) Labels() TsAlterLabels {
-	c.cs.s = append(c.cs.s, "LABELS")
-	return (TsAlterLabels)(c)
+	_ = "STUB: not implemented"
+	return *new(TsAlterLabels)
 }
 
 func (c TsAlterDuplicatePolicyBlock) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type TsAlterDuplicatePolicyFirst Incomplete
 
 func (c TsAlterDuplicatePolicyFirst) Labels() TsAlterLabels {
-	c.cs.s = append(c.cs.s, "LABELS")
-	return (TsAlterLabels)(c)
+	_ = "STUB: not implemented"
+	return *new(TsAlterLabels)
 }
 
 func (c TsAlterDuplicatePolicyFirst) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type TsAlterDuplicatePolicyLast Incomplete
 
 func (c TsAlterDuplicatePolicyLast) Labels() TsAlterLabels {
-	c.cs.s = append(c.cs.s, "LABELS")
-	return (TsAlterLabels)(c)
+	_ = "STUB: not implemented"
+	return *new(TsAlterLabels)
 }
 
 func (c TsAlterDuplicatePolicyLast) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type TsAlterDuplicatePolicyMax Incomplete
 
 func (c TsAlterDuplicatePolicyMax) Labels() TsAlterLabels {
-	c.cs.s = append(c.cs.s, "LABELS")
-	return (TsAlterLabels)(c)
+	_ = "STUB: not implemented"
+	return *new(TsAlterLabels)
 }
 
 func (c TsAlterDuplicatePolicyMax) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type TsAlterDuplicatePolicyMin Incomplete
 
 func (c TsAlterDuplicatePolicyMin) Labels() TsAlterLabels {
-	c.cs.s = append(c.cs.s, "LABELS")
-	return (TsAlterLabels)(c)
+	_ = "STUB: not implemented"
+	return *new(TsAlterLabels)
 }
 
 func (c TsAlterDuplicatePolicyMin) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type TsAlterDuplicatePolicySum Incomplete
 
 func (c TsAlterDuplicatePolicySum) Labels() TsAlterLabels {
-	c.cs.s = append(c.cs.s, "LABELS")
-	return (TsAlterLabels)(c)
+	_ = "STUB: not implemented"
+	return *new(TsAlterLabels)
 }
 
 func (c TsAlterDuplicatePolicySum) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type TsAlterKey Incomplete
 
 func (c TsAlterKey) Retention(retentionperiod int64) TsAlterRetention {
-	c.cs.s = append(c.cs.s, "RETENTION", strconv.FormatInt(retentionperiod, 10))
-	return (TsAlterRetention)(c)
+	_ = "STUB: not implemented"
+	return *new(TsAlterRetention)
 }
 
 func (c TsAlterKey) ChunkSize(size int64) TsAlterChunkSize {
-	c.cs.s = append(c.cs.s, "CHUNK_SIZE", strconv.FormatInt(size, 10))
-	return (TsAlterChunkSize)(c)
+	_ = "STUB: not implemented"
+	return *new(TsAlterChunkSize)
 }
 
 func (c TsAlterKey) DuplicatePolicyBlock() TsAlterDuplicatePolicyBlock {
-	c.cf |= int16(blockTag)
-	c.cs.s = append(c.cs.s, "DUPLICATE_POLICY", "BLOCK")
-	return (TsAlterDuplicatePolicyBlock)(c)
+	_ = "STUB: not implemented"
+	return *new(TsAlterDuplicatePolicyBlock)
 }
 
 func (c TsAlterKey) DuplicatePolicyFirst() TsAlterDuplicatePolicyFirst {
-	c.cs.s = append(c.cs.s, "DUPLICATE_POLICY", "FIRST")
-	return (TsAlterDuplicatePolicyFirst)(c)
+	_ = "STUB: not implemented"
+	return *new(TsAlterDuplicatePolicyFirst)
 }
 
 func (c TsAlterKey) DuplicatePolicyLast() TsAlterDuplicatePolicyLast {
-	c.cs.s = append(c.cs.s, "DUPLICATE_POLICY", "LAST")
-	return (TsAlterDuplicatePolicyLast)(c)
+	_ = "STUB: not implemented"
+	return *new(TsAlterDuplicatePolicyLast)
 }
 
 func (c TsAlterKey) DuplicatePolicyMin() TsAlterDuplicatePolicyMin {
-	c.cs.s = append(c.cs.s, "DUPLICATE_POLICY", "MIN")
-	return (TsAlterDuplicatePolicyMin)(c)
+	_ = "STUB: not implemented"
+	return *new(TsAlterDuplicatePolicyMin)
 }
 
 func (c TsAlterKey) DuplicatePolicyMax() TsAlterDuplicatePolicyMax {
-	c.cs.s = append(c.cs.s, "DUPLICATE_POLICY", "MAX")
-	return (TsAlterDuplicatePolicyMax)(c)
+	_ = "STUB: not implemented"
+	return *new(TsAlterDuplicatePolicyMax)
 }
 
 func (c TsAlterKey) DuplicatePolicySum() TsAlterDuplicatePolicySum {
-	c.cs.s = append(c.cs.s, "DUPLICATE_POLICY", "SUM")
-	return (TsAlterDuplicatePolicySum)(c)
+	_ = "STUB: not implemented"
+	return *new(TsAlterDuplicatePolicySum)
 }
 
-func (c TsAlterKey) Labels() TsAlterLabels {
-	c.cs.s = append(c.cs.s, "LABELS")
-	return (TsAlterLabels)(c)
-}
+func (c TsAlterKey) Labels() TsAlterLabels { _ = "STUB: not implemented"; return *new(TsAlterLabels) }
 
-func (c TsAlterKey) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c TsAlterKey) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type TsAlterLabels Incomplete
 
 func (c TsAlterLabels) Labels(label string, value string) TsAlterLabels {
-	c.cs.s = append(c.cs.s, label, value)
-	return c
+	_ = "STUB: not implemented"
+	return *new(TsAlterLabels)
 }
 
-func (c TsAlterLabels) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c TsAlterLabels) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type TsAlterRetention Incomplete
 
 func (c TsAlterRetention) ChunkSize(size int64) TsAlterChunkSize {
-	c.cs.s = append(c.cs.s, "CHUNK_SIZE", strconv.FormatInt(size, 10))
-	return (TsAlterChunkSize)(c)
+	_ = "STUB: not implemented"
+	return *new(TsAlterChunkSize)
 }
 
 func (c TsAlterRetention) DuplicatePolicyBlock() TsAlterDuplicatePolicyBlock {
-	c.cf |= int16(blockTag)
-	c.cs.s = append(c.cs.s, "DUPLICATE_POLICY", "BLOCK")
-	return (TsAlterDuplicatePolicyBlock)(c)
+	_ = "STUB: not implemented"
+	return *new(TsAlterDuplicatePolicyBlock)
 }
 
 func (c TsAlterRetention) DuplicatePolicyFirst() TsAlterDuplicatePolicyFirst {
-	c.cs.s = append(c.cs.s, "DUPLICATE_POLICY", "FIRST")
-	return (TsAlterDuplicatePolicyFirst)(c)
+	_ = "STUB: not implemented"
+	return *new(TsAlterDuplicatePolicyFirst)
 }
 
 func (c TsAlterRetention) DuplicatePolicyLast() TsAlterDuplicatePolicyLast {
-	c.cs.s = append(c.cs.s, "DUPLICATE_POLICY", "LAST")
-	return (TsAlterDuplicatePolicyLast)(c)
+	_ = "STUB: not implemented"
+	return *new(TsAlterDuplicatePolicyLast)
 }
 
 func (c TsAlterRetention) DuplicatePolicyMin() TsAlterDuplicatePolicyMin {
-	c.cs.s = append(c.cs.s, "DUPLICATE_POLICY", "MIN")
-	return (TsAlterDuplicatePolicyMin)(c)
+	_ = "STUB: not implemented"
+	return *new(TsAlterDuplicatePolicyMin)
 }
 
 func (c TsAlterRetention) DuplicatePolicyMax() TsAlterDuplicatePolicyMax {
-	c.cs.s = append(c.cs.s, "DUPLICATE_POLICY", "MAX")
-	return (TsAlterDuplicatePolicyMax)(c)
+	_ = "STUB: not implemented"
+	return *new(TsAlterDuplicatePolicyMax)
 }
 
 func (c TsAlterRetention) DuplicatePolicySum() TsAlterDuplicatePolicySum {
-	c.cs.s = append(c.cs.s, "DUPLICATE_POLICY", "SUM")
-	return (TsAlterDuplicatePolicySum)(c)
+	_ = "STUB: not implemented"
+	return *new(TsAlterDuplicatePolicySum)
 }
 
 func (c TsAlterRetention) Labels() TsAlterLabels {
-	c.cs.s = append(c.cs.s, "LABELS")
-	return (TsAlterLabels)(c)
+	_ = "STUB: not implemented"
+	return *new(TsAlterLabels)
 }
 
-func (c TsAlterRetention) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c TsAlterRetention) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type TsCreate Incomplete
 
-func (b Builder) TsCreate() (c TsCreate) {
-	c = TsCreate{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "TS.CREATE")
-	return c
-}
+func (b Builder) TsCreate() (c TsCreate) { _ = "STUB: not implemented"; return *new(TsCreate) }
 
-func (c TsCreate) Key(key string) TsCreateKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (TsCreateKey)(c)
-}
+func (c TsCreate) Key(key string) TsCreateKey { _ = "STUB: not implemented"; return *new(TsCreateKey) }
 
 type TsCreateChunkSize Incomplete
 
 func (c TsCreateChunkSize) DuplicatePolicyBlock() TsCreateDuplicatePolicyBlock {
-	c.cf |= int16(blockTag)
-	c.cs.s = append(c.cs.s, "DUPLICATE_POLICY", "BLOCK")
-	return (TsCreateDuplicatePolicyBlock)(c)
+	_ = "STUB: not implemented"
+	return *new(TsCreateDuplicatePolicyBlock)
 }
 
 func (c TsCreateChunkSize) DuplicatePolicyFirst() TsCreateDuplicatePolicyFirst {
-	c.cs.s = append(c.cs.s, "DUPLICATE_POLICY", "FIRST")
-	return (TsCreateDuplicatePolicyFirst)(c)
+	_ = "STUB: not implemented"
+	return *new(TsCreateDuplicatePolicyFirst)
 }
 
 func (c TsCreateChunkSize) DuplicatePolicyLast() TsCreateDuplicatePolicyLast {
-	c.cs.s = append(c.cs.s, "DUPLICATE_POLICY", "LAST")
-	return (TsCreateDuplicatePolicyLast)(c)
+	_ = "STUB: not implemented"
+	return *new(TsCreateDuplicatePolicyLast)
 }
 
 func (c TsCreateChunkSize) DuplicatePolicyMin() TsCreateDuplicatePolicyMin {
-	c.cs.s = append(c.cs.s, "DUPLICATE_POLICY", "MIN")
-	return (TsCreateDuplicatePolicyMin)(c)
+	_ = "STUB: not implemented"
+	return *new(TsCreateDuplicatePolicyMin)
 }
 
 func (c TsCreateChunkSize) DuplicatePolicyMax() TsCreateDuplicatePolicyMax {
-	c.cs.s = append(c.cs.s, "DUPLICATE_POLICY", "MAX")
-	return (TsCreateDuplicatePolicyMax)(c)
+	_ = "STUB: not implemented"
+	return *new(TsCreateDuplicatePolicyMax)
 }
 
 func (c TsCreateChunkSize) DuplicatePolicySum() TsCreateDuplicatePolicySum {
-	c.cs.s = append(c.cs.s, "DUPLICATE_POLICY", "SUM")
-	return (TsCreateDuplicatePolicySum)(c)
+	_ = "STUB: not implemented"
+	return *new(TsCreateDuplicatePolicySum)
 }
 
 func (c TsCreateChunkSize) Labels() TsCreateLabels {
-	c.cs.s = append(c.cs.s, "LABELS")
-	return (TsCreateLabels)(c)
+	_ = "STUB: not implemented"
+	return *new(TsCreateLabels)
 }
 
-func (c TsCreateChunkSize) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c TsCreateChunkSize) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type TsCreateDuplicatePolicyBlock Incomplete
 
 func (c TsCreateDuplicatePolicyBlock) Labels() TsCreateLabels {
-	c.cs.s = append(c.cs.s, "LABELS")
-	return (TsCreateLabels)(c)
+	_ = "STUB: not implemented"
+	return *new(TsCreateLabels)
 }
 
 func (c TsCreateDuplicatePolicyBlock) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type TsCreateDuplicatePolicyFirst Incomplete
 
 func (c TsCreateDuplicatePolicyFirst) Labels() TsCreateLabels {
-	c.cs.s = append(c.cs.s, "LABELS")
-	return (TsCreateLabels)(c)
+	_ = "STUB: not implemented"
+	return *new(TsCreateLabels)
 }
 
 func (c TsCreateDuplicatePolicyFirst) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type TsCreateDuplicatePolicyLast Incomplete
 
 func (c TsCreateDuplicatePolicyLast) Labels() TsCreateLabels {
-	c.cs.s = append(c.cs.s, "LABELS")
-	return (TsCreateLabels)(c)
+	_ = "STUB: not implemented"
+	return *new(TsCreateLabels)
 }
 
 func (c TsCreateDuplicatePolicyLast) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type TsCreateDuplicatePolicyMax Incomplete
 
 func (c TsCreateDuplicatePolicyMax) Labels() TsCreateLabels {
-	c.cs.s = append(c.cs.s, "LABELS")
-	return (TsCreateLabels)(c)
+	_ = "STUB: not implemented"
+	return *new(TsCreateLabels)
 }
 
 func (c TsCreateDuplicatePolicyMax) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type TsCreateDuplicatePolicyMin Incomplete
 
 func (c TsCreateDuplicatePolicyMin) Labels() TsCreateLabels {
-	c.cs.s = append(c.cs.s, "LABELS")
-	return (TsCreateLabels)(c)
+	_ = "STUB: not implemented"
+	return *new(TsCreateLabels)
 }
 
 func (c TsCreateDuplicatePolicyMin) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type TsCreateDuplicatePolicySum Incomplete
 
 func (c TsCreateDuplicatePolicySum) Labels() TsCreateLabels {
-	c.cs.s = append(c.cs.s, "LABELS")
-	return (TsCreateLabels)(c)
+	_ = "STUB: not implemented"
+	return *new(TsCreateLabels)
 }
 
 func (c TsCreateDuplicatePolicySum) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type TsCreateEncodingCompressed Incomplete
 
 func (c TsCreateEncodingCompressed) ChunkSize(size int64) TsCreateChunkSize {
-	c.cs.s = append(c.cs.s, "CHUNK_SIZE", strconv.FormatInt(size, 10))
-	return (TsCreateChunkSize)(c)
+	_ = "STUB: not implemented"
+	return *new(TsCreateChunkSize)
 }
 
 func (c TsCreateEncodingCompressed) DuplicatePolicyBlock() TsCreateDuplicatePolicyBlock {
-	c.cf |= int16(blockTag)
-	c.cs.s = append(c.cs.s, "DUPLICATE_POLICY", "BLOCK")
-	return (TsCreateDuplicatePolicyBlock)(c)
+	_ = "STUB: not implemented"
+	return *new(TsCreateDuplicatePolicyBlock)
 }
 
 func (c TsCreateEncodingCompressed) DuplicatePolicyFirst() TsCreateDuplicatePolicyFirst {
-	c.cs.s = append(c.cs.s, "DUPLICATE_POLICY", "FIRST")
-	return (TsCreateDuplicatePolicyFirst)(c)
+	_ = "STUB: not implemented"
+	return *new(TsCreateDuplicatePolicyFirst)
 }
 
 func (c TsCreateEncodingCompressed) DuplicatePolicyLast() TsCreateDuplicatePolicyLast {
-	c.cs.s = append(c.cs.s, "DUPLICATE_POLICY", "LAST")
-	return (TsCreateDuplicatePolicyLast)(c)
+	_ = "STUB: not implemented"
+	return *new(TsCreateDuplicatePolicyLast)
 }
 
 func (c TsCreateEncodingCompressed) DuplicatePolicyMin() TsCreateDuplicatePolicyMin {
-	c.cs.s = append(c.cs.s, "DUPLICATE_POLICY", "MIN")
-	return (TsCreateDuplicatePolicyMin)(c)
+	_ = "STUB: not implemented"
+	return *new(TsCreateDuplicatePolicyMin)
 }
 
 func (c TsCreateEncodingCompressed) DuplicatePolicyMax() TsCreateDuplicatePolicyMax {
-	c.cs.s = append(c.cs.s, "DUPLICATE_POLICY", "MAX")
-	return (TsCreateDuplicatePolicyMax)(c)
+	_ = "STUB: not implemented"
+	return *new(TsCreateDuplicatePolicyMax)
 }
 
 func (c TsCreateEncodingCompressed) DuplicatePolicySum() TsCreateDuplicatePolicySum {
-	c.cs.s = append(c.cs.s, "DUPLICATE_POLICY", "SUM")
-	return (TsCreateDuplicatePolicySum)(c)
+	_ = "STUB: not implemented"
+	return *new(TsCreateDuplicatePolicySum)
 }
 
 func (c TsCreateEncodingCompressed) Labels() TsCreateLabels {
-	c.cs.s = append(c.cs.s, "LABELS")
-	return (TsCreateLabels)(c)
+	_ = "STUB: not implemented"
+	return *new(TsCreateLabels)
 }
 
 func (c TsCreateEncodingCompressed) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type TsCreateEncodingUncompressed Incomplete
 
 func (c TsCreateEncodingUncompressed) ChunkSize(size int64) TsCreateChunkSize {
-	c.cs.s = append(c.cs.s, "CHUNK_SIZE", strconv.FormatInt(size, 10))
-	return (TsCreateChunkSize)(c)
+	_ = "STUB: not implemented"
+	return *new(TsCreateChunkSize)
 }
 
 func (c TsCreateEncodingUncompressed) DuplicatePolicyBlock() TsCreateDuplicatePolicyBlock {
-	c.cf |= int16(blockTag)
-	c.cs.s = append(c.cs.s, "DUPLICATE_POLICY", "BLOCK")
-	return (TsCreateDuplicatePolicyBlock)(c)
+	_ = "STUB: not implemented"
+	return *new(TsCreateDuplicatePolicyBlock)
 }
 
 func (c TsCreateEncodingUncompressed) DuplicatePolicyFirst() TsCreateDuplicatePolicyFirst {
-	c.cs.s = append(c.cs.s, "DUPLICATE_POLICY", "FIRST")
-	return (TsCreateDuplicatePolicyFirst)(c)
+	_ = "STUB: not implemented"
+	return *new(TsCreateDuplicatePolicyFirst)
 }
 
 func (c TsCreateEncodingUncompressed) DuplicatePolicyLast() TsCreateDuplicatePolicyLast {
-	c.cs.s = append(c.cs.s, "DUPLICATE_POLICY", "LAST")
-	return (TsCreateDuplicatePolicyLast)(c)
+	_ = "STUB: not implemented"
+	return *new(TsCreateDuplicatePolicyLast)
 }
 
 func (c TsCreateEncodingUncompressed) DuplicatePolicyMin() TsCreateDuplicatePolicyMin {
-	c.cs.s = append(c.cs.s, "DUPLICATE_POLICY", "MIN")
-	return (TsCreateDuplicatePolicyMin)(c)
+	_ = "STUB: not implemented"
+	return *new(TsCreateDuplicatePolicyMin)
 }
 
 func (c TsCreateEncodingUncompressed) DuplicatePolicyMax() TsCreateDuplicatePolicyMax {
-	c.cs.s = append(c.cs.s, "DUPLICATE_POLICY", "MAX")
-	return (TsCreateDuplicatePolicyMax)(c)
+	_ = "STUB: not implemented"
+	return *new(TsCreateDuplicatePolicyMax)
 }
 
 func (c TsCreateEncodingUncompressed) DuplicatePolicySum() TsCreateDuplicatePolicySum {
-	c.cs.s = append(c.cs.s, "DUPLICATE_POLICY", "SUM")
-	return (TsCreateDuplicatePolicySum)(c)
+	_ = "STUB: not implemented"
+	return *new(TsCreateDuplicatePolicySum)
 }
 
 func (c TsCreateEncodingUncompressed) Labels() TsCreateLabels {
-	c.cs.s = append(c.cs.s, "LABELS")
-	return (TsCreateLabels)(c)
+	_ = "STUB: not implemented"
+	return *new(TsCreateLabels)
 }
 
 func (c TsCreateEncodingUncompressed) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type TsCreateKey Incomplete
 
 func (c TsCreateKey) Retention(retentionperiod int64) TsCreateRetention {
-	c.cs.s = append(c.cs.s, "RETENTION", strconv.FormatInt(retentionperiod, 10))
-	return (TsCreateRetention)(c)
+	_ = "STUB: not implemented"
+	return *new(TsCreateRetention)
 }
 
 func (c TsCreateKey) EncodingUncompressed() TsCreateEncodingUncompressed {
-	c.cs.s = append(c.cs.s, "ENCODING", "UNCOMPRESSED")
-	return (TsCreateEncodingUncompressed)(c)
+	_ = "STUB: not implemented"
+	return *new(TsCreateEncodingUncompressed)
 }
 
 func (c TsCreateKey) EncodingCompressed() TsCreateEncodingCompressed {
-	c.cs.s = append(c.cs.s, "ENCODING", "COMPRESSED")
-	return (TsCreateEncodingCompressed)(c)
+	_ = "STUB: not implemented"
+	return *new(TsCreateEncodingCompressed)
 }
 
 func (c TsCreateKey) ChunkSize(size int64) TsCreateChunkSize {
-	c.cs.s = append(c.cs.s, "CHUNK_SIZE", strconv.FormatInt(size, 10))
-	return (TsCreateChunkSize)(c)
+	_ = "STUB: not implemented"
+	return *new(TsCreateChunkSize)
 }
 
 func (c TsCreateKey) DuplicatePolicyBlock() TsCreateDuplicatePolicyBlock {
-	c.cf |= int16(blockTag)
-	c.cs.s = append(c.cs.s, "DUPLICATE_POLICY", "BLOCK")
-	return (TsCreateDuplicatePolicyBlock)(c)
+	_ = "STUB: not implemented"
+	return *new(TsCreateDuplicatePolicyBlock)
 }
 
 func (c TsCreateKey) DuplicatePolicyFirst() TsCreateDuplicatePolicyFirst {
-	c.cs.s = append(c.cs.s, "DUPLICATE_POLICY", "FIRST")
-	return (TsCreateDuplicatePolicyFirst)(c)
+	_ = "STUB: not implemented"
+	return *new(TsCreateDuplicatePolicyFirst)
 }
 
 func (c TsCreateKey) DuplicatePolicyLast() TsCreateDuplicatePolicyLast {
-	c.cs.s = append(c.cs.s, "DUPLICATE_POLICY", "LAST")
-	return (TsCreateDuplicatePolicyLast)(c)
+	_ = "STUB: not implemented"
+	return *new(TsCreateDuplicatePolicyLast)
 }
 
 func (c TsCreateKey) DuplicatePolicyMin() TsCreateDuplicatePolicyMin {
-	c.cs.s = append(c.cs.s, "DUPLICATE_POLICY", "MIN")
-	return (TsCreateDuplicatePolicyMin)(c)
+	_ = "STUB: not implemented"
+	return *new(TsCreateDuplicatePolicyMin)
 }
 
 func (c TsCreateKey) DuplicatePolicyMax() TsCreateDuplicatePolicyMax {
-	c.cs.s = append(c.cs.s, "DUPLICATE_POLICY", "MAX")
-	return (TsCreateDuplicatePolicyMax)(c)
+	_ = "STUB: not implemented"
+	return *new(TsCreateDuplicatePolicyMax)
 }
 
 func (c TsCreateKey) DuplicatePolicySum() TsCreateDuplicatePolicySum {
-	c.cs.s = append(c.cs.s, "DUPLICATE_POLICY", "SUM")
-	return (TsCreateDuplicatePolicySum)(c)
+	_ = "STUB: not implemented"
+	return *new(TsCreateDuplicatePolicySum)
 }
 
 func (c TsCreateKey) Labels() TsCreateLabels {
-	c.cs.s = append(c.cs.s, "LABELS")
-	return (TsCreateLabels)(c)
+	_ = "STUB: not implemented"
+	return *new(TsCreateLabels)
 }
 
-func (c TsCreateKey) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c TsCreateKey) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type TsCreateLabels Incomplete
 
 func (c TsCreateLabels) Labels(label string, value string) TsCreateLabels {
-	c.cs.s = append(c.cs.s, label, value)
-	return c
+	_ = "STUB: not implemented"
+	return *new(TsCreateLabels)
 }
 
-func (c TsCreateLabels) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c TsCreateLabels) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type TsCreateRetention Incomplete
 
 func (c TsCreateRetention) EncodingUncompressed() TsCreateEncodingUncompressed {
-	c.cs.s = append(c.cs.s, "ENCODING", "UNCOMPRESSED")
-	return (TsCreateEncodingUncompressed)(c)
+	_ = "STUB: not implemented"
+	return *new(TsCreateEncodingUncompressed)
 }
 
 func (c TsCreateRetention) EncodingCompressed() TsCreateEncodingCompressed {
-	c.cs.s = append(c.cs.s, "ENCODING", "COMPRESSED")
-	return (TsCreateEncodingCompressed)(c)
+	_ = "STUB: not implemented"
+	return *new(TsCreateEncodingCompressed)
 }
 
 func (c TsCreateRetention) ChunkSize(size int64) TsCreateChunkSize {
-	c.cs.s = append(c.cs.s, "CHUNK_SIZE", strconv.FormatInt(size, 10))
-	return (TsCreateChunkSize)(c)
+	_ = "STUB: not implemented"
+	return *new(TsCreateChunkSize)
 }
 
 func (c TsCreateRetention) DuplicatePolicyBlock() TsCreateDuplicatePolicyBlock {
-	c.cf |= int16(blockTag)
-	c.cs.s = append(c.cs.s, "DUPLICATE_POLICY", "BLOCK")
-	return (TsCreateDuplicatePolicyBlock)(c)
+	_ = "STUB: not implemented"
+	return *new(TsCreateDuplicatePolicyBlock)
 }
 
 func (c TsCreateRetention) DuplicatePolicyFirst() TsCreateDuplicatePolicyFirst {
-	c.cs.s = append(c.cs.s, "DUPLICATE_POLICY", "FIRST")
-	return (TsCreateDuplicatePolicyFirst)(c)
+	_ = "STUB: not implemented"
+	return *new(TsCreateDuplicatePolicyFirst)
 }
 
 func (c TsCreateRetention) DuplicatePolicyLast() TsCreateDuplicatePolicyLast {
-	c.cs.s = append(c.cs.s, "DUPLICATE_POLICY", "LAST")
-	return (TsCreateDuplicatePolicyLast)(c)
+	_ = "STUB: not implemented"
+	return *new(TsCreateDuplicatePolicyLast)
 }
 
 func (c TsCreateRetention) DuplicatePolicyMin() TsCreateDuplicatePolicyMin {
-	c.cs.s = append(c.cs.s, "DUPLICATE_POLICY", "MIN")
-	return (TsCreateDuplicatePolicyMin)(c)
+	_ = "STUB: not implemented"
+	return *new(TsCreateDuplicatePolicyMin)
 }
 
 func (c TsCreateRetention) DuplicatePolicyMax() TsCreateDuplicatePolicyMax {
-	c.cs.s = append(c.cs.s, "DUPLICATE_POLICY", "MAX")
-	return (TsCreateDuplicatePolicyMax)(c)
+	_ = "STUB: not implemented"
+	return *new(TsCreateDuplicatePolicyMax)
 }
 
 func (c TsCreateRetention) DuplicatePolicySum() TsCreateDuplicatePolicySum {
-	c.cs.s = append(c.cs.s, "DUPLICATE_POLICY", "SUM")
-	return (TsCreateDuplicatePolicySum)(c)
+	_ = "STUB: not implemented"
+	return *new(TsCreateDuplicatePolicySum)
 }
 
 func (c TsCreateRetention) Labels() TsCreateLabels {
-	c.cs.s = append(c.cs.s, "LABELS")
-	return (TsCreateLabels)(c)
+	_ = "STUB: not implemented"
+	return *new(TsCreateLabels)
 }
 
-func (c TsCreateRetention) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c TsCreateRetention) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type TsCreaterule Incomplete
 
 func (b Builder) TsCreaterule() (c TsCreaterule) {
-	c = TsCreaterule{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "TS.CREATERULE")
-	return c
+	_ = "STUB: not implemented"
+	return *new(TsCreaterule)
 }
 
 func (c TsCreaterule) Sourcekey(sourcekey string) TsCreateruleSourcekey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(sourcekey)
-	} else {
-		c.ks = check(c.ks, slot(sourcekey))
-	}
-	c.cs.s = append(c.cs.s, sourcekey)
-	return (TsCreateruleSourcekey)(c)
+	_ = "STUB: not implemented"
+	return *new(TsCreateruleSourcekey)
 }
 
 type TsCreateruleAggregationAvg Incomplete
 
 func (c TsCreateruleAggregationAvg) Bucketduration(bucketduration int64) TsCreateruleBucketduration {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(bucketduration, 10))
-	return (TsCreateruleBucketduration)(c)
+	_ = "STUB: not implemented"
+	return *new(TsCreateruleBucketduration)
 }
 
 type TsCreateruleAggregationCount Incomplete
 
 func (c TsCreateruleAggregationCount) Bucketduration(bucketduration int64) TsCreateruleBucketduration {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(bucketduration, 10))
-	return (TsCreateruleBucketduration)(c)
+	_ = "STUB: not implemented"
+	return *new(TsCreateruleBucketduration)
 }
 
 type TsCreateruleAggregationFirst Incomplete
 
 func (c TsCreateruleAggregationFirst) Bucketduration(bucketduration int64) TsCreateruleBucketduration {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(bucketduration, 10))
-	return (TsCreateruleBucketduration)(c)
+	_ = "STUB: not implemented"
+	return *new(TsCreateruleBucketduration)
 }
 
 type TsCreateruleAggregationLast Incomplete
 
 func (c TsCreateruleAggregationLast) Bucketduration(bucketduration int64) TsCreateruleBucketduration {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(bucketduration, 10))
-	return (TsCreateruleBucketduration)(c)
+	_ = "STUB: not implemented"
+	return *new(TsCreateruleBucketduration)
 }
 
 type TsCreateruleAggregationMax Incomplete
 
 func (c TsCreateruleAggregationMax) Bucketduration(bucketduration int64) TsCreateruleBucketduration {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(bucketduration, 10))
-	return (TsCreateruleBucketduration)(c)
+	_ = "STUB: not implemented"
+	return *new(TsCreateruleBucketduration)
 }
 
 type TsCreateruleAggregationMin Incomplete
 
 func (c TsCreateruleAggregationMin) Bucketduration(bucketduration int64) TsCreateruleBucketduration {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(bucketduration, 10))
-	return (TsCreateruleBucketduration)(c)
+	_ = "STUB: not implemented"
+	return *new(TsCreateruleBucketduration)
 }
 
 type TsCreateruleAggregationRange Incomplete
 
 func (c TsCreateruleAggregationRange) Bucketduration(bucketduration int64) TsCreateruleBucketduration {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(bucketduration, 10))
-	return (TsCreateruleBucketduration)(c)
+	_ = "STUB: not implemented"
+	return *new(TsCreateruleBucketduration)
 }
 
 type TsCreateruleAggregationStdP Incomplete
 
 func (c TsCreateruleAggregationStdP) Bucketduration(bucketduration int64) TsCreateruleBucketduration {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(bucketduration, 10))
-	return (TsCreateruleBucketduration)(c)
+	_ = "STUB: not implemented"
+	return *new(TsCreateruleBucketduration)
 }
 
 type TsCreateruleAggregationStdS Incomplete
 
 func (c TsCreateruleAggregationStdS) Bucketduration(bucketduration int64) TsCreateruleBucketduration {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(bucketduration, 10))
-	return (TsCreateruleBucketduration)(c)
+	_ = "STUB: not implemented"
+	return *new(TsCreateruleBucketduration)
 }
 
 type TsCreateruleAggregationSum Incomplete
 
 func (c TsCreateruleAggregationSum) Bucketduration(bucketduration int64) TsCreateruleBucketduration {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(bucketduration, 10))
-	return (TsCreateruleBucketduration)(c)
+	_ = "STUB: not implemented"
+	return *new(TsCreateruleBucketduration)
 }
 
 type TsCreateruleAggregationTwa Incomplete
 
 func (c TsCreateruleAggregationTwa) Bucketduration(bucketduration int64) TsCreateruleBucketduration {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(bucketduration, 10))
-	return (TsCreateruleBucketduration)(c)
+	_ = "STUB: not implemented"
+	return *new(TsCreateruleBucketduration)
 }
 
 type TsCreateruleAggregationVarP Incomplete
 
 func (c TsCreateruleAggregationVarP) Bucketduration(bucketduration int64) TsCreateruleBucketduration {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(bucketduration, 10))
-	return (TsCreateruleBucketduration)(c)
+	_ = "STUB: not implemented"
+	return *new(TsCreateruleBucketduration)
 }
 
 type TsCreateruleAggregationVarS Incomplete
 
 func (c TsCreateruleAggregationVarS) Bucketduration(bucketduration int64) TsCreateruleBucketduration {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(bucketduration, 10))
-	return (TsCreateruleBucketduration)(c)
+	_ = "STUB: not implemented"
+	return *new(TsCreateruleBucketduration)
 }
 
 type TsCreateruleAligntimestamp Incomplete
 
 func (c TsCreateruleAligntimestamp) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type TsCreateruleBucketduration Incomplete
 
 func (c TsCreateruleBucketduration) Aligntimestamp(aligntimestamp int64) TsCreateruleAligntimestamp {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(aligntimestamp, 10))
-	return (TsCreateruleAligntimestamp)(c)
+	_ = "STUB: not implemented"
+	return *new(TsCreateruleAligntimestamp)
 }
 
 func (c TsCreateruleBucketduration) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type TsCreateruleDestkey Incomplete
 
 func (c TsCreateruleDestkey) AggregationAvg() TsCreateruleAggregationAvg {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "AVG")
-	return (TsCreateruleAggregationAvg)(c)
+	_ = "STUB: not implemented"
+	return *new(TsCreateruleAggregationAvg)
 }
 
 func (c TsCreateruleDestkey) AggregationSum() TsCreateruleAggregationSum {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "SUM")
-	return (TsCreateruleAggregationSum)(c)
+	_ = "STUB: not implemented"
+	return *new(TsCreateruleAggregationSum)
 }
 
 func (c TsCreateruleDestkey) AggregationMin() TsCreateruleAggregationMin {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "MIN")
-	return (TsCreateruleAggregationMin)(c)
+	_ = "STUB: not implemented"
+	return *new(TsCreateruleAggregationMin)
 }
 
 func (c TsCreateruleDestkey) AggregationMax() TsCreateruleAggregationMax {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "MAX")
-	return (TsCreateruleAggregationMax)(c)
+	_ = "STUB: not implemented"
+	return *new(TsCreateruleAggregationMax)
 }
 
 func (c TsCreateruleDestkey) AggregationRange() TsCreateruleAggregationRange {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "RANGE")
-	return (TsCreateruleAggregationRange)(c)
+	_ = "STUB: not implemented"
+	return *new(TsCreateruleAggregationRange)
 }
 
 func (c TsCreateruleDestkey) AggregationCount() TsCreateruleAggregationCount {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "COUNT")
-	return (TsCreateruleAggregationCount)(c)
+	_ = "STUB: not implemented"
+	return *new(TsCreateruleAggregationCount)
 }
 
 func (c TsCreateruleDestkey) AggregationFirst() TsCreateruleAggregationFirst {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "FIRST")
-	return (TsCreateruleAggregationFirst)(c)
+	_ = "STUB: not implemented"
+	return *new(TsCreateruleAggregationFirst)
 }
 
 func (c TsCreateruleDestkey) AggregationLast() TsCreateruleAggregationLast {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "LAST")
-	return (TsCreateruleAggregationLast)(c)
+	_ = "STUB: not implemented"
+	return *new(TsCreateruleAggregationLast)
 }
 
 func (c TsCreateruleDestkey) AggregationStdP() TsCreateruleAggregationStdP {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "STD.P")
-	return (TsCreateruleAggregationStdP)(c)
+	_ = "STUB: not implemented"
+	return *new(TsCreateruleAggregationStdP)
 }
 
 func (c TsCreateruleDestkey) AggregationStdS() TsCreateruleAggregationStdS {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "STD.S")
-	return (TsCreateruleAggregationStdS)(c)
+	_ = "STUB: not implemented"
+	return *new(TsCreateruleAggregationStdS)
 }
 
 func (c TsCreateruleDestkey) AggregationVarP() TsCreateruleAggregationVarP {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "VAR.P")
-	return (TsCreateruleAggregationVarP)(c)
+	_ = "STUB: not implemented"
+	return *new(TsCreateruleAggregationVarP)
 }
 
 func (c TsCreateruleDestkey) AggregationVarS() TsCreateruleAggregationVarS {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "VAR.S")
-	return (TsCreateruleAggregationVarS)(c)
+	_ = "STUB: not implemented"
+	return *new(TsCreateruleAggregationVarS)
 }
 
 func (c TsCreateruleDestkey) AggregationTwa() TsCreateruleAggregationTwa {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "TWA")
-	return (TsCreateruleAggregationTwa)(c)
+	_ = "STUB: not implemented"
+	return *new(TsCreateruleAggregationTwa)
 }
 
 type TsCreateruleSourcekey Incomplete
 
 func (c TsCreateruleSourcekey) Destkey(destkey string) TsCreateruleDestkey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(destkey)
-	} else {
-		c.ks = check(c.ks, slot(destkey))
-	}
-	c.cs.s = append(c.cs.s, destkey)
-	return (TsCreateruleDestkey)(c)
+	_ = "STUB: not implemented"
+	return *new(TsCreateruleDestkey)
 }
 
 type TsDecrby Incomplete
 
-func (b Builder) TsDecrby() (c TsDecrby) {
-	c = TsDecrby{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "TS.DECRBY")
-	return c
-}
+func (b Builder) TsDecrby() (c TsDecrby) { _ = "STUB: not implemented"; return *new(TsDecrby) }
 
-func (c TsDecrby) Key(key string) TsDecrbyKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (TsDecrbyKey)(c)
-}
+func (c TsDecrby) Key(key string) TsDecrbyKey { _ = "STUB: not implemented"; return *new(TsDecrbyKey) }
 
 type TsDecrbyChunkSize Incomplete
 
 func (c TsDecrbyChunkSize) Labels() TsDecrbyLabels {
-	c.cs.s = append(c.cs.s, "LABELS")
-	return (TsDecrbyLabels)(c)
+	_ = "STUB: not implemented"
+	return *new(TsDecrbyLabels)
 }
 
-func (c TsDecrbyChunkSize) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c TsDecrbyChunkSize) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type TsDecrbyKey Incomplete
 
 func (c TsDecrbyKey) Value(value float64) TsDecrbyValue {
-	c.cs.s = append(c.cs.s, strconv.FormatFloat(value, 'f', -1, 64))
-	return (TsDecrbyValue)(c)
+	_ = "STUB: not implemented"
+	return *new(TsDecrbyValue)
 }
 
 type TsDecrbyLabels Incomplete
 
 func (c TsDecrbyLabels) Labels(label string, value string) TsDecrbyLabels {
-	c.cs.s = append(c.cs.s, label, value)
-	return c
+	_ = "STUB: not implemented"
+	return *new(TsDecrbyLabels)
 }
 
-func (c TsDecrbyLabels) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c TsDecrbyLabels) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type TsDecrbyRetention Incomplete
 
 func (c TsDecrbyRetention) Uncompressed() TsDecrbyUncompressed {
-	c.cs.s = append(c.cs.s, "UNCOMPRESSED")
-	return (TsDecrbyUncompressed)(c)
+	_ = "STUB: not implemented"
+	return *new(TsDecrbyUncompressed)
 }
 
 func (c TsDecrbyRetention) ChunkSize(size int64) TsDecrbyChunkSize {
-	c.cs.s = append(c.cs.s, "CHUNK_SIZE", strconv.FormatInt(size, 10))
-	return (TsDecrbyChunkSize)(c)
+	_ = "STUB: not implemented"
+	return *new(TsDecrbyChunkSize)
 }
 
 func (c TsDecrbyRetention) Labels() TsDecrbyLabels {
-	c.cs.s = append(c.cs.s, "LABELS")
-	return (TsDecrbyLabels)(c)
+	_ = "STUB: not implemented"
+	return *new(TsDecrbyLabels)
 }
 
-func (c TsDecrbyRetention) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c TsDecrbyRetention) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type TsDecrbyTimestamp Incomplete
 
 func (c TsDecrbyTimestamp) Retention(retentionperiod int64) TsDecrbyRetention {
-	c.cs.s = append(c.cs.s, "RETENTION", strconv.FormatInt(retentionperiod, 10))
-	return (TsDecrbyRetention)(c)
+	_ = "STUB: not implemented"
+	return *new(TsDecrbyRetention)
 }
 
 func (c TsDecrbyTimestamp) Uncompressed() TsDecrbyUncompressed {
-	c.cs.s = append(c.cs.s, "UNCOMPRESSED")
-	return (TsDecrbyUncompressed)(c)
+	_ = "STUB: not implemented"
+	return *new(TsDecrbyUncompressed)
 }
 
 func (c TsDecrbyTimestamp) ChunkSize(size int64) TsDecrbyChunkSize {
-	c.cs.s = append(c.cs.s, "CHUNK_SIZE", strconv.FormatInt(size, 10))
-	return (TsDecrbyChunkSize)(c)
+	_ = "STUB: not implemented"
+	return *new(TsDecrbyChunkSize)
 }
 
 func (c TsDecrbyTimestamp) Labels() TsDecrbyLabels {
-	c.cs.s = append(c.cs.s, "LABELS")
-	return (TsDecrbyLabels)(c)
+	_ = "STUB: not implemented"
+	return *new(TsDecrbyLabels)
 }
 
-func (c TsDecrbyTimestamp) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c TsDecrbyTimestamp) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type TsDecrbyUncompressed Incomplete
 
 func (c TsDecrbyUncompressed) ChunkSize(size int64) TsDecrbyChunkSize {
-	c.cs.s = append(c.cs.s, "CHUNK_SIZE", strconv.FormatInt(size, 10))
-	return (TsDecrbyChunkSize)(c)
+	_ = "STUB: not implemented"
+	return *new(TsDecrbyChunkSize)
 }
 
 func (c TsDecrbyUncompressed) Labels() TsDecrbyLabels {
-	c.cs.s = append(c.cs.s, "LABELS")
-	return (TsDecrbyLabels)(c)
+	_ = "STUB: not implemented"
+	return *new(TsDecrbyLabels)
 }
 
-func (c TsDecrbyUncompressed) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c TsDecrbyUncompressed) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type TsDecrbyValue Incomplete
 
 func (c TsDecrbyValue) Timestamp(timestamp string) TsDecrbyTimestamp {
-	c.cs.s = append(c.cs.s, "TIMESTAMP", timestamp)
-	return (TsDecrbyTimestamp)(c)
+	_ = "STUB: not implemented"
+	return *new(TsDecrbyTimestamp)
 }
 
 func (c TsDecrbyValue) Retention(retentionperiod int64) TsDecrbyRetention {
-	c.cs.s = append(c.cs.s, "RETENTION", strconv.FormatInt(retentionperiod, 10))
-	return (TsDecrbyRetention)(c)
+	_ = "STUB: not implemented"
+	return *new(TsDecrbyRetention)
 }
 
 func (c TsDecrbyValue) Uncompressed() TsDecrbyUncompressed {
-	c.cs.s = append(c.cs.s, "UNCOMPRESSED")
-	return (TsDecrbyUncompressed)(c)
+	_ = "STUB: not implemented"
+	return *new(TsDecrbyUncompressed)
 }
 
 func (c TsDecrbyValue) ChunkSize(size int64) TsDecrbyChunkSize {
-	c.cs.s = append(c.cs.s, "CHUNK_SIZE", strconv.FormatInt(size, 10))
-	return (TsDecrbyChunkSize)(c)
+	_ = "STUB: not implemented"
+	return *new(TsDecrbyChunkSize)
 }
 
 func (c TsDecrbyValue) Labels() TsDecrbyLabels {
-	c.cs.s = append(c.cs.s, "LABELS")
-	return (TsDecrbyLabels)(c)
+	_ = "STUB: not implemented"
+	return *new(TsDecrbyLabels)
 }
 
-func (c TsDecrbyValue) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c TsDecrbyValue) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type TsDel Incomplete
 
-func (b Builder) TsDel() (c TsDel) {
-	c = TsDel{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "TS.DEL")
-	return c
-}
+func (b Builder) TsDel() (c TsDel) { _ = "STUB: not implemented"; return *new(TsDel) }
 
-func (c TsDel) Key(key string) TsDelKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (TsDelKey)(c)
-}
+func (c TsDel) Key(key string) TsDelKey { _ = "STUB: not implemented"; return *new(TsDelKey) }
 
 type TsDelFromTimestamp Incomplete
 
 func (c TsDelFromTimestamp) ToTimestamp(toTimestamp int64) TsDelToTimestamp {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(toTimestamp, 10))
-	return (TsDelToTimestamp)(c)
+	_ = "STUB: not implemented"
+	return *new(TsDelToTimestamp)
 }
 
 type TsDelKey Incomplete
 
 func (c TsDelKey) FromTimestamp(fromTimestamp int64) TsDelFromTimestamp {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(fromTimestamp, 10))
-	return (TsDelFromTimestamp)(c)
+	_ = "STUB: not implemented"
+	return *new(TsDelFromTimestamp)
 }
 
 type TsDelToTimestamp Incomplete
 
-func (c TsDelToTimestamp) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c TsDelToTimestamp) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type TsDeleterule Incomplete
 
 func (b Builder) TsDeleterule() (c TsDeleterule) {
-	c = TsDeleterule{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "TS.DELETERULE")
-	return c
+	_ = "STUB: not implemented"
+	return *new(TsDeleterule)
 }
 
 func (c TsDeleterule) Sourcekey(sourcekey string) TsDeleteruleSourcekey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(sourcekey)
-	} else {
-		c.ks = check(c.ks, slot(sourcekey))
-	}
-	c.cs.s = append(c.cs.s, sourcekey)
-	return (TsDeleteruleSourcekey)(c)
+	_ = "STUB: not implemented"
+	return *new(TsDeleteruleSourcekey)
 }
 
 type TsDeleteruleDestkey Incomplete
 
-func (c TsDeleteruleDestkey) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c TsDeleteruleDestkey) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type TsDeleteruleSourcekey Incomplete
 
 func (c TsDeleteruleSourcekey) Destkey(destkey string) TsDeleteruleDestkey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(destkey)
-	} else {
-		c.ks = check(c.ks, slot(destkey))
-	}
-	c.cs.s = append(c.cs.s, destkey)
-	return (TsDeleteruleDestkey)(c)
+	_ = "STUB: not implemented"
+	return *new(TsDeleteruleDestkey)
 }
 
 type TsGet Incomplete
 
-func (b Builder) TsGet() (c TsGet) {
-	c = TsGet{cs: get(), ks: b.ks, cf: int16(readonly)}
-	c.cs.s = append(c.cs.s, "TS.GET")
-	return c
-}
+func (b Builder) TsGet() (c TsGet) { _ = "STUB: not implemented"; return *new(TsGet) }
 
-func (c TsGet) Key(key string) TsGetKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (TsGetKey)(c)
-}
+func (c TsGet) Key(key string) TsGetKey { _ = "STUB: not implemented"; return *new(TsGetKey) }
 
 type TsGetKey Incomplete
 
-func (c TsGetKey) Latest() TsGetLatest {
-	c.cs.s = append(c.cs.s, "LATEST")
-	return (TsGetLatest)(c)
-}
+func (c TsGetKey) Latest() TsGetLatest { _ = "STUB: not implemented"; return *new(TsGetLatest) }
 
-func (c TsGetKey) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c TsGetKey) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type TsGetLatest Incomplete
 
-func (c TsGetLatest) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c TsGetLatest) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type TsIncrby Incomplete
 
-func (b Builder) TsIncrby() (c TsIncrby) {
-	c = TsIncrby{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "TS.INCRBY")
-	return c
-}
+func (b Builder) TsIncrby() (c TsIncrby) { _ = "STUB: not implemented"; return *new(TsIncrby) }
 
-func (c TsIncrby) Key(key string) TsIncrbyKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (TsIncrbyKey)(c)
-}
+func (c TsIncrby) Key(key string) TsIncrbyKey { _ = "STUB: not implemented"; return *new(TsIncrbyKey) }
 
 type TsIncrbyChunkSize Incomplete
 
 func (c TsIncrbyChunkSize) Labels() TsIncrbyLabels {
-	c.cs.s = append(c.cs.s, "LABELS")
-	return (TsIncrbyLabels)(c)
+	_ = "STUB: not implemented"
+	return *new(TsIncrbyLabels)
 }
 
-func (c TsIncrbyChunkSize) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c TsIncrbyChunkSize) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type TsIncrbyKey Incomplete
 
 func (c TsIncrbyKey) Value(value float64) TsIncrbyValue {
-	c.cs.s = append(c.cs.s, strconv.FormatFloat(value, 'f', -1, 64))
-	return (TsIncrbyValue)(c)
+	_ = "STUB: not implemented"
+	return *new(TsIncrbyValue)
 }
 
 type TsIncrbyLabels Incomplete
 
 func (c TsIncrbyLabels) Labels(label string, value string) TsIncrbyLabels {
-	c.cs.s = append(c.cs.s, label, value)
-	return c
+	_ = "STUB: not implemented"
+	return *new(TsIncrbyLabels)
 }
 
-func (c TsIncrbyLabels) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c TsIncrbyLabels) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type TsIncrbyRetention Incomplete
 
 func (c TsIncrbyRetention) Uncompressed() TsIncrbyUncompressed {
-	c.cs.s = append(c.cs.s, "UNCOMPRESSED")
-	return (TsIncrbyUncompressed)(c)
+	_ = "STUB: not implemented"
+	return *new(TsIncrbyUncompressed)
 }
 
 func (c TsIncrbyRetention) ChunkSize(size int64) TsIncrbyChunkSize {
-	c.cs.s = append(c.cs.s, "CHUNK_SIZE", strconv.FormatInt(size, 10))
-	return (TsIncrbyChunkSize)(c)
+	_ = "STUB: not implemented"
+	return *new(TsIncrbyChunkSize)
 }
 
 func (c TsIncrbyRetention) Labels() TsIncrbyLabels {
-	c.cs.s = append(c.cs.s, "LABELS")
-	return (TsIncrbyLabels)(c)
+	_ = "STUB: not implemented"
+	return *new(TsIncrbyLabels)
 }
 
-func (c TsIncrbyRetention) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c TsIncrbyRetention) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type TsIncrbyTimestamp Incomplete
 
 func (c TsIncrbyTimestamp) Retention(retentionperiod int64) TsIncrbyRetention {
-	c.cs.s = append(c.cs.s, "RETENTION", strconv.FormatInt(retentionperiod, 10))
-	return (TsIncrbyRetention)(c)
+	_ = "STUB: not implemented"
+	return *new(TsIncrbyRetention)
 }
 
 func (c TsIncrbyTimestamp) Uncompressed() TsIncrbyUncompressed {
-	c.cs.s = append(c.cs.s, "UNCOMPRESSED")
-	return (TsIncrbyUncompressed)(c)
+	_ = "STUB: not implemented"
+	return *new(TsIncrbyUncompressed)
 }
 
 func (c TsIncrbyTimestamp) ChunkSize(size int64) TsIncrbyChunkSize {
-	c.cs.s = append(c.cs.s, "CHUNK_SIZE", strconv.FormatInt(size, 10))
-	return (TsIncrbyChunkSize)(c)
+	_ = "STUB: not implemented"
+	return *new(TsIncrbyChunkSize)
 }
 
 func (c TsIncrbyTimestamp) Labels() TsIncrbyLabels {
-	c.cs.s = append(c.cs.s, "LABELS")
-	return (TsIncrbyLabels)(c)
+	_ = "STUB: not implemented"
+	return *new(TsIncrbyLabels)
 }
 
-func (c TsIncrbyTimestamp) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c TsIncrbyTimestamp) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type TsIncrbyUncompressed Incomplete
 
 func (c TsIncrbyUncompressed) ChunkSize(size int64) TsIncrbyChunkSize {
-	c.cs.s = append(c.cs.s, "CHUNK_SIZE", strconv.FormatInt(size, 10))
-	return (TsIncrbyChunkSize)(c)
+	_ = "STUB: not implemented"
+	return *new(TsIncrbyChunkSize)
 }
 
 func (c TsIncrbyUncompressed) Labels() TsIncrbyLabels {
-	c.cs.s = append(c.cs.s, "LABELS")
-	return (TsIncrbyLabels)(c)
+	_ = "STUB: not implemented"
+	return *new(TsIncrbyLabels)
 }
 
-func (c TsIncrbyUncompressed) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c TsIncrbyUncompressed) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type TsIncrbyValue Incomplete
 
 func (c TsIncrbyValue) Timestamp(timestamp string) TsIncrbyTimestamp {
-	c.cs.s = append(c.cs.s, "TIMESTAMP", timestamp)
-	return (TsIncrbyTimestamp)(c)
+	_ = "STUB: not implemented"
+	return *new(TsIncrbyTimestamp)
 }
 
 func (c TsIncrbyValue) Retention(retentionperiod int64) TsIncrbyRetention {
-	c.cs.s = append(c.cs.s, "RETENTION", strconv.FormatInt(retentionperiod, 10))
-	return (TsIncrbyRetention)(c)
+	_ = "STUB: not implemented"
+	return *new(TsIncrbyRetention)
 }
 
 func (c TsIncrbyValue) Uncompressed() TsIncrbyUncompressed {
-	c.cs.s = append(c.cs.s, "UNCOMPRESSED")
-	return (TsIncrbyUncompressed)(c)
+	_ = "STUB: not implemented"
+	return *new(TsIncrbyUncompressed)
 }
 
 func (c TsIncrbyValue) ChunkSize(size int64) TsIncrbyChunkSize {
-	c.cs.s = append(c.cs.s, "CHUNK_SIZE", strconv.FormatInt(size, 10))
-	return (TsIncrbyChunkSize)(c)
+	_ = "STUB: not implemented"
+	return *new(TsIncrbyChunkSize)
 }
 
 func (c TsIncrbyValue) Labels() TsIncrbyLabels {
-	c.cs.s = append(c.cs.s, "LABELS")
-	return (TsIncrbyLabels)(c)
+	_ = "STUB: not implemented"
+	return *new(TsIncrbyLabels)
 }
 
-func (c TsIncrbyValue) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c TsIncrbyValue) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type TsInfo Incomplete
 
-func (b Builder) TsInfo() (c TsInfo) {
-	c = TsInfo{cs: get(), ks: b.ks, cf: int16(readonly)}
-	c.cs.s = append(c.cs.s, "TS.INFO")
-	return c
-}
+func (b Builder) TsInfo() (c TsInfo) { _ = "STUB: not implemented"; return *new(TsInfo) }
 
-func (c TsInfo) Key(key string) TsInfoKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (TsInfoKey)(c)
-}
+func (c TsInfo) Key(key string) TsInfoKey { _ = "STUB: not implemented"; return *new(TsInfoKey) }
 
 type TsInfoDebug Incomplete
 
-func (c TsInfoDebug) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c TsInfoDebug) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type TsInfoKey Incomplete
 
 func (c TsInfoKey) Debug(debug string) TsInfoDebug {
-	c.cs.s = append(c.cs.s, debug)
-	return (TsInfoDebug)(c)
+	_ = "STUB: not implemented"
+	return *new(TsInfoDebug)
 }
 
-func (c TsInfoKey) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c TsInfoKey) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type TsMadd Incomplete
 
-func (b Builder) TsMadd() (c TsMadd) {
-	c = TsMadd{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "TS.MADD")
-	return c
-}
+func (b Builder) TsMadd() (c TsMadd) { _ = "STUB: not implemented"; return *new(TsMadd) }
 
 func (c TsMadd) KeyTimestampValue() TsMaddKeyTimestampValue {
-	return (TsMaddKeyTimestampValue)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMaddKeyTimestampValue)
 }
 
 type TsMaddKeyTimestampValue Incomplete
 
 func (c TsMaddKeyTimestampValue) KeyTimestampValue(key string, timestamp int64, value float64) TsMaddKeyTimestampValue {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key, strconv.FormatInt(timestamp, 10), strconv.FormatFloat(value, 'f', -1, 64))
-	return c
+	_ = "STUB: not implemented"
+	return *new(TsMaddKeyTimestampValue)
 }
 
 func (c TsMaddKeyTimestampValue) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type TsMget Incomplete
 
-func (b Builder) TsMget() (c TsMget) {
-	c = TsMget{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "TS.MGET")
-	return c
-}
+func (b Builder) TsMget() (c TsMget) { _ = "STUB: not implemented"; return *new(TsMget) }
 
-func (c TsMget) Latest() TsMgetLatest {
-	c.cs.s = append(c.cs.s, "LATEST")
-	return (TsMgetLatest)(c)
-}
+func (c TsMget) Latest() TsMgetLatest { _ = "STUB: not implemented"; return *new(TsMgetLatest) }
 
 func (c TsMget) Withlabels() TsMgetWithlabels {
-	c.cs.s = append(c.cs.s, "WITHLABELS")
-	return (TsMgetWithlabels)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMgetWithlabels)
 }
 
 func (c TsMget) SelectedLabels(labels []string) TsMgetSelectedLabels {
-	c.cs.s = append(c.cs.s, "SELECTED_LABELS")
-	c.cs.s = append(c.cs.s, labels...)
-	return (TsMgetSelectedLabels)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMgetSelectedLabels)
 }
 
 func (c TsMget) Filter(filter ...string) TsMgetFilter {
-	c.cs.s = append(c.cs.s, "FILTER")
-	c.cs.s = append(c.cs.s, filter...)
-	return (TsMgetFilter)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMgetFilter)
 }
 
 type TsMgetFilter Incomplete
 
 func (c TsMgetFilter) Filter(filter ...string) TsMgetFilter {
-	c.cs.s = append(c.cs.s, "FILTER")
-	c.cs.s = append(c.cs.s, filter...)
-	return c
+	_ = "STUB: not implemented"
+	return *new(TsMgetFilter)
 }
 
-func (c TsMgetFilter) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c TsMgetFilter) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type TsMgetLatest Incomplete
 
 func (c TsMgetLatest) Withlabels() TsMgetWithlabels {
-	c.cs.s = append(c.cs.s, "WITHLABELS")
-	return (TsMgetWithlabels)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMgetWithlabels)
 }
 
 func (c TsMgetLatest) SelectedLabels(labels []string) TsMgetSelectedLabels {
-	c.cs.s = append(c.cs.s, "SELECTED_LABELS")
-	c.cs.s = append(c.cs.s, labels...)
-	return (TsMgetSelectedLabels)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMgetSelectedLabels)
 }
 
 func (c TsMgetLatest) Filter(filter ...string) TsMgetFilter {
-	c.cs.s = append(c.cs.s, "FILTER")
-	c.cs.s = append(c.cs.s, filter...)
-	return (TsMgetFilter)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMgetFilter)
 }
 
 type TsMgetSelectedLabels Incomplete
 
 func (c TsMgetSelectedLabels) Filter(filter ...string) TsMgetFilter {
-	c.cs.s = append(c.cs.s, "FILTER")
-	c.cs.s = append(c.cs.s, filter...)
-	return (TsMgetFilter)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMgetFilter)
 }
 
 type TsMgetWithlabels Incomplete
 
 func (c TsMgetWithlabels) Filter(filter ...string) TsMgetFilter {
-	c.cs.s = append(c.cs.s, "FILTER")
-	c.cs.s = append(c.cs.s, filter...)
-	return (TsMgetFilter)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMgetFilter)
 }
 
 type TsMrange Incomplete
 
-func (b Builder) TsMrange() (c TsMrange) {
-	c = TsMrange{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "TS.MRANGE")
-	return c
-}
+func (b Builder) TsMrange() (c TsMrange) { _ = "STUB: not implemented"; return *new(TsMrange) }
 
 func (c TsMrange) Fromtimestamp(fromtimestamp string) TsMrangeFromtimestamp {
-	c.cs.s = append(c.cs.s, fromtimestamp)
-	return (TsMrangeFromtimestamp)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeFromtimestamp)
 }
 
 type TsMrangeAggregationAggregationAvg Incomplete
 
 func (c TsMrangeAggregationAggregationAvg) Bucketduration(bucketduration int64) TsMrangeAggregationBucketduration {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(bucketduration, 10))
-	return (TsMrangeAggregationBucketduration)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationBucketduration)
 }
 
 type TsMrangeAggregationAggregationCount Incomplete
 
 func (c TsMrangeAggregationAggregationCount) Bucketduration(bucketduration int64) TsMrangeAggregationBucketduration {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(bucketduration, 10))
-	return (TsMrangeAggregationBucketduration)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationBucketduration)
 }
 
 type TsMrangeAggregationAggregationFirst Incomplete
 
 func (c TsMrangeAggregationAggregationFirst) Bucketduration(bucketduration int64) TsMrangeAggregationBucketduration {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(bucketduration, 10))
-	return (TsMrangeAggregationBucketduration)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationBucketduration)
 }
 
 type TsMrangeAggregationAggregationLast Incomplete
 
 func (c TsMrangeAggregationAggregationLast) Bucketduration(bucketduration int64) TsMrangeAggregationBucketduration {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(bucketduration, 10))
-	return (TsMrangeAggregationBucketduration)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationBucketduration)
 }
 
 type TsMrangeAggregationAggregationMax Incomplete
 
 func (c TsMrangeAggregationAggregationMax) Bucketduration(bucketduration int64) TsMrangeAggregationBucketduration {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(bucketduration, 10))
-	return (TsMrangeAggregationBucketduration)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationBucketduration)
 }
 
 type TsMrangeAggregationAggregationMin Incomplete
 
 func (c TsMrangeAggregationAggregationMin) Bucketduration(bucketduration int64) TsMrangeAggregationBucketduration {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(bucketduration, 10))
-	return (TsMrangeAggregationBucketduration)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationBucketduration)
 }
 
 type TsMrangeAggregationAggregationRange Incomplete
 
 func (c TsMrangeAggregationAggregationRange) Bucketduration(bucketduration int64) TsMrangeAggregationBucketduration {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(bucketduration, 10))
-	return (TsMrangeAggregationBucketduration)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationBucketduration)
 }
 
 type TsMrangeAggregationAggregationStdP Incomplete
 
 func (c TsMrangeAggregationAggregationStdP) Bucketduration(bucketduration int64) TsMrangeAggregationBucketduration {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(bucketduration, 10))
-	return (TsMrangeAggregationBucketduration)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationBucketduration)
 }
 
 type TsMrangeAggregationAggregationStdS Incomplete
 
 func (c TsMrangeAggregationAggregationStdS) Bucketduration(bucketduration int64) TsMrangeAggregationBucketduration {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(bucketduration, 10))
-	return (TsMrangeAggregationBucketduration)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationBucketduration)
 }
 
 type TsMrangeAggregationAggregationSum Incomplete
 
 func (c TsMrangeAggregationAggregationSum) Bucketduration(bucketduration int64) TsMrangeAggregationBucketduration {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(bucketduration, 10))
-	return (TsMrangeAggregationBucketduration)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationBucketduration)
 }
 
 type TsMrangeAggregationAggregationTwa Incomplete
 
 func (c TsMrangeAggregationAggregationTwa) Bucketduration(bucketduration int64) TsMrangeAggregationBucketduration {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(bucketduration, 10))
-	return (TsMrangeAggregationBucketduration)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationBucketduration)
 }
 
 type TsMrangeAggregationAggregationVarP Incomplete
 
 func (c TsMrangeAggregationAggregationVarP) Bucketduration(bucketduration int64) TsMrangeAggregationBucketduration {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(bucketduration, 10))
-	return (TsMrangeAggregationBucketduration)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationBucketduration)
 }
 
 type TsMrangeAggregationAggregationVarS Incomplete
 
 func (c TsMrangeAggregationAggregationVarS) Bucketduration(bucketduration int64) TsMrangeAggregationBucketduration {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(bucketduration, 10))
-	return (TsMrangeAggregationBucketduration)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationBucketduration)
 }
 
 type TsMrangeAggregationBucketduration Incomplete
 
 func (c TsMrangeAggregationBucketduration) Buckettimestamp(buckettimestamp string) TsMrangeAggregationBuckettimestamp {
-	c.cs.s = append(c.cs.s, "BUCKETTIMESTAMP", buckettimestamp)
-	return (TsMrangeAggregationBuckettimestamp)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationBuckettimestamp)
 }
 
 func (c TsMrangeAggregationBucketduration) Empty() TsMrangeAggregationEmpty {
-	c.cs.s = append(c.cs.s, "EMPTY")
-	return (TsMrangeAggregationEmpty)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationEmpty)
 }
 
 func (c TsMrangeAggregationBucketduration) Filter(filter ...string) TsMrangeFilter {
-	c.cs.s = append(c.cs.s, "FILTER")
-	c.cs.s = append(c.cs.s, filter...)
-	return (TsMrangeFilter)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeFilter)
 }
 
 type TsMrangeAggregationBuckettimestamp Incomplete
 
 func (c TsMrangeAggregationBuckettimestamp) Empty() TsMrangeAggregationEmpty {
-	c.cs.s = append(c.cs.s, "EMPTY")
-	return (TsMrangeAggregationEmpty)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationEmpty)
 }
 
 func (c TsMrangeAggregationBuckettimestamp) Filter(filter ...string) TsMrangeFilter {
-	c.cs.s = append(c.cs.s, "FILTER")
-	c.cs.s = append(c.cs.s, filter...)
-	return (TsMrangeFilter)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeFilter)
 }
 
 type TsMrangeAggregationEmpty Incomplete
 
 func (c TsMrangeAggregationEmpty) Filter(filter ...string) TsMrangeFilter {
-	c.cs.s = append(c.cs.s, "FILTER")
-	c.cs.s = append(c.cs.s, filter...)
-	return (TsMrangeFilter)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeFilter)
 }
 
 type TsMrangeAlign Incomplete
 
 func (c TsMrangeAlign) AggregationAvg() TsMrangeAggregationAggregationAvg {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "AVG")
-	return (TsMrangeAggregationAggregationAvg)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationAvg)
 }
 
 func (c TsMrangeAlign) AggregationSum() TsMrangeAggregationAggregationSum {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "SUM")
-	return (TsMrangeAggregationAggregationSum)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationSum)
 }
 
 func (c TsMrangeAlign) AggregationMin() TsMrangeAggregationAggregationMin {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "MIN")
-	return (TsMrangeAggregationAggregationMin)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationMin)
 }
 
 func (c TsMrangeAlign) AggregationMax() TsMrangeAggregationAggregationMax {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "MAX")
-	return (TsMrangeAggregationAggregationMax)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationMax)
 }
 
 func (c TsMrangeAlign) AggregationRange() TsMrangeAggregationAggregationRange {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "RANGE")
-	return (TsMrangeAggregationAggregationRange)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationRange)
 }
 
 func (c TsMrangeAlign) AggregationCount() TsMrangeAggregationAggregationCount {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "COUNT")
-	return (TsMrangeAggregationAggregationCount)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationCount)
 }
 
 func (c TsMrangeAlign) AggregationFirst() TsMrangeAggregationAggregationFirst {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "FIRST")
-	return (TsMrangeAggregationAggregationFirst)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationFirst)
 }
 
 func (c TsMrangeAlign) AggregationLast() TsMrangeAggregationAggregationLast {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "LAST")
-	return (TsMrangeAggregationAggregationLast)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationLast)
 }
 
 func (c TsMrangeAlign) AggregationStdP() TsMrangeAggregationAggregationStdP {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "STD.P")
-	return (TsMrangeAggregationAggregationStdP)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationStdP)
 }
 
 func (c TsMrangeAlign) AggregationStdS() TsMrangeAggregationAggregationStdS {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "STD.S")
-	return (TsMrangeAggregationAggregationStdS)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationStdS)
 }
 
 func (c TsMrangeAlign) AggregationVarP() TsMrangeAggregationAggregationVarP {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "VAR.P")
-	return (TsMrangeAggregationAggregationVarP)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationVarP)
 }
 
 func (c TsMrangeAlign) AggregationVarS() TsMrangeAggregationAggregationVarS {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "VAR.S")
-	return (TsMrangeAggregationAggregationVarS)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationVarS)
 }
 
 func (c TsMrangeAlign) AggregationTwa() TsMrangeAggregationAggregationTwa {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "TWA")
-	return (TsMrangeAggregationAggregationTwa)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationTwa)
 }
 
 func (c TsMrangeAlign) Filter(filter ...string) TsMrangeFilter {
-	c.cs.s = append(c.cs.s, "FILTER")
-	c.cs.s = append(c.cs.s, filter...)
-	return (TsMrangeFilter)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeFilter)
 }
 
 type TsMrangeCount Incomplete
 
 func (c TsMrangeCount) Align(value string) TsMrangeAlign {
-	c.cs.s = append(c.cs.s, "ALIGN", value)
-	return (TsMrangeAlign)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAlign)
 }
 
 func (c TsMrangeCount) AggregationAvg() TsMrangeAggregationAggregationAvg {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "AVG")
-	return (TsMrangeAggregationAggregationAvg)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationAvg)
 }
 
 func (c TsMrangeCount) AggregationSum() TsMrangeAggregationAggregationSum {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "SUM")
-	return (TsMrangeAggregationAggregationSum)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationSum)
 }
 
 func (c TsMrangeCount) AggregationMin() TsMrangeAggregationAggregationMin {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "MIN")
-	return (TsMrangeAggregationAggregationMin)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationMin)
 }
 
 func (c TsMrangeCount) AggregationMax() TsMrangeAggregationAggregationMax {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "MAX")
-	return (TsMrangeAggregationAggregationMax)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationMax)
 }
 
 func (c TsMrangeCount) AggregationRange() TsMrangeAggregationAggregationRange {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "RANGE")
-	return (TsMrangeAggregationAggregationRange)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationRange)
 }
 
 func (c TsMrangeCount) AggregationCount() TsMrangeAggregationAggregationCount {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "COUNT")
-	return (TsMrangeAggregationAggregationCount)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationCount)
 }
 
 func (c TsMrangeCount) AggregationFirst() TsMrangeAggregationAggregationFirst {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "FIRST")
-	return (TsMrangeAggregationAggregationFirst)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationFirst)
 }
 
 func (c TsMrangeCount) AggregationLast() TsMrangeAggregationAggregationLast {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "LAST")
-	return (TsMrangeAggregationAggregationLast)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationLast)
 }
 
 func (c TsMrangeCount) AggregationStdP() TsMrangeAggregationAggregationStdP {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "STD.P")
-	return (TsMrangeAggregationAggregationStdP)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationStdP)
 }
 
 func (c TsMrangeCount) AggregationStdS() TsMrangeAggregationAggregationStdS {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "STD.S")
-	return (TsMrangeAggregationAggregationStdS)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationStdS)
 }
 
 func (c TsMrangeCount) AggregationVarP() TsMrangeAggregationAggregationVarP {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "VAR.P")
-	return (TsMrangeAggregationAggregationVarP)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationVarP)
 }
 
 func (c TsMrangeCount) AggregationVarS() TsMrangeAggregationAggregationVarS {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "VAR.S")
-	return (TsMrangeAggregationAggregationVarS)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationVarS)
 }
 
 func (c TsMrangeCount) AggregationTwa() TsMrangeAggregationAggregationTwa {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "TWA")
-	return (TsMrangeAggregationAggregationTwa)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationTwa)
 }
 
 func (c TsMrangeCount) Filter(filter ...string) TsMrangeFilter {
-	c.cs.s = append(c.cs.s, "FILTER")
-	c.cs.s = append(c.cs.s, filter...)
-	return (TsMrangeFilter)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeFilter)
 }
 
 type TsMrangeFilter Incomplete
 
 func (c TsMrangeFilter) Filter(filter ...string) TsMrangeFilter {
-	c.cs.s = append(c.cs.s, "FILTER")
-	c.cs.s = append(c.cs.s, filter...)
-	return c
+	_ = "STUB: not implemented"
+	return *new(TsMrangeFilter)
 }
 
 func (c TsMrangeFilter) Groupby(label string, reduce string, reducer string) TsMrangeGroupby {
-	c.cs.s = append(c.cs.s, "GROUPBY", label, reduce, reducer)
-	return (TsMrangeGroupby)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeGroupby)
 }
 
-func (c TsMrangeFilter) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c TsMrangeFilter) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type TsMrangeFilterByTs Incomplete
 
 func (c TsMrangeFilterByTs) FilterByTs(timestamp ...int64) TsMrangeFilterByTs {
-	c.cs.s = append(c.cs.s, "FILTER_BY_TS")
-	for _, n := range timestamp {
-		c.cs.s = append(c.cs.s, strconv.FormatInt(n, 10))
-	}
-	return c
+	_ = "STUB: not implemented"
+	return *new(TsMrangeFilterByTs)
 }
 
 func (c TsMrangeFilterByTs) FilterByValue(min float64, max float64) TsMrangeFilterByValue {
-	c.cs.s = append(c.cs.s, "FILTER_BY_VALUE", strconv.FormatFloat(min, 'f', -1, 64), strconv.FormatFloat(max, 'f', -1, 64))
-	return (TsMrangeFilterByValue)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeFilterByValue)
 }
 
 func (c TsMrangeFilterByTs) Withlabels() TsMrangeWithlabels {
-	c.cs.s = append(c.cs.s, "WITHLABELS")
-	return (TsMrangeWithlabels)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeWithlabels)
 }
 
 func (c TsMrangeFilterByTs) SelectedLabels(labels []string) TsMrangeSelectedLabels {
-	c.cs.s = append(c.cs.s, "SELECTED_LABELS")
-	c.cs.s = append(c.cs.s, labels...)
-	return (TsMrangeSelectedLabels)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeSelectedLabels)
 }
 
 func (c TsMrangeFilterByTs) Count(count int64) TsMrangeCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(count, 10))
-	return (TsMrangeCount)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeCount)
 }
 
 func (c TsMrangeFilterByTs) Align(value string) TsMrangeAlign {
-	c.cs.s = append(c.cs.s, "ALIGN", value)
-	return (TsMrangeAlign)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAlign)
 }
 
 func (c TsMrangeFilterByTs) AggregationAvg() TsMrangeAggregationAggregationAvg {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "AVG")
-	return (TsMrangeAggregationAggregationAvg)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationAvg)
 }
 
 func (c TsMrangeFilterByTs) AggregationSum() TsMrangeAggregationAggregationSum {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "SUM")
-	return (TsMrangeAggregationAggregationSum)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationSum)
 }
 
 func (c TsMrangeFilterByTs) AggregationMin() TsMrangeAggregationAggregationMin {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "MIN")
-	return (TsMrangeAggregationAggregationMin)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationMin)
 }
 
 func (c TsMrangeFilterByTs) AggregationMax() TsMrangeAggregationAggregationMax {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "MAX")
-	return (TsMrangeAggregationAggregationMax)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationMax)
 }
 
 func (c TsMrangeFilterByTs) AggregationRange() TsMrangeAggregationAggregationRange {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "RANGE")
-	return (TsMrangeAggregationAggregationRange)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationRange)
 }
 
 func (c TsMrangeFilterByTs) AggregationCount() TsMrangeAggregationAggregationCount {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "COUNT")
-	return (TsMrangeAggregationAggregationCount)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationCount)
 }
 
 func (c TsMrangeFilterByTs) AggregationFirst() TsMrangeAggregationAggregationFirst {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "FIRST")
-	return (TsMrangeAggregationAggregationFirst)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationFirst)
 }
 
 func (c TsMrangeFilterByTs) AggregationLast() TsMrangeAggregationAggregationLast {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "LAST")
-	return (TsMrangeAggregationAggregationLast)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationLast)
 }
 
 func (c TsMrangeFilterByTs) AggregationStdP() TsMrangeAggregationAggregationStdP {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "STD.P")
-	return (TsMrangeAggregationAggregationStdP)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationStdP)
 }
 
 func (c TsMrangeFilterByTs) AggregationStdS() TsMrangeAggregationAggregationStdS {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "STD.S")
-	return (TsMrangeAggregationAggregationStdS)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationStdS)
 }
 
 func (c TsMrangeFilterByTs) AggregationVarP() TsMrangeAggregationAggregationVarP {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "VAR.P")
-	return (TsMrangeAggregationAggregationVarP)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationVarP)
 }
 
 func (c TsMrangeFilterByTs) AggregationVarS() TsMrangeAggregationAggregationVarS {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "VAR.S")
-	return (TsMrangeAggregationAggregationVarS)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationVarS)
 }
 
 func (c TsMrangeFilterByTs) AggregationTwa() TsMrangeAggregationAggregationTwa {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "TWA")
-	return (TsMrangeAggregationAggregationTwa)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationTwa)
 }
 
 func (c TsMrangeFilterByTs) Filter(filter ...string) TsMrangeFilter {
-	c.cs.s = append(c.cs.s, "FILTER")
-	c.cs.s = append(c.cs.s, filter...)
-	return (TsMrangeFilter)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeFilter)
 }
 
 type TsMrangeFilterByValue Incomplete
 
 func (c TsMrangeFilterByValue) Withlabels() TsMrangeWithlabels {
-	c.cs.s = append(c.cs.s, "WITHLABELS")
-	return (TsMrangeWithlabels)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeWithlabels)
 }
 
 func (c TsMrangeFilterByValue) SelectedLabels(labels []string) TsMrangeSelectedLabels {
-	c.cs.s = append(c.cs.s, "SELECTED_LABELS")
-	c.cs.s = append(c.cs.s, labels...)
-	return (TsMrangeSelectedLabels)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeSelectedLabels)
 }
 
 func (c TsMrangeFilterByValue) Count(count int64) TsMrangeCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(count, 10))
-	return (TsMrangeCount)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeCount)
 }
 
 func (c TsMrangeFilterByValue) Align(value string) TsMrangeAlign {
-	c.cs.s = append(c.cs.s, "ALIGN", value)
-	return (TsMrangeAlign)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAlign)
 }
 
 func (c TsMrangeFilterByValue) AggregationAvg() TsMrangeAggregationAggregationAvg {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "AVG")
-	return (TsMrangeAggregationAggregationAvg)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationAvg)
 }
 
 func (c TsMrangeFilterByValue) AggregationSum() TsMrangeAggregationAggregationSum {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "SUM")
-	return (TsMrangeAggregationAggregationSum)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationSum)
 }
 
 func (c TsMrangeFilterByValue) AggregationMin() TsMrangeAggregationAggregationMin {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "MIN")
-	return (TsMrangeAggregationAggregationMin)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationMin)
 }
 
 func (c TsMrangeFilterByValue) AggregationMax() TsMrangeAggregationAggregationMax {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "MAX")
-	return (TsMrangeAggregationAggregationMax)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationMax)
 }
 
 func (c TsMrangeFilterByValue) AggregationRange() TsMrangeAggregationAggregationRange {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "RANGE")
-	return (TsMrangeAggregationAggregationRange)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationRange)
 }
 
 func (c TsMrangeFilterByValue) AggregationCount() TsMrangeAggregationAggregationCount {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "COUNT")
-	return (TsMrangeAggregationAggregationCount)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationCount)
 }
 
 func (c TsMrangeFilterByValue) AggregationFirst() TsMrangeAggregationAggregationFirst {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "FIRST")
-	return (TsMrangeAggregationAggregationFirst)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationFirst)
 }
 
 func (c TsMrangeFilterByValue) AggregationLast() TsMrangeAggregationAggregationLast {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "LAST")
-	return (TsMrangeAggregationAggregationLast)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationLast)
 }
 
 func (c TsMrangeFilterByValue) AggregationStdP() TsMrangeAggregationAggregationStdP {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "STD.P")
-	return (TsMrangeAggregationAggregationStdP)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationStdP)
 }
 
 func (c TsMrangeFilterByValue) AggregationStdS() TsMrangeAggregationAggregationStdS {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "STD.S")
-	return (TsMrangeAggregationAggregationStdS)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationStdS)
 }
 
 func (c TsMrangeFilterByValue) AggregationVarP() TsMrangeAggregationAggregationVarP {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "VAR.P")
-	return (TsMrangeAggregationAggregationVarP)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationVarP)
 }
 
 func (c TsMrangeFilterByValue) AggregationVarS() TsMrangeAggregationAggregationVarS {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "VAR.S")
-	return (TsMrangeAggregationAggregationVarS)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationVarS)
 }
 
 func (c TsMrangeFilterByValue) AggregationTwa() TsMrangeAggregationAggregationTwa {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "TWA")
-	return (TsMrangeAggregationAggregationTwa)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationTwa)
 }
 
 func (c TsMrangeFilterByValue) Filter(filter ...string) TsMrangeFilter {
-	c.cs.s = append(c.cs.s, "FILTER")
-	c.cs.s = append(c.cs.s, filter...)
-	return (TsMrangeFilter)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeFilter)
 }
 
 type TsMrangeFromtimestamp Incomplete
 
 func (c TsMrangeFromtimestamp) Totimestamp(totimestamp string) TsMrangeTotimestamp {
-	c.cs.s = append(c.cs.s, totimestamp)
-	return (TsMrangeTotimestamp)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeTotimestamp)
 }
 
 type TsMrangeGroupby Incomplete
 
-func (c TsMrangeGroupby) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c TsMrangeGroupby) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type TsMrangeLatest Incomplete
 
 func (c TsMrangeLatest) FilterByTs(timestamp ...int64) TsMrangeFilterByTs {
-	c.cs.s = append(c.cs.s, "FILTER_BY_TS")
-	for _, n := range timestamp {
-		c.cs.s = append(c.cs.s, strconv.FormatInt(n, 10))
-	}
-	return (TsMrangeFilterByTs)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeFilterByTs)
 }
 
 func (c TsMrangeLatest) FilterByValue(min float64, max float64) TsMrangeFilterByValue {
-	c.cs.s = append(c.cs.s, "FILTER_BY_VALUE", strconv.FormatFloat(min, 'f', -1, 64), strconv.FormatFloat(max, 'f', -1, 64))
-	return (TsMrangeFilterByValue)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeFilterByValue)
 }
 
 func (c TsMrangeLatest) Withlabels() TsMrangeWithlabels {
-	c.cs.s = append(c.cs.s, "WITHLABELS")
-	return (TsMrangeWithlabels)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeWithlabels)
 }
 
 func (c TsMrangeLatest) SelectedLabels(labels []string) TsMrangeSelectedLabels {
-	c.cs.s = append(c.cs.s, "SELECTED_LABELS")
-	c.cs.s = append(c.cs.s, labels...)
-	return (TsMrangeSelectedLabels)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeSelectedLabels)
 }
 
 func (c TsMrangeLatest) Count(count int64) TsMrangeCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(count, 10))
-	return (TsMrangeCount)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeCount)
 }
 
 func (c TsMrangeLatest) Align(value string) TsMrangeAlign {
-	c.cs.s = append(c.cs.s, "ALIGN", value)
-	return (TsMrangeAlign)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAlign)
 }
 
 func (c TsMrangeLatest) AggregationAvg() TsMrangeAggregationAggregationAvg {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "AVG")
-	return (TsMrangeAggregationAggregationAvg)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationAvg)
 }
 
 func (c TsMrangeLatest) AggregationSum() TsMrangeAggregationAggregationSum {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "SUM")
-	return (TsMrangeAggregationAggregationSum)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationSum)
 }
 
 func (c TsMrangeLatest) AggregationMin() TsMrangeAggregationAggregationMin {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "MIN")
-	return (TsMrangeAggregationAggregationMin)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationMin)
 }
 
 func (c TsMrangeLatest) AggregationMax() TsMrangeAggregationAggregationMax {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "MAX")
-	return (TsMrangeAggregationAggregationMax)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationMax)
 }
 
 func (c TsMrangeLatest) AggregationRange() TsMrangeAggregationAggregationRange {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "RANGE")
-	return (TsMrangeAggregationAggregationRange)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationRange)
 }
 
 func (c TsMrangeLatest) AggregationCount() TsMrangeAggregationAggregationCount {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "COUNT")
-	return (TsMrangeAggregationAggregationCount)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationCount)
 }
 
 func (c TsMrangeLatest) AggregationFirst() TsMrangeAggregationAggregationFirst {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "FIRST")
-	return (TsMrangeAggregationAggregationFirst)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationFirst)
 }
 
 func (c TsMrangeLatest) AggregationLast() TsMrangeAggregationAggregationLast {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "LAST")
-	return (TsMrangeAggregationAggregationLast)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationLast)
 }
 
 func (c TsMrangeLatest) AggregationStdP() TsMrangeAggregationAggregationStdP {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "STD.P")
-	return (TsMrangeAggregationAggregationStdP)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationStdP)
 }
 
 func (c TsMrangeLatest) AggregationStdS() TsMrangeAggregationAggregationStdS {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "STD.S")
-	return (TsMrangeAggregationAggregationStdS)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationStdS)
 }
 
 func (c TsMrangeLatest) AggregationVarP() TsMrangeAggregationAggregationVarP {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "VAR.P")
-	return (TsMrangeAggregationAggregationVarP)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationVarP)
 }
 
 func (c TsMrangeLatest) AggregationVarS() TsMrangeAggregationAggregationVarS {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "VAR.S")
-	return (TsMrangeAggregationAggregationVarS)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationVarS)
 }
 
 func (c TsMrangeLatest) AggregationTwa() TsMrangeAggregationAggregationTwa {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "TWA")
-	return (TsMrangeAggregationAggregationTwa)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationTwa)
 }
 
 func (c TsMrangeLatest) Filter(filter ...string) TsMrangeFilter {
-	c.cs.s = append(c.cs.s, "FILTER")
-	c.cs.s = append(c.cs.s, filter...)
-	return (TsMrangeFilter)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeFilter)
 }
 
 type TsMrangeSelectedLabels Incomplete
 
 func (c TsMrangeSelectedLabels) Count(count int64) TsMrangeCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(count, 10))
-	return (TsMrangeCount)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeCount)
 }
 
 func (c TsMrangeSelectedLabels) Align(value string) TsMrangeAlign {
-	c.cs.s = append(c.cs.s, "ALIGN", value)
-	return (TsMrangeAlign)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAlign)
 }
 
 func (c TsMrangeSelectedLabels) AggregationAvg() TsMrangeAggregationAggregationAvg {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "AVG")
-	return (TsMrangeAggregationAggregationAvg)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationAvg)
 }
 
 func (c TsMrangeSelectedLabels) AggregationSum() TsMrangeAggregationAggregationSum {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "SUM")
-	return (TsMrangeAggregationAggregationSum)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationSum)
 }
 
 func (c TsMrangeSelectedLabels) AggregationMin() TsMrangeAggregationAggregationMin {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "MIN")
-	return (TsMrangeAggregationAggregationMin)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationMin)
 }
 
 func (c TsMrangeSelectedLabels) AggregationMax() TsMrangeAggregationAggregationMax {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "MAX")
-	return (TsMrangeAggregationAggregationMax)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationMax)
 }
 
 func (c TsMrangeSelectedLabels) AggregationRange() TsMrangeAggregationAggregationRange {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "RANGE")
-	return (TsMrangeAggregationAggregationRange)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationRange)
 }
 
 func (c TsMrangeSelectedLabels) AggregationCount() TsMrangeAggregationAggregationCount {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "COUNT")
-	return (TsMrangeAggregationAggregationCount)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationCount)
 }
 
 func (c TsMrangeSelectedLabels) AggregationFirst() TsMrangeAggregationAggregationFirst {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "FIRST")
-	return (TsMrangeAggregationAggregationFirst)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationFirst)
 }
 
 func (c TsMrangeSelectedLabels) AggregationLast() TsMrangeAggregationAggregationLast {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "LAST")
-	return (TsMrangeAggregationAggregationLast)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationLast)
 }
 
 func (c TsMrangeSelectedLabels) AggregationStdP() TsMrangeAggregationAggregationStdP {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "STD.P")
-	return (TsMrangeAggregationAggregationStdP)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationStdP)
 }
 
 func (c TsMrangeSelectedLabels) AggregationStdS() TsMrangeAggregationAggregationStdS {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "STD.S")
-	return (TsMrangeAggregationAggregationStdS)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationStdS)
 }
 
 func (c TsMrangeSelectedLabels) AggregationVarP() TsMrangeAggregationAggregationVarP {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "VAR.P")
-	return (TsMrangeAggregationAggregationVarP)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationVarP)
 }
 
 func (c TsMrangeSelectedLabels) AggregationVarS() TsMrangeAggregationAggregationVarS {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "VAR.S")
-	return (TsMrangeAggregationAggregationVarS)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationVarS)
 }
 
 func (c TsMrangeSelectedLabels) AggregationTwa() TsMrangeAggregationAggregationTwa {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "TWA")
-	return (TsMrangeAggregationAggregationTwa)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationTwa)
 }
 
 func (c TsMrangeSelectedLabels) Filter(filter ...string) TsMrangeFilter {
-	c.cs.s = append(c.cs.s, "FILTER")
-	c.cs.s = append(c.cs.s, filter...)
-	return (TsMrangeFilter)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeFilter)
 }
 
 type TsMrangeTotimestamp Incomplete
 
 func (c TsMrangeTotimestamp) Latest() TsMrangeLatest {
-	c.cs.s = append(c.cs.s, "LATEST")
-	return (TsMrangeLatest)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeLatest)
 }
 
 func (c TsMrangeTotimestamp) FilterByTs(timestamp ...int64) TsMrangeFilterByTs {
-	c.cs.s = append(c.cs.s, "FILTER_BY_TS")
-	for _, n := range timestamp {
-		c.cs.s = append(c.cs.s, strconv.FormatInt(n, 10))
-	}
-	return (TsMrangeFilterByTs)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeFilterByTs)
 }
 
 func (c TsMrangeTotimestamp) FilterByValue(min float64, max float64) TsMrangeFilterByValue {
-	c.cs.s = append(c.cs.s, "FILTER_BY_VALUE", strconv.FormatFloat(min, 'f', -1, 64), strconv.FormatFloat(max, 'f', -1, 64))
-	return (TsMrangeFilterByValue)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeFilterByValue)
 }
 
 func (c TsMrangeTotimestamp) Withlabels() TsMrangeWithlabels {
-	c.cs.s = append(c.cs.s, "WITHLABELS")
-	return (TsMrangeWithlabels)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeWithlabels)
 }
 
 func (c TsMrangeTotimestamp) SelectedLabels(labels []string) TsMrangeSelectedLabels {
-	c.cs.s = append(c.cs.s, "SELECTED_LABELS")
-	c.cs.s = append(c.cs.s, labels...)
-	return (TsMrangeSelectedLabels)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeSelectedLabels)
 }
 
 func (c TsMrangeTotimestamp) Count(count int64) TsMrangeCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(count, 10))
-	return (TsMrangeCount)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeCount)
 }
 
 func (c TsMrangeTotimestamp) Align(value string) TsMrangeAlign {
-	c.cs.s = append(c.cs.s, "ALIGN", value)
-	return (TsMrangeAlign)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAlign)
 }
 
 func (c TsMrangeTotimestamp) AggregationAvg() TsMrangeAggregationAggregationAvg {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "AVG")
-	return (TsMrangeAggregationAggregationAvg)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationAvg)
 }
 
 func (c TsMrangeTotimestamp) AggregationSum() TsMrangeAggregationAggregationSum {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "SUM")
-	return (TsMrangeAggregationAggregationSum)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationSum)
 }
 
 func (c TsMrangeTotimestamp) AggregationMin() TsMrangeAggregationAggregationMin {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "MIN")
-	return (TsMrangeAggregationAggregationMin)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationMin)
 }
 
 func (c TsMrangeTotimestamp) AggregationMax() TsMrangeAggregationAggregationMax {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "MAX")
-	return (TsMrangeAggregationAggregationMax)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationMax)
 }
 
 func (c TsMrangeTotimestamp) AggregationRange() TsMrangeAggregationAggregationRange {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "RANGE")
-	return (TsMrangeAggregationAggregationRange)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationRange)
 }
 
 func (c TsMrangeTotimestamp) AggregationCount() TsMrangeAggregationAggregationCount {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "COUNT")
-	return (TsMrangeAggregationAggregationCount)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationCount)
 }
 
 func (c TsMrangeTotimestamp) AggregationFirst() TsMrangeAggregationAggregationFirst {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "FIRST")
-	return (TsMrangeAggregationAggregationFirst)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationFirst)
 }
 
 func (c TsMrangeTotimestamp) AggregationLast() TsMrangeAggregationAggregationLast {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "LAST")
-	return (TsMrangeAggregationAggregationLast)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationLast)
 }
 
 func (c TsMrangeTotimestamp) AggregationStdP() TsMrangeAggregationAggregationStdP {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "STD.P")
-	return (TsMrangeAggregationAggregationStdP)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationStdP)
 }
 
 func (c TsMrangeTotimestamp) AggregationStdS() TsMrangeAggregationAggregationStdS {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "STD.S")
-	return (TsMrangeAggregationAggregationStdS)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationStdS)
 }
 
 func (c TsMrangeTotimestamp) AggregationVarP() TsMrangeAggregationAggregationVarP {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "VAR.P")
-	return (TsMrangeAggregationAggregationVarP)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationVarP)
 }
 
 func (c TsMrangeTotimestamp) AggregationVarS() TsMrangeAggregationAggregationVarS {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "VAR.S")
-	return (TsMrangeAggregationAggregationVarS)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationVarS)
 }
 
 func (c TsMrangeTotimestamp) AggregationTwa() TsMrangeAggregationAggregationTwa {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "TWA")
-	return (TsMrangeAggregationAggregationTwa)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationTwa)
 }
 
 func (c TsMrangeTotimestamp) Filter(filter ...string) TsMrangeFilter {
-	c.cs.s = append(c.cs.s, "FILTER")
-	c.cs.s = append(c.cs.s, filter...)
-	return (TsMrangeFilter)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeFilter)
 }
 
 type TsMrangeWithlabels Incomplete
 
 func (c TsMrangeWithlabels) Count(count int64) TsMrangeCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(count, 10))
-	return (TsMrangeCount)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeCount)
 }
 
 func (c TsMrangeWithlabels) Align(value string) TsMrangeAlign {
-	c.cs.s = append(c.cs.s, "ALIGN", value)
-	return (TsMrangeAlign)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAlign)
 }
 
 func (c TsMrangeWithlabels) AggregationAvg() TsMrangeAggregationAggregationAvg {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "AVG")
-	return (TsMrangeAggregationAggregationAvg)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationAvg)
 }
 
 func (c TsMrangeWithlabels) AggregationSum() TsMrangeAggregationAggregationSum {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "SUM")
-	return (TsMrangeAggregationAggregationSum)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationSum)
 }
 
 func (c TsMrangeWithlabels) AggregationMin() TsMrangeAggregationAggregationMin {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "MIN")
-	return (TsMrangeAggregationAggregationMin)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationMin)
 }
 
 func (c TsMrangeWithlabels) AggregationMax() TsMrangeAggregationAggregationMax {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "MAX")
-	return (TsMrangeAggregationAggregationMax)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationMax)
 }
 
 func (c TsMrangeWithlabels) AggregationRange() TsMrangeAggregationAggregationRange {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "RANGE")
-	return (TsMrangeAggregationAggregationRange)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationRange)
 }
 
 func (c TsMrangeWithlabels) AggregationCount() TsMrangeAggregationAggregationCount {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "COUNT")
-	return (TsMrangeAggregationAggregationCount)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationCount)
 }
 
 func (c TsMrangeWithlabels) AggregationFirst() TsMrangeAggregationAggregationFirst {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "FIRST")
-	return (TsMrangeAggregationAggregationFirst)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationFirst)
 }
 
 func (c TsMrangeWithlabels) AggregationLast() TsMrangeAggregationAggregationLast {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "LAST")
-	return (TsMrangeAggregationAggregationLast)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationLast)
 }
 
 func (c TsMrangeWithlabels) AggregationStdP() TsMrangeAggregationAggregationStdP {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "STD.P")
-	return (TsMrangeAggregationAggregationStdP)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationStdP)
 }
 
 func (c TsMrangeWithlabels) AggregationStdS() TsMrangeAggregationAggregationStdS {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "STD.S")
-	return (TsMrangeAggregationAggregationStdS)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationStdS)
 }
 
 func (c TsMrangeWithlabels) AggregationVarP() TsMrangeAggregationAggregationVarP {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "VAR.P")
-	return (TsMrangeAggregationAggregationVarP)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationVarP)
 }
 
 func (c TsMrangeWithlabels) AggregationVarS() TsMrangeAggregationAggregationVarS {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "VAR.S")
-	return (TsMrangeAggregationAggregationVarS)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationVarS)
 }
 
 func (c TsMrangeWithlabels) AggregationTwa() TsMrangeAggregationAggregationTwa {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "TWA")
-	return (TsMrangeAggregationAggregationTwa)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeAggregationAggregationTwa)
 }
 
 func (c TsMrangeWithlabels) Filter(filter ...string) TsMrangeFilter {
-	c.cs.s = append(c.cs.s, "FILTER")
-	c.cs.s = append(c.cs.s, filter...)
-	return (TsMrangeFilter)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrangeFilter)
 }
 
 type TsMrevrange Incomplete
 
-func (b Builder) TsMrevrange() (c TsMrevrange) {
-	c = TsMrevrange{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "TS.MREVRANGE")
-	return c
-}
+func (b Builder) TsMrevrange() (c TsMrevrange) { _ = "STUB: not implemented"; return *new(TsMrevrange) }
 
 func (c TsMrevrange) Fromtimestamp(fromtimestamp string) TsMrevrangeFromtimestamp {
-	c.cs.s = append(c.cs.s, fromtimestamp)
-	return (TsMrevrangeFromtimestamp)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeFromtimestamp)
 }
 
 type TsMrevrangeAggregationAggregationAvg Incomplete
 
 func (c TsMrevrangeAggregationAggregationAvg) Bucketduration(bucketduration int64) TsMrevrangeAggregationBucketduration {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(bucketduration, 10))
-	return (TsMrevrangeAggregationBucketduration)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationBucketduration)
 }
 
 type TsMrevrangeAggregationAggregationCount Incomplete
 
 func (c TsMrevrangeAggregationAggregationCount) Bucketduration(bucketduration int64) TsMrevrangeAggregationBucketduration {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(bucketduration, 10))
-	return (TsMrevrangeAggregationBucketduration)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationBucketduration)
 }
 
 type TsMrevrangeAggregationAggregationFirst Incomplete
 
 func (c TsMrevrangeAggregationAggregationFirst) Bucketduration(bucketduration int64) TsMrevrangeAggregationBucketduration {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(bucketduration, 10))
-	return (TsMrevrangeAggregationBucketduration)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationBucketduration)
 }
 
 type TsMrevrangeAggregationAggregationLast Incomplete
 
 func (c TsMrevrangeAggregationAggregationLast) Bucketduration(bucketduration int64) TsMrevrangeAggregationBucketduration {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(bucketduration, 10))
-	return (TsMrevrangeAggregationBucketduration)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationBucketduration)
 }
 
 type TsMrevrangeAggregationAggregationMax Incomplete
 
 func (c TsMrevrangeAggregationAggregationMax) Bucketduration(bucketduration int64) TsMrevrangeAggregationBucketduration {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(bucketduration, 10))
-	return (TsMrevrangeAggregationBucketduration)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationBucketduration)
 }
 
 type TsMrevrangeAggregationAggregationMin Incomplete
 
 func (c TsMrevrangeAggregationAggregationMin) Bucketduration(bucketduration int64) TsMrevrangeAggregationBucketduration {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(bucketduration, 10))
-	return (TsMrevrangeAggregationBucketduration)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationBucketduration)
 }
 
 type TsMrevrangeAggregationAggregationRange Incomplete
 
 func (c TsMrevrangeAggregationAggregationRange) Bucketduration(bucketduration int64) TsMrevrangeAggregationBucketduration {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(bucketduration, 10))
-	return (TsMrevrangeAggregationBucketduration)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationBucketduration)
 }
 
 type TsMrevrangeAggregationAggregationStdP Incomplete
 
 func (c TsMrevrangeAggregationAggregationStdP) Bucketduration(bucketduration int64) TsMrevrangeAggregationBucketduration {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(bucketduration, 10))
-	return (TsMrevrangeAggregationBucketduration)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationBucketduration)
 }
 
 type TsMrevrangeAggregationAggregationStdS Incomplete
 
 func (c TsMrevrangeAggregationAggregationStdS) Bucketduration(bucketduration int64) TsMrevrangeAggregationBucketduration {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(bucketduration, 10))
-	return (TsMrevrangeAggregationBucketduration)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationBucketduration)
 }
 
 type TsMrevrangeAggregationAggregationSum Incomplete
 
 func (c TsMrevrangeAggregationAggregationSum) Bucketduration(bucketduration int64) TsMrevrangeAggregationBucketduration {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(bucketduration, 10))
-	return (TsMrevrangeAggregationBucketduration)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationBucketduration)
 }
 
 type TsMrevrangeAggregationAggregationTwa Incomplete
 
 func (c TsMrevrangeAggregationAggregationTwa) Bucketduration(bucketduration int64) TsMrevrangeAggregationBucketduration {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(bucketduration, 10))
-	return (TsMrevrangeAggregationBucketduration)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationBucketduration)
 }
 
 type TsMrevrangeAggregationAggregationVarP Incomplete
 
 func (c TsMrevrangeAggregationAggregationVarP) Bucketduration(bucketduration int64) TsMrevrangeAggregationBucketduration {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(bucketduration, 10))
-	return (TsMrevrangeAggregationBucketduration)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationBucketduration)
 }
 
 type TsMrevrangeAggregationAggregationVarS Incomplete
 
 func (c TsMrevrangeAggregationAggregationVarS) Bucketduration(bucketduration int64) TsMrevrangeAggregationBucketduration {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(bucketduration, 10))
-	return (TsMrevrangeAggregationBucketduration)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationBucketduration)
 }
 
 type TsMrevrangeAggregationBucketduration Incomplete
 
 func (c TsMrevrangeAggregationBucketduration) Buckettimestamp(buckettimestamp string) TsMrevrangeAggregationBuckettimestamp {
-	c.cs.s = append(c.cs.s, "BUCKETTIMESTAMP", buckettimestamp)
-	return (TsMrevrangeAggregationBuckettimestamp)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationBuckettimestamp)
 }
 
 func (c TsMrevrangeAggregationBucketduration) Empty() TsMrevrangeAggregationEmpty {
-	c.cs.s = append(c.cs.s, "EMPTY")
-	return (TsMrevrangeAggregationEmpty)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationEmpty)
 }
 
 func (c TsMrevrangeAggregationBucketduration) Filter(filter ...string) TsMrevrangeFilter {
-	c.cs.s = append(c.cs.s, "FILTER")
-	c.cs.s = append(c.cs.s, filter...)
-	return (TsMrevrangeFilter)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeFilter)
 }
 
 type TsMrevrangeAggregationBuckettimestamp Incomplete
 
 func (c TsMrevrangeAggregationBuckettimestamp) Empty() TsMrevrangeAggregationEmpty {
-	c.cs.s = append(c.cs.s, "EMPTY")
-	return (TsMrevrangeAggregationEmpty)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationEmpty)
 }
 
 func (c TsMrevrangeAggregationBuckettimestamp) Filter(filter ...string) TsMrevrangeFilter {
-	c.cs.s = append(c.cs.s, "FILTER")
-	c.cs.s = append(c.cs.s, filter...)
-	return (TsMrevrangeFilter)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeFilter)
 }
 
 type TsMrevrangeAggregationEmpty Incomplete
 
 func (c TsMrevrangeAggregationEmpty) Filter(filter ...string) TsMrevrangeFilter {
-	c.cs.s = append(c.cs.s, "FILTER")
-	c.cs.s = append(c.cs.s, filter...)
-	return (TsMrevrangeFilter)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeFilter)
 }
 
 type TsMrevrangeAlign Incomplete
 
 func (c TsMrevrangeAlign) AggregationAvg() TsMrevrangeAggregationAggregationAvg {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "AVG")
-	return (TsMrevrangeAggregationAggregationAvg)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationAvg)
 }
 
 func (c TsMrevrangeAlign) AggregationSum() TsMrevrangeAggregationAggregationSum {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "SUM")
-	return (TsMrevrangeAggregationAggregationSum)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationSum)
 }
 
 func (c TsMrevrangeAlign) AggregationMin() TsMrevrangeAggregationAggregationMin {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "MIN")
-	return (TsMrevrangeAggregationAggregationMin)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationMin)
 }
 
 func (c TsMrevrangeAlign) AggregationMax() TsMrevrangeAggregationAggregationMax {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "MAX")
-	return (TsMrevrangeAggregationAggregationMax)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationMax)
 }
 
 func (c TsMrevrangeAlign) AggregationRange() TsMrevrangeAggregationAggregationRange {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "RANGE")
-	return (TsMrevrangeAggregationAggregationRange)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationRange)
 }
 
 func (c TsMrevrangeAlign) AggregationCount() TsMrevrangeAggregationAggregationCount {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "COUNT")
-	return (TsMrevrangeAggregationAggregationCount)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationCount)
 }
 
 func (c TsMrevrangeAlign) AggregationFirst() TsMrevrangeAggregationAggregationFirst {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "FIRST")
-	return (TsMrevrangeAggregationAggregationFirst)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationFirst)
 }
 
 func (c TsMrevrangeAlign) AggregationLast() TsMrevrangeAggregationAggregationLast {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "LAST")
-	return (TsMrevrangeAggregationAggregationLast)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationLast)
 }
 
 func (c TsMrevrangeAlign) AggregationStdP() TsMrevrangeAggregationAggregationStdP {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "STD.P")
-	return (TsMrevrangeAggregationAggregationStdP)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationStdP)
 }
 
 func (c TsMrevrangeAlign) AggregationStdS() TsMrevrangeAggregationAggregationStdS {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "STD.S")
-	return (TsMrevrangeAggregationAggregationStdS)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationStdS)
 }
 
 func (c TsMrevrangeAlign) AggregationVarP() TsMrevrangeAggregationAggregationVarP {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "VAR.P")
-	return (TsMrevrangeAggregationAggregationVarP)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationVarP)
 }
 
 func (c TsMrevrangeAlign) AggregationVarS() TsMrevrangeAggregationAggregationVarS {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "VAR.S")
-	return (TsMrevrangeAggregationAggregationVarS)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationVarS)
 }
 
 func (c TsMrevrangeAlign) AggregationTwa() TsMrevrangeAggregationAggregationTwa {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "TWA")
-	return (TsMrevrangeAggregationAggregationTwa)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationTwa)
 }
 
 func (c TsMrevrangeAlign) Filter(filter ...string) TsMrevrangeFilter {
-	c.cs.s = append(c.cs.s, "FILTER")
-	c.cs.s = append(c.cs.s, filter...)
-	return (TsMrevrangeFilter)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeFilter)
 }
 
 type TsMrevrangeCount Incomplete
 
 func (c TsMrevrangeCount) Align(value string) TsMrevrangeAlign {
-	c.cs.s = append(c.cs.s, "ALIGN", value)
-	return (TsMrevrangeAlign)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAlign)
 }
 
 func (c TsMrevrangeCount) AggregationAvg() TsMrevrangeAggregationAggregationAvg {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "AVG")
-	return (TsMrevrangeAggregationAggregationAvg)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationAvg)
 }
 
 func (c TsMrevrangeCount) AggregationSum() TsMrevrangeAggregationAggregationSum {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "SUM")
-	return (TsMrevrangeAggregationAggregationSum)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationSum)
 }
 
 func (c TsMrevrangeCount) AggregationMin() TsMrevrangeAggregationAggregationMin {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "MIN")
-	return (TsMrevrangeAggregationAggregationMin)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationMin)
 }
 
 func (c TsMrevrangeCount) AggregationMax() TsMrevrangeAggregationAggregationMax {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "MAX")
-	return (TsMrevrangeAggregationAggregationMax)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationMax)
 }
 
 func (c TsMrevrangeCount) AggregationRange() TsMrevrangeAggregationAggregationRange {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "RANGE")
-	return (TsMrevrangeAggregationAggregationRange)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationRange)
 }
 
 func (c TsMrevrangeCount) AggregationCount() TsMrevrangeAggregationAggregationCount {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "COUNT")
-	return (TsMrevrangeAggregationAggregationCount)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationCount)
 }
 
 func (c TsMrevrangeCount) AggregationFirst() TsMrevrangeAggregationAggregationFirst {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "FIRST")
-	return (TsMrevrangeAggregationAggregationFirst)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationFirst)
 }
 
 func (c TsMrevrangeCount) AggregationLast() TsMrevrangeAggregationAggregationLast {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "LAST")
-	return (TsMrevrangeAggregationAggregationLast)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationLast)
 }
 
 func (c TsMrevrangeCount) AggregationStdP() TsMrevrangeAggregationAggregationStdP {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "STD.P")
-	return (TsMrevrangeAggregationAggregationStdP)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationStdP)
 }
 
 func (c TsMrevrangeCount) AggregationStdS() TsMrevrangeAggregationAggregationStdS {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "STD.S")
-	return (TsMrevrangeAggregationAggregationStdS)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationStdS)
 }
 
 func (c TsMrevrangeCount) AggregationVarP() TsMrevrangeAggregationAggregationVarP {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "VAR.P")
-	return (TsMrevrangeAggregationAggregationVarP)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationVarP)
 }
 
 func (c TsMrevrangeCount) AggregationVarS() TsMrevrangeAggregationAggregationVarS {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "VAR.S")
-	return (TsMrevrangeAggregationAggregationVarS)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationVarS)
 }
 
 func (c TsMrevrangeCount) AggregationTwa() TsMrevrangeAggregationAggregationTwa {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "TWA")
-	return (TsMrevrangeAggregationAggregationTwa)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationTwa)
 }
 
 func (c TsMrevrangeCount) Filter(filter ...string) TsMrevrangeFilter {
-	c.cs.s = append(c.cs.s, "FILTER")
-	c.cs.s = append(c.cs.s, filter...)
-	return (TsMrevrangeFilter)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeFilter)
 }
 
 type TsMrevrangeFilter Incomplete
 
 func (c TsMrevrangeFilter) Filter(filter ...string) TsMrevrangeFilter {
-	c.cs.s = append(c.cs.s, "FILTER")
-	c.cs.s = append(c.cs.s, filter...)
-	return c
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeFilter)
 }
 
 func (c TsMrevrangeFilter) Groupby(label string, reduce string, reducer string) TsMrevrangeGroupby {
-	c.cs.s = append(c.cs.s, "GROUPBY", label, reduce, reducer)
-	return (TsMrevrangeGroupby)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeGroupby)
 }
 
-func (c TsMrevrangeFilter) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c TsMrevrangeFilter) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type TsMrevrangeFilterByTs Incomplete
 
 func (c TsMrevrangeFilterByTs) FilterByTs(timestamp ...int64) TsMrevrangeFilterByTs {
-	c.cs.s = append(c.cs.s, "FILTER_BY_TS")
-	for _, n := range timestamp {
-		c.cs.s = append(c.cs.s, strconv.FormatInt(n, 10))
-	}
-	return c
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeFilterByTs)
 }
 
 func (c TsMrevrangeFilterByTs) FilterByValue(min float64, max float64) TsMrevrangeFilterByValue {
-	c.cs.s = append(c.cs.s, "FILTER_BY_VALUE", strconv.FormatFloat(min, 'f', -1, 64), strconv.FormatFloat(max, 'f', -1, 64))
-	return (TsMrevrangeFilterByValue)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeFilterByValue)
 }
 
 func (c TsMrevrangeFilterByTs) Withlabels() TsMrevrangeWithlabels {
-	c.cs.s = append(c.cs.s, "WITHLABELS")
-	return (TsMrevrangeWithlabels)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeWithlabels)
 }
 
 func (c TsMrevrangeFilterByTs) SelectedLabels(labels []string) TsMrevrangeSelectedLabels {
-	c.cs.s = append(c.cs.s, "SELECTED_LABELS")
-	c.cs.s = append(c.cs.s, labels...)
-	return (TsMrevrangeSelectedLabels)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeSelectedLabels)
 }
 
 func (c TsMrevrangeFilterByTs) Count(count int64) TsMrevrangeCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(count, 10))
-	return (TsMrevrangeCount)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeCount)
 }
 
 func (c TsMrevrangeFilterByTs) Align(value string) TsMrevrangeAlign {
-	c.cs.s = append(c.cs.s, "ALIGN", value)
-	return (TsMrevrangeAlign)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAlign)
 }
 
 func (c TsMrevrangeFilterByTs) AggregationAvg() TsMrevrangeAggregationAggregationAvg {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "AVG")
-	return (TsMrevrangeAggregationAggregationAvg)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationAvg)
 }
 
 func (c TsMrevrangeFilterByTs) AggregationSum() TsMrevrangeAggregationAggregationSum {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "SUM")
-	return (TsMrevrangeAggregationAggregationSum)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationSum)
 }
 
 func (c TsMrevrangeFilterByTs) AggregationMin() TsMrevrangeAggregationAggregationMin {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "MIN")
-	return (TsMrevrangeAggregationAggregationMin)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationMin)
 }
 
 func (c TsMrevrangeFilterByTs) AggregationMax() TsMrevrangeAggregationAggregationMax {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "MAX")
-	return (TsMrevrangeAggregationAggregationMax)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationMax)
 }
 
 func (c TsMrevrangeFilterByTs) AggregationRange() TsMrevrangeAggregationAggregationRange {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "RANGE")
-	return (TsMrevrangeAggregationAggregationRange)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationRange)
 }
 
 func (c TsMrevrangeFilterByTs) AggregationCount() TsMrevrangeAggregationAggregationCount {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "COUNT")
-	return (TsMrevrangeAggregationAggregationCount)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationCount)
 }
 
 func (c TsMrevrangeFilterByTs) AggregationFirst() TsMrevrangeAggregationAggregationFirst {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "FIRST")
-	return (TsMrevrangeAggregationAggregationFirst)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationFirst)
 }
 
 func (c TsMrevrangeFilterByTs) AggregationLast() TsMrevrangeAggregationAggregationLast {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "LAST")
-	return (TsMrevrangeAggregationAggregationLast)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationLast)
 }
 
 func (c TsMrevrangeFilterByTs) AggregationStdP() TsMrevrangeAggregationAggregationStdP {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "STD.P")
-	return (TsMrevrangeAggregationAggregationStdP)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationStdP)
 }
 
 func (c TsMrevrangeFilterByTs) AggregationStdS() TsMrevrangeAggregationAggregationStdS {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "STD.S")
-	return (TsMrevrangeAggregationAggregationStdS)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationStdS)
 }
 
 func (c TsMrevrangeFilterByTs) AggregationVarP() TsMrevrangeAggregationAggregationVarP {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "VAR.P")
-	return (TsMrevrangeAggregationAggregationVarP)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationVarP)
 }
 
 func (c TsMrevrangeFilterByTs) AggregationVarS() TsMrevrangeAggregationAggregationVarS {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "VAR.S")
-	return (TsMrevrangeAggregationAggregationVarS)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationVarS)
 }
 
 func (c TsMrevrangeFilterByTs) AggregationTwa() TsMrevrangeAggregationAggregationTwa {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "TWA")
-	return (TsMrevrangeAggregationAggregationTwa)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationTwa)
 }
 
 func (c TsMrevrangeFilterByTs) Filter(filter ...string) TsMrevrangeFilter {
-	c.cs.s = append(c.cs.s, "FILTER")
-	c.cs.s = append(c.cs.s, filter...)
-	return (TsMrevrangeFilter)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeFilter)
 }
 
 type TsMrevrangeFilterByValue Incomplete
 
 func (c TsMrevrangeFilterByValue) Withlabels() TsMrevrangeWithlabels {
-	c.cs.s = append(c.cs.s, "WITHLABELS")
-	return (TsMrevrangeWithlabels)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeWithlabels)
 }
 
 func (c TsMrevrangeFilterByValue) SelectedLabels(labels []string) TsMrevrangeSelectedLabels {
-	c.cs.s = append(c.cs.s, "SELECTED_LABELS")
-	c.cs.s = append(c.cs.s, labels...)
-	return (TsMrevrangeSelectedLabels)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeSelectedLabels)
 }
 
 func (c TsMrevrangeFilterByValue) Count(count int64) TsMrevrangeCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(count, 10))
-	return (TsMrevrangeCount)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeCount)
 }
 
 func (c TsMrevrangeFilterByValue) Align(value string) TsMrevrangeAlign {
-	c.cs.s = append(c.cs.s, "ALIGN", value)
-	return (TsMrevrangeAlign)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAlign)
 }
 
 func (c TsMrevrangeFilterByValue) AggregationAvg() TsMrevrangeAggregationAggregationAvg {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "AVG")
-	return (TsMrevrangeAggregationAggregationAvg)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationAvg)
 }
 
 func (c TsMrevrangeFilterByValue) AggregationSum() TsMrevrangeAggregationAggregationSum {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "SUM")
-	return (TsMrevrangeAggregationAggregationSum)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationSum)
 }
 
 func (c TsMrevrangeFilterByValue) AggregationMin() TsMrevrangeAggregationAggregationMin {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "MIN")
-	return (TsMrevrangeAggregationAggregationMin)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationMin)
 }
 
 func (c TsMrevrangeFilterByValue) AggregationMax() TsMrevrangeAggregationAggregationMax {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "MAX")
-	return (TsMrevrangeAggregationAggregationMax)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationMax)
 }
 
 func (c TsMrevrangeFilterByValue) AggregationRange() TsMrevrangeAggregationAggregationRange {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "RANGE")
-	return (TsMrevrangeAggregationAggregationRange)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationRange)
 }
 
 func (c TsMrevrangeFilterByValue) AggregationCount() TsMrevrangeAggregationAggregationCount {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "COUNT")
-	return (TsMrevrangeAggregationAggregationCount)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationCount)
 }
 
 func (c TsMrevrangeFilterByValue) AggregationFirst() TsMrevrangeAggregationAggregationFirst {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "FIRST")
-	return (TsMrevrangeAggregationAggregationFirst)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationFirst)
 }
 
 func (c TsMrevrangeFilterByValue) AggregationLast() TsMrevrangeAggregationAggregationLast {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "LAST")
-	return (TsMrevrangeAggregationAggregationLast)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationLast)
 }
 
 func (c TsMrevrangeFilterByValue) AggregationStdP() TsMrevrangeAggregationAggregationStdP {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "STD.P")
-	return (TsMrevrangeAggregationAggregationStdP)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationStdP)
 }
 
 func (c TsMrevrangeFilterByValue) AggregationStdS() TsMrevrangeAggregationAggregationStdS {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "STD.S")
-	return (TsMrevrangeAggregationAggregationStdS)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationStdS)
 }
 
 func (c TsMrevrangeFilterByValue) AggregationVarP() TsMrevrangeAggregationAggregationVarP {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "VAR.P")
-	return (TsMrevrangeAggregationAggregationVarP)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationVarP)
 }
 
 func (c TsMrevrangeFilterByValue) AggregationVarS() TsMrevrangeAggregationAggregationVarS {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "VAR.S")
-	return (TsMrevrangeAggregationAggregationVarS)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationVarS)
 }
 
 func (c TsMrevrangeFilterByValue) AggregationTwa() TsMrevrangeAggregationAggregationTwa {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "TWA")
-	return (TsMrevrangeAggregationAggregationTwa)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationTwa)
 }
 
 func (c TsMrevrangeFilterByValue) Filter(filter ...string) TsMrevrangeFilter {
-	c.cs.s = append(c.cs.s, "FILTER")
-	c.cs.s = append(c.cs.s, filter...)
-	return (TsMrevrangeFilter)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeFilter)
 }
 
 type TsMrevrangeFromtimestamp Incomplete
 
 func (c TsMrevrangeFromtimestamp) Totimestamp(totimestamp string) TsMrevrangeTotimestamp {
-	c.cs.s = append(c.cs.s, totimestamp)
-	return (TsMrevrangeTotimestamp)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeTotimestamp)
 }
 
 type TsMrevrangeGroupby Incomplete
 
-func (c TsMrevrangeGroupby) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c TsMrevrangeGroupby) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type TsMrevrangeLatest Incomplete
 
 func (c TsMrevrangeLatest) FilterByTs(timestamp ...int64) TsMrevrangeFilterByTs {
-	c.cs.s = append(c.cs.s, "FILTER_BY_TS")
-	for _, n := range timestamp {
-		c.cs.s = append(c.cs.s, strconv.FormatInt(n, 10))
-	}
-	return (TsMrevrangeFilterByTs)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeFilterByTs)
 }
 
 func (c TsMrevrangeLatest) FilterByValue(min float64, max float64) TsMrevrangeFilterByValue {
-	c.cs.s = append(c.cs.s, "FILTER_BY_VALUE", strconv.FormatFloat(min, 'f', -1, 64), strconv.FormatFloat(max, 'f', -1, 64))
-	return (TsMrevrangeFilterByValue)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeFilterByValue)
 }
 
 func (c TsMrevrangeLatest) Withlabels() TsMrevrangeWithlabels {
-	c.cs.s = append(c.cs.s, "WITHLABELS")
-	return (TsMrevrangeWithlabels)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeWithlabels)
 }
 
 func (c TsMrevrangeLatest) SelectedLabels(labels []string) TsMrevrangeSelectedLabels {
-	c.cs.s = append(c.cs.s, "SELECTED_LABELS")
-	c.cs.s = append(c.cs.s, labels...)
-	return (TsMrevrangeSelectedLabels)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeSelectedLabels)
 }
 
 func (c TsMrevrangeLatest) Count(count int64) TsMrevrangeCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(count, 10))
-	return (TsMrevrangeCount)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeCount)
 }
 
 func (c TsMrevrangeLatest) Align(value string) TsMrevrangeAlign {
-	c.cs.s = append(c.cs.s, "ALIGN", value)
-	return (TsMrevrangeAlign)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAlign)
 }
 
 func (c TsMrevrangeLatest) AggregationAvg() TsMrevrangeAggregationAggregationAvg {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "AVG")
-	return (TsMrevrangeAggregationAggregationAvg)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationAvg)
 }
 
 func (c TsMrevrangeLatest) AggregationSum() TsMrevrangeAggregationAggregationSum {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "SUM")
-	return (TsMrevrangeAggregationAggregationSum)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationSum)
 }
 
 func (c TsMrevrangeLatest) AggregationMin() TsMrevrangeAggregationAggregationMin {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "MIN")
-	return (TsMrevrangeAggregationAggregationMin)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationMin)
 }
 
 func (c TsMrevrangeLatest) AggregationMax() TsMrevrangeAggregationAggregationMax {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "MAX")
-	return (TsMrevrangeAggregationAggregationMax)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationMax)
 }
 
 func (c TsMrevrangeLatest) AggregationRange() TsMrevrangeAggregationAggregationRange {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "RANGE")
-	return (TsMrevrangeAggregationAggregationRange)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationRange)
 }
 
 func (c TsMrevrangeLatest) AggregationCount() TsMrevrangeAggregationAggregationCount {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "COUNT")
-	return (TsMrevrangeAggregationAggregationCount)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationCount)
 }
 
 func (c TsMrevrangeLatest) AggregationFirst() TsMrevrangeAggregationAggregationFirst {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "FIRST")
-	return (TsMrevrangeAggregationAggregationFirst)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationFirst)
 }
 
 func (c TsMrevrangeLatest) AggregationLast() TsMrevrangeAggregationAggregationLast {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "LAST")
-	return (TsMrevrangeAggregationAggregationLast)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationLast)
 }
 
 func (c TsMrevrangeLatest) AggregationStdP() TsMrevrangeAggregationAggregationStdP {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "STD.P")
-	return (TsMrevrangeAggregationAggregationStdP)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationStdP)
 }
 
 func (c TsMrevrangeLatest) AggregationStdS() TsMrevrangeAggregationAggregationStdS {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "STD.S")
-	return (TsMrevrangeAggregationAggregationStdS)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationStdS)
 }
 
 func (c TsMrevrangeLatest) AggregationVarP() TsMrevrangeAggregationAggregationVarP {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "VAR.P")
-	return (TsMrevrangeAggregationAggregationVarP)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationVarP)
 }
 
 func (c TsMrevrangeLatest) AggregationVarS() TsMrevrangeAggregationAggregationVarS {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "VAR.S")
-	return (TsMrevrangeAggregationAggregationVarS)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationVarS)
 }
 
 func (c TsMrevrangeLatest) AggregationTwa() TsMrevrangeAggregationAggregationTwa {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "TWA")
-	return (TsMrevrangeAggregationAggregationTwa)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationTwa)
 }
 
 func (c TsMrevrangeLatest) Filter(filter ...string) TsMrevrangeFilter {
-	c.cs.s = append(c.cs.s, "FILTER")
-	c.cs.s = append(c.cs.s, filter...)
-	return (TsMrevrangeFilter)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeFilter)
 }
 
 type TsMrevrangeSelectedLabels Incomplete
 
 func (c TsMrevrangeSelectedLabels) Count(count int64) TsMrevrangeCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(count, 10))
-	return (TsMrevrangeCount)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeCount)
 }
 
 func (c TsMrevrangeSelectedLabels) Align(value string) TsMrevrangeAlign {
-	c.cs.s = append(c.cs.s, "ALIGN", value)
-	return (TsMrevrangeAlign)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAlign)
 }
 
 func (c TsMrevrangeSelectedLabels) AggregationAvg() TsMrevrangeAggregationAggregationAvg {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "AVG")
-	return (TsMrevrangeAggregationAggregationAvg)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationAvg)
 }
 
 func (c TsMrevrangeSelectedLabels) AggregationSum() TsMrevrangeAggregationAggregationSum {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "SUM")
-	return (TsMrevrangeAggregationAggregationSum)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationSum)
 }
 
 func (c TsMrevrangeSelectedLabels) AggregationMin() TsMrevrangeAggregationAggregationMin {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "MIN")
-	return (TsMrevrangeAggregationAggregationMin)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationMin)
 }
 
 func (c TsMrevrangeSelectedLabels) AggregationMax() TsMrevrangeAggregationAggregationMax {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "MAX")
-	return (TsMrevrangeAggregationAggregationMax)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationMax)
 }
 
 func (c TsMrevrangeSelectedLabels) AggregationRange() TsMrevrangeAggregationAggregationRange {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "RANGE")
-	return (TsMrevrangeAggregationAggregationRange)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationRange)
 }
 
 func (c TsMrevrangeSelectedLabels) AggregationCount() TsMrevrangeAggregationAggregationCount {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "COUNT")
-	return (TsMrevrangeAggregationAggregationCount)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationCount)
 }
 
 func (c TsMrevrangeSelectedLabels) AggregationFirst() TsMrevrangeAggregationAggregationFirst {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "FIRST")
-	return (TsMrevrangeAggregationAggregationFirst)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationFirst)
 }
 
 func (c TsMrevrangeSelectedLabels) AggregationLast() TsMrevrangeAggregationAggregationLast {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "LAST")
-	return (TsMrevrangeAggregationAggregationLast)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationLast)
 }
 
 func (c TsMrevrangeSelectedLabels) AggregationStdP() TsMrevrangeAggregationAggregationStdP {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "STD.P")
-	return (TsMrevrangeAggregationAggregationStdP)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationStdP)
 }
 
 func (c TsMrevrangeSelectedLabels) AggregationStdS() TsMrevrangeAggregationAggregationStdS {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "STD.S")
-	return (TsMrevrangeAggregationAggregationStdS)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationStdS)
 }
 
 func (c TsMrevrangeSelectedLabels) AggregationVarP() TsMrevrangeAggregationAggregationVarP {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "VAR.P")
-	return (TsMrevrangeAggregationAggregationVarP)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationVarP)
 }
 
 func (c TsMrevrangeSelectedLabels) AggregationVarS() TsMrevrangeAggregationAggregationVarS {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "VAR.S")
-	return (TsMrevrangeAggregationAggregationVarS)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationVarS)
 }
 
 func (c TsMrevrangeSelectedLabels) AggregationTwa() TsMrevrangeAggregationAggregationTwa {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "TWA")
-	return (TsMrevrangeAggregationAggregationTwa)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationTwa)
 }
 
 func (c TsMrevrangeSelectedLabels) Filter(filter ...string) TsMrevrangeFilter {
-	c.cs.s = append(c.cs.s, "FILTER")
-	c.cs.s = append(c.cs.s, filter...)
-	return (TsMrevrangeFilter)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeFilter)
 }
 
 type TsMrevrangeTotimestamp Incomplete
 
 func (c TsMrevrangeTotimestamp) Latest() TsMrevrangeLatest {
-	c.cs.s = append(c.cs.s, "LATEST")
-	return (TsMrevrangeLatest)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeLatest)
 }
 
 func (c TsMrevrangeTotimestamp) FilterByTs(timestamp ...int64) TsMrevrangeFilterByTs {
-	c.cs.s = append(c.cs.s, "FILTER_BY_TS")
-	for _, n := range timestamp {
-		c.cs.s = append(c.cs.s, strconv.FormatInt(n, 10))
-	}
-	return (TsMrevrangeFilterByTs)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeFilterByTs)
 }
 
 func (c TsMrevrangeTotimestamp) FilterByValue(min float64, max float64) TsMrevrangeFilterByValue {
-	c.cs.s = append(c.cs.s, "FILTER_BY_VALUE", strconv.FormatFloat(min, 'f', -1, 64), strconv.FormatFloat(max, 'f', -1, 64))
-	return (TsMrevrangeFilterByValue)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeFilterByValue)
 }
 
 func (c TsMrevrangeTotimestamp) Withlabels() TsMrevrangeWithlabels {
-	c.cs.s = append(c.cs.s, "WITHLABELS")
-	return (TsMrevrangeWithlabels)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeWithlabels)
 }
 
 func (c TsMrevrangeTotimestamp) SelectedLabels(labels []string) TsMrevrangeSelectedLabels {
-	c.cs.s = append(c.cs.s, "SELECTED_LABELS")
-	c.cs.s = append(c.cs.s, labels...)
-	return (TsMrevrangeSelectedLabels)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeSelectedLabels)
 }
 
 func (c TsMrevrangeTotimestamp) Count(count int64) TsMrevrangeCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(count, 10))
-	return (TsMrevrangeCount)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeCount)
 }
 
 func (c TsMrevrangeTotimestamp) Align(value string) TsMrevrangeAlign {
-	c.cs.s = append(c.cs.s, "ALIGN", value)
-	return (TsMrevrangeAlign)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAlign)
 }
 
 func (c TsMrevrangeTotimestamp) AggregationAvg() TsMrevrangeAggregationAggregationAvg {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "AVG")
-	return (TsMrevrangeAggregationAggregationAvg)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationAvg)
 }
 
 func (c TsMrevrangeTotimestamp) AggregationSum() TsMrevrangeAggregationAggregationSum {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "SUM")
-	return (TsMrevrangeAggregationAggregationSum)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationSum)
 }
 
 func (c TsMrevrangeTotimestamp) AggregationMin() TsMrevrangeAggregationAggregationMin {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "MIN")
-	return (TsMrevrangeAggregationAggregationMin)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationMin)
 }
 
 func (c TsMrevrangeTotimestamp) AggregationMax() TsMrevrangeAggregationAggregationMax {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "MAX")
-	return (TsMrevrangeAggregationAggregationMax)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationMax)
 }
 
 func (c TsMrevrangeTotimestamp) AggregationRange() TsMrevrangeAggregationAggregationRange {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "RANGE")
-	return (TsMrevrangeAggregationAggregationRange)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationRange)
 }
 
 func (c TsMrevrangeTotimestamp) AggregationCount() TsMrevrangeAggregationAggregationCount {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "COUNT")
-	return (TsMrevrangeAggregationAggregationCount)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationCount)
 }
 
 func (c TsMrevrangeTotimestamp) AggregationFirst() TsMrevrangeAggregationAggregationFirst {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "FIRST")
-	return (TsMrevrangeAggregationAggregationFirst)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationFirst)
 }
 
 func (c TsMrevrangeTotimestamp) AggregationLast() TsMrevrangeAggregationAggregationLast {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "LAST")
-	return (TsMrevrangeAggregationAggregationLast)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationLast)
 }
 
 func (c TsMrevrangeTotimestamp) AggregationStdP() TsMrevrangeAggregationAggregationStdP {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "STD.P")
-	return (TsMrevrangeAggregationAggregationStdP)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationStdP)
 }
 
 func (c TsMrevrangeTotimestamp) AggregationStdS() TsMrevrangeAggregationAggregationStdS {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "STD.S")
-	return (TsMrevrangeAggregationAggregationStdS)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationStdS)
 }
 
 func (c TsMrevrangeTotimestamp) AggregationVarP() TsMrevrangeAggregationAggregationVarP {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "VAR.P")
-	return (TsMrevrangeAggregationAggregationVarP)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationVarP)
 }
 
 func (c TsMrevrangeTotimestamp) AggregationVarS() TsMrevrangeAggregationAggregationVarS {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "VAR.S")
-	return (TsMrevrangeAggregationAggregationVarS)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationVarS)
 }
 
 func (c TsMrevrangeTotimestamp) AggregationTwa() TsMrevrangeAggregationAggregationTwa {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "TWA")
-	return (TsMrevrangeAggregationAggregationTwa)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationTwa)
 }
 
 func (c TsMrevrangeTotimestamp) Filter(filter ...string) TsMrevrangeFilter {
-	c.cs.s = append(c.cs.s, "FILTER")
-	c.cs.s = append(c.cs.s, filter...)
-	return (TsMrevrangeFilter)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeFilter)
 }
 
 type TsMrevrangeWithlabels Incomplete
 
 func (c TsMrevrangeWithlabels) Count(count int64) TsMrevrangeCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(count, 10))
-	return (TsMrevrangeCount)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeCount)
 }
 
 func (c TsMrevrangeWithlabels) Align(value string) TsMrevrangeAlign {
-	c.cs.s = append(c.cs.s, "ALIGN", value)
-	return (TsMrevrangeAlign)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAlign)
 }
 
 func (c TsMrevrangeWithlabels) AggregationAvg() TsMrevrangeAggregationAggregationAvg {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "AVG")
-	return (TsMrevrangeAggregationAggregationAvg)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationAvg)
 }
 
 func (c TsMrevrangeWithlabels) AggregationSum() TsMrevrangeAggregationAggregationSum {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "SUM")
-	return (TsMrevrangeAggregationAggregationSum)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationSum)
 }
 
 func (c TsMrevrangeWithlabels) AggregationMin() TsMrevrangeAggregationAggregationMin {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "MIN")
-	return (TsMrevrangeAggregationAggregationMin)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationMin)
 }
 
 func (c TsMrevrangeWithlabels) AggregationMax() TsMrevrangeAggregationAggregationMax {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "MAX")
-	return (TsMrevrangeAggregationAggregationMax)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationMax)
 }
 
 func (c TsMrevrangeWithlabels) AggregationRange() TsMrevrangeAggregationAggregationRange {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "RANGE")
-	return (TsMrevrangeAggregationAggregationRange)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationRange)
 }
 
 func (c TsMrevrangeWithlabels) AggregationCount() TsMrevrangeAggregationAggregationCount {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "COUNT")
-	return (TsMrevrangeAggregationAggregationCount)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationCount)
 }
 
 func (c TsMrevrangeWithlabels) AggregationFirst() TsMrevrangeAggregationAggregationFirst {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "FIRST")
-	return (TsMrevrangeAggregationAggregationFirst)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationFirst)
 }
 
 func (c TsMrevrangeWithlabels) AggregationLast() TsMrevrangeAggregationAggregationLast {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "LAST")
-	return (TsMrevrangeAggregationAggregationLast)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationLast)
 }
 
 func (c TsMrevrangeWithlabels) AggregationStdP() TsMrevrangeAggregationAggregationStdP {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "STD.P")
-	return (TsMrevrangeAggregationAggregationStdP)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationStdP)
 }
 
 func (c TsMrevrangeWithlabels) AggregationStdS() TsMrevrangeAggregationAggregationStdS {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "STD.S")
-	return (TsMrevrangeAggregationAggregationStdS)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationStdS)
 }
 
 func (c TsMrevrangeWithlabels) AggregationVarP() TsMrevrangeAggregationAggregationVarP {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "VAR.P")
-	return (TsMrevrangeAggregationAggregationVarP)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationVarP)
 }
 
 func (c TsMrevrangeWithlabels) AggregationVarS() TsMrevrangeAggregationAggregationVarS {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "VAR.S")
-	return (TsMrevrangeAggregationAggregationVarS)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationVarS)
 }
 
 func (c TsMrevrangeWithlabels) AggregationTwa() TsMrevrangeAggregationAggregationTwa {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "TWA")
-	return (TsMrevrangeAggregationAggregationTwa)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeAggregationAggregationTwa)
 }
 
 func (c TsMrevrangeWithlabels) Filter(filter ...string) TsMrevrangeFilter {
-	c.cs.s = append(c.cs.s, "FILTER")
-	c.cs.s = append(c.cs.s, filter...)
-	return (TsMrevrangeFilter)(c)
+	_ = "STUB: not implemented"
+	return *new(TsMrevrangeFilter)
 }
 
 type TsQueryindex Incomplete
 
 func (b Builder) TsQueryindex() (c TsQueryindex) {
-	c = TsQueryindex{cs: get(), ks: b.ks, cf: int16(readonly)}
-	c.cs.s = append(c.cs.s, "TS.QUERYINDEX")
-	return c
+	_ = "STUB: not implemented"
+	return *new(TsQueryindex)
 }
 
 func (c TsQueryindex) Filter(filter ...string) TsQueryindexFilter {
-	c.cs.s = append(c.cs.s, filter...)
-	return (TsQueryindexFilter)(c)
+	_ = "STUB: not implemented"
+	return *new(TsQueryindexFilter)
 }
 
 type TsQueryindexFilter Incomplete
 
 func (c TsQueryindexFilter) Filter(filter ...string) TsQueryindexFilter {
-	c.cs.s = append(c.cs.s, filter...)
-	return c
+	_ = "STUB: not implemented"
+	return *new(TsQueryindexFilter)
 }
 
-func (c TsQueryindexFilter) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c TsQueryindexFilter) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type TsRange Incomplete
 
-func (b Builder) TsRange() (c TsRange) {
-	c = TsRange{cs: get(), ks: b.ks, cf: int16(readonly)}
-	c.cs.s = append(c.cs.s, "TS.RANGE")
-	return c
-}
+func (b Builder) TsRange() (c TsRange) { _ = "STUB: not implemented"; return *new(TsRange) }
 
-func (c TsRange) Key(key string) TsRangeKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (TsRangeKey)(c)
-}
+func (c TsRange) Key(key string) TsRangeKey { _ = "STUB: not implemented"; return *new(TsRangeKey) }
 
 type TsRangeAggregationAggregationAvg Incomplete
 
 func (c TsRangeAggregationAggregationAvg) Bucketduration(bucketduration int64) TsRangeAggregationBucketduration {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(bucketduration, 10))
-	return (TsRangeAggregationBucketduration)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationBucketduration)
 }
 
 type TsRangeAggregationAggregationCount Incomplete
 
 func (c TsRangeAggregationAggregationCount) Bucketduration(bucketduration int64) TsRangeAggregationBucketduration {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(bucketduration, 10))
-	return (TsRangeAggregationBucketduration)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationBucketduration)
 }
 
 type TsRangeAggregationAggregationFirst Incomplete
 
 func (c TsRangeAggregationAggregationFirst) Bucketduration(bucketduration int64) TsRangeAggregationBucketduration {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(bucketduration, 10))
-	return (TsRangeAggregationBucketduration)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationBucketduration)
 }
 
 type TsRangeAggregationAggregationLast Incomplete
 
 func (c TsRangeAggregationAggregationLast) Bucketduration(bucketduration int64) TsRangeAggregationBucketduration {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(bucketduration, 10))
-	return (TsRangeAggregationBucketduration)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationBucketduration)
 }
 
 type TsRangeAggregationAggregationMax Incomplete
 
 func (c TsRangeAggregationAggregationMax) Bucketduration(bucketduration int64) TsRangeAggregationBucketduration {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(bucketduration, 10))
-	return (TsRangeAggregationBucketduration)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationBucketduration)
 }
 
 type TsRangeAggregationAggregationMin Incomplete
 
 func (c TsRangeAggregationAggregationMin) Bucketduration(bucketduration int64) TsRangeAggregationBucketduration {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(bucketduration, 10))
-	return (TsRangeAggregationBucketduration)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationBucketduration)
 }
 
 type TsRangeAggregationAggregationRange Incomplete
 
 func (c TsRangeAggregationAggregationRange) Bucketduration(bucketduration int64) TsRangeAggregationBucketduration {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(bucketduration, 10))
-	return (TsRangeAggregationBucketduration)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationBucketduration)
 }
 
 type TsRangeAggregationAggregationStdP Incomplete
 
 func (c TsRangeAggregationAggregationStdP) Bucketduration(bucketduration int64) TsRangeAggregationBucketduration {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(bucketduration, 10))
-	return (TsRangeAggregationBucketduration)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationBucketduration)
 }
 
 type TsRangeAggregationAggregationStdS Incomplete
 
 func (c TsRangeAggregationAggregationStdS) Bucketduration(bucketduration int64) TsRangeAggregationBucketduration {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(bucketduration, 10))
-	return (TsRangeAggregationBucketduration)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationBucketduration)
 }
 
 type TsRangeAggregationAggregationSum Incomplete
 
 func (c TsRangeAggregationAggregationSum) Bucketduration(bucketduration int64) TsRangeAggregationBucketduration {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(bucketduration, 10))
-	return (TsRangeAggregationBucketduration)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationBucketduration)
 }
 
 type TsRangeAggregationAggregationTwa Incomplete
 
 func (c TsRangeAggregationAggregationTwa) Bucketduration(bucketduration int64) TsRangeAggregationBucketduration {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(bucketduration, 10))
-	return (TsRangeAggregationBucketduration)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationBucketduration)
 }
 
 type TsRangeAggregationAggregationVarP Incomplete
 
 func (c TsRangeAggregationAggregationVarP) Bucketduration(bucketduration int64) TsRangeAggregationBucketduration {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(bucketduration, 10))
-	return (TsRangeAggregationBucketduration)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationBucketduration)
 }
 
 type TsRangeAggregationAggregationVarS Incomplete
 
 func (c TsRangeAggregationAggregationVarS) Bucketduration(bucketduration int64) TsRangeAggregationBucketduration {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(bucketduration, 10))
-	return (TsRangeAggregationBucketduration)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationBucketduration)
 }
 
 type TsRangeAggregationBucketduration Incomplete
 
 func (c TsRangeAggregationBucketduration) Buckettimestamp(buckettimestamp string) TsRangeAggregationBuckettimestamp {
-	c.cs.s = append(c.cs.s, "BUCKETTIMESTAMP", buckettimestamp)
-	return (TsRangeAggregationBuckettimestamp)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationBuckettimestamp)
 }
 
 func (c TsRangeAggregationBucketduration) Empty() TsRangeAggregationEmpty {
-	c.cs.s = append(c.cs.s, "EMPTY")
-	return (TsRangeAggregationEmpty)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationEmpty)
 }
 
 func (c TsRangeAggregationBucketduration) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type TsRangeAggregationBuckettimestamp Incomplete
 
 func (c TsRangeAggregationBuckettimestamp) Empty() TsRangeAggregationEmpty {
-	c.cs.s = append(c.cs.s, "EMPTY")
-	return (TsRangeAggregationEmpty)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationEmpty)
 }
 
 func (c TsRangeAggregationBuckettimestamp) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type TsRangeAggregationEmpty Incomplete
 
 func (c TsRangeAggregationEmpty) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type TsRangeAlign Incomplete
 
 func (c TsRangeAlign) AggregationAvg() TsRangeAggregationAggregationAvg {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "AVG")
-	return (TsRangeAggregationAggregationAvg)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationAggregationAvg)
 }
 
 func (c TsRangeAlign) AggregationSum() TsRangeAggregationAggregationSum {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "SUM")
-	return (TsRangeAggregationAggregationSum)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationAggregationSum)
 }
 
 func (c TsRangeAlign) AggregationMin() TsRangeAggregationAggregationMin {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "MIN")
-	return (TsRangeAggregationAggregationMin)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationAggregationMin)
 }
 
 func (c TsRangeAlign) AggregationMax() TsRangeAggregationAggregationMax {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "MAX")
-	return (TsRangeAggregationAggregationMax)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationAggregationMax)
 }
 
 func (c TsRangeAlign) AggregationRange() TsRangeAggregationAggregationRange {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "RANGE")
-	return (TsRangeAggregationAggregationRange)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationAggregationRange)
 }
 
 func (c TsRangeAlign) AggregationCount() TsRangeAggregationAggregationCount {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "COUNT")
-	return (TsRangeAggregationAggregationCount)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationAggregationCount)
 }
 
 func (c TsRangeAlign) AggregationFirst() TsRangeAggregationAggregationFirst {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "FIRST")
-	return (TsRangeAggregationAggregationFirst)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationAggregationFirst)
 }
 
 func (c TsRangeAlign) AggregationLast() TsRangeAggregationAggregationLast {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "LAST")
-	return (TsRangeAggregationAggregationLast)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationAggregationLast)
 }
 
 func (c TsRangeAlign) AggregationStdP() TsRangeAggregationAggregationStdP {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "STD.P")
-	return (TsRangeAggregationAggregationStdP)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationAggregationStdP)
 }
 
 func (c TsRangeAlign) AggregationStdS() TsRangeAggregationAggregationStdS {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "STD.S")
-	return (TsRangeAggregationAggregationStdS)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationAggregationStdS)
 }
 
 func (c TsRangeAlign) AggregationVarP() TsRangeAggregationAggregationVarP {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "VAR.P")
-	return (TsRangeAggregationAggregationVarP)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationAggregationVarP)
 }
 
 func (c TsRangeAlign) AggregationVarS() TsRangeAggregationAggregationVarS {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "VAR.S")
-	return (TsRangeAggregationAggregationVarS)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationAggregationVarS)
 }
 
 func (c TsRangeAlign) AggregationTwa() TsRangeAggregationAggregationTwa {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "TWA")
-	return (TsRangeAggregationAggregationTwa)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationAggregationTwa)
 }
 
-func (c TsRangeAlign) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c TsRangeAlign) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type TsRangeCount Incomplete
 
 func (c TsRangeCount) Align(value string) TsRangeAlign {
-	c.cs.s = append(c.cs.s, "ALIGN", value)
-	return (TsRangeAlign)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAlign)
 }
 
 func (c TsRangeCount) AggregationAvg() TsRangeAggregationAggregationAvg {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "AVG")
-	return (TsRangeAggregationAggregationAvg)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationAggregationAvg)
 }
 
 func (c TsRangeCount) AggregationSum() TsRangeAggregationAggregationSum {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "SUM")
-	return (TsRangeAggregationAggregationSum)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationAggregationSum)
 }
 
 func (c TsRangeCount) AggregationMin() TsRangeAggregationAggregationMin {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "MIN")
-	return (TsRangeAggregationAggregationMin)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationAggregationMin)
 }
 
 func (c TsRangeCount) AggregationMax() TsRangeAggregationAggregationMax {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "MAX")
-	return (TsRangeAggregationAggregationMax)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationAggregationMax)
 }
 
 func (c TsRangeCount) AggregationRange() TsRangeAggregationAggregationRange {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "RANGE")
-	return (TsRangeAggregationAggregationRange)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationAggregationRange)
 }
 
 func (c TsRangeCount) AggregationCount() TsRangeAggregationAggregationCount {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "COUNT")
-	return (TsRangeAggregationAggregationCount)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationAggregationCount)
 }
 
 func (c TsRangeCount) AggregationFirst() TsRangeAggregationAggregationFirst {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "FIRST")
-	return (TsRangeAggregationAggregationFirst)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationAggregationFirst)
 }
 
 func (c TsRangeCount) AggregationLast() TsRangeAggregationAggregationLast {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "LAST")
-	return (TsRangeAggregationAggregationLast)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationAggregationLast)
 }
 
 func (c TsRangeCount) AggregationStdP() TsRangeAggregationAggregationStdP {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "STD.P")
-	return (TsRangeAggregationAggregationStdP)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationAggregationStdP)
 }
 
 func (c TsRangeCount) AggregationStdS() TsRangeAggregationAggregationStdS {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "STD.S")
-	return (TsRangeAggregationAggregationStdS)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationAggregationStdS)
 }
 
 func (c TsRangeCount) AggregationVarP() TsRangeAggregationAggregationVarP {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "VAR.P")
-	return (TsRangeAggregationAggregationVarP)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationAggregationVarP)
 }
 
 func (c TsRangeCount) AggregationVarS() TsRangeAggregationAggregationVarS {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "VAR.S")
-	return (TsRangeAggregationAggregationVarS)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationAggregationVarS)
 }
 
 func (c TsRangeCount) AggregationTwa() TsRangeAggregationAggregationTwa {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "TWA")
-	return (TsRangeAggregationAggregationTwa)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationAggregationTwa)
 }
 
-func (c TsRangeCount) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c TsRangeCount) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type TsRangeFilterByTs Incomplete
 
 func (c TsRangeFilterByTs) FilterByTs(timestamp ...int64) TsRangeFilterByTs {
-	c.cs.s = append(c.cs.s, "FILTER_BY_TS")
-	for _, n := range timestamp {
-		c.cs.s = append(c.cs.s, strconv.FormatInt(n, 10))
-	}
-	return c
+	_ = "STUB: not implemented"
+	return *new(TsRangeFilterByTs)
 }
 
 func (c TsRangeFilterByTs) FilterByValue(min float64, max float64) TsRangeFilterByValue {
-	c.cs.s = append(c.cs.s, "FILTER_BY_VALUE", strconv.FormatFloat(min, 'f', -1, 64), strconv.FormatFloat(max, 'f', -1, 64))
-	return (TsRangeFilterByValue)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeFilterByValue)
 }
 
 func (c TsRangeFilterByTs) Count(count int64) TsRangeCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(count, 10))
-	return (TsRangeCount)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeCount)
 }
 
 func (c TsRangeFilterByTs) Align(value string) TsRangeAlign {
-	c.cs.s = append(c.cs.s, "ALIGN", value)
-	return (TsRangeAlign)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAlign)
 }
 
 func (c TsRangeFilterByTs) AggregationAvg() TsRangeAggregationAggregationAvg {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "AVG")
-	return (TsRangeAggregationAggregationAvg)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationAggregationAvg)
 }
 
 func (c TsRangeFilterByTs) AggregationSum() TsRangeAggregationAggregationSum {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "SUM")
-	return (TsRangeAggregationAggregationSum)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationAggregationSum)
 }
 
 func (c TsRangeFilterByTs) AggregationMin() TsRangeAggregationAggregationMin {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "MIN")
-	return (TsRangeAggregationAggregationMin)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationAggregationMin)
 }
 
 func (c TsRangeFilterByTs) AggregationMax() TsRangeAggregationAggregationMax {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "MAX")
-	return (TsRangeAggregationAggregationMax)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationAggregationMax)
 }
 
 func (c TsRangeFilterByTs) AggregationRange() TsRangeAggregationAggregationRange {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "RANGE")
-	return (TsRangeAggregationAggregationRange)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationAggregationRange)
 }
 
 func (c TsRangeFilterByTs) AggregationCount() TsRangeAggregationAggregationCount {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "COUNT")
-	return (TsRangeAggregationAggregationCount)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationAggregationCount)
 }
 
 func (c TsRangeFilterByTs) AggregationFirst() TsRangeAggregationAggregationFirst {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "FIRST")
-	return (TsRangeAggregationAggregationFirst)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationAggregationFirst)
 }
 
 func (c TsRangeFilterByTs) AggregationLast() TsRangeAggregationAggregationLast {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "LAST")
-	return (TsRangeAggregationAggregationLast)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationAggregationLast)
 }
 
 func (c TsRangeFilterByTs) AggregationStdP() TsRangeAggregationAggregationStdP {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "STD.P")
-	return (TsRangeAggregationAggregationStdP)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationAggregationStdP)
 }
 
 func (c TsRangeFilterByTs) AggregationStdS() TsRangeAggregationAggregationStdS {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "STD.S")
-	return (TsRangeAggregationAggregationStdS)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationAggregationStdS)
 }
 
 func (c TsRangeFilterByTs) AggregationVarP() TsRangeAggregationAggregationVarP {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "VAR.P")
-	return (TsRangeAggregationAggregationVarP)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationAggregationVarP)
 }
 
 func (c TsRangeFilterByTs) AggregationVarS() TsRangeAggregationAggregationVarS {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "VAR.S")
-	return (TsRangeAggregationAggregationVarS)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationAggregationVarS)
 }
 
 func (c TsRangeFilterByTs) AggregationTwa() TsRangeAggregationAggregationTwa {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "TWA")
-	return (TsRangeAggregationAggregationTwa)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationAggregationTwa)
 }
 
-func (c TsRangeFilterByTs) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c TsRangeFilterByTs) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type TsRangeFilterByValue Incomplete
 
 func (c TsRangeFilterByValue) Count(count int64) TsRangeCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(count, 10))
-	return (TsRangeCount)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeCount)
 }
 
 func (c TsRangeFilterByValue) Align(value string) TsRangeAlign {
-	c.cs.s = append(c.cs.s, "ALIGN", value)
-	return (TsRangeAlign)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAlign)
 }
 
 func (c TsRangeFilterByValue) AggregationAvg() TsRangeAggregationAggregationAvg {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "AVG")
-	return (TsRangeAggregationAggregationAvg)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationAggregationAvg)
 }
 
 func (c TsRangeFilterByValue) AggregationSum() TsRangeAggregationAggregationSum {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "SUM")
-	return (TsRangeAggregationAggregationSum)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationAggregationSum)
 }
 
 func (c TsRangeFilterByValue) AggregationMin() TsRangeAggregationAggregationMin {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "MIN")
-	return (TsRangeAggregationAggregationMin)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationAggregationMin)
 }
 
 func (c TsRangeFilterByValue) AggregationMax() TsRangeAggregationAggregationMax {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "MAX")
-	return (TsRangeAggregationAggregationMax)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationAggregationMax)
 }
 
 func (c TsRangeFilterByValue) AggregationRange() TsRangeAggregationAggregationRange {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "RANGE")
-	return (TsRangeAggregationAggregationRange)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationAggregationRange)
 }
 
 func (c TsRangeFilterByValue) AggregationCount() TsRangeAggregationAggregationCount {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "COUNT")
-	return (TsRangeAggregationAggregationCount)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationAggregationCount)
 }
 
 func (c TsRangeFilterByValue) AggregationFirst() TsRangeAggregationAggregationFirst {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "FIRST")
-	return (TsRangeAggregationAggregationFirst)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationAggregationFirst)
 }
 
 func (c TsRangeFilterByValue) AggregationLast() TsRangeAggregationAggregationLast {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "LAST")
-	return (TsRangeAggregationAggregationLast)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationAggregationLast)
 }
 
 func (c TsRangeFilterByValue) AggregationStdP() TsRangeAggregationAggregationStdP {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "STD.P")
-	return (TsRangeAggregationAggregationStdP)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationAggregationStdP)
 }
 
 func (c TsRangeFilterByValue) AggregationStdS() TsRangeAggregationAggregationStdS {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "STD.S")
-	return (TsRangeAggregationAggregationStdS)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationAggregationStdS)
 }
 
 func (c TsRangeFilterByValue) AggregationVarP() TsRangeAggregationAggregationVarP {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "VAR.P")
-	return (TsRangeAggregationAggregationVarP)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationAggregationVarP)
 }
 
 func (c TsRangeFilterByValue) AggregationVarS() TsRangeAggregationAggregationVarS {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "VAR.S")
-	return (TsRangeAggregationAggregationVarS)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationAggregationVarS)
 }
 
 func (c TsRangeFilterByValue) AggregationTwa() TsRangeAggregationAggregationTwa {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "TWA")
-	return (TsRangeAggregationAggregationTwa)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationAggregationTwa)
 }
 
-func (c TsRangeFilterByValue) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c TsRangeFilterByValue) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type TsRangeFromtimestamp Incomplete
 
 func (c TsRangeFromtimestamp) Totimestamp(totimestamp string) TsRangeTotimestamp {
-	c.cs.s = append(c.cs.s, totimestamp)
-	return (TsRangeTotimestamp)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeTotimestamp)
 }
 
 type TsRangeKey Incomplete
 
 func (c TsRangeKey) Fromtimestamp(fromtimestamp string) TsRangeFromtimestamp {
-	c.cs.s = append(c.cs.s, fromtimestamp)
-	return (TsRangeFromtimestamp)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeFromtimestamp)
 }
 
 type TsRangeLatest Incomplete
 
 func (c TsRangeLatest) FilterByTs(timestamp ...int64) TsRangeFilterByTs {
-	c.cs.s = append(c.cs.s, "FILTER_BY_TS")
-	for _, n := range timestamp {
-		c.cs.s = append(c.cs.s, strconv.FormatInt(n, 10))
-	}
-	return (TsRangeFilterByTs)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeFilterByTs)
 }
 
 func (c TsRangeLatest) FilterByValue(min float64, max float64) TsRangeFilterByValue {
-	c.cs.s = append(c.cs.s, "FILTER_BY_VALUE", strconv.FormatFloat(min, 'f', -1, 64), strconv.FormatFloat(max, 'f', -1, 64))
-	return (TsRangeFilterByValue)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeFilterByValue)
 }
 
 func (c TsRangeLatest) Count(count int64) TsRangeCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(count, 10))
-	return (TsRangeCount)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeCount)
 }
 
 func (c TsRangeLatest) Align(value string) TsRangeAlign {
-	c.cs.s = append(c.cs.s, "ALIGN", value)
-	return (TsRangeAlign)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAlign)
 }
 
 func (c TsRangeLatest) AggregationAvg() TsRangeAggregationAggregationAvg {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "AVG")
-	return (TsRangeAggregationAggregationAvg)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationAggregationAvg)
 }
 
 func (c TsRangeLatest) AggregationSum() TsRangeAggregationAggregationSum {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "SUM")
-	return (TsRangeAggregationAggregationSum)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationAggregationSum)
 }
 
 func (c TsRangeLatest) AggregationMin() TsRangeAggregationAggregationMin {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "MIN")
-	return (TsRangeAggregationAggregationMin)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationAggregationMin)
 }
 
 func (c TsRangeLatest) AggregationMax() TsRangeAggregationAggregationMax {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "MAX")
-	return (TsRangeAggregationAggregationMax)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationAggregationMax)
 }
 
 func (c TsRangeLatest) AggregationRange() TsRangeAggregationAggregationRange {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "RANGE")
-	return (TsRangeAggregationAggregationRange)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationAggregationRange)
 }
 
 func (c TsRangeLatest) AggregationCount() TsRangeAggregationAggregationCount {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "COUNT")
-	return (TsRangeAggregationAggregationCount)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationAggregationCount)
 }
 
 func (c TsRangeLatest) AggregationFirst() TsRangeAggregationAggregationFirst {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "FIRST")
-	return (TsRangeAggregationAggregationFirst)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationAggregationFirst)
 }
 
 func (c TsRangeLatest) AggregationLast() TsRangeAggregationAggregationLast {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "LAST")
-	return (TsRangeAggregationAggregationLast)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationAggregationLast)
 }
 
 func (c TsRangeLatest) AggregationStdP() TsRangeAggregationAggregationStdP {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "STD.P")
-	return (TsRangeAggregationAggregationStdP)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationAggregationStdP)
 }
 
 func (c TsRangeLatest) AggregationStdS() TsRangeAggregationAggregationStdS {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "STD.S")
-	return (TsRangeAggregationAggregationStdS)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationAggregationStdS)
 }
 
 func (c TsRangeLatest) AggregationVarP() TsRangeAggregationAggregationVarP {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "VAR.P")
-	return (TsRangeAggregationAggregationVarP)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationAggregationVarP)
 }
 
 func (c TsRangeLatest) AggregationVarS() TsRangeAggregationAggregationVarS {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "VAR.S")
-	return (TsRangeAggregationAggregationVarS)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationAggregationVarS)
 }
 
 func (c TsRangeLatest) AggregationTwa() TsRangeAggregationAggregationTwa {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "TWA")
-	return (TsRangeAggregationAggregationTwa)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationAggregationTwa)
 }
 
-func (c TsRangeLatest) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c TsRangeLatest) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type TsRangeTotimestamp Incomplete
 
 func (c TsRangeTotimestamp) Latest() TsRangeLatest {
-	c.cs.s = append(c.cs.s, "LATEST")
-	return (TsRangeLatest)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeLatest)
 }
 
 func (c TsRangeTotimestamp) FilterByTs(timestamp ...int64) TsRangeFilterByTs {
-	c.cs.s = append(c.cs.s, "FILTER_BY_TS")
-	for _, n := range timestamp {
-		c.cs.s = append(c.cs.s, strconv.FormatInt(n, 10))
-	}
-	return (TsRangeFilterByTs)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeFilterByTs)
 }
 
 func (c TsRangeTotimestamp) FilterByValue(min float64, max float64) TsRangeFilterByValue {
-	c.cs.s = append(c.cs.s, "FILTER_BY_VALUE", strconv.FormatFloat(min, 'f', -1, 64), strconv.FormatFloat(max, 'f', -1, 64))
-	return (TsRangeFilterByValue)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeFilterByValue)
 }
 
 func (c TsRangeTotimestamp) Count(count int64) TsRangeCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(count, 10))
-	return (TsRangeCount)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeCount)
 }
 
 func (c TsRangeTotimestamp) Align(value string) TsRangeAlign {
-	c.cs.s = append(c.cs.s, "ALIGN", value)
-	return (TsRangeAlign)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAlign)
 }
 
 func (c TsRangeTotimestamp) AggregationAvg() TsRangeAggregationAggregationAvg {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "AVG")
-	return (TsRangeAggregationAggregationAvg)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationAggregationAvg)
 }
 
 func (c TsRangeTotimestamp) AggregationSum() TsRangeAggregationAggregationSum {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "SUM")
-	return (TsRangeAggregationAggregationSum)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationAggregationSum)
 }
 
 func (c TsRangeTotimestamp) AggregationMin() TsRangeAggregationAggregationMin {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "MIN")
-	return (TsRangeAggregationAggregationMin)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationAggregationMin)
 }
 
 func (c TsRangeTotimestamp) AggregationMax() TsRangeAggregationAggregationMax {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "MAX")
-	return (TsRangeAggregationAggregationMax)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationAggregationMax)
 }
 
 func (c TsRangeTotimestamp) AggregationRange() TsRangeAggregationAggregationRange {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "RANGE")
-	return (TsRangeAggregationAggregationRange)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationAggregationRange)
 }
 
 func (c TsRangeTotimestamp) AggregationCount() TsRangeAggregationAggregationCount {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "COUNT")
-	return (TsRangeAggregationAggregationCount)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationAggregationCount)
 }
 
 func (c TsRangeTotimestamp) AggregationFirst() TsRangeAggregationAggregationFirst {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "FIRST")
-	return (TsRangeAggregationAggregationFirst)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationAggregationFirst)
 }
 
 func (c TsRangeTotimestamp) AggregationLast() TsRangeAggregationAggregationLast {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "LAST")
-	return (TsRangeAggregationAggregationLast)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationAggregationLast)
 }
 
 func (c TsRangeTotimestamp) AggregationStdP() TsRangeAggregationAggregationStdP {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "STD.P")
-	return (TsRangeAggregationAggregationStdP)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationAggregationStdP)
 }
 
 func (c TsRangeTotimestamp) AggregationStdS() TsRangeAggregationAggregationStdS {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "STD.S")
-	return (TsRangeAggregationAggregationStdS)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationAggregationStdS)
 }
 
 func (c TsRangeTotimestamp) AggregationVarP() TsRangeAggregationAggregationVarP {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "VAR.P")
-	return (TsRangeAggregationAggregationVarP)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationAggregationVarP)
 }
 
 func (c TsRangeTotimestamp) AggregationVarS() TsRangeAggregationAggregationVarS {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "VAR.S")
-	return (TsRangeAggregationAggregationVarS)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationAggregationVarS)
 }
 
 func (c TsRangeTotimestamp) AggregationTwa() TsRangeAggregationAggregationTwa {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "TWA")
-	return (TsRangeAggregationAggregationTwa)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRangeAggregationAggregationTwa)
 }
 
-func (c TsRangeTotimestamp) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c TsRangeTotimestamp) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type TsRevrange Incomplete
 
-func (b Builder) TsRevrange() (c TsRevrange) {
-	c = TsRevrange{cs: get(), ks: b.ks, cf: int16(readonly)}
-	c.cs.s = append(c.cs.s, "TS.REVRANGE")
-	return c
-}
+func (b Builder) TsRevrange() (c TsRevrange) { _ = "STUB: not implemented"; return *new(TsRevrange) }
 
 func (c TsRevrange) Key(key string) TsRevrangeKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (TsRevrangeKey)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeKey)
 }
 
 type TsRevrangeAggregationAggregationAvg Incomplete
 
 func (c TsRevrangeAggregationAggregationAvg) Bucketduration(bucketduration int64) TsRevrangeAggregationBucketduration {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(bucketduration, 10))
-	return (TsRevrangeAggregationBucketduration)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationBucketduration)
 }
 
 type TsRevrangeAggregationAggregationCount Incomplete
 
 func (c TsRevrangeAggregationAggregationCount) Bucketduration(bucketduration int64) TsRevrangeAggregationBucketduration {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(bucketduration, 10))
-	return (TsRevrangeAggregationBucketduration)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationBucketduration)
 }
 
 type TsRevrangeAggregationAggregationFirst Incomplete
 
 func (c TsRevrangeAggregationAggregationFirst) Bucketduration(bucketduration int64) TsRevrangeAggregationBucketduration {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(bucketduration, 10))
-	return (TsRevrangeAggregationBucketduration)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationBucketduration)
 }
 
 type TsRevrangeAggregationAggregationLast Incomplete
 
 func (c TsRevrangeAggregationAggregationLast) Bucketduration(bucketduration int64) TsRevrangeAggregationBucketduration {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(bucketduration, 10))
-	return (TsRevrangeAggregationBucketduration)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationBucketduration)
 }
 
 type TsRevrangeAggregationAggregationMax Incomplete
 
 func (c TsRevrangeAggregationAggregationMax) Bucketduration(bucketduration int64) TsRevrangeAggregationBucketduration {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(bucketduration, 10))
-	return (TsRevrangeAggregationBucketduration)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationBucketduration)
 }
 
 type TsRevrangeAggregationAggregationMin Incomplete
 
 func (c TsRevrangeAggregationAggregationMin) Bucketduration(bucketduration int64) TsRevrangeAggregationBucketduration {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(bucketduration, 10))
-	return (TsRevrangeAggregationBucketduration)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationBucketduration)
 }
 
 type TsRevrangeAggregationAggregationRange Incomplete
 
 func (c TsRevrangeAggregationAggregationRange) Bucketduration(bucketduration int64) TsRevrangeAggregationBucketduration {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(bucketduration, 10))
-	return (TsRevrangeAggregationBucketduration)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationBucketduration)
 }
 
 type TsRevrangeAggregationAggregationStdP Incomplete
 
 func (c TsRevrangeAggregationAggregationStdP) Bucketduration(bucketduration int64) TsRevrangeAggregationBucketduration {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(bucketduration, 10))
-	return (TsRevrangeAggregationBucketduration)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationBucketduration)
 }
 
 type TsRevrangeAggregationAggregationStdS Incomplete
 
 func (c TsRevrangeAggregationAggregationStdS) Bucketduration(bucketduration int64) TsRevrangeAggregationBucketduration {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(bucketduration, 10))
-	return (TsRevrangeAggregationBucketduration)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationBucketduration)
 }
 
 type TsRevrangeAggregationAggregationSum Incomplete
 
 func (c TsRevrangeAggregationAggregationSum) Bucketduration(bucketduration int64) TsRevrangeAggregationBucketduration {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(bucketduration, 10))
-	return (TsRevrangeAggregationBucketduration)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationBucketduration)
 }
 
 type TsRevrangeAggregationAggregationTwa Incomplete
 
 func (c TsRevrangeAggregationAggregationTwa) Bucketduration(bucketduration int64) TsRevrangeAggregationBucketduration {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(bucketduration, 10))
-	return (TsRevrangeAggregationBucketduration)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationBucketduration)
 }
 
 type TsRevrangeAggregationAggregationVarP Incomplete
 
 func (c TsRevrangeAggregationAggregationVarP) Bucketduration(bucketduration int64) TsRevrangeAggregationBucketduration {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(bucketduration, 10))
-	return (TsRevrangeAggregationBucketduration)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationBucketduration)
 }
 
 type TsRevrangeAggregationAggregationVarS Incomplete
 
 func (c TsRevrangeAggregationAggregationVarS) Bucketduration(bucketduration int64) TsRevrangeAggregationBucketduration {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(bucketduration, 10))
-	return (TsRevrangeAggregationBucketduration)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationBucketduration)
 }
 
 type TsRevrangeAggregationBucketduration Incomplete
 
 func (c TsRevrangeAggregationBucketduration) Buckettimestamp(buckettimestamp string) TsRevrangeAggregationBuckettimestamp {
-	c.cs.s = append(c.cs.s, "BUCKETTIMESTAMP", buckettimestamp)
-	return (TsRevrangeAggregationBuckettimestamp)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationBuckettimestamp)
 }
 
 func (c TsRevrangeAggregationBucketduration) Empty() TsRevrangeAggregationEmpty {
-	c.cs.s = append(c.cs.s, "EMPTY")
-	return (TsRevrangeAggregationEmpty)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationEmpty)
 }
 
 func (c TsRevrangeAggregationBucketduration) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type TsRevrangeAggregationBuckettimestamp Incomplete
 
 func (c TsRevrangeAggregationBuckettimestamp) Empty() TsRevrangeAggregationEmpty {
-	c.cs.s = append(c.cs.s, "EMPTY")
-	return (TsRevrangeAggregationEmpty)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationEmpty)
 }
 
 func (c TsRevrangeAggregationBuckettimestamp) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type TsRevrangeAggregationEmpty Incomplete
 
 func (c TsRevrangeAggregationEmpty) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type TsRevrangeAlign Incomplete
 
 func (c TsRevrangeAlign) AggregationAvg() TsRevrangeAggregationAggregationAvg {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "AVG")
-	return (TsRevrangeAggregationAggregationAvg)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationAggregationAvg)
 }
 
 func (c TsRevrangeAlign) AggregationSum() TsRevrangeAggregationAggregationSum {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "SUM")
-	return (TsRevrangeAggregationAggregationSum)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationAggregationSum)
 }
 
 func (c TsRevrangeAlign) AggregationMin() TsRevrangeAggregationAggregationMin {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "MIN")
-	return (TsRevrangeAggregationAggregationMin)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationAggregationMin)
 }
 
 func (c TsRevrangeAlign) AggregationMax() TsRevrangeAggregationAggregationMax {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "MAX")
-	return (TsRevrangeAggregationAggregationMax)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationAggregationMax)
 }
 
 func (c TsRevrangeAlign) AggregationRange() TsRevrangeAggregationAggregationRange {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "RANGE")
-	return (TsRevrangeAggregationAggregationRange)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationAggregationRange)
 }
 
 func (c TsRevrangeAlign) AggregationCount() TsRevrangeAggregationAggregationCount {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "COUNT")
-	return (TsRevrangeAggregationAggregationCount)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationAggregationCount)
 }
 
 func (c TsRevrangeAlign) AggregationFirst() TsRevrangeAggregationAggregationFirst {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "FIRST")
-	return (TsRevrangeAggregationAggregationFirst)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationAggregationFirst)
 }
 
 func (c TsRevrangeAlign) AggregationLast() TsRevrangeAggregationAggregationLast {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "LAST")
-	return (TsRevrangeAggregationAggregationLast)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationAggregationLast)
 }
 
 func (c TsRevrangeAlign) AggregationStdP() TsRevrangeAggregationAggregationStdP {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "STD.P")
-	return (TsRevrangeAggregationAggregationStdP)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationAggregationStdP)
 }
 
 func (c TsRevrangeAlign) AggregationStdS() TsRevrangeAggregationAggregationStdS {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "STD.S")
-	return (TsRevrangeAggregationAggregationStdS)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationAggregationStdS)
 }
 
 func (c TsRevrangeAlign) AggregationVarP() TsRevrangeAggregationAggregationVarP {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "VAR.P")
-	return (TsRevrangeAggregationAggregationVarP)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationAggregationVarP)
 }
 
 func (c TsRevrangeAlign) AggregationVarS() TsRevrangeAggregationAggregationVarS {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "VAR.S")
-	return (TsRevrangeAggregationAggregationVarS)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationAggregationVarS)
 }
 
 func (c TsRevrangeAlign) AggregationTwa() TsRevrangeAggregationAggregationTwa {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "TWA")
-	return (TsRevrangeAggregationAggregationTwa)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationAggregationTwa)
 }
 
-func (c TsRevrangeAlign) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c TsRevrangeAlign) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type TsRevrangeCount Incomplete
 
 func (c TsRevrangeCount) Align(value string) TsRevrangeAlign {
-	c.cs.s = append(c.cs.s, "ALIGN", value)
-	return (TsRevrangeAlign)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAlign)
 }
 
 func (c TsRevrangeCount) AggregationAvg() TsRevrangeAggregationAggregationAvg {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "AVG")
-	return (TsRevrangeAggregationAggregationAvg)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationAggregationAvg)
 }
 
 func (c TsRevrangeCount) AggregationSum() TsRevrangeAggregationAggregationSum {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "SUM")
-	return (TsRevrangeAggregationAggregationSum)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationAggregationSum)
 }
 
 func (c TsRevrangeCount) AggregationMin() TsRevrangeAggregationAggregationMin {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "MIN")
-	return (TsRevrangeAggregationAggregationMin)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationAggregationMin)
 }
 
 func (c TsRevrangeCount) AggregationMax() TsRevrangeAggregationAggregationMax {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "MAX")
-	return (TsRevrangeAggregationAggregationMax)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationAggregationMax)
 }
 
 func (c TsRevrangeCount) AggregationRange() TsRevrangeAggregationAggregationRange {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "RANGE")
-	return (TsRevrangeAggregationAggregationRange)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationAggregationRange)
 }
 
 func (c TsRevrangeCount) AggregationCount() TsRevrangeAggregationAggregationCount {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "COUNT")
-	return (TsRevrangeAggregationAggregationCount)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationAggregationCount)
 }
 
 func (c TsRevrangeCount) AggregationFirst() TsRevrangeAggregationAggregationFirst {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "FIRST")
-	return (TsRevrangeAggregationAggregationFirst)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationAggregationFirst)
 }
 
 func (c TsRevrangeCount) AggregationLast() TsRevrangeAggregationAggregationLast {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "LAST")
-	return (TsRevrangeAggregationAggregationLast)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationAggregationLast)
 }
 
 func (c TsRevrangeCount) AggregationStdP() TsRevrangeAggregationAggregationStdP {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "STD.P")
-	return (TsRevrangeAggregationAggregationStdP)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationAggregationStdP)
 }
 
 func (c TsRevrangeCount) AggregationStdS() TsRevrangeAggregationAggregationStdS {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "STD.S")
-	return (TsRevrangeAggregationAggregationStdS)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationAggregationStdS)
 }
 
 func (c TsRevrangeCount) AggregationVarP() TsRevrangeAggregationAggregationVarP {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "VAR.P")
-	return (TsRevrangeAggregationAggregationVarP)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationAggregationVarP)
 }
 
 func (c TsRevrangeCount) AggregationVarS() TsRevrangeAggregationAggregationVarS {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "VAR.S")
-	return (TsRevrangeAggregationAggregationVarS)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationAggregationVarS)
 }
 
 func (c TsRevrangeCount) AggregationTwa() TsRevrangeAggregationAggregationTwa {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "TWA")
-	return (TsRevrangeAggregationAggregationTwa)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationAggregationTwa)
 }
 
-func (c TsRevrangeCount) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c TsRevrangeCount) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type TsRevrangeFilterByTs Incomplete
 
 func (c TsRevrangeFilterByTs) FilterByTs(timestamp ...int64) TsRevrangeFilterByTs {
-	c.cs.s = append(c.cs.s, "FILTER_BY_TS")
-	for _, n := range timestamp {
-		c.cs.s = append(c.cs.s, strconv.FormatInt(n, 10))
-	}
-	return c
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeFilterByTs)
 }
 
 func (c TsRevrangeFilterByTs) FilterByValue(min float64, max float64) TsRevrangeFilterByValue {
-	c.cs.s = append(c.cs.s, "FILTER_BY_VALUE", strconv.FormatFloat(min, 'f', -1, 64), strconv.FormatFloat(max, 'f', -1, 64))
-	return (TsRevrangeFilterByValue)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeFilterByValue)
 }
 
 func (c TsRevrangeFilterByTs) Count(count int64) TsRevrangeCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(count, 10))
-	return (TsRevrangeCount)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeCount)
 }
 
 func (c TsRevrangeFilterByTs) Align(value string) TsRevrangeAlign {
-	c.cs.s = append(c.cs.s, "ALIGN", value)
-	return (TsRevrangeAlign)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAlign)
 }
 
 func (c TsRevrangeFilterByTs) AggregationAvg() TsRevrangeAggregationAggregationAvg {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "AVG")
-	return (TsRevrangeAggregationAggregationAvg)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationAggregationAvg)
 }
 
 func (c TsRevrangeFilterByTs) AggregationSum() TsRevrangeAggregationAggregationSum {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "SUM")
-	return (TsRevrangeAggregationAggregationSum)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationAggregationSum)
 }
 
 func (c TsRevrangeFilterByTs) AggregationMin() TsRevrangeAggregationAggregationMin {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "MIN")
-	return (TsRevrangeAggregationAggregationMin)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationAggregationMin)
 }
 
 func (c TsRevrangeFilterByTs) AggregationMax() TsRevrangeAggregationAggregationMax {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "MAX")
-	return (TsRevrangeAggregationAggregationMax)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationAggregationMax)
 }
 
 func (c TsRevrangeFilterByTs) AggregationRange() TsRevrangeAggregationAggregationRange {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "RANGE")
-	return (TsRevrangeAggregationAggregationRange)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationAggregationRange)
 }
 
 func (c TsRevrangeFilterByTs) AggregationCount() TsRevrangeAggregationAggregationCount {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "COUNT")
-	return (TsRevrangeAggregationAggregationCount)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationAggregationCount)
 }
 
 func (c TsRevrangeFilterByTs) AggregationFirst() TsRevrangeAggregationAggregationFirst {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "FIRST")
-	return (TsRevrangeAggregationAggregationFirst)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationAggregationFirst)
 }
 
 func (c TsRevrangeFilterByTs) AggregationLast() TsRevrangeAggregationAggregationLast {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "LAST")
-	return (TsRevrangeAggregationAggregationLast)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationAggregationLast)
 }
 
 func (c TsRevrangeFilterByTs) AggregationStdP() TsRevrangeAggregationAggregationStdP {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "STD.P")
-	return (TsRevrangeAggregationAggregationStdP)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationAggregationStdP)
 }
 
 func (c TsRevrangeFilterByTs) AggregationStdS() TsRevrangeAggregationAggregationStdS {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "STD.S")
-	return (TsRevrangeAggregationAggregationStdS)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationAggregationStdS)
 }
 
 func (c TsRevrangeFilterByTs) AggregationVarP() TsRevrangeAggregationAggregationVarP {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "VAR.P")
-	return (TsRevrangeAggregationAggregationVarP)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationAggregationVarP)
 }
 
 func (c TsRevrangeFilterByTs) AggregationVarS() TsRevrangeAggregationAggregationVarS {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "VAR.S")
-	return (TsRevrangeAggregationAggregationVarS)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationAggregationVarS)
 }
 
 func (c TsRevrangeFilterByTs) AggregationTwa() TsRevrangeAggregationAggregationTwa {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "TWA")
-	return (TsRevrangeAggregationAggregationTwa)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationAggregationTwa)
 }
 
-func (c TsRevrangeFilterByTs) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c TsRevrangeFilterByTs) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type TsRevrangeFilterByValue Incomplete
 
 func (c TsRevrangeFilterByValue) Count(count int64) TsRevrangeCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(count, 10))
-	return (TsRevrangeCount)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeCount)
 }
 
 func (c TsRevrangeFilterByValue) Align(value string) TsRevrangeAlign {
-	c.cs.s = append(c.cs.s, "ALIGN", value)
-	return (TsRevrangeAlign)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAlign)
 }
 
 func (c TsRevrangeFilterByValue) AggregationAvg() TsRevrangeAggregationAggregationAvg {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "AVG")
-	return (TsRevrangeAggregationAggregationAvg)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationAggregationAvg)
 }
 
 func (c TsRevrangeFilterByValue) AggregationSum() TsRevrangeAggregationAggregationSum {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "SUM")
-	return (TsRevrangeAggregationAggregationSum)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationAggregationSum)
 }
 
 func (c TsRevrangeFilterByValue) AggregationMin() TsRevrangeAggregationAggregationMin {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "MIN")
-	return (TsRevrangeAggregationAggregationMin)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationAggregationMin)
 }
 
 func (c TsRevrangeFilterByValue) AggregationMax() TsRevrangeAggregationAggregationMax {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "MAX")
-	return (TsRevrangeAggregationAggregationMax)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationAggregationMax)
 }
 
 func (c TsRevrangeFilterByValue) AggregationRange() TsRevrangeAggregationAggregationRange {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "RANGE")
-	return (TsRevrangeAggregationAggregationRange)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationAggregationRange)
 }
 
 func (c TsRevrangeFilterByValue) AggregationCount() TsRevrangeAggregationAggregationCount {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "COUNT")
-	return (TsRevrangeAggregationAggregationCount)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationAggregationCount)
 }
 
 func (c TsRevrangeFilterByValue) AggregationFirst() TsRevrangeAggregationAggregationFirst {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "FIRST")
-	return (TsRevrangeAggregationAggregationFirst)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationAggregationFirst)
 }
 
 func (c TsRevrangeFilterByValue) AggregationLast() TsRevrangeAggregationAggregationLast {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "LAST")
-	return (TsRevrangeAggregationAggregationLast)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationAggregationLast)
 }
 
 func (c TsRevrangeFilterByValue) AggregationStdP() TsRevrangeAggregationAggregationStdP {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "STD.P")
-	return (TsRevrangeAggregationAggregationStdP)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationAggregationStdP)
 }
 
 func (c TsRevrangeFilterByValue) AggregationStdS() TsRevrangeAggregationAggregationStdS {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "STD.S")
-	return (TsRevrangeAggregationAggregationStdS)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationAggregationStdS)
 }
 
 func (c TsRevrangeFilterByValue) AggregationVarP() TsRevrangeAggregationAggregationVarP {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "VAR.P")
-	return (TsRevrangeAggregationAggregationVarP)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationAggregationVarP)
 }
 
 func (c TsRevrangeFilterByValue) AggregationVarS() TsRevrangeAggregationAggregationVarS {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "VAR.S")
-	return (TsRevrangeAggregationAggregationVarS)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationAggregationVarS)
 }
 
 func (c TsRevrangeFilterByValue) AggregationTwa() TsRevrangeAggregationAggregationTwa {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "TWA")
-	return (TsRevrangeAggregationAggregationTwa)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationAggregationTwa)
 }
 
 func (c TsRevrangeFilterByValue) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type TsRevrangeFromtimestamp Incomplete
 
 func (c TsRevrangeFromtimestamp) Totimestamp(totimestamp string) TsRevrangeTotimestamp {
-	c.cs.s = append(c.cs.s, totimestamp)
-	return (TsRevrangeTotimestamp)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeTotimestamp)
 }
 
 type TsRevrangeKey Incomplete
 
 func (c TsRevrangeKey) Fromtimestamp(fromtimestamp string) TsRevrangeFromtimestamp {
-	c.cs.s = append(c.cs.s, fromtimestamp)
-	return (TsRevrangeFromtimestamp)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeFromtimestamp)
 }
 
 type TsRevrangeLatest Incomplete
 
 func (c TsRevrangeLatest) FilterByTs(timestamp ...int64) TsRevrangeFilterByTs {
-	c.cs.s = append(c.cs.s, "FILTER_BY_TS")
-	for _, n := range timestamp {
-		c.cs.s = append(c.cs.s, strconv.FormatInt(n, 10))
-	}
-	return (TsRevrangeFilterByTs)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeFilterByTs)
 }
 
 func (c TsRevrangeLatest) FilterByValue(min float64, max float64) TsRevrangeFilterByValue {
-	c.cs.s = append(c.cs.s, "FILTER_BY_VALUE", strconv.FormatFloat(min, 'f', -1, 64), strconv.FormatFloat(max, 'f', -1, 64))
-	return (TsRevrangeFilterByValue)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeFilterByValue)
 }
 
 func (c TsRevrangeLatest) Count(count int64) TsRevrangeCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(count, 10))
-	return (TsRevrangeCount)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeCount)
 }
 
 func (c TsRevrangeLatest) Align(value string) TsRevrangeAlign {
-	c.cs.s = append(c.cs.s, "ALIGN", value)
-	return (TsRevrangeAlign)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAlign)
 }
 
 func (c TsRevrangeLatest) AggregationAvg() TsRevrangeAggregationAggregationAvg {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "AVG")
-	return (TsRevrangeAggregationAggregationAvg)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationAggregationAvg)
 }
 
 func (c TsRevrangeLatest) AggregationSum() TsRevrangeAggregationAggregationSum {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "SUM")
-	return (TsRevrangeAggregationAggregationSum)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationAggregationSum)
 }
 
 func (c TsRevrangeLatest) AggregationMin() TsRevrangeAggregationAggregationMin {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "MIN")
-	return (TsRevrangeAggregationAggregationMin)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationAggregationMin)
 }
 
 func (c TsRevrangeLatest) AggregationMax() TsRevrangeAggregationAggregationMax {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "MAX")
-	return (TsRevrangeAggregationAggregationMax)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationAggregationMax)
 }
 
 func (c TsRevrangeLatest) AggregationRange() TsRevrangeAggregationAggregationRange {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "RANGE")
-	return (TsRevrangeAggregationAggregationRange)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationAggregationRange)
 }
 
 func (c TsRevrangeLatest) AggregationCount() TsRevrangeAggregationAggregationCount {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "COUNT")
-	return (TsRevrangeAggregationAggregationCount)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationAggregationCount)
 }
 
 func (c TsRevrangeLatest) AggregationFirst() TsRevrangeAggregationAggregationFirst {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "FIRST")
-	return (TsRevrangeAggregationAggregationFirst)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationAggregationFirst)
 }
 
 func (c TsRevrangeLatest) AggregationLast() TsRevrangeAggregationAggregationLast {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "LAST")
-	return (TsRevrangeAggregationAggregationLast)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationAggregationLast)
 }
 
 func (c TsRevrangeLatest) AggregationStdP() TsRevrangeAggregationAggregationStdP {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "STD.P")
-	return (TsRevrangeAggregationAggregationStdP)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationAggregationStdP)
 }
 
 func (c TsRevrangeLatest) AggregationStdS() TsRevrangeAggregationAggregationStdS {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "STD.S")
-	return (TsRevrangeAggregationAggregationStdS)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationAggregationStdS)
 }
 
 func (c TsRevrangeLatest) AggregationVarP() TsRevrangeAggregationAggregationVarP {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "VAR.P")
-	return (TsRevrangeAggregationAggregationVarP)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationAggregationVarP)
 }
 
 func (c TsRevrangeLatest) AggregationVarS() TsRevrangeAggregationAggregationVarS {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "VAR.S")
-	return (TsRevrangeAggregationAggregationVarS)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationAggregationVarS)
 }
 
 func (c TsRevrangeLatest) AggregationTwa() TsRevrangeAggregationAggregationTwa {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "TWA")
-	return (TsRevrangeAggregationAggregationTwa)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationAggregationTwa)
 }
 
-func (c TsRevrangeLatest) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c TsRevrangeLatest) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type TsRevrangeTotimestamp Incomplete
 
 func (c TsRevrangeTotimestamp) Latest() TsRevrangeLatest {
-	c.cs.s = append(c.cs.s, "LATEST")
-	return (TsRevrangeLatest)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeLatest)
 }
 
 func (c TsRevrangeTotimestamp) FilterByTs(timestamp ...int64) TsRevrangeFilterByTs {
-	c.cs.s = append(c.cs.s, "FILTER_BY_TS")
-	for _, n := range timestamp {
-		c.cs.s = append(c.cs.s, strconv.FormatInt(n, 10))
-	}
-	return (TsRevrangeFilterByTs)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeFilterByTs)
 }
 
 func (c TsRevrangeTotimestamp) FilterByValue(min float64, max float64) TsRevrangeFilterByValue {
-	c.cs.s = append(c.cs.s, "FILTER_BY_VALUE", strconv.FormatFloat(min, 'f', -1, 64), strconv.FormatFloat(max, 'f', -1, 64))
-	return (TsRevrangeFilterByValue)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeFilterByValue)
 }
 
 func (c TsRevrangeTotimestamp) Count(count int64) TsRevrangeCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(count, 10))
-	return (TsRevrangeCount)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeCount)
 }
 
 func (c TsRevrangeTotimestamp) Align(value string) TsRevrangeAlign {
-	c.cs.s = append(c.cs.s, "ALIGN", value)
-	return (TsRevrangeAlign)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAlign)
 }
 
 func (c TsRevrangeTotimestamp) AggregationAvg() TsRevrangeAggregationAggregationAvg {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "AVG")
-	return (TsRevrangeAggregationAggregationAvg)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationAggregationAvg)
 }
 
 func (c TsRevrangeTotimestamp) AggregationSum() TsRevrangeAggregationAggregationSum {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "SUM")
-	return (TsRevrangeAggregationAggregationSum)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationAggregationSum)
 }
 
 func (c TsRevrangeTotimestamp) AggregationMin() TsRevrangeAggregationAggregationMin {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "MIN")
-	return (TsRevrangeAggregationAggregationMin)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationAggregationMin)
 }
 
 func (c TsRevrangeTotimestamp) AggregationMax() TsRevrangeAggregationAggregationMax {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "MAX")
-	return (TsRevrangeAggregationAggregationMax)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationAggregationMax)
 }
 
 func (c TsRevrangeTotimestamp) AggregationRange() TsRevrangeAggregationAggregationRange {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "RANGE")
-	return (TsRevrangeAggregationAggregationRange)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationAggregationRange)
 }
 
 func (c TsRevrangeTotimestamp) AggregationCount() TsRevrangeAggregationAggregationCount {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "COUNT")
-	return (TsRevrangeAggregationAggregationCount)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationAggregationCount)
 }
 
 func (c TsRevrangeTotimestamp) AggregationFirst() TsRevrangeAggregationAggregationFirst {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "FIRST")
-	return (TsRevrangeAggregationAggregationFirst)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationAggregationFirst)
 }
 
 func (c TsRevrangeTotimestamp) AggregationLast() TsRevrangeAggregationAggregationLast {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "LAST")
-	return (TsRevrangeAggregationAggregationLast)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationAggregationLast)
 }
 
 func (c TsRevrangeTotimestamp) AggregationStdP() TsRevrangeAggregationAggregationStdP {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "STD.P")
-	return (TsRevrangeAggregationAggregationStdP)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationAggregationStdP)
 }
 
 func (c TsRevrangeTotimestamp) AggregationStdS() TsRevrangeAggregationAggregationStdS {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "STD.S")
-	return (TsRevrangeAggregationAggregationStdS)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationAggregationStdS)
 }
 
 func (c TsRevrangeTotimestamp) AggregationVarP() TsRevrangeAggregationAggregationVarP {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "VAR.P")
-	return (TsRevrangeAggregationAggregationVarP)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationAggregationVarP)
 }
 
 func (c TsRevrangeTotimestamp) AggregationVarS() TsRevrangeAggregationAggregationVarS {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "VAR.S")
-	return (TsRevrangeAggregationAggregationVarS)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationAggregationVarS)
 }
 
 func (c TsRevrangeTotimestamp) AggregationTwa() TsRevrangeAggregationAggregationTwa {
-	c.cs.s = append(c.cs.s, "AGGREGATION", "TWA")
-	return (TsRevrangeAggregationAggregationTwa)(c)
+	_ = "STUB: not implemented"
+	return *new(TsRevrangeAggregationAggregationTwa)
 }
 
-func (c TsRevrangeTotimestamp) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c TsRevrangeTotimestamp) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }

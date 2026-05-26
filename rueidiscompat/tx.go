@@ -4,7 +4,6 @@ import (
 	"context"
 	"errors"
 	"time"
-	"unsafe"
 
 	"github.com/redis/rueidis"
 )
@@ -15,68 +14,30 @@ var _ Pipeliner = (*TxPipeline)(nil)
 
 type rePipeline = Pipeline
 
-func newTxPipeline(real rueidis.Client) *TxPipeline {
-	return &TxPipeline{rePipeline: newPipeline(real)}
-}
+func newTxPipeline(real rueidis.Client) *TxPipeline { _ = "STUB: not implemented"; return nil }
 
 type TxPipeline struct {
 	*rePipeline
 }
 
 func (c *TxPipeline) Exec(ctx context.Context) ([]Cmder, error) {
-	p := c.comp.client.(*proxy)
-	if len(p.cmds) == 0 {
-		return nil, nil
-	}
-
-	rets := c.rets
-	cmds := p.cmds
-	c.rets = nil
-	p.cmds = nil
-
-	cmds = append(cmds, c.comp.client.B().Multi().Build(), c.comp.client.B().Exec().Build())
-	for i := len(cmds) - 2; i >= 1; i-- {
-		j := i - 1
-		cmds[j], cmds[i] = cmds[i], cmds[j]
-	}
-
-	resp := p.DoMulti(ctx, cmds...)
-	results, err := resp[len(resp)-1].ToArray()
-	if rueidis.IsRedisNil(err) {
-		err = TxFailedErr
-	}
-	for i, r := range results {
-		rets[i].SetErr(nil)
-		rets[i].from(*(*rueidis.RedisResult)(unsafe.Pointer(&proxyresult{
-			err: resp[i+1].NonRedisError(),
-			val: r,
-		})))
-
-		if err == nil {
-			err = rets[i].Err()
-		}
-	}
-	return rets, err
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (c *TxPipeline) Pipelined(ctx context.Context, fn func(Pipeliner) error) ([]Cmder, error) {
-	if err := fn(c); err != nil {
-		return nil, err
-	}
-	return c.Exec(ctx)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (c *TxPipeline) Pipeline() Pipeliner {
-	return c
-}
+func (c *TxPipeline) Pipeline() Pipeliner { _ = "STUB: not implemented"; return *new(Pipeliner) }
 
 func (c *TxPipeline) TxPipelined(ctx context.Context, fn func(Pipeliner) error) ([]Cmder, error) {
-	return c.Pipelined(ctx, fn)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
-func (c *TxPipeline) TxPipeline() Pipeliner {
-	return c
-}
+func (c *TxPipeline) TxPipeline() Pipeliner { _ = "STUB: not implemented"; return *new(Pipeliner) }
 
 var _ rueidis.Client = (*txproxy)(nil)
 
@@ -85,35 +46,40 @@ type txproxy struct {
 }
 
 func (p *txproxy) DoCache(_ context.Context, _ rueidis.Cacheable, _ time.Duration) (resp rueidis.RedisResult) {
-	panic("not implemented")
+	_ = "STUB: not implemented"
+	return *new(rueidis.RedisResult)
 }
 
 func (p *txproxy) DoMultiCache(_ context.Context, _ ...rueidis.CacheableTTL) (resp []rueidis.RedisResult) {
-	panic("not implemented")
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func (p *txproxy) DoStream(_ context.Context, _ rueidis.Completed) rueidis.RedisResultStream {
-	panic("not implemented")
+	_ = "STUB: not implemented"
+	return *new(rueidis.RedisResultStream)
 }
 
 func (p *txproxy) DoMultiStream(_ context.Context, _ ...rueidis.Completed) rueidis.MultiRedisResultStream {
-	panic("not implemented")
+	_ = "STUB: not implemented"
+	return *new(rueidis.MultiRedisResultStream)
 }
 
 func (p *txproxy) Dedicated(_ func(rueidis.DedicatedClient) error) (err error) {
-	panic("not implemented")
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func (p *txproxy) Dedicate() (client rueidis.DedicatedClient, cancel func()) {
-	panic("not implemented")
+	_ = "STUB: not implemented"
+	return *new(rueidis.DedicatedClient), nil
 }
 
-func (p *txproxy) Nodes() map[string]rueidis.Client {
-	panic("not implemented")
-}
+func (p *txproxy) Nodes() map[string]rueidis.Client { _ = "STUB: not implemented"; return nil }
 
 func (p *txproxy) Mode() rueidis.ClientMode {
-	panic("not implemented")
+	_ = "STUB: not implemented"
+	return *new(rueidis.ClientMode)
 }
 
 type Tx interface {
@@ -124,7 +90,8 @@ type Tx interface {
 }
 
 func newTx(client rueidis.DedicatedClient, cancel func()) *tx {
-	return &tx{CoreCmdable: NewAdapter(&txproxy{CoreClient: client}), cancel: cancel}
+	_ = "STUB: not implemented"
+	return nil
 }
 
 type tx struct {
@@ -133,22 +100,13 @@ type tx struct {
 }
 
 func (t *tx) Watch(ctx context.Context, keys ...string) *StatusCmd {
-	ret := &StatusCmd{}
-	if len(keys) != 0 {
-		client := t.CoreCmdable.(*Compat).client
-		ret.from(client.Do(ctx, client.B().Watch().Key(keys...).Build()))
-	}
-	return ret
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func (t *tx) Unwatch(ctx context.Context, _ ...string) *StatusCmd {
-	ret := &StatusCmd{}
-	client := t.CoreCmdable.(*Compat).client
-	ret.from(client.Do(ctx, client.B().Unwatch().Build()))
-	return ret
-}
-
-func (t *tx) Close(_ context.Context) error {
-	t.cancel()
+	_ = "STUB: not implemented"
 	return nil
 }
+
+func (t *tx) Close(_ context.Context) error { _ = "STUB: not implemented"; return nil }

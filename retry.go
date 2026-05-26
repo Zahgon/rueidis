@@ -2,10 +2,7 @@ package rueidis
 
 import (
 	"context"
-	"runtime"
 	"time"
-
-	"github.com/redis/rueidis/internal/util"
 )
 
 const (
@@ -21,9 +18,8 @@ type RetryDelayFn func(attempts int, cmd Completed, err error) time.Duration
 // Max delay is 1 second.
 // This "Equal Jitter" delay produced by this implementation is not monotonic increasing. ref: https://aws.amazon.com/ko/blogs/architecture/exponential-backoff-and-jitter/
 func defaultRetryDelayFn(attempts int, _ Completed, _ error) time.Duration {
-	base := 1 << min(defaultMaxRetries, attempts)
-	jitter := util.FastRand(base)
-	return min(defaultMaxRetryDelay, time.Duration(base+jitter)*time.Microsecond)
+	_ = "STUB: not implemented"
+	return *new(time.Duration)
 }
 
 type retryHandler interface {
@@ -49,40 +45,21 @@ type retryer struct {
 
 var _ retryHandler = (*retryer)(nil)
 
-func newRetryer(retryDelayFn RetryDelayFn) *retryer {
-	return &retryer{RetryDelayFn: retryDelayFn}
-}
+func newRetryer(retryDelayFn RetryDelayFn) *retryer { _ = "STUB: not implemented"; return nil }
 
 func (r *retryer) RetryDelay(attempts int, cmd Completed, err error) time.Duration {
-	return r.RetryDelayFn(attempts, cmd, err)
+	_ = "STUB: not implemented"
+	return *new(time.Duration)
 }
 
 func (r *retryer) WaitForRetry(ctx context.Context, duration time.Duration) {
-	if duration > 0 {
-		if ch := ctx.Done(); ch != nil {
-			tm := time.NewTimer(duration)
-			defer tm.Stop()
-			select {
-			case <-ch:
-			case <-tm.C:
-			}
-		} else {
-			time.Sleep(duration)
-		}
-	}
+	_ = "STUB: not implemented"
+	return
 }
 
 func (r *retryer) WaitOrSkipRetry(
 	ctx context.Context, attempts int, cmd Completed, err error,
 ) bool {
-	if delay := r.RetryDelay(attempts, cmd, err); delay == 0 {
-		runtime.Gosched()
-		return true
-	} else if delay > 0 {
-		if dl, ok := ctx.Deadline(); !ok || time.Until(dl) > delay {
-			r.WaitForRetry(ctx, delay)
-			return true
-		}
-	}
+	_ = "STUB: not implemented"
 	return false
 }

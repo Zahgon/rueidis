@@ -2,178 +2,131 @@
 
 package cmds
 
-import "strconv"
-
 type AiScriptdel Incomplete
 
-func (b Builder) AiScriptdel() (c AiScriptdel) {
-	c = AiScriptdel{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "AI.SCRIPTDEL")
-	return c
-}
+func (b Builder) AiScriptdel() (c AiScriptdel) { _ = "STUB: not implemented"; return *new(AiScriptdel) }
 
 func (c AiScriptdel) Key(key string) AiScriptdelKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (AiScriptdelKey)(c)
+	_ = "STUB: not implemented"
+	return *new(AiScriptdelKey)
 }
 
 type AiScriptdelKey Incomplete
 
-func (c AiScriptdelKey) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c AiScriptdelKey) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type AiScriptget Incomplete
 
-func (b Builder) AiScriptget() (c AiScriptget) {
-	c = AiScriptget{cs: get(), ks: b.ks, cf: int16(readonly)}
-	c.cs.s = append(c.cs.s, "AI.SCRIPTGET")
-	return c
-}
+func (b Builder) AiScriptget() (c AiScriptget) { _ = "STUB: not implemented"; return *new(AiScriptget) }
 
 func (c AiScriptget) Key(key string) AiScriptgetKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (AiScriptgetKey)(c)
+	_ = "STUB: not implemented"
+	return *new(AiScriptgetKey)
 }
 
 type AiScriptgetKey Incomplete
 
 func (c AiScriptgetKey) Meta() AiScriptgetMeta {
-	c.cs.s = append(c.cs.s, "META")
-	return (AiScriptgetMeta)(c)
+	_ = "STUB: not implemented"
+	return *new(AiScriptgetMeta)
 }
 
 func (c AiScriptgetKey) Source() AiScriptgetSource {
-	c.cs.s = append(c.cs.s, "SOURCE")
-	return (AiScriptgetSource)(c)
+	_ = "STUB: not implemented"
+	return *new(AiScriptgetSource)
 }
 
-func (c AiScriptgetKey) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c AiScriptgetKey) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c AiScriptgetKey) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c AiScriptgetKey) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type AiScriptgetMeta Incomplete
 
 func (c AiScriptgetMeta) Source() AiScriptgetSource {
-	c.cs.s = append(c.cs.s, "SOURCE")
-	return (AiScriptgetSource)(c)
+	_ = "STUB: not implemented"
+	return *new(AiScriptgetSource)
 }
 
-func (c AiScriptgetMeta) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c AiScriptgetMeta) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c AiScriptgetMeta) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c AiScriptgetMeta) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type AiScriptgetSource Incomplete
 
-func (c AiScriptgetSource) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c AiScriptgetSource) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c AiScriptgetSource) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c AiScriptgetSource) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type AiScriptstore Incomplete
 
 func (b Builder) AiScriptstore() (c AiScriptstore) {
-	c = AiScriptstore{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "AI.SCRIPTSTORE")
-	return c
+	_ = "STUB: not implemented"
+	return *new(AiScriptstore)
 }
 
 func (c AiScriptstore) Key(key string) AiScriptstoreKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (AiScriptstoreKey)(c)
+	_ = "STUB: not implemented"
+	return *new(AiScriptstoreKey)
 }
 
 type AiScriptstoreDeviceCpu Incomplete
 
 func (c AiScriptstoreDeviceCpu) Tag(tag string) AiScriptstoreTag {
-	c.cs.s = append(c.cs.s, "TAG", tag)
-	return (AiScriptstoreTag)(c)
+	_ = "STUB: not implemented"
+	return *new(AiScriptstoreTag)
 }
 
 func (c AiScriptstoreDeviceCpu) EntryPoints(entryPointCount int64) AiScriptstoreEntryPointsEntryPoints {
-	c.cs.s = append(c.cs.s, "ENTRY_POINTS", strconv.FormatInt(entryPointCount, 10))
-	return (AiScriptstoreEntryPointsEntryPoints)(c)
+	_ = "STUB: not implemented"
+	return *new(AiScriptstoreEntryPointsEntryPoints)
 }
 
 type AiScriptstoreDeviceGpu Incomplete
 
 func (c AiScriptstoreDeviceGpu) Tag(tag string) AiScriptstoreTag {
-	c.cs.s = append(c.cs.s, "TAG", tag)
-	return (AiScriptstoreTag)(c)
+	_ = "STUB: not implemented"
+	return *new(AiScriptstoreTag)
 }
 
 func (c AiScriptstoreDeviceGpu) EntryPoints(entryPointCount int64) AiScriptstoreEntryPointsEntryPoints {
-	c.cs.s = append(c.cs.s, "ENTRY_POINTS", strconv.FormatInt(entryPointCount, 10))
-	return (AiScriptstoreEntryPointsEntryPoints)(c)
+	_ = "STUB: not implemented"
+	return *new(AiScriptstoreEntryPointsEntryPoints)
 }
 
 type AiScriptstoreEntryPointsEntryPoint Incomplete
 
 func (c AiScriptstoreEntryPointsEntryPoint) EntryPoint(entryPoint ...string) AiScriptstoreEntryPointsEntryPoint {
-	c.cs.s = append(c.cs.s, entryPoint...)
-	return c
+	_ = "STUB: not implemented"
+	return *new(AiScriptstoreEntryPointsEntryPoint)
 }
 
 func (c AiScriptstoreEntryPointsEntryPoint) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type AiScriptstoreEntryPointsEntryPoints Incomplete
 
 func (c AiScriptstoreEntryPointsEntryPoints) EntryPoint(entryPoint ...string) AiScriptstoreEntryPointsEntryPoint {
-	c.cs.s = append(c.cs.s, entryPoint...)
-	return (AiScriptstoreEntryPointsEntryPoint)(c)
+	_ = "STUB: not implemented"
+	return *new(AiScriptstoreEntryPointsEntryPoint)
 }
 
 type AiScriptstoreKey Incomplete
 
 func (c AiScriptstoreKey) Cpu() AiScriptstoreDeviceCpu {
-	c.cs.s = append(c.cs.s, "CPU")
-	return (AiScriptstoreDeviceCpu)(c)
+	_ = "STUB: not implemented"
+	return *new(AiScriptstoreDeviceCpu)
 }
 
 func (c AiScriptstoreKey) Gpu() AiScriptstoreDeviceGpu {
-	c.cs.s = append(c.cs.s, "GPU")
-	return (AiScriptstoreDeviceGpu)(c)
+	_ = "STUB: not implemented"
+	return *new(AiScriptstoreDeviceGpu)
 }
 
 type AiScriptstoreTag Incomplete
 
 func (c AiScriptstoreTag) EntryPoints(entryPointCount int64) AiScriptstoreEntryPointsEntryPoints {
-	c.cs.s = append(c.cs.s, "ENTRY_POINTS", strconv.FormatInt(entryPointCount, 10))
-	return (AiScriptstoreEntryPointsEntryPoints)(c)
+	_ = "STUB: not implemented"
+	return *new(AiScriptstoreEntryPointsEntryPoints)
 }

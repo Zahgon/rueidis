@@ -2,2671 +2,1747 @@
 
 package cmds
 
-import "strconv"
-
 type Bzmpop Incomplete
 
-func (b Builder) Bzmpop() (c Bzmpop) {
-	c = Bzmpop{cs: get(), ks: b.ks, cf: int16(blockTag)}
-	c.cs.s = append(c.cs.s, "BZMPOP")
-	return c
-}
+func (b Builder) Bzmpop() (c Bzmpop) { _ = "STUB: not implemented"; return *new(Bzmpop) }
 
 func (c Bzmpop) Timeout(timeout float64) BzmpopTimeout {
-	c.cs.s = append(c.cs.s, strconv.FormatFloat(timeout, 'f', -1, 64))
-	return (BzmpopTimeout)(c)
+	_ = "STUB: not implemented"
+	return *new(BzmpopTimeout)
 }
 
 type BzmpopCount Incomplete
 
-func (c BzmpopCount) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c BzmpopCount) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type BzmpopKey Incomplete
 
-func (c BzmpopKey) Key(key ...string) BzmpopKey {
-	if c.ks&NoSlot == NoSlot {
-		for _, k := range key {
-			c.ks = NoSlot | slot(k)
-			break
-		}
-	} else {
-		for _, k := range key {
-			c.ks = check(c.ks, slot(k))
-		}
-	}
-	c.cs.s = append(c.cs.s, key...)
-	return c
-}
+func (c BzmpopKey) Key(key ...string) BzmpopKey { _ = "STUB: not implemented"; return *new(BzmpopKey) }
 
-func (c BzmpopKey) Min() BzmpopWhereMin {
-	c.cs.s = append(c.cs.s, "MIN")
-	return (BzmpopWhereMin)(c)
-}
+func (c BzmpopKey) Min() BzmpopWhereMin { _ = "STUB: not implemented"; return *new(BzmpopWhereMin) }
 
-func (c BzmpopKey) Max() BzmpopWhereMax {
-	c.cs.s = append(c.cs.s, "MAX")
-	return (BzmpopWhereMax)(c)
-}
+func (c BzmpopKey) Max() BzmpopWhereMax { _ = "STUB: not implemented"; return *new(BzmpopWhereMax) }
 
 type BzmpopNumkeys Incomplete
 
 func (c BzmpopNumkeys) Key(key ...string) BzmpopKey {
-	if c.ks&NoSlot == NoSlot {
-		for _, k := range key {
-			c.ks = NoSlot | slot(k)
-			break
-		}
-	} else {
-		for _, k := range key {
-			c.ks = check(c.ks, slot(k))
-		}
-	}
-	c.cs.s = append(c.cs.s, key...)
-	return (BzmpopKey)(c)
+	_ = "STUB: not implemented"
+	return *new(BzmpopKey)
 }
 
 type BzmpopTimeout Incomplete
 
 func (c BzmpopTimeout) Numkeys(numkeys int64) BzmpopNumkeys {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(numkeys, 10))
-	return (BzmpopNumkeys)(c)
+	_ = "STUB: not implemented"
+	return *new(BzmpopNumkeys)
 }
 
 type BzmpopWhereMax Incomplete
 
 func (c BzmpopWhereMax) Count(count int64) BzmpopCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(count, 10))
-	return (BzmpopCount)(c)
+	_ = "STUB: not implemented"
+	return *new(BzmpopCount)
 }
 
-func (c BzmpopWhereMax) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c BzmpopWhereMax) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type BzmpopWhereMin Incomplete
 
 func (c BzmpopWhereMin) Count(count int64) BzmpopCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(count, 10))
-	return (BzmpopCount)(c)
+	_ = "STUB: not implemented"
+	return *new(BzmpopCount)
 }
 
-func (c BzmpopWhereMin) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c BzmpopWhereMin) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type Bzpopmax Incomplete
 
-func (b Builder) Bzpopmax() (c Bzpopmax) {
-	c = Bzpopmax{cs: get(), ks: b.ks, cf: int16(blockTag)}
-	c.cs.s = append(c.cs.s, "BZPOPMAX")
-	return c
-}
+func (b Builder) Bzpopmax() (c Bzpopmax) { _ = "STUB: not implemented"; return *new(Bzpopmax) }
 
 func (c Bzpopmax) Key(key ...string) BzpopmaxKey {
-	if c.ks&NoSlot == NoSlot {
-		for _, k := range key {
-			c.ks = NoSlot | slot(k)
-			break
-		}
-	} else {
-		for _, k := range key {
-			c.ks = check(c.ks, slot(k))
-		}
-	}
-	c.cs.s = append(c.cs.s, key...)
-	return (BzpopmaxKey)(c)
+	_ = "STUB: not implemented"
+	return *new(BzpopmaxKey)
 }
 
 type BzpopmaxKey Incomplete
 
 func (c BzpopmaxKey) Key(key ...string) BzpopmaxKey {
-	if c.ks&NoSlot == NoSlot {
-		for _, k := range key {
-			c.ks = NoSlot | slot(k)
-			break
-		}
-	} else {
-		for _, k := range key {
-			c.ks = check(c.ks, slot(k))
-		}
-	}
-	c.cs.s = append(c.cs.s, key...)
-	return c
+	_ = "STUB: not implemented"
+	return *new(BzpopmaxKey)
 }
 
 func (c BzpopmaxKey) Timeout(timeout float64) BzpopmaxTimeout {
-	c.cs.s = append(c.cs.s, strconv.FormatFloat(timeout, 'f', -1, 64))
-	return (BzpopmaxTimeout)(c)
+	_ = "STUB: not implemented"
+	return *new(BzpopmaxTimeout)
 }
 
 type BzpopmaxTimeout Incomplete
 
-func (c BzpopmaxTimeout) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c BzpopmaxTimeout) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type Bzpopmin Incomplete
 
-func (b Builder) Bzpopmin() (c Bzpopmin) {
-	c = Bzpopmin{cs: get(), ks: b.ks, cf: int16(blockTag)}
-	c.cs.s = append(c.cs.s, "BZPOPMIN")
-	return c
-}
+func (b Builder) Bzpopmin() (c Bzpopmin) { _ = "STUB: not implemented"; return *new(Bzpopmin) }
 
 func (c Bzpopmin) Key(key ...string) BzpopminKey {
-	if c.ks&NoSlot == NoSlot {
-		for _, k := range key {
-			c.ks = NoSlot | slot(k)
-			break
-		}
-	} else {
-		for _, k := range key {
-			c.ks = check(c.ks, slot(k))
-		}
-	}
-	c.cs.s = append(c.cs.s, key...)
-	return (BzpopminKey)(c)
+	_ = "STUB: not implemented"
+	return *new(BzpopminKey)
 }
 
 type BzpopminKey Incomplete
 
 func (c BzpopminKey) Key(key ...string) BzpopminKey {
-	if c.ks&NoSlot == NoSlot {
-		for _, k := range key {
-			c.ks = NoSlot | slot(k)
-			break
-		}
-	} else {
-		for _, k := range key {
-			c.ks = check(c.ks, slot(k))
-		}
-	}
-	c.cs.s = append(c.cs.s, key...)
-	return c
+	_ = "STUB: not implemented"
+	return *new(BzpopminKey)
 }
 
 func (c BzpopminKey) Timeout(timeout float64) BzpopminTimeout {
-	c.cs.s = append(c.cs.s, strconv.FormatFloat(timeout, 'f', -1, 64))
-	return (BzpopminTimeout)(c)
+	_ = "STUB: not implemented"
+	return *new(BzpopminTimeout)
 }
 
 type BzpopminTimeout Incomplete
 
-func (c BzpopminTimeout) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c BzpopminTimeout) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type Zadd Incomplete
 
-func (b Builder) Zadd() (c Zadd) {
-	c = Zadd{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "ZADD")
-	return c
-}
+func (b Builder) Zadd() (c Zadd) { _ = "STUB: not implemented"; return *new(Zadd) }
 
-func (c Zadd) Key(key string) ZaddKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (ZaddKey)(c)
-}
+func (c Zadd) Key(key string) ZaddKey { _ = "STUB: not implemented"; return *new(ZaddKey) }
 
 type ZaddChangeCh Incomplete
 
 func (c ZaddChangeCh) Incr() ZaddIncrementIncr {
-	c.cs.s = append(c.cs.s, "INCR")
-	return (ZaddIncrementIncr)(c)
+	_ = "STUB: not implemented"
+	return *new(ZaddIncrementIncr)
 }
 
 func (c ZaddChangeCh) ScoreMember() ZaddScoreMember {
-	return (ZaddScoreMember)(c)
+	_ = "STUB: not implemented"
+	return *new(ZaddScoreMember)
 }
 
 type ZaddComparisonGt Incomplete
 
-func (c ZaddComparisonGt) Ch() ZaddChangeCh {
-	c.cs.s = append(c.cs.s, "CH")
-	return (ZaddChangeCh)(c)
-}
+func (c ZaddComparisonGt) Ch() ZaddChangeCh { _ = "STUB: not implemented"; return *new(ZaddChangeCh) }
 
 func (c ZaddComparisonGt) Incr() ZaddIncrementIncr {
-	c.cs.s = append(c.cs.s, "INCR")
-	return (ZaddIncrementIncr)(c)
+	_ = "STUB: not implemented"
+	return *new(ZaddIncrementIncr)
 }
 
 func (c ZaddComparisonGt) ScoreMember() ZaddScoreMember {
-	return (ZaddScoreMember)(c)
+	_ = "STUB: not implemented"
+	return *new(ZaddScoreMember)
 }
 
 type ZaddComparisonLt Incomplete
 
-func (c ZaddComparisonLt) Ch() ZaddChangeCh {
-	c.cs.s = append(c.cs.s, "CH")
-	return (ZaddChangeCh)(c)
-}
+func (c ZaddComparisonLt) Ch() ZaddChangeCh { _ = "STUB: not implemented"; return *new(ZaddChangeCh) }
 
 func (c ZaddComparisonLt) Incr() ZaddIncrementIncr {
-	c.cs.s = append(c.cs.s, "INCR")
-	return (ZaddIncrementIncr)(c)
+	_ = "STUB: not implemented"
+	return *new(ZaddIncrementIncr)
 }
 
 func (c ZaddComparisonLt) ScoreMember() ZaddScoreMember {
-	return (ZaddScoreMember)(c)
+	_ = "STUB: not implemented"
+	return *new(ZaddScoreMember)
 }
 
 type ZaddConditionNx Incomplete
 
 func (c ZaddConditionNx) Gt() ZaddComparisonGt {
-	c.cs.s = append(c.cs.s, "GT")
-	return (ZaddComparisonGt)(c)
+	_ = "STUB: not implemented"
+	return *new(ZaddComparisonGt)
 }
 
 func (c ZaddConditionNx) Lt() ZaddComparisonLt {
-	c.cs.s = append(c.cs.s, "LT")
-	return (ZaddComparisonLt)(c)
+	_ = "STUB: not implemented"
+	return *new(ZaddComparisonLt)
 }
 
-func (c ZaddConditionNx) Ch() ZaddChangeCh {
-	c.cs.s = append(c.cs.s, "CH")
-	return (ZaddChangeCh)(c)
-}
+func (c ZaddConditionNx) Ch() ZaddChangeCh { _ = "STUB: not implemented"; return *new(ZaddChangeCh) }
 
 func (c ZaddConditionNx) Incr() ZaddIncrementIncr {
-	c.cs.s = append(c.cs.s, "INCR")
-	return (ZaddIncrementIncr)(c)
+	_ = "STUB: not implemented"
+	return *new(ZaddIncrementIncr)
 }
 
 func (c ZaddConditionNx) ScoreMember() ZaddScoreMember {
-	return (ZaddScoreMember)(c)
+	_ = "STUB: not implemented"
+	return *new(ZaddScoreMember)
 }
 
 type ZaddConditionXx Incomplete
 
 func (c ZaddConditionXx) Gt() ZaddComparisonGt {
-	c.cs.s = append(c.cs.s, "GT")
-	return (ZaddComparisonGt)(c)
+	_ = "STUB: not implemented"
+	return *new(ZaddComparisonGt)
 }
 
 func (c ZaddConditionXx) Lt() ZaddComparisonLt {
-	c.cs.s = append(c.cs.s, "LT")
-	return (ZaddComparisonLt)(c)
+	_ = "STUB: not implemented"
+	return *new(ZaddComparisonLt)
 }
 
-func (c ZaddConditionXx) Ch() ZaddChangeCh {
-	c.cs.s = append(c.cs.s, "CH")
-	return (ZaddChangeCh)(c)
-}
+func (c ZaddConditionXx) Ch() ZaddChangeCh { _ = "STUB: not implemented"; return *new(ZaddChangeCh) }
 
 func (c ZaddConditionXx) Incr() ZaddIncrementIncr {
-	c.cs.s = append(c.cs.s, "INCR")
-	return (ZaddIncrementIncr)(c)
+	_ = "STUB: not implemented"
+	return *new(ZaddIncrementIncr)
 }
 
 func (c ZaddConditionXx) ScoreMember() ZaddScoreMember {
-	return (ZaddScoreMember)(c)
+	_ = "STUB: not implemented"
+	return *new(ZaddScoreMember)
 }
 
 type ZaddIncrementIncr Incomplete
 
 func (c ZaddIncrementIncr) ScoreMember() ZaddScoreMember {
-	return (ZaddScoreMember)(c)
+	_ = "STUB: not implemented"
+	return *new(ZaddScoreMember)
 }
 
 type ZaddKey Incomplete
 
-func (c ZaddKey) Nx() ZaddConditionNx {
-	c.cs.s = append(c.cs.s, "NX")
-	return (ZaddConditionNx)(c)
-}
+func (c ZaddKey) Nx() ZaddConditionNx { _ = "STUB: not implemented"; return *new(ZaddConditionNx) }
 
-func (c ZaddKey) Xx() ZaddConditionXx {
-	c.cs.s = append(c.cs.s, "XX")
-	return (ZaddConditionXx)(c)
-}
+func (c ZaddKey) Xx() ZaddConditionXx { _ = "STUB: not implemented"; return *new(ZaddConditionXx) }
 
-func (c ZaddKey) Gt() ZaddComparisonGt {
-	c.cs.s = append(c.cs.s, "GT")
-	return (ZaddComparisonGt)(c)
-}
+func (c ZaddKey) Gt() ZaddComparisonGt { _ = "STUB: not implemented"; return *new(ZaddComparisonGt) }
 
-func (c ZaddKey) Lt() ZaddComparisonLt {
-	c.cs.s = append(c.cs.s, "LT")
-	return (ZaddComparisonLt)(c)
-}
+func (c ZaddKey) Lt() ZaddComparisonLt { _ = "STUB: not implemented"; return *new(ZaddComparisonLt) }
 
-func (c ZaddKey) Ch() ZaddChangeCh {
-	c.cs.s = append(c.cs.s, "CH")
-	return (ZaddChangeCh)(c)
-}
+func (c ZaddKey) Ch() ZaddChangeCh { _ = "STUB: not implemented"; return *new(ZaddChangeCh) }
 
 func (c ZaddKey) Incr() ZaddIncrementIncr {
-	c.cs.s = append(c.cs.s, "INCR")
-	return (ZaddIncrementIncr)(c)
+	_ = "STUB: not implemented"
+	return *new(ZaddIncrementIncr)
 }
 
 func (c ZaddKey) ScoreMember() ZaddScoreMember {
-	return (ZaddScoreMember)(c)
+	_ = "STUB: not implemented"
+	return *new(ZaddScoreMember)
 }
 
 type ZaddScoreMember Incomplete
 
 func (c ZaddScoreMember) ScoreMember(score float64, member string) ZaddScoreMember {
-	c.cs.s = append(c.cs.s, strconv.FormatFloat(score, 'f', -1, 64), member)
-	return c
+	_ = "STUB: not implemented"
+	return *new(ZaddScoreMember)
 }
 
-func (c ZaddScoreMember) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZaddScoreMember) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type Zcard Incomplete
 
-func (b Builder) Zcard() (c Zcard) {
-	c = Zcard{cs: get(), ks: b.ks, cf: int16(readonly)}
-	c.cs.s = append(c.cs.s, "ZCARD")
-	return c
-}
+func (b Builder) Zcard() (c Zcard) { _ = "STUB: not implemented"; return *new(Zcard) }
 
-func (c Zcard) Key(key string) ZcardKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (ZcardKey)(c)
-}
+func (c Zcard) Key(key string) ZcardKey { _ = "STUB: not implemented"; return *new(ZcardKey) }
 
 type ZcardKey Incomplete
 
-func (c ZcardKey) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZcardKey) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c ZcardKey) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZcardKey) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type Zcount Incomplete
 
-func (b Builder) Zcount() (c Zcount) {
-	c = Zcount{cs: get(), ks: b.ks, cf: int16(readonly)}
-	c.cs.s = append(c.cs.s, "ZCOUNT")
-	return c
-}
+func (b Builder) Zcount() (c Zcount) { _ = "STUB: not implemented"; return *new(Zcount) }
 
-func (c Zcount) Key(key string) ZcountKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (ZcountKey)(c)
-}
+func (c Zcount) Key(key string) ZcountKey { _ = "STUB: not implemented"; return *new(ZcountKey) }
 
 type ZcountKey Incomplete
 
-func (c ZcountKey) Min(min string) ZcountMin {
-	c.cs.s = append(c.cs.s, min)
-	return (ZcountMin)(c)
-}
+func (c ZcountKey) Min(min string) ZcountMin { _ = "STUB: not implemented"; return *new(ZcountMin) }
 
 type ZcountMax Incomplete
 
-func (c ZcountMax) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZcountMax) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c ZcountMax) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZcountMax) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type ZcountMin Incomplete
 
-func (c ZcountMin) Max(max string) ZcountMax {
-	c.cs.s = append(c.cs.s, max)
-	return (ZcountMax)(c)
-}
+func (c ZcountMin) Max(max string) ZcountMax { _ = "STUB: not implemented"; return *new(ZcountMax) }
 
 type Zdiff Incomplete
 
-func (b Builder) Zdiff() (c Zdiff) {
-	c = Zdiff{cs: get(), ks: b.ks, cf: int16(readonly)}
-	c.cs.s = append(c.cs.s, "ZDIFF")
-	return c
-}
+func (b Builder) Zdiff() (c Zdiff) { _ = "STUB: not implemented"; return *new(Zdiff) }
 
 func (c Zdiff) Numkeys(numkeys int64) ZdiffNumkeys {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(numkeys, 10))
-	return (ZdiffNumkeys)(c)
+	_ = "STUB: not implemented"
+	return *new(ZdiffNumkeys)
 }
 
 type ZdiffKey Incomplete
 
-func (c ZdiffKey) Key(key ...string) ZdiffKey {
-	if c.ks&NoSlot == NoSlot {
-		for _, k := range key {
-			c.ks = NoSlot | slot(k)
-			break
-		}
-	} else {
-		for _, k := range key {
-			c.ks = check(c.ks, slot(k))
-		}
-	}
-	c.cs.s = append(c.cs.s, key...)
-	return c
-}
+func (c ZdiffKey) Key(key ...string) ZdiffKey { _ = "STUB: not implemented"; return *new(ZdiffKey) }
 
 func (c ZdiffKey) Withscores() ZdiffWithscores {
-	c.cs.s = append(c.cs.s, "WITHSCORES")
-	return (ZdiffWithscores)(c)
+	_ = "STUB: not implemented"
+	return *new(ZdiffWithscores)
 }
 
-func (c ZdiffKey) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZdiffKey) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type ZdiffNumkeys Incomplete
 
-func (c ZdiffNumkeys) Key(key ...string) ZdiffKey {
-	if c.ks&NoSlot == NoSlot {
-		for _, k := range key {
-			c.ks = NoSlot | slot(k)
-			break
-		}
-	} else {
-		for _, k := range key {
-			c.ks = check(c.ks, slot(k))
-		}
-	}
-	c.cs.s = append(c.cs.s, key...)
-	return (ZdiffKey)(c)
-}
+func (c ZdiffNumkeys) Key(key ...string) ZdiffKey { _ = "STUB: not implemented"; return *new(ZdiffKey) }
 
 type ZdiffWithscores Incomplete
 
-func (c ZdiffWithscores) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZdiffWithscores) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type Zdiffstore Incomplete
 
-func (b Builder) Zdiffstore() (c Zdiffstore) {
-	c = Zdiffstore{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "ZDIFFSTORE")
-	return c
-}
+func (b Builder) Zdiffstore() (c Zdiffstore) { _ = "STUB: not implemented"; return *new(Zdiffstore) }
 
 func (c Zdiffstore) Destination(destination string) ZdiffstoreDestination {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(destination)
-	} else {
-		c.ks = check(c.ks, slot(destination))
-	}
-	c.cs.s = append(c.cs.s, destination)
-	return (ZdiffstoreDestination)(c)
+	_ = "STUB: not implemented"
+	return *new(ZdiffstoreDestination)
 }
 
 type ZdiffstoreDestination Incomplete
 
 func (c ZdiffstoreDestination) Numkeys(numkeys int64) ZdiffstoreNumkeys {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(numkeys, 10))
-	return (ZdiffstoreNumkeys)(c)
+	_ = "STUB: not implemented"
+	return *new(ZdiffstoreNumkeys)
 }
 
 type ZdiffstoreKey Incomplete
 
 func (c ZdiffstoreKey) Key(key ...string) ZdiffstoreKey {
-	if c.ks&NoSlot == NoSlot {
-		for _, k := range key {
-			c.ks = NoSlot | slot(k)
-			break
-		}
-	} else {
-		for _, k := range key {
-			c.ks = check(c.ks, slot(k))
-		}
-	}
-	c.cs.s = append(c.cs.s, key...)
-	return c
+	_ = "STUB: not implemented"
+	return *new(ZdiffstoreKey)
 }
 
-func (c ZdiffstoreKey) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZdiffstoreKey) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type ZdiffstoreNumkeys Incomplete
 
 func (c ZdiffstoreNumkeys) Key(key ...string) ZdiffstoreKey {
-	if c.ks&NoSlot == NoSlot {
-		for _, k := range key {
-			c.ks = NoSlot | slot(k)
-			break
-		}
-	} else {
-		for _, k := range key {
-			c.ks = check(c.ks, slot(k))
-		}
-	}
-	c.cs.s = append(c.cs.s, key...)
-	return (ZdiffstoreKey)(c)
+	_ = "STUB: not implemented"
+	return *new(ZdiffstoreKey)
 }
 
 type Zincrby Incomplete
 
-func (b Builder) Zincrby() (c Zincrby) {
-	c = Zincrby{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "ZINCRBY")
-	return c
-}
+func (b Builder) Zincrby() (c Zincrby) { _ = "STUB: not implemented"; return *new(Zincrby) }
 
-func (c Zincrby) Key(key string) ZincrbyKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (ZincrbyKey)(c)
-}
+func (c Zincrby) Key(key string) ZincrbyKey { _ = "STUB: not implemented"; return *new(ZincrbyKey) }
 
 type ZincrbyIncrement Incomplete
 
 func (c ZincrbyIncrement) Member(member string) ZincrbyMember {
-	c.cs.s = append(c.cs.s, member)
-	return (ZincrbyMember)(c)
+	_ = "STUB: not implemented"
+	return *new(ZincrbyMember)
 }
 
 type ZincrbyKey Incomplete
 
 func (c ZincrbyKey) Increment(increment float64) ZincrbyIncrement {
-	c.cs.s = append(c.cs.s, strconv.FormatFloat(increment, 'f', -1, 64))
-	return (ZincrbyIncrement)(c)
+	_ = "STUB: not implemented"
+	return *new(ZincrbyIncrement)
 }
 
 type ZincrbyMember Incomplete
 
-func (c ZincrbyMember) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZincrbyMember) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type Zinter Incomplete
 
-func (b Builder) Zinter() (c Zinter) {
-	c = Zinter{cs: get(), ks: b.ks, cf: int16(readonly)}
-	c.cs.s = append(c.cs.s, "ZINTER")
-	return c
-}
+func (b Builder) Zinter() (c Zinter) { _ = "STUB: not implemented"; return *new(Zinter) }
 
 func (c Zinter) Numkeys(numkeys int64) ZinterNumkeys {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(numkeys, 10))
-	return (ZinterNumkeys)(c)
+	_ = "STUB: not implemented"
+	return *new(ZinterNumkeys)
 }
 
 type ZinterAggregateCount Incomplete
 
 func (c ZinterAggregateCount) Withscores() ZinterWithscores {
-	c.cs.s = append(c.cs.s, "WITHSCORES")
-	return (ZinterWithscores)(c)
+	_ = "STUB: not implemented"
+	return *new(ZinterWithscores)
 }
 
-func (c ZinterAggregateCount) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZinterAggregateCount) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type ZinterAggregateMax Incomplete
 
 func (c ZinterAggregateMax) Withscores() ZinterWithscores {
-	c.cs.s = append(c.cs.s, "WITHSCORES")
-	return (ZinterWithscores)(c)
+	_ = "STUB: not implemented"
+	return *new(ZinterWithscores)
 }
 
-func (c ZinterAggregateMax) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZinterAggregateMax) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type ZinterAggregateMin Incomplete
 
 func (c ZinterAggregateMin) Withscores() ZinterWithscores {
-	c.cs.s = append(c.cs.s, "WITHSCORES")
-	return (ZinterWithscores)(c)
+	_ = "STUB: not implemented"
+	return *new(ZinterWithscores)
 }
 
-func (c ZinterAggregateMin) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZinterAggregateMin) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type ZinterAggregateSum Incomplete
 
 func (c ZinterAggregateSum) Withscores() ZinterWithscores {
-	c.cs.s = append(c.cs.s, "WITHSCORES")
-	return (ZinterWithscores)(c)
+	_ = "STUB: not implemented"
+	return *new(ZinterWithscores)
 }
 
-func (c ZinterAggregateSum) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZinterAggregateSum) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type ZinterKey Incomplete
 
-func (c ZinterKey) Key(key ...string) ZinterKey {
-	if c.ks&NoSlot == NoSlot {
-		for _, k := range key {
-			c.ks = NoSlot | slot(k)
-			break
-		}
-	} else {
-		for _, k := range key {
-			c.ks = check(c.ks, slot(k))
-		}
-	}
-	c.cs.s = append(c.cs.s, key...)
-	return c
-}
+func (c ZinterKey) Key(key ...string) ZinterKey { _ = "STUB: not implemented"; return *new(ZinterKey) }
 
 func (c ZinterKey) Weights(weight ...int64) ZinterWeights {
-	c.cs.s = append(c.cs.s, "WEIGHTS")
-	for _, n := range weight {
-		c.cs.s = append(c.cs.s, strconv.FormatInt(n, 10))
-	}
-	return (ZinterWeights)(c)
+	_ = "STUB: not implemented"
+	return *new(ZinterWeights)
 }
 
 func (c ZinterKey) AggregateSum() ZinterAggregateSum {
-	c.cs.s = append(c.cs.s, "AGGREGATE", "SUM")
-	return (ZinterAggregateSum)(c)
+	_ = "STUB: not implemented"
+	return *new(ZinterAggregateSum)
 }
 
 func (c ZinterKey) AggregateMin() ZinterAggregateMin {
-	c.cs.s = append(c.cs.s, "AGGREGATE", "MIN")
-	return (ZinterAggregateMin)(c)
+	_ = "STUB: not implemented"
+	return *new(ZinterAggregateMin)
 }
 
 func (c ZinterKey) AggregateMax() ZinterAggregateMax {
-	c.cs.s = append(c.cs.s, "AGGREGATE", "MAX")
-	return (ZinterAggregateMax)(c)
+	_ = "STUB: not implemented"
+	return *new(ZinterAggregateMax)
 }
 
 func (c ZinterKey) AggregateCount() ZinterAggregateCount {
-	c.cs.s = append(c.cs.s, "AGGREGATE", "COUNT")
-	return (ZinterAggregateCount)(c)
+	_ = "STUB: not implemented"
+	return *new(ZinterAggregateCount)
 }
 
 func (c ZinterKey) Withscores() ZinterWithscores {
-	c.cs.s = append(c.cs.s, "WITHSCORES")
-	return (ZinterWithscores)(c)
+	_ = "STUB: not implemented"
+	return *new(ZinterWithscores)
 }
 
-func (c ZinterKey) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZinterKey) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type ZinterNumkeys Incomplete
 
 func (c ZinterNumkeys) Key(key ...string) ZinterKey {
-	if c.ks&NoSlot == NoSlot {
-		for _, k := range key {
-			c.ks = NoSlot | slot(k)
-			break
-		}
-	} else {
-		for _, k := range key {
-			c.ks = check(c.ks, slot(k))
-		}
-	}
-	c.cs.s = append(c.cs.s, key...)
-	return (ZinterKey)(c)
+	_ = "STUB: not implemented"
+	return *new(ZinterKey)
 }
 
 type ZinterWeights Incomplete
 
 func (c ZinterWeights) Weights(weight ...int64) ZinterWeights {
-	c.cs.s = append(c.cs.s, "WEIGHTS")
-	for _, n := range weight {
-		c.cs.s = append(c.cs.s, strconv.FormatInt(n, 10))
-	}
-	return c
+	_ = "STUB: not implemented"
+	return *new(ZinterWeights)
 }
 
 func (c ZinterWeights) AggregateSum() ZinterAggregateSum {
-	c.cs.s = append(c.cs.s, "AGGREGATE", "SUM")
-	return (ZinterAggregateSum)(c)
+	_ = "STUB: not implemented"
+	return *new(ZinterAggregateSum)
 }
 
 func (c ZinterWeights) AggregateMin() ZinterAggregateMin {
-	c.cs.s = append(c.cs.s, "AGGREGATE", "MIN")
-	return (ZinterAggregateMin)(c)
+	_ = "STUB: not implemented"
+	return *new(ZinterAggregateMin)
 }
 
 func (c ZinterWeights) AggregateMax() ZinterAggregateMax {
-	c.cs.s = append(c.cs.s, "AGGREGATE", "MAX")
-	return (ZinterAggregateMax)(c)
+	_ = "STUB: not implemented"
+	return *new(ZinterAggregateMax)
 }
 
 func (c ZinterWeights) AggregateCount() ZinterAggregateCount {
-	c.cs.s = append(c.cs.s, "AGGREGATE", "COUNT")
-	return (ZinterAggregateCount)(c)
+	_ = "STUB: not implemented"
+	return *new(ZinterAggregateCount)
 }
 
 func (c ZinterWeights) Withscores() ZinterWithscores {
-	c.cs.s = append(c.cs.s, "WITHSCORES")
-	return (ZinterWithscores)(c)
+	_ = "STUB: not implemented"
+	return *new(ZinterWithscores)
 }
 
-func (c ZinterWeights) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZinterWeights) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type ZinterWithscores Incomplete
 
-func (c ZinterWithscores) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZinterWithscores) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type Zintercard Incomplete
 
-func (b Builder) Zintercard() (c Zintercard) {
-	c = Zintercard{cs: get(), ks: b.ks, cf: int16(readonly)}
-	c.cs.s = append(c.cs.s, "ZINTERCARD")
-	return c
-}
+func (b Builder) Zintercard() (c Zintercard) { _ = "STUB: not implemented"; return *new(Zintercard) }
 
 func (c Zintercard) Numkeys(numkeys int64) ZintercardNumkeys {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(numkeys, 10))
-	return (ZintercardNumkeys)(c)
+	_ = "STUB: not implemented"
+	return *new(ZintercardNumkeys)
 }
 
 type ZintercardKey Incomplete
 
 func (c ZintercardKey) Key(key ...string) ZintercardKey {
-	if c.ks&NoSlot == NoSlot {
-		for _, k := range key {
-			c.ks = NoSlot | slot(k)
-			break
-		}
-	} else {
-		for _, k := range key {
-			c.ks = check(c.ks, slot(k))
-		}
-	}
-	c.cs.s = append(c.cs.s, key...)
-	return c
+	_ = "STUB: not implemented"
+	return *new(ZintercardKey)
 }
 
 func (c ZintercardKey) Limit(limit int64) ZintercardLimit {
-	c.cs.s = append(c.cs.s, "LIMIT", strconv.FormatInt(limit, 10))
-	return (ZintercardLimit)(c)
+	_ = "STUB: not implemented"
+	return *new(ZintercardLimit)
 }
 
-func (c ZintercardKey) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZintercardKey) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type ZintercardLimit Incomplete
 
-func (c ZintercardLimit) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZintercardLimit) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type ZintercardNumkeys Incomplete
 
 func (c ZintercardNumkeys) Key(key ...string) ZintercardKey {
-	if c.ks&NoSlot == NoSlot {
-		for _, k := range key {
-			c.ks = NoSlot | slot(k)
-			break
-		}
-	} else {
-		for _, k := range key {
-			c.ks = check(c.ks, slot(k))
-		}
-	}
-	c.cs.s = append(c.cs.s, key...)
-	return (ZintercardKey)(c)
+	_ = "STUB: not implemented"
+	return *new(ZintercardKey)
 }
 
 type Zinterstore Incomplete
 
-func (b Builder) Zinterstore() (c Zinterstore) {
-	c = Zinterstore{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "ZINTERSTORE")
-	return c
-}
+func (b Builder) Zinterstore() (c Zinterstore) { _ = "STUB: not implemented"; return *new(Zinterstore) }
 
 func (c Zinterstore) Destination(destination string) ZinterstoreDestination {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(destination)
-	} else {
-		c.ks = check(c.ks, slot(destination))
-	}
-	c.cs.s = append(c.cs.s, destination)
-	return (ZinterstoreDestination)(c)
+	_ = "STUB: not implemented"
+	return *new(ZinterstoreDestination)
 }
 
 type ZinterstoreAggregateCount Incomplete
 
 func (c ZinterstoreAggregateCount) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type ZinterstoreAggregateMax Incomplete
 
 func (c ZinterstoreAggregateMax) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type ZinterstoreAggregateMin Incomplete
 
 func (c ZinterstoreAggregateMin) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type ZinterstoreAggregateSum Incomplete
 
 func (c ZinterstoreAggregateSum) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type ZinterstoreDestination Incomplete
 
 func (c ZinterstoreDestination) Numkeys(numkeys int64) ZinterstoreNumkeys {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(numkeys, 10))
-	return (ZinterstoreNumkeys)(c)
+	_ = "STUB: not implemented"
+	return *new(ZinterstoreNumkeys)
 }
 
 type ZinterstoreKey Incomplete
 
 func (c ZinterstoreKey) Key(key ...string) ZinterstoreKey {
-	if c.ks&NoSlot == NoSlot {
-		for _, k := range key {
-			c.ks = NoSlot | slot(k)
-			break
-		}
-	} else {
-		for _, k := range key {
-			c.ks = check(c.ks, slot(k))
-		}
-	}
-	c.cs.s = append(c.cs.s, key...)
-	return c
+	_ = "STUB: not implemented"
+	return *new(ZinterstoreKey)
 }
 
 func (c ZinterstoreKey) Weights(weight ...int64) ZinterstoreWeights {
-	c.cs.s = append(c.cs.s, "WEIGHTS")
-	for _, n := range weight {
-		c.cs.s = append(c.cs.s, strconv.FormatInt(n, 10))
-	}
-	return (ZinterstoreWeights)(c)
+	_ = "STUB: not implemented"
+	return *new(ZinterstoreWeights)
 }
 
 func (c ZinterstoreKey) AggregateSum() ZinterstoreAggregateSum {
-	c.cs.s = append(c.cs.s, "AGGREGATE", "SUM")
-	return (ZinterstoreAggregateSum)(c)
+	_ = "STUB: not implemented"
+	return *new(ZinterstoreAggregateSum)
 }
 
 func (c ZinterstoreKey) AggregateMin() ZinterstoreAggregateMin {
-	c.cs.s = append(c.cs.s, "AGGREGATE", "MIN")
-	return (ZinterstoreAggregateMin)(c)
+	_ = "STUB: not implemented"
+	return *new(ZinterstoreAggregateMin)
 }
 
 func (c ZinterstoreKey) AggregateMax() ZinterstoreAggregateMax {
-	c.cs.s = append(c.cs.s, "AGGREGATE", "MAX")
-	return (ZinterstoreAggregateMax)(c)
+	_ = "STUB: not implemented"
+	return *new(ZinterstoreAggregateMax)
 }
 
 func (c ZinterstoreKey) AggregateCount() ZinterstoreAggregateCount {
-	c.cs.s = append(c.cs.s, "AGGREGATE", "COUNT")
-	return (ZinterstoreAggregateCount)(c)
+	_ = "STUB: not implemented"
+	return *new(ZinterstoreAggregateCount)
 }
 
-func (c ZinterstoreKey) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZinterstoreKey) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type ZinterstoreNumkeys Incomplete
 
 func (c ZinterstoreNumkeys) Key(key ...string) ZinterstoreKey {
-	if c.ks&NoSlot == NoSlot {
-		for _, k := range key {
-			c.ks = NoSlot | slot(k)
-			break
-		}
-	} else {
-		for _, k := range key {
-			c.ks = check(c.ks, slot(k))
-		}
-	}
-	c.cs.s = append(c.cs.s, key...)
-	return (ZinterstoreKey)(c)
+	_ = "STUB: not implemented"
+	return *new(ZinterstoreKey)
 }
 
 type ZinterstoreWeights Incomplete
 
 func (c ZinterstoreWeights) Weights(weight ...int64) ZinterstoreWeights {
-	c.cs.s = append(c.cs.s, "WEIGHTS")
-	for _, n := range weight {
-		c.cs.s = append(c.cs.s, strconv.FormatInt(n, 10))
-	}
-	return c
+	_ = "STUB: not implemented"
+	return *new(ZinterstoreWeights)
 }
 
 func (c ZinterstoreWeights) AggregateSum() ZinterstoreAggregateSum {
-	c.cs.s = append(c.cs.s, "AGGREGATE", "SUM")
-	return (ZinterstoreAggregateSum)(c)
+	_ = "STUB: not implemented"
+	return *new(ZinterstoreAggregateSum)
 }
 
 func (c ZinterstoreWeights) AggregateMin() ZinterstoreAggregateMin {
-	c.cs.s = append(c.cs.s, "AGGREGATE", "MIN")
-	return (ZinterstoreAggregateMin)(c)
+	_ = "STUB: not implemented"
+	return *new(ZinterstoreAggregateMin)
 }
 
 func (c ZinterstoreWeights) AggregateMax() ZinterstoreAggregateMax {
-	c.cs.s = append(c.cs.s, "AGGREGATE", "MAX")
-	return (ZinterstoreAggregateMax)(c)
+	_ = "STUB: not implemented"
+	return *new(ZinterstoreAggregateMax)
 }
 
 func (c ZinterstoreWeights) AggregateCount() ZinterstoreAggregateCount {
-	c.cs.s = append(c.cs.s, "AGGREGATE", "COUNT")
-	return (ZinterstoreAggregateCount)(c)
+	_ = "STUB: not implemented"
+	return *new(ZinterstoreAggregateCount)
 }
 
-func (c ZinterstoreWeights) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZinterstoreWeights) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type Zlexcount Incomplete
 
-func (b Builder) Zlexcount() (c Zlexcount) {
-	c = Zlexcount{cs: get(), ks: b.ks, cf: int16(readonly)}
-	c.cs.s = append(c.cs.s, "ZLEXCOUNT")
-	return c
-}
+func (b Builder) Zlexcount() (c Zlexcount) { _ = "STUB: not implemented"; return *new(Zlexcount) }
 
 func (c Zlexcount) Key(key string) ZlexcountKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (ZlexcountKey)(c)
+	_ = "STUB: not implemented"
+	return *new(ZlexcountKey)
 }
 
 type ZlexcountKey Incomplete
 
 func (c ZlexcountKey) Min(min string) ZlexcountMin {
-	c.cs.s = append(c.cs.s, min)
-	return (ZlexcountMin)(c)
+	_ = "STUB: not implemented"
+	return *new(ZlexcountMin)
 }
 
 type ZlexcountMax Incomplete
 
-func (c ZlexcountMax) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZlexcountMax) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c ZlexcountMax) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZlexcountMax) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type ZlexcountMin Incomplete
 
 func (c ZlexcountMin) Max(max string) ZlexcountMax {
-	c.cs.s = append(c.cs.s, max)
-	return (ZlexcountMax)(c)
+	_ = "STUB: not implemented"
+	return *new(ZlexcountMax)
 }
 
 type Zmpop Incomplete
 
-func (b Builder) Zmpop() (c Zmpop) {
-	c = Zmpop{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "ZMPOP")
-	return c
-}
+func (b Builder) Zmpop() (c Zmpop) { _ = "STUB: not implemented"; return *new(Zmpop) }
 
 func (c Zmpop) Numkeys(numkeys int64) ZmpopNumkeys {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(numkeys, 10))
-	return (ZmpopNumkeys)(c)
+	_ = "STUB: not implemented"
+	return *new(ZmpopNumkeys)
 }
 
 type ZmpopCount Incomplete
 
-func (c ZmpopCount) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZmpopCount) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type ZmpopKey Incomplete
 
-func (c ZmpopKey) Key(key ...string) ZmpopKey {
-	if c.ks&NoSlot == NoSlot {
-		for _, k := range key {
-			c.ks = NoSlot | slot(k)
-			break
-		}
-	} else {
-		for _, k := range key {
-			c.ks = check(c.ks, slot(k))
-		}
-	}
-	c.cs.s = append(c.cs.s, key...)
-	return c
-}
+func (c ZmpopKey) Key(key ...string) ZmpopKey { _ = "STUB: not implemented"; return *new(ZmpopKey) }
 
-func (c ZmpopKey) Min() ZmpopWhereMin {
-	c.cs.s = append(c.cs.s, "MIN")
-	return (ZmpopWhereMin)(c)
-}
+func (c ZmpopKey) Min() ZmpopWhereMin { _ = "STUB: not implemented"; return *new(ZmpopWhereMin) }
 
-func (c ZmpopKey) Max() ZmpopWhereMax {
-	c.cs.s = append(c.cs.s, "MAX")
-	return (ZmpopWhereMax)(c)
-}
+func (c ZmpopKey) Max() ZmpopWhereMax { _ = "STUB: not implemented"; return *new(ZmpopWhereMax) }
 
 type ZmpopNumkeys Incomplete
 
-func (c ZmpopNumkeys) Key(key ...string) ZmpopKey {
-	if c.ks&NoSlot == NoSlot {
-		for _, k := range key {
-			c.ks = NoSlot | slot(k)
-			break
-		}
-	} else {
-		for _, k := range key {
-			c.ks = check(c.ks, slot(k))
-		}
-	}
-	c.cs.s = append(c.cs.s, key...)
-	return (ZmpopKey)(c)
-}
+func (c ZmpopNumkeys) Key(key ...string) ZmpopKey { _ = "STUB: not implemented"; return *new(ZmpopKey) }
 
 type ZmpopWhereMax Incomplete
 
 func (c ZmpopWhereMax) Count(count int64) ZmpopCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(count, 10))
-	return (ZmpopCount)(c)
+	_ = "STUB: not implemented"
+	return *new(ZmpopCount)
 }
 
-func (c ZmpopWhereMax) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZmpopWhereMax) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type ZmpopWhereMin Incomplete
 
 func (c ZmpopWhereMin) Count(count int64) ZmpopCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(count, 10))
-	return (ZmpopCount)(c)
+	_ = "STUB: not implemented"
+	return *new(ZmpopCount)
 }
 
-func (c ZmpopWhereMin) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZmpopWhereMin) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type Zmscore Incomplete
 
-func (b Builder) Zmscore() (c Zmscore) {
-	c = Zmscore{cs: get(), ks: b.ks, cf: int16(readonly)}
-	c.cs.s = append(c.cs.s, "ZMSCORE")
-	return c
-}
+func (b Builder) Zmscore() (c Zmscore) { _ = "STUB: not implemented"; return *new(Zmscore) }
 
-func (c Zmscore) Key(key string) ZmscoreKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (ZmscoreKey)(c)
-}
+func (c Zmscore) Key(key string) ZmscoreKey { _ = "STUB: not implemented"; return *new(ZmscoreKey) }
 
 type ZmscoreKey Incomplete
 
 func (c ZmscoreKey) Member(member ...string) ZmscoreMember {
-	c.cs.s = append(c.cs.s, member...)
-	return (ZmscoreMember)(c)
+	_ = "STUB: not implemented"
+	return *new(ZmscoreMember)
 }
 
 type ZmscoreMember Incomplete
 
 func (c ZmscoreMember) Member(member ...string) ZmscoreMember {
-	c.cs.s = append(c.cs.s, member...)
-	return c
+	_ = "STUB: not implemented"
+	return *new(ZmscoreMember)
 }
 
-func (c ZmscoreMember) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZmscoreMember) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c ZmscoreMember) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZmscoreMember) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type Zpopmax Incomplete
 
-func (b Builder) Zpopmax() (c Zpopmax) {
-	c = Zpopmax{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "ZPOPMAX")
-	return c
-}
+func (b Builder) Zpopmax() (c Zpopmax) { _ = "STUB: not implemented"; return *new(Zpopmax) }
 
-func (c Zpopmax) Key(key string) ZpopmaxKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (ZpopmaxKey)(c)
-}
+func (c Zpopmax) Key(key string) ZpopmaxKey { _ = "STUB: not implemented"; return *new(ZpopmaxKey) }
 
 type ZpopmaxCount Incomplete
 
-func (c ZpopmaxCount) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZpopmaxCount) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type ZpopmaxKey Incomplete
 
 func (c ZpopmaxKey) Count(count int64) ZpopmaxCount {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(count, 10))
-	return (ZpopmaxCount)(c)
+	_ = "STUB: not implemented"
+	return *new(ZpopmaxCount)
 }
 
-func (c ZpopmaxKey) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZpopmaxKey) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type Zpopmin Incomplete
 
-func (b Builder) Zpopmin() (c Zpopmin) {
-	c = Zpopmin{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "ZPOPMIN")
-	return c
-}
+func (b Builder) Zpopmin() (c Zpopmin) { _ = "STUB: not implemented"; return *new(Zpopmin) }
 
-func (c Zpopmin) Key(key string) ZpopminKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (ZpopminKey)(c)
-}
+func (c Zpopmin) Key(key string) ZpopminKey { _ = "STUB: not implemented"; return *new(ZpopminKey) }
 
 type ZpopminCount Incomplete
 
-func (c ZpopminCount) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZpopminCount) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type ZpopminKey Incomplete
 
 func (c ZpopminKey) Count(count int64) ZpopminCount {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(count, 10))
-	return (ZpopminCount)(c)
+	_ = "STUB: not implemented"
+	return *new(ZpopminCount)
 }
 
-func (c ZpopminKey) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZpopminKey) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type Zrandmember Incomplete
 
-func (b Builder) Zrandmember() (c Zrandmember) {
-	c = Zrandmember{cs: get(), ks: b.ks, cf: int16(readonly)}
-	c.cs.s = append(c.cs.s, "ZRANDMEMBER")
-	return c
-}
+func (b Builder) Zrandmember() (c Zrandmember) { _ = "STUB: not implemented"; return *new(Zrandmember) }
 
 func (c Zrandmember) Key(key string) ZrandmemberKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (ZrandmemberKey)(c)
+	_ = "STUB: not implemented"
+	return *new(ZrandmemberKey)
 }
 
 type ZrandmemberKey Incomplete
 
 func (c ZrandmemberKey) Count(count int64) ZrandmemberOptionsCount {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(count, 10))
-	return (ZrandmemberOptionsCount)(c)
+	_ = "STUB: not implemented"
+	return *new(ZrandmemberOptionsCount)
 }
 
-func (c ZrandmemberKey) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZrandmemberKey) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type ZrandmemberOptionsCount Incomplete
 
 func (c ZrandmemberOptionsCount) Withscores() ZrandmemberOptionsWithscores {
-	c.cs.s = append(c.cs.s, "WITHSCORES")
-	return (ZrandmemberOptionsWithscores)(c)
+	_ = "STUB: not implemented"
+	return *new(ZrandmemberOptionsWithscores)
 }
 
 func (c ZrandmemberOptionsCount) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type ZrandmemberOptionsWithscores Incomplete
 
 func (c ZrandmemberOptionsWithscores) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type Zrange Incomplete
 
-func (b Builder) Zrange() (c Zrange) {
-	c = Zrange{cs: get(), ks: b.ks, cf: int16(readonly)}
-	c.cs.s = append(c.cs.s, "ZRANGE")
-	return c
-}
+func (b Builder) Zrange() (c Zrange) { _ = "STUB: not implemented"; return *new(Zrange) }
 
-func (c Zrange) Key(key string) ZrangeKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (ZrangeKey)(c)
-}
+func (c Zrange) Key(key string) ZrangeKey { _ = "STUB: not implemented"; return *new(ZrangeKey) }
 
 type ZrangeKey Incomplete
 
-func (c ZrangeKey) Min(min string) ZrangeMin {
-	c.cs.s = append(c.cs.s, min)
-	return (ZrangeMin)(c)
-}
+func (c ZrangeKey) Min(min string) ZrangeMin { _ = "STUB: not implemented"; return *new(ZrangeMin) }
 
 type ZrangeLimit Incomplete
 
 func (c ZrangeLimit) Withscores() ZrangeWithscores {
-	c.cs.s = append(c.cs.s, "WITHSCORES")
-	return (ZrangeWithscores)(c)
+	_ = "STUB: not implemented"
+	return *new(ZrangeWithscores)
 }
 
-func (c ZrangeLimit) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZrangeLimit) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c ZrangeLimit) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZrangeLimit) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type ZrangeMax Incomplete
 
 func (c ZrangeMax) Byscore() ZrangeSortbyByscore {
-	c.cs.s = append(c.cs.s, "BYSCORE")
-	return (ZrangeSortbyByscore)(c)
+	_ = "STUB: not implemented"
+	return *new(ZrangeSortbyByscore)
 }
 
 func (c ZrangeMax) Bylex() ZrangeSortbyBylex {
-	c.cs.s = append(c.cs.s, "BYLEX")
-	return (ZrangeSortbyBylex)(c)
+	_ = "STUB: not implemented"
+	return *new(ZrangeSortbyBylex)
 }
 
-func (c ZrangeMax) Rev() ZrangeRev {
-	c.cs.s = append(c.cs.s, "REV")
-	return (ZrangeRev)(c)
-}
+func (c ZrangeMax) Rev() ZrangeRev { _ = "STUB: not implemented"; return *new(ZrangeRev) }
 
 func (c ZrangeMax) Limit(offset int64, count int64) ZrangeLimit {
-	c.cs.s = append(c.cs.s, "LIMIT", strconv.FormatInt(offset, 10), strconv.FormatInt(count, 10))
-	return (ZrangeLimit)(c)
+	_ = "STUB: not implemented"
+	return *new(ZrangeLimit)
 }
 
 func (c ZrangeMax) Withscores() ZrangeWithscores {
-	c.cs.s = append(c.cs.s, "WITHSCORES")
-	return (ZrangeWithscores)(c)
+	_ = "STUB: not implemented"
+	return *new(ZrangeWithscores)
 }
 
-func (c ZrangeMax) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZrangeMax) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c ZrangeMax) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZrangeMax) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type ZrangeMin Incomplete
 
-func (c ZrangeMin) Max(max string) ZrangeMax {
-	c.cs.s = append(c.cs.s, max)
-	return (ZrangeMax)(c)
-}
+func (c ZrangeMin) Max(max string) ZrangeMax { _ = "STUB: not implemented"; return *new(ZrangeMax) }
 
 type ZrangeRev Incomplete
 
 func (c ZrangeRev) Limit(offset int64, count int64) ZrangeLimit {
-	c.cs.s = append(c.cs.s, "LIMIT", strconv.FormatInt(offset, 10), strconv.FormatInt(count, 10))
-	return (ZrangeLimit)(c)
+	_ = "STUB: not implemented"
+	return *new(ZrangeLimit)
 }
 
 func (c ZrangeRev) Withscores() ZrangeWithscores {
-	c.cs.s = append(c.cs.s, "WITHSCORES")
-	return (ZrangeWithscores)(c)
+	_ = "STUB: not implemented"
+	return *new(ZrangeWithscores)
 }
 
-func (c ZrangeRev) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZrangeRev) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c ZrangeRev) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZrangeRev) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type ZrangeSortbyBylex Incomplete
 
-func (c ZrangeSortbyBylex) Rev() ZrangeRev {
-	c.cs.s = append(c.cs.s, "REV")
-	return (ZrangeRev)(c)
-}
+func (c ZrangeSortbyBylex) Rev() ZrangeRev { _ = "STUB: not implemented"; return *new(ZrangeRev) }
 
 func (c ZrangeSortbyBylex) Limit(offset int64, count int64) ZrangeLimit {
-	c.cs.s = append(c.cs.s, "LIMIT", strconv.FormatInt(offset, 10), strconv.FormatInt(count, 10))
-	return (ZrangeLimit)(c)
+	_ = "STUB: not implemented"
+	return *new(ZrangeLimit)
 }
 
 func (c ZrangeSortbyBylex) Withscores() ZrangeWithscores {
-	c.cs.s = append(c.cs.s, "WITHSCORES")
-	return (ZrangeWithscores)(c)
+	_ = "STUB: not implemented"
+	return *new(ZrangeWithscores)
 }
 
-func (c ZrangeSortbyBylex) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZrangeSortbyBylex) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c ZrangeSortbyBylex) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZrangeSortbyBylex) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type ZrangeSortbyByscore Incomplete
 
-func (c ZrangeSortbyByscore) Rev() ZrangeRev {
-	c.cs.s = append(c.cs.s, "REV")
-	return (ZrangeRev)(c)
-}
+func (c ZrangeSortbyByscore) Rev() ZrangeRev { _ = "STUB: not implemented"; return *new(ZrangeRev) }
 
 func (c ZrangeSortbyByscore) Limit(offset int64, count int64) ZrangeLimit {
-	c.cs.s = append(c.cs.s, "LIMIT", strconv.FormatInt(offset, 10), strconv.FormatInt(count, 10))
-	return (ZrangeLimit)(c)
+	_ = "STUB: not implemented"
+	return *new(ZrangeLimit)
 }
 
 func (c ZrangeSortbyByscore) Withscores() ZrangeWithscores {
-	c.cs.s = append(c.cs.s, "WITHSCORES")
-	return (ZrangeWithscores)(c)
+	_ = "STUB: not implemented"
+	return *new(ZrangeWithscores)
 }
 
-func (c ZrangeSortbyByscore) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZrangeSortbyByscore) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c ZrangeSortbyByscore) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZrangeSortbyByscore) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type ZrangeWithscores Incomplete
 
-func (c ZrangeWithscores) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZrangeWithscores) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c ZrangeWithscores) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZrangeWithscores) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type Zrangebylex Incomplete
 
-func (b Builder) Zrangebylex() (c Zrangebylex) {
-	c = Zrangebylex{cs: get(), ks: b.ks, cf: int16(readonly)}
-	c.cs.s = append(c.cs.s, "ZRANGEBYLEX")
-	return c
-}
+func (b Builder) Zrangebylex() (c Zrangebylex) { _ = "STUB: not implemented"; return *new(Zrangebylex) }
 
 func (c Zrangebylex) Key(key string) ZrangebylexKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (ZrangebylexKey)(c)
+	_ = "STUB: not implemented"
+	return *new(ZrangebylexKey)
 }
 
 type ZrangebylexKey Incomplete
 
 func (c ZrangebylexKey) Min(min string) ZrangebylexMin {
-	c.cs.s = append(c.cs.s, min)
-	return (ZrangebylexMin)(c)
+	_ = "STUB: not implemented"
+	return *new(ZrangebylexMin)
 }
 
 type ZrangebylexLimit Incomplete
 
-func (c ZrangebylexLimit) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZrangebylexLimit) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c ZrangebylexLimit) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZrangebylexLimit) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type ZrangebylexMax Incomplete
 
 func (c ZrangebylexMax) Limit(offset int64, count int64) ZrangebylexLimit {
-	c.cs.s = append(c.cs.s, "LIMIT", strconv.FormatInt(offset, 10), strconv.FormatInt(count, 10))
-	return (ZrangebylexLimit)(c)
+	_ = "STUB: not implemented"
+	return *new(ZrangebylexLimit)
 }
 
-func (c ZrangebylexMax) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZrangebylexMax) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c ZrangebylexMax) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZrangebylexMax) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type ZrangebylexMin Incomplete
 
 func (c ZrangebylexMin) Max(max string) ZrangebylexMax {
-	c.cs.s = append(c.cs.s, max)
-	return (ZrangebylexMax)(c)
+	_ = "STUB: not implemented"
+	return *new(ZrangebylexMax)
 }
 
 type Zrangebyscore Incomplete
 
 func (b Builder) Zrangebyscore() (c Zrangebyscore) {
-	c = Zrangebyscore{cs: get(), ks: b.ks, cf: int16(readonly)}
-	c.cs.s = append(c.cs.s, "ZRANGEBYSCORE")
-	return c
+	_ = "STUB: not implemented"
+	return *new(Zrangebyscore)
 }
 
 func (c Zrangebyscore) Key(key string) ZrangebyscoreKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (ZrangebyscoreKey)(c)
+	_ = "STUB: not implemented"
+	return *new(ZrangebyscoreKey)
 }
 
 type ZrangebyscoreKey Incomplete
 
 func (c ZrangebyscoreKey) Min(min string) ZrangebyscoreMin {
-	c.cs.s = append(c.cs.s, min)
-	return (ZrangebyscoreMin)(c)
+	_ = "STUB: not implemented"
+	return *new(ZrangebyscoreMin)
 }
 
 type ZrangebyscoreLimit Incomplete
 
-func (c ZrangebyscoreLimit) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZrangebyscoreLimit) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c ZrangebyscoreLimit) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZrangebyscoreLimit) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type ZrangebyscoreMax Incomplete
 
 func (c ZrangebyscoreMax) Withscores() ZrangebyscoreWithscores {
-	c.cs.s = append(c.cs.s, "WITHSCORES")
-	return (ZrangebyscoreWithscores)(c)
+	_ = "STUB: not implemented"
+	return *new(ZrangebyscoreWithscores)
 }
 
 func (c ZrangebyscoreMax) Limit(offset int64, count int64) ZrangebyscoreLimit {
-	c.cs.s = append(c.cs.s, "LIMIT", strconv.FormatInt(offset, 10), strconv.FormatInt(count, 10))
-	return (ZrangebyscoreLimit)(c)
+	_ = "STUB: not implemented"
+	return *new(ZrangebyscoreLimit)
 }
 
-func (c ZrangebyscoreMax) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZrangebyscoreMax) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c ZrangebyscoreMax) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZrangebyscoreMax) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type ZrangebyscoreMin Incomplete
 
 func (c ZrangebyscoreMin) Max(max string) ZrangebyscoreMax {
-	c.cs.s = append(c.cs.s, max)
-	return (ZrangebyscoreMax)(c)
+	_ = "STUB: not implemented"
+	return *new(ZrangebyscoreMax)
 }
 
 type ZrangebyscoreWithscores Incomplete
 
 func (c ZrangebyscoreWithscores) Limit(offset int64, count int64) ZrangebyscoreLimit {
-	c.cs.s = append(c.cs.s, "LIMIT", strconv.FormatInt(offset, 10), strconv.FormatInt(count, 10))
-	return (ZrangebyscoreLimit)(c)
+	_ = "STUB: not implemented"
+	return *new(ZrangebyscoreLimit)
 }
 
 func (c ZrangebyscoreWithscores) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 func (c ZrangebyscoreWithscores) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Cacheable)
 }
 
 type Zrangestore Incomplete
 
-func (b Builder) Zrangestore() (c Zrangestore) {
-	c = Zrangestore{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "ZRANGESTORE")
-	return c
-}
+func (b Builder) Zrangestore() (c Zrangestore) { _ = "STUB: not implemented"; return *new(Zrangestore) }
 
 func (c Zrangestore) Dst(dst string) ZrangestoreDst {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(dst)
-	} else {
-		c.ks = check(c.ks, slot(dst))
-	}
-	c.cs.s = append(c.cs.s, dst)
-	return (ZrangestoreDst)(c)
+	_ = "STUB: not implemented"
+	return *new(ZrangestoreDst)
 }
 
 type ZrangestoreDst Incomplete
 
 func (c ZrangestoreDst) Src(src string) ZrangestoreSrc {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(src)
-	} else {
-		c.ks = check(c.ks, slot(src))
-	}
-	c.cs.s = append(c.cs.s, src)
-	return (ZrangestoreSrc)(c)
+	_ = "STUB: not implemented"
+	return *new(ZrangestoreSrc)
 }
 
 type ZrangestoreLimit Incomplete
 
-func (c ZrangestoreLimit) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZrangestoreLimit) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type ZrangestoreMax Incomplete
 
 func (c ZrangestoreMax) Byscore() ZrangestoreSortbyByscore {
-	c.cs.s = append(c.cs.s, "BYSCORE")
-	return (ZrangestoreSortbyByscore)(c)
+	_ = "STUB: not implemented"
+	return *new(ZrangestoreSortbyByscore)
 }
 
 func (c ZrangestoreMax) Bylex() ZrangestoreSortbyBylex {
-	c.cs.s = append(c.cs.s, "BYLEX")
-	return (ZrangestoreSortbyBylex)(c)
+	_ = "STUB: not implemented"
+	return *new(ZrangestoreSortbyBylex)
 }
 
 func (c ZrangestoreMax) Rev() ZrangestoreRev {
-	c.cs.s = append(c.cs.s, "REV")
-	return (ZrangestoreRev)(c)
+	_ = "STUB: not implemented"
+	return *new(ZrangestoreRev)
 }
 
 func (c ZrangestoreMax) Limit(offset int64, count int64) ZrangestoreLimit {
-	c.cs.s = append(c.cs.s, "LIMIT", strconv.FormatInt(offset, 10), strconv.FormatInt(count, 10))
-	return (ZrangestoreLimit)(c)
+	_ = "STUB: not implemented"
+	return *new(ZrangestoreLimit)
 }
 
-func (c ZrangestoreMax) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZrangestoreMax) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type ZrangestoreMin Incomplete
 
 func (c ZrangestoreMin) Max(max string) ZrangestoreMax {
-	c.cs.s = append(c.cs.s, max)
-	return (ZrangestoreMax)(c)
+	_ = "STUB: not implemented"
+	return *new(ZrangestoreMax)
 }
 
 type ZrangestoreRev Incomplete
 
 func (c ZrangestoreRev) Limit(offset int64, count int64) ZrangestoreLimit {
-	c.cs.s = append(c.cs.s, "LIMIT", strconv.FormatInt(offset, 10), strconv.FormatInt(count, 10))
-	return (ZrangestoreLimit)(c)
+	_ = "STUB: not implemented"
+	return *new(ZrangestoreLimit)
 }
 
-func (c ZrangestoreRev) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZrangestoreRev) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type ZrangestoreSortbyBylex Incomplete
 
 func (c ZrangestoreSortbyBylex) Rev() ZrangestoreRev {
-	c.cs.s = append(c.cs.s, "REV")
-	return (ZrangestoreRev)(c)
+	_ = "STUB: not implemented"
+	return *new(ZrangestoreRev)
 }
 
 func (c ZrangestoreSortbyBylex) Limit(offset int64, count int64) ZrangestoreLimit {
-	c.cs.s = append(c.cs.s, "LIMIT", strconv.FormatInt(offset, 10), strconv.FormatInt(count, 10))
-	return (ZrangestoreLimit)(c)
+	_ = "STUB: not implemented"
+	return *new(ZrangestoreLimit)
 }
 
 func (c ZrangestoreSortbyBylex) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type ZrangestoreSortbyByscore Incomplete
 
 func (c ZrangestoreSortbyByscore) Rev() ZrangestoreRev {
-	c.cs.s = append(c.cs.s, "REV")
-	return (ZrangestoreRev)(c)
+	_ = "STUB: not implemented"
+	return *new(ZrangestoreRev)
 }
 
 func (c ZrangestoreSortbyByscore) Limit(offset int64, count int64) ZrangestoreLimit {
-	c.cs.s = append(c.cs.s, "LIMIT", strconv.FormatInt(offset, 10), strconv.FormatInt(count, 10))
-	return (ZrangestoreLimit)(c)
+	_ = "STUB: not implemented"
+	return *new(ZrangestoreLimit)
 }
 
 func (c ZrangestoreSortbyByscore) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type ZrangestoreSrc Incomplete
 
 func (c ZrangestoreSrc) Min(min string) ZrangestoreMin {
-	c.cs.s = append(c.cs.s, min)
-	return (ZrangestoreMin)(c)
+	_ = "STUB: not implemented"
+	return *new(ZrangestoreMin)
 }
 
 type Zrank Incomplete
 
-func (b Builder) Zrank() (c Zrank) {
-	c = Zrank{cs: get(), ks: b.ks, cf: int16(readonly)}
-	c.cs.s = append(c.cs.s, "ZRANK")
-	return c
-}
+func (b Builder) Zrank() (c Zrank) { _ = "STUB: not implemented"; return *new(Zrank) }
 
-func (c Zrank) Key(key string) ZrankKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (ZrankKey)(c)
-}
+func (c Zrank) Key(key string) ZrankKey { _ = "STUB: not implemented"; return *new(ZrankKey) }
 
 type ZrankKey Incomplete
 
 func (c ZrankKey) Member(member string) ZrankMember {
-	c.cs.s = append(c.cs.s, member)
-	return (ZrankMember)(c)
+	_ = "STUB: not implemented"
+	return *new(ZrankMember)
 }
 
 type ZrankMember Incomplete
 
 func (c ZrankMember) Withscore() ZrankWithscore {
-	c.cs.s = append(c.cs.s, "WITHSCORE")
-	return (ZrankWithscore)(c)
+	_ = "STUB: not implemented"
+	return *new(ZrankWithscore)
 }
 
-func (c ZrankMember) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZrankMember) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c ZrankMember) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZrankMember) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type ZrankWithscore Incomplete
 
-func (c ZrankWithscore) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZrankWithscore) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c ZrankWithscore) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZrankWithscore) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type Zrem Incomplete
 
-func (b Builder) Zrem() (c Zrem) {
-	c = Zrem{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "ZREM")
-	return c
-}
+func (b Builder) Zrem() (c Zrem) { _ = "STUB: not implemented"; return *new(Zrem) }
 
-func (c Zrem) Key(key string) ZremKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (ZremKey)(c)
-}
+func (c Zrem) Key(key string) ZremKey { _ = "STUB: not implemented"; return *new(ZremKey) }
 
 type ZremKey Incomplete
 
 func (c ZremKey) Member(member ...string) ZremMember {
-	c.cs.s = append(c.cs.s, member...)
-	return (ZremMember)(c)
+	_ = "STUB: not implemented"
+	return *new(ZremMember)
 }
 
 type ZremMember Incomplete
 
 func (c ZremMember) Member(member ...string) ZremMember {
-	c.cs.s = append(c.cs.s, member...)
-	return c
+	_ = "STUB: not implemented"
+	return *new(ZremMember)
 }
 
-func (c ZremMember) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZremMember) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type Zremrangebylex Incomplete
 
 func (b Builder) Zremrangebylex() (c Zremrangebylex) {
-	c = Zremrangebylex{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "ZREMRANGEBYLEX")
-	return c
+	_ = "STUB: not implemented"
+	return *new(Zremrangebylex)
 }
 
 func (c Zremrangebylex) Key(key string) ZremrangebylexKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (ZremrangebylexKey)(c)
+	_ = "STUB: not implemented"
+	return *new(ZremrangebylexKey)
 }
 
 type ZremrangebylexKey Incomplete
 
 func (c ZremrangebylexKey) Min(min string) ZremrangebylexMin {
-	c.cs.s = append(c.cs.s, min)
-	return (ZremrangebylexMin)(c)
+	_ = "STUB: not implemented"
+	return *new(ZremrangebylexMin)
 }
 
 type ZremrangebylexMax Incomplete
 
-func (c ZremrangebylexMax) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZremrangebylexMax) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type ZremrangebylexMin Incomplete
 
 func (c ZremrangebylexMin) Max(max string) ZremrangebylexMax {
-	c.cs.s = append(c.cs.s, max)
-	return (ZremrangebylexMax)(c)
+	_ = "STUB: not implemented"
+	return *new(ZremrangebylexMax)
 }
 
 type Zremrangebyrank Incomplete
 
 func (b Builder) Zremrangebyrank() (c Zremrangebyrank) {
-	c = Zremrangebyrank{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "ZREMRANGEBYRANK")
-	return c
+	_ = "STUB: not implemented"
+	return *new(Zremrangebyrank)
 }
 
 func (c Zremrangebyrank) Key(key string) ZremrangebyrankKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (ZremrangebyrankKey)(c)
+	_ = "STUB: not implemented"
+	return *new(ZremrangebyrankKey)
 }
 
 type ZremrangebyrankKey Incomplete
 
 func (c ZremrangebyrankKey) Start(start int64) ZremrangebyrankStart {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(start, 10))
-	return (ZremrangebyrankStart)(c)
+	_ = "STUB: not implemented"
+	return *new(ZremrangebyrankStart)
 }
 
 type ZremrangebyrankStart Incomplete
 
 func (c ZremrangebyrankStart) Stop(stop int64) ZremrangebyrankStop {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(stop, 10))
-	return (ZremrangebyrankStop)(c)
+	_ = "STUB: not implemented"
+	return *new(ZremrangebyrankStop)
 }
 
 type ZremrangebyrankStop Incomplete
 
-func (c ZremrangebyrankStop) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZremrangebyrankStop) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type Zremrangebyscore Incomplete
 
 func (b Builder) Zremrangebyscore() (c Zremrangebyscore) {
-	c = Zremrangebyscore{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "ZREMRANGEBYSCORE")
-	return c
+	_ = "STUB: not implemented"
+	return *new(Zremrangebyscore)
 }
 
 func (c Zremrangebyscore) Key(key string) ZremrangebyscoreKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (ZremrangebyscoreKey)(c)
+	_ = "STUB: not implemented"
+	return *new(ZremrangebyscoreKey)
 }
 
 type ZremrangebyscoreKey Incomplete
 
 func (c ZremrangebyscoreKey) Min(min string) ZremrangebyscoreMin {
-	c.cs.s = append(c.cs.s, min)
-	return (ZremrangebyscoreMin)(c)
+	_ = "STUB: not implemented"
+	return *new(ZremrangebyscoreMin)
 }
 
 type ZremrangebyscoreMax Incomplete
 
-func (c ZremrangebyscoreMax) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZremrangebyscoreMax) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type ZremrangebyscoreMin Incomplete
 
 func (c ZremrangebyscoreMin) Max(max string) ZremrangebyscoreMax {
-	c.cs.s = append(c.cs.s, max)
-	return (ZremrangebyscoreMax)(c)
+	_ = "STUB: not implemented"
+	return *new(ZremrangebyscoreMax)
 }
 
 type Zrevrange Incomplete
 
-func (b Builder) Zrevrange() (c Zrevrange) {
-	c = Zrevrange{cs: get(), ks: b.ks, cf: int16(readonly)}
-	c.cs.s = append(c.cs.s, "ZREVRANGE")
-	return c
-}
+func (b Builder) Zrevrange() (c Zrevrange) { _ = "STUB: not implemented"; return *new(Zrevrange) }
 
 func (c Zrevrange) Key(key string) ZrevrangeKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (ZrevrangeKey)(c)
+	_ = "STUB: not implemented"
+	return *new(ZrevrangeKey)
 }
 
 type ZrevrangeKey Incomplete
 
 func (c ZrevrangeKey) Start(start int64) ZrevrangeStart {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(start, 10))
-	return (ZrevrangeStart)(c)
+	_ = "STUB: not implemented"
+	return *new(ZrevrangeStart)
 }
 
 type ZrevrangeStart Incomplete
 
 func (c ZrevrangeStart) Stop(stop int64) ZrevrangeStop {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(stop, 10))
-	return (ZrevrangeStop)(c)
+	_ = "STUB: not implemented"
+	return *new(ZrevrangeStop)
 }
 
 type ZrevrangeStop Incomplete
 
 func (c ZrevrangeStop) Withscores() ZrevrangeWithscores {
-	c.cs.s = append(c.cs.s, "WITHSCORES")
-	return (ZrevrangeWithscores)(c)
+	_ = "STUB: not implemented"
+	return *new(ZrevrangeWithscores)
 }
 
-func (c ZrevrangeStop) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZrevrangeStop) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c ZrevrangeStop) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZrevrangeStop) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type ZrevrangeWithscores Incomplete
 
-func (c ZrevrangeWithscores) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZrevrangeWithscores) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c ZrevrangeWithscores) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZrevrangeWithscores) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type Zrevrangebylex Incomplete
 
 func (b Builder) Zrevrangebylex() (c Zrevrangebylex) {
-	c = Zrevrangebylex{cs: get(), ks: b.ks, cf: int16(readonly)}
-	c.cs.s = append(c.cs.s, "ZREVRANGEBYLEX")
-	return c
+	_ = "STUB: not implemented"
+	return *new(Zrevrangebylex)
 }
 
 func (c Zrevrangebylex) Key(key string) ZrevrangebylexKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (ZrevrangebylexKey)(c)
+	_ = "STUB: not implemented"
+	return *new(ZrevrangebylexKey)
 }
 
 type ZrevrangebylexKey Incomplete
 
 func (c ZrevrangebylexKey) Max(max string) ZrevrangebylexMax {
-	c.cs.s = append(c.cs.s, max)
-	return (ZrevrangebylexMax)(c)
+	_ = "STUB: not implemented"
+	return *new(ZrevrangebylexMax)
 }
 
 type ZrevrangebylexLimit Incomplete
 
-func (c ZrevrangebylexLimit) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZrevrangebylexLimit) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c ZrevrangebylexLimit) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZrevrangebylexLimit) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type ZrevrangebylexMax Incomplete
 
 func (c ZrevrangebylexMax) Min(min string) ZrevrangebylexMin {
-	c.cs.s = append(c.cs.s, min)
-	return (ZrevrangebylexMin)(c)
+	_ = "STUB: not implemented"
+	return *new(ZrevrangebylexMin)
 }
 
 type ZrevrangebylexMin Incomplete
 
 func (c ZrevrangebylexMin) Limit(offset int64, count int64) ZrevrangebylexLimit {
-	c.cs.s = append(c.cs.s, "LIMIT", strconv.FormatInt(offset, 10), strconv.FormatInt(count, 10))
-	return (ZrevrangebylexLimit)(c)
+	_ = "STUB: not implemented"
+	return *new(ZrevrangebylexLimit)
 }
 
-func (c ZrevrangebylexMin) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZrevrangebylexMin) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c ZrevrangebylexMin) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZrevrangebylexMin) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type Zrevrangebyscore Incomplete
 
 func (b Builder) Zrevrangebyscore() (c Zrevrangebyscore) {
-	c = Zrevrangebyscore{cs: get(), ks: b.ks, cf: int16(readonly)}
-	c.cs.s = append(c.cs.s, "ZREVRANGEBYSCORE")
-	return c
+	_ = "STUB: not implemented"
+	return *new(Zrevrangebyscore)
 }
 
 func (c Zrevrangebyscore) Key(key string) ZrevrangebyscoreKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (ZrevrangebyscoreKey)(c)
+	_ = "STUB: not implemented"
+	return *new(ZrevrangebyscoreKey)
 }
 
 type ZrevrangebyscoreKey Incomplete
 
 func (c ZrevrangebyscoreKey) Max(max string) ZrevrangebyscoreMax {
-	c.cs.s = append(c.cs.s, max)
-	return (ZrevrangebyscoreMax)(c)
+	_ = "STUB: not implemented"
+	return *new(ZrevrangebyscoreMax)
 }
 
 type ZrevrangebyscoreLimit Incomplete
 
-func (c ZrevrangebyscoreLimit) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZrevrangebyscoreLimit) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c ZrevrangebyscoreLimit) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZrevrangebyscoreLimit) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type ZrevrangebyscoreMax Incomplete
 
 func (c ZrevrangebyscoreMax) Min(min string) ZrevrangebyscoreMin {
-	c.cs.s = append(c.cs.s, min)
-	return (ZrevrangebyscoreMin)(c)
+	_ = "STUB: not implemented"
+	return *new(ZrevrangebyscoreMin)
 }
 
 type ZrevrangebyscoreMin Incomplete
 
 func (c ZrevrangebyscoreMin) Withscores() ZrevrangebyscoreWithscores {
-	c.cs.s = append(c.cs.s, "WITHSCORES")
-	return (ZrevrangebyscoreWithscores)(c)
+	_ = "STUB: not implemented"
+	return *new(ZrevrangebyscoreWithscores)
 }
 
 func (c ZrevrangebyscoreMin) Limit(offset int64, count int64) ZrevrangebyscoreLimit {
-	c.cs.s = append(c.cs.s, "LIMIT", strconv.FormatInt(offset, 10), strconv.FormatInt(count, 10))
-	return (ZrevrangebyscoreLimit)(c)
+	_ = "STUB: not implemented"
+	return *new(ZrevrangebyscoreLimit)
 }
 
-func (c ZrevrangebyscoreMin) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZrevrangebyscoreMin) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c ZrevrangebyscoreMin) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZrevrangebyscoreMin) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type ZrevrangebyscoreWithscores Incomplete
 
 func (c ZrevrangebyscoreWithscores) Limit(offset int64, count int64) ZrevrangebyscoreLimit {
-	c.cs.s = append(c.cs.s, "LIMIT", strconv.FormatInt(offset, 10), strconv.FormatInt(count, 10))
-	return (ZrevrangebyscoreLimit)(c)
+	_ = "STUB: not implemented"
+	return *new(ZrevrangebyscoreLimit)
 }
 
 func (c ZrevrangebyscoreWithscores) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 func (c ZrevrangebyscoreWithscores) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Cacheable)
 }
 
 type Zrevrank Incomplete
 
-func (b Builder) Zrevrank() (c Zrevrank) {
-	c = Zrevrank{cs: get(), ks: b.ks, cf: int16(readonly)}
-	c.cs.s = append(c.cs.s, "ZREVRANK")
-	return c
-}
+func (b Builder) Zrevrank() (c Zrevrank) { _ = "STUB: not implemented"; return *new(Zrevrank) }
 
-func (c Zrevrank) Key(key string) ZrevrankKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (ZrevrankKey)(c)
-}
+func (c Zrevrank) Key(key string) ZrevrankKey { _ = "STUB: not implemented"; return *new(ZrevrankKey) }
 
 type ZrevrankKey Incomplete
 
 func (c ZrevrankKey) Member(member string) ZrevrankMember {
-	c.cs.s = append(c.cs.s, member)
-	return (ZrevrankMember)(c)
+	_ = "STUB: not implemented"
+	return *new(ZrevrankMember)
 }
 
 type ZrevrankMember Incomplete
 
 func (c ZrevrankMember) Withscore() ZrevrankWithscore {
-	c.cs.s = append(c.cs.s, "WITHSCORE")
-	return (ZrevrankWithscore)(c)
+	_ = "STUB: not implemented"
+	return *new(ZrevrankWithscore)
 }
 
-func (c ZrevrankMember) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZrevrankMember) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c ZrevrankMember) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZrevrankMember) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type ZrevrankWithscore Incomplete
 
-func (c ZrevrankWithscore) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZrevrankWithscore) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c ZrevrankWithscore) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZrevrankWithscore) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type Zscan Incomplete
 
-func (b Builder) Zscan() (c Zscan) {
-	c = Zscan{cs: get(), ks: b.ks, cf: int16(readonly)}
-	c.cs.s = append(c.cs.s, "ZSCAN")
-	return c
-}
+func (b Builder) Zscan() (c Zscan) { _ = "STUB: not implemented"; return *new(Zscan) }
 
-func (c Zscan) Key(key string) ZscanKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (ZscanKey)(c)
-}
+func (c Zscan) Key(key string) ZscanKey { _ = "STUB: not implemented"; return *new(ZscanKey) }
 
 type ZscanCount Incomplete
 
-func (c ZscanCount) Noscores() ZscanNoscores {
-	c.cs.s = append(c.cs.s, "NOSCORES")
-	return (ZscanNoscores)(c)
-}
+func (c ZscanCount) Noscores() ZscanNoscores { _ = "STUB: not implemented"; return *new(ZscanNoscores) }
 
-func (c ZscanCount) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZscanCount) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type ZscanCursor Incomplete
 
 func (c ZscanCursor) Match(pattern string) ZscanMatch {
-	c.cs.s = append(c.cs.s, "MATCH", pattern)
-	return (ZscanMatch)(c)
+	_ = "STUB: not implemented"
+	return *new(ZscanMatch)
 }
 
 func (c ZscanCursor) Count(count int64) ZscanCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(count, 10))
-	return (ZscanCount)(c)
+	_ = "STUB: not implemented"
+	return *new(ZscanCount)
 }
 
 func (c ZscanCursor) Noscores() ZscanNoscores {
-	c.cs.s = append(c.cs.s, "NOSCORES")
-	return (ZscanNoscores)(c)
+	_ = "STUB: not implemented"
+	return *new(ZscanNoscores)
 }
 
-func (c ZscanCursor) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZscanCursor) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type ZscanKey Incomplete
 
 func (c ZscanKey) Cursor(cursor uint64) ZscanCursor {
-	c.cs.s = append(c.cs.s, strconv.FormatUint(cursor, 10))
-	return (ZscanCursor)(c)
+	_ = "STUB: not implemented"
+	return *new(ZscanCursor)
 }
 
 type ZscanMatch Incomplete
 
 func (c ZscanMatch) Count(count int64) ZscanCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(count, 10))
-	return (ZscanCount)(c)
+	_ = "STUB: not implemented"
+	return *new(ZscanCount)
 }
 
-func (c ZscanMatch) Noscores() ZscanNoscores {
-	c.cs.s = append(c.cs.s, "NOSCORES")
-	return (ZscanNoscores)(c)
-}
+func (c ZscanMatch) Noscores() ZscanNoscores { _ = "STUB: not implemented"; return *new(ZscanNoscores) }
 
-func (c ZscanMatch) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZscanMatch) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type ZscanNoscores Incomplete
 
-func (c ZscanNoscores) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZscanNoscores) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type Zscore Incomplete
 
-func (b Builder) Zscore() (c Zscore) {
-	c = Zscore{cs: get(), ks: b.ks, cf: int16(readonly)}
-	c.cs.s = append(c.cs.s, "ZSCORE")
-	return c
-}
+func (b Builder) Zscore() (c Zscore) { _ = "STUB: not implemented"; return *new(Zscore) }
 
-func (c Zscore) Key(key string) ZscoreKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (ZscoreKey)(c)
-}
+func (c Zscore) Key(key string) ZscoreKey { _ = "STUB: not implemented"; return *new(ZscoreKey) }
 
 type ZscoreKey Incomplete
 
 func (c ZscoreKey) Member(member string) ZscoreMember {
-	c.cs.s = append(c.cs.s, member)
-	return (ZscoreMember)(c)
+	_ = "STUB: not implemented"
+	return *new(ZscoreMember)
 }
 
 type ZscoreMember Incomplete
 
-func (c ZscoreMember) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZscoreMember) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c ZscoreMember) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZscoreMember) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type Zunion Incomplete
 
-func (b Builder) Zunion() (c Zunion) {
-	c = Zunion{cs: get(), ks: b.ks, cf: int16(readonly)}
-	c.cs.s = append(c.cs.s, "ZUNION")
-	return c
-}
+func (b Builder) Zunion() (c Zunion) { _ = "STUB: not implemented"; return *new(Zunion) }
 
 func (c Zunion) Numkeys(numkeys int64) ZunionNumkeys {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(numkeys, 10))
-	return (ZunionNumkeys)(c)
+	_ = "STUB: not implemented"
+	return *new(ZunionNumkeys)
 }
 
 type ZunionAggregateCount Incomplete
 
 func (c ZunionAggregateCount) Withscores() ZunionWithscores {
-	c.cs.s = append(c.cs.s, "WITHSCORES")
-	return (ZunionWithscores)(c)
+	_ = "STUB: not implemented"
+	return *new(ZunionWithscores)
 }
 
-func (c ZunionAggregateCount) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZunionAggregateCount) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type ZunionAggregateMax Incomplete
 
 func (c ZunionAggregateMax) Withscores() ZunionWithscores {
-	c.cs.s = append(c.cs.s, "WITHSCORES")
-	return (ZunionWithscores)(c)
+	_ = "STUB: not implemented"
+	return *new(ZunionWithscores)
 }
 
-func (c ZunionAggregateMax) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZunionAggregateMax) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type ZunionAggregateMin Incomplete
 
 func (c ZunionAggregateMin) Withscores() ZunionWithscores {
-	c.cs.s = append(c.cs.s, "WITHSCORES")
-	return (ZunionWithscores)(c)
+	_ = "STUB: not implemented"
+	return *new(ZunionWithscores)
 }
 
-func (c ZunionAggregateMin) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZunionAggregateMin) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type ZunionAggregateSum Incomplete
 
 func (c ZunionAggregateSum) Withscores() ZunionWithscores {
-	c.cs.s = append(c.cs.s, "WITHSCORES")
-	return (ZunionWithscores)(c)
+	_ = "STUB: not implemented"
+	return *new(ZunionWithscores)
 }
 
-func (c ZunionAggregateSum) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZunionAggregateSum) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type ZunionKey Incomplete
 
-func (c ZunionKey) Key(key ...string) ZunionKey {
-	if c.ks&NoSlot == NoSlot {
-		for _, k := range key {
-			c.ks = NoSlot | slot(k)
-			break
-		}
-	} else {
-		for _, k := range key {
-			c.ks = check(c.ks, slot(k))
-		}
-	}
-	c.cs.s = append(c.cs.s, key...)
-	return c
-}
+func (c ZunionKey) Key(key ...string) ZunionKey { _ = "STUB: not implemented"; return *new(ZunionKey) }
 
 func (c ZunionKey) Weights(weight ...int64) ZunionWeights {
-	c.cs.s = append(c.cs.s, "WEIGHTS")
-	for _, n := range weight {
-		c.cs.s = append(c.cs.s, strconv.FormatInt(n, 10))
-	}
-	return (ZunionWeights)(c)
+	_ = "STUB: not implemented"
+	return *new(ZunionWeights)
 }
 
 func (c ZunionKey) AggregateSum() ZunionAggregateSum {
-	c.cs.s = append(c.cs.s, "AGGREGATE", "SUM")
-	return (ZunionAggregateSum)(c)
+	_ = "STUB: not implemented"
+	return *new(ZunionAggregateSum)
 }
 
 func (c ZunionKey) AggregateMin() ZunionAggregateMin {
-	c.cs.s = append(c.cs.s, "AGGREGATE", "MIN")
-	return (ZunionAggregateMin)(c)
+	_ = "STUB: not implemented"
+	return *new(ZunionAggregateMin)
 }
 
 func (c ZunionKey) AggregateMax() ZunionAggregateMax {
-	c.cs.s = append(c.cs.s, "AGGREGATE", "MAX")
-	return (ZunionAggregateMax)(c)
+	_ = "STUB: not implemented"
+	return *new(ZunionAggregateMax)
 }
 
 func (c ZunionKey) AggregateCount() ZunionAggregateCount {
-	c.cs.s = append(c.cs.s, "AGGREGATE", "COUNT")
-	return (ZunionAggregateCount)(c)
+	_ = "STUB: not implemented"
+	return *new(ZunionAggregateCount)
 }
 
 func (c ZunionKey) Withscores() ZunionWithscores {
-	c.cs.s = append(c.cs.s, "WITHSCORES")
-	return (ZunionWithscores)(c)
+	_ = "STUB: not implemented"
+	return *new(ZunionWithscores)
 }
 
-func (c ZunionKey) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZunionKey) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type ZunionNumkeys Incomplete
 
 func (c ZunionNumkeys) Key(key ...string) ZunionKey {
-	if c.ks&NoSlot == NoSlot {
-		for _, k := range key {
-			c.ks = NoSlot | slot(k)
-			break
-		}
-	} else {
-		for _, k := range key {
-			c.ks = check(c.ks, slot(k))
-		}
-	}
-	c.cs.s = append(c.cs.s, key...)
-	return (ZunionKey)(c)
+	_ = "STUB: not implemented"
+	return *new(ZunionKey)
 }
 
 type ZunionWeights Incomplete
 
 func (c ZunionWeights) Weights(weight ...int64) ZunionWeights {
-	c.cs.s = append(c.cs.s, "WEIGHTS")
-	for _, n := range weight {
-		c.cs.s = append(c.cs.s, strconv.FormatInt(n, 10))
-	}
-	return c
+	_ = "STUB: not implemented"
+	return *new(ZunionWeights)
 }
 
 func (c ZunionWeights) AggregateSum() ZunionAggregateSum {
-	c.cs.s = append(c.cs.s, "AGGREGATE", "SUM")
-	return (ZunionAggregateSum)(c)
+	_ = "STUB: not implemented"
+	return *new(ZunionAggregateSum)
 }
 
 func (c ZunionWeights) AggregateMin() ZunionAggregateMin {
-	c.cs.s = append(c.cs.s, "AGGREGATE", "MIN")
-	return (ZunionAggregateMin)(c)
+	_ = "STUB: not implemented"
+	return *new(ZunionAggregateMin)
 }
 
 func (c ZunionWeights) AggregateMax() ZunionAggregateMax {
-	c.cs.s = append(c.cs.s, "AGGREGATE", "MAX")
-	return (ZunionAggregateMax)(c)
+	_ = "STUB: not implemented"
+	return *new(ZunionAggregateMax)
 }
 
 func (c ZunionWeights) AggregateCount() ZunionAggregateCount {
-	c.cs.s = append(c.cs.s, "AGGREGATE", "COUNT")
-	return (ZunionAggregateCount)(c)
+	_ = "STUB: not implemented"
+	return *new(ZunionAggregateCount)
 }
 
 func (c ZunionWeights) Withscores() ZunionWithscores {
-	c.cs.s = append(c.cs.s, "WITHSCORES")
-	return (ZunionWithscores)(c)
+	_ = "STUB: not implemented"
+	return *new(ZunionWithscores)
 }
 
-func (c ZunionWeights) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZunionWeights) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type ZunionWithscores Incomplete
 
-func (c ZunionWithscores) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZunionWithscores) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type Zunionstore Incomplete
 
-func (b Builder) Zunionstore() (c Zunionstore) {
-	c = Zunionstore{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "ZUNIONSTORE")
-	return c
-}
+func (b Builder) Zunionstore() (c Zunionstore) { _ = "STUB: not implemented"; return *new(Zunionstore) }
 
 func (c Zunionstore) Destination(destination string) ZunionstoreDestination {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(destination)
-	} else {
-		c.ks = check(c.ks, slot(destination))
-	}
-	c.cs.s = append(c.cs.s, destination)
-	return (ZunionstoreDestination)(c)
+	_ = "STUB: not implemented"
+	return *new(ZunionstoreDestination)
 }
 
 type ZunionstoreAggregateCount Incomplete
 
 func (c ZunionstoreAggregateCount) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type ZunionstoreAggregateMax Incomplete
 
 func (c ZunionstoreAggregateMax) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type ZunionstoreAggregateMin Incomplete
 
 func (c ZunionstoreAggregateMin) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type ZunionstoreAggregateSum Incomplete
 
 func (c ZunionstoreAggregateSum) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type ZunionstoreDestination Incomplete
 
 func (c ZunionstoreDestination) Numkeys(numkeys int64) ZunionstoreNumkeys {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(numkeys, 10))
-	return (ZunionstoreNumkeys)(c)
+	_ = "STUB: not implemented"
+	return *new(ZunionstoreNumkeys)
 }
 
 type ZunionstoreKey Incomplete
 
 func (c ZunionstoreKey) Key(key ...string) ZunionstoreKey {
-	if c.ks&NoSlot == NoSlot {
-		for _, k := range key {
-			c.ks = NoSlot | slot(k)
-			break
-		}
-	} else {
-		for _, k := range key {
-			c.ks = check(c.ks, slot(k))
-		}
-	}
-	c.cs.s = append(c.cs.s, key...)
-	return c
+	_ = "STUB: not implemented"
+	return *new(ZunionstoreKey)
 }
 
 func (c ZunionstoreKey) Weights(weight ...int64) ZunionstoreWeights {
-	c.cs.s = append(c.cs.s, "WEIGHTS")
-	for _, n := range weight {
-		c.cs.s = append(c.cs.s, strconv.FormatInt(n, 10))
-	}
-	return (ZunionstoreWeights)(c)
+	_ = "STUB: not implemented"
+	return *new(ZunionstoreWeights)
 }
 
 func (c ZunionstoreKey) AggregateSum() ZunionstoreAggregateSum {
-	c.cs.s = append(c.cs.s, "AGGREGATE", "SUM")
-	return (ZunionstoreAggregateSum)(c)
+	_ = "STUB: not implemented"
+	return *new(ZunionstoreAggregateSum)
 }
 
 func (c ZunionstoreKey) AggregateMin() ZunionstoreAggregateMin {
-	c.cs.s = append(c.cs.s, "AGGREGATE", "MIN")
-	return (ZunionstoreAggregateMin)(c)
+	_ = "STUB: not implemented"
+	return *new(ZunionstoreAggregateMin)
 }
 
 func (c ZunionstoreKey) AggregateMax() ZunionstoreAggregateMax {
-	c.cs.s = append(c.cs.s, "AGGREGATE", "MAX")
-	return (ZunionstoreAggregateMax)(c)
+	_ = "STUB: not implemented"
+	return *new(ZunionstoreAggregateMax)
 }
 
 func (c ZunionstoreKey) AggregateCount() ZunionstoreAggregateCount {
-	c.cs.s = append(c.cs.s, "AGGREGATE", "COUNT")
-	return (ZunionstoreAggregateCount)(c)
+	_ = "STUB: not implemented"
+	return *new(ZunionstoreAggregateCount)
 }
 
-func (c ZunionstoreKey) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZunionstoreKey) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type ZunionstoreNumkeys Incomplete
 
 func (c ZunionstoreNumkeys) Key(key ...string) ZunionstoreKey {
-	if c.ks&NoSlot == NoSlot {
-		for _, k := range key {
-			c.ks = NoSlot | slot(k)
-			break
-		}
-	} else {
-		for _, k := range key {
-			c.ks = check(c.ks, slot(k))
-		}
-	}
-	c.cs.s = append(c.cs.s, key...)
-	return (ZunionstoreKey)(c)
+	_ = "STUB: not implemented"
+	return *new(ZunionstoreKey)
 }
 
 type ZunionstoreWeights Incomplete
 
 func (c ZunionstoreWeights) Weights(weight ...int64) ZunionstoreWeights {
-	c.cs.s = append(c.cs.s, "WEIGHTS")
-	for _, n := range weight {
-		c.cs.s = append(c.cs.s, strconv.FormatInt(n, 10))
-	}
-	return c
+	_ = "STUB: not implemented"
+	return *new(ZunionstoreWeights)
 }
 
 func (c ZunionstoreWeights) AggregateSum() ZunionstoreAggregateSum {
-	c.cs.s = append(c.cs.s, "AGGREGATE", "SUM")
-	return (ZunionstoreAggregateSum)(c)
+	_ = "STUB: not implemented"
+	return *new(ZunionstoreAggregateSum)
 }
 
 func (c ZunionstoreWeights) AggregateMin() ZunionstoreAggregateMin {
-	c.cs.s = append(c.cs.s, "AGGREGATE", "MIN")
-	return (ZunionstoreAggregateMin)(c)
+	_ = "STUB: not implemented"
+	return *new(ZunionstoreAggregateMin)
 }
 
 func (c ZunionstoreWeights) AggregateMax() ZunionstoreAggregateMax {
-	c.cs.s = append(c.cs.s, "AGGREGATE", "MAX")
-	return (ZunionstoreAggregateMax)(c)
+	_ = "STUB: not implemented"
+	return *new(ZunionstoreAggregateMax)
 }
 
 func (c ZunionstoreWeights) AggregateCount() ZunionstoreAggregateCount {
-	c.cs.s = append(c.cs.s, "AGGREGATE", "COUNT")
-	return (ZunionstoreAggregateCount)(c)
+	_ = "STUB: not implemented"
+	return *new(ZunionstoreAggregateCount)
 }
 
-func (c ZunionstoreWeights) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ZunionstoreWeights) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }

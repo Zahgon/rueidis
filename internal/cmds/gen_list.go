@@ -2,1150 +2,654 @@
 
 package cmds
 
-import "strconv"
-
 type Blmove Incomplete
 
-func (b Builder) Blmove() (c Blmove) {
-	c = Blmove{cs: get(), ks: b.ks, cf: int16(blockTag)}
-	c.cs.s = append(c.cs.s, "BLMOVE")
-	return c
-}
+func (b Builder) Blmove() (c Blmove) { _ = "STUB: not implemented"; return *new(Blmove) }
 
 func (c Blmove) Source(source string) BlmoveSource {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(source)
-	} else {
-		c.ks = check(c.ks, slot(source))
-	}
-	c.cs.s = append(c.cs.s, source)
-	return (BlmoveSource)(c)
+	_ = "STUB: not implemented"
+	return *new(BlmoveSource)
 }
 
 type BlmoveDestination Incomplete
 
 func (c BlmoveDestination) Left() BlmoveWherefromLeft {
-	c.cs.s = append(c.cs.s, "LEFT")
-	return (BlmoveWherefromLeft)(c)
+	_ = "STUB: not implemented"
+	return *new(BlmoveWherefromLeft)
 }
 
 func (c BlmoveDestination) Right() BlmoveWherefromRight {
-	c.cs.s = append(c.cs.s, "RIGHT")
-	return (BlmoveWherefromRight)(c)
+	_ = "STUB: not implemented"
+	return *new(BlmoveWherefromRight)
 }
 
 type BlmoveSource Incomplete
 
 func (c BlmoveSource) Destination(destination string) BlmoveDestination {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(destination)
-	} else {
-		c.ks = check(c.ks, slot(destination))
-	}
-	c.cs.s = append(c.cs.s, destination)
-	return (BlmoveDestination)(c)
+	_ = "STUB: not implemented"
+	return *new(BlmoveDestination)
 }
 
 type BlmoveTimeout Incomplete
 
-func (c BlmoveTimeout) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c BlmoveTimeout) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type BlmoveWherefromLeft Incomplete
 
 func (c BlmoveWherefromLeft) Left() BlmoveWheretoLeft {
-	c.cs.s = append(c.cs.s, "LEFT")
-	return (BlmoveWheretoLeft)(c)
+	_ = "STUB: not implemented"
+	return *new(BlmoveWheretoLeft)
 }
 
 func (c BlmoveWherefromLeft) Right() BlmoveWheretoRight {
-	c.cs.s = append(c.cs.s, "RIGHT")
-	return (BlmoveWheretoRight)(c)
+	_ = "STUB: not implemented"
+	return *new(BlmoveWheretoRight)
 }
 
 type BlmoveWherefromRight Incomplete
 
 func (c BlmoveWherefromRight) Left() BlmoveWheretoLeft {
-	c.cs.s = append(c.cs.s, "LEFT")
-	return (BlmoveWheretoLeft)(c)
+	_ = "STUB: not implemented"
+	return *new(BlmoveWheretoLeft)
 }
 
 func (c BlmoveWherefromRight) Right() BlmoveWheretoRight {
-	c.cs.s = append(c.cs.s, "RIGHT")
-	return (BlmoveWheretoRight)(c)
+	_ = "STUB: not implemented"
+	return *new(BlmoveWheretoRight)
 }
 
 type BlmoveWheretoLeft Incomplete
 
 func (c BlmoveWheretoLeft) Timeout(timeout float64) BlmoveTimeout {
-	c.cs.s = append(c.cs.s, strconv.FormatFloat(timeout, 'f', -1, 64))
-	return (BlmoveTimeout)(c)
+	_ = "STUB: not implemented"
+	return *new(BlmoveTimeout)
 }
 
 type BlmoveWheretoRight Incomplete
 
 func (c BlmoveWheretoRight) Timeout(timeout float64) BlmoveTimeout {
-	c.cs.s = append(c.cs.s, strconv.FormatFloat(timeout, 'f', -1, 64))
-	return (BlmoveTimeout)(c)
+	_ = "STUB: not implemented"
+	return *new(BlmoveTimeout)
 }
 
 type Blmpop Incomplete
 
-func (b Builder) Blmpop() (c Blmpop) {
-	c = Blmpop{cs: get(), ks: b.ks, cf: int16(blockTag)}
-	c.cs.s = append(c.cs.s, "BLMPOP")
-	return c
-}
+func (b Builder) Blmpop() (c Blmpop) { _ = "STUB: not implemented"; return *new(Blmpop) }
 
 func (c Blmpop) Timeout(timeout float64) BlmpopTimeout {
-	c.cs.s = append(c.cs.s, strconv.FormatFloat(timeout, 'f', -1, 64))
-	return (BlmpopTimeout)(c)
+	_ = "STUB: not implemented"
+	return *new(BlmpopTimeout)
 }
 
 type BlmpopCount Incomplete
 
-func (c BlmpopCount) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c BlmpopCount) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type BlmpopKey Incomplete
 
-func (c BlmpopKey) Key(key ...string) BlmpopKey {
-	if c.ks&NoSlot == NoSlot {
-		for _, k := range key {
-			c.ks = NoSlot | slot(k)
-			break
-		}
-	} else {
-		for _, k := range key {
-			c.ks = check(c.ks, slot(k))
-		}
-	}
-	c.cs.s = append(c.cs.s, key...)
-	return c
-}
+func (c BlmpopKey) Key(key ...string) BlmpopKey { _ = "STUB: not implemented"; return *new(BlmpopKey) }
 
-func (c BlmpopKey) Left() BlmpopWhereLeft {
-	c.cs.s = append(c.cs.s, "LEFT")
-	return (BlmpopWhereLeft)(c)
-}
+func (c BlmpopKey) Left() BlmpopWhereLeft { _ = "STUB: not implemented"; return *new(BlmpopWhereLeft) }
 
 func (c BlmpopKey) Right() BlmpopWhereRight {
-	c.cs.s = append(c.cs.s, "RIGHT")
-	return (BlmpopWhereRight)(c)
+	_ = "STUB: not implemented"
+	return *new(BlmpopWhereRight)
 }
 
 type BlmpopNumkeys Incomplete
 
 func (c BlmpopNumkeys) Key(key ...string) BlmpopKey {
-	if c.ks&NoSlot == NoSlot {
-		for _, k := range key {
-			c.ks = NoSlot | slot(k)
-			break
-		}
-	} else {
-		for _, k := range key {
-			c.ks = check(c.ks, slot(k))
-		}
-	}
-	c.cs.s = append(c.cs.s, key...)
-	return (BlmpopKey)(c)
+	_ = "STUB: not implemented"
+	return *new(BlmpopKey)
 }
 
 type BlmpopTimeout Incomplete
 
 func (c BlmpopTimeout) Numkeys(numkeys int64) BlmpopNumkeys {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(numkeys, 10))
-	return (BlmpopNumkeys)(c)
+	_ = "STUB: not implemented"
+	return *new(BlmpopNumkeys)
 }
 
 type BlmpopWhereLeft Incomplete
 
 func (c BlmpopWhereLeft) Count(count int64) BlmpopCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(count, 10))
-	return (BlmpopCount)(c)
+	_ = "STUB: not implemented"
+	return *new(BlmpopCount)
 }
 
-func (c BlmpopWhereLeft) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c BlmpopWhereLeft) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type BlmpopWhereRight Incomplete
 
 func (c BlmpopWhereRight) Count(count int64) BlmpopCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(count, 10))
-	return (BlmpopCount)(c)
+	_ = "STUB: not implemented"
+	return *new(BlmpopCount)
 }
 
-func (c BlmpopWhereRight) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c BlmpopWhereRight) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type Blpop Incomplete
 
-func (b Builder) Blpop() (c Blpop) {
-	c = Blpop{cs: get(), ks: b.ks, cf: int16(blockTag)}
-	c.cs.s = append(c.cs.s, "BLPOP")
-	return c
-}
+func (b Builder) Blpop() (c Blpop) { _ = "STUB: not implemented"; return *new(Blpop) }
 
-func (c Blpop) Key(key ...string) BlpopKey {
-	if c.ks&NoSlot == NoSlot {
-		for _, k := range key {
-			c.ks = NoSlot | slot(k)
-			break
-		}
-	} else {
-		for _, k := range key {
-			c.ks = check(c.ks, slot(k))
-		}
-	}
-	c.cs.s = append(c.cs.s, key...)
-	return (BlpopKey)(c)
-}
+func (c Blpop) Key(key ...string) BlpopKey { _ = "STUB: not implemented"; return *new(BlpopKey) }
 
 type BlpopKey Incomplete
 
-func (c BlpopKey) Key(key ...string) BlpopKey {
-	if c.ks&NoSlot == NoSlot {
-		for _, k := range key {
-			c.ks = NoSlot | slot(k)
-			break
-		}
-	} else {
-		for _, k := range key {
-			c.ks = check(c.ks, slot(k))
-		}
-	}
-	c.cs.s = append(c.cs.s, key...)
-	return c
-}
+func (c BlpopKey) Key(key ...string) BlpopKey { _ = "STUB: not implemented"; return *new(BlpopKey) }
 
 func (c BlpopKey) Timeout(timeout float64) BlpopTimeout {
-	c.cs.s = append(c.cs.s, strconv.FormatFloat(timeout, 'f', -1, 64))
-	return (BlpopTimeout)(c)
+	_ = "STUB: not implemented"
+	return *new(BlpopTimeout)
 }
 
 type BlpopTimeout Incomplete
 
-func (c BlpopTimeout) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c BlpopTimeout) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type Brpop Incomplete
 
-func (b Builder) Brpop() (c Brpop) {
-	c = Brpop{cs: get(), ks: b.ks, cf: int16(blockTag)}
-	c.cs.s = append(c.cs.s, "BRPOP")
-	return c
-}
+func (b Builder) Brpop() (c Brpop) { _ = "STUB: not implemented"; return *new(Brpop) }
 
-func (c Brpop) Key(key ...string) BrpopKey {
-	if c.ks&NoSlot == NoSlot {
-		for _, k := range key {
-			c.ks = NoSlot | slot(k)
-			break
-		}
-	} else {
-		for _, k := range key {
-			c.ks = check(c.ks, slot(k))
-		}
-	}
-	c.cs.s = append(c.cs.s, key...)
-	return (BrpopKey)(c)
-}
+func (c Brpop) Key(key ...string) BrpopKey { _ = "STUB: not implemented"; return *new(BrpopKey) }
 
 type BrpopKey Incomplete
 
-func (c BrpopKey) Key(key ...string) BrpopKey {
-	if c.ks&NoSlot == NoSlot {
-		for _, k := range key {
-			c.ks = NoSlot | slot(k)
-			break
-		}
-	} else {
-		for _, k := range key {
-			c.ks = check(c.ks, slot(k))
-		}
-	}
-	c.cs.s = append(c.cs.s, key...)
-	return c
-}
+func (c BrpopKey) Key(key ...string) BrpopKey { _ = "STUB: not implemented"; return *new(BrpopKey) }
 
 func (c BrpopKey) Timeout(timeout float64) BrpopTimeout {
-	c.cs.s = append(c.cs.s, strconv.FormatFloat(timeout, 'f', -1, 64))
-	return (BrpopTimeout)(c)
+	_ = "STUB: not implemented"
+	return *new(BrpopTimeout)
 }
 
 type BrpopTimeout Incomplete
 
-func (c BrpopTimeout) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c BrpopTimeout) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type Brpoplpush Incomplete
 
-func (b Builder) Brpoplpush() (c Brpoplpush) {
-	c = Brpoplpush{cs: get(), ks: b.ks, cf: int16(blockTag)}
-	c.cs.s = append(c.cs.s, "BRPOPLPUSH")
-	return c
-}
+func (b Builder) Brpoplpush() (c Brpoplpush) { _ = "STUB: not implemented"; return *new(Brpoplpush) }
 
 func (c Brpoplpush) Source(source string) BrpoplpushSource {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(source)
-	} else {
-		c.ks = check(c.ks, slot(source))
-	}
-	c.cs.s = append(c.cs.s, source)
-	return (BrpoplpushSource)(c)
+	_ = "STUB: not implemented"
+	return *new(BrpoplpushSource)
 }
 
 type BrpoplpushDestination Incomplete
 
 func (c BrpoplpushDestination) Timeout(timeout float64) BrpoplpushTimeout {
-	c.cs.s = append(c.cs.s, strconv.FormatFloat(timeout, 'f', -1, 64))
-	return (BrpoplpushTimeout)(c)
+	_ = "STUB: not implemented"
+	return *new(BrpoplpushTimeout)
 }
 
 type BrpoplpushSource Incomplete
 
 func (c BrpoplpushSource) Destination(destination string) BrpoplpushDestination {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(destination)
-	} else {
-		c.ks = check(c.ks, slot(destination))
-	}
-	c.cs.s = append(c.cs.s, destination)
-	return (BrpoplpushDestination)(c)
+	_ = "STUB: not implemented"
+	return *new(BrpoplpushDestination)
 }
 
 type BrpoplpushTimeout Incomplete
 
-func (c BrpoplpushTimeout) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c BrpoplpushTimeout) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type Lindex Incomplete
 
-func (b Builder) Lindex() (c Lindex) {
-	c = Lindex{cs: get(), ks: b.ks, cf: int16(readonly)}
-	c.cs.s = append(c.cs.s, "LINDEX")
-	return c
-}
+func (b Builder) Lindex() (c Lindex) { _ = "STUB: not implemented"; return *new(Lindex) }
 
-func (c Lindex) Key(key string) LindexKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (LindexKey)(c)
-}
+func (c Lindex) Key(key string) LindexKey { _ = "STUB: not implemented"; return *new(LindexKey) }
 
 type LindexIndex Incomplete
 
-func (c LindexIndex) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c LindexIndex) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c LindexIndex) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c LindexIndex) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type LindexKey Incomplete
 
 func (c LindexKey) Index(index int64) LindexIndex {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(index, 10))
-	return (LindexIndex)(c)
+	_ = "STUB: not implemented"
+	return *new(LindexIndex)
 }
 
 type Linsert Incomplete
 
-func (b Builder) Linsert() (c Linsert) {
-	c = Linsert{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "LINSERT")
-	return c
-}
+func (b Builder) Linsert() (c Linsert) { _ = "STUB: not implemented"; return *new(Linsert) }
 
-func (c Linsert) Key(key string) LinsertKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (LinsertKey)(c)
-}
+func (c Linsert) Key(key string) LinsertKey { _ = "STUB: not implemented"; return *new(LinsertKey) }
 
 type LinsertElement Incomplete
 
-func (c LinsertElement) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c LinsertElement) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type LinsertKey Incomplete
 
 func (c LinsertKey) Before() LinsertWhereBefore {
-	c.cs.s = append(c.cs.s, "BEFORE")
-	return (LinsertWhereBefore)(c)
+	_ = "STUB: not implemented"
+	return *new(LinsertWhereBefore)
 }
 
 func (c LinsertKey) After() LinsertWhereAfter {
-	c.cs.s = append(c.cs.s, "AFTER")
-	return (LinsertWhereAfter)(c)
+	_ = "STUB: not implemented"
+	return *new(LinsertWhereAfter)
 }
 
 type LinsertPivot Incomplete
 
 func (c LinsertPivot) Element(element string) LinsertElement {
-	c.cs.s = append(c.cs.s, element)
-	return (LinsertElement)(c)
+	_ = "STUB: not implemented"
+	return *new(LinsertElement)
 }
 
 type LinsertWhereAfter Incomplete
 
 func (c LinsertWhereAfter) Pivot(pivot string) LinsertPivot {
-	c.cs.s = append(c.cs.s, pivot)
-	return (LinsertPivot)(c)
+	_ = "STUB: not implemented"
+	return *new(LinsertPivot)
 }
 
 type LinsertWhereBefore Incomplete
 
 func (c LinsertWhereBefore) Pivot(pivot string) LinsertPivot {
-	c.cs.s = append(c.cs.s, pivot)
-	return (LinsertPivot)(c)
+	_ = "STUB: not implemented"
+	return *new(LinsertPivot)
 }
 
 type Llen Incomplete
 
-func (b Builder) Llen() (c Llen) {
-	c = Llen{cs: get(), ks: b.ks, cf: int16(readonly)}
-	c.cs.s = append(c.cs.s, "LLEN")
-	return c
-}
+func (b Builder) Llen() (c Llen) { _ = "STUB: not implemented"; return *new(Llen) }
 
-func (c Llen) Key(key string) LlenKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (LlenKey)(c)
-}
+func (c Llen) Key(key string) LlenKey { _ = "STUB: not implemented"; return *new(LlenKey) }
 
 type LlenKey Incomplete
 
-func (c LlenKey) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c LlenKey) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c LlenKey) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c LlenKey) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type Lmove Incomplete
 
-func (b Builder) Lmove() (c Lmove) {
-	c = Lmove{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "LMOVE")
-	return c
-}
+func (b Builder) Lmove() (c Lmove) { _ = "STUB: not implemented"; return *new(Lmove) }
 
 func (c Lmove) Source(source string) LmoveSource {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(source)
-	} else {
-		c.ks = check(c.ks, slot(source))
-	}
-	c.cs.s = append(c.cs.s, source)
-	return (LmoveSource)(c)
+	_ = "STUB: not implemented"
+	return *new(LmoveSource)
 }
 
 type LmoveDestination Incomplete
 
 func (c LmoveDestination) Left() LmoveWherefromLeft {
-	c.cs.s = append(c.cs.s, "LEFT")
-	return (LmoveWherefromLeft)(c)
+	_ = "STUB: not implemented"
+	return *new(LmoveWherefromLeft)
 }
 
 func (c LmoveDestination) Right() LmoveWherefromRight {
-	c.cs.s = append(c.cs.s, "RIGHT")
-	return (LmoveWherefromRight)(c)
+	_ = "STUB: not implemented"
+	return *new(LmoveWherefromRight)
 }
 
 type LmoveSource Incomplete
 
 func (c LmoveSource) Destination(destination string) LmoveDestination {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(destination)
-	} else {
-		c.ks = check(c.ks, slot(destination))
-	}
-	c.cs.s = append(c.cs.s, destination)
-	return (LmoveDestination)(c)
+	_ = "STUB: not implemented"
+	return *new(LmoveDestination)
 }
 
 type LmoveWherefromLeft Incomplete
 
 func (c LmoveWherefromLeft) Left() LmoveWheretoLeft {
-	c.cs.s = append(c.cs.s, "LEFT")
-	return (LmoveWheretoLeft)(c)
+	_ = "STUB: not implemented"
+	return *new(LmoveWheretoLeft)
 }
 
 func (c LmoveWherefromLeft) Right() LmoveWheretoRight {
-	c.cs.s = append(c.cs.s, "RIGHT")
-	return (LmoveWheretoRight)(c)
+	_ = "STUB: not implemented"
+	return *new(LmoveWheretoRight)
 }
 
 type LmoveWherefromRight Incomplete
 
 func (c LmoveWherefromRight) Left() LmoveWheretoLeft {
-	c.cs.s = append(c.cs.s, "LEFT")
-	return (LmoveWheretoLeft)(c)
+	_ = "STUB: not implemented"
+	return *new(LmoveWheretoLeft)
 }
 
 func (c LmoveWherefromRight) Right() LmoveWheretoRight {
-	c.cs.s = append(c.cs.s, "RIGHT")
-	return (LmoveWheretoRight)(c)
+	_ = "STUB: not implemented"
+	return *new(LmoveWheretoRight)
 }
 
 type LmoveWheretoLeft Incomplete
 
-func (c LmoveWheretoLeft) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c LmoveWheretoLeft) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type LmoveWheretoRight Incomplete
 
-func (c LmoveWheretoRight) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c LmoveWheretoRight) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type Lmpop Incomplete
 
-func (b Builder) Lmpop() (c Lmpop) {
-	c = Lmpop{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "LMPOP")
-	return c
-}
+func (b Builder) Lmpop() (c Lmpop) { _ = "STUB: not implemented"; return *new(Lmpop) }
 
 func (c Lmpop) Numkeys(numkeys int64) LmpopNumkeys {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(numkeys, 10))
-	return (LmpopNumkeys)(c)
+	_ = "STUB: not implemented"
+	return *new(LmpopNumkeys)
 }
 
 type LmpopCount Incomplete
 
-func (c LmpopCount) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c LmpopCount) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type LmpopKey Incomplete
 
-func (c LmpopKey) Key(key ...string) LmpopKey {
-	if c.ks&NoSlot == NoSlot {
-		for _, k := range key {
-			c.ks = NoSlot | slot(k)
-			break
-		}
-	} else {
-		for _, k := range key {
-			c.ks = check(c.ks, slot(k))
-		}
-	}
-	c.cs.s = append(c.cs.s, key...)
-	return c
-}
+func (c LmpopKey) Key(key ...string) LmpopKey { _ = "STUB: not implemented"; return *new(LmpopKey) }
 
-func (c LmpopKey) Left() LmpopWhereLeft {
-	c.cs.s = append(c.cs.s, "LEFT")
-	return (LmpopWhereLeft)(c)
-}
+func (c LmpopKey) Left() LmpopWhereLeft { _ = "STUB: not implemented"; return *new(LmpopWhereLeft) }
 
-func (c LmpopKey) Right() LmpopWhereRight {
-	c.cs.s = append(c.cs.s, "RIGHT")
-	return (LmpopWhereRight)(c)
-}
+func (c LmpopKey) Right() LmpopWhereRight { _ = "STUB: not implemented"; return *new(LmpopWhereRight) }
 
 type LmpopNumkeys Incomplete
 
-func (c LmpopNumkeys) Key(key ...string) LmpopKey {
-	if c.ks&NoSlot == NoSlot {
-		for _, k := range key {
-			c.ks = NoSlot | slot(k)
-			break
-		}
-	} else {
-		for _, k := range key {
-			c.ks = check(c.ks, slot(k))
-		}
-	}
-	c.cs.s = append(c.cs.s, key...)
-	return (LmpopKey)(c)
-}
+func (c LmpopNumkeys) Key(key ...string) LmpopKey { _ = "STUB: not implemented"; return *new(LmpopKey) }
 
 type LmpopWhereLeft Incomplete
 
 func (c LmpopWhereLeft) Count(count int64) LmpopCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(count, 10))
-	return (LmpopCount)(c)
+	_ = "STUB: not implemented"
+	return *new(LmpopCount)
 }
 
-func (c LmpopWhereLeft) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c LmpopWhereLeft) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type LmpopWhereRight Incomplete
 
 func (c LmpopWhereRight) Count(count int64) LmpopCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(count, 10))
-	return (LmpopCount)(c)
+	_ = "STUB: not implemented"
+	return *new(LmpopCount)
 }
 
-func (c LmpopWhereRight) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c LmpopWhereRight) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type Lpop Incomplete
 
-func (b Builder) Lpop() (c Lpop) {
-	c = Lpop{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "LPOP")
-	return c
-}
+func (b Builder) Lpop() (c Lpop) { _ = "STUB: not implemented"; return *new(Lpop) }
 
-func (c Lpop) Key(key string) LpopKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (LpopKey)(c)
-}
+func (c Lpop) Key(key string) LpopKey { _ = "STUB: not implemented"; return *new(LpopKey) }
 
 type LpopCount Incomplete
 
-func (c LpopCount) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c LpopCount) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type LpopKey Incomplete
 
-func (c LpopKey) Count(count int64) LpopCount {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(count, 10))
-	return (LpopCount)(c)
-}
+func (c LpopKey) Count(count int64) LpopCount { _ = "STUB: not implemented"; return *new(LpopCount) }
 
-func (c LpopKey) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c LpopKey) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type Lpos Incomplete
 
-func (b Builder) Lpos() (c Lpos) {
-	c = Lpos{cs: get(), ks: b.ks, cf: int16(readonly)}
-	c.cs.s = append(c.cs.s, "LPOS")
-	return c
-}
+func (b Builder) Lpos() (c Lpos) { _ = "STUB: not implemented"; return *new(Lpos) }
 
-func (c Lpos) Key(key string) LposKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (LposKey)(c)
-}
+func (c Lpos) Key(key string) LposKey { _ = "STUB: not implemented"; return *new(LposKey) }
 
 type LposCount Incomplete
 
-func (c LposCount) Maxlen(len int64) LposMaxlen {
-	c.cs.s = append(c.cs.s, "MAXLEN", strconv.FormatInt(len, 10))
-	return (LposMaxlen)(c)
-}
+func (c LposCount) Maxlen(len int64) LposMaxlen { _ = "STUB: not implemented"; return *new(LposMaxlen) }
 
-func (c LposCount) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c LposCount) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c LposCount) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c LposCount) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type LposElement Incomplete
 
-func (c LposElement) Rank(rank int64) LposRank {
-	c.cs.s = append(c.cs.s, "RANK", strconv.FormatInt(rank, 10))
-	return (LposRank)(c)
-}
+func (c LposElement) Rank(rank int64) LposRank { _ = "STUB: not implemented"; return *new(LposRank) }
 
 func (c LposElement) Count(numMatches int64) LposCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(numMatches, 10))
-	return (LposCount)(c)
+	_ = "STUB: not implemented"
+	return *new(LposCount)
 }
 
 func (c LposElement) Maxlen(len int64) LposMaxlen {
-	c.cs.s = append(c.cs.s, "MAXLEN", strconv.FormatInt(len, 10))
-	return (LposMaxlen)(c)
+	_ = "STUB: not implemented"
+	return *new(LposMaxlen)
 }
 
-func (c LposElement) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c LposElement) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c LposElement) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c LposElement) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type LposKey Incomplete
 
 func (c LposKey) Element(element string) LposElement {
-	c.cs.s = append(c.cs.s, element)
-	return (LposElement)(c)
+	_ = "STUB: not implemented"
+	return *new(LposElement)
 }
 
 type LposMaxlen Incomplete
 
-func (c LposMaxlen) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c LposMaxlen) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c LposMaxlen) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c LposMaxlen) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type LposRank Incomplete
 
 func (c LposRank) Count(numMatches int64) LposCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(numMatches, 10))
-	return (LposCount)(c)
+	_ = "STUB: not implemented"
+	return *new(LposCount)
 }
 
-func (c LposRank) Maxlen(len int64) LposMaxlen {
-	c.cs.s = append(c.cs.s, "MAXLEN", strconv.FormatInt(len, 10))
-	return (LposMaxlen)(c)
-}
+func (c LposRank) Maxlen(len int64) LposMaxlen { _ = "STUB: not implemented"; return *new(LposMaxlen) }
 
-func (c LposRank) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c LposRank) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c LposRank) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c LposRank) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type Lpush Incomplete
 
-func (b Builder) Lpush() (c Lpush) {
-	c = Lpush{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "LPUSH")
-	return c
-}
+func (b Builder) Lpush() (c Lpush) { _ = "STUB: not implemented"; return *new(Lpush) }
 
-func (c Lpush) Key(key string) LpushKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (LpushKey)(c)
-}
+func (c Lpush) Key(key string) LpushKey { _ = "STUB: not implemented"; return *new(LpushKey) }
 
 type LpushElement Incomplete
 
 func (c LpushElement) Element(element ...string) LpushElement {
-	c.cs.s = append(c.cs.s, element...)
-	return c
+	_ = "STUB: not implemented"
+	return *new(LpushElement)
 }
 
-func (c LpushElement) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c LpushElement) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type LpushKey Incomplete
 
 func (c LpushKey) Element(element ...string) LpushElement {
-	c.cs.s = append(c.cs.s, element...)
-	return (LpushElement)(c)
+	_ = "STUB: not implemented"
+	return *new(LpushElement)
 }
 
 type Lpushx Incomplete
 
-func (b Builder) Lpushx() (c Lpushx) {
-	c = Lpushx{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "LPUSHX")
-	return c
-}
+func (b Builder) Lpushx() (c Lpushx) { _ = "STUB: not implemented"; return *new(Lpushx) }
 
-func (c Lpushx) Key(key string) LpushxKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (LpushxKey)(c)
-}
+func (c Lpushx) Key(key string) LpushxKey { _ = "STUB: not implemented"; return *new(LpushxKey) }
 
 type LpushxElement Incomplete
 
 func (c LpushxElement) Element(element ...string) LpushxElement {
-	c.cs.s = append(c.cs.s, element...)
-	return c
+	_ = "STUB: not implemented"
+	return *new(LpushxElement)
 }
 
-func (c LpushxElement) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c LpushxElement) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type LpushxKey Incomplete
 
 func (c LpushxKey) Element(element ...string) LpushxElement {
-	c.cs.s = append(c.cs.s, element...)
-	return (LpushxElement)(c)
+	_ = "STUB: not implemented"
+	return *new(LpushxElement)
 }
 
 type Lrange Incomplete
 
-func (b Builder) Lrange() (c Lrange) {
-	c = Lrange{cs: get(), ks: b.ks, cf: int16(readonly)}
-	c.cs.s = append(c.cs.s, "LRANGE")
-	return c
-}
+func (b Builder) Lrange() (c Lrange) { _ = "STUB: not implemented"; return *new(Lrange) }
 
-func (c Lrange) Key(key string) LrangeKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (LrangeKey)(c)
-}
+func (c Lrange) Key(key string) LrangeKey { _ = "STUB: not implemented"; return *new(LrangeKey) }
 
 type LrangeKey Incomplete
 
 func (c LrangeKey) Start(start int64) LrangeStart {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(start, 10))
-	return (LrangeStart)(c)
+	_ = "STUB: not implemented"
+	return *new(LrangeStart)
 }
 
 type LrangeStart Incomplete
 
 func (c LrangeStart) Stop(stop int64) LrangeStop {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(stop, 10))
-	return (LrangeStop)(c)
+	_ = "STUB: not implemented"
+	return *new(LrangeStop)
 }
 
 type LrangeStop Incomplete
 
-func (c LrangeStop) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c LrangeStop) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c LrangeStop) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c LrangeStop) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type Lrem Incomplete
 
-func (b Builder) Lrem() (c Lrem) {
-	c = Lrem{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "LREM")
-	return c
-}
+func (b Builder) Lrem() (c Lrem) { _ = "STUB: not implemented"; return *new(Lrem) }
 
-func (c Lrem) Key(key string) LremKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (LremKey)(c)
-}
+func (c Lrem) Key(key string) LremKey { _ = "STUB: not implemented"; return *new(LremKey) }
 
 type LremCount Incomplete
 
 func (c LremCount) Element(element string) LremElement {
-	c.cs.s = append(c.cs.s, element)
-	return (LremElement)(c)
+	_ = "STUB: not implemented"
+	return *new(LremElement)
 }
 
 type LremElement Incomplete
 
-func (c LremElement) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c LremElement) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type LremKey Incomplete
 
-func (c LremKey) Count(count int64) LremCount {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(count, 10))
-	return (LremCount)(c)
-}
+func (c LremKey) Count(count int64) LremCount { _ = "STUB: not implemented"; return *new(LremCount) }
 
 type Lset Incomplete
 
-func (b Builder) Lset() (c Lset) {
-	c = Lset{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "LSET")
-	return c
-}
+func (b Builder) Lset() (c Lset) { _ = "STUB: not implemented"; return *new(Lset) }
 
-func (c Lset) Key(key string) LsetKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (LsetKey)(c)
-}
+func (c Lset) Key(key string) LsetKey { _ = "STUB: not implemented"; return *new(LsetKey) }
 
 type LsetElement Incomplete
 
-func (c LsetElement) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c LsetElement) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type LsetIndex Incomplete
 
 func (c LsetIndex) Element(element string) LsetElement {
-	c.cs.s = append(c.cs.s, element)
-	return (LsetElement)(c)
+	_ = "STUB: not implemented"
+	return *new(LsetElement)
 }
 
 type LsetKey Incomplete
 
-func (c LsetKey) Index(index int64) LsetIndex {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(index, 10))
-	return (LsetIndex)(c)
-}
+func (c LsetKey) Index(index int64) LsetIndex { _ = "STUB: not implemented"; return *new(LsetIndex) }
 
 type Ltrim Incomplete
 
-func (b Builder) Ltrim() (c Ltrim) {
-	c = Ltrim{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "LTRIM")
-	return c
-}
+func (b Builder) Ltrim() (c Ltrim) { _ = "STUB: not implemented"; return *new(Ltrim) }
 
-func (c Ltrim) Key(key string) LtrimKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (LtrimKey)(c)
-}
+func (c Ltrim) Key(key string) LtrimKey { _ = "STUB: not implemented"; return *new(LtrimKey) }
 
 type LtrimKey Incomplete
 
-func (c LtrimKey) Start(start int64) LtrimStart {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(start, 10))
-	return (LtrimStart)(c)
-}
+func (c LtrimKey) Start(start int64) LtrimStart { _ = "STUB: not implemented"; return *new(LtrimStart) }
 
 type LtrimStart Incomplete
 
-func (c LtrimStart) Stop(stop int64) LtrimStop {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(stop, 10))
-	return (LtrimStop)(c)
-}
+func (c LtrimStart) Stop(stop int64) LtrimStop { _ = "STUB: not implemented"; return *new(LtrimStop) }
 
 type LtrimStop Incomplete
 
-func (c LtrimStop) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c LtrimStop) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type Rpop Incomplete
 
-func (b Builder) Rpop() (c Rpop) {
-	c = Rpop{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "RPOP")
-	return c
-}
+func (b Builder) Rpop() (c Rpop) { _ = "STUB: not implemented"; return *new(Rpop) }
 
-func (c Rpop) Key(key string) RpopKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (RpopKey)(c)
-}
+func (c Rpop) Key(key string) RpopKey { _ = "STUB: not implemented"; return *new(RpopKey) }
 
 type RpopCount Incomplete
 
-func (c RpopCount) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c RpopCount) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type RpopKey Incomplete
 
-func (c RpopKey) Count(count int64) RpopCount {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(count, 10))
-	return (RpopCount)(c)
-}
+func (c RpopKey) Count(count int64) RpopCount { _ = "STUB: not implemented"; return *new(RpopCount) }
 
-func (c RpopKey) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c RpopKey) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type Rpoplpush Incomplete
 
-func (b Builder) Rpoplpush() (c Rpoplpush) {
-	c = Rpoplpush{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "RPOPLPUSH")
-	return c
-}
+func (b Builder) Rpoplpush() (c Rpoplpush) { _ = "STUB: not implemented"; return *new(Rpoplpush) }
 
 func (c Rpoplpush) Source(source string) RpoplpushSource {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(source)
-	} else {
-		c.ks = check(c.ks, slot(source))
-	}
-	c.cs.s = append(c.cs.s, source)
-	return (RpoplpushSource)(c)
+	_ = "STUB: not implemented"
+	return *new(RpoplpushSource)
 }
 
 type RpoplpushDestination Incomplete
 
-func (c RpoplpushDestination) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c RpoplpushDestination) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type RpoplpushSource Incomplete
 
 func (c RpoplpushSource) Destination(destination string) RpoplpushDestination {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(destination)
-	} else {
-		c.ks = check(c.ks, slot(destination))
-	}
-	c.cs.s = append(c.cs.s, destination)
-	return (RpoplpushDestination)(c)
+	_ = "STUB: not implemented"
+	return *new(RpoplpushDestination)
 }
 
 type Rpush Incomplete
 
-func (b Builder) Rpush() (c Rpush) {
-	c = Rpush{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "RPUSH")
-	return c
-}
+func (b Builder) Rpush() (c Rpush) { _ = "STUB: not implemented"; return *new(Rpush) }
 
-func (c Rpush) Key(key string) RpushKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (RpushKey)(c)
-}
+func (c Rpush) Key(key string) RpushKey { _ = "STUB: not implemented"; return *new(RpushKey) }
 
 type RpushElement Incomplete
 
 func (c RpushElement) Element(element ...string) RpushElement {
-	c.cs.s = append(c.cs.s, element...)
-	return c
+	_ = "STUB: not implemented"
+	return *new(RpushElement)
 }
 
-func (c RpushElement) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c RpushElement) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type RpushKey Incomplete
 
 func (c RpushKey) Element(element ...string) RpushElement {
-	c.cs.s = append(c.cs.s, element...)
-	return (RpushElement)(c)
+	_ = "STUB: not implemented"
+	return *new(RpushElement)
 }
 
 type Rpushx Incomplete
 
-func (b Builder) Rpushx() (c Rpushx) {
-	c = Rpushx{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "RPUSHX")
-	return c
-}
+func (b Builder) Rpushx() (c Rpushx) { _ = "STUB: not implemented"; return *new(Rpushx) }
 
-func (c Rpushx) Key(key string) RpushxKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (RpushxKey)(c)
-}
+func (c Rpushx) Key(key string) RpushxKey { _ = "STUB: not implemented"; return *new(RpushxKey) }
 
 type RpushxElement Incomplete
 
 func (c RpushxElement) Element(element ...string) RpushxElement {
-	c.cs.s = append(c.cs.s, element...)
-	return c
+	_ = "STUB: not implemented"
+	return *new(RpushxElement)
 }
 
-func (c RpushxElement) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c RpushxElement) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type RpushxKey Incomplete
 
 func (c RpushxKey) Element(element ...string) RpushxElement {
-	c.cs.s = append(c.cs.s, element...)
-	return (RpushxElement)(c)
+	_ = "STUB: not implemented"
+	return *new(RpushxElement)
 }

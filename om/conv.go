@@ -1,8 +1,6 @@
 package om
 
 import (
-	"encoding/json"
-	"fmt"
 	"reflect"
 	"strconv"
 	"unsafe"
@@ -11,22 +9,8 @@ import (
 )
 
 func newHashConvFactory(t reflect.Type, schema schema) *hashConvFactory {
-	factory := &hashConvFactory{fields: make(map[string]fieldConv, len(schema.fields))}
-	for name, f := range schema.fields {
-		conv, ok := converters.val[f.typ.Kind()]
-		switch f.typ.Kind() {
-		case reflect.Ptr:
-			conv, ok = converters.ptr[f.typ.Elem().Kind()]
-		case reflect.Slice:
-			conv, ok = converters.slice[f.typ.Elem().Kind()]
-		}
-		if !ok {
-			k := f.typ.Kind()
-			panic(fmt.Sprintf("schema %q should not contain unsupported field type %s.", t, k))
-		}
-		factory.fields[name] = fieldConv{conv: conv, idx: f.idx}
-	}
-	return factory
+	_ = "STUB: not implemented"
+	return nil
 }
 
 type hashConvFactory struct {
@@ -39,7 +23,8 @@ type fieldConv struct {
 }
 
 func (f hashConvFactory) NewConverter(entity reflect.Value) hashConv {
-	return hashConv{factory: f, entity: entity}
+	_ = "STUB: not implemented"
+	return *new(hashConv)
 }
 
 type hashConv struct {
@@ -47,41 +32,9 @@ type hashConv struct {
 	entity  reflect.Value
 }
 
-func (r hashConv) ToHash() (fields map[string]string) {
-	fields = make(map[string]string, len(r.factory.fields))
-	for k, f := range r.factory.fields {
-		ref := r.entity.Field(f.idx)
-		if f.conv.ValueToString == nil {
-			if bs, err := json.Marshal(ref.Interface()); err == nil {
-				fields[k] = rueidis.BinaryString(bs)
-			}
-		} else if v, ok := f.conv.ValueToString(ref); ok {
-			fields[k] = v
-		}
-	}
-	return fields
-}
+func (r hashConv) ToHash() (fields map[string]string) { _ = "STUB: not implemented"; return nil }
 
-func (r hashConv) FromHash(fields map[string]string) error {
-	for k, f := range r.factory.fields {
-		v, ok := fields[k]
-		if !ok {
-			continue
-		}
-		if f.conv.StringToValue == nil {
-			if err := json.Unmarshal(unsafe.Slice(unsafe.StringData(v), len(v)), r.entity.Field(f.idx).Addr().Interface()); err != nil {
-				return err
-			}
-		} else {
-			val, err := f.conv.StringToValue(v)
-			if err != nil {
-				return err
-			}
-			r.entity.Field(f.idx).Set(val)
-		}
-	}
-	return nil
-}
+func (r hashConv) FromHash(fields map[string]string) error { _ = "STUB: not implemented"; return nil }
 
 type converter struct {
 	ValueToString func(value reflect.Value) (string, bool)

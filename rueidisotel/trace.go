@@ -2,12 +2,10 @@ package rueidisotel
 
 import (
 	"context"
-	"slices"
 	"sync"
 	"time"
 
 	"go.opentelemetry.io/otel/attribute"
-	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/metric"
 	"go.opentelemetry.io/otel/trace"
 
@@ -32,23 +30,21 @@ type Labeler struct {
 }
 
 // Add appends new attributes to the labeler.
-func (l *Labeler) Add(attrs ...attribute.KeyValue) {
-	l.attrs = append(l.attrs, attrs...)
-}
+func (l *Labeler) Add(attrs ...attribute.KeyValue) { _ = "STUB: not implemented"; return }
 
 // Get returns the attributes added to the labeler.
 func (l *Labeler) Get() []attribute.KeyValue {
-	return l.attrs
+	_ = "STUB: not implemented"
+
+	// LabelerFromContext retrieves a Labeler instance from the provided context.
+	// It returns the labeler and a boolean indicating whether it was found.
+	// If no labeler is found, returns a new empty labeler and false.
+	return nil
 }
 
-// LabelerFromContext retrieves a Labeler instance from the provided context.
-// It returns the labeler and a boolean indicating whether it was found.
-// If no labeler is found, returns a new empty labeler and false.
 func LabelerFromContext(ctx context.Context) (*Labeler, bool) {
-	if l, ok := ctx.Value(labelerContextKey).(*Labeler); ok {
-		return l, true
-	}
-	return &Labeler{}, false
+	_ = "STUB: not implemented"
+	return nil, false
 }
 
 // ContextWithLabeler returns a new context with the provided Labeler.
@@ -64,7 +60,8 @@ func LabelerFromContext(ctx context.Context) (*Labeler, bool) {
 //	labeler.Add(attribute.String("key_pattern", "book"))
 //	client.DoCache(ctx, client.B().Get().Key("book:123").Cache(), time.Minute)
 func ContextWithLabeler(ctx context.Context, labeler *Labeler) context.Context {
-	return context.WithValue(ctx, labelerContextKey, labeler)
+	_ = "STUB: not implemented"
+	return *new(context.Context)
 }
 
 var _ rueidis.Client = (*otelclient)(nil)
@@ -73,37 +70,24 @@ var _ rueidis.Client = (*otelclient)(nil)
 //
 // Deprecated: use NewClient() instead.
 func WithClient(client rueidis.Client, opts ...Option) rueidis.Client {
-	cli, err := newClient(opts...)
-	if err != nil {
-		panic(err)
-	}
-	cli.client = client
-	return cli
+	_ = "STUB: not implemented"
+	return *new(rueidis.Client)
 }
 
 // Option is the Functional Options interface
 type Option func(o *otelclient)
 
 // TraceAttrs set additional attributes to append to each trace.
-func TraceAttrs(attrs ...attribute.KeyValue) Option {
-	return func(o *otelclient) {
-		o.tAttrs = trace.WithAttributes(attrs...)
-	}
-}
+func TraceAttrs(attrs ...attribute.KeyValue) Option { _ = "STUB: not implemented"; return *new(Option) }
 
 // WithTracerProvider sets the TracerProvider for the otelclient.
 func WithTracerProvider(provider trace.TracerProvider) Option {
-	return func(o *otelclient) {
-		o.tracerProvider = provider
-	}
+	_ = "STUB: not implemented"
+	return *new(Option)
 }
 
 // WithDBStatement tells the tracing hook to add raw redis commands to the db.statement attribute.
-func WithDBStatement(f StatementFunc) Option {
-	return func(o *otelclient) {
-		o.dbStmtFunc = f
-	}
-}
+func WithDBStatement(f StatementFunc) Option { _ = "STUB: not implemented"; return *new(Option) }
 
 // StatementFunc is the function that maps a command's tokens to a string to put in the db.statement attribute
 type StatementFunc func(cmdTokens []string) string
@@ -113,16 +97,14 @@ type StatementFunc func(cmdTokens []string) string
 //
 // By default, [DefaultOpNameResolver] is used.
 func WithOpNameResolver(resolver OpNameResolver) Option {
-	return func(o *otelclient) {
-		o.opNameResolver = resolver
-	}
+	_ = "STUB: not implemented"
+	return *new(Option)
 }
 
 // WithSpanNameFormatter sets a custom function used to format span names created by the client.
 func WithSpanNameFormatter(fn SpanNameFormatterFunc) Option {
-	return func(o *otelclient) {
-		o.spanNameFormatter = fn
-	}
+	_ = "STUB: not implemented"
+	return *new(Option)
 }
 
 // SpanNameFormatterFunc defines a function that formats the name of a span.
@@ -148,83 +130,13 @@ var (
 )
 
 func (c *commandMetrics) recordDuration(ctx context.Context, op string, startTime time.Time) {
-	count := len(c.recordOpts)
-
-	var opOpt metric.RecordOption
-	if c.opAttr {
-		opOpt = metric.WithAttributeSet(attribute.NewSet(attribute.String("operation", op)))
-		count++
-	}
-
-	var labelerOpt metric.RecordOption
-	if labeler, ok := ctx.Value(labelerContextKey).(*Labeler); ok && len(labeler.attrs) != 0 {
-		labelerOpt = metric.WithAttributeSet(attribute.NewSet(labeler.attrs...))
-		count++
-	}
-
-	var opts *[]metric.RecordOption
-	if count == len(c.recordOpts) {
-		opts = &c.recordOpts
-	} else {
-		opts = metricRecordOptionPool.Get().(*[]metric.RecordOption)
-		defer func() {
-			*opts = (*opts)[:0]
-			metricRecordOptionPool.Put(opts)
-		}()
-
-		*opts = slices.Grow(*opts, count)
-		*opts = append(*opts, c.recordOpts...)
-		if opOpt != nil {
-			*opts = append(*opts, opOpt)
-		}
-		if labelerOpt != nil {
-			*opts = append(*opts, labelerOpt)
-		}
-	}
-
-	c.duration.Record(ctx, time.Since(startTime).Seconds(), *opts...)
+	_ = "STUB: not implemented"
+	return
 }
 
 func (c *commandMetrics) recordError(ctx context.Context, op string, err error) {
-	if err == nil || rueidis.IsRedisNil(err) {
-		return
-	}
-
-	count := len(c.addOpts)
-
-	var opOpt metric.AddOption
-	if c.opAttr {
-		opOpt = metric.WithAttributeSet(attribute.NewSet(attribute.String("operation", op)))
-		count++
-	}
-
-	var labelerOpt metric.AddOption
-	if labeler, ok := ctx.Value(labelerContextKey).(*Labeler); ok && len(labeler.attrs) != 0 {
-		labelerOpt = metric.WithAttributeSet(attribute.NewSet(labeler.attrs...))
-		count++
-	}
-
-	var opts *[]metric.AddOption
-	if count == len(c.addOpts) {
-		opts = &c.addOpts
-	} else {
-		opts = metricAddOptionPool.Get().(*[]metric.AddOption)
-		defer func() {
-			*opts = (*opts)[:0]
-			metricAddOptionPool.Put(opts)
-		}()
-
-		*opts = slices.Grow(*opts, count)
-		*opts = append(*opts, c.addOpts...)
-		if opOpt != nil {
-			*opts = append(*opts, opOpt)
-		}
-		if labelerOpt != nil {
-			*opts = append(*opts, labelerOpt)
-		}
-	}
-
-	c.errors.Add(ctx, 1, *opts...)
+	_ = "STUB: not implemented"
+	return
 }
 
 type otelclient struct {
@@ -242,188 +154,65 @@ type otelclient struct {
 	commandMetrics
 }
 
-func (o *otelclient) B() rueidis.Builder {
-	return o.client.B()
-}
+func (o *otelclient) B() rueidis.Builder { _ = "STUB: not implemented"; return *new(rueidis.Builder) }
 
 func (o *otelclient) Do(ctx context.Context, cmd rueidis.Completed) (resp rueidis.RedisResult) {
-	op := o.opNameResolver.OpName(ctx, cmd)
-	defer o.recordDuration(ctx, op, time.Now())
-
-	ctx, span := o.start(ctx, op, sum(cmd.Commands()))
-	if o.dbStmtFunc != nil {
-		span.SetAttributes(dbstmt.String(o.dbStmtFunc(cmd.Commands())))
-	}
-
-	resp = o.client.Do(ctx, cmd)
-	o.end(span, resp.Error())
-	o.recordError(ctx, op, resp.Error())
-	return
+	_ = "STUB: not implemented"
+	return *new(rueidis.RedisResult)
 }
 
 func (o *otelclient) DoMulti(ctx context.Context, multi ...rueidis.Completed) (resp []rueidis.RedisResult) {
-	op := o.opNameResolver.MultiOpName(ctx, multi)
-	defer o.recordDuration(ctx, op, time.Now())
-
-	ctx, span := o.start(ctx, op, multiSum(multi))
-	resp = o.client.DoMulti(ctx, multi...)
-	err := firstError(resp)
-	o.end(span, err)
-	o.recordError(ctx, op, err)
-	return
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func (o *otelclient) DoStream(ctx context.Context, cmd rueidis.Completed) (resp rueidis.RedisResultStream) {
-	op := o.opNameResolver.OpName(ctx, cmd)
-	defer o.recordDuration(ctx, op, time.Now())
-
-	ctx, span := o.start(ctx, op, sum(cmd.Commands()))
-	if o.dbStmtFunc != nil {
-		span.SetAttributes(dbstmt.String(o.dbStmtFunc(cmd.Commands())))
-	}
-
-	resp = o.client.DoStream(ctx, cmd)
-	o.end(span, resp.Error())
-	o.recordError(ctx, op, resp.Error())
-	return
+	_ = "STUB: not implemented"
+	return *new(rueidis.RedisResultStream)
 }
 
 func (o *otelclient) DoMultiStream(ctx context.Context, multi ...rueidis.Completed) (resp rueidis.MultiRedisResultStream) {
-	op := o.opNameResolver.MultiOpName(ctx, multi)
-	defer o.recordDuration(ctx, op, time.Now())
-
-	ctx, span := o.start(ctx, op, multiSum(multi))
-	resp = o.client.DoMultiStream(ctx, multi...)
-	o.end(span, resp.Error())
-	o.recordError(ctx, op, resp.Error())
-	return
+	_ = "STUB: not implemented"
+	return *new(rueidis.MultiRedisResultStream)
 }
 
 func (o *otelclient) DoCache(ctx context.Context, cmd rueidis.Cacheable, ttl time.Duration) (resp rueidis.RedisResult) {
-	op := o.opNameResolver.OpName(ctx, rueidis.Completed(cmd))
-	defer o.recordDuration(ctx, op, time.Now())
-
-	ctx, span := o.start(ctx, op, sum(cmd.Commands()))
-	if o.dbStmtFunc != nil {
-		span.SetAttributes(dbstmt.String(o.dbStmtFunc(cmd.Commands())))
-	}
-
-	resp = o.client.DoCache(ctx, cmd, ttl)
-	o.recordCacheHitMiss(ctx, resp)
-	o.end(span, resp.Error())
-	o.recordError(ctx, op, resp.Error())
-	return
+	_ = "STUB: not implemented"
+	return *new(rueidis.RedisResult)
 }
 
 func (o *otelclient) DoMultiCache(ctx context.Context, multi ...rueidis.CacheableTTL) (resps []rueidis.RedisResult) {
-	op := o.opNameResolver.MultiCacheableOpName(ctx, multi)
-	defer o.recordDuration(ctx, op, time.Now())
-
-	ctx, span := o.start(ctx, op, multiCacheableSum(multi))
-	resps = o.client.DoMultiCache(ctx, multi...)
-	for _, resp := range resps {
-		o.recordCacheHitMiss(ctx, resp)
-	}
-	err := firstError(resps)
-	o.end(span, err)
-	o.recordError(ctx, op, err)
-	return
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func (o *otelclient) Dedicated(fn func(rueidis.DedicatedClient) error) (err error) {
-	return o.client.Dedicated(func(client rueidis.DedicatedClient) error {
-		return fn(&dedicated{
-			client:         client,
-			sAttrs:         o.sAttrs,
-			tAttrs:         o.tAttrs,
-			tracer:         o.tracer,
-			dbStmtFunc:     o.dbStmtFunc,
-			commandMetrics: o.commandMetrics,
-		})
-	})
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func (o *otelclient) Dedicate() (rueidis.DedicatedClient, func()) {
-	client, cancel := o.client.Dedicate()
-	return &dedicated{
-		client:         client,
-		sAttrs:         o.sAttrs,
-		tAttrs:         o.tAttrs,
-		tracer:         o.tracer,
-		dbStmtFunc:     o.dbStmtFunc,
-		commandMetrics: o.commandMetrics,
-	}, cancel
+	_ = "STUB: not implemented"
+	return *new(rueidis.DedicatedClient), nil
 }
 
 func (o *otelclient) Receive(ctx context.Context, subscribe rueidis.Completed, fn func(msg rueidis.PubSubMessage)) (err error) {
-	op := o.opNameResolver.OpName(ctx, subscribe)
-	ctx, span := o.start(ctx, op, sum(subscribe.Commands()))
-
-	if o.dbStmtFunc != nil {
-		span.SetAttributes(dbstmt.String(o.dbStmtFunc(subscribe.Commands())))
-	}
-
-	err = o.client.Receive(ctx, subscribe, fn)
-	o.end(span, err)
-	return
+	_ = "STUB: not implemented"
+	return nil
 }
 
-func (o *otelclient) Nodes() map[string]rueidis.Client {
-	nodes := o.client.Nodes()
-	for addr, client := range nodes {
-		nodes[addr] = &otelclient{
-			client:          client,
-			meterProvider:   o.meterProvider,
-			tracerProvider:  o.tracerProvider,
-			tracer:          o.tracer,
-			meter:           o.meter,
-			cscMiss:         o.cscMiss,
-			cscHits:         o.cscHits,
-			sAttrs:          serverAttrs(addr),
-			tAttrs:          o.tAttrs,
-			histogramOption: o.histogramOption,
-			dbStmtFunc:      o.dbStmtFunc,
-			commandMetrics:  o.commandMetrics,
-		}
-	}
-	return nodes
-}
+func (o *otelclient) Nodes() map[string]rueidis.Client { _ = "STUB: not implemented"; return nil }
 
 func (o *otelclient) Mode() rueidis.ClientMode {
-	return o.client.Mode()
+	_ = "STUB: not implemented"
+	return *new(rueidis.ClientMode)
 }
 
-func (o *otelclient) Close() {
-	o.client.Close()
-}
+func (o *otelclient) Close() { _ = "STUB: not implemented"; return }
 
 func (o *otelclient) recordCacheHitMiss(ctx context.Context, resp rueidis.RedisResult) {
-	if resp.NonRedisError() != nil {
-		return
-	}
-
-	var opts *[]metric.AddOption
-	if labeler, ok := ctx.Value(labelerContextKey).(*Labeler); ok && len(labeler.attrs) != 0 {
-		opts = metricAddOptionPool.Get().(*[]metric.AddOption)
-		defer func() {
-			*opts = (*opts)[:0]
-			metricAddOptionPool.Put(opts)
-		}()
-
-		*opts = slices.Grow(*opts, len(o.addOpts)+1)
-		*opts = append(*opts, o.addOpts...)
-
-		labelerOpt := metric.WithAttributeSet(attribute.NewSet(labeler.attrs...))
-		*opts = append(*opts, labelerOpt)
-	} else {
-		opts = &o.addOpts
-	}
-
-	if resp.IsCacheHit() {
-		o.cscHits.Add(ctx, 1, *opts...)
-	} else {
-		o.cscMiss.Add(ctx, 1, *opts...)
-	}
+	_ = "STUB: not implemented"
+	return
 }
 
 var _ rueidis.DedicatedClient = (*dedicated)(nil)
@@ -437,125 +226,66 @@ type dedicated struct {
 	commandMetrics
 }
 
-func (d *dedicated) B() rueidis.Builder {
-	return d.client.B()
-}
+func (d *dedicated) B() rueidis.Builder { _ = "STUB: not implemented"; return *new(rueidis.Builder) }
 
 func (d *dedicated) Do(ctx context.Context, cmd rueidis.Completed) (resp rueidis.RedisResult) {
-	op := d.opNameResolver.OpName(ctx, cmd)
-	defer d.recordDuration(ctx, op, time.Now())
-
-	ctx, span := d.start(ctx, op, sum(cmd.Commands()))
-	if d.dbStmtFunc != nil {
-		span.SetAttributes(dbstmt.String(d.dbStmtFunc(cmd.Commands())))
-	}
-
-	resp = d.client.Do(ctx, cmd)
-	d.end(span, resp.Error())
-	d.recordError(ctx, op, resp.Error())
-	return
+	_ = "STUB: not implemented"
+	return *new(rueidis.RedisResult)
 }
 
 func (d *dedicated) DoMulti(ctx context.Context, multi ...rueidis.Completed) (resp []rueidis.RedisResult) {
-	op := d.opNameResolver.MultiOpName(ctx, multi)
-	defer d.recordDuration(ctx, op, time.Now())
-
-	ctx, span := d.start(ctx, op, multiSum(multi))
-	resp = d.client.DoMulti(ctx, multi...)
-	err := firstError(resp)
-	d.end(span, err)
-	d.recordError(ctx, op, err)
-	return
-}
-
-func (d *dedicated) Receive(ctx context.Context, subscribe rueidis.Completed, fn func(msg rueidis.PubSubMessage)) (err error) {
-	op := d.opNameResolver.OpName(ctx, subscribe)
-
-	ctx, span := d.start(ctx, op, sum(subscribe.Commands()))
-	if d.dbStmtFunc != nil {
-		span.SetAttributes(dbstmt.String(d.dbStmtFunc(subscribe.Commands())))
-	}
-
-	err = d.client.Receive(ctx, subscribe, fn)
-	d.end(span, err)
-	return
-}
-
-func (d *dedicated) SetPubSubHooks(hooks rueidis.PubSubHooks) <-chan error {
-	return d.client.SetPubSubHooks(hooks)
-}
-
-func (d *dedicated) SetOnInvalidations(fn func([]rueidis.RedisMessage)) <-chan error {
-	return d.client.SetOnInvalidations(fn)
-}
-
-func (d *dedicated) Close() {
-	d.client.Close()
-}
-
-func sum(s []string) (v int) {
-	for _, str := range s {
-		v += len(str)
-	}
-	return v
-}
-
-func firstError(s []rueidis.RedisResult) error {
-	for _, result := range s {
-		if err := result.Error(); err != nil && !rueidis.IsRedisNil(err) {
-			return err
-		}
-	}
+	_ = "STUB: not implemented"
 	return nil
 }
 
-func multiSum(multi rueidis.Commands) (v int) {
-	for _, cmd := range multi {
-		v += sum(cmd.Commands())
-	}
-	return v
+func (d *dedicated) Receive(ctx context.Context, subscribe rueidis.Completed, fn func(msg rueidis.PubSubMessage)) (err error) {
+	_ = "STUB: not implemented"
+	return nil
 }
 
-func multiCacheableSum(multi []rueidis.CacheableTTL) (v int) {
-	for _, cmd := range multi {
-		v += sum(cmd.Cmd.Commands())
-	}
-	return v
+func (d *dedicated) SetPubSubHooks(hooks rueidis.PubSubHooks) <-chan error {
+	_ = "STUB: not implemented"
+	return nil
 }
+
+func (d *dedicated) SetOnInvalidations(fn func([]rueidis.RedisMessage)) <-chan error {
+	_ = "STUB: not implemented"
+	return nil
+}
+
+func (d *dedicated) Close() { _ = "STUB: not implemented"; return }
+
+func sum(s []string) (v int) { _ = "STUB: not implemented"; return 0 }
+
+func firstError(s []rueidis.RedisResult) error { _ = "STUB: not implemented"; return nil }
+
+func multiSum(multi rueidis.Commands) (v int) { _ = "STUB: not implemented"; return 0 }
+
+func multiCacheableSum(multi []rueidis.CacheableTTL) (v int) { _ = "STUB: not implemented"; return 0 }
 
 func (o *otelclient) start(ctx context.Context, op string, size int) (context.Context, trace.Span) {
-	spanName := o.spanNameFormatter(ctx, op)
-	return startSpan(o.tracer, ctx, spanName, size, o.sAttrs, o.tAttrs)
+	_ = "STUB: not implemented"
+	return *new(context.Context), *new(trace.Span)
 }
 
-func (o *otelclient) end(span trace.Span, err error) {
-	endSpan(span, err)
-}
+func (o *otelclient) end(span trace.Span, err error) { _ = "STUB: not implemented"; return }
 
 func (d *dedicated) start(ctx context.Context, op string, size int) (context.Context, trace.Span) {
-	spanName := d.spanNameFormatter(ctx, op)
-	return startSpan(d.tracer, ctx, spanName, size, d.sAttrs, d.tAttrs)
+	_ = "STUB: not implemented"
+	return *new(context.Context), *new(trace.Span)
 }
 
-func (d *dedicated) end(span trace.Span, err error) {
-	endSpan(span, err)
-}
+func (d *dedicated) end(span trace.Span, err error) { _ = "STUB: not implemented"; return }
 
 func startSpan(tracer trace.Tracer, ctx context.Context, op string, size int, sAttrs trace.SpanStartEventOption, tAttrs trace.SpanStartEventOption) (context.Context, trace.Span) {
-	return tracer.Start(ctx, op, kind, attr(op, size), sAttrs, tAttrs)
+	_ = "STUB: not implemented"
+	return *new(context.Context), *new(trace.Span)
 }
 
-func endSpan(span trace.Span, err error) {
-	if err != nil && !rueidis.IsRedisNil(err) {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, err.Error())
-	} else {
-		span.SetStatus(codes.Ok, "")
-	}
-	span.End()
-}
+func endSpan(span trace.Span, err error) { _ = "STUB: not implemented"; return }
 
 // do not record the full db.statement to avoid collecting sensitive data
 func attr(op string, size int) trace.SpanStartEventOption {
-	return trace.WithAttributes(dbattr, attribute.String("db.operation", op), attribute.Int("db.stmt_size", size))
+	_ = "STUB: not implemented"
+	return *new(trace.SpanStartEventOption)
 }

@@ -3,7 +3,6 @@ package rueidislimiter
 import (
 	"context"
 	"errors"
-	"strconv"
 	"time"
 
 	"github.com/redis/rueidis"
@@ -51,114 +50,25 @@ type RateLimiterOption struct {
 }
 
 func NewRateLimiter(option RateLimiterOption) (RateLimiterClient, error) {
-	if option.Window <= 0 {
-		return nil, ErrInvalidWindow
-	}
-	if option.Limit <= 0 {
-		return nil, ErrInvalidLimit
-	}
-	if option.KeyPrefix == "" {
-		option.KeyPrefix = PlaceholderPrefix
-	}
-
-	rl := &rateLimiter{
-		defaultRateLimit: RateLimitOption{
-			limit:  int64(option.Limit),
-			window: option.Window,
-		},
-	}
-
-	var err error
-	if option.ClientBuilder != nil {
-		rl.client, err = option.ClientBuilder(option.ClientOption)
-	} else {
-		rl.client, err = rueidis.NewClient(option.ClientOption)
-	}
-	if err != nil {
-		return nil, err
-	}
-	rl.keyPrefix = option.KeyPrefix
-	return rl, nil
+	_ = "STUB: not implemented"
+	return *new(RateLimiterClient), nil
 }
 
-func (l *rateLimiter) Limit() int {
-	return int(l.defaultRateLimit.limit)
-}
+func (l *rateLimiter) Limit() int { _ = "STUB: not implemented"; return 0 }
 
 func (l *rateLimiter) Check(ctx context.Context, identifier string, options ...RateLimitOption) (Result, error) {
-	return l.AllowN(ctx, identifier, 0, options...)
+	_ = "STUB: not implemented"
+	return *new(Result), nil
 }
 
 func (l *rateLimiter) Allow(ctx context.Context, identifier string, options ...RateLimitOption) (Result, error) {
-	return l.AllowN(ctx, identifier, 1, options...)
+	_ = "STUB: not implemented"
+	return *new(Result), nil
 }
 
 func (l *rateLimiter) AllowN(ctx context.Context, identifier string, n int64, options ...RateLimitOption) (Result, error) {
-	if n < 0 {
-		return Result{}, ErrInvalidTokens
-	}
-	rl := l.defaultRateLimit
-	if len(options) > 0 {
-		rl = options[len(options)-1]
-	}
-
-	bufs := rateBuffersPool.Get(0, 128)
-	defer rateBuffersPool.Put(bufs)
-
-	now := time.Now().UTC()
-
-	offset := len(bufs.keyBuf)
-	bufs.keyBuf = append(bufs.keyBuf, l.keyPrefix...)
-	bufs.keyBuf = append(bufs.keyBuf, keyDelimOpen...)
-	bufs.keyBuf = append(bufs.keyBuf, identifier...)
-	bufs.keyBuf = append(bufs.keyBuf, keyDelimClose...)
-	key := rueidis.BinaryString(bufs.keyBuf[offset:])
-
-	offset = len(bufs.keyBuf)
-	bufs.keyBuf = append(bufs.keyBuf, key...)
-	bufs.keyBuf = append(bufs.keyBuf, ":ex"...)
-	expiresAtKey := rueidis.BinaryString(bufs.keyBuf[offset:])
-
-	offset = len(bufs.keyBuf)
-	bufs.keyBuf = strconv.AppendInt(bufs.keyBuf, n, 10)
-	arg1 := rueidis.BinaryString(bufs.keyBuf[offset:])
-
-	offset = len(bufs.keyBuf)
-	bufs.keyBuf = strconv.AppendInt(bufs.keyBuf, now.Add(rl.window).UnixMilli(), 10)
-	arg2 := rueidis.BinaryString(bufs.keyBuf[offset:])
-
-	offset = len(bufs.keyBuf)
-	bufs.keyBuf = strconv.AppendInt(bufs.keyBuf, now.UnixMilli(), 10)
-	arg3 := rueidis.BinaryString(bufs.keyBuf[offset:])
-
-	resp := rateLimitScript.Exec(ctx, l.client, []string{key, expiresAtKey}, []string{arg1, arg2, arg3})
-	if err := resp.Error(); err != nil {
-		return Result{}, err
-	}
-
-	arr, err := resp.ToArray()
-	if err != nil || len(arr) != 2 {
-		return Result{}, ErrInvalidResponse
-	}
-
-	current, err := arr[0].ToInt64()
-	if err != nil {
-		return Result{}, ErrInvalidResponse
-	}
-
-	resetAt, err := arr[1].ToInt64()
-	if err != nil {
-		return Result{}, ErrInvalidResponse
-	}
-
-	remaining := max(rl.limit-current, 0)
-	allowed := current <= rl.limit && (n > 0 || current < rl.limit)
-
-	return Result{
-		Allowed:   allowed,
-		Remaining: remaining,
-		ResetAtMs: resetAt,
-	}, nil
+	_ = "STUB: not implemented"
+	return *new(Result), nil
 }
 
 var rateLimitScript = rueidis.NewLuaScript(`

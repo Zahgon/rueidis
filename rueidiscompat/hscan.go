@@ -27,10 +27,7 @@
 package rueidiscompat
 
 import (
-	"errors"
-	"fmt"
 	"reflect"
-	"strconv"
 )
 
 // decoderFunc represents decoding functions for default built-in types.
@@ -79,151 +76,66 @@ var (
 )
 
 func Struct(dst interface{}) (StructValue, error) {
-	v := reflect.ValueOf(dst)
+	_ = "STUB: not implemented"
+	return *
 
 	// The destination to scan into should be a struct pointer.
-	if v.Kind() != reflect.Ptr || v.IsNil() {
-		return StructValue{}, fmt.Errorf("redis.Scan(non-pointer %T)", dst)
-	}
-
-	v = v.Elem()
-	if v.Kind() != reflect.Struct {
-		return StructValue{}, fmt.Errorf("redis.Scan(non-struct %T)", dst)
-	}
-
-	return StructValue{
-		spec:  globalStructMap.get(v.Type()),
-		value: v,
-	}, nil
+	new(StructValue), nil
 }
 
 // Scan scans the results from a key-value Redis map result set to a destination struct.
 // The Redis keys are matched to the struct's field with the `redis` tag.
 // NOTE: vals' element's underlying type should be string
 func Scan(dst interface{}, keys []string, vals []interface{}) error {
-	if len(keys) != len(vals) {
-		return errors.New("args should have the same number of keys and vals")
-	}
-
-	strct, err := Struct(dst)
-	if err != nil {
-		return err
-	}
-
-	// Iterate through the (key, value) sequence.
-	for i := 0; i < len(vals); i++ {
-		val, ok := vals[i].(string)
-		if !ok {
-			continue
-		}
-
-		if err := strct.Scan(keys[i], val); err != nil {
-			return err
-		}
-	}
-
+	_ = "STUB: not implemented"
 	return nil
 }
 
-func decodeBool(f reflect.Value, s string) error {
-	b, err := strconv.ParseBool(s)
-	if err != nil {
-		return err
-	}
-	f.SetBool(b)
-	return nil
-}
+// Iterate through the (key, value) sequence.
 
-func decodeInt8(f reflect.Value, s string) error {
-	return decodeNumber(f, s, 8)
-}
+func decodeBool(f reflect.Value, s string) error { _ = "STUB: not implemented"; return nil }
 
-func decodeInt16(f reflect.Value, s string) error {
-	return decodeNumber(f, s, 16)
-}
+func decodeInt8(f reflect.Value, s string) error { _ = "STUB: not implemented"; return nil }
 
-func decodeInt32(f reflect.Value, s string) error {
-	return decodeNumber(f, s, 32)
-}
+func decodeInt16(f reflect.Value, s string) error { _ = "STUB: not implemented"; return nil }
 
-func decodeInt64(f reflect.Value, s string) error {
-	return decodeNumber(f, s, 64)
-}
+func decodeInt32(f reflect.Value, s string) error { _ = "STUB: not implemented"; return nil }
 
-func decodeInt(f reflect.Value, s string) error {
-	return decodeNumber(f, s, 0)
-}
+func decodeInt64(f reflect.Value, s string) error { _ = "STUB: not implemented"; return nil }
+
+func decodeInt(f reflect.Value, s string) error { _ = "STUB: not implemented"; return nil }
 
 func decodeNumber(f reflect.Value, s string, bitSize int) error {
-	v, err := strconv.ParseInt(s, 10, bitSize)
-	if err != nil {
-		return err
-	}
-	f.SetInt(v)
+	_ = "STUB: not implemented"
 	return nil
 }
 
-func decodeUint8(f reflect.Value, s string) error {
-	return decodeUnsignedNumber(f, s, 8)
-}
+func decodeUint8(f reflect.Value, s string) error { _ = "STUB: not implemented"; return nil }
 
-func decodeUint16(f reflect.Value, s string) error {
-	return decodeUnsignedNumber(f, s, 16)
-}
+func decodeUint16(f reflect.Value, s string) error { _ = "STUB: not implemented"; return nil }
 
-func decodeUint32(f reflect.Value, s string) error {
-	return decodeUnsignedNumber(f, s, 32)
-}
+func decodeUint32(f reflect.Value, s string) error { _ = "STUB: not implemented"; return nil }
 
-func decodeUint64(f reflect.Value, s string) error {
-	return decodeUnsignedNumber(f, s, 64)
-}
+func decodeUint64(f reflect.Value, s string) error { _ = "STUB: not implemented"; return nil }
 
-func decodeUint(f reflect.Value, s string) error {
-	return decodeUnsignedNumber(f, s, 0)
-}
+func decodeUint(f reflect.Value, s string) error { _ = "STUB: not implemented"; return nil }
 
 func decodeUnsignedNumber(f reflect.Value, s string, bitSize int) error {
-	v, err := strconv.ParseUint(s, 10, bitSize)
-	if err != nil {
-		return err
-	}
-	f.SetUint(v)
+	_ = "STUB: not implemented"
 	return nil
 }
 
-func decodeFloat32(f reflect.Value, s string) error {
-	v, err := strconv.ParseFloat(s, 32)
-	if err != nil {
-		return err
-	}
-	f.SetFloat(v)
-	return nil
-}
+func decodeFloat32(f reflect.Value, s string) error { _ = "STUB: not implemented"; return nil }
 
 // although the default is float64, but we better define it.
-func decodeFloat64(f reflect.Value, s string) error {
-	v, err := strconv.ParseFloat(s, 64)
-	if err != nil {
-		return err
-	}
-	f.SetFloat(v)
-	return nil
-}
+func decodeFloat64(f reflect.Value, s string) error { _ = "STUB: not implemented"; return nil }
 
-func decodeString(f reflect.Value, s string) error {
-	f.SetString(s)
-	return nil
-}
+func decodeString(f reflect.Value, s string) error { _ = "STUB: not implemented"; return nil }
 
 func decodeSlice(f reflect.Value, s string) error {
+	_ = "STUB: not implemented"
 	// []byte slice ([]uint8).
-	if f.Type().Elem().Kind() == reflect.Uint8 {
-		f.SetBytes([]byte(s))
-	}
 	return nil
 }
 
-func decodeUnsupported(v reflect.Value, s string) error {
-	return fmt.Errorf("redis.Scan(unsupported %s)", v.Type())
-}
+func decodeUnsupported(v reflect.Value, s string) error { _ = "STUB: not implemented"; return nil }

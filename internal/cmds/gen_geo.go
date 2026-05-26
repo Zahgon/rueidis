@@ -2,3510 +2,2975 @@
 
 package cmds
 
-import "strconv"
-
 type Geoadd Incomplete
 
-func (b Builder) Geoadd() (c Geoadd) {
-	c = Geoadd{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "GEOADD")
-	return c
-}
+func (b Builder) Geoadd() (c Geoadd) { _ = "STUB: not implemented"; return *new(Geoadd) }
 
-func (c Geoadd) Key(key string) GeoaddKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (GeoaddKey)(c)
-}
+func (c Geoadd) Key(key string) GeoaddKey { _ = "STUB: not implemented"; return *new(GeoaddKey) }
 
 type GeoaddChangeCh Incomplete
 
 func (c GeoaddChangeCh) LongitudeLatitudeMember() GeoaddLongitudeLatitudeMember {
-	return (GeoaddLongitudeLatitudeMember)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoaddLongitudeLatitudeMember)
 }
 
 type GeoaddConditionNx Incomplete
 
 func (c GeoaddConditionNx) Ch() GeoaddChangeCh {
-	c.cs.s = append(c.cs.s, "CH")
-	return (GeoaddChangeCh)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoaddChangeCh)
 }
 
 func (c GeoaddConditionNx) LongitudeLatitudeMember() GeoaddLongitudeLatitudeMember {
-	return (GeoaddLongitudeLatitudeMember)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoaddLongitudeLatitudeMember)
 }
 
 type GeoaddConditionXx Incomplete
 
 func (c GeoaddConditionXx) Ch() GeoaddChangeCh {
-	c.cs.s = append(c.cs.s, "CH")
-	return (GeoaddChangeCh)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoaddChangeCh)
 }
 
 func (c GeoaddConditionXx) LongitudeLatitudeMember() GeoaddLongitudeLatitudeMember {
-	return (GeoaddLongitudeLatitudeMember)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoaddLongitudeLatitudeMember)
 }
 
 type GeoaddKey Incomplete
 
 func (c GeoaddKey) Nx() GeoaddConditionNx {
-	c.cs.s = append(c.cs.s, "NX")
-	return (GeoaddConditionNx)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoaddConditionNx)
 }
 
 func (c GeoaddKey) Xx() GeoaddConditionXx {
-	c.cs.s = append(c.cs.s, "XX")
-	return (GeoaddConditionXx)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoaddConditionXx)
 }
 
-func (c GeoaddKey) Ch() GeoaddChangeCh {
-	c.cs.s = append(c.cs.s, "CH")
-	return (GeoaddChangeCh)(c)
-}
+func (c GeoaddKey) Ch() GeoaddChangeCh { _ = "STUB: not implemented"; return *new(GeoaddChangeCh) }
 
 func (c GeoaddKey) LongitudeLatitudeMember() GeoaddLongitudeLatitudeMember {
-	return (GeoaddLongitudeLatitudeMember)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoaddLongitudeLatitudeMember)
 }
 
 type GeoaddLongitudeLatitudeMember Incomplete
 
 func (c GeoaddLongitudeLatitudeMember) LongitudeLatitudeMember(longitude float64, latitude float64, member string) GeoaddLongitudeLatitudeMember {
-	c.cs.s = append(c.cs.s, strconv.FormatFloat(longitude, 'f', -1, 64), strconv.FormatFloat(latitude, 'f', -1, 64), member)
-	return c
+	_ = "STUB: not implemented"
+	return *new(GeoaddLongitudeLatitudeMember)
 }
 
 func (c GeoaddLongitudeLatitudeMember) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type Geodist Incomplete
 
-func (b Builder) Geodist() (c Geodist) {
-	c = Geodist{cs: get(), ks: b.ks, cf: int16(readonly)}
-	c.cs.s = append(c.cs.s, "GEODIST")
-	return c
-}
+func (b Builder) Geodist() (c Geodist) { _ = "STUB: not implemented"; return *new(Geodist) }
 
-func (c Geodist) Key(key string) GeodistKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (GeodistKey)(c)
-}
+func (c Geodist) Key(key string) GeodistKey { _ = "STUB: not implemented"; return *new(GeodistKey) }
 
 type GeodistKey Incomplete
 
 func (c GeodistKey) Member1(member1 string) GeodistMember1 {
-	c.cs.s = append(c.cs.s, member1)
-	return (GeodistMember1)(c)
+	_ = "STUB: not implemented"
+	return *new(GeodistMember1)
 }
 
 type GeodistMember1 Incomplete
 
 func (c GeodistMember1) Member2(member2 string) GeodistMember2 {
-	c.cs.s = append(c.cs.s, member2)
-	return (GeodistMember2)(c)
+	_ = "STUB: not implemented"
+	return *new(GeodistMember2)
 }
 
 type GeodistMember2 Incomplete
 
-func (c GeodistMember2) M() GeodistUnitM {
-	c.cs.s = append(c.cs.s, "m")
-	return (GeodistUnitM)(c)
-}
+func (c GeodistMember2) M() GeodistUnitM { _ = "STUB: not implemented"; return *new(GeodistUnitM) }
 
-func (c GeodistMember2) Km() GeodistUnitKm {
-	c.cs.s = append(c.cs.s, "km")
-	return (GeodistUnitKm)(c)
-}
+func (c GeodistMember2) Km() GeodistUnitKm { _ = "STUB: not implemented"; return *new(GeodistUnitKm) }
 
-func (c GeodistMember2) Ft() GeodistUnitFt {
-	c.cs.s = append(c.cs.s, "ft")
-	return (GeodistUnitFt)(c)
-}
+func (c GeodistMember2) Ft() GeodistUnitFt { _ = "STUB: not implemented"; return *new(GeodistUnitFt) }
 
-func (c GeodistMember2) Mi() GeodistUnitMi {
-	c.cs.s = append(c.cs.s, "mi")
-	return (GeodistUnitMi)(c)
-}
+func (c GeodistMember2) Mi() GeodistUnitMi { _ = "STUB: not implemented"; return *new(GeodistUnitMi) }
 
-func (c GeodistMember2) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c GeodistMember2) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c GeodistMember2) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c GeodistMember2) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type GeodistUnitFt Incomplete
 
-func (c GeodistUnitFt) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c GeodistUnitFt) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c GeodistUnitFt) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c GeodistUnitFt) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type GeodistUnitKm Incomplete
 
-func (c GeodistUnitKm) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c GeodistUnitKm) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c GeodistUnitKm) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c GeodistUnitKm) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type GeodistUnitM Incomplete
 
-func (c GeodistUnitM) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c GeodistUnitM) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c GeodistUnitM) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c GeodistUnitM) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type GeodistUnitMi Incomplete
 
-func (c GeodistUnitMi) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c GeodistUnitMi) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c GeodistUnitMi) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c GeodistUnitMi) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type Geohash Incomplete
 
-func (b Builder) Geohash() (c Geohash) {
-	c = Geohash{cs: get(), ks: b.ks, cf: int16(readonly)}
-	c.cs.s = append(c.cs.s, "GEOHASH")
-	return c
-}
+func (b Builder) Geohash() (c Geohash) { _ = "STUB: not implemented"; return *new(Geohash) }
 
-func (c Geohash) Key(key string) GeohashKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (GeohashKey)(c)
-}
+func (c Geohash) Key(key string) GeohashKey { _ = "STUB: not implemented"; return *new(GeohashKey) }
 
 type GeohashKey Incomplete
 
 func (c GeohashKey) Member(member ...string) GeohashMember {
-	c.cs.s = append(c.cs.s, member...)
-	return (GeohashMember)(c)
+	_ = "STUB: not implemented"
+	return *new(GeohashMember)
 }
 
-func (c GeohashKey) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c GeohashKey) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c GeohashKey) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c GeohashKey) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type GeohashMember Incomplete
 
 func (c GeohashMember) Member(member ...string) GeohashMember {
-	c.cs.s = append(c.cs.s, member...)
-	return c
+	_ = "STUB: not implemented"
+	return *new(GeohashMember)
 }
 
-func (c GeohashMember) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c GeohashMember) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c GeohashMember) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c GeohashMember) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type Geopos Incomplete
 
-func (b Builder) Geopos() (c Geopos) {
-	c = Geopos{cs: get(), ks: b.ks, cf: int16(readonly)}
-	c.cs.s = append(c.cs.s, "GEOPOS")
-	return c
-}
+func (b Builder) Geopos() (c Geopos) { _ = "STUB: not implemented"; return *new(Geopos) }
 
-func (c Geopos) Key(key string) GeoposKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (GeoposKey)(c)
-}
+func (c Geopos) Key(key string) GeoposKey { _ = "STUB: not implemented"; return *new(GeoposKey) }
 
 type GeoposKey Incomplete
 
 func (c GeoposKey) Member(member ...string) GeoposMember {
-	c.cs.s = append(c.cs.s, member...)
-	return (GeoposMember)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoposMember)
 }
 
-func (c GeoposKey) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c GeoposKey) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c GeoposKey) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c GeoposKey) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type GeoposMember Incomplete
 
 func (c GeoposMember) Member(member ...string) GeoposMember {
-	c.cs.s = append(c.cs.s, member...)
-	return c
+	_ = "STUB: not implemented"
+	return *new(GeoposMember)
 }
 
-func (c GeoposMember) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c GeoposMember) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c GeoposMember) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c GeoposMember) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type Georadius Incomplete
 
-func (b Builder) Georadius() (c Georadius) {
-	c = Georadius{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "GEORADIUS")
-	return c
-}
+func (b Builder) Georadius() (c Georadius) { _ = "STUB: not implemented"; return *new(Georadius) }
 
 func (c Georadius) Key(key string) GeoradiusKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (GeoradiusKey)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusKey)
 }
 
 type GeoradiusCountAny Incomplete
 
 func (c GeoradiusCountAny) Asc() GeoradiusOrderAsc {
-	c.cs.s = append(c.cs.s, "ASC")
-	return (GeoradiusOrderAsc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusOrderAsc)
 }
 
 func (c GeoradiusCountAny) Desc() GeoradiusOrderDesc {
-	c.cs.s = append(c.cs.s, "DESC")
-	return (GeoradiusOrderDesc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusOrderDesc)
 }
 
 func (c GeoradiusCountAny) Store(key string) GeoradiusStoreKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, "STORE", key)
-	return (GeoradiusStoreKey)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusStoreKey)
 }
 
 func (c GeoradiusCountAny) Storedist(key string) GeoradiusStoredistKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, "STOREDIST", key)
-	return (GeoradiusStoredistKey)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusStoredistKey)
 }
 
-func (c GeoradiusCountAny) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c GeoradiusCountAny) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type GeoradiusCountCount Incomplete
 
 func (c GeoradiusCountCount) Any() GeoradiusCountAny {
-	c.cs.s = append(c.cs.s, "ANY")
-	return (GeoradiusCountAny)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusCountAny)
 }
 
 func (c GeoradiusCountCount) Asc() GeoradiusOrderAsc {
-	c.cs.s = append(c.cs.s, "ASC")
-	return (GeoradiusOrderAsc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusOrderAsc)
 }
 
 func (c GeoradiusCountCount) Desc() GeoradiusOrderDesc {
-	c.cs.s = append(c.cs.s, "DESC")
-	return (GeoradiusOrderDesc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusOrderDesc)
 }
 
 func (c GeoradiusCountCount) Store(key string) GeoradiusStoreKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, "STORE", key)
-	return (GeoradiusStoreKey)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusStoreKey)
 }
 
 func (c GeoradiusCountCount) Storedist(key string) GeoradiusStoredistKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, "STOREDIST", key)
-	return (GeoradiusStoredistKey)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusStoredistKey)
 }
 
-func (c GeoradiusCountCount) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c GeoradiusCountCount) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type GeoradiusKey Incomplete
 
 func (c GeoradiusKey) Longitude(longitude float64) GeoradiusLongitude {
-	c.cs.s = append(c.cs.s, strconv.FormatFloat(longitude, 'f', -1, 64))
-	return (GeoradiusLongitude)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusLongitude)
 }
 
 type GeoradiusLatitude Incomplete
 
 func (c GeoradiusLatitude) Radius(radius float64) GeoradiusRadius {
-	c.cs.s = append(c.cs.s, strconv.FormatFloat(radius, 'f', -1, 64))
-	return (GeoradiusRadius)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusRadius)
 }
 
 type GeoradiusLongitude Incomplete
 
 func (c GeoradiusLongitude) Latitude(latitude float64) GeoradiusLatitude {
-	c.cs.s = append(c.cs.s, strconv.FormatFloat(latitude, 'f', -1, 64))
-	return (GeoradiusLatitude)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusLatitude)
 }
 
 type GeoradiusOrderAsc Incomplete
 
 func (c GeoradiusOrderAsc) Store(key string) GeoradiusStoreKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, "STORE", key)
-	return (GeoradiusStoreKey)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusStoreKey)
 }
 
 func (c GeoradiusOrderAsc) Storedist(key string) GeoradiusStoredistKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, "STOREDIST", key)
-	return (GeoradiusStoredistKey)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusStoredistKey)
 }
 
-func (c GeoradiusOrderAsc) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c GeoradiusOrderAsc) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type GeoradiusOrderDesc Incomplete
 
 func (c GeoradiusOrderDesc) Store(key string) GeoradiusStoreKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, "STORE", key)
-	return (GeoradiusStoreKey)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusStoreKey)
 }
 
 func (c GeoradiusOrderDesc) Storedist(key string) GeoradiusStoredistKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, "STOREDIST", key)
-	return (GeoradiusStoredistKey)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusStoredistKey)
 }
 
-func (c GeoradiusOrderDesc) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c GeoradiusOrderDesc) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type GeoradiusRadius Incomplete
 
-func (c GeoradiusRadius) M() GeoradiusUnitM {
-	c.cs.s = append(c.cs.s, "m")
-	return (GeoradiusUnitM)(c)
-}
+func (c GeoradiusRadius) M() GeoradiusUnitM { _ = "STUB: not implemented"; return *new(GeoradiusUnitM) }
 
 func (c GeoradiusRadius) Km() GeoradiusUnitKm {
-	c.cs.s = append(c.cs.s, "km")
-	return (GeoradiusUnitKm)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusUnitKm)
 }
 
 func (c GeoradiusRadius) Ft() GeoradiusUnitFt {
-	c.cs.s = append(c.cs.s, "ft")
-	return (GeoradiusUnitFt)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusUnitFt)
 }
 
 func (c GeoradiusRadius) Mi() GeoradiusUnitMi {
-	c.cs.s = append(c.cs.s, "mi")
-	return (GeoradiusUnitMi)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusUnitMi)
 }
 
 type GeoradiusRo Incomplete
 
-func (b Builder) GeoradiusRo() (c GeoradiusRo) {
-	c = GeoradiusRo{cs: get(), ks: b.ks, cf: int16(readonly)}
-	c.cs.s = append(c.cs.s, "GEORADIUS_RO")
-	return c
-}
+func (b Builder) GeoradiusRo() (c GeoradiusRo) { _ = "STUB: not implemented"; return *new(GeoradiusRo) }
 
 func (c GeoradiusRo) Key(key string) GeoradiusRoKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (GeoradiusRoKey)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusRoKey)
 }
 
 type GeoradiusRoCountAny Incomplete
 
 func (c GeoradiusRoCountAny) Asc() GeoradiusRoOrderAsc {
-	c.cs.s = append(c.cs.s, "ASC")
-	return (GeoradiusRoOrderAsc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusRoOrderAsc)
 }
 
 func (c GeoradiusRoCountAny) Desc() GeoradiusRoOrderDesc {
-	c.cs.s = append(c.cs.s, "DESC")
-	return (GeoradiusRoOrderDesc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusRoOrderDesc)
 }
 
-func (c GeoradiusRoCountAny) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c GeoradiusRoCountAny) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c GeoradiusRoCountAny) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c GeoradiusRoCountAny) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type GeoradiusRoCountCount Incomplete
 
 func (c GeoradiusRoCountCount) Any() GeoradiusRoCountAny {
-	c.cs.s = append(c.cs.s, "ANY")
-	return (GeoradiusRoCountAny)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusRoCountAny)
 }
 
 func (c GeoradiusRoCountCount) Asc() GeoradiusRoOrderAsc {
-	c.cs.s = append(c.cs.s, "ASC")
-	return (GeoradiusRoOrderAsc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusRoOrderAsc)
 }
 
 func (c GeoradiusRoCountCount) Desc() GeoradiusRoOrderDesc {
-	c.cs.s = append(c.cs.s, "DESC")
-	return (GeoradiusRoOrderDesc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusRoOrderDesc)
 }
 
-func (c GeoradiusRoCountCount) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c GeoradiusRoCountCount) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c GeoradiusRoCountCount) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c GeoradiusRoCountCount) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type GeoradiusRoKey Incomplete
 
 func (c GeoradiusRoKey) Longitude(longitude float64) GeoradiusRoLongitude {
-	c.cs.s = append(c.cs.s, strconv.FormatFloat(longitude, 'f', -1, 64))
-	return (GeoradiusRoLongitude)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusRoLongitude)
 }
 
 type GeoradiusRoLatitude Incomplete
 
 func (c GeoradiusRoLatitude) Radius(radius float64) GeoradiusRoRadius {
-	c.cs.s = append(c.cs.s, strconv.FormatFloat(radius, 'f', -1, 64))
-	return (GeoradiusRoRadius)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusRoRadius)
 }
 
 type GeoradiusRoLongitude Incomplete
 
 func (c GeoradiusRoLongitude) Latitude(latitude float64) GeoradiusRoLatitude {
-	c.cs.s = append(c.cs.s, strconv.FormatFloat(latitude, 'f', -1, 64))
-	return (GeoradiusRoLatitude)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusRoLatitude)
 }
 
 type GeoradiusRoOrderAsc Incomplete
 
-func (c GeoradiusRoOrderAsc) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c GeoradiusRoOrderAsc) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c GeoradiusRoOrderAsc) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c GeoradiusRoOrderAsc) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type GeoradiusRoOrderDesc Incomplete
 
-func (c GeoradiusRoOrderDesc) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c GeoradiusRoOrderDesc) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c GeoradiusRoOrderDesc) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c GeoradiusRoOrderDesc) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type GeoradiusRoRadius Incomplete
 
 func (c GeoradiusRoRadius) M() GeoradiusRoUnitM {
-	c.cs.s = append(c.cs.s, "m")
-	return (GeoradiusRoUnitM)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusRoUnitM)
 }
 
 func (c GeoradiusRoRadius) Km() GeoradiusRoUnitKm {
-	c.cs.s = append(c.cs.s, "km")
-	return (GeoradiusRoUnitKm)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusRoUnitKm)
 }
 
 func (c GeoradiusRoRadius) Ft() GeoradiusRoUnitFt {
-	c.cs.s = append(c.cs.s, "ft")
-	return (GeoradiusRoUnitFt)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusRoUnitFt)
 }
 
 func (c GeoradiusRoRadius) Mi() GeoradiusRoUnitMi {
-	c.cs.s = append(c.cs.s, "mi")
-	return (GeoradiusRoUnitMi)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusRoUnitMi)
 }
 
 type GeoradiusRoUnitFt Incomplete
 
 func (c GeoradiusRoUnitFt) Withcoord() GeoradiusRoWithcoord {
-	c.cs.s = append(c.cs.s, "WITHCOORD")
-	return (GeoradiusRoWithcoord)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusRoWithcoord)
 }
 
 func (c GeoradiusRoUnitFt) Withdist() GeoradiusRoWithdist {
-	c.cs.s = append(c.cs.s, "WITHDIST")
-	return (GeoradiusRoWithdist)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusRoWithdist)
 }
 
 func (c GeoradiusRoUnitFt) Withhash() GeoradiusRoWithhash {
-	c.cs.s = append(c.cs.s, "WITHHASH")
-	return (GeoradiusRoWithhash)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusRoWithhash)
 }
 
 func (c GeoradiusRoUnitFt) Count(count int64) GeoradiusRoCountCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(count, 10))
-	return (GeoradiusRoCountCount)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusRoCountCount)
 }
 
 func (c GeoradiusRoUnitFt) Asc() GeoradiusRoOrderAsc {
-	c.cs.s = append(c.cs.s, "ASC")
-	return (GeoradiusRoOrderAsc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusRoOrderAsc)
 }
 
 func (c GeoradiusRoUnitFt) Desc() GeoradiusRoOrderDesc {
-	c.cs.s = append(c.cs.s, "DESC")
-	return (GeoradiusRoOrderDesc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusRoOrderDesc)
 }
 
-func (c GeoradiusRoUnitFt) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c GeoradiusRoUnitFt) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c GeoradiusRoUnitFt) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c GeoradiusRoUnitFt) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type GeoradiusRoUnitKm Incomplete
 
 func (c GeoradiusRoUnitKm) Withcoord() GeoradiusRoWithcoord {
-	c.cs.s = append(c.cs.s, "WITHCOORD")
-	return (GeoradiusRoWithcoord)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusRoWithcoord)
 }
 
 func (c GeoradiusRoUnitKm) Withdist() GeoradiusRoWithdist {
-	c.cs.s = append(c.cs.s, "WITHDIST")
-	return (GeoradiusRoWithdist)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusRoWithdist)
 }
 
 func (c GeoradiusRoUnitKm) Withhash() GeoradiusRoWithhash {
-	c.cs.s = append(c.cs.s, "WITHHASH")
-	return (GeoradiusRoWithhash)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusRoWithhash)
 }
 
 func (c GeoradiusRoUnitKm) Count(count int64) GeoradiusRoCountCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(count, 10))
-	return (GeoradiusRoCountCount)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusRoCountCount)
 }
 
 func (c GeoradiusRoUnitKm) Asc() GeoradiusRoOrderAsc {
-	c.cs.s = append(c.cs.s, "ASC")
-	return (GeoradiusRoOrderAsc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusRoOrderAsc)
 }
 
 func (c GeoradiusRoUnitKm) Desc() GeoradiusRoOrderDesc {
-	c.cs.s = append(c.cs.s, "DESC")
-	return (GeoradiusRoOrderDesc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusRoOrderDesc)
 }
 
-func (c GeoradiusRoUnitKm) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c GeoradiusRoUnitKm) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c GeoradiusRoUnitKm) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c GeoradiusRoUnitKm) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type GeoradiusRoUnitM Incomplete
 
 func (c GeoradiusRoUnitM) Withcoord() GeoradiusRoWithcoord {
-	c.cs.s = append(c.cs.s, "WITHCOORD")
-	return (GeoradiusRoWithcoord)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusRoWithcoord)
 }
 
 func (c GeoradiusRoUnitM) Withdist() GeoradiusRoWithdist {
-	c.cs.s = append(c.cs.s, "WITHDIST")
-	return (GeoradiusRoWithdist)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusRoWithdist)
 }
 
 func (c GeoradiusRoUnitM) Withhash() GeoradiusRoWithhash {
-	c.cs.s = append(c.cs.s, "WITHHASH")
-	return (GeoradiusRoWithhash)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusRoWithhash)
 }
 
 func (c GeoradiusRoUnitM) Count(count int64) GeoradiusRoCountCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(count, 10))
-	return (GeoradiusRoCountCount)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusRoCountCount)
 }
 
 func (c GeoradiusRoUnitM) Asc() GeoradiusRoOrderAsc {
-	c.cs.s = append(c.cs.s, "ASC")
-	return (GeoradiusRoOrderAsc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusRoOrderAsc)
 }
 
 func (c GeoradiusRoUnitM) Desc() GeoradiusRoOrderDesc {
-	c.cs.s = append(c.cs.s, "DESC")
-	return (GeoradiusRoOrderDesc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusRoOrderDesc)
 }
 
-func (c GeoradiusRoUnitM) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c GeoradiusRoUnitM) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c GeoradiusRoUnitM) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c GeoradiusRoUnitM) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type GeoradiusRoUnitMi Incomplete
 
 func (c GeoradiusRoUnitMi) Withcoord() GeoradiusRoWithcoord {
-	c.cs.s = append(c.cs.s, "WITHCOORD")
-	return (GeoradiusRoWithcoord)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusRoWithcoord)
 }
 
 func (c GeoradiusRoUnitMi) Withdist() GeoradiusRoWithdist {
-	c.cs.s = append(c.cs.s, "WITHDIST")
-	return (GeoradiusRoWithdist)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusRoWithdist)
 }
 
 func (c GeoradiusRoUnitMi) Withhash() GeoradiusRoWithhash {
-	c.cs.s = append(c.cs.s, "WITHHASH")
-	return (GeoradiusRoWithhash)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusRoWithhash)
 }
 
 func (c GeoradiusRoUnitMi) Count(count int64) GeoradiusRoCountCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(count, 10))
-	return (GeoradiusRoCountCount)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusRoCountCount)
 }
 
 func (c GeoradiusRoUnitMi) Asc() GeoradiusRoOrderAsc {
-	c.cs.s = append(c.cs.s, "ASC")
-	return (GeoradiusRoOrderAsc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusRoOrderAsc)
 }
 
 func (c GeoradiusRoUnitMi) Desc() GeoradiusRoOrderDesc {
-	c.cs.s = append(c.cs.s, "DESC")
-	return (GeoradiusRoOrderDesc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusRoOrderDesc)
 }
 
-func (c GeoradiusRoUnitMi) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c GeoradiusRoUnitMi) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c GeoradiusRoUnitMi) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c GeoradiusRoUnitMi) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type GeoradiusRoWithcoord Incomplete
 
 func (c GeoradiusRoWithcoord) Withdist() GeoradiusRoWithdist {
-	c.cs.s = append(c.cs.s, "WITHDIST")
-	return (GeoradiusRoWithdist)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusRoWithdist)
 }
 
 func (c GeoradiusRoWithcoord) Withhash() GeoradiusRoWithhash {
-	c.cs.s = append(c.cs.s, "WITHHASH")
-	return (GeoradiusRoWithhash)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusRoWithhash)
 }
 
 func (c GeoradiusRoWithcoord) Count(count int64) GeoradiusRoCountCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(count, 10))
-	return (GeoradiusRoCountCount)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusRoCountCount)
 }
 
 func (c GeoradiusRoWithcoord) Asc() GeoradiusRoOrderAsc {
-	c.cs.s = append(c.cs.s, "ASC")
-	return (GeoradiusRoOrderAsc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusRoOrderAsc)
 }
 
 func (c GeoradiusRoWithcoord) Desc() GeoradiusRoOrderDesc {
-	c.cs.s = append(c.cs.s, "DESC")
-	return (GeoradiusRoOrderDesc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusRoOrderDesc)
 }
 
-func (c GeoradiusRoWithcoord) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c GeoradiusRoWithcoord) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c GeoradiusRoWithcoord) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c GeoradiusRoWithcoord) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type GeoradiusRoWithdist Incomplete
 
 func (c GeoradiusRoWithdist) Withhash() GeoradiusRoWithhash {
-	c.cs.s = append(c.cs.s, "WITHHASH")
-	return (GeoradiusRoWithhash)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusRoWithhash)
 }
 
 func (c GeoradiusRoWithdist) Count(count int64) GeoradiusRoCountCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(count, 10))
-	return (GeoradiusRoCountCount)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusRoCountCount)
 }
 
 func (c GeoradiusRoWithdist) Asc() GeoradiusRoOrderAsc {
-	c.cs.s = append(c.cs.s, "ASC")
-	return (GeoradiusRoOrderAsc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusRoOrderAsc)
 }
 
 func (c GeoradiusRoWithdist) Desc() GeoradiusRoOrderDesc {
-	c.cs.s = append(c.cs.s, "DESC")
-	return (GeoradiusRoOrderDesc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusRoOrderDesc)
 }
 
-func (c GeoradiusRoWithdist) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c GeoradiusRoWithdist) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c GeoradiusRoWithdist) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c GeoradiusRoWithdist) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type GeoradiusRoWithhash Incomplete
 
 func (c GeoradiusRoWithhash) Count(count int64) GeoradiusRoCountCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(count, 10))
-	return (GeoradiusRoCountCount)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusRoCountCount)
 }
 
 func (c GeoradiusRoWithhash) Asc() GeoradiusRoOrderAsc {
-	c.cs.s = append(c.cs.s, "ASC")
-	return (GeoradiusRoOrderAsc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusRoOrderAsc)
 }
 
 func (c GeoradiusRoWithhash) Desc() GeoradiusRoOrderDesc {
-	c.cs.s = append(c.cs.s, "DESC")
-	return (GeoradiusRoOrderDesc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusRoOrderDesc)
 }
 
-func (c GeoradiusRoWithhash) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c GeoradiusRoWithhash) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c GeoradiusRoWithhash) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c GeoradiusRoWithhash) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type GeoradiusStoreKey Incomplete
 
-func (c GeoradiusStoreKey) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c GeoradiusStoreKey) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type GeoradiusStoredistKey Incomplete
 
-func (c GeoradiusStoredistKey) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c GeoradiusStoredistKey) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type GeoradiusUnitFt Incomplete
 
 func (c GeoradiusUnitFt) Withcoord() GeoradiusWithcoord {
-	c.cs.s = append(c.cs.s, "WITHCOORD")
-	return (GeoradiusWithcoord)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusWithcoord)
 }
 
 func (c GeoradiusUnitFt) Withdist() GeoradiusWithdist {
-	c.cs.s = append(c.cs.s, "WITHDIST")
-	return (GeoradiusWithdist)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusWithdist)
 }
 
 func (c GeoradiusUnitFt) Withhash() GeoradiusWithhash {
-	c.cs.s = append(c.cs.s, "WITHHASH")
-	return (GeoradiusWithhash)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusWithhash)
 }
 
 func (c GeoradiusUnitFt) Count(count int64) GeoradiusCountCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(count, 10))
-	return (GeoradiusCountCount)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusCountCount)
 }
 
 func (c GeoradiusUnitFt) Asc() GeoradiusOrderAsc {
-	c.cs.s = append(c.cs.s, "ASC")
-	return (GeoradiusOrderAsc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusOrderAsc)
 }
 
 func (c GeoradiusUnitFt) Desc() GeoradiusOrderDesc {
-	c.cs.s = append(c.cs.s, "DESC")
-	return (GeoradiusOrderDesc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusOrderDesc)
 }
 
 func (c GeoradiusUnitFt) Store(key string) GeoradiusStoreKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, "STORE", key)
-	return (GeoradiusStoreKey)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusStoreKey)
 }
 
 func (c GeoradiusUnitFt) Storedist(key string) GeoradiusStoredistKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, "STOREDIST", key)
-	return (GeoradiusStoredistKey)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusStoredistKey)
 }
 
-func (c GeoradiusUnitFt) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c GeoradiusUnitFt) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type GeoradiusUnitKm Incomplete
 
 func (c GeoradiusUnitKm) Withcoord() GeoradiusWithcoord {
-	c.cs.s = append(c.cs.s, "WITHCOORD")
-	return (GeoradiusWithcoord)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusWithcoord)
 }
 
 func (c GeoradiusUnitKm) Withdist() GeoradiusWithdist {
-	c.cs.s = append(c.cs.s, "WITHDIST")
-	return (GeoradiusWithdist)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusWithdist)
 }
 
 func (c GeoradiusUnitKm) Withhash() GeoradiusWithhash {
-	c.cs.s = append(c.cs.s, "WITHHASH")
-	return (GeoradiusWithhash)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusWithhash)
 }
 
 func (c GeoradiusUnitKm) Count(count int64) GeoradiusCountCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(count, 10))
-	return (GeoradiusCountCount)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusCountCount)
 }
 
 func (c GeoradiusUnitKm) Asc() GeoradiusOrderAsc {
-	c.cs.s = append(c.cs.s, "ASC")
-	return (GeoradiusOrderAsc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusOrderAsc)
 }
 
 func (c GeoradiusUnitKm) Desc() GeoradiusOrderDesc {
-	c.cs.s = append(c.cs.s, "DESC")
-	return (GeoradiusOrderDesc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusOrderDesc)
 }
 
 func (c GeoradiusUnitKm) Store(key string) GeoradiusStoreKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, "STORE", key)
-	return (GeoradiusStoreKey)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusStoreKey)
 }
 
 func (c GeoradiusUnitKm) Storedist(key string) GeoradiusStoredistKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, "STOREDIST", key)
-	return (GeoradiusStoredistKey)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusStoredistKey)
 }
 
-func (c GeoradiusUnitKm) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c GeoradiusUnitKm) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type GeoradiusUnitM Incomplete
 
 func (c GeoradiusUnitM) Withcoord() GeoradiusWithcoord {
-	c.cs.s = append(c.cs.s, "WITHCOORD")
-	return (GeoradiusWithcoord)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusWithcoord)
 }
 
 func (c GeoradiusUnitM) Withdist() GeoradiusWithdist {
-	c.cs.s = append(c.cs.s, "WITHDIST")
-	return (GeoradiusWithdist)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusWithdist)
 }
 
 func (c GeoradiusUnitM) Withhash() GeoradiusWithhash {
-	c.cs.s = append(c.cs.s, "WITHHASH")
-	return (GeoradiusWithhash)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusWithhash)
 }
 
 func (c GeoradiusUnitM) Count(count int64) GeoradiusCountCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(count, 10))
-	return (GeoradiusCountCount)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusCountCount)
 }
 
 func (c GeoradiusUnitM) Asc() GeoradiusOrderAsc {
-	c.cs.s = append(c.cs.s, "ASC")
-	return (GeoradiusOrderAsc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusOrderAsc)
 }
 
 func (c GeoradiusUnitM) Desc() GeoradiusOrderDesc {
-	c.cs.s = append(c.cs.s, "DESC")
-	return (GeoradiusOrderDesc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusOrderDesc)
 }
 
 func (c GeoradiusUnitM) Store(key string) GeoradiusStoreKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, "STORE", key)
-	return (GeoradiusStoreKey)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusStoreKey)
 }
 
 func (c GeoradiusUnitM) Storedist(key string) GeoradiusStoredistKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, "STOREDIST", key)
-	return (GeoradiusStoredistKey)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusStoredistKey)
 }
 
-func (c GeoradiusUnitM) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c GeoradiusUnitM) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type GeoradiusUnitMi Incomplete
 
 func (c GeoradiusUnitMi) Withcoord() GeoradiusWithcoord {
-	c.cs.s = append(c.cs.s, "WITHCOORD")
-	return (GeoradiusWithcoord)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusWithcoord)
 }
 
 func (c GeoradiusUnitMi) Withdist() GeoradiusWithdist {
-	c.cs.s = append(c.cs.s, "WITHDIST")
-	return (GeoradiusWithdist)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusWithdist)
 }
 
 func (c GeoradiusUnitMi) Withhash() GeoradiusWithhash {
-	c.cs.s = append(c.cs.s, "WITHHASH")
-	return (GeoradiusWithhash)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusWithhash)
 }
 
 func (c GeoradiusUnitMi) Count(count int64) GeoradiusCountCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(count, 10))
-	return (GeoradiusCountCount)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusCountCount)
 }
 
 func (c GeoradiusUnitMi) Asc() GeoradiusOrderAsc {
-	c.cs.s = append(c.cs.s, "ASC")
-	return (GeoradiusOrderAsc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusOrderAsc)
 }
 
 func (c GeoradiusUnitMi) Desc() GeoradiusOrderDesc {
-	c.cs.s = append(c.cs.s, "DESC")
-	return (GeoradiusOrderDesc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusOrderDesc)
 }
 
 func (c GeoradiusUnitMi) Store(key string) GeoradiusStoreKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, "STORE", key)
-	return (GeoradiusStoreKey)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusStoreKey)
 }
 
 func (c GeoradiusUnitMi) Storedist(key string) GeoradiusStoredistKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, "STOREDIST", key)
-	return (GeoradiusStoredistKey)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusStoredistKey)
 }
 
-func (c GeoradiusUnitMi) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c GeoradiusUnitMi) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type GeoradiusWithcoord Incomplete
 
 func (c GeoradiusWithcoord) Withdist() GeoradiusWithdist {
-	c.cs.s = append(c.cs.s, "WITHDIST")
-	return (GeoradiusWithdist)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusWithdist)
 }
 
 func (c GeoradiusWithcoord) Withhash() GeoradiusWithhash {
-	c.cs.s = append(c.cs.s, "WITHHASH")
-	return (GeoradiusWithhash)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusWithhash)
 }
 
 func (c GeoradiusWithcoord) Count(count int64) GeoradiusCountCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(count, 10))
-	return (GeoradiusCountCount)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusCountCount)
 }
 
 func (c GeoradiusWithcoord) Asc() GeoradiusOrderAsc {
-	c.cs.s = append(c.cs.s, "ASC")
-	return (GeoradiusOrderAsc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusOrderAsc)
 }
 
 func (c GeoradiusWithcoord) Desc() GeoradiusOrderDesc {
-	c.cs.s = append(c.cs.s, "DESC")
-	return (GeoradiusOrderDesc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusOrderDesc)
 }
 
 func (c GeoradiusWithcoord) Store(key string) GeoradiusStoreKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, "STORE", key)
-	return (GeoradiusStoreKey)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusStoreKey)
 }
 
 func (c GeoradiusWithcoord) Storedist(key string) GeoradiusStoredistKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, "STOREDIST", key)
-	return (GeoradiusStoredistKey)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusStoredistKey)
 }
 
-func (c GeoradiusWithcoord) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c GeoradiusWithcoord) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type GeoradiusWithdist Incomplete
 
 func (c GeoradiusWithdist) Withhash() GeoradiusWithhash {
-	c.cs.s = append(c.cs.s, "WITHHASH")
-	return (GeoradiusWithhash)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusWithhash)
 }
 
 func (c GeoradiusWithdist) Count(count int64) GeoradiusCountCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(count, 10))
-	return (GeoradiusCountCount)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusCountCount)
 }
 
 func (c GeoradiusWithdist) Asc() GeoradiusOrderAsc {
-	c.cs.s = append(c.cs.s, "ASC")
-	return (GeoradiusOrderAsc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusOrderAsc)
 }
 
 func (c GeoradiusWithdist) Desc() GeoradiusOrderDesc {
-	c.cs.s = append(c.cs.s, "DESC")
-	return (GeoradiusOrderDesc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusOrderDesc)
 }
 
 func (c GeoradiusWithdist) Store(key string) GeoradiusStoreKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, "STORE", key)
-	return (GeoradiusStoreKey)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusStoreKey)
 }
 
 func (c GeoradiusWithdist) Storedist(key string) GeoradiusStoredistKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, "STOREDIST", key)
-	return (GeoradiusStoredistKey)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusStoredistKey)
 }
 
-func (c GeoradiusWithdist) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c GeoradiusWithdist) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type GeoradiusWithhash Incomplete
 
 func (c GeoradiusWithhash) Count(count int64) GeoradiusCountCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(count, 10))
-	return (GeoradiusCountCount)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusCountCount)
 }
 
 func (c GeoradiusWithhash) Asc() GeoradiusOrderAsc {
-	c.cs.s = append(c.cs.s, "ASC")
-	return (GeoradiusOrderAsc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusOrderAsc)
 }
 
 func (c GeoradiusWithhash) Desc() GeoradiusOrderDesc {
-	c.cs.s = append(c.cs.s, "DESC")
-	return (GeoradiusOrderDesc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusOrderDesc)
 }
 
 func (c GeoradiusWithhash) Store(key string) GeoradiusStoreKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, "STORE", key)
-	return (GeoradiusStoreKey)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusStoreKey)
 }
 
 func (c GeoradiusWithhash) Storedist(key string) GeoradiusStoredistKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, "STOREDIST", key)
-	return (GeoradiusStoredistKey)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusStoredistKey)
 }
 
-func (c GeoradiusWithhash) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c GeoradiusWithhash) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type Georadiusbymember Incomplete
 
 func (b Builder) Georadiusbymember() (c Georadiusbymember) {
-	c = Georadiusbymember{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "GEORADIUSBYMEMBER")
-	return c
+	_ = "STUB: not implemented"
+	return *new(Georadiusbymember)
 }
 
 func (c Georadiusbymember) Key(key string) GeoradiusbymemberKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (GeoradiusbymemberKey)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberKey)
 }
 
 type GeoradiusbymemberCountAny Incomplete
 
 func (c GeoradiusbymemberCountAny) Asc() GeoradiusbymemberOrderAsc {
-	c.cs.s = append(c.cs.s, "ASC")
-	return (GeoradiusbymemberOrderAsc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberOrderAsc)
 }
 
 func (c GeoradiusbymemberCountAny) Desc() GeoradiusbymemberOrderDesc {
-	c.cs.s = append(c.cs.s, "DESC")
-	return (GeoradiusbymemberOrderDesc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberOrderDesc)
 }
 
 func (c GeoradiusbymemberCountAny) Store(key string) GeoradiusbymemberStoreStoreKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, "STORE", key)
-	return (GeoradiusbymemberStoreStoreKey)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberStoreStoreKey)
 }
 
 func (c GeoradiusbymemberCountAny) Storedist(key string) GeoradiusbymemberStoreStoredistKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, "STOREDIST", key)
-	return (GeoradiusbymemberStoreStoredistKey)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberStoreStoredistKey)
 }
 
 func (c GeoradiusbymemberCountAny) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type GeoradiusbymemberCountCount Incomplete
 
 func (c GeoradiusbymemberCountCount) Any() GeoradiusbymemberCountAny {
-	c.cs.s = append(c.cs.s, "ANY")
-	return (GeoradiusbymemberCountAny)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberCountAny)
 }
 
 func (c GeoradiusbymemberCountCount) Asc() GeoradiusbymemberOrderAsc {
-	c.cs.s = append(c.cs.s, "ASC")
-	return (GeoradiusbymemberOrderAsc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberOrderAsc)
 }
 
 func (c GeoradiusbymemberCountCount) Desc() GeoradiusbymemberOrderDesc {
-	c.cs.s = append(c.cs.s, "DESC")
-	return (GeoradiusbymemberOrderDesc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberOrderDesc)
 }
 
 func (c GeoradiusbymemberCountCount) Store(key string) GeoradiusbymemberStoreStoreKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, "STORE", key)
-	return (GeoradiusbymemberStoreStoreKey)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberStoreStoreKey)
 }
 
 func (c GeoradiusbymemberCountCount) Storedist(key string) GeoradiusbymemberStoreStoredistKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, "STOREDIST", key)
-	return (GeoradiusbymemberStoreStoredistKey)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberStoreStoredistKey)
 }
 
 func (c GeoradiusbymemberCountCount) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type GeoradiusbymemberKey Incomplete
 
 func (c GeoradiusbymemberKey) Member(member string) GeoradiusbymemberMember {
-	c.cs.s = append(c.cs.s, member)
-	return (GeoradiusbymemberMember)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberMember)
 }
 
 type GeoradiusbymemberMember Incomplete
 
 func (c GeoradiusbymemberMember) Radius(radius float64) GeoradiusbymemberRadius {
-	c.cs.s = append(c.cs.s, strconv.FormatFloat(radius, 'f', -1, 64))
-	return (GeoradiusbymemberRadius)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberRadius)
 }
 
 type GeoradiusbymemberOrderAsc Incomplete
 
 func (c GeoradiusbymemberOrderAsc) Store(key string) GeoradiusbymemberStoreStoreKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, "STORE", key)
-	return (GeoradiusbymemberStoreStoreKey)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberStoreStoreKey)
 }
 
 func (c GeoradiusbymemberOrderAsc) Storedist(key string) GeoradiusbymemberStoreStoredistKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, "STOREDIST", key)
-	return (GeoradiusbymemberStoreStoredistKey)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberStoreStoredistKey)
 }
 
 func (c GeoradiusbymemberOrderAsc) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type GeoradiusbymemberOrderDesc Incomplete
 
 func (c GeoradiusbymemberOrderDesc) Store(key string) GeoradiusbymemberStoreStoreKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, "STORE", key)
-	return (GeoradiusbymemberStoreStoreKey)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberStoreStoreKey)
 }
 
 func (c GeoradiusbymemberOrderDesc) Storedist(key string) GeoradiusbymemberStoreStoredistKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, "STOREDIST", key)
-	return (GeoradiusbymemberStoreStoredistKey)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberStoreStoredistKey)
 }
 
 func (c GeoradiusbymemberOrderDesc) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type GeoradiusbymemberRadius Incomplete
 
 func (c GeoradiusbymemberRadius) M() GeoradiusbymemberUnitM {
-	c.cs.s = append(c.cs.s, "m")
-	return (GeoradiusbymemberUnitM)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberUnitM)
 }
 
 func (c GeoradiusbymemberRadius) Km() GeoradiusbymemberUnitKm {
-	c.cs.s = append(c.cs.s, "km")
-	return (GeoradiusbymemberUnitKm)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberUnitKm)
 }
 
 func (c GeoradiusbymemberRadius) Ft() GeoradiusbymemberUnitFt {
-	c.cs.s = append(c.cs.s, "ft")
-	return (GeoradiusbymemberUnitFt)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberUnitFt)
 }
 
 func (c GeoradiusbymemberRadius) Mi() GeoradiusbymemberUnitMi {
-	c.cs.s = append(c.cs.s, "mi")
-	return (GeoradiusbymemberUnitMi)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberUnitMi)
 }
 
 type GeoradiusbymemberRo Incomplete
 
 func (b Builder) GeoradiusbymemberRo() (c GeoradiusbymemberRo) {
-	c = GeoradiusbymemberRo{cs: get(), ks: b.ks, cf: int16(readonly)}
-	c.cs.s = append(c.cs.s, "GEORADIUSBYMEMBER_RO")
-	return c
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberRo)
 }
 
 func (c GeoradiusbymemberRo) Key(key string) GeoradiusbymemberRoKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (GeoradiusbymemberRoKey)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberRoKey)
 }
 
 type GeoradiusbymemberRoCountAny Incomplete
 
 func (c GeoradiusbymemberRoCountAny) Asc() GeoradiusbymemberRoOrderAsc {
-	c.cs.s = append(c.cs.s, "ASC")
-	return (GeoradiusbymemberRoOrderAsc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberRoOrderAsc)
 }
 
 func (c GeoradiusbymemberRoCountAny) Desc() GeoradiusbymemberRoOrderDesc {
-	c.cs.s = append(c.cs.s, "DESC")
-	return (GeoradiusbymemberRoOrderDesc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberRoOrderDesc)
 }
 
 func (c GeoradiusbymemberRoCountAny) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 func (c GeoradiusbymemberRoCountAny) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Cacheable)
 }
 
 type GeoradiusbymemberRoCountCount Incomplete
 
 func (c GeoradiusbymemberRoCountCount) Any() GeoradiusbymemberRoCountAny {
-	c.cs.s = append(c.cs.s, "ANY")
-	return (GeoradiusbymemberRoCountAny)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberRoCountAny)
 }
 
 func (c GeoradiusbymemberRoCountCount) Asc() GeoradiusbymemberRoOrderAsc {
-	c.cs.s = append(c.cs.s, "ASC")
-	return (GeoradiusbymemberRoOrderAsc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberRoOrderAsc)
 }
 
 func (c GeoradiusbymemberRoCountCount) Desc() GeoradiusbymemberRoOrderDesc {
-	c.cs.s = append(c.cs.s, "DESC")
-	return (GeoradiusbymemberRoOrderDesc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberRoOrderDesc)
 }
 
 func (c GeoradiusbymemberRoCountCount) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 func (c GeoradiusbymemberRoCountCount) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Cacheable)
 }
 
 type GeoradiusbymemberRoKey Incomplete
 
 func (c GeoradiusbymemberRoKey) Member(member string) GeoradiusbymemberRoMember {
-	c.cs.s = append(c.cs.s, member)
-	return (GeoradiusbymemberRoMember)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberRoMember)
 }
 
 type GeoradiusbymemberRoMember Incomplete
 
 func (c GeoradiusbymemberRoMember) Radius(radius float64) GeoradiusbymemberRoRadius {
-	c.cs.s = append(c.cs.s, strconv.FormatFloat(radius, 'f', -1, 64))
-	return (GeoradiusbymemberRoRadius)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberRoRadius)
 }
 
 type GeoradiusbymemberRoOrderAsc Incomplete
 
 func (c GeoradiusbymemberRoOrderAsc) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 func (c GeoradiusbymemberRoOrderAsc) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Cacheable)
 }
 
 type GeoradiusbymemberRoOrderDesc Incomplete
 
 func (c GeoradiusbymemberRoOrderDesc) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 func (c GeoradiusbymemberRoOrderDesc) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Cacheable)
 }
 
 type GeoradiusbymemberRoRadius Incomplete
 
 func (c GeoradiusbymemberRoRadius) M() GeoradiusbymemberRoUnitM {
-	c.cs.s = append(c.cs.s, "m")
-	return (GeoradiusbymemberRoUnitM)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberRoUnitM)
 }
 
 func (c GeoradiusbymemberRoRadius) Km() GeoradiusbymemberRoUnitKm {
-	c.cs.s = append(c.cs.s, "km")
-	return (GeoradiusbymemberRoUnitKm)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberRoUnitKm)
 }
 
 func (c GeoradiusbymemberRoRadius) Ft() GeoradiusbymemberRoUnitFt {
-	c.cs.s = append(c.cs.s, "ft")
-	return (GeoradiusbymemberRoUnitFt)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberRoUnitFt)
 }
 
 func (c GeoradiusbymemberRoRadius) Mi() GeoradiusbymemberRoUnitMi {
-	c.cs.s = append(c.cs.s, "mi")
-	return (GeoradiusbymemberRoUnitMi)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberRoUnitMi)
 }
 
 type GeoradiusbymemberRoUnitFt Incomplete
 
 func (c GeoradiusbymemberRoUnitFt) Withcoord() GeoradiusbymemberRoWithcoord {
-	c.cs.s = append(c.cs.s, "WITHCOORD")
-	return (GeoradiusbymemberRoWithcoord)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberRoWithcoord)
 }
 
 func (c GeoradiusbymemberRoUnitFt) Withdist() GeoradiusbymemberRoWithdist {
-	c.cs.s = append(c.cs.s, "WITHDIST")
-	return (GeoradiusbymemberRoWithdist)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberRoWithdist)
 }
 
 func (c GeoradiusbymemberRoUnitFt) Withhash() GeoradiusbymemberRoWithhash {
-	c.cs.s = append(c.cs.s, "WITHHASH")
-	return (GeoradiusbymemberRoWithhash)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberRoWithhash)
 }
 
 func (c GeoradiusbymemberRoUnitFt) Count(count int64) GeoradiusbymemberRoCountCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(count, 10))
-	return (GeoradiusbymemberRoCountCount)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberRoCountCount)
 }
 
 func (c GeoradiusbymemberRoUnitFt) Asc() GeoradiusbymemberRoOrderAsc {
-	c.cs.s = append(c.cs.s, "ASC")
-	return (GeoradiusbymemberRoOrderAsc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberRoOrderAsc)
 }
 
 func (c GeoradiusbymemberRoUnitFt) Desc() GeoradiusbymemberRoOrderDesc {
-	c.cs.s = append(c.cs.s, "DESC")
-	return (GeoradiusbymemberRoOrderDesc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberRoOrderDesc)
 }
 
 func (c GeoradiusbymemberRoUnitFt) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 func (c GeoradiusbymemberRoUnitFt) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Cacheable)
 }
 
 type GeoradiusbymemberRoUnitKm Incomplete
 
 func (c GeoradiusbymemberRoUnitKm) Withcoord() GeoradiusbymemberRoWithcoord {
-	c.cs.s = append(c.cs.s, "WITHCOORD")
-	return (GeoradiusbymemberRoWithcoord)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberRoWithcoord)
 }
 
 func (c GeoradiusbymemberRoUnitKm) Withdist() GeoradiusbymemberRoWithdist {
-	c.cs.s = append(c.cs.s, "WITHDIST")
-	return (GeoradiusbymemberRoWithdist)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberRoWithdist)
 }
 
 func (c GeoradiusbymemberRoUnitKm) Withhash() GeoradiusbymemberRoWithhash {
-	c.cs.s = append(c.cs.s, "WITHHASH")
-	return (GeoradiusbymemberRoWithhash)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberRoWithhash)
 }
 
 func (c GeoradiusbymemberRoUnitKm) Count(count int64) GeoradiusbymemberRoCountCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(count, 10))
-	return (GeoradiusbymemberRoCountCount)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberRoCountCount)
 }
 
 func (c GeoradiusbymemberRoUnitKm) Asc() GeoradiusbymemberRoOrderAsc {
-	c.cs.s = append(c.cs.s, "ASC")
-	return (GeoradiusbymemberRoOrderAsc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberRoOrderAsc)
 }
 
 func (c GeoradiusbymemberRoUnitKm) Desc() GeoradiusbymemberRoOrderDesc {
-	c.cs.s = append(c.cs.s, "DESC")
-	return (GeoradiusbymemberRoOrderDesc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberRoOrderDesc)
 }
 
 func (c GeoradiusbymemberRoUnitKm) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 func (c GeoradiusbymemberRoUnitKm) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Cacheable)
 }
 
 type GeoradiusbymemberRoUnitM Incomplete
 
 func (c GeoradiusbymemberRoUnitM) Withcoord() GeoradiusbymemberRoWithcoord {
-	c.cs.s = append(c.cs.s, "WITHCOORD")
-	return (GeoradiusbymemberRoWithcoord)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberRoWithcoord)
 }
 
 func (c GeoradiusbymemberRoUnitM) Withdist() GeoradiusbymemberRoWithdist {
-	c.cs.s = append(c.cs.s, "WITHDIST")
-	return (GeoradiusbymemberRoWithdist)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberRoWithdist)
 }
 
 func (c GeoradiusbymemberRoUnitM) Withhash() GeoradiusbymemberRoWithhash {
-	c.cs.s = append(c.cs.s, "WITHHASH")
-	return (GeoradiusbymemberRoWithhash)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberRoWithhash)
 }
 
 func (c GeoradiusbymemberRoUnitM) Count(count int64) GeoradiusbymemberRoCountCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(count, 10))
-	return (GeoradiusbymemberRoCountCount)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberRoCountCount)
 }
 
 func (c GeoradiusbymemberRoUnitM) Asc() GeoradiusbymemberRoOrderAsc {
-	c.cs.s = append(c.cs.s, "ASC")
-	return (GeoradiusbymemberRoOrderAsc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberRoOrderAsc)
 }
 
 func (c GeoradiusbymemberRoUnitM) Desc() GeoradiusbymemberRoOrderDesc {
-	c.cs.s = append(c.cs.s, "DESC")
-	return (GeoradiusbymemberRoOrderDesc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberRoOrderDesc)
 }
 
 func (c GeoradiusbymemberRoUnitM) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 func (c GeoradiusbymemberRoUnitM) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Cacheable)
 }
 
 type GeoradiusbymemberRoUnitMi Incomplete
 
 func (c GeoradiusbymemberRoUnitMi) Withcoord() GeoradiusbymemberRoWithcoord {
-	c.cs.s = append(c.cs.s, "WITHCOORD")
-	return (GeoradiusbymemberRoWithcoord)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberRoWithcoord)
 }
 
 func (c GeoradiusbymemberRoUnitMi) Withdist() GeoradiusbymemberRoWithdist {
-	c.cs.s = append(c.cs.s, "WITHDIST")
-	return (GeoradiusbymemberRoWithdist)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberRoWithdist)
 }
 
 func (c GeoradiusbymemberRoUnitMi) Withhash() GeoradiusbymemberRoWithhash {
-	c.cs.s = append(c.cs.s, "WITHHASH")
-	return (GeoradiusbymemberRoWithhash)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberRoWithhash)
 }
 
 func (c GeoradiusbymemberRoUnitMi) Count(count int64) GeoradiusbymemberRoCountCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(count, 10))
-	return (GeoradiusbymemberRoCountCount)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberRoCountCount)
 }
 
 func (c GeoradiusbymemberRoUnitMi) Asc() GeoradiusbymemberRoOrderAsc {
-	c.cs.s = append(c.cs.s, "ASC")
-	return (GeoradiusbymemberRoOrderAsc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberRoOrderAsc)
 }
 
 func (c GeoradiusbymemberRoUnitMi) Desc() GeoradiusbymemberRoOrderDesc {
-	c.cs.s = append(c.cs.s, "DESC")
-	return (GeoradiusbymemberRoOrderDesc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberRoOrderDesc)
 }
 
 func (c GeoradiusbymemberRoUnitMi) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 func (c GeoradiusbymemberRoUnitMi) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Cacheable)
 }
 
 type GeoradiusbymemberRoWithcoord Incomplete
 
 func (c GeoradiusbymemberRoWithcoord) Withdist() GeoradiusbymemberRoWithdist {
-	c.cs.s = append(c.cs.s, "WITHDIST")
-	return (GeoradiusbymemberRoWithdist)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberRoWithdist)
 }
 
 func (c GeoradiusbymemberRoWithcoord) Withhash() GeoradiusbymemberRoWithhash {
-	c.cs.s = append(c.cs.s, "WITHHASH")
-	return (GeoradiusbymemberRoWithhash)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberRoWithhash)
 }
 
 func (c GeoradiusbymemberRoWithcoord) Count(count int64) GeoradiusbymemberRoCountCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(count, 10))
-	return (GeoradiusbymemberRoCountCount)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberRoCountCount)
 }
 
 func (c GeoradiusbymemberRoWithcoord) Asc() GeoradiusbymemberRoOrderAsc {
-	c.cs.s = append(c.cs.s, "ASC")
-	return (GeoradiusbymemberRoOrderAsc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberRoOrderAsc)
 }
 
 func (c GeoradiusbymemberRoWithcoord) Desc() GeoradiusbymemberRoOrderDesc {
-	c.cs.s = append(c.cs.s, "DESC")
-	return (GeoradiusbymemberRoOrderDesc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberRoOrderDesc)
 }
 
 func (c GeoradiusbymemberRoWithcoord) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 func (c GeoradiusbymemberRoWithcoord) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Cacheable)
 }
 
 type GeoradiusbymemberRoWithdist Incomplete
 
 func (c GeoradiusbymemberRoWithdist) Withhash() GeoradiusbymemberRoWithhash {
-	c.cs.s = append(c.cs.s, "WITHHASH")
-	return (GeoradiusbymemberRoWithhash)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberRoWithhash)
 }
 
 func (c GeoradiusbymemberRoWithdist) Count(count int64) GeoradiusbymemberRoCountCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(count, 10))
-	return (GeoradiusbymemberRoCountCount)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberRoCountCount)
 }
 
 func (c GeoradiusbymemberRoWithdist) Asc() GeoradiusbymemberRoOrderAsc {
-	c.cs.s = append(c.cs.s, "ASC")
-	return (GeoradiusbymemberRoOrderAsc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberRoOrderAsc)
 }
 
 func (c GeoradiusbymemberRoWithdist) Desc() GeoradiusbymemberRoOrderDesc {
-	c.cs.s = append(c.cs.s, "DESC")
-	return (GeoradiusbymemberRoOrderDesc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberRoOrderDesc)
 }
 
 func (c GeoradiusbymemberRoWithdist) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 func (c GeoradiusbymemberRoWithdist) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Cacheable)
 }
 
 type GeoradiusbymemberRoWithhash Incomplete
 
 func (c GeoradiusbymemberRoWithhash) Count(count int64) GeoradiusbymemberRoCountCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(count, 10))
-	return (GeoradiusbymemberRoCountCount)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberRoCountCount)
 }
 
 func (c GeoradiusbymemberRoWithhash) Asc() GeoradiusbymemberRoOrderAsc {
-	c.cs.s = append(c.cs.s, "ASC")
-	return (GeoradiusbymemberRoOrderAsc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberRoOrderAsc)
 }
 
 func (c GeoradiusbymemberRoWithhash) Desc() GeoradiusbymemberRoOrderDesc {
-	c.cs.s = append(c.cs.s, "DESC")
-	return (GeoradiusbymemberRoOrderDesc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberRoOrderDesc)
 }
 
 func (c GeoradiusbymemberRoWithhash) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 func (c GeoradiusbymemberRoWithhash) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Cacheable)
 }
 
 type GeoradiusbymemberStoreStoreKey Incomplete
 
 func (c GeoradiusbymemberStoreStoreKey) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type GeoradiusbymemberStoreStoredistKey Incomplete
 
 func (c GeoradiusbymemberStoreStoredistKey) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type GeoradiusbymemberUnitFt Incomplete
 
 func (c GeoradiusbymemberUnitFt) Withcoord() GeoradiusbymemberWithcoord {
-	c.cs.s = append(c.cs.s, "WITHCOORD")
-	return (GeoradiusbymemberWithcoord)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberWithcoord)
 }
 
 func (c GeoradiusbymemberUnitFt) Withdist() GeoradiusbymemberWithdist {
-	c.cs.s = append(c.cs.s, "WITHDIST")
-	return (GeoradiusbymemberWithdist)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberWithdist)
 }
 
 func (c GeoradiusbymemberUnitFt) Withhash() GeoradiusbymemberWithhash {
-	c.cs.s = append(c.cs.s, "WITHHASH")
-	return (GeoradiusbymemberWithhash)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberWithhash)
 }
 
 func (c GeoradiusbymemberUnitFt) Count(count int64) GeoradiusbymemberCountCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(count, 10))
-	return (GeoradiusbymemberCountCount)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberCountCount)
 }
 
 func (c GeoradiusbymemberUnitFt) Asc() GeoradiusbymemberOrderAsc {
-	c.cs.s = append(c.cs.s, "ASC")
-	return (GeoradiusbymemberOrderAsc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberOrderAsc)
 }
 
 func (c GeoradiusbymemberUnitFt) Desc() GeoradiusbymemberOrderDesc {
-	c.cs.s = append(c.cs.s, "DESC")
-	return (GeoradiusbymemberOrderDesc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberOrderDesc)
 }
 
 func (c GeoradiusbymemberUnitFt) Store(key string) GeoradiusbymemberStoreStoreKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, "STORE", key)
-	return (GeoradiusbymemberStoreStoreKey)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberStoreStoreKey)
 }
 
 func (c GeoradiusbymemberUnitFt) Storedist(key string) GeoradiusbymemberStoreStoredistKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, "STOREDIST", key)
-	return (GeoradiusbymemberStoreStoredistKey)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberStoreStoredistKey)
 }
 
 func (c GeoradiusbymemberUnitFt) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type GeoradiusbymemberUnitKm Incomplete
 
 func (c GeoradiusbymemberUnitKm) Withcoord() GeoradiusbymemberWithcoord {
-	c.cs.s = append(c.cs.s, "WITHCOORD")
-	return (GeoradiusbymemberWithcoord)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberWithcoord)
 }
 
 func (c GeoradiusbymemberUnitKm) Withdist() GeoradiusbymemberWithdist {
-	c.cs.s = append(c.cs.s, "WITHDIST")
-	return (GeoradiusbymemberWithdist)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberWithdist)
 }
 
 func (c GeoradiusbymemberUnitKm) Withhash() GeoradiusbymemberWithhash {
-	c.cs.s = append(c.cs.s, "WITHHASH")
-	return (GeoradiusbymemberWithhash)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberWithhash)
 }
 
 func (c GeoradiusbymemberUnitKm) Count(count int64) GeoradiusbymemberCountCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(count, 10))
-	return (GeoradiusbymemberCountCount)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberCountCount)
 }
 
 func (c GeoradiusbymemberUnitKm) Asc() GeoradiusbymemberOrderAsc {
-	c.cs.s = append(c.cs.s, "ASC")
-	return (GeoradiusbymemberOrderAsc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberOrderAsc)
 }
 
 func (c GeoradiusbymemberUnitKm) Desc() GeoradiusbymemberOrderDesc {
-	c.cs.s = append(c.cs.s, "DESC")
-	return (GeoradiusbymemberOrderDesc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberOrderDesc)
 }
 
 func (c GeoradiusbymemberUnitKm) Store(key string) GeoradiusbymemberStoreStoreKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, "STORE", key)
-	return (GeoradiusbymemberStoreStoreKey)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberStoreStoreKey)
 }
 
 func (c GeoradiusbymemberUnitKm) Storedist(key string) GeoradiusbymemberStoreStoredistKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, "STOREDIST", key)
-	return (GeoradiusbymemberStoreStoredistKey)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberStoreStoredistKey)
 }
 
 func (c GeoradiusbymemberUnitKm) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type GeoradiusbymemberUnitM Incomplete
 
 func (c GeoradiusbymemberUnitM) Withcoord() GeoradiusbymemberWithcoord {
-	c.cs.s = append(c.cs.s, "WITHCOORD")
-	return (GeoradiusbymemberWithcoord)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberWithcoord)
 }
 
 func (c GeoradiusbymemberUnitM) Withdist() GeoradiusbymemberWithdist {
-	c.cs.s = append(c.cs.s, "WITHDIST")
-	return (GeoradiusbymemberWithdist)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberWithdist)
 }
 
 func (c GeoradiusbymemberUnitM) Withhash() GeoradiusbymemberWithhash {
-	c.cs.s = append(c.cs.s, "WITHHASH")
-	return (GeoradiusbymemberWithhash)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberWithhash)
 }
 
 func (c GeoradiusbymemberUnitM) Count(count int64) GeoradiusbymemberCountCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(count, 10))
-	return (GeoradiusbymemberCountCount)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberCountCount)
 }
 
 func (c GeoradiusbymemberUnitM) Asc() GeoradiusbymemberOrderAsc {
-	c.cs.s = append(c.cs.s, "ASC")
-	return (GeoradiusbymemberOrderAsc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberOrderAsc)
 }
 
 func (c GeoradiusbymemberUnitM) Desc() GeoradiusbymemberOrderDesc {
-	c.cs.s = append(c.cs.s, "DESC")
-	return (GeoradiusbymemberOrderDesc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberOrderDesc)
 }
 
 func (c GeoradiusbymemberUnitM) Store(key string) GeoradiusbymemberStoreStoreKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, "STORE", key)
-	return (GeoradiusbymemberStoreStoreKey)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberStoreStoreKey)
 }
 
 func (c GeoradiusbymemberUnitM) Storedist(key string) GeoradiusbymemberStoreStoredistKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, "STOREDIST", key)
-	return (GeoradiusbymemberStoreStoredistKey)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberStoreStoredistKey)
 }
 
 func (c GeoradiusbymemberUnitM) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type GeoradiusbymemberUnitMi Incomplete
 
 func (c GeoradiusbymemberUnitMi) Withcoord() GeoradiusbymemberWithcoord {
-	c.cs.s = append(c.cs.s, "WITHCOORD")
-	return (GeoradiusbymemberWithcoord)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberWithcoord)
 }
 
 func (c GeoradiusbymemberUnitMi) Withdist() GeoradiusbymemberWithdist {
-	c.cs.s = append(c.cs.s, "WITHDIST")
-	return (GeoradiusbymemberWithdist)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberWithdist)
 }
 
 func (c GeoradiusbymemberUnitMi) Withhash() GeoradiusbymemberWithhash {
-	c.cs.s = append(c.cs.s, "WITHHASH")
-	return (GeoradiusbymemberWithhash)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberWithhash)
 }
 
 func (c GeoradiusbymemberUnitMi) Count(count int64) GeoradiusbymemberCountCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(count, 10))
-	return (GeoradiusbymemberCountCount)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberCountCount)
 }
 
 func (c GeoradiusbymemberUnitMi) Asc() GeoradiusbymemberOrderAsc {
-	c.cs.s = append(c.cs.s, "ASC")
-	return (GeoradiusbymemberOrderAsc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberOrderAsc)
 }
 
 func (c GeoradiusbymemberUnitMi) Desc() GeoradiusbymemberOrderDesc {
-	c.cs.s = append(c.cs.s, "DESC")
-	return (GeoradiusbymemberOrderDesc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberOrderDesc)
 }
 
 func (c GeoradiusbymemberUnitMi) Store(key string) GeoradiusbymemberStoreStoreKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, "STORE", key)
-	return (GeoradiusbymemberStoreStoreKey)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberStoreStoreKey)
 }
 
 func (c GeoradiusbymemberUnitMi) Storedist(key string) GeoradiusbymemberStoreStoredistKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, "STOREDIST", key)
-	return (GeoradiusbymemberStoreStoredistKey)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberStoreStoredistKey)
 }
 
 func (c GeoradiusbymemberUnitMi) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type GeoradiusbymemberWithcoord Incomplete
 
 func (c GeoradiusbymemberWithcoord) Withdist() GeoradiusbymemberWithdist {
-	c.cs.s = append(c.cs.s, "WITHDIST")
-	return (GeoradiusbymemberWithdist)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberWithdist)
 }
 
 func (c GeoradiusbymemberWithcoord) Withhash() GeoradiusbymemberWithhash {
-	c.cs.s = append(c.cs.s, "WITHHASH")
-	return (GeoradiusbymemberWithhash)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberWithhash)
 }
 
 func (c GeoradiusbymemberWithcoord) Count(count int64) GeoradiusbymemberCountCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(count, 10))
-	return (GeoradiusbymemberCountCount)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberCountCount)
 }
 
 func (c GeoradiusbymemberWithcoord) Asc() GeoradiusbymemberOrderAsc {
-	c.cs.s = append(c.cs.s, "ASC")
-	return (GeoradiusbymemberOrderAsc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberOrderAsc)
 }
 
 func (c GeoradiusbymemberWithcoord) Desc() GeoradiusbymemberOrderDesc {
-	c.cs.s = append(c.cs.s, "DESC")
-	return (GeoradiusbymemberOrderDesc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberOrderDesc)
 }
 
 func (c GeoradiusbymemberWithcoord) Store(key string) GeoradiusbymemberStoreStoreKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, "STORE", key)
-	return (GeoradiusbymemberStoreStoreKey)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberStoreStoreKey)
 }
 
 func (c GeoradiusbymemberWithcoord) Storedist(key string) GeoradiusbymemberStoreStoredistKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, "STOREDIST", key)
-	return (GeoradiusbymemberStoreStoredistKey)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberStoreStoredistKey)
 }
 
 func (c GeoradiusbymemberWithcoord) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type GeoradiusbymemberWithdist Incomplete
 
 func (c GeoradiusbymemberWithdist) Withhash() GeoradiusbymemberWithhash {
-	c.cs.s = append(c.cs.s, "WITHHASH")
-	return (GeoradiusbymemberWithhash)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberWithhash)
 }
 
 func (c GeoradiusbymemberWithdist) Count(count int64) GeoradiusbymemberCountCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(count, 10))
-	return (GeoradiusbymemberCountCount)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberCountCount)
 }
 
 func (c GeoradiusbymemberWithdist) Asc() GeoradiusbymemberOrderAsc {
-	c.cs.s = append(c.cs.s, "ASC")
-	return (GeoradiusbymemberOrderAsc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberOrderAsc)
 }
 
 func (c GeoradiusbymemberWithdist) Desc() GeoradiusbymemberOrderDesc {
-	c.cs.s = append(c.cs.s, "DESC")
-	return (GeoradiusbymemberOrderDesc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberOrderDesc)
 }
 
 func (c GeoradiusbymemberWithdist) Store(key string) GeoradiusbymemberStoreStoreKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, "STORE", key)
-	return (GeoradiusbymemberStoreStoreKey)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberStoreStoreKey)
 }
 
 func (c GeoradiusbymemberWithdist) Storedist(key string) GeoradiusbymemberStoreStoredistKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, "STOREDIST", key)
-	return (GeoradiusbymemberStoreStoredistKey)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberStoreStoredistKey)
 }
 
 func (c GeoradiusbymemberWithdist) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type GeoradiusbymemberWithhash Incomplete
 
 func (c GeoradiusbymemberWithhash) Count(count int64) GeoradiusbymemberCountCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(count, 10))
-	return (GeoradiusbymemberCountCount)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberCountCount)
 }
 
 func (c GeoradiusbymemberWithhash) Asc() GeoradiusbymemberOrderAsc {
-	c.cs.s = append(c.cs.s, "ASC")
-	return (GeoradiusbymemberOrderAsc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberOrderAsc)
 }
 
 func (c GeoradiusbymemberWithhash) Desc() GeoradiusbymemberOrderDesc {
-	c.cs.s = append(c.cs.s, "DESC")
-	return (GeoradiusbymemberOrderDesc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberOrderDesc)
 }
 
 func (c GeoradiusbymemberWithhash) Store(key string) GeoradiusbymemberStoreStoreKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, "STORE", key)
-	return (GeoradiusbymemberStoreStoreKey)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberStoreStoreKey)
 }
 
 func (c GeoradiusbymemberWithhash) Storedist(key string) GeoradiusbymemberStoreStoredistKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, "STOREDIST", key)
-	return (GeoradiusbymemberStoreStoredistKey)(c)
+	_ = "STUB: not implemented"
+	return *new(GeoradiusbymemberStoreStoredistKey)
 }
 
 func (c GeoradiusbymemberWithhash) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type Geosearch Incomplete
 
-func (b Builder) Geosearch() (c Geosearch) {
-	c = Geosearch{cs: get(), ks: b.ks, cf: int16(readonly)}
-	c.cs.s = append(c.cs.s, "GEOSEARCH")
-	return c
-}
+func (b Builder) Geosearch() (c Geosearch) { _ = "STUB: not implemented"; return *new(Geosearch) }
 
 func (c Geosearch) Key(key string) GeosearchKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (GeosearchKey)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchKey)
 }
 
 type GeosearchCircleBoxBybox Incomplete
 
 func (c GeosearchCircleBoxBybox) Height(height float64) GeosearchCircleBoxHeight {
-	c.cs.s = append(c.cs.s, strconv.FormatFloat(height, 'f', -1, 64))
-	return (GeosearchCircleBoxHeight)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchCircleBoxHeight)
 }
 
 type GeosearchCircleBoxHeight Incomplete
 
 func (c GeosearchCircleBoxHeight) M() GeosearchCircleBoxUnitM {
-	c.cs.s = append(c.cs.s, "m")
-	return (GeosearchCircleBoxUnitM)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchCircleBoxUnitM)
 }
 
 func (c GeosearchCircleBoxHeight) Km() GeosearchCircleBoxUnitKm {
-	c.cs.s = append(c.cs.s, "km")
-	return (GeosearchCircleBoxUnitKm)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchCircleBoxUnitKm)
 }
 
 func (c GeosearchCircleBoxHeight) Ft() GeosearchCircleBoxUnitFt {
-	c.cs.s = append(c.cs.s, "ft")
-	return (GeosearchCircleBoxUnitFt)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchCircleBoxUnitFt)
 }
 
 func (c GeosearchCircleBoxHeight) Mi() GeosearchCircleBoxUnitMi {
-	c.cs.s = append(c.cs.s, "mi")
-	return (GeosearchCircleBoxUnitMi)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchCircleBoxUnitMi)
 }
 
 type GeosearchCircleBoxUnitFt Incomplete
 
 func (c GeosearchCircleBoxUnitFt) NumVertices(numVertices int64) GeosearchCirclePolygonNumVertices {
-	c.cs.s = append(c.cs.s, "BYPOLYGON", strconv.FormatInt(numVertices, 10))
-	return (GeosearchCirclePolygonNumVertices)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchCirclePolygonNumVertices)
 }
 
 func (c GeosearchCircleBoxUnitFt) Asc() GeosearchOrderAsc {
-	c.cs.s = append(c.cs.s, "ASC")
-	return (GeosearchOrderAsc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchOrderAsc)
 }
 
 func (c GeosearchCircleBoxUnitFt) Desc() GeosearchOrderDesc {
-	c.cs.s = append(c.cs.s, "DESC")
-	return (GeosearchOrderDesc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchOrderDesc)
 }
 
 func (c GeosearchCircleBoxUnitFt) Count(count int64) GeosearchCountCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(count, 10))
-	return (GeosearchCountCount)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchCountCount)
 }
 
 func (c GeosearchCircleBoxUnitFt) Withcoord() GeosearchWithcoord {
-	c.cs.s = append(c.cs.s, "WITHCOORD")
-	return (GeosearchWithcoord)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchWithcoord)
 }
 
 func (c GeosearchCircleBoxUnitFt) Withdist() GeosearchWithdist {
-	c.cs.s = append(c.cs.s, "WITHDIST")
-	return (GeosearchWithdist)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchWithdist)
 }
 
 func (c GeosearchCircleBoxUnitFt) Withhash() GeosearchWithhash {
-	c.cs.s = append(c.cs.s, "WITHHASH")
-	return (GeosearchWithhash)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchWithhash)
 }
 
 func (c GeosearchCircleBoxUnitFt) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 func (c GeosearchCircleBoxUnitFt) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Cacheable)
 }
 
 type GeosearchCircleBoxUnitKm Incomplete
 
 func (c GeosearchCircleBoxUnitKm) NumVertices(numVertices int64) GeosearchCirclePolygonNumVertices {
-	c.cs.s = append(c.cs.s, "BYPOLYGON", strconv.FormatInt(numVertices, 10))
-	return (GeosearchCirclePolygonNumVertices)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchCirclePolygonNumVertices)
 }
 
 func (c GeosearchCircleBoxUnitKm) Asc() GeosearchOrderAsc {
-	c.cs.s = append(c.cs.s, "ASC")
-	return (GeosearchOrderAsc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchOrderAsc)
 }
 
 func (c GeosearchCircleBoxUnitKm) Desc() GeosearchOrderDesc {
-	c.cs.s = append(c.cs.s, "DESC")
-	return (GeosearchOrderDesc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchOrderDesc)
 }
 
 func (c GeosearchCircleBoxUnitKm) Count(count int64) GeosearchCountCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(count, 10))
-	return (GeosearchCountCount)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchCountCount)
 }
 
 func (c GeosearchCircleBoxUnitKm) Withcoord() GeosearchWithcoord {
-	c.cs.s = append(c.cs.s, "WITHCOORD")
-	return (GeosearchWithcoord)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchWithcoord)
 }
 
 func (c GeosearchCircleBoxUnitKm) Withdist() GeosearchWithdist {
-	c.cs.s = append(c.cs.s, "WITHDIST")
-	return (GeosearchWithdist)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchWithdist)
 }
 
 func (c GeosearchCircleBoxUnitKm) Withhash() GeosearchWithhash {
-	c.cs.s = append(c.cs.s, "WITHHASH")
-	return (GeosearchWithhash)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchWithhash)
 }
 
 func (c GeosearchCircleBoxUnitKm) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 func (c GeosearchCircleBoxUnitKm) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Cacheable)
 }
 
 type GeosearchCircleBoxUnitM Incomplete
 
 func (c GeosearchCircleBoxUnitM) NumVertices(numVertices int64) GeosearchCirclePolygonNumVertices {
-	c.cs.s = append(c.cs.s, "BYPOLYGON", strconv.FormatInt(numVertices, 10))
-	return (GeosearchCirclePolygonNumVertices)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchCirclePolygonNumVertices)
 }
 
 func (c GeosearchCircleBoxUnitM) Asc() GeosearchOrderAsc {
-	c.cs.s = append(c.cs.s, "ASC")
-	return (GeosearchOrderAsc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchOrderAsc)
 }
 
 func (c GeosearchCircleBoxUnitM) Desc() GeosearchOrderDesc {
-	c.cs.s = append(c.cs.s, "DESC")
-	return (GeosearchOrderDesc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchOrderDesc)
 }
 
 func (c GeosearchCircleBoxUnitM) Count(count int64) GeosearchCountCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(count, 10))
-	return (GeosearchCountCount)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchCountCount)
 }
 
 func (c GeosearchCircleBoxUnitM) Withcoord() GeosearchWithcoord {
-	c.cs.s = append(c.cs.s, "WITHCOORD")
-	return (GeosearchWithcoord)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchWithcoord)
 }
 
 func (c GeosearchCircleBoxUnitM) Withdist() GeosearchWithdist {
-	c.cs.s = append(c.cs.s, "WITHDIST")
-	return (GeosearchWithdist)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchWithdist)
 }
 
 func (c GeosearchCircleBoxUnitM) Withhash() GeosearchWithhash {
-	c.cs.s = append(c.cs.s, "WITHHASH")
-	return (GeosearchWithhash)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchWithhash)
 }
 
 func (c GeosearchCircleBoxUnitM) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 func (c GeosearchCircleBoxUnitM) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Cacheable)
 }
 
 type GeosearchCircleBoxUnitMi Incomplete
 
 func (c GeosearchCircleBoxUnitMi) NumVertices(numVertices int64) GeosearchCirclePolygonNumVertices {
-	c.cs.s = append(c.cs.s, "BYPOLYGON", strconv.FormatInt(numVertices, 10))
-	return (GeosearchCirclePolygonNumVertices)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchCirclePolygonNumVertices)
 }
 
 func (c GeosearchCircleBoxUnitMi) Asc() GeosearchOrderAsc {
-	c.cs.s = append(c.cs.s, "ASC")
-	return (GeosearchOrderAsc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchOrderAsc)
 }
 
 func (c GeosearchCircleBoxUnitMi) Desc() GeosearchOrderDesc {
-	c.cs.s = append(c.cs.s, "DESC")
-	return (GeosearchOrderDesc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchOrderDesc)
 }
 
 func (c GeosearchCircleBoxUnitMi) Count(count int64) GeosearchCountCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(count, 10))
-	return (GeosearchCountCount)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchCountCount)
 }
 
 func (c GeosearchCircleBoxUnitMi) Withcoord() GeosearchWithcoord {
-	c.cs.s = append(c.cs.s, "WITHCOORD")
-	return (GeosearchWithcoord)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchWithcoord)
 }
 
 func (c GeosearchCircleBoxUnitMi) Withdist() GeosearchWithdist {
-	c.cs.s = append(c.cs.s, "WITHDIST")
-	return (GeosearchWithdist)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchWithdist)
 }
 
 func (c GeosearchCircleBoxUnitMi) Withhash() GeosearchWithhash {
-	c.cs.s = append(c.cs.s, "WITHHASH")
-	return (GeosearchWithhash)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchWithhash)
 }
 
 func (c GeosearchCircleBoxUnitMi) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 func (c GeosearchCircleBoxUnitMi) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Cacheable)
 }
 
 type GeosearchCircleCircleByradius Incomplete
 
 func (c GeosearchCircleCircleByradius) M() GeosearchCircleCircleUnitM {
-	c.cs.s = append(c.cs.s, "m")
-	return (GeosearchCircleCircleUnitM)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchCircleCircleUnitM)
 }
 
 func (c GeosearchCircleCircleByradius) Km() GeosearchCircleCircleUnitKm {
-	c.cs.s = append(c.cs.s, "km")
-	return (GeosearchCircleCircleUnitKm)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchCircleCircleUnitKm)
 }
 
 func (c GeosearchCircleCircleByradius) Ft() GeosearchCircleCircleUnitFt {
-	c.cs.s = append(c.cs.s, "ft")
-	return (GeosearchCircleCircleUnitFt)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchCircleCircleUnitFt)
 }
 
 func (c GeosearchCircleCircleByradius) Mi() GeosearchCircleCircleUnitMi {
-	c.cs.s = append(c.cs.s, "mi")
-	return (GeosearchCircleCircleUnitMi)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchCircleCircleUnitMi)
 }
 
 type GeosearchCircleCircleUnitFt Incomplete
 
 func (c GeosearchCircleCircleUnitFt) Bybox(width float64) GeosearchCircleBoxBybox {
-	c.cs.s = append(c.cs.s, "BYBOX", strconv.FormatFloat(width, 'f', -1, 64))
-	return (GeosearchCircleBoxBybox)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchCircleBoxBybox)
 }
 
 func (c GeosearchCircleCircleUnitFt) NumVertices(numVertices int64) GeosearchCirclePolygonNumVertices {
-	c.cs.s = append(c.cs.s, "BYPOLYGON", strconv.FormatInt(numVertices, 10))
-	return (GeosearchCirclePolygonNumVertices)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchCirclePolygonNumVertices)
 }
 
 func (c GeosearchCircleCircleUnitFt) Asc() GeosearchOrderAsc {
-	c.cs.s = append(c.cs.s, "ASC")
-	return (GeosearchOrderAsc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchOrderAsc)
 }
 
 func (c GeosearchCircleCircleUnitFt) Desc() GeosearchOrderDesc {
-	c.cs.s = append(c.cs.s, "DESC")
-	return (GeosearchOrderDesc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchOrderDesc)
 }
 
 func (c GeosearchCircleCircleUnitFt) Count(count int64) GeosearchCountCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(count, 10))
-	return (GeosearchCountCount)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchCountCount)
 }
 
 func (c GeosearchCircleCircleUnitFt) Withcoord() GeosearchWithcoord {
-	c.cs.s = append(c.cs.s, "WITHCOORD")
-	return (GeosearchWithcoord)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchWithcoord)
 }
 
 func (c GeosearchCircleCircleUnitFt) Withdist() GeosearchWithdist {
-	c.cs.s = append(c.cs.s, "WITHDIST")
-	return (GeosearchWithdist)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchWithdist)
 }
 
 func (c GeosearchCircleCircleUnitFt) Withhash() GeosearchWithhash {
-	c.cs.s = append(c.cs.s, "WITHHASH")
-	return (GeosearchWithhash)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchWithhash)
 }
 
 func (c GeosearchCircleCircleUnitFt) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 func (c GeosearchCircleCircleUnitFt) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Cacheable)
 }
 
 type GeosearchCircleCircleUnitKm Incomplete
 
 func (c GeosearchCircleCircleUnitKm) Bybox(width float64) GeosearchCircleBoxBybox {
-	c.cs.s = append(c.cs.s, "BYBOX", strconv.FormatFloat(width, 'f', -1, 64))
-	return (GeosearchCircleBoxBybox)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchCircleBoxBybox)
 }
 
 func (c GeosearchCircleCircleUnitKm) NumVertices(numVertices int64) GeosearchCirclePolygonNumVertices {
-	c.cs.s = append(c.cs.s, "BYPOLYGON", strconv.FormatInt(numVertices, 10))
-	return (GeosearchCirclePolygonNumVertices)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchCirclePolygonNumVertices)
 }
 
 func (c GeosearchCircleCircleUnitKm) Asc() GeosearchOrderAsc {
-	c.cs.s = append(c.cs.s, "ASC")
-	return (GeosearchOrderAsc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchOrderAsc)
 }
 
 func (c GeosearchCircleCircleUnitKm) Desc() GeosearchOrderDesc {
-	c.cs.s = append(c.cs.s, "DESC")
-	return (GeosearchOrderDesc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchOrderDesc)
 }
 
 func (c GeosearchCircleCircleUnitKm) Count(count int64) GeosearchCountCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(count, 10))
-	return (GeosearchCountCount)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchCountCount)
 }
 
 func (c GeosearchCircleCircleUnitKm) Withcoord() GeosearchWithcoord {
-	c.cs.s = append(c.cs.s, "WITHCOORD")
-	return (GeosearchWithcoord)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchWithcoord)
 }
 
 func (c GeosearchCircleCircleUnitKm) Withdist() GeosearchWithdist {
-	c.cs.s = append(c.cs.s, "WITHDIST")
-	return (GeosearchWithdist)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchWithdist)
 }
 
 func (c GeosearchCircleCircleUnitKm) Withhash() GeosearchWithhash {
-	c.cs.s = append(c.cs.s, "WITHHASH")
-	return (GeosearchWithhash)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchWithhash)
 }
 
 func (c GeosearchCircleCircleUnitKm) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 func (c GeosearchCircleCircleUnitKm) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Cacheable)
 }
 
 type GeosearchCircleCircleUnitM Incomplete
 
 func (c GeosearchCircleCircleUnitM) Bybox(width float64) GeosearchCircleBoxBybox {
-	c.cs.s = append(c.cs.s, "BYBOX", strconv.FormatFloat(width, 'f', -1, 64))
-	return (GeosearchCircleBoxBybox)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchCircleBoxBybox)
 }
 
 func (c GeosearchCircleCircleUnitM) NumVertices(numVertices int64) GeosearchCirclePolygonNumVertices {
-	c.cs.s = append(c.cs.s, "BYPOLYGON", strconv.FormatInt(numVertices, 10))
-	return (GeosearchCirclePolygonNumVertices)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchCirclePolygonNumVertices)
 }
 
 func (c GeosearchCircleCircleUnitM) Asc() GeosearchOrderAsc {
-	c.cs.s = append(c.cs.s, "ASC")
-	return (GeosearchOrderAsc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchOrderAsc)
 }
 
 func (c GeosearchCircleCircleUnitM) Desc() GeosearchOrderDesc {
-	c.cs.s = append(c.cs.s, "DESC")
-	return (GeosearchOrderDesc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchOrderDesc)
 }
 
 func (c GeosearchCircleCircleUnitM) Count(count int64) GeosearchCountCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(count, 10))
-	return (GeosearchCountCount)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchCountCount)
 }
 
 func (c GeosearchCircleCircleUnitM) Withcoord() GeosearchWithcoord {
-	c.cs.s = append(c.cs.s, "WITHCOORD")
-	return (GeosearchWithcoord)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchWithcoord)
 }
 
 func (c GeosearchCircleCircleUnitM) Withdist() GeosearchWithdist {
-	c.cs.s = append(c.cs.s, "WITHDIST")
-	return (GeosearchWithdist)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchWithdist)
 }
 
 func (c GeosearchCircleCircleUnitM) Withhash() GeosearchWithhash {
-	c.cs.s = append(c.cs.s, "WITHHASH")
-	return (GeosearchWithhash)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchWithhash)
 }
 
 func (c GeosearchCircleCircleUnitM) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 func (c GeosearchCircleCircleUnitM) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Cacheable)
 }
 
 type GeosearchCircleCircleUnitMi Incomplete
 
 func (c GeosearchCircleCircleUnitMi) Bybox(width float64) GeosearchCircleBoxBybox {
-	c.cs.s = append(c.cs.s, "BYBOX", strconv.FormatFloat(width, 'f', -1, 64))
-	return (GeosearchCircleBoxBybox)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchCircleBoxBybox)
 }
 
 func (c GeosearchCircleCircleUnitMi) NumVertices(numVertices int64) GeosearchCirclePolygonNumVertices {
-	c.cs.s = append(c.cs.s, "BYPOLYGON", strconv.FormatInt(numVertices, 10))
-	return (GeosearchCirclePolygonNumVertices)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchCirclePolygonNumVertices)
 }
 
 func (c GeosearchCircleCircleUnitMi) Asc() GeosearchOrderAsc {
-	c.cs.s = append(c.cs.s, "ASC")
-	return (GeosearchOrderAsc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchOrderAsc)
 }
 
 func (c GeosearchCircleCircleUnitMi) Desc() GeosearchOrderDesc {
-	c.cs.s = append(c.cs.s, "DESC")
-	return (GeosearchOrderDesc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchOrderDesc)
 }
 
 func (c GeosearchCircleCircleUnitMi) Count(count int64) GeosearchCountCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(count, 10))
-	return (GeosearchCountCount)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchCountCount)
 }
 
 func (c GeosearchCircleCircleUnitMi) Withcoord() GeosearchWithcoord {
-	c.cs.s = append(c.cs.s, "WITHCOORD")
-	return (GeosearchWithcoord)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchWithcoord)
 }
 
 func (c GeosearchCircleCircleUnitMi) Withdist() GeosearchWithdist {
-	c.cs.s = append(c.cs.s, "WITHDIST")
-	return (GeosearchWithdist)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchWithdist)
 }
 
 func (c GeosearchCircleCircleUnitMi) Withhash() GeosearchWithhash {
-	c.cs.s = append(c.cs.s, "WITHHASH")
-	return (GeosearchWithhash)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchWithhash)
 }
 
 func (c GeosearchCircleCircleUnitMi) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 func (c GeosearchCircleCircleUnitMi) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Cacheable)
 }
 
 type GeosearchCirclePolygonNumVertices Incomplete
 
 func (c GeosearchCirclePolygonNumVertices) Longitude(longitude float64) GeosearchCirclePolygonVerticesLongitude {
-	c.cs.s = append(c.cs.s, strconv.FormatFloat(longitude, 'f', -1, 64))
-	return (GeosearchCirclePolygonVerticesLongitude)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchCirclePolygonVerticesLongitude)
 }
 
 type GeosearchCirclePolygonVerticesLatitude Incomplete
 
 func (c GeosearchCirclePolygonVerticesLatitude) Longitude(longitude float64) GeosearchCirclePolygonVerticesLongitude {
-	c.cs.s = append(c.cs.s, strconv.FormatFloat(longitude, 'f', -1, 64))
-	return (GeosearchCirclePolygonVerticesLongitude)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchCirclePolygonVerticesLongitude)
 }
 
 func (c GeosearchCirclePolygonVerticesLatitude) Asc() GeosearchOrderAsc {
-	c.cs.s = append(c.cs.s, "ASC")
-	return (GeosearchOrderAsc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchOrderAsc)
 }
 
 func (c GeosearchCirclePolygonVerticesLatitude) Desc() GeosearchOrderDesc {
-	c.cs.s = append(c.cs.s, "DESC")
-	return (GeosearchOrderDesc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchOrderDesc)
 }
 
 func (c GeosearchCirclePolygonVerticesLatitude) Count(count int64) GeosearchCountCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(count, 10))
-	return (GeosearchCountCount)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchCountCount)
 }
 
 func (c GeosearchCirclePolygonVerticesLatitude) Withcoord() GeosearchWithcoord {
-	c.cs.s = append(c.cs.s, "WITHCOORD")
-	return (GeosearchWithcoord)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchWithcoord)
 }
 
 func (c GeosearchCirclePolygonVerticesLatitude) Withdist() GeosearchWithdist {
-	c.cs.s = append(c.cs.s, "WITHDIST")
-	return (GeosearchWithdist)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchWithdist)
 }
 
 func (c GeosearchCirclePolygonVerticesLatitude) Withhash() GeosearchWithhash {
-	c.cs.s = append(c.cs.s, "WITHHASH")
-	return (GeosearchWithhash)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchWithhash)
 }
 
 func (c GeosearchCirclePolygonVerticesLatitude) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 func (c GeosearchCirclePolygonVerticesLatitude) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Cacheable)
 }
 
 type GeosearchCirclePolygonVerticesLongitude Incomplete
 
 func (c GeosearchCirclePolygonVerticesLongitude) Latitude(latitude float64) GeosearchCirclePolygonVerticesLatitude {
-	c.cs.s = append(c.cs.s, strconv.FormatFloat(latitude, 'f', -1, 64))
-	return (GeosearchCirclePolygonVerticesLatitude)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchCirclePolygonVerticesLatitude)
 }
 
 type GeosearchCountAny Incomplete
 
 func (c GeosearchCountAny) Withcoord() GeosearchWithcoord {
-	c.cs.s = append(c.cs.s, "WITHCOORD")
-	return (GeosearchWithcoord)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchWithcoord)
 }
 
 func (c GeosearchCountAny) Withdist() GeosearchWithdist {
-	c.cs.s = append(c.cs.s, "WITHDIST")
-	return (GeosearchWithdist)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchWithdist)
 }
 
 func (c GeosearchCountAny) Withhash() GeosearchWithhash {
-	c.cs.s = append(c.cs.s, "WITHHASH")
-	return (GeosearchWithhash)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchWithhash)
 }
 
-func (c GeosearchCountAny) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c GeosearchCountAny) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c GeosearchCountAny) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c GeosearchCountAny) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type GeosearchCountCount Incomplete
 
 func (c GeosearchCountCount) Any() GeosearchCountAny {
-	c.cs.s = append(c.cs.s, "ANY")
-	return (GeosearchCountAny)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchCountAny)
 }
 
 func (c GeosearchCountCount) Withcoord() GeosearchWithcoord {
-	c.cs.s = append(c.cs.s, "WITHCOORD")
-	return (GeosearchWithcoord)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchWithcoord)
 }
 
 func (c GeosearchCountCount) Withdist() GeosearchWithdist {
-	c.cs.s = append(c.cs.s, "WITHDIST")
-	return (GeosearchWithdist)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchWithdist)
 }
 
 func (c GeosearchCountCount) Withhash() GeosearchWithhash {
-	c.cs.s = append(c.cs.s, "WITHHASH")
-	return (GeosearchWithhash)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchWithhash)
 }
 
-func (c GeosearchCountCount) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c GeosearchCountCount) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c GeosearchCountCount) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c GeosearchCountCount) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type GeosearchFrommemberFromlonlat Incomplete
 
 func (c GeosearchFrommemberFromlonlat) Byradius(radius float64) GeosearchCircleCircleByradius {
-	c.cs.s = append(c.cs.s, "BYRADIUS", strconv.FormatFloat(radius, 'f', -1, 64))
-	return (GeosearchCircleCircleByradius)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchCircleCircleByradius)
 }
 
 func (c GeosearchFrommemberFromlonlat) Bybox(width float64) GeosearchCircleBoxBybox {
-	c.cs.s = append(c.cs.s, "BYBOX", strconv.FormatFloat(width, 'f', -1, 64))
-	return (GeosearchCircleBoxBybox)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchCircleBoxBybox)
 }
 
 func (c GeosearchFrommemberFromlonlat) NumVertices(numVertices int64) GeosearchCirclePolygonNumVertices {
-	c.cs.s = append(c.cs.s, "BYPOLYGON", strconv.FormatInt(numVertices, 10))
-	return (GeosearchCirclePolygonNumVertices)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchCirclePolygonNumVertices)
 }
 
 type GeosearchFrommemberFrommember Incomplete
 
 func (c GeosearchFrommemberFrommember) Fromlonlat(longitude float64, latitude float64) GeosearchFrommemberFromlonlat {
-	c.cs.s = append(c.cs.s, "FROMLONLAT", strconv.FormatFloat(longitude, 'f', -1, 64), strconv.FormatFloat(latitude, 'f', -1, 64))
-	return (GeosearchFrommemberFromlonlat)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchFrommemberFromlonlat)
 }
 
 func (c GeosearchFrommemberFrommember) Byradius(radius float64) GeosearchCircleCircleByradius {
-	c.cs.s = append(c.cs.s, "BYRADIUS", strconv.FormatFloat(radius, 'f', -1, 64))
-	return (GeosearchCircleCircleByradius)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchCircleCircleByradius)
 }
 
 func (c GeosearchFrommemberFrommember) Bybox(width float64) GeosearchCircleBoxBybox {
-	c.cs.s = append(c.cs.s, "BYBOX", strconv.FormatFloat(width, 'f', -1, 64))
-	return (GeosearchCircleBoxBybox)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchCircleBoxBybox)
 }
 
 func (c GeosearchFrommemberFrommember) NumVertices(numVertices int64) GeosearchCirclePolygonNumVertices {
-	c.cs.s = append(c.cs.s, "BYPOLYGON", strconv.FormatInt(numVertices, 10))
-	return (GeosearchCirclePolygonNumVertices)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchCirclePolygonNumVertices)
 }
 
 type GeosearchKey Incomplete
 
 func (c GeosearchKey) Frommember(member string) GeosearchFrommemberFrommember {
-	c.cs.s = append(c.cs.s, "FROMMEMBER", member)
-	return (GeosearchFrommemberFrommember)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchFrommemberFrommember)
 }
 
 func (c GeosearchKey) Fromlonlat(longitude float64, latitude float64) GeosearchFrommemberFromlonlat {
-	c.cs.s = append(c.cs.s, "FROMLONLAT", strconv.FormatFloat(longitude, 'f', -1, 64), strconv.FormatFloat(latitude, 'f', -1, 64))
-	return (GeosearchFrommemberFromlonlat)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchFrommemberFromlonlat)
 }
 
 type GeosearchOrderAsc Incomplete
 
 func (c GeosearchOrderAsc) Count(count int64) GeosearchCountCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(count, 10))
-	return (GeosearchCountCount)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchCountCount)
 }
 
 func (c GeosearchOrderAsc) Withcoord() GeosearchWithcoord {
-	c.cs.s = append(c.cs.s, "WITHCOORD")
-	return (GeosearchWithcoord)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchWithcoord)
 }
 
 func (c GeosearchOrderAsc) Withdist() GeosearchWithdist {
-	c.cs.s = append(c.cs.s, "WITHDIST")
-	return (GeosearchWithdist)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchWithdist)
 }
 
 func (c GeosearchOrderAsc) Withhash() GeosearchWithhash {
-	c.cs.s = append(c.cs.s, "WITHHASH")
-	return (GeosearchWithhash)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchWithhash)
 }
 
-func (c GeosearchOrderAsc) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c GeosearchOrderAsc) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c GeosearchOrderAsc) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c GeosearchOrderAsc) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type GeosearchOrderDesc Incomplete
 
 func (c GeosearchOrderDesc) Count(count int64) GeosearchCountCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(count, 10))
-	return (GeosearchCountCount)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchCountCount)
 }
 
 func (c GeosearchOrderDesc) Withcoord() GeosearchWithcoord {
-	c.cs.s = append(c.cs.s, "WITHCOORD")
-	return (GeosearchWithcoord)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchWithcoord)
 }
 
 func (c GeosearchOrderDesc) Withdist() GeosearchWithdist {
-	c.cs.s = append(c.cs.s, "WITHDIST")
-	return (GeosearchWithdist)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchWithdist)
 }
 
 func (c GeosearchOrderDesc) Withhash() GeosearchWithhash {
-	c.cs.s = append(c.cs.s, "WITHHASH")
-	return (GeosearchWithhash)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchWithhash)
 }
 
-func (c GeosearchOrderDesc) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c GeosearchOrderDesc) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c GeosearchOrderDesc) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c GeosearchOrderDesc) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type GeosearchWithcoord Incomplete
 
 func (c GeosearchWithcoord) Withdist() GeosearchWithdist {
-	c.cs.s = append(c.cs.s, "WITHDIST")
-	return (GeosearchWithdist)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchWithdist)
 }
 
 func (c GeosearchWithcoord) Withhash() GeosearchWithhash {
-	c.cs.s = append(c.cs.s, "WITHHASH")
-	return (GeosearchWithhash)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchWithhash)
 }
 
-func (c GeosearchWithcoord) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c GeosearchWithcoord) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c GeosearchWithcoord) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c GeosearchWithcoord) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type GeosearchWithdist Incomplete
 
 func (c GeosearchWithdist) Withhash() GeosearchWithhash {
-	c.cs.s = append(c.cs.s, "WITHHASH")
-	return (GeosearchWithhash)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchWithhash)
 }
 
-func (c GeosearchWithdist) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c GeosearchWithdist) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c GeosearchWithdist) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c GeosearchWithdist) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type GeosearchWithhash Incomplete
 
-func (c GeosearchWithhash) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c GeosearchWithhash) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c GeosearchWithhash) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c GeosearchWithhash) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type Geosearchstore Incomplete
 
 func (b Builder) Geosearchstore() (c Geosearchstore) {
-	c = Geosearchstore{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "GEOSEARCHSTORE")
-	return c
+	_ = "STUB: not implemented"
+	return *new(Geosearchstore)
 }
 
 func (c Geosearchstore) Destination(destination string) GeosearchstoreDestination {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(destination)
-	} else {
-		c.ks = check(c.ks, slot(destination))
-	}
-	c.cs.s = append(c.cs.s, destination)
-	return (GeosearchstoreDestination)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchstoreDestination)
 }
 
 type GeosearchstoreCircleBoxBybox Incomplete
 
 func (c GeosearchstoreCircleBoxBybox) Height(height float64) GeosearchstoreCircleBoxHeight {
-	c.cs.s = append(c.cs.s, strconv.FormatFloat(height, 'f', -1, 64))
-	return (GeosearchstoreCircleBoxHeight)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchstoreCircleBoxHeight)
 }
 
 type GeosearchstoreCircleBoxHeight Incomplete
 
 func (c GeosearchstoreCircleBoxHeight) M() GeosearchstoreCircleBoxUnitM {
-	c.cs.s = append(c.cs.s, "m")
-	return (GeosearchstoreCircleBoxUnitM)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchstoreCircleBoxUnitM)
 }
 
 func (c GeosearchstoreCircleBoxHeight) Km() GeosearchstoreCircleBoxUnitKm {
-	c.cs.s = append(c.cs.s, "km")
-	return (GeosearchstoreCircleBoxUnitKm)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchstoreCircleBoxUnitKm)
 }
 
 func (c GeosearchstoreCircleBoxHeight) Ft() GeosearchstoreCircleBoxUnitFt {
-	c.cs.s = append(c.cs.s, "ft")
-	return (GeosearchstoreCircleBoxUnitFt)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchstoreCircleBoxUnitFt)
 }
 
 func (c GeosearchstoreCircleBoxHeight) Mi() GeosearchstoreCircleBoxUnitMi {
-	c.cs.s = append(c.cs.s, "mi")
-	return (GeosearchstoreCircleBoxUnitMi)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchstoreCircleBoxUnitMi)
 }
 
 type GeosearchstoreCircleBoxUnitFt Incomplete
 
 func (c GeosearchstoreCircleBoxUnitFt) NumVertices(numVertices int64) GeosearchstoreCirclePolygonNumVertices {
-	c.cs.s = append(c.cs.s, "BYPOLYGON", strconv.FormatInt(numVertices, 10))
-	return (GeosearchstoreCirclePolygonNumVertices)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchstoreCirclePolygonNumVertices)
 }
 
 func (c GeosearchstoreCircleBoxUnitFt) Asc() GeosearchstoreOrderAsc {
-	c.cs.s = append(c.cs.s, "ASC")
-	return (GeosearchstoreOrderAsc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchstoreOrderAsc)
 }
 
 func (c GeosearchstoreCircleBoxUnitFt) Desc() GeosearchstoreOrderDesc {
-	c.cs.s = append(c.cs.s, "DESC")
-	return (GeosearchstoreOrderDesc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchstoreOrderDesc)
 }
 
 func (c GeosearchstoreCircleBoxUnitFt) Count(count int64) GeosearchstoreCountCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(count, 10))
-	return (GeosearchstoreCountCount)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchstoreCountCount)
 }
 
 func (c GeosearchstoreCircleBoxUnitFt) Storedist() GeosearchstoreStoredist {
-	c.cs.s = append(c.cs.s, "STOREDIST")
-	return (GeosearchstoreStoredist)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchstoreStoredist)
 }
 
 func (c GeosearchstoreCircleBoxUnitFt) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type GeosearchstoreCircleBoxUnitKm Incomplete
 
 func (c GeosearchstoreCircleBoxUnitKm) NumVertices(numVertices int64) GeosearchstoreCirclePolygonNumVertices {
-	c.cs.s = append(c.cs.s, "BYPOLYGON", strconv.FormatInt(numVertices, 10))
-	return (GeosearchstoreCirclePolygonNumVertices)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchstoreCirclePolygonNumVertices)
 }
 
 func (c GeosearchstoreCircleBoxUnitKm) Asc() GeosearchstoreOrderAsc {
-	c.cs.s = append(c.cs.s, "ASC")
-	return (GeosearchstoreOrderAsc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchstoreOrderAsc)
 }
 
 func (c GeosearchstoreCircleBoxUnitKm) Desc() GeosearchstoreOrderDesc {
-	c.cs.s = append(c.cs.s, "DESC")
-	return (GeosearchstoreOrderDesc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchstoreOrderDesc)
 }
 
 func (c GeosearchstoreCircleBoxUnitKm) Count(count int64) GeosearchstoreCountCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(count, 10))
-	return (GeosearchstoreCountCount)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchstoreCountCount)
 }
 
 func (c GeosearchstoreCircleBoxUnitKm) Storedist() GeosearchstoreStoredist {
-	c.cs.s = append(c.cs.s, "STOREDIST")
-	return (GeosearchstoreStoredist)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchstoreStoredist)
 }
 
 func (c GeosearchstoreCircleBoxUnitKm) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type GeosearchstoreCircleBoxUnitM Incomplete
 
 func (c GeosearchstoreCircleBoxUnitM) NumVertices(numVertices int64) GeosearchstoreCirclePolygonNumVertices {
-	c.cs.s = append(c.cs.s, "BYPOLYGON", strconv.FormatInt(numVertices, 10))
-	return (GeosearchstoreCirclePolygonNumVertices)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchstoreCirclePolygonNumVertices)
 }
 
 func (c GeosearchstoreCircleBoxUnitM) Asc() GeosearchstoreOrderAsc {
-	c.cs.s = append(c.cs.s, "ASC")
-	return (GeosearchstoreOrderAsc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchstoreOrderAsc)
 }
 
 func (c GeosearchstoreCircleBoxUnitM) Desc() GeosearchstoreOrderDesc {
-	c.cs.s = append(c.cs.s, "DESC")
-	return (GeosearchstoreOrderDesc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchstoreOrderDesc)
 }
 
 func (c GeosearchstoreCircleBoxUnitM) Count(count int64) GeosearchstoreCountCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(count, 10))
-	return (GeosearchstoreCountCount)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchstoreCountCount)
 }
 
 func (c GeosearchstoreCircleBoxUnitM) Storedist() GeosearchstoreStoredist {
-	c.cs.s = append(c.cs.s, "STOREDIST")
-	return (GeosearchstoreStoredist)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchstoreStoredist)
 }
 
 func (c GeosearchstoreCircleBoxUnitM) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type GeosearchstoreCircleBoxUnitMi Incomplete
 
 func (c GeosearchstoreCircleBoxUnitMi) NumVertices(numVertices int64) GeosearchstoreCirclePolygonNumVertices {
-	c.cs.s = append(c.cs.s, "BYPOLYGON", strconv.FormatInt(numVertices, 10))
-	return (GeosearchstoreCirclePolygonNumVertices)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchstoreCirclePolygonNumVertices)
 }
 
 func (c GeosearchstoreCircleBoxUnitMi) Asc() GeosearchstoreOrderAsc {
-	c.cs.s = append(c.cs.s, "ASC")
-	return (GeosearchstoreOrderAsc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchstoreOrderAsc)
 }
 
 func (c GeosearchstoreCircleBoxUnitMi) Desc() GeosearchstoreOrderDesc {
-	c.cs.s = append(c.cs.s, "DESC")
-	return (GeosearchstoreOrderDesc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchstoreOrderDesc)
 }
 
 func (c GeosearchstoreCircleBoxUnitMi) Count(count int64) GeosearchstoreCountCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(count, 10))
-	return (GeosearchstoreCountCount)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchstoreCountCount)
 }
 
 func (c GeosearchstoreCircleBoxUnitMi) Storedist() GeosearchstoreStoredist {
-	c.cs.s = append(c.cs.s, "STOREDIST")
-	return (GeosearchstoreStoredist)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchstoreStoredist)
 }
 
 func (c GeosearchstoreCircleBoxUnitMi) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type GeosearchstoreCircleCircleByradius Incomplete
 
 func (c GeosearchstoreCircleCircleByradius) M() GeosearchstoreCircleCircleUnitM {
-	c.cs.s = append(c.cs.s, "m")
-	return (GeosearchstoreCircleCircleUnitM)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchstoreCircleCircleUnitM)
 }
 
 func (c GeosearchstoreCircleCircleByradius) Km() GeosearchstoreCircleCircleUnitKm {
-	c.cs.s = append(c.cs.s, "km")
-	return (GeosearchstoreCircleCircleUnitKm)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchstoreCircleCircleUnitKm)
 }
 
 func (c GeosearchstoreCircleCircleByradius) Ft() GeosearchstoreCircleCircleUnitFt {
-	c.cs.s = append(c.cs.s, "ft")
-	return (GeosearchstoreCircleCircleUnitFt)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchstoreCircleCircleUnitFt)
 }
 
 func (c GeosearchstoreCircleCircleByradius) Mi() GeosearchstoreCircleCircleUnitMi {
-	c.cs.s = append(c.cs.s, "mi")
-	return (GeosearchstoreCircleCircleUnitMi)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchstoreCircleCircleUnitMi)
 }
 
 type GeosearchstoreCircleCircleUnitFt Incomplete
 
 func (c GeosearchstoreCircleCircleUnitFt) Bybox(width float64) GeosearchstoreCircleBoxBybox {
-	c.cs.s = append(c.cs.s, "BYBOX", strconv.FormatFloat(width, 'f', -1, 64))
-	return (GeosearchstoreCircleBoxBybox)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchstoreCircleBoxBybox)
 }
 
 func (c GeosearchstoreCircleCircleUnitFt) NumVertices(numVertices int64) GeosearchstoreCirclePolygonNumVertices {
-	c.cs.s = append(c.cs.s, "BYPOLYGON", strconv.FormatInt(numVertices, 10))
-	return (GeosearchstoreCirclePolygonNumVertices)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchstoreCirclePolygonNumVertices)
 }
 
 func (c GeosearchstoreCircleCircleUnitFt) Asc() GeosearchstoreOrderAsc {
-	c.cs.s = append(c.cs.s, "ASC")
-	return (GeosearchstoreOrderAsc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchstoreOrderAsc)
 }
 
 func (c GeosearchstoreCircleCircleUnitFt) Desc() GeosearchstoreOrderDesc {
-	c.cs.s = append(c.cs.s, "DESC")
-	return (GeosearchstoreOrderDesc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchstoreOrderDesc)
 }
 
 func (c GeosearchstoreCircleCircleUnitFt) Count(count int64) GeosearchstoreCountCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(count, 10))
-	return (GeosearchstoreCountCount)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchstoreCountCount)
 }
 
 func (c GeosearchstoreCircleCircleUnitFt) Storedist() GeosearchstoreStoredist {
-	c.cs.s = append(c.cs.s, "STOREDIST")
-	return (GeosearchstoreStoredist)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchstoreStoredist)
 }
 
 func (c GeosearchstoreCircleCircleUnitFt) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type GeosearchstoreCircleCircleUnitKm Incomplete
 
 func (c GeosearchstoreCircleCircleUnitKm) Bybox(width float64) GeosearchstoreCircleBoxBybox {
-	c.cs.s = append(c.cs.s, "BYBOX", strconv.FormatFloat(width, 'f', -1, 64))
-	return (GeosearchstoreCircleBoxBybox)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchstoreCircleBoxBybox)
 }
 
 func (c GeosearchstoreCircleCircleUnitKm) NumVertices(numVertices int64) GeosearchstoreCirclePolygonNumVertices {
-	c.cs.s = append(c.cs.s, "BYPOLYGON", strconv.FormatInt(numVertices, 10))
-	return (GeosearchstoreCirclePolygonNumVertices)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchstoreCirclePolygonNumVertices)
 }
 
 func (c GeosearchstoreCircleCircleUnitKm) Asc() GeosearchstoreOrderAsc {
-	c.cs.s = append(c.cs.s, "ASC")
-	return (GeosearchstoreOrderAsc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchstoreOrderAsc)
 }
 
 func (c GeosearchstoreCircleCircleUnitKm) Desc() GeosearchstoreOrderDesc {
-	c.cs.s = append(c.cs.s, "DESC")
-	return (GeosearchstoreOrderDesc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchstoreOrderDesc)
 }
 
 func (c GeosearchstoreCircleCircleUnitKm) Count(count int64) GeosearchstoreCountCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(count, 10))
-	return (GeosearchstoreCountCount)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchstoreCountCount)
 }
 
 func (c GeosearchstoreCircleCircleUnitKm) Storedist() GeosearchstoreStoredist {
-	c.cs.s = append(c.cs.s, "STOREDIST")
-	return (GeosearchstoreStoredist)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchstoreStoredist)
 }
 
 func (c GeosearchstoreCircleCircleUnitKm) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type GeosearchstoreCircleCircleUnitM Incomplete
 
 func (c GeosearchstoreCircleCircleUnitM) Bybox(width float64) GeosearchstoreCircleBoxBybox {
-	c.cs.s = append(c.cs.s, "BYBOX", strconv.FormatFloat(width, 'f', -1, 64))
-	return (GeosearchstoreCircleBoxBybox)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchstoreCircleBoxBybox)
 }
 
 func (c GeosearchstoreCircleCircleUnitM) NumVertices(numVertices int64) GeosearchstoreCirclePolygonNumVertices {
-	c.cs.s = append(c.cs.s, "BYPOLYGON", strconv.FormatInt(numVertices, 10))
-	return (GeosearchstoreCirclePolygonNumVertices)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchstoreCirclePolygonNumVertices)
 }
 
 func (c GeosearchstoreCircleCircleUnitM) Asc() GeosearchstoreOrderAsc {
-	c.cs.s = append(c.cs.s, "ASC")
-	return (GeosearchstoreOrderAsc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchstoreOrderAsc)
 }
 
 func (c GeosearchstoreCircleCircleUnitM) Desc() GeosearchstoreOrderDesc {
-	c.cs.s = append(c.cs.s, "DESC")
-	return (GeosearchstoreOrderDesc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchstoreOrderDesc)
 }
 
 func (c GeosearchstoreCircleCircleUnitM) Count(count int64) GeosearchstoreCountCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(count, 10))
-	return (GeosearchstoreCountCount)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchstoreCountCount)
 }
 
 func (c GeosearchstoreCircleCircleUnitM) Storedist() GeosearchstoreStoredist {
-	c.cs.s = append(c.cs.s, "STOREDIST")
-	return (GeosearchstoreStoredist)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchstoreStoredist)
 }
 
 func (c GeosearchstoreCircleCircleUnitM) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type GeosearchstoreCircleCircleUnitMi Incomplete
 
 func (c GeosearchstoreCircleCircleUnitMi) Bybox(width float64) GeosearchstoreCircleBoxBybox {
-	c.cs.s = append(c.cs.s, "BYBOX", strconv.FormatFloat(width, 'f', -1, 64))
-	return (GeosearchstoreCircleBoxBybox)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchstoreCircleBoxBybox)
 }
 
 func (c GeosearchstoreCircleCircleUnitMi) NumVertices(numVertices int64) GeosearchstoreCirclePolygonNumVertices {
-	c.cs.s = append(c.cs.s, "BYPOLYGON", strconv.FormatInt(numVertices, 10))
-	return (GeosearchstoreCirclePolygonNumVertices)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchstoreCirclePolygonNumVertices)
 }
 
 func (c GeosearchstoreCircleCircleUnitMi) Asc() GeosearchstoreOrderAsc {
-	c.cs.s = append(c.cs.s, "ASC")
-	return (GeosearchstoreOrderAsc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchstoreOrderAsc)
 }
 
 func (c GeosearchstoreCircleCircleUnitMi) Desc() GeosearchstoreOrderDesc {
-	c.cs.s = append(c.cs.s, "DESC")
-	return (GeosearchstoreOrderDesc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchstoreOrderDesc)
 }
 
 func (c GeosearchstoreCircleCircleUnitMi) Count(count int64) GeosearchstoreCountCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(count, 10))
-	return (GeosearchstoreCountCount)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchstoreCountCount)
 }
 
 func (c GeosearchstoreCircleCircleUnitMi) Storedist() GeosearchstoreStoredist {
-	c.cs.s = append(c.cs.s, "STOREDIST")
-	return (GeosearchstoreStoredist)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchstoreStoredist)
 }
 
 func (c GeosearchstoreCircleCircleUnitMi) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type GeosearchstoreCirclePolygonNumVertices Incomplete
 
 func (c GeosearchstoreCirclePolygonNumVertices) Longitude(longitude float64) GeosearchstoreCirclePolygonVerticesLongitude {
-	c.cs.s = append(c.cs.s, strconv.FormatFloat(longitude, 'f', -1, 64))
-	return (GeosearchstoreCirclePolygonVerticesLongitude)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchstoreCirclePolygonVerticesLongitude)
 }
 
 type GeosearchstoreCirclePolygonVerticesLatitude Incomplete
 
 func (c GeosearchstoreCirclePolygonVerticesLatitude) Longitude(longitude float64) GeosearchstoreCirclePolygonVerticesLongitude {
-	c.cs.s = append(c.cs.s, strconv.FormatFloat(longitude, 'f', -1, 64))
-	return (GeosearchstoreCirclePolygonVerticesLongitude)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchstoreCirclePolygonVerticesLongitude)
 }
 
 func (c GeosearchstoreCirclePolygonVerticesLatitude) Asc() GeosearchstoreOrderAsc {
-	c.cs.s = append(c.cs.s, "ASC")
-	return (GeosearchstoreOrderAsc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchstoreOrderAsc)
 }
 
 func (c GeosearchstoreCirclePolygonVerticesLatitude) Desc() GeosearchstoreOrderDesc {
-	c.cs.s = append(c.cs.s, "DESC")
-	return (GeosearchstoreOrderDesc)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchstoreOrderDesc)
 }
 
 func (c GeosearchstoreCirclePolygonVerticesLatitude) Count(count int64) GeosearchstoreCountCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(count, 10))
-	return (GeosearchstoreCountCount)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchstoreCountCount)
 }
 
 func (c GeosearchstoreCirclePolygonVerticesLatitude) Storedist() GeosearchstoreStoredist {
-	c.cs.s = append(c.cs.s, "STOREDIST")
-	return (GeosearchstoreStoredist)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchstoreStoredist)
 }
 
 func (c GeosearchstoreCirclePolygonVerticesLatitude) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type GeosearchstoreCirclePolygonVerticesLongitude Incomplete
 
 func (c GeosearchstoreCirclePolygonVerticesLongitude) Latitude(latitude float64) GeosearchstoreCirclePolygonVerticesLatitude {
-	c.cs.s = append(c.cs.s, strconv.FormatFloat(latitude, 'f', -1, 64))
-	return (GeosearchstoreCirclePolygonVerticesLatitude)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchstoreCirclePolygonVerticesLatitude)
 }
 
 type GeosearchstoreCountAny Incomplete
 
 func (c GeosearchstoreCountAny) Storedist() GeosearchstoreStoredist {
-	c.cs.s = append(c.cs.s, "STOREDIST")
-	return (GeosearchstoreStoredist)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchstoreStoredist)
 }
 
 func (c GeosearchstoreCountAny) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type GeosearchstoreCountCount Incomplete
 
 func (c GeosearchstoreCountCount) Any() GeosearchstoreCountAny {
-	c.cs.s = append(c.cs.s, "ANY")
-	return (GeosearchstoreCountAny)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchstoreCountAny)
 }
 
 func (c GeosearchstoreCountCount) Storedist() GeosearchstoreStoredist {
-	c.cs.s = append(c.cs.s, "STOREDIST")
-	return (GeosearchstoreStoredist)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchstoreStoredist)
 }
 
 func (c GeosearchstoreCountCount) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type GeosearchstoreDestination Incomplete
 
 func (c GeosearchstoreDestination) Source(source string) GeosearchstoreSource {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(source)
-	} else {
-		c.ks = check(c.ks, slot(source))
-	}
-	c.cs.s = append(c.cs.s, source)
-	return (GeosearchstoreSource)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchstoreSource)
 }
 
 type GeosearchstoreFrommemberFromlonlat Incomplete
 
 func (c GeosearchstoreFrommemberFromlonlat) Byradius(radius float64) GeosearchstoreCircleCircleByradius {
-	c.cs.s = append(c.cs.s, "BYRADIUS", strconv.FormatFloat(radius, 'f', -1, 64))
-	return (GeosearchstoreCircleCircleByradius)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchstoreCircleCircleByradius)
 }
 
 func (c GeosearchstoreFrommemberFromlonlat) Bybox(width float64) GeosearchstoreCircleBoxBybox {
-	c.cs.s = append(c.cs.s, "BYBOX", strconv.FormatFloat(width, 'f', -1, 64))
-	return (GeosearchstoreCircleBoxBybox)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchstoreCircleBoxBybox)
 }
 
 func (c GeosearchstoreFrommemberFromlonlat) NumVertices(numVertices int64) GeosearchstoreCirclePolygonNumVertices {
-	c.cs.s = append(c.cs.s, "BYPOLYGON", strconv.FormatInt(numVertices, 10))
-	return (GeosearchstoreCirclePolygonNumVertices)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchstoreCirclePolygonNumVertices)
 }
 
 type GeosearchstoreFrommemberFrommember Incomplete
 
 func (c GeosearchstoreFrommemberFrommember) Fromlonlat(longitude float64, latitude float64) GeosearchstoreFrommemberFromlonlat {
-	c.cs.s = append(c.cs.s, "FROMLONLAT", strconv.FormatFloat(longitude, 'f', -1, 64), strconv.FormatFloat(latitude, 'f', -1, 64))
-	return (GeosearchstoreFrommemberFromlonlat)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchstoreFrommemberFromlonlat)
 }
 
 func (c GeosearchstoreFrommemberFrommember) Byradius(radius float64) GeosearchstoreCircleCircleByradius {
-	c.cs.s = append(c.cs.s, "BYRADIUS", strconv.FormatFloat(radius, 'f', -1, 64))
-	return (GeosearchstoreCircleCircleByradius)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchstoreCircleCircleByradius)
 }
 
 func (c GeosearchstoreFrommemberFrommember) Bybox(width float64) GeosearchstoreCircleBoxBybox {
-	c.cs.s = append(c.cs.s, "BYBOX", strconv.FormatFloat(width, 'f', -1, 64))
-	return (GeosearchstoreCircleBoxBybox)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchstoreCircleBoxBybox)
 }
 
 func (c GeosearchstoreFrommemberFrommember) NumVertices(numVertices int64) GeosearchstoreCirclePolygonNumVertices {
-	c.cs.s = append(c.cs.s, "BYPOLYGON", strconv.FormatInt(numVertices, 10))
-	return (GeosearchstoreCirclePolygonNumVertices)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchstoreCirclePolygonNumVertices)
 }
 
 type GeosearchstoreOrderAsc Incomplete
 
 func (c GeosearchstoreOrderAsc) Count(count int64) GeosearchstoreCountCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(count, 10))
-	return (GeosearchstoreCountCount)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchstoreCountCount)
 }
 
 func (c GeosearchstoreOrderAsc) Storedist() GeosearchstoreStoredist {
-	c.cs.s = append(c.cs.s, "STOREDIST")
-	return (GeosearchstoreStoredist)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchstoreStoredist)
 }
 
 func (c GeosearchstoreOrderAsc) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type GeosearchstoreOrderDesc Incomplete
 
 func (c GeosearchstoreOrderDesc) Count(count int64) GeosearchstoreCountCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(count, 10))
-	return (GeosearchstoreCountCount)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchstoreCountCount)
 }
 
 func (c GeosearchstoreOrderDesc) Storedist() GeosearchstoreStoredist {
-	c.cs.s = append(c.cs.s, "STOREDIST")
-	return (GeosearchstoreStoredist)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchstoreStoredist)
 }
 
 func (c GeosearchstoreOrderDesc) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type GeosearchstoreSource Incomplete
 
 func (c GeosearchstoreSource) Frommember(member string) GeosearchstoreFrommemberFrommember {
-	c.cs.s = append(c.cs.s, "FROMMEMBER", member)
-	return (GeosearchstoreFrommemberFrommember)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchstoreFrommemberFrommember)
 }
 
 func (c GeosearchstoreSource) Fromlonlat(longitude float64, latitude float64) GeosearchstoreFrommemberFromlonlat {
-	c.cs.s = append(c.cs.s, "FROMLONLAT", strconv.FormatFloat(longitude, 'f', -1, 64), strconv.FormatFloat(latitude, 'f', -1, 64))
-	return (GeosearchstoreFrommemberFromlonlat)(c)
+	_ = "STUB: not implemented"
+	return *new(GeosearchstoreFrommemberFromlonlat)
 }
 
 type GeosearchstoreStoredist Incomplete
 
 func (c GeosearchstoreStoredist) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }

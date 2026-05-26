@@ -5,481 +5,390 @@ package cmds
 type RgAbortexecution Incomplete
 
 func (b Builder) RgAbortexecution() (c RgAbortexecution) {
-	c = RgAbortexecution{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "RG.ABORTEXECUTION")
-	return c
+	_ = "STUB: not implemented"
+	return *new(RgAbortexecution)
 }
 
 func (c RgAbortexecution) Id(id string) RgAbortexecutionId {
-	c.cs.s = append(c.cs.s, id)
-	return (RgAbortexecutionId)(c)
+	_ = "STUB: not implemented"
+	return *new(RgAbortexecutionId)
 }
 
 type RgAbortexecutionId Incomplete
 
-func (c RgAbortexecutionId) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c RgAbortexecutionId) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type RgConfigget Incomplete
 
-func (b Builder) RgConfigget() (c RgConfigget) {
-	c = RgConfigget{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "RG.CONFIGGET")
-	return c
-}
+func (b Builder) RgConfigget() (c RgConfigget) { _ = "STUB: not implemented"; return *new(RgConfigget) }
 
 func (c RgConfigget) Key(key ...string) RgConfiggetKey {
-	c.cs.s = append(c.cs.s, key...)
-	return (RgConfiggetKey)(c)
+	_ = "STUB: not implemented"
+	return *new(RgConfiggetKey)
 }
 
 type RgConfiggetKey Incomplete
 
 func (c RgConfiggetKey) Key(key ...string) RgConfiggetKey {
-	c.cs.s = append(c.cs.s, key...)
-	return c
+	_ = "STUB: not implemented"
+	return *new(RgConfiggetKey)
 }
 
-func (c RgConfiggetKey) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c RgConfiggetKey) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type RgConfigset Incomplete
 
-func (b Builder) RgConfigset() (c RgConfigset) {
-	c = RgConfigset{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "RG.CONFIGSET")
-	return c
-}
+func (b Builder) RgConfigset() (c RgConfigset) { _ = "STUB: not implemented"; return *new(RgConfigset) }
 
 func (c RgConfigset) KeyValue() RgConfigsetKeyValue {
-	return (RgConfigsetKeyValue)(c)
+	_ = "STUB: not implemented"
+	return *new(RgConfigsetKeyValue)
 }
 
 type RgConfigsetKeyValue Incomplete
 
 func (c RgConfigsetKeyValue) KeyValue(key string, value string) RgConfigsetKeyValue {
-	c.cs.s = append(c.cs.s, key, value)
-	return c
+	_ = "STUB: not implemented"
+	return *new(RgConfigsetKeyValue)
 }
 
-func (c RgConfigsetKeyValue) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c RgConfigsetKeyValue) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type RgDropexecution Incomplete
 
 func (b Builder) RgDropexecution() (c RgDropexecution) {
-	c = RgDropexecution{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "RG.DROPEXECUTION")
-	return c
+	_ = "STUB: not implemented"
+	return *new(RgDropexecution)
 }
 
 func (c RgDropexecution) Id(id string) RgDropexecutionId {
-	c.cs.s = append(c.cs.s, id)
-	return (RgDropexecutionId)(c)
+	_ = "STUB: not implemented"
+	return *new(RgDropexecutionId)
 }
 
 type RgDropexecutionId Incomplete
 
-func (c RgDropexecutionId) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c RgDropexecutionId) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type RgDumpexecutions Incomplete
 
 func (b Builder) RgDumpexecutions() (c RgDumpexecutions) {
-	c = RgDumpexecutions{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "RG.DUMPEXECUTIONS")
-	return c
+	_ = "STUB: not implemented"
+	return *new(RgDumpexecutions)
 }
 
-func (c RgDumpexecutions) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c RgDumpexecutions) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type RgDumpregistrations Incomplete
 
 func (b Builder) RgDumpregistrations() (c RgDumpregistrations) {
-	c = RgDumpregistrations{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "RG.DUMPREGISTRATIONS")
-	return c
+	_ = "STUB: not implemented"
+	return *new(RgDumpregistrations)
 }
 
-func (c RgDumpregistrations) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c RgDumpregistrations) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type RgGetexecution Incomplete
 
 func (b Builder) RgGetexecution() (c RgGetexecution) {
-	c = RgGetexecution{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "RG.GETEXECUTION")
-	return c
+	_ = "STUB: not implemented"
+	return *new(RgGetexecution)
 }
 
 func (c RgGetexecution) Id(id string) RgGetexecutionId {
-	c.cs.s = append(c.cs.s, id)
-	return (RgGetexecutionId)(c)
+	_ = "STUB: not implemented"
+	return *new(RgGetexecutionId)
 }
 
 type RgGetexecutionId Incomplete
 
 func (c RgGetexecutionId) Shard() RgGetexecutionModeShard {
-	c.cs.s = append(c.cs.s, "SHARD")
-	return (RgGetexecutionModeShard)(c)
+	_ = "STUB: not implemented"
+	return *new(RgGetexecutionModeShard)
 }
 
 func (c RgGetexecutionId) Cluster() RgGetexecutionModeCluster {
-	c.cs.s = append(c.cs.s, "CLUSTER")
-	return (RgGetexecutionModeCluster)(c)
+	_ = "STUB: not implemented"
+	return *new(RgGetexecutionModeCluster)
 }
 
-func (c RgGetexecutionId) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c RgGetexecutionId) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type RgGetexecutionModeCluster Incomplete
 
 func (c RgGetexecutionModeCluster) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type RgGetexecutionModeShard Incomplete
 
 func (c RgGetexecutionModeShard) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type RgGetresults Incomplete
 
 func (b Builder) RgGetresults() (c RgGetresults) {
-	c = RgGetresults{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "RG.GETRESULTS")
-	return c
+	_ = "STUB: not implemented"
+	return *new(RgGetresults)
 }
 
 func (c RgGetresults) Id(id string) RgGetresultsId {
-	c.cs.s = append(c.cs.s, id)
-	return (RgGetresultsId)(c)
+	_ = "STUB: not implemented"
+	return *new(RgGetresultsId)
 }
 
 type RgGetresultsId Incomplete
 
-func (c RgGetresultsId) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c RgGetresultsId) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type RgGetresultsblocking Incomplete
 
 func (b Builder) RgGetresultsblocking() (c RgGetresultsblocking) {
-	c = RgGetresultsblocking{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "RG.GETRESULTSBLOCKING")
-	return c
+	_ = "STUB: not implemented"
+	return *new(RgGetresultsblocking)
 }
 
 func (c RgGetresultsblocking) Id(id string) RgGetresultsblockingId {
-	c.cs.s = append(c.cs.s, id)
-	return (RgGetresultsblockingId)(c)
+	_ = "STUB: not implemented"
+	return *new(RgGetresultsblockingId)
 }
 
 type RgGetresultsblockingId Incomplete
 
 func (c RgGetresultsblockingId) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type RgInfocluster Incomplete
 
 func (b Builder) RgInfocluster() (c RgInfocluster) {
-	c = RgInfocluster{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "RG.INFOCLUSTER")
-	return c
+	_ = "STUB: not implemented"
+	return *new(RgInfocluster)
 }
 
-func (c RgInfocluster) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c RgInfocluster) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type RgPydumpreqs Incomplete
 
 func (b Builder) RgPydumpreqs() (c RgPydumpreqs) {
-	c = RgPydumpreqs{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "RG.PYDUMPREQS")
-	return c
+	_ = "STUB: not implemented"
+	return *new(RgPydumpreqs)
 }
 
-func (c RgPydumpreqs) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c RgPydumpreqs) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type RgPyexecute Incomplete
 
-func (b Builder) RgPyexecute() (c RgPyexecute) {
-	c = RgPyexecute{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "RG.PYEXECUTE")
-	return c
-}
+func (b Builder) RgPyexecute() (c RgPyexecute) { _ = "STUB: not implemented"; return *new(RgPyexecute) }
 
 func (c RgPyexecute) Function(function string) RgPyexecuteFunction {
-	c.cs.s = append(c.cs.s, function)
-	return (RgPyexecuteFunction)(c)
+	_ = "STUB: not implemented"
+	return *new(RgPyexecuteFunction)
 }
 
 type RgPyexecuteDescription Incomplete
 
 func (c RgPyexecuteDescription) Upgrade() RgPyexecuteUpgrade {
-	c.cs.s = append(c.cs.s, "UPGRADE")
-	return (RgPyexecuteUpgrade)(c)
+	_ = "STUB: not implemented"
+	return *new(RgPyexecuteUpgrade)
 }
 
 func (c RgPyexecuteDescription) ReplaceWith(replaceWith string) RgPyexecuteReplaceWith {
-	c.cs.s = append(c.cs.s, "REPLACE_WITH", replaceWith)
-	return (RgPyexecuteReplaceWith)(c)
+	_ = "STUB: not implemented"
+	return *new(RgPyexecuteReplaceWith)
 }
 
 func (c RgPyexecuteDescription) Requirements(requirement ...string) RgPyexecuteRequirementsRequirements {
-	c.cs.s = append(c.cs.s, "REQUIREMENTS")
-	c.cs.s = append(c.cs.s, requirement...)
-	return (RgPyexecuteRequirementsRequirements)(c)
+	_ = "STUB: not implemented"
+	return *new(RgPyexecuteRequirementsRequirements)
 }
 
 func (c RgPyexecuteDescription) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type RgPyexecuteFunction Incomplete
 
 func (c RgPyexecuteFunction) Unblocking() RgPyexecuteUnblocking {
-	c.cs.s = append(c.cs.s, "UNBLOCKING")
-	return (RgPyexecuteUnblocking)(c)
+	_ = "STUB: not implemented"
+	return *new(RgPyexecuteUnblocking)
 }
 
 func (c RgPyexecuteFunction) Id(id string) RgPyexecuteId {
-	c.cs.s = append(c.cs.s, "ID", id)
-	return (RgPyexecuteId)(c)
+	_ = "STUB: not implemented"
+	return *new(RgPyexecuteId)
 }
 
 func (c RgPyexecuteFunction) Description(description string) RgPyexecuteDescription {
-	c.cs.s = append(c.cs.s, "DESCRIPTION", description)
-	return (RgPyexecuteDescription)(c)
+	_ = "STUB: not implemented"
+	return *new(RgPyexecuteDescription)
 }
 
 func (c RgPyexecuteFunction) Upgrade() RgPyexecuteUpgrade {
-	c.cs.s = append(c.cs.s, "UPGRADE")
-	return (RgPyexecuteUpgrade)(c)
+	_ = "STUB: not implemented"
+	return *new(RgPyexecuteUpgrade)
 }
 
 func (c RgPyexecuteFunction) ReplaceWith(replaceWith string) RgPyexecuteReplaceWith {
-	c.cs.s = append(c.cs.s, "REPLACE_WITH", replaceWith)
-	return (RgPyexecuteReplaceWith)(c)
+	_ = "STUB: not implemented"
+	return *new(RgPyexecuteReplaceWith)
 }
 
 func (c RgPyexecuteFunction) Requirements(requirement ...string) RgPyexecuteRequirementsRequirements {
-	c.cs.s = append(c.cs.s, "REQUIREMENTS")
-	c.cs.s = append(c.cs.s, requirement...)
-	return (RgPyexecuteRequirementsRequirements)(c)
+	_ = "STUB: not implemented"
+	return *new(RgPyexecuteRequirementsRequirements)
 }
 
-func (c RgPyexecuteFunction) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c RgPyexecuteFunction) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type RgPyexecuteId Incomplete
 
 func (c RgPyexecuteId) Description(description string) RgPyexecuteDescription {
-	c.cs.s = append(c.cs.s, "DESCRIPTION", description)
-	return (RgPyexecuteDescription)(c)
+	_ = "STUB: not implemented"
+	return *new(RgPyexecuteDescription)
 }
 
 func (c RgPyexecuteId) Upgrade() RgPyexecuteUpgrade {
-	c.cs.s = append(c.cs.s, "UPGRADE")
-	return (RgPyexecuteUpgrade)(c)
+	_ = "STUB: not implemented"
+	return *new(RgPyexecuteUpgrade)
 }
 
 func (c RgPyexecuteId) ReplaceWith(replaceWith string) RgPyexecuteReplaceWith {
-	c.cs.s = append(c.cs.s, "REPLACE_WITH", replaceWith)
-	return (RgPyexecuteReplaceWith)(c)
+	_ = "STUB: not implemented"
+	return *new(RgPyexecuteReplaceWith)
 }
 
 func (c RgPyexecuteId) Requirements(requirement ...string) RgPyexecuteRequirementsRequirements {
-	c.cs.s = append(c.cs.s, "REQUIREMENTS")
-	c.cs.s = append(c.cs.s, requirement...)
-	return (RgPyexecuteRequirementsRequirements)(c)
+	_ = "STUB: not implemented"
+	return *new(RgPyexecuteRequirementsRequirements)
 }
 
-func (c RgPyexecuteId) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c RgPyexecuteId) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type RgPyexecuteReplaceWith Incomplete
 
 func (c RgPyexecuteReplaceWith) Requirements(requirement ...string) RgPyexecuteRequirementsRequirements {
-	c.cs.s = append(c.cs.s, "REQUIREMENTS")
-	c.cs.s = append(c.cs.s, requirement...)
-	return (RgPyexecuteRequirementsRequirements)(c)
+	_ = "STUB: not implemented"
+	return *new(RgPyexecuteRequirementsRequirements)
 }
 
 func (c RgPyexecuteReplaceWith) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type RgPyexecuteRequirementsRequirements Incomplete
 
 func (c RgPyexecuteRequirementsRequirements) Requirements(requirement ...string) RgPyexecuteRequirementsRequirements {
-	c.cs.s = append(c.cs.s, "REQUIREMENTS")
-	c.cs.s = append(c.cs.s, requirement...)
-	return c
+	_ = "STUB: not implemented"
+	return *new(RgPyexecuteRequirementsRequirements)
 }
 
 func (c RgPyexecuteRequirementsRequirements) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
+	_ = "STUB: not implemented"
+	return *new(Completed)
 }
 
 type RgPyexecuteUnblocking Incomplete
 
 func (c RgPyexecuteUnblocking) Id(id string) RgPyexecuteId {
-	c.cs.s = append(c.cs.s, "ID", id)
-	return (RgPyexecuteId)(c)
+	_ = "STUB: not implemented"
+	return *new(RgPyexecuteId)
 }
 
 func (c RgPyexecuteUnblocking) Description(description string) RgPyexecuteDescription {
-	c.cs.s = append(c.cs.s, "DESCRIPTION", description)
-	return (RgPyexecuteDescription)(c)
+	_ = "STUB: not implemented"
+	return *new(RgPyexecuteDescription)
 }
 
 func (c RgPyexecuteUnblocking) Upgrade() RgPyexecuteUpgrade {
-	c.cs.s = append(c.cs.s, "UPGRADE")
-	return (RgPyexecuteUpgrade)(c)
+	_ = "STUB: not implemented"
+	return *new(RgPyexecuteUpgrade)
 }
 
 func (c RgPyexecuteUnblocking) ReplaceWith(replaceWith string) RgPyexecuteReplaceWith {
-	c.cs.s = append(c.cs.s, "REPLACE_WITH", replaceWith)
-	return (RgPyexecuteReplaceWith)(c)
+	_ = "STUB: not implemented"
+	return *new(RgPyexecuteReplaceWith)
 }
 
 func (c RgPyexecuteUnblocking) Requirements(requirement ...string) RgPyexecuteRequirementsRequirements {
-	c.cs.s = append(c.cs.s, "REQUIREMENTS")
-	c.cs.s = append(c.cs.s, requirement...)
-	return (RgPyexecuteRequirementsRequirements)(c)
+	_ = "STUB: not implemented"
+	return *new(RgPyexecuteRequirementsRequirements)
 }
 
-func (c RgPyexecuteUnblocking) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c RgPyexecuteUnblocking) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type RgPyexecuteUpgrade Incomplete
 
 func (c RgPyexecuteUpgrade) ReplaceWith(replaceWith string) RgPyexecuteReplaceWith {
-	c.cs.s = append(c.cs.s, "REPLACE_WITH", replaceWith)
-	return (RgPyexecuteReplaceWith)(c)
+	_ = "STUB: not implemented"
+	return *new(RgPyexecuteReplaceWith)
 }
 
 func (c RgPyexecuteUpgrade) Requirements(requirement ...string) RgPyexecuteRequirementsRequirements {
-	c.cs.s = append(c.cs.s, "REQUIREMENTS")
-	c.cs.s = append(c.cs.s, requirement...)
-	return (RgPyexecuteRequirementsRequirements)(c)
+	_ = "STUB: not implemented"
+	return *new(RgPyexecuteRequirementsRequirements)
 }
 
-func (c RgPyexecuteUpgrade) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c RgPyexecuteUpgrade) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type RgPystats Incomplete
 
-func (b Builder) RgPystats() (c RgPystats) {
-	c = RgPystats{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "RG.PYSTATS")
-	return c
-}
+func (b Builder) RgPystats() (c RgPystats) { _ = "STUB: not implemented"; return *new(RgPystats) }
 
-func (c RgPystats) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c RgPystats) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type RgRefreshcluster Incomplete
 
 func (b Builder) RgRefreshcluster() (c RgRefreshcluster) {
-	c = RgRefreshcluster{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "RG.REFRESHCLUSTER")
-	return c
+	_ = "STUB: not implemented"
+	return *new(RgRefreshcluster)
 }
 
-func (c RgRefreshcluster) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c RgRefreshcluster) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type RgTrigger Incomplete
 
-func (b Builder) RgTrigger() (c RgTrigger) {
-	c = RgTrigger{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "RG.TRIGGER")
-	return c
-}
+func (b Builder) RgTrigger() (c RgTrigger) { _ = "STUB: not implemented"; return *new(RgTrigger) }
 
 func (c RgTrigger) Trigger(trigger string) RgTriggerTrigger {
-	c.cs.s = append(c.cs.s, trigger)
-	return (RgTriggerTrigger)(c)
+	_ = "STUB: not implemented"
+	return *new(RgTriggerTrigger)
 }
 
 type RgTriggerArgument Incomplete
 
 func (c RgTriggerArgument) Argument(argument ...string) RgTriggerArgument {
-	c.cs.s = append(c.cs.s, argument...)
-	return c
+	_ = "STUB: not implemented"
+	return *new(RgTriggerArgument)
 }
 
-func (c RgTriggerArgument) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c RgTriggerArgument) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type RgTriggerTrigger Incomplete
 
 func (c RgTriggerTrigger) Argument(argument ...string) RgTriggerArgument {
-	c.cs.s = append(c.cs.s, argument...)
-	return (RgTriggerArgument)(c)
+	_ = "STUB: not implemented"
+	return *new(RgTriggerArgument)
 }
 
 type RgUnregister Incomplete
 
 func (b Builder) RgUnregister() (c RgUnregister) {
-	c = RgUnregister{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "RG.UNREGISTER")
-	return c
+	_ = "STUB: not implemented"
+	return *new(RgUnregister)
 }
 
 func (c RgUnregister) Id(id string) RgUnregisterId {
-	c.cs.s = append(c.cs.s, id)
-	return (RgUnregisterId)(c)
+	_ = "STUB: not implemented"
+	return *new(RgUnregisterId)
 }
 
 type RgUnregisterId Incomplete
 
-func (c RgUnregisterId) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c RgUnregisterId) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }

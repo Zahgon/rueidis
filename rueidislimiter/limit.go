@@ -8,8 +8,6 @@ type RateLimitOption struct {
 }
 
 func WithCustomRateLimit(limit int, window time.Duration) RateLimitOption {
-	return RateLimitOption{
-		limit:  int64(limit),
-		window: window,
-	}
+	_ = "STUB: not implemented"
+	return *new(RateLimitOption)
 }

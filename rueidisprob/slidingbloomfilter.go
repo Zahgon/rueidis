@@ -3,7 +3,6 @@ package rueidisprob
 import (
 	"context"
 	"errors"
-	"strconv"
 	"time"
 
 	"github.com/redis/rueidis"
@@ -179,9 +178,8 @@ type SlidingBloomFilterOptions struct {
 type SlidingBloomFilterOptionFunc func(o *SlidingBloomFilterOptions)
 
 func WithReadOnlyExists(enableReadOperations bool) SlidingBloomFilterOptionFunc {
-	return func(o *SlidingBloomFilterOptions) {
-		o.enableReadOperation = enableReadOperations
-	}
+	_ = "STUB: not implemented"
+	return *new(SlidingBloomFilterOptionFunc)
 }
 
 type slidingBloomFilter struct {
@@ -231,215 +229,50 @@ func NewSlidingBloomFilter(
 	windowSize time.Duration,
 	opts ...SlidingBloomFilterOptionFunc,
 ) (BloomFilter, error) {
-	if len(name) == 0 {
-		return nil, ErrEmptyName
-	}
-
-	if falsePositiveRate <= 0 {
-		return nil, ErrFalsePositiveRateLessThanEqualZero
-	}
-	if falsePositiveRate > 1 {
-		return nil, ErrFalsePositiveRateGreaterThanOne
-	}
-	if windowSize < time.Second {
-		return nil, ErrWindowSizeLessThanOneSecond
-	}
-
-	size := numberOfBloomFilterBits(expectedNumberOfItems, falsePositiveRate)
-	if size == 0 {
-		return nil, ErrBitsSizeZero
-	}
-	if size > maxSize {
-		return nil, ErrBitsSizeTooLarge
-	}
-	hashIterations := numberOfBloomFilterHashFunctions(size, expectedNumberOfItems)
-
-	options := &SlidingBloomFilterOptions{}
-	for _, opt := range opts {
-		opt(options)
-	}
-
-	var existsMultiScript string
-	if options.enableReadOperation {
-		existsMultiScript = slidingBloomFilterExistsReadOnlyMultiScript
-	} else {
-		existsMultiScript = slidingBloomFilterExistsMultiScript
-	}
-
-	// NOTE: https://redis.io/docs/reference/cluster-spec/#hash-tags
-	bfName := "{" + name + "}"
-	counterName := bfName + counterSuffix
-	nextFilterName := bfName + nextFilterSuffix
-	nextCounterName := bfName + nextCounterSuffix
-	lastRotationName := bfName + lastRotationSuffix
-
-	s := &slidingBloomFilter{
-		client:              redisClient,
-		name:                bfName,
-		counter:             counterName,
-		window:              windowSize,
-		windowHalfMs:        strconv.FormatInt(windowSize.Milliseconds()/2, 10),
-		hashIterations:      hashIterations,
-		hashIterationString: strconv.FormatUint(uint64(hashIterations), 10),
-		size:                size,
-		addMultiScript:      rueidis.NewLuaScript(slidingBloomFilterAddMultiScript),
-		addMultiKeys:        []string{bfName, nextFilterName, counterName, nextCounterName, lastRotationName},
-		existsMultiScript:   rueidis.NewLuaScript(existsMultiScript),
-		existsMultiKeys:     []string{bfName, nextFilterName, counterName, nextCounterName, lastRotationName},
-	}
-
-	err := s.initialize()
-	if err != nil {
-		return nil, err
-	}
-
-	return s, nil
+	_ = "STUB: not implemented"
+	return *new(BloomFilter), nil
 }
 
-func (s *slidingBloomFilter) initialize() error {
-	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
-	defer cancel()
+// NOTE: https://redis.io/docs/reference/cluster-spec/#hash-tags
 
-	initializeScript := rueidis.NewLuaScript(slidingBloomFilterInitializeScript)
-	resp := initializeScript.Exec(ctx, s.client, s.addMultiKeys, []string{s.windowHalfMs})
-	if resp.Error() != nil && !rueidis.IsRedisNil(resp.Error()) {
-		return resp.Error()
-	}
+func (s *slidingBloomFilter) initialize() error { _ = "STUB: not implemented"; return nil }
 
-	v, err := resp.AsInt64()
-	if err != nil {
-		return err
-	}
-
-	if v != 1 {
-		return errors.New("failed to initialize sliding Bloom filter")
-	}
-
+func (s *slidingBloomFilter) Add(ctx context.Context, key string) error {
+	_ = "STUB: not implemented"
 	return nil
 }
 
-func (s *slidingBloomFilter) Add(ctx context.Context, key string) error {
-	return s.AddMulti(ctx, []string{key})
-}
-
 func (s *slidingBloomFilter) AddMulti(ctx context.Context, keys []string) error {
-	if len(keys) == 0 {
-		return nil
-	}
-
-	buf := bytesPool.Get(0, len(keys)*int(s.hashIterations)*8)
-	defer bytesPool.Put(buf)
-
-	indexes := s.indexes(keys, &buf.s)
-
-	args := make([]string, 0, len(indexes)+2)
-	args = append(args, s.hashIterationString)
-	args = append(args, s.windowHalfMs)
-	args = append(args, indexes...)
-
-	resp := s.addMultiScript.Exec(ctx, s.client, s.addMultiKeys, args)
-	return resp.Error()
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func (s *slidingBloomFilter) indexes(keys []string, buf *[]byte) []string {
-	allIndexes := make([]string, 0, len(keys)*int(s.hashIterations))
-	size := uint64(s.size)
-
-	for _, key := range keys {
-		h1, h2 := hash([]byte(key))
-		for i := uint(0); i < s.hashIterations; i++ {
-			offset := len(*buf)
-			*buf = strconv.AppendUint(*buf, index(h1, h2, i, size), 10)
-			allIndexes = append(allIndexes, rueidis.BinaryString((*buf)[offset:]))
-		}
-	}
-	return allIndexes
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func (s *slidingBloomFilter) Exists(ctx context.Context, key string) (bool, error) {
-	exists, err := s.ExistsMulti(ctx, []string{key})
-	if err != nil {
-		return false, err
-	}
-
-	return exists[0], nil
+	_ = "STUB: not implemented"
+	return false, nil
 }
 
 func (s *slidingBloomFilter) ExistsMulti(ctx context.Context, keys []string) ([]bool, error) {
-	if len(keys) == 0 {
-		return nil, nil
-	}
-
-	buf := bytesPool.Get(0, len(keys)*int(s.hashIterations)*8)
-	defer bytesPool.Put(buf)
-
-	indexes := s.indexes(keys, &buf.s)
-
-	args := make([]string, 0, len(indexes)+2)
-	args = append(args, s.hashIterationString)
-	args = append(args, s.windowHalfMs)
-	args = append(args, indexes...)
-
-	resp := s.existsMultiScript.Exec(ctx, s.client, s.existsMultiKeys, args)
-	if resp.Error() != nil {
-		return nil, resp.Error()
-	}
-
-	arr, err := resp.ToArray()
-	if err != nil {
-		return nil, err
-	}
-
-	result := make([]bool, len(keys))
-	for i, el := range arr {
-		v, err := el.AsBool()
-		if err != nil {
-			if rueidis.IsRedisNil(err) {
-				result[i] = false
-				continue
-			}
-
-			return nil, err
-		}
-
-		result[i] = v
-	}
-	return result, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 func (s *slidingBloomFilter) Reset(ctx context.Context) error {
-	resp := s.client.Do(ctx,
-		s.client.B().
-			Eval().
-			Script(slidingBloomFilterResetScript).
-			Numkeys(4).
-			Key(s.addMultiKeys...).
-			Build(),
-	)
-	return resp.Error()
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func (s *slidingBloomFilter) Delete(ctx context.Context) error {
-	resp := s.client.Do(ctx, s.client.B().Del().Key(s.addMultiKeys...).Build())
-	return resp.Error()
+	_ = "STUB: not implemented"
+	return nil
 }
 
 func (s *slidingBloomFilter) Count(ctx context.Context) (uint64, error) {
-	resp := s.client.Do(
-		ctx,
-		s.client.B().
-			Get().
-			Key(s.counter).
-			Build(),
-	)
-	count, err := resp.AsUint64()
-	if err != nil {
-		if rueidis.IsRedisNil(err) {
-			return 0, nil
-		}
-
-		return 0, err
-	}
-
-	return count, nil
+	_ = "STUB: not implemented"
+	return 0, nil
 }

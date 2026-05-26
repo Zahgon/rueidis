@@ -2,766 +2,369 @@
 
 package cmds
 
-import "strconv"
-
 type Sadd Incomplete
 
-func (b Builder) Sadd() (c Sadd) {
-	c = Sadd{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "SADD")
-	return c
-}
+func (b Builder) Sadd() (c Sadd) { _ = "STUB: not implemented"; return *new(Sadd) }
 
-func (c Sadd) Key(key string) SaddKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (SaddKey)(c)
-}
+func (c Sadd) Key(key string) SaddKey { _ = "STUB: not implemented"; return *new(SaddKey) }
 
 type SaddKey Incomplete
 
 func (c SaddKey) Member(member ...string) SaddMember {
-	c.cs.s = append(c.cs.s, member...)
-	return (SaddMember)(c)
+	_ = "STUB: not implemented"
+	return *new(SaddMember)
 }
 
 type SaddMember Incomplete
 
 func (c SaddMember) Member(member ...string) SaddMember {
-	c.cs.s = append(c.cs.s, member...)
-	return c
+	_ = "STUB: not implemented"
+	return *new(SaddMember)
 }
 
-func (c SaddMember) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c SaddMember) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type Scard Incomplete
 
-func (b Builder) Scard() (c Scard) {
-	c = Scard{cs: get(), ks: b.ks, cf: int16(readonly)}
-	c.cs.s = append(c.cs.s, "SCARD")
-	return c
-}
+func (b Builder) Scard() (c Scard) { _ = "STUB: not implemented"; return *new(Scard) }
 
-func (c Scard) Key(key string) ScardKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (ScardKey)(c)
-}
+func (c Scard) Key(key string) ScardKey { _ = "STUB: not implemented"; return *new(ScardKey) }
 
 type ScardKey Incomplete
 
-func (c ScardKey) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ScardKey) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c ScardKey) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c ScardKey) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type Sdiff Incomplete
 
-func (b Builder) Sdiff() (c Sdiff) {
-	c = Sdiff{cs: get(), ks: b.ks, cf: int16(readonly)}
-	c.cs.s = append(c.cs.s, "SDIFF")
-	return c
-}
+func (b Builder) Sdiff() (c Sdiff) { _ = "STUB: not implemented"; return *new(Sdiff) }
 
-func (c Sdiff) Key(key ...string) SdiffKey {
-	if c.ks&NoSlot == NoSlot {
-		for _, k := range key {
-			c.ks = NoSlot | slot(k)
-			break
-		}
-	} else {
-		for _, k := range key {
-			c.ks = check(c.ks, slot(k))
-		}
-	}
-	c.cs.s = append(c.cs.s, key...)
-	return (SdiffKey)(c)
-}
+func (c Sdiff) Key(key ...string) SdiffKey { _ = "STUB: not implemented"; return *new(SdiffKey) }
 
 type SdiffKey Incomplete
 
-func (c SdiffKey) Key(key ...string) SdiffKey {
-	if c.ks&NoSlot == NoSlot {
-		for _, k := range key {
-			c.ks = NoSlot | slot(k)
-			break
-		}
-	} else {
-		for _, k := range key {
-			c.ks = check(c.ks, slot(k))
-		}
-	}
-	c.cs.s = append(c.cs.s, key...)
-	return c
-}
+func (c SdiffKey) Key(key ...string) SdiffKey { _ = "STUB: not implemented"; return *new(SdiffKey) }
 
-func (c SdiffKey) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c SdiffKey) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type Sdiffstore Incomplete
 
-func (b Builder) Sdiffstore() (c Sdiffstore) {
-	c = Sdiffstore{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "SDIFFSTORE")
-	return c
-}
+func (b Builder) Sdiffstore() (c Sdiffstore) { _ = "STUB: not implemented"; return *new(Sdiffstore) }
 
 func (c Sdiffstore) Destination(destination string) SdiffstoreDestination {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(destination)
-	} else {
-		c.ks = check(c.ks, slot(destination))
-	}
-	c.cs.s = append(c.cs.s, destination)
-	return (SdiffstoreDestination)(c)
+	_ = "STUB: not implemented"
+	return *new(SdiffstoreDestination)
 }
 
 type SdiffstoreDestination Incomplete
 
 func (c SdiffstoreDestination) Key(key ...string) SdiffstoreKey {
-	if c.ks&NoSlot == NoSlot {
-		for _, k := range key {
-			c.ks = NoSlot | slot(k)
-			break
-		}
-	} else {
-		for _, k := range key {
-			c.ks = check(c.ks, slot(k))
-		}
-	}
-	c.cs.s = append(c.cs.s, key...)
-	return (SdiffstoreKey)(c)
+	_ = "STUB: not implemented"
+	return *new(SdiffstoreKey)
 }
 
 type SdiffstoreKey Incomplete
 
 func (c SdiffstoreKey) Key(key ...string) SdiffstoreKey {
-	if c.ks&NoSlot == NoSlot {
-		for _, k := range key {
-			c.ks = NoSlot | slot(k)
-			break
-		}
-	} else {
-		for _, k := range key {
-			c.ks = check(c.ks, slot(k))
-		}
-	}
-	c.cs.s = append(c.cs.s, key...)
-	return c
+	_ = "STUB: not implemented"
+	return *new(SdiffstoreKey)
 }
 
-func (c SdiffstoreKey) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c SdiffstoreKey) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type Sinter Incomplete
 
-func (b Builder) Sinter() (c Sinter) {
-	c = Sinter{cs: get(), ks: b.ks, cf: int16(readonly)}
-	c.cs.s = append(c.cs.s, "SINTER")
-	return c
-}
+func (b Builder) Sinter() (c Sinter) { _ = "STUB: not implemented"; return *new(Sinter) }
 
-func (c Sinter) Key(key ...string) SinterKey {
-	if c.ks&NoSlot == NoSlot {
-		for _, k := range key {
-			c.ks = NoSlot | slot(k)
-			break
-		}
-	} else {
-		for _, k := range key {
-			c.ks = check(c.ks, slot(k))
-		}
-	}
-	c.cs.s = append(c.cs.s, key...)
-	return (SinterKey)(c)
-}
+func (c Sinter) Key(key ...string) SinterKey { _ = "STUB: not implemented"; return *new(SinterKey) }
 
 type SinterKey Incomplete
 
-func (c SinterKey) Key(key ...string) SinterKey {
-	if c.ks&NoSlot == NoSlot {
-		for _, k := range key {
-			c.ks = NoSlot | slot(k)
-			break
-		}
-	} else {
-		for _, k := range key {
-			c.ks = check(c.ks, slot(k))
-		}
-	}
-	c.cs.s = append(c.cs.s, key...)
-	return c
-}
+func (c SinterKey) Key(key ...string) SinterKey { _ = "STUB: not implemented"; return *new(SinterKey) }
 
-func (c SinterKey) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c SinterKey) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type Sintercard Incomplete
 
-func (b Builder) Sintercard() (c Sintercard) {
-	c = Sintercard{cs: get(), ks: b.ks, cf: int16(readonly)}
-	c.cs.s = append(c.cs.s, "SINTERCARD")
-	return c
-}
+func (b Builder) Sintercard() (c Sintercard) { _ = "STUB: not implemented"; return *new(Sintercard) }
 
 func (c Sintercard) Numkeys(numkeys int64) SintercardNumkeys {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(numkeys, 10))
-	return (SintercardNumkeys)(c)
+	_ = "STUB: not implemented"
+	return *new(SintercardNumkeys)
 }
 
 type SintercardKey Incomplete
 
 func (c SintercardKey) Key(key ...string) SintercardKey {
-	if c.ks&NoSlot == NoSlot {
-		for _, k := range key {
-			c.ks = NoSlot | slot(k)
-			break
-		}
-	} else {
-		for _, k := range key {
-			c.ks = check(c.ks, slot(k))
-		}
-	}
-	c.cs.s = append(c.cs.s, key...)
-	return c
+	_ = "STUB: not implemented"
+	return *new(SintercardKey)
 }
 
 func (c SintercardKey) Limit(limit int64) SintercardLimit {
-	c.cs.s = append(c.cs.s, "LIMIT", strconv.FormatInt(limit, 10))
-	return (SintercardLimit)(c)
+	_ = "STUB: not implemented"
+	return *new(SintercardLimit)
 }
 
-func (c SintercardKey) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c SintercardKey) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type SintercardLimit Incomplete
 
-func (c SintercardLimit) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c SintercardLimit) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type SintercardNumkeys Incomplete
 
 func (c SintercardNumkeys) Key(key ...string) SintercardKey {
-	if c.ks&NoSlot == NoSlot {
-		for _, k := range key {
-			c.ks = NoSlot | slot(k)
-			break
-		}
-	} else {
-		for _, k := range key {
-			c.ks = check(c.ks, slot(k))
-		}
-	}
-	c.cs.s = append(c.cs.s, key...)
-	return (SintercardKey)(c)
+	_ = "STUB: not implemented"
+	return *new(SintercardKey)
 }
 
 type Sinterstore Incomplete
 
-func (b Builder) Sinterstore() (c Sinterstore) {
-	c = Sinterstore{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "SINTERSTORE")
-	return c
-}
+func (b Builder) Sinterstore() (c Sinterstore) { _ = "STUB: not implemented"; return *new(Sinterstore) }
 
 func (c Sinterstore) Destination(destination string) SinterstoreDestination {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(destination)
-	} else {
-		c.ks = check(c.ks, slot(destination))
-	}
-	c.cs.s = append(c.cs.s, destination)
-	return (SinterstoreDestination)(c)
+	_ = "STUB: not implemented"
+	return *new(SinterstoreDestination)
 }
 
 type SinterstoreDestination Incomplete
 
 func (c SinterstoreDestination) Key(key ...string) SinterstoreKey {
-	if c.ks&NoSlot == NoSlot {
-		for _, k := range key {
-			c.ks = NoSlot | slot(k)
-			break
-		}
-	} else {
-		for _, k := range key {
-			c.ks = check(c.ks, slot(k))
-		}
-	}
-	c.cs.s = append(c.cs.s, key...)
-	return (SinterstoreKey)(c)
+	_ = "STUB: not implemented"
+	return *new(SinterstoreKey)
 }
 
 type SinterstoreKey Incomplete
 
 func (c SinterstoreKey) Key(key ...string) SinterstoreKey {
-	if c.ks&NoSlot == NoSlot {
-		for _, k := range key {
-			c.ks = NoSlot | slot(k)
-			break
-		}
-	} else {
-		for _, k := range key {
-			c.ks = check(c.ks, slot(k))
-		}
-	}
-	c.cs.s = append(c.cs.s, key...)
-	return c
+	_ = "STUB: not implemented"
+	return *new(SinterstoreKey)
 }
 
-func (c SinterstoreKey) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c SinterstoreKey) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type Sismember Incomplete
 
-func (b Builder) Sismember() (c Sismember) {
-	c = Sismember{cs: get(), ks: b.ks, cf: int16(readonly)}
-	c.cs.s = append(c.cs.s, "SISMEMBER")
-	return c
-}
+func (b Builder) Sismember() (c Sismember) { _ = "STUB: not implemented"; return *new(Sismember) }
 
 func (c Sismember) Key(key string) SismemberKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (SismemberKey)(c)
+	_ = "STUB: not implemented"
+	return *new(SismemberKey)
 }
 
 type SismemberKey Incomplete
 
 func (c SismemberKey) Member(member string) SismemberMember {
-	c.cs.s = append(c.cs.s, member)
-	return (SismemberMember)(c)
+	_ = "STUB: not implemented"
+	return *new(SismemberMember)
 }
 
 type SismemberMember Incomplete
 
-func (c SismemberMember) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c SismemberMember) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c SismemberMember) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c SismemberMember) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type Smembers Incomplete
 
-func (b Builder) Smembers() (c Smembers) {
-	c = Smembers{cs: get(), ks: b.ks, cf: int16(readonly)}
-	c.cs.s = append(c.cs.s, "SMEMBERS")
-	return c
-}
+func (b Builder) Smembers() (c Smembers) { _ = "STUB: not implemented"; return *new(Smembers) }
 
-func (c Smembers) Key(key string) SmembersKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (SmembersKey)(c)
-}
+func (c Smembers) Key(key string) SmembersKey { _ = "STUB: not implemented"; return *new(SmembersKey) }
 
 type SmembersKey Incomplete
 
-func (c SmembersKey) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c SmembersKey) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c SmembersKey) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c SmembersKey) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type Smismember Incomplete
 
-func (b Builder) Smismember() (c Smismember) {
-	c = Smismember{cs: get(), ks: b.ks, cf: int16(readonly)}
-	c.cs.s = append(c.cs.s, "SMISMEMBER")
-	return c
-}
+func (b Builder) Smismember() (c Smismember) { _ = "STUB: not implemented"; return *new(Smismember) }
 
 func (c Smismember) Key(key string) SmismemberKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (SmismemberKey)(c)
+	_ = "STUB: not implemented"
+	return *new(SmismemberKey)
 }
 
 type SmismemberKey Incomplete
 
 func (c SmismemberKey) Member(member ...string) SmismemberMember {
-	c.cs.s = append(c.cs.s, member...)
-	return (SmismemberMember)(c)
+	_ = "STUB: not implemented"
+	return *new(SmismemberMember)
 }
 
 type SmismemberMember Incomplete
 
 func (c SmismemberMember) Member(member ...string) SmismemberMember {
-	c.cs.s = append(c.cs.s, member...)
-	return c
+	_ = "STUB: not implemented"
+	return *new(SmismemberMember)
 }
 
-func (c SmismemberMember) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c SmismemberMember) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
-func (c SmismemberMember) Cache() Cacheable {
-	c.cs.Build()
-	return Cacheable{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c SmismemberMember) Cache() Cacheable { _ = "STUB: not implemented"; return *new(Cacheable) }
 
 type Smove Incomplete
 
-func (b Builder) Smove() (c Smove) {
-	c = Smove{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "SMOVE")
-	return c
-}
+func (b Builder) Smove() (c Smove) { _ = "STUB: not implemented"; return *new(Smove) }
 
 func (c Smove) Source(source string) SmoveSource {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(source)
-	} else {
-		c.ks = check(c.ks, slot(source))
-	}
-	c.cs.s = append(c.cs.s, source)
-	return (SmoveSource)(c)
+	_ = "STUB: not implemented"
+	return *new(SmoveSource)
 }
 
 type SmoveDestination Incomplete
 
 func (c SmoveDestination) Member(member string) SmoveMember {
-	c.cs.s = append(c.cs.s, member)
-	return (SmoveMember)(c)
+	_ = "STUB: not implemented"
+	return *new(SmoveMember)
 }
 
 type SmoveMember Incomplete
 
-func (c SmoveMember) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c SmoveMember) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type SmoveSource Incomplete
 
 func (c SmoveSource) Destination(destination string) SmoveDestination {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(destination)
-	} else {
-		c.ks = check(c.ks, slot(destination))
-	}
-	c.cs.s = append(c.cs.s, destination)
-	return (SmoveDestination)(c)
+	_ = "STUB: not implemented"
+	return *new(SmoveDestination)
 }
 
 type Spop Incomplete
 
-func (b Builder) Spop() (c Spop) {
-	c = Spop{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "SPOP")
-	return c
-}
+func (b Builder) Spop() (c Spop) { _ = "STUB: not implemented"; return *new(Spop) }
 
-func (c Spop) Key(key string) SpopKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (SpopKey)(c)
-}
+func (c Spop) Key(key string) SpopKey { _ = "STUB: not implemented"; return *new(SpopKey) }
 
 type SpopCount Incomplete
 
-func (c SpopCount) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c SpopCount) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type SpopKey Incomplete
 
-func (c SpopKey) Count(count int64) SpopCount {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(count, 10))
-	return (SpopCount)(c)
-}
+func (c SpopKey) Count(count int64) SpopCount { _ = "STUB: not implemented"; return *new(SpopCount) }
 
-func (c SpopKey) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c SpopKey) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type Srandmember Incomplete
 
-func (b Builder) Srandmember() (c Srandmember) {
-	c = Srandmember{cs: get(), ks: b.ks, cf: int16(readonly)}
-	c.cs.s = append(c.cs.s, "SRANDMEMBER")
-	return c
-}
+func (b Builder) Srandmember() (c Srandmember) { _ = "STUB: not implemented"; return *new(Srandmember) }
 
 func (c Srandmember) Key(key string) SrandmemberKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (SrandmemberKey)(c)
+	_ = "STUB: not implemented"
+	return *new(SrandmemberKey)
 }
 
 type SrandmemberCount Incomplete
 
-func (c SrandmemberCount) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c SrandmemberCount) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type SrandmemberKey Incomplete
 
 func (c SrandmemberKey) Count(count int64) SrandmemberCount {
-	c.cs.s = append(c.cs.s, strconv.FormatInt(count, 10))
-	return (SrandmemberCount)(c)
+	_ = "STUB: not implemented"
+	return *new(SrandmemberCount)
 }
 
-func (c SrandmemberKey) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c SrandmemberKey) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type Srem Incomplete
 
-func (b Builder) Srem() (c Srem) {
-	c = Srem{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "SREM")
-	return c
-}
+func (b Builder) Srem() (c Srem) { _ = "STUB: not implemented"; return *new(Srem) }
 
-func (c Srem) Key(key string) SremKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (SremKey)(c)
-}
+func (c Srem) Key(key string) SremKey { _ = "STUB: not implemented"; return *new(SremKey) }
 
 type SremKey Incomplete
 
 func (c SremKey) Member(member ...string) SremMember {
-	c.cs.s = append(c.cs.s, member...)
-	return (SremMember)(c)
+	_ = "STUB: not implemented"
+	return *new(SremMember)
 }
 
 type SremMember Incomplete
 
 func (c SremMember) Member(member ...string) SremMember {
-	c.cs.s = append(c.cs.s, member...)
-	return c
+	_ = "STUB: not implemented"
+	return *new(SremMember)
 }
 
-func (c SremMember) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c SremMember) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type Sscan Incomplete
 
-func (b Builder) Sscan() (c Sscan) {
-	c = Sscan{cs: get(), ks: b.ks, cf: int16(readonly)}
-	c.cs.s = append(c.cs.s, "SSCAN")
-	return c
-}
+func (b Builder) Sscan() (c Sscan) { _ = "STUB: not implemented"; return *new(Sscan) }
 
-func (c Sscan) Key(key string) SscanKey {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(key)
-	} else {
-		c.ks = check(c.ks, slot(key))
-	}
-	c.cs.s = append(c.cs.s, key)
-	return (SscanKey)(c)
-}
+func (c Sscan) Key(key string) SscanKey { _ = "STUB: not implemented"; return *new(SscanKey) }
 
 type SscanCount Incomplete
 
-func (c SscanCount) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c SscanCount) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type SscanCursor Incomplete
 
 func (c SscanCursor) Match(pattern string) SscanMatch {
-	c.cs.s = append(c.cs.s, "MATCH", pattern)
-	return (SscanMatch)(c)
+	_ = "STUB: not implemented"
+	return *new(SscanMatch)
 }
 
 func (c SscanCursor) Count(count int64) SscanCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(count, 10))
-	return (SscanCount)(c)
+	_ = "STUB: not implemented"
+	return *new(SscanCount)
 }
 
-func (c SscanCursor) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c SscanCursor) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type SscanKey Incomplete
 
 func (c SscanKey) Cursor(cursor uint64) SscanCursor {
-	c.cs.s = append(c.cs.s, strconv.FormatUint(cursor, 10))
-	return (SscanCursor)(c)
+	_ = "STUB: not implemented"
+	return *new(SscanCursor)
 }
 
 type SscanMatch Incomplete
 
 func (c SscanMatch) Count(count int64) SscanCount {
-	c.cs.s = append(c.cs.s, "COUNT", strconv.FormatInt(count, 10))
-	return (SscanCount)(c)
+	_ = "STUB: not implemented"
+	return *new(SscanCount)
 }
 
-func (c SscanMatch) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c SscanMatch) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type Sunion Incomplete
 
-func (b Builder) Sunion() (c Sunion) {
-	c = Sunion{cs: get(), ks: b.ks, cf: int16(readonly)}
-	c.cs.s = append(c.cs.s, "SUNION")
-	return c
-}
+func (b Builder) Sunion() (c Sunion) { _ = "STUB: not implemented"; return *new(Sunion) }
 
-func (c Sunion) Key(key ...string) SunionKey {
-	if c.ks&NoSlot == NoSlot {
-		for _, k := range key {
-			c.ks = NoSlot | slot(k)
-			break
-		}
-	} else {
-		for _, k := range key {
-			c.ks = check(c.ks, slot(k))
-		}
-	}
-	c.cs.s = append(c.cs.s, key...)
-	return (SunionKey)(c)
-}
+func (c Sunion) Key(key ...string) SunionKey { _ = "STUB: not implemented"; return *new(SunionKey) }
 
 type SunionKey Incomplete
 
-func (c SunionKey) Key(key ...string) SunionKey {
-	if c.ks&NoSlot == NoSlot {
-		for _, k := range key {
-			c.ks = NoSlot | slot(k)
-			break
-		}
-	} else {
-		for _, k := range key {
-			c.ks = check(c.ks, slot(k))
-		}
-	}
-	c.cs.s = append(c.cs.s, key...)
-	return c
-}
+func (c SunionKey) Key(key ...string) SunionKey { _ = "STUB: not implemented"; return *new(SunionKey) }
 
-func (c SunionKey) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c SunionKey) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
 
 type Sunionstore Incomplete
 
-func (b Builder) Sunionstore() (c Sunionstore) {
-	c = Sunionstore{cs: get(), ks: b.ks}
-	c.cs.s = append(c.cs.s, "SUNIONSTORE")
-	return c
-}
+func (b Builder) Sunionstore() (c Sunionstore) { _ = "STUB: not implemented"; return *new(Sunionstore) }
 
 func (c Sunionstore) Destination(destination string) SunionstoreDestination {
-	if c.ks&NoSlot == NoSlot {
-		c.ks = NoSlot | slot(destination)
-	} else {
-		c.ks = check(c.ks, slot(destination))
-	}
-	c.cs.s = append(c.cs.s, destination)
-	return (SunionstoreDestination)(c)
+	_ = "STUB: not implemented"
+	return *new(SunionstoreDestination)
 }
 
 type SunionstoreDestination Incomplete
 
 func (c SunionstoreDestination) Key(key ...string) SunionstoreKey {
-	if c.ks&NoSlot == NoSlot {
-		for _, k := range key {
-			c.ks = NoSlot | slot(k)
-			break
-		}
-	} else {
-		for _, k := range key {
-			c.ks = check(c.ks, slot(k))
-		}
-	}
-	c.cs.s = append(c.cs.s, key...)
-	return (SunionstoreKey)(c)
+	_ = "STUB: not implemented"
+	return *new(SunionstoreKey)
 }
 
 type SunionstoreKey Incomplete
 
 func (c SunionstoreKey) Key(key ...string) SunionstoreKey {
-	if c.ks&NoSlot == NoSlot {
-		for _, k := range key {
-			c.ks = NoSlot | slot(k)
-			break
-		}
-	} else {
-		for _, k := range key {
-			c.ks = check(c.ks, slot(k))
-		}
-	}
-	c.cs.s = append(c.cs.s, key...)
-	return c
+	_ = "STUB: not implemented"
+	return *new(SunionstoreKey)
 }
 
-func (c SunionstoreKey) Build() Completed {
-	c.cs.Build()
-	return Completed{cs: c.cs, cf: uint16(c.cf), ks: c.ks}
-}
+func (c SunionstoreKey) Build() Completed { _ = "STUB: not implemented"; return *new(Completed) }
